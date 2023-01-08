@@ -1,0 +1,43 @@
+.auth-module {
+  --color: var(--gray);
+  --active: var(--white);
+
+  color: var(--color);
+}
+
+.menu-item {
+  cursor: pointer;
+}
+
+.menu-module-0 {
+  padding: var(--normal);
+  padding-left: var(--normal);
+  transition-duration: var(--flash);
+  transition-property: color, background;
+  position: relative;
+}
+.menu-module-0[data-active] {
+  background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1));
+  color: var(--white);
+}
+.menu-module-0[data-active]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: var(--main-color);
+}
+.menu-module-0[data-active] .icon {
+  color: var(--main-color);
+}
+
+.module__name {
+  font-size: calc(var(--font-small) * 0.95);
+  display: flex;
+  align-items: center;
+}
+.module__name > span {
+  margin-left: calc(var(--small) * 1.2);
+}

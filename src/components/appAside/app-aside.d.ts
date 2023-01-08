@@ -1,0 +1,3 @@
+type AppAsideModule = {
+  icon: string;
+};

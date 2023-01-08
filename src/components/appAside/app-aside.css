@@ -1,0 +1,44 @@
+.app-aside__box {
+  flex-direction: row;
+  height: calc(100% - var(--header-height));
+  color: var(--white);
+  position: relative;
+}
+
+.app-aside__list {
+  --list-width: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: var(--list-width);
+  position: absolute;
+  right: calc(-0.4 * var(--list-width));
+  background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1));
+  border-radius: var(--normal);
+  top: 45%;
+  box-shadow: rgb(255 255 255 / 10%) -1px 0px 1px 0px inset, rgb(50 50 93 / 25%) 20px 0px 20px 3px, rgb(0 0 0 / 30%) 20px 0px 20px 1px;
+
+  transform: translate(0, -50%);
+}
+
+.app-aside__list-item {
+  padding: calc(var(--normal) * 1.4);
+  transition: all var(--moment);
+}
+.app-aside__list-item:first-child {
+  border-top-left-radius: var(--normal);
+  border-top-right-radius: var(--normal);
+}
+.app-aside__list-item:last-child {
+  border-bottom-left-radius: var(--normal);
+  border-bottom-right-radius: var(--normal);
+}
+.app-aside__list-item[data-active] {
+  color: var(--main-color);
+  background-color: var(--bg-color-bright-2);
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.app-aside__list-item:hover {
+  cursor: pointer;
+}

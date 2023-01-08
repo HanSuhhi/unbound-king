@@ -1,0 +1,17 @@
+.vscode
+.idea
+coverage
+
+*.js
+*.ts
+*.jpg
+*.png
+*.eot
+*.ttf
+*.woff
+*.json
+
+/node_modules
+/public
+/test/
+/dist/

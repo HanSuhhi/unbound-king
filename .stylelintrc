@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@hansuhhi-don/stylelint-config"
+  ]
+}
