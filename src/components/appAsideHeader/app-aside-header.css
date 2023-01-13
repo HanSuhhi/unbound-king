@@ -1,14 +1,14 @@
 .app-aside__header {
-  height: var(--header-height);
-  font-family: Pacifico, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: var(--header-height);
+  font-family: Pacifico, sans-serif;
 }
 
 .app-aside__header > span {
-  letter-spacing: 4px;
   padding-right: 2rem;
+  letter-spacing: 4px;
 }
 
 .app-aside__header > div {

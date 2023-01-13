@@ -13,7 +13,6 @@ export default defineComponent({
     },
     size: {
       type: (String as PropType<Size>) || Number,
-      required: true,
       default: "normal",
     },
   },

@@ -6,5 +6,12 @@ import { createApp } from "vue";
 import App from "./App";
 import createCsssUI from "csss-ui";
 import { createPinia } from "pinia";
+import { useRouteConfig } from "./composables/router";
+import { useIndexDb } from "./services/index";
 
-createApp(App).use(createCsssUI()).use(createPinia()).mount("#app");
+const csssUI = createCsssUI();
+const pinia = createPinia();
+const { router } = await useRouteConfig();
+await useIndexDb();
+
+createApp(App).use(csssUI).use(pinia).use(router).mount("#app");

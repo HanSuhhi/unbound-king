@@ -14,9 +14,9 @@ export default defineComponent({
         <c-tabs ref={Tabs}>
           {{
             list: () => {
-              return appAsideModules.value.map((module) => <AppAsideModule icon={module.icon}></AppAsideModule>);
+              return appAsideModules.value.map((module) => <AppAsideModule icon={module.icon!}></AppAsideModule>);
             },
-            "panel-0": () => <AuthModule></AuthModule>,
+            "panel-0": () => <AuthModule />,
             "panel-1": () => (
               <>
                 <p>1213</p>

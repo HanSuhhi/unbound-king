@@ -1,22 +1,26 @@
 import { useCsssLayout } from "csss-ui";
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, watchEffect } from "vue";
 import AppAside from "./components/appAside/appAside";
 import AppAsideHeader from "./components/appAsideHeader/AppAsideHeader";
+import AppHeader from "./components/appHeader/AppHeader";
 
 export default defineComponent({
   name: "App",
   setup: (props) => {
     const { COMP: Layout } = useCsssLayout({
-      style: {
+      state: {
         layoutType: "aside",
+      },
+      style: {
         asideWidthSize: "large",
         classList: {
+          layout: ["", "app"],
           header: ["", "app-header"],
           main: ["", "app-main"],
+          aside: ["", "app-aside"],
         },
       },
     });
-
     return () => {
       return (
         <>
@@ -24,6 +28,8 @@ export default defineComponent({
           <div class="i-carbon-two-factor-authentication" v-show={false}></div>
           <div class="i-mdi-horse-human" v-show={false}></div>
           <div class="i-ant-design-align-left-outlined" v-show={false}></div>
+          <div class="i-icon-park-solid-more-four" v-show={false}></div>
+          <div class="i-fontisto-bell" v-show={false}></div>
           <c-layout ref={Layout}>
             {{
               aside: () => (
@@ -32,8 +38,8 @@ export default defineComponent({
                   <AppAside />
                 </>
               ),
-              header: () => <>1223</>,
-              default: () => <p>asd</p>,
+              header: () => <AppHeader></AppHeader>,
+              default: () => <router-view></router-view>,
             }}
           </c-layout>
         </>

@@ -6,7 +6,7 @@ import { storeToRefs } from "pinia";
 export const useAppAside = () => {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
 
-  const appAsideModules = ref<AppAsideModule[]>([
+  const appAsideModules = ref<ModuleList[]>([
     {
       icon: "i-carbon-two-factor-authentication",
     },

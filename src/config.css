@@ -9,19 +9,30 @@ body {
 }
 
 #app {
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
 }
 
-.csss-layout {
-  background: linear-gradient(240deg, var(--bg-color), var(--bg-color-deep-1));
+.app {
   color: var(--white);
+  background: linear-gradient(240deg, var(--bg-color), var(--bg-color-deep-1));
 }
-.csss-layout__aside {
+
+.app-aside {
   --header-height: 4rem;
 
+  background: linear-gradient(100deg, var(--bg-color), var(--bg-color-bright-2));
   border-top-right-radius: var(--normal);
   border-bottom-right-radius: var(--normal);
-  background: linear-gradient(100deg, var(--bg-color), var(--bg-color-bright-2));
-  box-shadow: rgb(255 255 255 / 10%) -1px 0px 1px 0px inset, rgb(50 50 93 / 25%) 20px 0px 20px 3px, rgb(0 0 0 / 30%) 20px 0px 20px 1px;
+  box-shadow: var(--box-shadow-1);
+}
+
+.app-header {
+  padding: var(--normal);
+}
+
+/* need to add to csss */
+:root {
+  --box-shadow-1: rgb(255 255 255 / 10%) -1px 0 1px 0 inset, rgb(50 50 93 / 25%) 20px 0 20px 3px, rgb(0 0 0 / 30%) 20px 0 20px 1px;
+  --box-shadow-1-luster: rgb(255 255 255 / 30%) -1px 0 1px 0 inset, rgb(50 50 93 / 25%) 20px 0 20px 3px, rgb(0 0 0 / 30%) 20px 0 20px 1px;
 }

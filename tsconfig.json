@@ -16,7 +16,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["csss-ui/dist/global.d.ts"]
+    "types": ["csss-ui/dist/global"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

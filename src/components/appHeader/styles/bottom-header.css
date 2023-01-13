@@ -1,0 +1,13 @@
+.bottom-header {
+  display: flex;
+}
+
+.bottom-header > p {
+  width: 90px;
+  color: var(--gray-bright-2);
+  opacity: 0.2;
+}
+
+.main {
+  opacity: 1 !important;
+}

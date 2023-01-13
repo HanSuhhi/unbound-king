@@ -1,0 +1,107 @@
+.user-message {
+  --avator-size: 0.7;
+
+  display: flex;
+  place-items: center;
+}
+
+.user-message__functions {
+  display: flex;
+  place-items: center;
+  margin-right: var(--mini);
+}
+
+.user-message__username {
+  color: var(--white);
+}
+
+.user-message__username > span:first-child {
+  color: var(--gray-bright-2);
+  letter-spacing: 1px;
+}
+
+.user-message__username > span:last-child {
+  letter-spacing: normal;
+}
+
+.user-message__user {
+  --border-radius: 60% 40% 40% 20% / 70% 50% 30% 25%;
+
+  position: relative;
+  display: flex;
+  padding-left: var(--normal);
+  place-items: center;
+}
+
+.user-message__user::before {
+  --height: 45%;
+
+  position: absolute;
+  inset: 0;
+  height: var(--height);
+  content: "";
+  top: calc((100% - var(--height)) / 2);
+  border: 1.5px solid var(--bg-color-bright-2);
+  filter: brightness(2);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.user-message__user > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--large) * 1.4);
+  height: calc(var(--large) * 1.4);
+  margin: 0 var(--normal);
+  transform: scale(var(--avator-size));
+}
+
+.user-message__user > div::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: calc(var(--mini) * 0.5);
+  background: linear-gradient(45deg, var(--purple), var(--main-color-deep-2));
+  border-radius: var(--border-radius);
+  content: "";
+  pointer-events: none;
+  /* stylelint-disable-next-line */
+  -webkit-mask: linear-gradient(#fff, #fff) content-box, linear-gradient(#fff, #fff);
+  /* stylelint-disable-next-line */
+  -webkit-mask-composite: clear;
+}
+
+.user-message__user > div > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+}
+
+.user-message__user > div > span > img {
+  width: 70%;
+  height: 70%;
+  border-radius: var(--border-radius);
+}
+
+.user-message__box {
+  display: flex;
+  padding: var(--small) var(--normal);
+  color: var(--white);
+  border-radius: var(--small);
+  cursor: pointer;
+  transition: all var(--moment);
+  place-items: center;
+  margin-left: var(--mini);
+}
+
+.user-message__box:hover {
+  background-color: var(--bg-color-bright-2);
+}
+
+.user-message__box:hover > .icon {
+  color: var(--main-color);
+  background: linear-gradient(var(--main-color), var(--blue));
+}

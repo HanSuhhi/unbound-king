@@ -1,0 +1,17 @@
+.header-search {
+  padding: var(--small);
+  border-radius: var(--normal);
+  background: linear-gradient(90deg, var(--bg-color-bright-1), var(--bg-color-bright-2));
+  display: flex;
+  color: var(--gray-bright-2);
+  transition: all var(--moment);
+}
+
+.header-search[data-active] {
+  box-shadow: var(--box-shadow-1-luster);
+}
+
+.header-search__header {
+  margin: var(--mini);
+  margin-right: var(--small);
+}

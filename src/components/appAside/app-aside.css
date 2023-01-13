@@ -17,7 +17,7 @@
   background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1));
   border-radius: var(--normal);
   top: 45%;
-  box-shadow: rgb(255 255 255 / 10%) -1px 0px 1px 0px inset, rgb(50 50 93 / 25%) 20px 0px 20px 3px, rgb(0 0 0 / 30%) 20px 0px 20px 1px;
+  box-shadow: var(--box-shadow-1);
 
   transform: translate(0, -50%);
 }
