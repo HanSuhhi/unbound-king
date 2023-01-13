@@ -38,6 +38,7 @@ export default defineComponent({
                   <AppAside />
                 </>
               ),
+
               header: () => <AppHeader></AppHeader>,
               default: () => <router-view></router-view>,
             }}

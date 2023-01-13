@@ -97,10 +97,6 @@
   margin-left: var(--mini);
 }
 
-.user-message__box:hover {
-  background-color: var(--bg-color-bright-2);
-}
-
 .user-message__box:hover > .icon {
   color: var(--main-color);
   background: linear-gradient(var(--main-color), var(--blue));

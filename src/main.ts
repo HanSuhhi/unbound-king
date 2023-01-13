@@ -1,3 +1,4 @@
+import "./styles/index.css";
 import "./config.css";
 import "uno.css";
 import "@hansuhhi-don/csss/dist/style.css";
