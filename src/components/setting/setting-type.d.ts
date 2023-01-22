@@ -1,6 +1,6 @@
 type SettingModule = {
   title: string;
-  password?: string;
+  auth?: import("@/auth/pageAuth").PageAuth;
   items: SettingModuleItem[];
 };
 

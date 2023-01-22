@@ -1,8 +1,9 @@
-import { defineStore } from "pinia";
-import { useCsssRadio } from "csss-ui";
-import { computed, ComputedRef, ref, watchEffect } from "vue";
+import { entrySettingAuth } from "@/auth/pages/setting.auth";
 import { SettingItemType } from "@/components/setting/enums/setting.enum";
 import { useRadioToSwitch } from "@/composables/radioToSwitch";
+import { defineStore } from "pinia";
+import { ref } from "vue";
+
 const useSettingStore = defineStore("setting-store", () => {
   /**
    * @description dev mode
@@ -15,7 +16,7 @@ const useSettingStore = defineStore("setting-store", () => {
   const settingModules = ref<SettingModule[]>([
     {
       title: "开发设置",
-      password: "0218",
+      auth: entrySettingAuth,
       items: [
         {
           name: "开发者模式",

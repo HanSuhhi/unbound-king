@@ -1,0 +1,1 @@
+type AuthModuleType = "setting";
