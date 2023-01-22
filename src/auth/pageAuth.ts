@@ -5,16 +5,16 @@ import { indexOf } from "lodash-es";
 import { ref, watchEffect } from "vue";
 
 export class PageAuth {
-  constructor(private module: Auth, private page: string, private func: string) {}
+  constructor(private module: Auth, private page: AuthPageType, private func: string) {}
 
-  private get ticket() {
-    return `${this.module}_${this.page}_${this.func}`;
+  public get ticket() {
+    return `${this.module.ticket}_${this.page}_${this.func}`;
   }
 
-  public get auth() {
-    const { auths } = storeToRefs(usePlayerStore());
+  public get effective() {
+    const { auth } = usePlayerStore();
     const value = ref(false);
-    watchEffect(() => (value.value = indexOf(auths.value, this.ticket) !== -1));
+    watchEffect(() => (value.value = auth.in(this.ticket)));
 
     return value.value;
   }

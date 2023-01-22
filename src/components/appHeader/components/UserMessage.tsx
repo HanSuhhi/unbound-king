@@ -6,6 +6,7 @@ import { useFunctions } from "../composables/functions";
 import { useSearch } from "../composables/search";
 import { storeToRefs } from "pinia";
 import { useGlobalStore } from "@/stores/global.store";
+import { useSettingControl } from "../composables/settingControl";
 
 export default defineComponent({
   name: "UserMessage",
@@ -13,7 +14,8 @@ export default defineComponent({
     const defaultImg = useNow().value.getTime().toString();
     const { funcs } = useFunctions();
     const { Search } = useSearch();
-    let { settingStatus } = storeToRefs(useGlobalStore());
+    const { settingStatus } = storeToRefs(useGlobalStore());
+    const { Setting } = useSettingControl();
 
     return () => {
       return (
@@ -45,7 +47,7 @@ export default defineComponent({
               </span>
             </div>
           </section>
-          <section class="user-message__plus user-message__box" onClick={() => (settingStatus.value = true)}>
+          <section class="user-message__plus user-message__box" ref={Setting} onClick={() => (settingStatus.value = true)}>
             <Icon icon="i-icon-park-solid-more-four" size="small" />
           </section>
         </article>

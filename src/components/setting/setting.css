@@ -24,6 +24,16 @@
   font-size: calc(var(--font-large) * 1.1);
 }
 
+.setting-module_lock {
+  transform: scale(0.8);
+  cursor: pointer;
+  transition: all var(--moment) ease;
+}
+
+.setting-module_lock:active {
+  transform: scale(0.7);
+}
+
 .setting-module-item {
   margin: var(--normal) 0;
   font-size: calc(var(--font-normal) * 1.1);

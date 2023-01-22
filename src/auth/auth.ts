@@ -1,7 +1,7 @@
 export class Auth {
   constructor(private name: AuthModuleType) {}
 
-  public get tocket() {
+  public get ticket() {
     return this.name;
   }
 }
