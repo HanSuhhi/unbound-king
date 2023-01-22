@@ -1,0 +1,56 @@
+.setting-drawer {
+  backdrop-filter: blur(2px);
+}
+
+.setting {
+  position: relative;
+  width: var(--body-width);
+  padding: var(--normal) var(--mini);
+  color: var(--white);
+  background-color: rgb(24 25 34 / 70%);
+  border-left: 0.5px solid rgb(34 36 48 / 90%);
+  border-top-left-radius: var(--mini);
+  border-bottom-left-radius: var(--mini);
+}
+
+.setting-module {
+  margin: 0 var(--large);
+  filter: opacity(0.8) sepia(0.2);
+}
+
+.setting-module_title {
+  margin-left: var(--mini);
+  color: var(--white-deep-2);
+  font-size: calc(var(--font-large) * 1.1);
+}
+
+.setting-module-item {
+  margin: var(--normal) 0;
+  font-size: calc(var(--font-normal) * 1.1);
+  border: 1px solid rgb(255 255 255 / 20%);
+}
+
+.setting-module-item_aside {
+  margin-left: var(--normal);
+  padding: var(--small) 0;
+}
+
+.setting-radio {
+  position: relative;
+}
+
+.setting-radio_block {
+  width: 100%;
+  height: 100%;
+  padding: var(--small) 0;
+  color: rgb(255 255 255 / 30%);
+  text-align: center;
+  background-color: rgb(255 255 255 / 8%);
+  cursor: pointer;
+  transition: all var(--moment);
+}
+
+.setting-radio_block[data-active] {
+  color: var(--white);
+  background-color: rgb(255 255 255 / 44%);
+}

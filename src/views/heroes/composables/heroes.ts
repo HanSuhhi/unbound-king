@@ -7,10 +7,12 @@ export const useHeroes = () => {
       reverse: true,
     },
     style: {
-      asideWidthSize: "large",
       classList: {
         main: ["", "heroes-main"],
         aside: ["", "heroes-aside"],
+      },
+      property: {
+        "--aside-width": "27%",
       },
     },
   });

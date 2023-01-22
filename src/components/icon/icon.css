@@ -2,4 +2,5 @@
   display: inline-block;
   font-size: calc(var(--size) * 1rem);
   transition: all var(--moment);
+  transition: all 0.45s;
 }

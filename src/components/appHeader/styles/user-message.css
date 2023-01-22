@@ -39,10 +39,10 @@
   position: absolute;
   inset: 0;
   height: var(--height);
-  content: "";
-  top: calc((100% - var(--height)) / 2);
   border: 1.5px solid var(--bg-color-bright-2);
   filter: brightness(2);
+  content: "";
+  top: calc((100% - var(--height)) / 2);
   border-top: 0;
   border-bottom: 0;
 }
@@ -100,4 +100,11 @@
 .user-message__box:hover > .icon {
   color: var(--main-color);
   background: linear-gradient(var(--main-color), var(--blue));
+  transform: scale(1.15);
+}
+
+.user-message__box:active > .icon {
+  color: var(--main-color);
+  background: linear-gradient(var(--main-color), var(--blue));
+  transform: scale(1.05);
 }

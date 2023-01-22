@@ -3,6 +3,8 @@ import { defineComponent, onMounted, watchEffect } from "vue";
 import AppAside from "./components/appAside/appAside";
 import AppAsideHeader from "./components/appAsideHeader/AppAsideHeader";
 import AppHeader from "./components/appHeader/AppHeader";
+import IconPreset from "./components/IconPreset";
+import Setting from "./components/setting/Setting";
 
 export default defineComponent({
   name: "App",
@@ -24,12 +26,7 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div class="i-material-symbols-view-module" v-show={false}></div>
-          <div class="i-carbon-two-factor-authentication" v-show={false}></div>
-          <div class="i-mdi-horse-human" v-show={false}></div>
-          <div class="i-ant-design-align-left-outlined" v-show={false}></div>
-          <div class="i-icon-park-solid-more-four" v-show={false}></div>
-          <div class="i-fontisto-bell" v-show={false}></div>
+          <IconPreset />
           <c-layout ref={Layout}>
             {{
               aside: () => (
@@ -43,6 +40,7 @@ export default defineComponent({
               default: () => <router-view></router-view>,
             }}
           </c-layout>
+          <Setting />
         </>
       );
     };

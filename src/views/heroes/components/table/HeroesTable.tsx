@@ -3,6 +3,7 @@ import "./styles/heroes-table.css";
 import Icon from "@/components/icon/Icon";
 import { defineComponent } from "vue";
 import { useHeroesTable } from "./composables/heroesTable";
+import TableMain from "../tableMain/TableMain";
 
 export default defineComponent({
   name: "HeroesTable",
@@ -33,7 +34,7 @@ export default defineComponent({
                 </>
               );
             },
-            "panel-0": () => <p> 123</p>,
+            "panel-0": () => <TableMain />,
           }}
         </c-tabs>
       );

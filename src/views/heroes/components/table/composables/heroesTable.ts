@@ -11,7 +11,7 @@ export const useHeroesTable = () => {
         list: ["heroes-table__list"],
         listItem: ["heroes-table__list__item"],
         panel: ["heroes-table__panels"],
-        panelItem: ["_"],
+        panelItem: ["heroes-table__panel"],
       },
     },
   });

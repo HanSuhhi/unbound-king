@@ -14,13 +14,23 @@ body {
 }
 
 .app {
+  position: relative;
   color: var(--white);
-  background: linear-gradient(240deg, var(--bg-color), var(--bg-color-deep-1));
+  background: linear-gradient(240deg, var(--bg-color-bright-1), var(--bg-color-deep-1) 60%);
+}
+
+.app::before {
+  position: absolute;
+  background: radial-gradient(var(--bg-color-bright-2), transparent 40%);
+  background-size: 4px 4px;
+  content: "";
+  inset: 0;
 }
 
 .app-aside {
   --header-height: 4rem;
 
+  z-index: 700;
   background: linear-gradient(100deg, var(--bg-color), var(--bg-color-bright-2));
   border-top-right-radius: var(--normal);
   border-bottom-right-radius: var(--normal);
@@ -28,6 +38,7 @@ body {
 }
 
 .app-header {
+  position: relative;
   padding: var(--normal);
 }
 

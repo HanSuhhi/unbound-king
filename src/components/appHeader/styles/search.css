@@ -1,14 +1,15 @@
 .header-search {
-  padding: var(--small);
-  border-radius: var(--normal);
-  background: linear-gradient(90deg, var(--bg-color-bright-1), var(--bg-color-bright-2));
+  position: relative;
   display: flex;
+  padding: var(--small);
   color: var(--gray-bright-2);
+  background: linear-gradient(90deg, var(--bg-color-bright-1), var(--bg-color-bright-2));
+  border-radius: var(--normal);
   transition: all var(--moment);
 }
 
 .header-search[data-active] {
-  box-shadow: var(--box-shadow-1-luster);
+  margin-left: -10%;
 }
 
 .header-search__header {

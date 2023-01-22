@@ -12,6 +12,7 @@
 }
 
 .heroes-table__list {
+  z-index: 600;
   width: var(--list-width);
   height: 100%;
   text-align: center;
@@ -21,7 +22,10 @@
   display: flex;
   width: calc(100% - var(--list-width));
   height: 100%;
-  place-items: center;
+}
+
+.heroes-table__panel {
+  width: 100%;
 }
 
 .heroes-table__list__item {
