@@ -1,0 +1,63 @@
+/* stylelint-disable max-line-length */
+@import "./styles/setting-body.css";
+@import "./styles/setting-header.css";
+@import "./styles/setting-footer.css";
+
+.setting {
+  --line-break-height: 1rem;
+  --line-break-base-width: 20%;
+  --line-break-width: 1%;
+  --line-border-size: 2px;
+  --side-bg: rgb(33 30 45 / 70%);
+  --ani-time: 0.35s;
+
+  position: fixed;
+  z-index: var(--setting-z-index);
+  background-color: var(--side-bg);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  inset: 0;
+}
+
+.setting-header::before,
+.setting-footer::before {
+  position: absolute;
+  background-image: linear-gradient(to right, rgb(255 255 255 / 20%) 10%, rgb(255 255 255 / 40%), rgb(85 83 83 / 50%), rgb(255 255 255 / 40%), rgb(255 255 255 / 20%) 90%);
+  content: "";
+  clip-path:
+    polygon(
+      0 calc(100% - var(--line-border-size)),
+      calc(var(--line-break-base-width) - var(--line-border-size) / 2) calc(100% - var(--line-border-size)),
+      calc(var(--line-break-base-width) + var(--line-break-width) - var(--line-border-size) / 2) calc(100% - var(--line-border-size) - var(--line-break-height)),
+      calc(100% - var(--line-break-base-width) - var(--line-break-width) + var(--line-border-size) /  2) calc(100% - var(--line-border-size) - var(--line-break-height)),
+      calc(100% - var(--line-break-base-width) + var(--line-border-size) / 2) calc(100% - var(--line-border-size)),
+      100% calc(100% - var(--line-border-size)),
+      100% 100%,
+      calc(100% - var(--line-break-base-width)) 100%,
+      calc(100% - var(--line-break-base-width) - var(--line-break-width)) calc(100% - var(--line-break-height)),
+      calc(var(--line-break-base-width) + var(--line-break-width)) calc(100% - var(--line-break-height)),
+      var(--line-break-base-width) 100%,
+      0 100%
+    );
+  inset: 0;
+}
+
+.setting-main {
+  pointer-events: auto;
+}
+
+.setting-footer::before {
+  transform: scale(-1);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  --ani-time: 0.5s;
+
+  transition: all var(--ani-time) ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: var(--fade-opacity);
+}

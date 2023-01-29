@@ -1,0 +1,11 @@
+.kbd-icon {
+  padding: 0 var(--small);
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: Jaldi, sans-serif;
+  text-transform: uppercase;
+  background-color: var(--gray-deep-2);
+  border-top: 0.1px solid var(--gray-bright-1);
+  border-radius: var(--mini);
+  zoom: 0.75;
+}

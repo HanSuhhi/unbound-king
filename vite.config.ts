@@ -10,6 +10,7 @@ export default defineConfig({
   server: {
     port: 20018,
   },
+  envPrefix: ["SETTING_HEADER_LIST_MAX_NUM"],
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),

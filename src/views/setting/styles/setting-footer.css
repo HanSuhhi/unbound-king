@@ -1,0 +1,31 @@
+.setting-footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: var(--footer-height);
+  color: white;
+  clip-path:
+    polygon(
+      0% 0%,
+      var(--line-break-base-width) 0%,
+      calc(var(--line-break-base-width) + var(--line-break-width)) var(--line-break-height),
+      calc(100% - var(--line-break-base-width) - var(--line-break-width)) var(--line-break-height),
+      calc(100% - var(--line-break-base-width)) 0%,
+      100% 0%,
+      100% 100%,
+      0 100%
+    );
+  pointer-events: auto;
+}
+
+.setting-footer_part {
+  display: flex;
+  justify-content: flex-end;
+  width: var(--line-break-base-width);
+  margin: var(--normal);
+  place-items: center;
+}
+
+.setting-footer_key {
+  margin: 0 var(--normal);
+}

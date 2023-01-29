@@ -7,23 +7,24 @@ import { watchEffect } from "vue";
 
 export const useSettingControl = () => {
   const { auth } = usePlayerStore();
-  const { Setting } = storeToRefs(useSettingStore());
-  const { pressed } = useMousePressed({ target: Setting });
+  const { SettingRef } = storeToRefs(useSettingStore());
+  const { pressed } = useMousePressed({ target: SettingRef });
 
   let watchEvent: number;
 
   watchEffect(() => {
-    let ticket = entryDevSettingAuth.ticket;
+    const ticket = entryDevSettingAuth.ticket;
     if (pressed.value) {
       watchEvent = setTimeout(() => {
         if (auth.in(ticket)) return;
         auth.add(ticket);
-        Setting.value?.classList.add("shake");
-      }, 1500);
+        SettingRef.value?.classList.add("shake");
+      }, 1000);
     } else {
       clearTimeout(watchEvent);
-      Setting.value?.classList.remove("shake");
+      SettingRef.value?.classList.remove("shake");
     }
   });
-  return { Setting };
+
+  return { SettingRef };
 };

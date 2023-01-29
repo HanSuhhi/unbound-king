@@ -1,11 +1,11 @@
 import Icon from "@/components/icon/Icon";
-import { defineComponent } from "vue";
+import { useSettingStore } from "@/stores/setting.store";
 import LifeHash from "@hansuhhi-don/lifehash-vue";
 import { useNow } from "@vueuse/core";
+import { storeToRefs } from "pinia";
+import { defineComponent } from "vue";
 import { useFunctions } from "../composables/functions";
 import { useSearch } from "../composables/search";
-import { storeToRefs } from "pinia";
-import { useGlobalStore } from "@/stores/global.store";
 import { useSettingControl } from "../composables/settingControl";
 
 export default defineComponent({
@@ -14,8 +14,8 @@ export default defineComponent({
     const defaultImg = useNow().value.getTime().toString();
     const { funcs } = useFunctions();
     const { Search } = useSearch();
-    const { settingStatus } = storeToRefs(useGlobalStore());
-    const { Setting } = useSettingControl();
+    const { settingActive } = storeToRefs(useSettingStore());
+    const { SettingRef } = useSettingControl();
 
     return () => {
       return (
@@ -47,7 +47,7 @@ export default defineComponent({
               </span>
             </div>
           </section>
-          <section class="user-message__plus user-message__box" ref={Setting} onClick={() => (settingStatus.value = true)}>
+          <section class="user-message__plus user-message__box" ref={SettingRef} onClick={() => (settingActive.value = true)}>
             <Icon icon="i-icon-park-solid-more-four" size="small" />
           </section>
         </article>

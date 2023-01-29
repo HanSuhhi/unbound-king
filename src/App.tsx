@@ -4,11 +4,15 @@ import AppAside from "./components/appAside/appAside";
 import AppAsideHeader from "./components/appAsideHeader/AppAsideHeader";
 import AppHeader from "./components/appHeader/AppHeader";
 import IconPreset from "./components/IconPreset";
-import Setting from "./components/setting/Setting";
+import Setting from "./views/setting/Setting";
+import { useSettingStore } from "./stores/setting.store";
+import { storeToRefs } from "pinia";
 
 export default defineComponent({
   name: "App",
   setup: (props) => {
+    const { settingGlobalActive } = storeToRefs(useSettingStore());
+
     const { COMP: Layout } = useCsssLayout({
       state: {
         layoutType: "aside",
@@ -35,12 +39,11 @@ export default defineComponent({
                   <AppAside />
                 </>
               ),
-
               header: () => <AppHeader></AppHeader>,
               default: () => <router-view></router-view>,
             }}
           </c-layout>
-          <Setting />
+          {settingGlobalActive.value && <Setting />}
         </>
       );
     };
