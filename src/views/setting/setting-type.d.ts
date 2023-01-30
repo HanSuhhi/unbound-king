@@ -10,3 +10,9 @@ type SettingModuleItem = {
   items?: string[];
   comp: any;
 };
+
+type SettingFooterButton = {
+  key: string | string[];
+  title: string;
+  feedback?: Function;
+};

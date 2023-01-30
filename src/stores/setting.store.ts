@@ -1,15 +1,17 @@
 import { entryDevSettingAuth } from "@/auth/pages/setting.auth";
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import { defer } from "lodash-es";
+import { defer, delay } from "lodash-es";
 
 const useSettingStore = defineStore("setting-store", () => {
+  const settingAniTime = 0.35;
+
   /**
    * @description dev mode
    */
   // const { COMP: DevMode, state: devMode } = useRadioToSwitch({});
 
-  const SettingRef = ref<HTMLElement>();
+  const SettingEnterIconRef = ref<HTMLElement>();
 
   /**
    * @description setting status
@@ -24,7 +26,6 @@ const useSettingStore = defineStore("setting-store", () => {
         defer(() => (_settingActive.value = true));
       } else {
         _settingActive.value = false;
-        defer(() => (settingGlobalActive.value = false));
       }
     },
   });
@@ -46,7 +47,7 @@ const useSettingStore = defineStore("setting-store", () => {
 
   const list = computed(() => settingModules.value.filter((v) => !v.auth || v.auth.effective));
 
-  return { list, settingActive, settingGlobalActive, SettingRef };
+  return { list, settingActive, settingGlobalActive, SettingEnterIconRef, settingAniTime };
 });
 
 export { useSettingStore };

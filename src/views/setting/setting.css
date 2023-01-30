@@ -19,6 +19,16 @@
   inset: 0;
 }
 
+.setting .slide-up-leave-to {
+  transform: translateY(var(--slide-path));
+  opacity: 0;
+}
+
+.setting .slide-down-leave-to {
+  transform: translateY(calc(-1 * var(--slide-path)));
+  opacity: 0;
+}
+
 .setting-header::before,
 .setting-footer::before {
   position: absolute;
@@ -52,7 +62,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  --ani-time: 0.5s;
+  --ani-time: 0.4s;
 
   transition: all var(--ani-time) ease;
 }

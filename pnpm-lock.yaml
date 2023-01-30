@@ -12,7 +12,7 @@ specifiers:
   '@vitejs/plugin-vue': ^4.0.0
   '@vitejs/plugin-vue-jsx': ^3.0.0
   '@vueuse/core': ^9.10.0
-  csss-ui: 0.2.0-beta.16
+  csss-ui: 0.2.0-beta.17
   dayjs: ^1.11.7
   eslint: ^8.32.0
   jsstore: ^4.5.0
@@ -33,7 +33,7 @@ dependencies:
   '@types/lodash-es': 4.17.6
   '@types/node': 18.11.18
   '@vueuse/core': 9.10.0_vue@3.2.45
-  csss-ui: 0.2.0-beta.16
+  csss-ui: 0.2.0-beta.17
   dayjs: 1.11.7
   jsstore: 4.5.0
   lodash-es: 4.17.21
@@ -1808,8 +1808,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  /csss-ui/0.2.0-beta.16:
-    resolution: {integrity: sha512-fJvM+6TYVj1ny4F9ht85iunvMbyDFY2XFzevOMQKj0hqDzmeKe/MtnRQahVIHQr7SxrD1EQinyrb/189qY8Gnw==}
+  /csss-ui/0.2.0-beta.17:
+    resolution: {integrity: sha512-46l6dnoVF4PcH9gBIwjeb1PFwRHC3xZYNqztWxpJs9bqwXTGfYpT1yeP29soLOPC3C7pGHLWcLP+vqVrGb0w3g==}
     engines: {node: '>=16.17.0'}
     dependencies:
       '@hansuhhi-don/csss': 0.0.1-beta.3

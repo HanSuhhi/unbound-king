@@ -10,12 +10,12 @@ export default defineComponent({
       type: [Array<string>, String],
       required: true,
     },
-    title: {
-      type: String,
-      required: false,
+    showKeys: {
+      type: Boolean,
+      default: true,
     },
   },
-  setup: (props) => {
+  setup: (props, { slots }) => {
     const kbds = computed(() => {
       if (!isArray(props.text)) return [props.text];
       return props.text;
@@ -25,15 +25,15 @@ export default defineComponent({
         display: "flex",
         placeItems: "center",
       };
-      const titleStyle: StyleValue = {
-        marginLeft: "var(--small)",
+      const kbdStyle: StyleValue = {
+        marginRight: "var(--mini)",
       };
       return (
         <div class="keyboard-button" style={style}>
           {kbds.value.map((kbd) => (
-            <KbdIcon text={kbd}></KbdIcon>
+            <KbdIcon v-show={props.showKeys} style={kbdStyle} text={kbd}></KbdIcon>
           ))}
-          <span style={titleStyle}>{props.title}</span>
+          <span>{slots.default?.()}</span>
         </div>
       );
     };

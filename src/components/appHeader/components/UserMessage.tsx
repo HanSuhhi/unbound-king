@@ -15,7 +15,7 @@ export default defineComponent({
     const { funcs } = useFunctions();
     const { Search } = useSearch();
     const { settingActive } = storeToRefs(useSettingStore());
-    const { SettingRef } = useSettingControl();
+    const { SettingEnterIconRef } = useSettingControl();
 
     return () => {
       return (
@@ -47,7 +47,7 @@ export default defineComponent({
               </span>
             </div>
           </section>
-          <section class="user-message__plus user-message__box" ref={SettingRef} onClick={() => (settingActive.value = true)}>
+          <section class="user-message__plus user-message__box" ref={SettingEnterIconRef} onClick={() => (settingActive.value = true)}>
             <Icon icon="i-icon-park-solid-more-four" size="small" />
           </section>
         </article>

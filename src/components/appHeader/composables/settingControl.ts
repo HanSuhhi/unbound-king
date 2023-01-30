@@ -7,8 +7,8 @@ import { watchEffect } from "vue";
 
 export const useSettingControl = () => {
   const { auth } = usePlayerStore();
-  const { SettingRef } = storeToRefs(useSettingStore());
-  const { pressed } = useMousePressed({ target: SettingRef });
+  const { SettingEnterIconRef } = storeToRefs(useSettingStore());
+  const { pressed } = useMousePressed({ target: SettingEnterIconRef });
 
   let watchEvent: number;
 
@@ -18,13 +18,13 @@ export const useSettingControl = () => {
       watchEvent = setTimeout(() => {
         if (auth.in(ticket)) return;
         auth.add(ticket);
-        SettingRef.value?.classList.add("shake");
+        SettingEnterIconRef.value?.classList.add("shake");
       }, 1000);
     } else {
       clearTimeout(watchEvent);
-      SettingRef.value?.classList.remove("shake");
+      SettingEnterIconRef.value?.classList.remove("shake");
     }
   });
 
-  return { SettingRef };
+  return { SettingEnterIconRef };
 };

@@ -1,5 +1,9 @@
 .kbd-icon {
+  --bg-color: var(--gray-deep-2);
+  --color: var(--white-deep-2);
+
   padding: 0 var(--small);
+  color: var(--color);
   font-weight: bold;
   font-size: 1rem;
   font-family: Jaldi, sans-serif;

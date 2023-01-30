@@ -1,11 +1,17 @@
-import { usePlayerStore } from "@/stores/player.store";
-import { useCsssDrawer } from "csss-ui";
-import { defer } from "lodash-es";
-import { ref } from "vue";
-import { entryDevSettingAuth } from "../../../auth/pages/setting.auth";
+import { useCsssLayout } from "csss-ui";
 
 export const useSetting = () => {
-  const { auth } = usePlayerStore();
+  const { COMP } = useCsssLayout({
+    style: {
+      footerHeightSize: "large",
+      classList: {
+        main: ["", "setting-main"],
+      },
+      property: {
+        "--header-height": "calc(var(--font-normal) + var(--large) * 2)",
+      },
+    },
+  });
 
-  return {};
+  return { COMP };
 };
