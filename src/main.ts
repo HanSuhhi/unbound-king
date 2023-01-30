@@ -4,7 +4,7 @@ import "uno.css";
 import "@hansuhhi-don/csss/dist/style.css";
 
 import { createApp } from "vue";
-import App from "./App";
+import App from "./app";
 import createCsssUI from "csss-ui";
 import { createPinia } from "pinia";
 import { useRouteConfig } from "./composables/router";

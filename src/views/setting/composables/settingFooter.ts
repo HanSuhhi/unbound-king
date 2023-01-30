@@ -33,11 +33,5 @@ export const useSettingFooter = () => {
     },
   ]);
 
-  /**
-   * @description keys
-   */
-  const { current, escape } = useMagicKeys();
-  watch(escape, settingFooterFunctions.escape);
-
   return { settingFooterFunctions, settingFooterButtons };
 };
