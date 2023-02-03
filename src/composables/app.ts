@@ -1,9 +1,7 @@
-import { useCsssLayout } from "csss-ui";
-import { useMagicKeys } from "@vueuse/core";
-import { watch, watchEffect } from "vue";
-import { storeToRefs } from "pinia";
+import { useKeyStore } from "@/stores/key.store";
 import { useSettingStore } from "@/stores/setting.store";
-import { debounce, throttle } from "lodash-es";
+import { useCsssLayout } from "csss-ui";
+import { storeToRefs } from "pinia";
 
 export const useApp = () => {
   const { COMP: Layout } = useCsssLayout({
@@ -24,10 +22,12 @@ export const useApp = () => {
   /**
    * @description keys
    */
-  const { escape } = useMagicKeys();
+  const { addKeyCommand } = useKeyStore();
   const { settingActive } = storeToRefs(useSettingStore());
-  watch(escape, () => {
-    settingActive.value = !settingActive.value;
+
+  addKeyCommand({
+    key: "escape",
+    fn: () => (settingActive.value = !settingActive.value),
   });
 
   return { Layout };

@@ -1,7 +1,7 @@
 import { useSettingStore } from "@/stores/setting.store";
-import { useMagicKeys, useWindowSize } from "@vueuse/core";
+import { useWindowSize } from "@vueuse/core";
 import { storeToRefs } from "pinia";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 export const useSettingFooter = () => {
   const { settingActive } = storeToRefs(useSettingStore());

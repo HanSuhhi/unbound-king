@@ -1,3 +1,4 @@
 :root {
-  --setting-z-index: 99999;
+  --setting-z-index: 950;
+  --global-dialog-z-index: 960;
 }

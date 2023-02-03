@@ -2,6 +2,7 @@ import { defineComponent } from "vue";
 import AppAside from "./components/appAside/appAside";
 import AppAsideHeader from "./components/appAsideHeader/AppAsideHeader";
 import AppHeader from "./components/appHeader/AppHeader";
+import GlobalDialog from "./components/dialog/GlobalDialog";
 import IconPreset from "./components/IconPreset";
 import { useApp } from "./composables/app";
 import Setting from "./views/setting/Setting";
@@ -28,6 +29,7 @@ export default defineComponent({
             }}
           </c-layout>
           <Setting />
+          <GlobalDialog />
         </>
       );
     };

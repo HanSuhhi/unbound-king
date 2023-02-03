@@ -1,3 +1,4 @@
+import { useKeyStore } from "@/stores/key.store";
 import { useSettingStore } from "@/stores/setting.store";
 import { useMagicKeys } from "@vueuse/core";
 import { storeToRefs } from "pinia";
@@ -13,15 +14,17 @@ export const useSettingHeader = () => {
   /**
    * @description keyboard
    */
-  const { current } = useMagicKeys();
-  const keys = computed(() => Array.from(current));
-  watch(keys, (v) => {
-    if (v.length !== 2) return;
-    const keyIndex = v.indexOf("s");
-    if (keyIndex === -1) return;
-    v.splice(keyIndex, 1);
-    const key = Number(v[0]) - 1;
-    if (key < list.value.length) active.value = key;
+  const { addKeyCommand } = useKeyStore();
+  addKeyCommand({
+    key: "_s*",
+    fn(activeKeys: string[]) {
+      if (activeKeys.length !== 2) return;
+      const keyIndex = activeKeys.indexOf("s");
+      if (keyIndex === -1) return;
+      activeKeys.splice(keyIndex, 1);
+      const key = Number(activeKeys[0]) - 1;
+      if (key < list.value.length) active.value = key;
+    },
   });
 
   return { active };

@@ -16,7 +16,6 @@ export class PageAuth {
     const value = ref(false);
     watchEffect(() => (value.value = auth.in(this.ticket)));
 
-    console.log("value.value: ", value.value);
     return value.value;
   }
 }

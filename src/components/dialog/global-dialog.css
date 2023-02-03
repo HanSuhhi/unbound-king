@@ -1,0 +1,4 @@
+.csss-dialog {
+  z-index: var(--global-dialog-z-index);
+  color: white;
+}
