@@ -12,3 +12,12 @@ type ModuleList = {
 };
 
 type Size = "small" | "normal" | "large";
+
+type KeyCommand = {
+  /**
+   * @description which key to watch
+   * @description if begin with "_", means watch all keys
+   */
+  key: string;
+  fn: Function;
+};

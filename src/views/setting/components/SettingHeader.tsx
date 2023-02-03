@@ -14,11 +14,9 @@ export default defineComponent({
       return (
         <article class="setting-header">
           {list.value.map((sm, index) => (
-            <>
-              <KeyboardButton title={sm.title} text={`S + ${index + 1}`} onClick={() => (active.value = index)} data-active={active.value === index ? "" : null} class="setting-header-item">
-                {sm.title}
-              </KeyboardButton>
-            </>
+            <KeyboardButton title={sm.title} text={`S + ${index + 1}`} onClick={() => (active.value = index)} data-active={active.value === index ? "" : null} class="setting-header-item">
+              {sm.title}
+            </KeyboardButton>
           ))}
         </article>
       );

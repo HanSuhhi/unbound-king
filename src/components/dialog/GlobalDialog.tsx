@@ -8,18 +8,17 @@ import KeyboardButton from "../KeyboardButton";
 export default defineComponent({
   name: "GlobalDialog",
   setup: (props) => {
-    const { COMP } = storeToRefs(useGlobalDialogStore());
+    const { COMP, CancelButton } = storeToRefs(useGlobalDialogStore());
     const { showDialog } = storeToRefs(useGlobalDialogStore());
     return () => {
       return (
         <c-dialog ref={COMP}>
-          <c-button color="red">
-            <KeyboardButton
-              class="setting-footer_error"
-              text="q"
-              onClick={() => {
-                showDialog.value = false;
-              }}>
+          <c-button
+            ref={CancelButton}
+            onClick={() => {
+              showDialog.value = false;
+            }}>
+            <KeyboardButton class="setting-footer_error" text="q">
               取消
             </KeyboardButton>
           </c-button>

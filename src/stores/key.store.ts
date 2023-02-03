@@ -1,24 +1,24 @@
 import { useMagicKeys } from "@vueuse/core";
 import { defineStore } from "pinia";
 import type { WatchStopHandle } from "vue";
-import { ref, watch, computed } from "vue";
-import { forEach } from "lodash-es";
-type KeyCommand = {
-  /**
-   * @description which key to watch
-   * @description if begin with "_", means watch all keys
-   */
-  key: string;
-  fn: Function;
+import { ref, watch, computed, onUnmounted } from "vue";
+import { findIndex, forEach, toArray } from "lodash-es";
+
+let commandStagingStore: Record<string, KeyCommand> = {};
+const clearCommandStagingStore = () => (commandStagingStore = {});
+
+let commandsStore: Record<string, KeyCommand> = {};
+const clearCommandStore = () => (commandsStore = {});
+
+let runningKeyCammands: Record<string, WatchStopHandle> = {};
+const stopRunningKeyCommand = (key: string) => {
+  runningKeyCammands[key]();
+  delete runningKeyCammands[key];
 };
-
-let commandStagingStore: KeyCommand[] = [];
-const clearCommandStagingStore = () => (commandStagingStore = []);
-
-let commandsStore: KeyCommand[] = [];
-const clearCommandStore = () => (commandsStore = []);
-
-const runningKeyCammands: Record<string, WatchStopHandle> = {};
+const stopRunningAllKeyCommands = () => {
+  forEach(runningKeyCammands, (stopRunningKeyCammand) => stopRunningKeyCammand());
+  runningKeyCammands = {};
+};
 
 const useKeyStore = defineStore("key", () => {
   const KEYS = useMagicKeys();
@@ -29,7 +29,7 @@ const useKeyStore = defineStore("key", () => {
   }
 
   const addKeyCommand = (newKeyCommand: KeyCommand) => {
-    commandsStore.push(newKeyCommand);
+    commandsStore[newKeyCommand.key] = newKeyCommand;
     runningKeyCammands[newKeyCommand.key] = watch(defineCommandKey(newKeyCommand.key), newKeyCommand.fn.bind(this));
   };
 
@@ -37,8 +37,9 @@ const useKeyStore = defineStore("key", () => {
     forEach(newKeyCommands, (newKeyCommand) => addKeyCommand(newKeyCommand));
   };
 
-  const stopRunningAllKeyCommands = () => {
-    forEach(runningKeyCammands, (stopRunningKeyCammand) => stopRunningKeyCammand());
+  const uninstallKeyCommand = (key: string) => {
+    delete commandsStore[key];
+    stopRunningKeyCommand(key);
   };
 
   const clearKeyCommands = () => {
@@ -54,15 +55,18 @@ const useKeyStore = defineStore("key", () => {
         commandStagingStore = commandsStore;
         clearKeyCommands();
       } else {
-        addKeyCommands(commandStagingStore);
+        addKeyCommands(toArray(commandStagingStore));
         clearCommandStagingStore();
       }
     },
   });
-
+  const addAutoKeyCommand = (asd: any) => {
+    addKeyCommand(asd);
+    onUnmounted(uninstallKeyCommand.bind(this, asd.key));
+  };
   return {
     addKeyCommand,
-    addKeyCommands,
+    addAutoKeyCommand,
     freeze,
   };
 });

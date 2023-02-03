@@ -1,3 +1,5 @@
+import { useGlobalDialogStore } from "@/stores/dialog.store";
+import { useKeyStore } from "@/stores/key.store";
 import { useSettingStore } from "@/stores/setting.store";
 import { useWindowSize } from "@vueuse/core";
 import { storeToRefs } from "pinia";
@@ -33,5 +35,18 @@ export const useSettingFooter = () => {
     },
   ]);
 
-  return { settingFooterFunctions, settingFooterButtons };
+  const { addAutoKeyCommand } = useKeyStore();
+  const { showDialog } = storeToRefs(useGlobalDialogStore());
+
+  const ShowDialog = () => {
+    showDialog.value = true;
+  };
+
+  const KEY_ShowDialog = {
+    key: "q",
+    fn: ShowDialog,
+  };
+  addAutoKeyCommand(KEY_ShowDialog);
+
+  return { settingFooterFunctions, settingFooterButtons, ShowDialog };
 };
