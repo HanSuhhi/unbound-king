@@ -1,39 +1,40 @@
-import { useCsssButton, useCsssDialog } from "csss-ui";
-import { defineStore, storeToRefs } from "pinia";
 import { useKeyStore } from "@/stores/key.store";
-import { onMounted, computed, ref } from "vue";
+import { useCsssDialog } from "csss-ui";
+import { defineStore, storeToRefs } from "pinia";
+import { computed, ref } from "vue";
 
 const useGlobalDialogStore = defineStore("global-dialog", () => {
   const { COMP, state } = useCsssDialog({});
-  const { COMP: CancelButton } = useCsssButton({
-    style: {
-      property: {
-        "--bg-color-main": "var(--gray)",
-        "--bg-color-sub": "var(--gray-bright-2)",
-      },
-    },
-  });
 
   const { freeze: freezeKeyCommands } = storeToRefs(useKeyStore());
 
-  const toShowDialog = () => {
+  const _toShowDialog = () => {
     freezeKeyCommands.value = true;
     state.value.show = true;
   };
-  const toHideDialog = () => {
+  const _toHideDialog = () => {
     state.value.show = false;
     freezeKeyCommands.value = false;
   };
 
-  const _dialog = ref(false);
-  const showDialog = computed({
-    get: () => _dialog.value,
+  const dialog = computed({
+    get: () => state.value?.show,
     set(readyToShowDialog) {
-      if (readyToShowDialog) toShowDialog();
-      else toHideDialog();
+      if (readyToShowDialog) _toShowDialog();
+      else _toHideDialog();
     },
   });
-  return { COMP, showDialog, CancelButton };
+
+  const _dialogContent = ref("");
+  const dialogContent = computed({
+    get: () => _dialogContent.value,
+    set: (message) => {
+      _dialogContent.value = message;
+      dialog.value = true;
+    },
+  });
+
+  return { COMP, dialog, dialogContent };
 });
 
 export { useGlobalDialogStore };

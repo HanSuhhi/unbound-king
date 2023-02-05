@@ -56,7 +56,6 @@
   padding: var(--mini);
   font-size: var(--list-item-font-size);
   place-items: center;
-  box-shadow: var(--box-shadow-1);
 }
 
 .heroes-table_item__box[data-active] {

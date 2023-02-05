@@ -1,4 +1,32 @@
+@import "./styles/global-dialog-footer.css";
+@import "./styles/global-dialog-main.css";
+@import "./styles/operators.css";
+
 .csss-dialog {
   z-index: var(--global-dialog-z-index);
   color: white;
+}
+
+.global-dialog {
+  --border-line-height: 1px;
+  --border-line-color: rgb(255 255 255 / 0%);
+  --border-line-mask-width: 5%;
+  --grid-template-areas: "header header" "main main" "footer footer";
+
+  min-width: 30vw;
+}
+
+.global-dialog::before,
+.global-dialog::after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--border-line-height);
+  /* stylelint-disable-next-line max-line-length */
+  background: linear-gradient(to right, var(--border-line-color) var(--border-line-mask-width), var(--main-color), var(--border-line-color) calc(100% - var(--border-line-mask-width)));
+  content: "";
+}
+
+.global-dialog::after {
+  bottom: 0;
 }

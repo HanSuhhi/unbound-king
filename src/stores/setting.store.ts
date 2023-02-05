@@ -1,8 +1,7 @@
 import { entryDevSettingAuth } from "@/auth/pages/setting.auth";
-import { defineStore } from "pinia";
-import { ref, computed, watchEffect } from "vue";
-import { defer, delay } from "lodash-es";
 import { useTimeout } from "@vueuse/core";
+import { defineStore } from "pinia";
+import { computed, ref } from "vue";
 
 const useSettingStore = defineStore("setting-store", () => {
   const settingAniTime = 0.35;
@@ -17,20 +16,7 @@ const useSettingStore = defineStore("setting-store", () => {
   /**
    * @description setting status
    */
-  const { ready: settingNotLock, start } = useTimeout(300, { controls: true });
-  const _settingActive = ref(false);
-  const settingActive = computed({
-    get: () => _settingActive.value,
-    set: (value) => {
-      if (!settingNotLock.value) return;
-      if (value) {
-        _settingActive.value = true;
-      } else {
-        _settingActive.value = false;
-      }
-      start();
-    },
-  });
+  const settingActive = ref(false);
 
   /**
    * @description items

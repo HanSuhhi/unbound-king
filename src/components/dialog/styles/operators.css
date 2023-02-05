@@ -1,0 +1,10 @@
+.dialog-operator {
+  margin: 0 var(--small);
+  background-image: none;
+  box-shadow: none;
+  zoom: 0.75;
+}
+
+.dialog-opertors {
+  margin-right: var(--large);
+}

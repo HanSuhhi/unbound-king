@@ -6,19 +6,6 @@ import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
 export const useSettingFooter = () => {
-  const { settingActive } = storeToRefs(useSettingStore());
-  const { width } = useWindowSize();
-
-  /**
-   * @description button type
-   */
-  const settingFooterFunctions = {
-    escape: () => {
-      // @TODO model
-      settingActive.value = false;
-    },
-  };
-
   const settingFooterButtons = ref<SettingFooterButton[]>([
     {
       title: "重置",
@@ -27,7 +14,6 @@ export const useSettingFooter = () => {
     {
       title: "取消",
       key: "esc",
-      feedback: settingFooterFunctions.escape,
     },
     {
       title: "应用",
@@ -36,17 +22,15 @@ export const useSettingFooter = () => {
   ]);
 
   const { addAutoKeyCommand } = useKeyStore();
-  const { showDialog } = storeToRefs(useGlobalDialogStore());
+  const { dialogContent } = storeToRefs(useGlobalDialogStore());
 
-  const ShowDialog = () => {
-    showDialog.value = true;
-  };
+  const quitDialog = () => (dialogContent.value = "是否确认退出游戏？");
 
-  const KEY_ShowDialog = {
+  const KEY_QuitDialog = {
     key: "q",
-    fn: ShowDialog,
+    fn: quitDialog,
   };
-  addAutoKeyCommand(KEY_ShowDialog);
+  addAutoKeyCommand(KEY_QuitDialog);
 
-  return { settingFooterFunctions, settingFooterButtons, ShowDialog };
+  return { settingFooterButtons, quitDialog };
 };

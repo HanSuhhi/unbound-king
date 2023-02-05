@@ -27,7 +27,9 @@ export const useApp = () => {
 
   addKeyCommand({
     key: "escape",
-    fn: () => (settingActive.value = !settingActive.value),
+    fn: (isPressed: boolean) => {
+      if (!isPressed) settingActive.value = !settingActive.value;
+    },
   });
 
   return { Layout };

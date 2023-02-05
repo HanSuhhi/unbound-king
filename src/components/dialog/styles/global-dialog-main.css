@@ -1,0 +1,5 @@
+.global-dialog_main {
+  width: 90%;
+  padding: var(--large) var(--small);
+  text-align: center;
+}

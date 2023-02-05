@@ -60,9 +60,9 @@ const useKeyStore = defineStore("key", () => {
       }
     },
   });
-  const addAutoKeyCommand = (asd: any) => {
-    addKeyCommand(asd);
-    onUnmounted(uninstallKeyCommand.bind(this, asd.key));
+  const addAutoKeyCommand = (keyCommand: KeyCommand) => {
+    addKeyCommand(keyCommand);
+    onUnmounted(uninstallKeyCommand.bind(this, keyCommand.key));
   };
   return {
     addKeyCommand,

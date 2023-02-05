@@ -19,5 +19,5 @@ type KeyCommand = {
    * @description if begin with "_", means watch all keys
    */
   key: string;
-  fn: Function;
+  fn: (isPressed) => void;
 };

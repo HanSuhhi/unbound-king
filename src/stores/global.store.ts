@@ -1,6 +1,5 @@
-import { useSetting } from "@/components/setting/composables/setting";
 import { defineStore } from "pinia";
-import { ref, computed, onMounted, watchEffect } from "vue";
+import { ref } from "vue";
 const useGlobalStore = defineStore("global-store", () => {
   /**
    * @description active module
