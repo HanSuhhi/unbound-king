@@ -11,7 +11,8 @@
   --border-line-height: 1px;
   --border-line-color: rgb(255 255 255 / 0%);
   --border-line-mask-width: 5%;
-  --grid-template-areas: "header header" "main main" "footer footer";
+
+  /* --grid-template-areas: "header header" "main main" "footer footer"; */
 
   min-width: 30vw;
 }

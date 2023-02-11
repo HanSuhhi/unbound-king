@@ -1,7 +1,5 @@
 import { useGlobalDialogStore } from "@/stores/dialog.store";
 import { useKeyStore } from "@/stores/key.store";
-import { useSettingStore } from "@/stores/setting.store";
-import { useWindowSize } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 

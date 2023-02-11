@@ -1,27 +1,33 @@
-import { defineComponent, onMounted } from "vue";
-import AuthModule from "../authModule/AuthModule.vue";
+import { defineComponent, computed } from "vue";
 import "./app-aside.css";
 import AppAsideModule from "./components/AppAsideModule";
-import { useAppAside } from "./composables/appAside";
+import { useAsideLayout } from "./composables/layout";
+import { useAppAsideStore } from "./store/aside.store";
+import { toArray, range } from "lodash-es";
+import { storeToRefs } from "pinia";
 
 export default defineComponent({
   name: "AppAside",
   setup: (props) => {
-    const { Tabs, appAsideModules } = useAppAside();
+    const { COMP } = useAsideLayout();
+    const { activeMenus } = storeToRefs(useAppAsideStore());
+
+    const lists = computed(() => activeMenus.value.map((menu) => <AppAsideModule icon={menu.icon!}></AppAsideModule>));
+
+    const panels = computed(() => {
+      const _panels: Record<string, () => JSX.Element> = {};
+      activeMenus.value.forEach((menu, index) => {
+        _panels[`panel-${index}`] = () => <menu.comp></menu.comp>;
+      });
+      return _panels;
+    });
 
     return () => {
       return (
-        <c-tabs ref={Tabs}>
+        <c-tabs ref={COMP}>
           {{
-            list: () => {
-              return appAsideModules.value.map((module) => <AppAsideModule icon={module.icon!}></AppAsideModule>);
-            },
-            "panel-0": () => <AuthModule />,
-            "panel-1": () => (
-              <>
-                <p>1213</p>
-              </>
-            ),
+            list: () => lists.value,
+            ...panels.value,
           }}
         </c-tabs>
       );

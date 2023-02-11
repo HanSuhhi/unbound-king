@@ -1,3 +1,4 @@
-type AuthModuleType = "setting";
-
-type AuthPageType = "dev";
+type AuthFunc = {
+  mount?: Function;
+  unmount?: Function;
+};

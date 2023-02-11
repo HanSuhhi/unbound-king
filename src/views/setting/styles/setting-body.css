@@ -1,21 +1,8 @@
 .setting-body {
-  height: 100%;
-  margin-top: -1rem;
-  padding: 1rem 0;
-  background: radial-gradient(rgb(6 7 13 / 70%), var(--side-bg) 80%);
-  clip-path:
-    polygon(
-      0 var(--line-break-height),
-      var(--line-break-base-width) var(--line-break-height),
-      calc(var(--line-break-base-width) + var(--line-break-width)) 0,
-      calc(100% - var(--line-break-base-width) - var(--line-break-width)) 0,
-      calc(100% - var(--line-break-base-width)) var(--line-break-height),
-      100% var(--line-break-height),
-      100% calc(100% - var(--line-break-height)),
-      calc(100% - var(--line-break-base-width)) calc(100% - var(--line-break-height)),
-      calc(100% - var(--line-break-base-width) - var(--line-break-width)) 100%,
-      calc(var(--line-break-base-width) + var(--line-break-width)) 100%,
-      var(--line-break-base-width) calc(100% - var(--line-break-height)),
-      0 calc(100% - var(--line-break-height))
-    );
+  --width: 50vw;
+  --height: 94%;
+
+  width: var(--width);
+  height: var(--height);
+  color: white;
 }

@@ -1,10 +1,10 @@
-type SettingModule = {
+type SettingTitleModule = {
   title: string;
-  auth?: import("@/auth/pageAuth").PageAuth;
-  items: SettingModuleItem[];
+  auth?: boolean;
+  items: SettingTitleModuleItem[];
 };
 
-type SettingModuleItem = {
+type SettingTitleModuleItem = {
   name: string;
   type: import("./setting.enum").SettingItemType;
   items?: string[];
@@ -15,4 +15,14 @@ type SettingFooterButton = {
   key: string | string[];
   title: string;
   feedback?: Function;
+};
+
+type SettingModule = {
+  title: string;
+  items: SettingModuleItem[];
+};
+type SettingModuleItem = {
+  title: string;
+  type: "switch";
+  prop?: Record;
 };

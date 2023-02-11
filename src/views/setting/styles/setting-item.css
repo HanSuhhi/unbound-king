@@ -1,0 +1,18 @@
+.setting-item {
+  --border-color: rgb(255 255 255 / 30%);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% / 3.3);
+  min-width: 220px;
+  line-height: var(--large);
+  background-color: var(--bg-color-bright-2);
+  border: 0.5px solid var(--border-color);
+  border-radius: 2px;
+  outline: 3px solid var(--bg-color-bright-1);
+}
+
+.setting-item_title {
+  margin-left: var(--normal);
+}

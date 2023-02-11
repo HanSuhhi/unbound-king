@@ -1,5 +1,5 @@
 import Icon from "@/components/icon/Icon";
-import { useSettingStore } from "@/stores/setting.store";
+import { useSettingStore } from "@/views/setting/store/setting.store";
 import LifeHash from "@hansuhhi-don/lifehash-vue";
 import { useNow } from "@vueuse/core";
 import { storeToRefs } from "pinia";
@@ -14,7 +14,7 @@ export default defineComponent({
     const defaultImg = useNow().value.getTime().toString();
     const { funcs } = useFunctions();
     const { Search } = useSearch();
-    const { settingActive } = storeToRefs(useSettingStore());
+    const { settingPageActive } = storeToRefs(useSettingStore());
     const { SettingEnterIconRef } = useSettingControl();
 
     return () => {
@@ -47,7 +47,7 @@ export default defineComponent({
               </span>
             </div>
           </section>
-          <section class="user-message__plus user-message__box" ref={SettingEnterIconRef} onClick={() => (settingActive.value = true)}>
+          <section class="user-message__plus user-message__box" ref={SettingEnterIconRef} onClick={() => (settingPageActive.value = true)}>
             <Icon icon="i-icon-park-solid-more-four" size="small" />
           </section>
         </article>

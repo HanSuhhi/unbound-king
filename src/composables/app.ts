@@ -1,5 +1,5 @@
 import { useKeyStore } from "@/stores/key.store";
-import { useSettingStore } from "@/stores/setting.store";
+import { useSettingStore } from "@/views/setting/store/setting.store";
 import { useCsssLayout } from "csss-ui";
 import { storeToRefs } from "pinia";
 
@@ -23,12 +23,12 @@ export const useApp = () => {
    * @description keys
    */
   const { addKeyCommand } = useKeyStore();
-  const { settingActive } = storeToRefs(useSettingStore());
+  const { settingPageActive } = storeToRefs(useSettingStore());
 
   addKeyCommand({
     key: "escape",
     fn: (isPressed: boolean) => {
-      if (!isPressed) settingActive.value = !settingActive.value;
+      if (!isPressed) settingPageActive.value = !settingPageActive.value;
     },
   });
 

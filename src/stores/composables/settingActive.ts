@@ -1,18 +1,8 @@
 import { useKeyStore } from "@/stores/key.store";
-import { useSettingStore } from "@/stores/setting.store";
-import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
-export const useSettingHeader = () => {
-  /**
-   * @description active
-   */
+export const useSettingActive = (list: any) => {
   const active = ref(0);
-  const { list } = storeToRefs(useSettingStore());
-
-  /**
-   * @description keyboard
-   */
   const { addAutoKeyCommand } = useKeyStore();
 
   const KEY_ToggleActive = {

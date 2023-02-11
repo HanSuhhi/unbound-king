@@ -11,7 +11,6 @@ export default defineComponent({
   name: "App",
   setup: (props) => {
     const { Layout } = useApp();
-
     return () => {
       return (
         <>

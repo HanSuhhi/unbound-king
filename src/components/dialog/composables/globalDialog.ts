@@ -11,6 +11,10 @@ export const useGlobalDialog = () => {
     dialog.value = false;
   };
 
+  const closeWindow = () => {
+    window.close();
+  };
+
   watch(dialog, (isShow) => {
     if (isShow) {
       addKeyCommand({
@@ -22,9 +26,7 @@ export const useGlobalDialog = () => {
       addKeyCommand({
         key: "enter",
         fn(isPressed) {
-          if (!isPressed) {
-            window.close();
-          }
+          if (!isPressed) closeWindow();
         },
       });
     }
@@ -32,5 +34,6 @@ export const useGlobalDialog = () => {
 
   return {
     closeDialog,
+    closeWindow,
   };
 };

@@ -2,6 +2,8 @@
 @import "./styles/setting-body.css";
 @import "./styles/setting-header.css";
 @import "./styles/setting-footer.css";
+@import "./styles/setting-module.css";
+@import "./styles/setting-item.css";
 
 .setting {
   --line-break-height: 1rem;
@@ -10,6 +12,8 @@
   --line-border-size: 2px;
   --side-bg: rgb(33 30 45 / 70%);
   --ani-time: 0.35s;
+
+  /* --border-color: var(--main-color); */
 
   position: fixed;
   z-index: var(--setting-z-index);
@@ -32,7 +36,7 @@
 .setting-header::before,
 .setting-footer::before {
   position: absolute;
-  background-image: linear-gradient(to right, rgb(255 255 255 / 20%) 10%, rgb(255 255 255 / 40%), rgb(85 83 83 / 50%), rgb(255 255 255 / 40%), rgb(255 255 255 / 20%) 90%);
+  background-image: linear-gradient(to right, rgb(0 0 0 /0%) 1%, rgb(241 215 137 / 10%) 10%, rgb(241 215 137 / 45%), rgb(240 194 57 / 70%), rgb(241 215 137 / 20%), rgb(241 215 137 / 20%) 90%, rgb(0 0 0 / 0%));
   content: "";
   clip-path:
     polygon(
@@ -53,6 +57,10 @@
 }
 
 .setting-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
   pointer-events: auto;
 }
 

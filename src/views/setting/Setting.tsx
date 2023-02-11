@@ -1,4 +1,4 @@
-import { useSettingStore } from "@/stores/setting.store";
+import { useSettingStore } from "@/views/setting/store/setting.store";
 import { useCsssLayout } from "csss-ui";
 import { storeToRefs } from "pinia";
 import { defineComponent, Teleport, Transition } from "vue";
@@ -12,17 +12,17 @@ export default defineComponent({
   name: "Setting",
   setup: (props) => {
     const { COMP } = useSetting();
-    const { settingActive } = storeToRefs(useSettingStore());
+    const { settingPageActive } = storeToRefs(useSettingStore());
 
     return () => {
       return (
         <Teleport to="body">
           <Transition name="fade">
-            <c-layout v-show={settingActive.value} class="setting" ref={COMP}>
+            <c-layout v-show={settingPageActive.value} class="setting" ref={COMP}>
               {{
-                header: () => <Transition name="slide-down">{settingActive.value && <SettingHeader />}</Transition>,
-                default: () => <Transition name="fade">{settingActive.value && <SettingBody />}</Transition>,
-                footer: () => <Transition name="slide-up">{settingActive.value && <SettingFooter />}</Transition>,
+                header: () => <Transition name="slide-down">{settingPageActive.value && <SettingHeader />}</Transition>,
+                default: () => <Transition name="fade">{settingPageActive.value && <SettingBody />}</Transition>,
+                footer: () => <Transition name="slide-up">{settingPageActive.value && <SettingFooter />}</Transition>,
               }}
             </c-layout>
           </Transition>
