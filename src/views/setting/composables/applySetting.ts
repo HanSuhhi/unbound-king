@@ -8,7 +8,7 @@ export const useApplySetting = () => {
   const { dialogContent, enter } = storeToRefs(useGlobalDialogStore());
 
   const applySetting = (isClicked: boolean) => {
-    if (isClicked) return;
+    if (isClicked === false) return;
     enter.value = () => (save.value = true);
     dialogContent.value = "是否将此设置应用于修改？";
   };

@@ -14,8 +14,9 @@ export default defineComponent({
   setup: (props) => {
     const { COMP } = useSettingLayout();
     const { settingPageActive } = storeToRefs(useSettingStore());
-    const { quitDialog } = useKeyCommand();
+    const { quitDialog, applySetting } = useKeyCommand();
     provide("quit-dialog", quitDialog);
+    provide("apply-setting", applySetting);
 
     return () => {
       return (

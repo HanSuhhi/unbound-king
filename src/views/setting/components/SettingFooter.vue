@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import KeyboardButton from "@/components/KeyboardButton";
 import { inject, ref } from "vue";
+import { storeToRefs } from "pinia";
+import { useSettingStore } from "@/views/setting/store/setting.store";
+
+const { settingPageActive } = storeToRefs(useSettingStore());
+
+const quitDialog = inject("quit-dialog", () => alert("error"));
+const applySetting = inject("apply-setting", () => alert("error"));
 
 const settingFooterButtons = ref<SettingFooterButton[]>([
   {
@@ -10,14 +17,14 @@ const settingFooterButtons = ref<SettingFooterButton[]>([
   {
     title: "取消",
     key: "esc",
+    feedback: () => (settingPageActive.value = false),
   },
   {
     title: "应用",
     key: ["ctrl", "a"],
+    feedback: applySetting,
   },
 ]);
-
-const quitDialog = inject("quit-dialog", () => alert("error"));
 </script>
 
 <template>

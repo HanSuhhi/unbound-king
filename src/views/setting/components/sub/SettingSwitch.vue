@@ -7,7 +7,7 @@ import { usePlayerStore } from "@/stores/player.store";
 
 const { COMP, state } = useCsssSwitch();
 const { save } = storeToRefs(useSettingStore());
-const { authOperations } = storeToRefs(usePlayerStore());
+const { authOperations } = usePlayerStore();
 
 const props = defineProps<{
   switch?: SettingSwitch;
@@ -19,10 +19,11 @@ watch(save, (isSaved) => {
 
   const auth = props.switch?.auth;
   if (state.value.active) {
-    if (auth) authOperations.value.add(auth);
+    if (auth) authOperations.add(auth);
   } else {
-    if (auth) authOperations.value.remove(auth.ticket);
+    if (auth) authOperations.remove(auth.ticket);
   }
+  save.value = false;
 });
 
 // watchEffect(() => {
