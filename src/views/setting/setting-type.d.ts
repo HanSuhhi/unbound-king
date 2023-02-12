@@ -21,8 +21,12 @@ type SettingModule = {
   title: string;
   items: SettingModuleItem[];
 };
+type SettingSwitch = {
+  default?: boolean;
+  auth?: import("@/auth/auth").Auth;
+};
 type SettingModuleItem = {
   title: string;
   type: "switch";
-  prop?: Record;
+  switch?: SettingSwitch;
 };

@@ -1,22 +1,10 @@
 import { toArray } from "lodash-es";
 import { defineStore } from "pinia";
-import { ref, computed, shallowRef } from "vue";
-import AuthModuleVue from "../components/authModule/AuthModule.vue";
-import GameModuleVue from "../components/gameModule/GameModule.vue";
+import { ref, computed, shallowRef, watchEffect } from "vue";
+import { defineMenu } from "../data/menu";
 
 const useAppAsideStore = defineStore("app-aside", () => {
-  const menus = ref<Record<string, AppAsideModule>>({
-    auth: {
-      show: true,
-      icon: "i-carbon-two-factor-authentication",
-      comp: shallowRef(AuthModuleVue),
-    },
-    game: {
-      show: true,
-      icon: "i-material-symbols-view-module",
-      comp: shallowRef(GameModuleVue),
-    },
-  });
+  const menus = defineMenu();
 
   const activeMenus = computed(() => toArray(menus.value).filter((menu) => menu.show));
 

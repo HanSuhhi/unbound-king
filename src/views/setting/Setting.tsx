@@ -1,18 +1,21 @@
 import { useSettingStore } from "@/views/setting/store/setting.store";
 import { useCsssLayout } from "csss-ui";
 import { storeToRefs } from "pinia";
-import { defineComponent, Teleport, Transition } from "vue";
+import { defineComponent, onUpdated, provide, Teleport, Transition } from "vue";
 import SettingBody from "./components/SettingBody";
 import SettingFooter from "./components/SettingFooter.vue";
 import SettingHeader from "./components/SettingHeader";
-import { useSetting } from "./composables/setting";
+import { useSettingLayout } from "./composables/layout";
+import { useKeyCommand } from "./composables/keyCommand";
 import "./setting.css";
 
 export default defineComponent({
   name: "Setting",
   setup: (props) => {
-    const { COMP } = useSetting();
+    const { COMP } = useSettingLayout();
     const { settingPageActive } = storeToRefs(useSettingStore());
+    const { quitDialog } = useKeyCommand();
+    provide("quit-dialog", quitDialog);
 
     return () => {
       return (

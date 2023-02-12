@@ -1,9 +1,9 @@
-import { useKeyStore } from "@/stores/key.store";
+import { mountKeyCommand } from "@/composables/mountKeyCommand";
+import type { ComputedRef, Ref } from "vue";
 import { ref } from "vue";
 
-export const useSettingActive = (list: any) => {
+export const useSettingActive = (list: ComputedRef<SettingTitleModule[]>, pageActive: Ref<boolean>) => {
   const active = ref(0);
-  const { addAutoKeyCommand } = useKeyStore();
 
   const KEY_ToggleActive = {
     key: "_s*",
@@ -21,7 +21,7 @@ export const useSettingActive = (list: any) => {
       if (remainKeyNumberIsLessThanListLength) active.value = remainingKey;
     },
   };
-  addAutoKeyCommand(KEY_ToggleActive);
+  mountKeyCommand(pageActive, KEY_ToggleActive);
 
   return { active };
 };

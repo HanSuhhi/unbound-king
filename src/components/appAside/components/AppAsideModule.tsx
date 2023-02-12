@@ -1,6 +1,5 @@
 import type { PropType } from "vue";
 import { computed, defineComponent } from "vue";
-import "../styles/app-aside-module.css";
 
 export default defineComponent({
   name: "AppAsideModule",

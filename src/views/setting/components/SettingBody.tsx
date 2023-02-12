@@ -1,6 +1,6 @@
 import { useSettingStore } from "@/views/setting/store/setting.store";
-import { defineComponent, Transition, computed } from "vue";
 import { storeToRefs } from "pinia";
+import { defineComponent, Transition } from "vue";
 import GlobalSetting from "./GlobalSetting";
 
 export default defineComponent({

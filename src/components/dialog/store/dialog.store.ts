@@ -2,6 +2,7 @@ import { useKeyStore } from "@/stores/key.store";
 import { useCsssDialog } from "csss-ui";
 import { defineStore, storeToRefs } from "pinia";
 import { computed, ref } from "vue";
+import { defineDialogContent } from "../composables/dialogContent";
 
 const useGlobalDialogStore = defineStore("global-dialog", () => {
   const { COMP, state } = useCsssDialog({});
@@ -10,6 +11,7 @@ const useGlobalDialogStore = defineStore("global-dialog", () => {
 
   const _toShowDialog = () => {
     freezeKeyCommands.value = true;
+
     state.value.show = true;
   };
   const _toHideDialog = () => {
@@ -25,16 +27,11 @@ const useGlobalDialogStore = defineStore("global-dialog", () => {
     },
   });
 
-  const _dialogContent = ref("");
-  const dialogContent = computed({
-    get: () => _dialogContent.value,
-    set: (message) => {
-      _dialogContent.value = message;
-      dialog.value = true;
-    },
-  });
+  const dialogContent = defineDialogContent(dialog);
+  const close = ref<Function>(() => {});
+  const enter = ref<Function>(() => {});
 
-  return { COMP, dialog, dialogContent };
+  return { COMP, dialog, dialogContent, enter, close };
 });
 
 export { useGlobalDialogStore };

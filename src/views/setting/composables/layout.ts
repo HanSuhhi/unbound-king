@@ -1,6 +1,6 @@
 import { useCsssLayout } from "csss-ui";
 
-export const useSetting = () => {
+export const useSettingLayout = () => {
   const { COMP } = useCsssLayout({
     style: {
       footerHeightSize: "large",

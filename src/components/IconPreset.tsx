@@ -12,6 +12,7 @@ export default defineComponent({
           <div class="i-ant-design-align-left-outlined" v-show={false}></div>
           <div class="i-icon-park-solid-more-four" v-show={false}></div>
           <div class="i-fontisto-bell" v-show={false}></div>
+          <div class="i-tabler-device-analytics" v-show={false}></div>
         </>
       );
     };

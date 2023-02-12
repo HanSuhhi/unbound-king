@@ -1,7 +1,7 @@
 import { isUndefined } from "lodash-es";
 import { defineStore, storeToRefs } from "pinia";
 import { computed, ref } from "vue";
-import { useSettingActive } from "../../../stores/composables/settingActive";
+import { useSettingActive } from "../composables/settingActive";
 import { usePlayerStore } from "../../../stores/player.store";
 
 const useSettingStore = defineStore("setting-store", () => {
@@ -9,6 +9,7 @@ const useSettingStore = defineStore("setting-store", () => {
 
   const SettingEnterIconRef = ref<HTMLElement>();
   const settingPageActive = ref(false);
+  const save = ref(false);
 
   const settingModules = computed<SettingTitleModule[]>(() => [
     {
@@ -24,15 +25,14 @@ const useSettingStore = defineStore("setting-store", () => {
 
   const list = computed(() =>
     settingModules.value.filter((settingModule) => {
-      console.log("settingModule: ", settingModule.auth);
       if (isUndefined(settingModule.auth)) settingModule.auth = true;
       return settingModule.auth;
     }),
   );
 
-  const { active } = useSettingActive(list);
+  const { active } = useSettingActive(list, settingPageActive);
 
-  return { list, settingPageActive, SettingEnterIconRef, active };
+  return { list, settingPageActive, SettingEnterIconRef, active, save };
 });
 
 export { useSettingStore };

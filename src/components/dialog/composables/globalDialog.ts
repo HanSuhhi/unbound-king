@@ -1,18 +1,24 @@
-import { useGlobalDialogStore } from "@/stores/dialog.store";
+import { useGlobalDialogStore } from "@/components/dialog/store/dialog.store";
 import { useKeyStore } from "@/stores/key.store";
 import { storeToRefs } from "pinia";
-import { onMounted, watch } from "vue";
+import { watch } from "vue";
 
 export const useGlobalDialog = () => {
-  const { addKeyCommand } = useKeyStore();
-  const { dialog } = storeToRefs(useGlobalDialogStore());
+  const { addKeyCommand, uninstallKeyCommand } = useKeyStore();
+  const { dialog, close: closeCallback, enter: enterCallback } = storeToRefs(useGlobalDialogStore());
 
   const closeDialog = () => {
     dialog.value = false;
   };
 
-  const closeWindow = () => {
-    window.close();
+  const close = () => {
+    closeCallback.value();
+    closeDialog();
+  };
+
+  const enter = () => {
+    enterCallback.value();
+    closeDialog();
   };
 
   watch(dialog, (isShow) => {
@@ -20,20 +26,20 @@ export const useGlobalDialog = () => {
       addKeyCommand({
         key: "escape",
         fn: (isPressed: boolean) => {
-          if (!isPressed) closeDialog();
+          if (!isPressed) close();
         },
       });
       addKeyCommand({
         key: "enter",
         fn(isPressed) {
-          if (!isPressed) closeWindow();
+          if (!isPressed) enter();
         },
       });
     }
   });
 
   return {
-    closeDialog,
-    closeWindow,
+    close,
+    enter,
   };
 };

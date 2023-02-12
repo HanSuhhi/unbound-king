@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 import AppAside from "./components/appAside/appAside";
-import AppAsideHeader from "./components/appAsideHeader/AppAsideHeader";
+import AppAsideHeader from "./components/appAside/components/appAsideHeader/AppAsideHeader";
 import AppHeader from "./components/appHeader/AppHeader";
 import GlobalDialog from "./components/dialog/GlobalDialog";
 import IconPreset from "./components/IconPreset";
@@ -11,6 +11,7 @@ export default defineComponent({
   name: "App",
   setup: (props) => {
     const { Layout } = useApp();
+
     return () => {
       return (
         <>

@@ -1,6 +1,6 @@
 import type { Auth } from "@/auth/auth";
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const usePlayerStore = defineStore("player-store", () => {
   const auths = ref<Record<string, Auth>>({});
@@ -11,7 +11,9 @@ const usePlayerStore = defineStore("player-store", () => {
       if (auth.mount) auth.mount();
       auths.value[auth.ticket] = auth;
     },
-    remove: (auth: Auth) => {
+    remove: (ticket: string) => {
+      const auth = auths.value[ticket];
+      if (!auth) return;
       if (auth.unmount) auth.unmount();
       delete auths.value[auth.ticket];
     },
@@ -19,6 +21,7 @@ const usePlayerStore = defineStore("player-store", () => {
 
   const states = ref({
     setting_dev_entry: false,
+    aside_dev_entry: false,
   });
 
   return { authOperations, states };

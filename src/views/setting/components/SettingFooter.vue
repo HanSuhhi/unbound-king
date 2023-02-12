@@ -1,8 +1,23 @@
 <script setup lang="ts">
 import KeyboardButton from "@/components/KeyboardButton";
-import { useSettingFooter } from "../composables/settingFooter";
+import { inject, ref } from "vue";
 
-const { settingFooterButtons, quitDialog } = useSettingFooter();
+const settingFooterButtons = ref<SettingFooterButton[]>([
+  {
+    title: "重置",
+    key: ["ctrl", "r"],
+  },
+  {
+    title: "取消",
+    key: "esc",
+  },
+  {
+    title: "应用",
+    key: ["ctrl", "a"],
+  },
+]);
+
+const quitDialog = inject("quit-dialog", () => alert("error"));
 </script>
 
 <template>
@@ -14,7 +29,9 @@ const { settingFooterButtons, quitDialog } = useSettingFooter();
       </c-button>
     </section>
     <section class="setting-footer_part">
-      <KeyboardButton v-for="buttonItem in settingFooterButtons" :key="buttonItem.title" class="setting-footer_key" :text="buttonItem.key" @click="buttonItem.feedback"> {{ buttonItem.title }} </KeyboardButton>
+      <KeyboardButton v-for="buttonItem in settingFooterButtons" :key="buttonItem.title" class="setting-footer_key" :text="buttonItem.key" @click="buttonItem.feedback">
+        {{ buttonItem.title }}
+      </KeyboardButton>
     </section>
   </article>
 </template>

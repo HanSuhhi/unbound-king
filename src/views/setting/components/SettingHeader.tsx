@@ -1,7 +1,7 @@
 import KeyboardButton from "@/components/KeyboardButton";
 import { useSettingStore } from "@/views/setting/store/setting.store";
 import { storeToRefs } from "pinia";
-import { defineComponent, computed } from "vue";
+import { defineComponent } from "vue";
 
 const keyboardText = (index: number): string => `S + ${index + 1}`;
 

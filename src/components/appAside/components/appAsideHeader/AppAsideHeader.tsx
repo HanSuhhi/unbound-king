@@ -1,7 +1,7 @@
 import "./app-aside-header.css";
 
 import { defineComponent } from "vue";
-import Icon from "../icon/Icon";
+import Icon from "../../../icon/Icon";
 
 export default defineComponent({
   name: "AppAsideHeader",

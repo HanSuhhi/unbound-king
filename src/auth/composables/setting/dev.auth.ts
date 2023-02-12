@@ -19,3 +19,17 @@ export const defineSettingDevEntryAuth = () => {
 
   return new Auth({ mount, unmount }, key("entry"));
 };
+
+export const defineAsideDevEntryAuth = () => {
+  const { states } = storeToRefs(usePlayerStore());
+
+  const mount = () => {
+    states.value.aside_dev_entry = true;
+  };
+
+  const unmount = () => {
+    states.value.aside_dev_entry = false;
+  };
+
+  return new Auth({ mount, unmount }, key("entry"));
+};

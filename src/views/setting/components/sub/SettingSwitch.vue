@@ -1,14 +1,39 @@
 <script setup lang="ts">
 import { useCsssSwitch } from "csss-ui";
+import { storeToRefs } from "pinia";
+import { useSettingStore } from "@/views/setting/store/setting.store";
+import { watch } from "vue";
+import { usePlayerStore } from "@/stores/player.store";
+
+const { COMP, state } = useCsssSwitch();
+const { save } = storeToRefs(useSettingStore());
+const { authOperations } = storeToRefs(usePlayerStore());
+
 const props = defineProps<{
-  prop?: UseCsssSwitchProps;
+  switch?: SettingSwitch;
+  default?: boolean;
 }>();
 
-const { COMP } = useCsssSwitch(props.prop);
+watch(save, (isSaved) => {
+  if (!isSaved) return;
+
+  const auth = props.switch?.auth;
+  if (state.value.active) {
+    if (auth) authOperations.value.add(auth);
+  } else {
+    if (auth) authOperations.value.remove(auth.ticket);
+  }
+});
+
+// watchEffect(() => {
+//   if (!model.value) return;
+//   if (isUndefined(state.value?.active)) return;
+//   model.value.value = state.value.active;
+// });
 </script>
 
 <template>
-  <c-switch ref="COMP" class="setting-switch">
+  <c-switch ref="COMP" class="setting-switch" :default="props.default">
     <span class="setting-switch_text">关闭</span>
     <span class="setting-switch_text">开启</span>
   </c-switch>
