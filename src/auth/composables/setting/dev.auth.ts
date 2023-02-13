@@ -31,5 +31,5 @@ export const defineAsideDevEntryAuth = () => {
     states.value.aside_dev_entry = false;
   };
 
-  return new Auth({ mount, unmount }, key("entry"));
+  return new Auth({ mount, unmount }, key("entry"), "setting");
 };

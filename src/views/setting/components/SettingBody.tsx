@@ -1,6 +1,6 @@
 import { useSettingStore } from "@/views/setting/store/setting.store";
 import { storeToRefs } from "pinia";
-import { defineComponent, Transition } from "vue";
+import { defineComponent } from "vue";
 import GlobalSetting from "./GlobalSetting";
 
 export default defineComponent({
@@ -9,11 +9,7 @@ export default defineComponent({
     const { active } = storeToRefs(useSettingStore());
 
     return () => {
-      return (
-        <Transition name="fade">
-          <article class="setting-body">{active.value === 0 && <GlobalSetting />}</article>
-        </Transition>
-      );
+      return <article class="setting-body">{active.value === 0 && <GlobalSetting />}</article>;
     };
   },
 });

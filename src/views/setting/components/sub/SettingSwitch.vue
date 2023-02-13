@@ -1,17 +1,16 @@
 <script setup lang="ts">
+import { usePlayerStore } from "@/stores/player.store";
+import { useSettingStore } from "@/views/setting/store/setting.store";
 import { useCsssSwitch } from "csss-ui";
 import { storeToRefs } from "pinia";
-import { useSettingStore } from "@/views/setting/store/setting.store";
 import { watch } from "vue";
-import { usePlayerStore } from "@/stores/player.store";
 
 const { COMP, state } = useCsssSwitch();
-const { save } = storeToRefs(useSettingStore());
+const { save, reset } = storeToRefs(useSettingStore());
 const { authOperations } = usePlayerStore();
 
 const props = defineProps<{
   switch?: SettingSwitch;
-  default?: boolean;
 }>();
 
 watch(save, (isSaved) => {
@@ -26,15 +25,17 @@ watch(save, (isSaved) => {
   save.value = false;
 });
 
-// watchEffect(() => {
-//   if (!model.value) return;
-//   if (isUndefined(state.value?.active)) return;
-//   model.value.value = state.value.active;
-// });
+watch(reset, () => {
+  const auth = props.switch?.auth;
+  if (auth) {
+    authOperations.remove(auth.ticket);
+    state.value.active = props.switch.default.value;
+  }
+});
 </script>
 
 <template>
-  <c-switch ref="COMP" class="setting-switch" :default="props.default">
+  <c-switch ref="COMP" class="setting-switch" :default="props.switch?.default.value">
     <span class="setting-switch_text">关闭</span>
     <span class="setting-switch_text">开启</span>
   </c-switch>

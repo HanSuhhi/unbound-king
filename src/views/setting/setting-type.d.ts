@@ -22,8 +22,8 @@ type SettingModule = {
   items: SettingModuleItem[];
 };
 type SettingSwitch = {
-  default?: boolean;
-  auth?: import("@/auth/auth").Auth;
+  default: import("vue").Ref<boolean>;
+  auth: import("@/auth/auth").Auth;
 };
 type SettingModuleItem = {
   title: string;

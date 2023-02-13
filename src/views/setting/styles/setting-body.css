@@ -6,3 +6,11 @@
   height: var(--height);
   color: white;
 }
+
+.slide-down-enter-active.setting-body {
+  transition-delay: var(--flash);
+}
+
+.slide-down-leave-active.setting-body {
+  transition-delay: 0s;
+}

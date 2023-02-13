@@ -14,9 +14,10 @@ export default defineComponent({
   setup: (props) => {
     const { COMP } = useSettingLayout();
     const { settingPageActive } = storeToRefs(useSettingStore());
-    const { quitDialog, applySetting } = useKeyCommand();
+    const { quitDialog, applySetting, resetSetting } = useKeyCommand();
     provide("quit-dialog", quitDialog);
     provide("apply-setting", applySetting);
+    provide("reset-setting", resetSetting);
 
     return () => {
       return (
@@ -25,7 +26,7 @@ export default defineComponent({
             <c-layout v-show={settingPageActive.value} class="setting" ref={COMP}>
               {{
                 header: () => <Transition name="slide-down">{settingPageActive.value && <SettingHeader />}</Transition>,
-                default: () => <Transition name="fade">{settingPageActive.value && <SettingBody />}</Transition>,
+                default: () => <Transition name="slide-down">{settingPageActive.value && <SettingBody />}</Transition>,
                 footer: () => <Transition name="slide-up">{settingPageActive.value && <SettingFooter />}</Transition>,
               }}
             </c-layout>

@@ -1,6 +1,6 @@
 import { usePlayerStore } from "@/stores/player.store";
 import { storeToRefs } from "pinia";
-import { computed } from "vue";
+import { computed, toRef } from "vue";
 import { defineAsideDevEntryAuth } from "../../../auth/composables/setting/dev.auth";
 
 export const globalSettingConfig = computed<SettingModule[]>(() => {
@@ -14,7 +14,7 @@ export const globalSettingConfig = computed<SettingModule[]>(() => {
           type: "switch",
           switch: {
             auth: defineAsideDevEntryAuth(),
-            default: states.value.aside_dev_entry,
+            default: toRef(states.value, "aside_dev_entry"),
           },
         },
       ],

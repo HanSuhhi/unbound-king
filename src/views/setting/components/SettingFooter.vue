@@ -8,11 +8,13 @@ const { settingPageActive } = storeToRefs(useSettingStore());
 
 const quitDialog = inject("quit-dialog", () => alert("error"));
 const applySetting = inject("apply-setting", () => alert("error"));
+const resetSetting = inject("reset-setting", () => alert("error"));
 
 const settingFooterButtons = ref<SettingFooterButton[]>([
   {
-    title: "重置",
-    key: ["ctrl", "r"],
+    title: "恢复默认",
+    key: ["ctrl", "z"],
+    feedback: resetSetting,
   },
   {
     title: "取消",

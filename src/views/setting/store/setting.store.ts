@@ -1,7 +1,7 @@
 import { isUndefined } from "lodash-es";
 import { defineStore, storeToRefs } from "pinia";
 import { computed, ref, watch } from "vue";
-import { useSettingActive } from "../composables/settingActive";
+import { useSettingActive } from "../composables/keycommands/settingActive";
 import { usePlayerStore } from "../../../stores/player.store";
 import { defineisSave } from "../composables/isSave";
 
@@ -11,6 +11,7 @@ const useSettingStore = defineStore("setting-store", () => {
   const SettingEnterIconRef = ref<HTMLElement>();
   const settingPageActive = ref(false);
   const save = defineisSave(settingPageActive);
+  const reset = ref(false);
 
   const settingModules = computed<SettingTitleModule[]>(() => [
     {
@@ -33,7 +34,7 @@ const useSettingStore = defineStore("setting-store", () => {
 
   const { active } = useSettingActive(list, settingPageActive);
 
-  return { list, settingPageActive, SettingEnterIconRef, active, save };
+  return { list, settingPageActive, SettingEnterIconRef, active, save, reset };
 });
 
 export { useSettingStore };

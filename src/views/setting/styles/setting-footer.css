@@ -32,6 +32,7 @@
     --padding-width: 10%;
 
     width: calc(var(--main-width) - var(--padding-width) * 2);
+    margin-top: var(--normal);
     margin-left: var(--padding-width);
   }
 
