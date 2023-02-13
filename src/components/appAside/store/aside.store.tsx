@@ -1,13 +1,18 @@
 import { toArray } from "lodash-es";
-import { defineStore } from "pinia";
-import { ref, computed, shallowRef, watchEffect } from "vue";
-import { defineMenu } from "../data/menu";
+import { defineStore, storeToRefs } from "pinia";
+import { computed } from "vue";
+import { defineModules } from "../data/modules";
+import { useGlobalStore } from "@/stores/global.store";
 
 const useAppAsideStore = defineStore("app-aside", () => {
-  const menus = defineMenu();
+  const { activeAsideModule } = storeToRefs(useGlobalStore());
+  const modules = defineModules();
 
-  const activeMenus = computed(() => toArray(menus.value).filter((menu) => menu.show));
+  const activeModules = computed(() => toArray(modules.value).filter((menu) => menu.show));
+  const activeModule = computed(() => {
+    return activeModules.value[activeAsideModule.value];
+  });
 
-  return { menus, activeMenus };
+  return { modules, activeModules, activeModule };
 });
 export { useAppAsideStore };

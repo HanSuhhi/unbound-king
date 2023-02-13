@@ -1,5 +1,7 @@
 type AppAsideModule = {
   show?: boolean;
   icon: string;
-  comp: Component;
+  comp?: Component;
+  type: "default-menu";
+  config?: ModuleList[];
 };

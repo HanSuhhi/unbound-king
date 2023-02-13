@@ -19,7 +19,7 @@ export default defineComponent({
   name: "SettingBody",
   setup: (props) => {
     const { activeModule, activeItem } = storeToRefs(useSettingStore());
-    const { addKeyCommands, uninstallKeyCommands, uninstallKeyCommand, addKeyCommand } = useKeyStore();
+    const { uninstallKeyCommand, addKeyCommand } = useKeyStore();
     const length = computed(calcLength.bind(this, settings[activeModule.value].value));
 
     let lastKeysLength: number = 0;

@@ -12,7 +12,7 @@ export default defineComponent({
   setup: (props) => {
     const classList = computed<string[]>(() => [props.icon, "app-aside-module"]);
     return () => {
-      return <div class={classList.value}></div>;
+      return <div class={classList.value} />;
     };
   },
 });

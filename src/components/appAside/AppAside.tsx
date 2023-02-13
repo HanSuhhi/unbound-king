@@ -1,23 +1,29 @@
-import { defineComponent, computed } from "vue";
+import { storeToRefs } from "pinia";
+import { computed, defineComponent } from "vue";
 import "./app-aside.css";
 import AppAsideModule from "./components/AppAsideModule";
 import { useAsideLayout } from "./composables/layout";
 import { useAppAsideStore } from "./store/aside.store";
-import { toArray, range } from "lodash-es";
-import { storeToRefs } from "pinia";
+import BaseMenu from "./components/baseMenu/BaseMenu.vue";
 
 export default defineComponent({
   name: "AppAside",
   setup: (props) => {
     const { COMP } = useAsideLayout();
-    const { activeMenus } = storeToRefs(useAppAsideStore());
+    const { activeModules } = storeToRefs(useAppAsideStore());
 
-    const lists = computed(() => activeMenus.value.map((menu) => <AppAsideModule icon={menu.icon!}></AppAsideModule>));
+    const lists = computed(() => activeModules.value.map((module) => <AppAsideModule icon={module.icon!}></AppAsideModule>));
 
     const panels = computed(() => {
       const _panels: Record<string, () => JSX.Element> = {};
-      activeMenus.value.forEach((menu, index) => {
-        _panels[`panel-${index}`] = () => <menu.comp></menu.comp>;
+      activeModules.value.forEach((module, index) => {
+        switch (module.type) {
+          default:
+          case "default-menu":
+            _panels[`panel-${index}`] = () => <BaseMenu />;
+
+            break;
+        }
       });
       return _panels;
     });

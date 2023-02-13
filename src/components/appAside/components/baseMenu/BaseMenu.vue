@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { useAuthModule } from "./composables/authModule";
 import Icon from "@/components/icon/Icon";
-import "./auth-module.css";
+import "./base-menu.css";
+import { defineMenuLayout } from "../../composables/menuLayout";
 
-const { List } = useAuthModule();
+const { asideMenu } = defineMenuLayout();
 </script>
 
 <template>
-  <c-menu ref="List">
+  <c-menu :ref="asideMenu.COMP">
     <template #item-0="{ name, icon }">
       <div class="module__name">
         <Icon v-if="icon" :icon="icon" />
