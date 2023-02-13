@@ -23,5 +23,5 @@ export const useSettingActive = (list: ComputedRef<SettingTitleModule[]>, pageAc
   };
   mountKeyCommand(pageActive, KEY_ToggleActive);
 
-  return { active };
+  return active;
 };

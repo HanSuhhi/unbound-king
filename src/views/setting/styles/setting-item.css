@@ -13,6 +13,10 @@
   outline: 3px solid var(--bg-color-bright-1);
 }
 
+.setting-item[data-choosed] {
+  border: 0.5px solid var(--main-color);
+}
+
 .setting-item_title {
   margin-left: var(--normal);
 }

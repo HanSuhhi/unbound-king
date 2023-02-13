@@ -32,9 +32,10 @@ const useSettingStore = defineStore("setting-store", () => {
     }),
   );
 
-  const { active } = useSettingActive(list, settingPageActive);
+  const activeModule = useSettingActive(list, settingPageActive);
+  const activeItem = ref(0);
 
-  return { list, settingPageActive, SettingEnterIconRef, active, save, reset };
+  return { list, settingPageActive, SettingEnterIconRef, activeModule, activeItem, save, reset };
 });
 
 export { useSettingStore };

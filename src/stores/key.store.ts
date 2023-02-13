@@ -44,6 +44,10 @@ const useKeyStore = defineStore("key", () => {
     stopRunningKeyCommand(key);
   };
 
+  const uninstallKeyCommands = (keys: string[]) => {
+    forEach(keys, (key) => uninstallKeyCommand(key));
+  };
+
   const clearKeyCommands = () => {
     clearCommandStore();
     stopRunningAllKeyCommands();
@@ -65,14 +69,12 @@ const useKeyStore = defineStore("key", () => {
       }
     },
   });
-  const addAutoKeyCommand = (keyCommand: KeyCommand) => {
-    addKeyCommand(keyCommand);
-    onUnmounted(uninstallKeyCommand.bind(this, keyCommand.key));
-  };
+
   return {
     addKeyCommand,
-    addAutoKeyCommand,
+    addKeyCommands,
     uninstallKeyCommand,
+    uninstallKeyCommands,
     freeze,
     commandStagingStore,
     commandsStore,

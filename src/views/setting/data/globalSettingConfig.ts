@@ -5,7 +5,8 @@ import { defineAsideDevEntryAuth } from "../../../auth/composables/setting/dev.a
 
 export const globalSettingConfig = computed<SettingModule[]>(() => {
   const { states } = storeToRefs(usePlayerStore());
-  return [
+  let index = 0;
+  const globalSettingData: SettingModule[] = [
     {
       title: "权限设置",
       items: [
@@ -19,5 +20,11 @@ export const globalSettingConfig = computed<SettingModule[]>(() => {
         },
       ],
     },
-  ];
+  ] as SettingModule[];
+
+  globalSettingData.forEach((module) => {
+    module.items.forEach((item: SettingModuleItem) => (item.index = index++));
+  });
+
+  return globalSettingData;
 });

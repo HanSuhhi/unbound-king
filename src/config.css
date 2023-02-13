@@ -1,5 +1,9 @@
 @import "csss-ui/dist/style.css";
 
+* {
+  font-display: swap;
+}
+
 :root {
   font-size: 16px;
 }

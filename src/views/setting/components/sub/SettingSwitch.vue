@@ -1,16 +1,19 @@
 <script setup lang="ts">
+import { useKeyStore } from "@/stores/key.store";
 import { usePlayerStore } from "@/stores/player.store";
 import { useSettingStore } from "@/views/setting/store/setting.store";
 import { useCsssSwitch } from "csss-ui";
 import { storeToRefs } from "pinia";
-import { watch } from "vue";
+import { watch, onUnmounted, computed } from "vue";
 
 const { COMP, state } = useCsssSwitch();
-const { save, reset } = storeToRefs(useSettingStore());
+const { save, reset, activeItem } = storeToRefs(useSettingStore());
 const { authOperations } = usePlayerStore();
+const { addKeyCommand, uninstallKeyCommand } = useKeyStore();
 
 const props = defineProps<{
   switch?: SettingSwitch;
+  index: number;
 }>();
 
 watch(save, (isSaved) => {
@@ -32,6 +35,26 @@ watch(reset, () => {
     state.value.active = props.switch.default.value;
   }
 });
+
+const KEY_ToggleSwitch: KeyCommand = {
+  key: "enter",
+  fn: (isClicked) => {
+    if (isClicked) return;
+    state.value.active = !state.value.active;
+  },
+};
+const isChoosed = computed(() => props.index === activeItem.value);
+watch(
+  isChoosed,
+  (choosed) => {
+    if (choosed) addKeyCommand(KEY_ToggleSwitch);
+    else uninstallKeyCommand.bind(this, KEY_ToggleSwitch.key);
+  },
+  {
+    immediate: true,
+  },
+);
+onUnmounted(uninstallKeyCommand.bind(this, KEY_ToggleSwitch.key));
 </script>
 
 <template>
