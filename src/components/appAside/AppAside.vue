@@ -1,5 +1,5 @@
 import { storeToRefs } from "pinia";
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, TransitionGroup } from "vue";
 import "./app-aside.css";
 import AppAsideModule from "./components/AppAsideModule";
 import { useAsideLayout } from "./composables/layout";
@@ -12,7 +12,7 @@ export default defineComponent({
     const { COMP } = useAsideLayout();
     const { activeModules } = storeToRefs(useAppAsideStore());
 
-    const lists = computed(() => activeModules.value.map((module) => <AppAsideModule icon={module.icon!} />));
+    const lists = computed(() => activeModules.value.map((module) => <AppAsideModule icon={module.icon!} key={module.icon} />));
 
     const panels = computed(() => {
       const _panels: Record<string, () => JSX.Element> = {};
@@ -31,7 +31,15 @@ export default defineComponent({
       return (
         <c-tabs ref={COMP}>
           {{
-            list: () => lists.value,
+            list: () => (
+              <TransitionGroup name="list" tag="div">
+                <div key="1">1</div>
+                <div key="2">2</div>
+                <div key="3">3</div>
+                <div key="4">4</div>
+                {/* {lists.value} */}
+              </TransitionGroup>
+            ),
             ...panels.value,
           }}
         </c-tabs>

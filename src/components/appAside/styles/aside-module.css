@@ -1,3 +1,4 @@
-.app-aside-module {
+.app-aside_module {
+  position: relative;
   padding: var(--tiny);
 }

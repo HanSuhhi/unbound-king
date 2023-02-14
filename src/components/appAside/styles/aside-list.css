@@ -1,5 +1,6 @@
 .app-aside__list {
   --list-width: 4rem;
+  --border-radius: var(--normal);
 
   position: absolute;
   top: 45%;
@@ -10,7 +11,23 @@
   justify-content: center;
   width: var(--list-width);
   background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1));
-  border-radius: var(--normal);
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-1);
   transform: translate(0, -50%);
+}
+
+.app-aside__list::before {
+  --height: calc(100% / var(--length));
+  --top: calc(var(--active) * var(--height));
+
+  position: absolute;
+  top: var(--top);
+  width: 100%;
+  height: var(--height);
+  background-color: var(--bg-color-bright-2);
+  border-radius: var(--clip-border-radius);
+  /* stylelint-disable-next-line max-line-length */
+  box-shadow: rgb(255 255 255 / 10%) 0 1px 1px 0 inset, rgb(50 50 93 / 25%) 0 50px 100px -20px, rgb(0 0 0 / 30%) 0 30px 60px -30px;
+  transition: top 0.25s ease-out;
+  content: "";
 }

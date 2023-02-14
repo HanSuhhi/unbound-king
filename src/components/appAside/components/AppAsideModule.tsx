@@ -10,7 +10,7 @@ export default defineComponent({
     },
   },
   setup: (props) => {
-    const classList = computed<string[]>(() => [props.icon, "app-aside-module"]);
+    const classList = computed<string[]>(() => [props.icon, "app-aside_module"]);
     return () => {
       return <div class={classList.value} />;
     };
