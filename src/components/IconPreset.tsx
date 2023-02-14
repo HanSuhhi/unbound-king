@@ -6,13 +6,14 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div class="i-material-symbols-view-module" v-show={false}></div>
-          <div class="i-carbon-two-factor-authentication" v-show={false}></div>
-          <div class="i-mdi-horse-human" v-show={false}></div>
-          <div class="i-ant-design-align-left-outlined" v-show={false}></div>
-          <div class="i-icon-park-solid-more-four" v-show={false}></div>
-          <div class="i-fontisto-bell" v-show={false}></div>
-          <div class="i-tabler-device-analytics" v-show={false}></div>
+          <div class="i-material-symbols-view-module" v-show={false} />
+          <div class="i-carbon-two-factor-authentication" v-show={false} />
+          <div class="i-mdi-horse-human" v-show={false} />
+          <div class="i-ant-design-align-left-outlined" v-show={false} />
+          <div class="i-icon-park-solid-more-four" v-show={false} />
+          <div class="i-fontisto-bell" v-show={false} />
+          <div class="i-tabler-device-analytics" v-show={false} />
+          <div class="i-emojione-monotone-alien-monster" v-show={false} />
         </>
       );
     };

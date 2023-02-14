@@ -3,8 +3,20 @@
 @import "./styles/list-item.css";
 
 .app-aside__box {
+  --ani-time: 0.3s;
+
   position: relative;
   flex-direction: row;
   height: calc(100% - var(--header-height));
   color: var(--white);
+}
+
+.app-aside__box .slide-left-enter-from {
+  transform: translateX(calc(-2 * var(--slide-path)));
+  opacity: 0;
+}
+
+.app-aside__box .slide-left-leave-to {
+  transform: translateX(calc(-2 * var(--slide-path)));
+  opacity: 0;
 }

@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent, nextTick, ref } from "vue";
 import AppAside from "./components/appAside/appAside";
 import AppAsideHeader from "./components/appAside/components/appAsideHeader/AppAsideHeader";
 import AppHeader from "./components/appHeader/AppHeader";
@@ -12,10 +12,15 @@ export default defineComponent({
   setup: (props) => {
     const { Layout } = useApp();
 
+    const iconPreset = ref(true);
+    nextTick(() => {
+      iconPreset.value = false;
+    });
+
     return () => {
       return (
         <>
-          <IconPreset />
+          {iconPreset.value && <IconPreset />}
           <c-layout ref={Layout}>
             {{
               aside: () => (

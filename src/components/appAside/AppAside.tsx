@@ -21,7 +21,6 @@ export default defineComponent({
           default:
           case "default-menu":
             _panels[`panel-${index}`] = () => <BaseMenu />;
-
             break;
         }
       });

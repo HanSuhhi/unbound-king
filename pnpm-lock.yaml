@@ -12,7 +12,7 @@ specifiers:
   '@vitejs/plugin-vue': ^4.0.0
   '@vitejs/plugin-vue-jsx': ^3.0.0
   '@vueuse/core': ^9.10.0
-  csss-ui: 0.2.0-beta.29
+  csss-ui: 0.2.0-beta.30
   dayjs: ^1.11.7
   eslint: ^8.32.0
   jsstore: ^4.5.0
@@ -33,7 +33,7 @@ dependencies:
   '@types/lodash-es': 4.17.6
   '@types/node': 18.11.18
   '@vueuse/core': 9.10.0_vue@3.2.45
-  csss-ui: 0.2.0-beta.29
+  csss-ui: 0.2.0-beta.30
   dayjs: 1.11.7
   jsstore: 4.5.0
   lodash-es: 4.17.21
@@ -1935,8 +1935,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  /csss-ui/0.2.0-beta.29:
-    resolution: {integrity: sha512-IZBuXX8Bz+5ohTUjTeZL3/+XnT5g/VpJGSgYfeQSFaZ/aTtcM+y8E253LFPfTP5w31e+EFomtTezt71u14ApIw==}
+  /csss-ui/0.2.0-beta.30:
+    resolution: {integrity: sha512-mz+wnIrKQAkqjuEDa8HuQANtuIDUIuHKziEg81d+QfQ+/uoHmoAnrox0bEg2TYk03eU77RDdjebp2Wd9t9NbqA==}
     engines: {node: '>=16.17.0'}
     dependencies:
       '@hansuhhi-don/csss': 0.0.1-beta.3
@@ -4624,7 +4624,7 @@ packages:
     dependencies:
       stylelint: 14.16.1
     optionalDependencies:
-      stylelint-scss: 4.3.0_stylelint@14.16.1
+      stylelint-scss: 4.4.0_stylelint@14.16.1
     dev: true
 
   /stylelint-config-html/1.1.0_kbto3rg3njmczth2rrsgfnlsqa:
@@ -4717,11 +4717,11 @@ packages:
       stylelint: 14.16.1
     dev: true
 
-  /stylelint-scss/4.3.0_stylelint@14.16.1:
-    resolution: {integrity: sha512-GvSaKCA3tipzZHoz+nNO7S02ZqOsdBzMiCx9poSmLlb3tdJlGddEX/8QzCOD8O7GQan9bjsvLMsO5xiw6IhhIQ==}
+  /stylelint-scss/4.4.0_stylelint@14.16.1:
+    resolution: {integrity: sha512-Qy66a+/30aylFhPmUArHhVsHOun1qrO93LGT15uzLuLjWS7hKDfpFm34mYo1ndR4MCo8W4bEZM1+AlJRJORaaw==}
     requiresBuild: true
     peerDependencies:
-      stylelint: ^14.5.1
+      stylelint: ^14.5.1 || ^15.0.0
     dependencies:
       lodash: 4.17.21
       postcss-media-query-parser: 0.2.3

@@ -1,7 +1,7 @@
 export const devModuleConfig: ModuleList[] = [
   {
-    path: "heroes",
-    name: "英雄 as 选择",
-    icon: "i-mdi-horse-human",
+    path: "nations",
+    name: "种族设计",
+    icon: "i-emojione-monotone-alien-monster",
   },
 ];
