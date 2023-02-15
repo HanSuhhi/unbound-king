@@ -2,7 +2,7 @@
   --list-width: 4rem;
   --border-radius: var(--normal);
 
-  position: absolute;
+  position: fixed;
   top: 45%;
   right: calc(-0.4 * var(--list-width));
   display: flex;
@@ -13,7 +13,6 @@
   background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1));
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-1);
-  transform: translate(0, -50%);
 }
 
 .app-aside__list::before {
