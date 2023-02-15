@@ -2,14 +2,23 @@ import { storeToRefs } from "pinia";
 import { useAppAsideStore } from "../store/aside.store";
 import { useCsssMenu } from "csss-ui";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 export const defineMenuLayout = () => {
   const { activeModule } = storeToRefs(useAppAsideStore());
+  const router = useRouter();
+
+  const initRoute = () => {
+    const defaultPath = activeModule.value.config![0].path;
+    router.push({ name: defaultPath });
+  };
 
   const asideMenu = computed(() => {
-    const menu = useCsssMenu({
+    initRoute();
+    return useCsssMenu({
       state: {
         menuList: activeModule.value.config,
+        active: [0],
       },
       style: {
         classList: {
@@ -20,27 +29,7 @@ export const defineMenuLayout = () => {
         },
       },
     });
-    return menu;
   });
 
   return { asideMenu };
 };
-
-// const route = useRoute();
-// watch(route, (_route) => {
-//   const path = _route.path.slice(1);
-//   const findRoute = (menus: ModuleList[] = state.value.menuList as any): number[] => {
-//     for (const i in menus) {
-//       const item = menus[i];
-//       console.log("item: ", item);
-//       if (item.children) {
-//         const index = findRoute(item.children);
-//         return [Number(i), ...index];
-//       }
-//       if (item.path === path) return [Number(i)];
-//     }
-//     return [];
-//   };
-//   console.log("findRoute(): ", findRoute());
-//   state.value.active = findRoute();
-// });
