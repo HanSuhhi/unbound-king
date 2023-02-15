@@ -10,7 +10,7 @@ export const useAsideLayout = () => {
 
   const tabs = useCsssTabs({
     style: {
-      panelTransition: "slide-left",
+      panelTransition: "aside-module",
       classList: {
         tabs: ["", "app-aside__box"],
         list: ["app-aside__list"],

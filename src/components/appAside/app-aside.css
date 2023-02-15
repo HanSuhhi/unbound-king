@@ -11,23 +11,24 @@
   color: var(--white);
 }
 
-.app-aside__box .slide-left-enter-from {
-  transform: translateX(calc(-2 * var(--slide-path)));
+.aside-module-enter-active,
+.aside-module-leave-active {
+  position: relative;
+  left: 0;
+  width: 100%;
+  transition: all 0.4s ease;
+}
+
+.aside-module-enter-from {
+  position: relative;
+  left: -50%;
+  width: 150%;
   opacity: 0;
 }
 
-.app-aside__box .slide-left-leave-to {
-  transform: translateX(calc(-2 * var(--slide-path)));
-  opacity: 0;
-}
-
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
-}
-
-.list-enter-from,
-.list-leave-to {
-  transform: translateX(30px);
+.aside-module-leave-to {
+  position: relative;
+  left: -50%;
+  width: 150%;
   opacity: 0;
 }
