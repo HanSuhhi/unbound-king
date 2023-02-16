@@ -13,25 +13,22 @@ export const defineModules = () => {
     modules.value = [
       {
         key: "auth",
-        show: true,
         icon: "i-carbon-two-factor-authentication",
         type: "default-menu",
         pages: authModuleConfig,
       },
       {
         key: "dev",
-        show: states.value.aside_dev_entry,
         icon: "i-tabler-device-analytics",
         type: "default-menu",
         pages: devModuleConfig,
       },
-      {
-        key: "game",
-        show: true,
-        icon: "i-material-symbols-view-module",
-        type: "default-menu",
-        pages: authModuleConfig,
-      },
+      // {
+      //   key: "game",
+      //   icon: "i-material-symbols-view-module",
+      //   type: "default-menu",
+      //   pages: authModuleConfig,
+      // },
     ];
   });
 

@@ -6,10 +6,12 @@ import { useAppAsideStore } from "../store/aside.store";
 import { defineModuleBlock } from "./moduleBlock";
 import { makeModuleDraggable } from "./moduleDraggable";
 import { find } from "lodash-es";
+import { useRouter } from "vue-router";
 
 export const useAsideLayout = () => {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
-  const { activeModules, active } = storeToRefs(useAppAsideStore());
+  const { activeModules, active, activeModule } = storeToRefs(useAppAsideStore());
+  const router = useRouter();
 
   const tabs = useCsssTabs({
     style: {
@@ -30,7 +32,9 @@ export const useAsideLayout = () => {
     },
   );
 
-  watch(active, (activeIndex) => (tabs.state.value.active = activeIndex));
+  watch(active, (activeIndex) => {
+    tabs.state.value.active = activeIndex;
+  });
 
   defineModuleBlock(tabs);
   makeModuleDraggable(tabs);

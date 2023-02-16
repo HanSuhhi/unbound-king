@@ -4,13 +4,6 @@ interface ImportMetaEnv {
   readonly SETTING_HEADER_LIST_MAX_NUM: string;
 }
 
-type ModulePage = {
-  path?: string;
-  name?: string;
-  icon?: string;
-  children?: ModulePage[];
-};
-
 type Size = "small" | "normal" | "large";
 
 type KeyCommand = {
