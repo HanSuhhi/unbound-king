@@ -1,5 +1,9 @@
 import type { useCsssTabs } from "csss-ui";
-import { nextTick, watchEffect } from "vue";
+import { storeToRefs } from "pinia";
+import { nextTick, watchEffect, computed, watch } from "vue";
+import { useSettingStore } from "@/views/setting/store/setting.store";
+import { useAppAsideStore } from "../store/aside.store";
+import { findIndex } from "lodash-es";
 
 const calcModuleBorderRadius = (active: number, total: number): string => {
   if (total !== 1) {
@@ -10,16 +14,17 @@ const calcModuleBorderRadius = (active: number, total: number): string => {
   return "var(--normal)";
 };
 
-export const useModuleBlock = (tabs: ReturnType<typeof useCsssTabs>) => {
-  nextTick(
-    watchEffect.bind(this, () => {
-      const listElement = document.getElementsByClassName("app-aside__list")[0] as HTMLElement;
-      if (!listElement) return;
-      const total = tabs.read.value.total;
-      const active = tabs.state.value.active;
-      listElement.style.setProperty("--length", total.toString());
-      listElement.style.setProperty("--active", active.toString());
-      listElement.style.setProperty("--clip-border-radius", calcModuleBorderRadius(active, total));
-    }),
-  );
+export const defineModuleBlock = (tabs: ReturnType<typeof useCsssTabs>) => {
+  const { activeModules, active } = storeToRefs(useAppAsideStore());
+
+  const updateModuleBlock = () => {
+    const listElement = tabs.read.value.tabsList;
+    if (!listElement) return;
+    const total = activeModules.value.length;
+    listElement.style.setProperty("--module-length", total.toString());
+    listElement.style.setProperty("--active", active.value.toString());
+    listElement.style.setProperty("--clip-border-radius", calcModuleBorderRadius(active.value, total));
+  };
+
+  nextTick(watchEffect.bind(this, updateModuleBlock));
 };

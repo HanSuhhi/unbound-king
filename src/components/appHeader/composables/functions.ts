@@ -1,7 +1,7 @@
 import { ref } from "vue";
 
 export const useFunctions = () => {
-  const funcs = ref<ModuleList[]>([
+  const funcs = ref<ModulePage[]>([
     {
       icon: "i-fontisto-bell",
     },

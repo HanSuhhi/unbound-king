@@ -5,6 +5,7 @@
   position: fixed;
   top: 45%;
   right: calc(-0.4 * var(--list-width));
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +17,7 @@
 }
 
 .app-aside__list::before {
-  --height: calc(100% / var(--length));
+  --height: calc(100% / var(--module-length));
   --top: calc(var(--active) * var(--height));
 
   position: absolute;

@@ -1,0 +1,17 @@
+.router-history {
+  display: flex;
+  margin-left: var(--small);
+}
+
+.router-history > li {
+  display: flex;
+  place-items: center;
+  width: 90px;
+  color: var(--gray-bright-2);
+
+  /* opacity: 0.2; */
+}
+
+.main {
+  opacity: 1 !important;
+}

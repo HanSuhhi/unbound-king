@@ -44,11 +44,16 @@ body {
 
 .app-header {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: var(--normal);
 }
 
 /* need to add to csss */
 :root {
+  /* stylelint-disable-next-line max-line-length */
   --box-shadow-1: rgb(255 255 255 / 10%) -1px 0 1px 0 inset, rgb(50 50 93 / 25%) 20px 0 20px 3px, rgb(0 0 0 / 30%) 20px 0 20px 1px;
+  /* stylelint-disable-next-line max-line-length */
   --box-shadow-1-luster: rgb(255 255 255 / 30%) -1px 0 1px 0 inset, rgb(50 50 93 / 25%) 20px 0 20px 3px, rgb(0 0 0 / 30%) 20px 0 20px 1px;
 }

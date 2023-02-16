@@ -4,11 +4,11 @@ interface ImportMetaEnv {
   readonly SETTING_HEADER_LIST_MAX_NUM: string;
 }
 
-type ModuleList = {
+type ModulePage = {
   path?: string;
   name?: string;
   icon?: string;
-  children?: ModuleList[];
+  children?: ModulePage[];
 };
 
 type Size = "small" | "normal" | "large";

@@ -1,9 +1,3 @@
 @import "./styles/search.css";
 @import "./styles/user-message.css";
-@import "./styles/bottom-header.css";
-
-.top-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+@import "./styles/router-history.css";

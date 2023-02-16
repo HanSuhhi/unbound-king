@@ -9,7 +9,7 @@ export const defineMenuLayout = () => {
   const router = useRouter();
 
   const initRoute = () => {
-    const defaultPath = activeModule.value.config![0].path;
+    const defaultPath = activeModule.value?.pages![0].path;
     router.push({ name: defaultPath });
   };
 
@@ -17,7 +17,7 @@ export const defineMenuLayout = () => {
     initRoute();
     return useCsssMenu({
       state: {
-        menuList: activeModule.value.config,
+        menuList: activeModule.value?.pages,
         active: [0],
       },
       style: {

@@ -7,29 +7,32 @@ import { devModuleConfig } from "./devModuleConfig";
 export const defineModules = () => {
   const { states } = storeToRefs(usePlayerStore());
 
-  const modules = ref<Record<string, AppAsideModule>>();
+  const modules = ref<AppAsideModule[]>([]);
 
   watchEffect(() => {
-    modules.value = {
-      auth: {
+    modules.value = [
+      {
+        key: "auth",
         show: true,
         icon: "i-carbon-two-factor-authentication",
         type: "default-menu",
-        config: authModuleConfig,
+        pages: authModuleConfig,
       },
-      dev: {
+      {
+        key: "dev",
         show: states.value.aside_dev_entry,
         icon: "i-tabler-device-analytics",
         type: "default-menu",
-        config: devModuleConfig,
+        pages: devModuleConfig,
       },
-      game: {
+      {
+        key: "game",
         show: true,
         icon: "i-material-symbols-view-module",
         type: "default-menu",
-        config: [],
+        pages: authModuleConfig,
       },
-    };
+    ];
   });
 
   return modules;

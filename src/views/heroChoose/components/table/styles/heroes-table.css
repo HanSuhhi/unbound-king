@@ -40,7 +40,7 @@
 }
 
 .heroes-table__list__item[data-active]::after {
-  --width: 0.5px;
+  --width: 0.8px;
 
   position: absolute;
   top: var(--list-item-height);

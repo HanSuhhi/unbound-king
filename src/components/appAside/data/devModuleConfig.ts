@@ -1,4 +1,4 @@
-export const devModuleConfig: ModuleList[] = [
+export const devModuleConfig: ModulePage[] = [
   {
     path: "nation-design",
     name: "种族设计",
