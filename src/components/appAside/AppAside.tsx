@@ -2,9 +2,9 @@ import { storeToRefs } from "pinia";
 import { computed, defineComponent } from "vue";
 import "./app-aside.css";
 import AppAsideModule from "./components/AppAsideModule";
+import BaseMenu from "./components/baseMenu/BaseMenu.vue";
 import { useAsideLayout } from "./composables/layout";
 import { useAppAsideStore } from "./store/aside.store";
-import BaseMenu from "./components/baseMenu/BaseMenu.vue";
 
 export default defineComponent({
   name: "AppAside",
@@ -12,7 +12,7 @@ export default defineComponent({
     const { COMP } = useAsideLayout();
     const { activeModules } = storeToRefs(useAppAsideStore());
 
-    const lists = computed(() => activeModules.value.map((module) => <AppAsideModule icon={module.icon!} />));
+    const lists = computed(() => activeModules.value.map((module) => <AppAsideModule module={module!} />));
 
     const panels = computed(() => {
       const _panels: Record<string, () => JSX.Element> = {};

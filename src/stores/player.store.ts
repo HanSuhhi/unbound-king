@@ -24,7 +24,7 @@ const usePlayerStore = defineStore("player-store", () => {
   const states = ref({
     setting_dev_entry: false,
     aside_game_entry: true,
-    aside_dev_entry: false,
+    aside_dev_entry: true,
     aside_auth_entry: true,
   });
 

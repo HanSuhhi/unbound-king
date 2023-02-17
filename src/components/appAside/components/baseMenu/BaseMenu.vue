@@ -4,15 +4,16 @@ import "./base-menu.css";
 import { defineMenuLayout } from "../../composables/menuLayout";
 
 const { asideMenu } = defineMenuLayout();
+
 </script>
 
 <template>
   <c-menu :ref="asideMenu.COMP">
-    <template #item-0="{ name, icon }">
+    <template #item-0="{ title, icon }">
       <div class="module__name">
         <Icon v-if="icon" :icon="icon" />
         <span>
-          {{ name }}
+          {{ title }}
         </span>
       </div>
     </template>

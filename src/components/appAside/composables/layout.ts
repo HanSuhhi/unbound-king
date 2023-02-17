@@ -1,17 +1,14 @@
 import { useGlobalStore } from "@/stores/global.store";
 import { useCsssTabs } from "csss-ui";
 import { storeToRefs } from "pinia";
-import { watch, watchEffect } from "vue";
+import { watch } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
 import { defineModuleBlock } from "./moduleBlock";
 import { makeModuleDraggable } from "./moduleDraggable";
-import { find } from "lodash-es";
-import { useRouter } from "vue-router";
 
 export const useAsideLayout = () => {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
-  const { activeModules, active, activeModule } = storeToRefs(useAppAsideStore());
-  const router = useRouter();
+  const { activeModules, activeModuleIndex } = storeToRefs(useAppAsideStore());
 
   const tabs = useCsssTabs({
     style: {
@@ -19,7 +16,7 @@ export const useAsideLayout = () => {
       classList: {
         tabs: ["", "app-aside__box"],
         list: ["app-aside__list"],
-        listItem: ["app-aside__list-item"],
+        listItem: ["app-aside__list-box"],
         panelItem: ["_"],
       },
     },
@@ -32,7 +29,7 @@ export const useAsideLayout = () => {
     },
   );
 
-  watch(active, (activeIndex) => {
+  watch(activeModuleIndex, (activeIndex) => {
     tabs.state.value.active = activeIndex;
   });
 

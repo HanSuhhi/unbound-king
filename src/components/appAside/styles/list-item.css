@@ -14,10 +14,10 @@
   border-bottom-left-radius: var(--normal);
 }
 
-.app-aside__list-item[data-active] {
-  color: var(--main-color);
-}
-
 .app-aside__list-item:hover {
   cursor: pointer;
+}
+
+.app-aside__list-box[data-active] > .app-aside__list-item {
+  color: var(--main-color);
 }

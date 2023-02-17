@@ -10,7 +10,7 @@ export const defineMenuLayout = () => {
 
   const initRoute = () => {
     const defaultPath = activeModule.value?.pages![0].path;
-    router.push({ name: defaultPath });
+    // router.push({ name: defaultPath });
   };
 
   const asideMenu = computed(() => {

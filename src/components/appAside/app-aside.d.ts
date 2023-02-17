@@ -10,9 +10,10 @@ type AppAsideModule = {
 };
 
 type ModulePage = {
-  path?: string;
-  name?: string;
-  icon?: string;
+  path: string;
+  title: string;
+  icon: string;
   children?: ModulePage[];
   auth: Set<string>;
+  module: string;
 };

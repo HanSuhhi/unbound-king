@@ -15,15 +15,15 @@ const calcModuleBorderRadius = (active: number, total: number): string => {
 };
 
 export const defineModuleBlock = (tabs: ReturnType<typeof useCsssTabs>) => {
-  const { activeModules, active } = storeToRefs(useAppAsideStore());
+  const { activeModules, activeModuleIndex } = storeToRefs(useAppAsideStore());
 
   const updateModuleBlock = () => {
     const listElement = tabs.read.value.tabsList;
     if (!listElement) return;
     const total = activeModules.value.length;
     listElement.style.setProperty("--module-length", total.toString());
-    listElement.style.setProperty("--active", active.value.toString());
-    listElement.style.setProperty("--clip-border-radius", calcModuleBorderRadius(active.value, total));
+    listElement.style.setProperty("--active", activeModuleIndex.value.toString());
+    listElement.style.setProperty("--clip-border-radius", calcModuleBorderRadius(activeModuleIndex.value, total));
   };
 
   nextTick(watchEffect.bind(this, updateModuleBlock));
