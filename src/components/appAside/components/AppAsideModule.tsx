@@ -16,7 +16,6 @@ export default defineComponent({
 
     const routeToPage = (pagePath: string) => {
       router.push({ name: pagePath });
-      console.log(12);
     };
 
     return () => {

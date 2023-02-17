@@ -2,6 +2,16 @@
 @import "./styles/aside-module.css";
 @import "./styles/list-item.css";
 
+.app-aside {
+  --header-height: 4rem;
+
+  z-index: 700;
+  background: linear-gradient(100deg, var(--bg-color), var(--bg-color-bright-2));
+  border-top-right-radius: var(--normal);
+  border-bottom-right-radius: var(--normal);
+  box-shadow: var(--box-shadow-1);
+}
+
 .app-aside__box {
   --ani-time: 0.3s;
 

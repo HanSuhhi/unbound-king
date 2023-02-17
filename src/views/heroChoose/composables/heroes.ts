@@ -8,6 +8,7 @@ export const useHeroes = () => {
     },
     style: {
       classList: {
+        layout: ["", "heroes"],
         main: ["", "heroes-main"],
         aside: ["", "heroes-aside"],
       },

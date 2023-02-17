@@ -1,3 +1,11 @@
 @import "./styles/search.css";
 @import "./styles/user-message.css";
 @import "./styles/router-history.css";
+
+.app-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--normal);
+}

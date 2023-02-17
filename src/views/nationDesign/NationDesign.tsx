@@ -4,11 +4,7 @@ export default defineComponent({
   name: "NationDesign",
   setup: (props) => {
     return () => {
-      return (
-        <>
-          <p>asdasdasd</p>
-        </>
-      );
+      return <c-layout>asdasdasd</c-layout>;
     };
   },
 });
