@@ -1,0 +1,14 @@
+.alert {
+  display: flex;
+  align-items: center;
+  padding: var(--mini) var(--small);
+  background-color: rgb(118 93 11 / 80%);
+  border-radius: var(--small);
+}
+
+.alert_icon {
+  display: inline-block;
+  min-width: 1.2rem;
+  min-height: 1.2rem;
+  margin: var(--small);
+}

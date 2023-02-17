@@ -1,0 +1,13 @@
+.nation-design {
+  position: relative;
+  height: 100%;
+}
+
+.nation-design_alert {
+  margin: var(--mini) var(--normal);
+}
+
+.nation-design_alert p {
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+}

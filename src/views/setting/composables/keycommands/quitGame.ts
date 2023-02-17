@@ -9,7 +9,10 @@ export const useQuitGame = () => {
 
   const quitDialog = (isClicked?: boolean) => {
     if (isClicked === false) return;
-    enter.value = () => window.close();
+    enter.value = () => {
+      window.open("about:blank", "_self")?.close();
+      window.close();
+    };
     dialogContent.value = "是否确认退出游戏？";
   };
 
