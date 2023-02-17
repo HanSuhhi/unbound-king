@@ -7,6 +7,12 @@ import type { Router } from "vue-router";
 export const defineModuleAuthKey = (key: string) => `aside_${key}_entry`;
 
 export const defineRouterAuth = (router: Router) => {
+  const redirectPage = (page: ModulePage) => {
+    if (page.redirect) {
+      router.push({ name: page.redirect });
+    }
+  };
+
   router.beforeEach((to, from) => {
     const { pages } = storeToRefs(useAppAsideStore());
     const { states } = storeToRefs(usePlayerStore());
@@ -26,5 +32,7 @@ export const defineRouterAuth = (router: Router) => {
       console.error(error);
       return false;
     }
+
+    redirectPage(toPage);
   });
 };

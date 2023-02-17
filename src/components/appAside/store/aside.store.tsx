@@ -10,14 +10,20 @@ const useAppAsideStore = defineStore("app-aside", () => {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
   const { states } = storeToRefs(usePlayerStore());
   const modules = defineModules();
+
+  const perfectPage = (page: ModulePage, module: AppAsideModule) => {
+    const auth = defineModuleAuthKey(module.key);
+    page.auth.add(auth);
+    page.module = module.key;
+    return page;
+  };
+
   const pages = computed(() => {
     return flatMap(modules.value, (module) => {
-      module.pages.forEach((page) => {
-        const auth = defineModuleAuthKey(module.key);
-        page.auth.add(auth);
-        page.module = module.key;
-      });
-      return module.pages;
+      return flatMap(module.pages, (page) => {
+        if (page.children) return page.children;
+        else return page;
+      }).map((page) => perfectPage(page, module));
     });
   });
 
@@ -32,7 +38,7 @@ const useAppAsideStore = defineStore("app-aside", () => {
   });
   const activeModuleIndex = computed(() => findIndex(activeModules.value, activeModule.value));
 
-  const activeMenuIndex = ref(0);
+  const activeMenuIndex = ref<number[]>([0]);
 
   return { modules, pages, activeModules, activeModule, activeModuleIndex, activeMenuIndex };
 });

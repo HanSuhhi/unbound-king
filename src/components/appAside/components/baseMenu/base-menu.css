@@ -1,3 +1,6 @@
+@import "./menu-module-0.css";
+@import "./menu-module-1.css";
+
 .auth-module {
   --color: var(--gray);
   --active: var(--white);
@@ -7,34 +10,6 @@
 
 .menu-item {
   cursor: pointer;
-}
-
-.menu-module-0 {
-  position: relative;
-  padding: var(--small);
-  padding-left: var(--normal);
-  transition-duration: var(--flash);
-  transition-property: color, background;
-}
-
-.menu-module-0[data-active] {
-  color: var(--white);
-
-  /* background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1)); */
-}
-
-.menu-module-0[data-active]::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 3px;
-  height: 100%;
-  background-color: var(--main-color);
-  content: "";
-}
-
-.menu-module-0[data-active] .icon {
-  color: var(--main-color);
 }
 
 .module__name {

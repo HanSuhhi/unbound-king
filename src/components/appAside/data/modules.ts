@@ -1,12 +1,8 @@
-import { usePlayerStore } from "@/stores/player.store";
-import { storeToRefs } from "pinia";
 import { ref, watchEffect } from "vue";
 import { authModuleConfig } from "./authModuleConfig";
 import { devModuleConfig } from "./devModuleConfig";
 
 export const defineModules = () => {
-  const { states } = storeToRefs(usePlayerStore());
-
   const modules = ref<AppAsideModule[]>([]);
 
   watchEffect(() => {

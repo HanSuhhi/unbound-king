@@ -13,6 +13,7 @@ type ModulePage = {
   path: string;
   title: string;
   icon: string;
+  redirect?: string;
   children?: ModulePage[];
   auth: Set<string>;
   module: string;
