@@ -2,28 +2,18 @@
 @import "./menu-module-1.css";
 
 .menu-module-1 {
+  --padding-size: var(--normal);
+
   position: relative;
   left: var(--normal);
   padding: var(--small);
-  padding-left: var(--normal);
+  padding-left: var(--padding-size);
   transition-duration: var(--flash);
   transition-property: color, background;
 }
 
 .menu-module-1[data-active] {
   color: var(--white);
-
-  /* background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1)); */
-}
-
-.menu-module-1[data-active]::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 3px;
-  height: 100%;
-  background-color: var(--main-color);
-  content: "";
 }
 
 .menu-module-1[data-active] .icon {

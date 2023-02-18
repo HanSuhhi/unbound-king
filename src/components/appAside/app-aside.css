@@ -1,6 +1,7 @@
 @import "./styles/aside-list.css";
 @import "./styles/aside-module.css";
 @import "./styles/list-item.css";
+@import "./styles/aside-panel.css";
 
 .app-aside {
   --header-height: 4rem;

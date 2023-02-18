@@ -1,7 +1,8 @@
 @import "./menu-module-0.css";
 @import "./menu-module-1.css";
+@import "./menu-mask.css";
 
-.auth-module {
+.menu-module {
   --color: var(--gray);
   --active: var(--white);
 

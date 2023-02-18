@@ -8,11 +8,9 @@
 
 .menu-module-0[data-active] {
   color: var(--white);
-
-  /* background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1)); */
 }
 
-.menu-module-0[data-active]::after {
+/* .menu-module-0[data-active]::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -20,7 +18,7 @@
   height: 100%;
   background-color: var(--main-color);
   content: "";
-}
+} */
 
 .menu-module-0[data-active] .icon {
   color: var(--main-color);

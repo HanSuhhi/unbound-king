@@ -14,6 +14,7 @@ type ModulePage = {
   title: string;
   icon: string;
   redirect?: string;
+  key: number[];
   children?: ModulePage[];
   auth: Set<string>;
   module: string;

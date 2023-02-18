@@ -1,7 +1,7 @@
 import { useCsssMenu } from "csss-ui";
-import { defer } from "lodash-es";
+import { defer, isEqual } from "lodash-es";
 import { storeToRefs } from "pinia";
-import { computed, watch } from "vue";
+import { computed, watch, nextTick } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
 
 export const defineMenuLayout = () => {
@@ -11,11 +11,11 @@ export const defineMenuLayout = () => {
     return useCsssMenu({
       state: {
         menuList: activeModule.value?.pages,
-        active: activeMenuIndex.value,
+        active: activeMenuIndex.value || [0, 0],
       },
       style: {
         classList: {
-          menu: ["auth-module"],
+          menu: ["menu-module"],
           items: {
             0: ["menu-module-0"],
             1: ["menu-module-1"],
@@ -28,19 +28,18 @@ export const defineMenuLayout = () => {
   watch(
     () => asideMenu.value?.state.value?.active,
     (activeIndexes) => {
-      if (!activeIndexes?.length) return;
       defer(() => {
+        if (isEqual(activeMenuIndex.value, activeIndexes)) return;
+        if (!activeIndexes?.length) return;
         activeMenuIndex.value = activeIndexes;
       });
     },
   );
 
   watch(activeMenuIndex, (activeIndexes) => {
-    if (!activeIndexes.length) return;
+    if (!activeIndexes?.length) return;
     if (!asideMenu.value?.state.value?.active) return;
-    defer(() => {
-      asideMenu.value.state.value.active = activeIndexes;
-    });
+    asideMenu.value.state.value.active = activeIndexes;
   });
 
   return { asideMenu };

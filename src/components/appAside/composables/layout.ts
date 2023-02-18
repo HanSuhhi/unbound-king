@@ -17,6 +17,7 @@ export const useAsideLayout = () => {
         tabs: ["", "app-aside__box"],
         list: ["app-aside__list"],
         listItem: ["app-aside__list-box"],
+        panel: ["app-aside_panel"],
         panelItem: ["_"],
       },
     },

@@ -1,0 +1,15 @@
+.menu-ol {
+  margin: 0;
+}
+
+.menu-ol:first-child > li > div:first-child::before {
+  position: absolute;
+  top: calc(var(--mask-top) * 100%);
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background-color: var(--main-color);
+  transition: top 0.45s;
+  transition-delay: 0.45s;
+  content: "";
+}
