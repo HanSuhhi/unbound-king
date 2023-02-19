@@ -3,7 +3,7 @@ import { authModuleConfig } from "./authModuleConfig";
 import { devModuleConfig } from "./devModuleConfig";
 
 export const defineModules = () => {
-  const modules = ref<AppAsideModule[]>([]);
+  const modules = ref<AsideModule[]>([]);
 
   watchEffect(() => {
     modules.value = [

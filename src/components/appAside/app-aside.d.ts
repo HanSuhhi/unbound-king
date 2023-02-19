@@ -1,4 +1,4 @@
-type AppAsideModule = {
+type AsideModule = {
   /**
    * @description module unique name
    */

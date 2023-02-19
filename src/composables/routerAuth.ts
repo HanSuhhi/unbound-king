@@ -8,7 +8,7 @@ import { nextTick } from "vue";
 export const defineModuleAuthKey = (key: string) => `aside_${key}_entry`;
 
 export const defineRouterAuth = (router: Router) => {
-  const defineMaskPosition = (currentModule: AppAsideModule, index: number[]) => {
+  const defineMaskPosition = (currentModule: AsideModule, index: number[]) => {
     const indexLength = index.length;
     let length: number = 0;
     A: {
@@ -38,13 +38,13 @@ export const defineRouterAuth = (router: Router) => {
 
     const ele = document.getElementsByClassName("app-aside_panel")[0] as HTMLElement;
     ele.style.setProperty("--mask-top", `${length}`);
-    console.log(ele);
   };
 
-  router.beforeEach((to, from) => {
+  router.beforeEach((to) => {
     const { pages, modules, activeMenuIndex } = storeToRefs(useAppAsideStore());
     const { states } = storeToRefs(usePlayerStore());
     const toPage = pages.value.find((page) => page.path === to.name);
+    console.log("toPage: ", toPage);
     const toModule = modules.value.find((module) => {
       return module.key === toPage?.module;
     });
@@ -65,7 +65,7 @@ export const defineRouterAuth = (router: Router) => {
       return false;
     }
 
-    activeMenuIndex.value = toPage.key;
+    activeMenuIndex.value = toPage.key.join("-");
 
     defineMaskPosition(toModule!, toPage.key);
   });

@@ -1,0 +1,25 @@
+.aside-menu-block {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--small);
+  padding-left: var(--normal);
+  color: var(--gray);
+  cursor: pointer;
+  transition-duration: var(--flash);
+  transition-property: color, background;
+}
+
+.aside-menu-block_title {
+  margin-left: calc(var(--small) * 1.2);
+  font-size: calc(var(--font-small) * 0.95);
+}
+
+.aside-menu-block_sub {
+  margin-left: var(--normal);
+}
+
+.aside-menu-block[data-active] {
+  color: var(--white);
+}

@@ -6,7 +6,7 @@ export default defineComponent({
   name: "AppAsideModule",
   props: {
     module: {
-      type: Object as PropType<AppAsideModule>,
+      type: Object as PropType<AsideModule>,
       required: true,
     },
   },
@@ -14,7 +14,7 @@ export default defineComponent({
     const router = useRouter();
     const classList = computed<string[]>(() => [props.module.icon, "app-aside_module"]);
 
-    const routeToPage = (module: AppAsideModule) => {
+    const routeToPage = (module: AsideModule) => {
       const page = module.pages[0];
       if (page.children) {
         router.push({ name: page.children[0].path });

@@ -11,7 +11,7 @@ const useAppAsideStore = defineStore("app-aside", () => {
   const { states } = storeToRefs(usePlayerStore());
   const modules = defineModules();
 
-  const perfectPage = (page: ModulePage, module: AppAsideModule) => {
+  const perfectPage = (page: ModulePage, module: AsideModule) => {
     const auth = defineModuleAuthKey(module.key);
     page.auth.add(auth);
     page.module = module.key;
@@ -27,7 +27,7 @@ const useAppAsideStore = defineStore("app-aside", () => {
     });
   });
 
-  const activeModules = computed<AppAsideModule[]>(() => {
+  const activeModules = computed<AsideModule[]>(() => {
     return modules.value.filter((module) => {
       const auth = defineModuleAuthKey(module.key) as keyof typeof states.value;
       return states.value[auth];
@@ -38,7 +38,7 @@ const useAppAsideStore = defineStore("app-aside", () => {
   });
   const activeModuleIndex = computed(() => findIndex(activeModules.value, activeModule.value));
 
-  const activeMenuIndex = ref<number[]>([0]);
+  const activeMenuIndex = ref<string>("0");
 
   return { modules, pages, activeModules, activeModule, activeModuleIndex, activeMenuIndex };
 });

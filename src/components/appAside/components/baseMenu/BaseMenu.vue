@@ -1,28 +1,13 @@
 <script setup lang="ts">
-import Icon from "@/components/icon/Icon";
-import "./base-menu.css";
-import { defineMenuLayout } from "../../composables/menuLayout";
+import "./aside-menu.css";
+import { useAppAsideStore } from "../../store/aside.store";
+import MenuItem from "./MenuItem";
 
-const { asideMenu } = defineMenuLayout();
+const { activeModule } = useAppAsideStore();
 </script>
 
 <template>
-  <c-menu :ref="asideMenu.COMP">
-    <template #item-0="{ title, icon }">
-      <div class="module__name">
-        <Icon v-if="icon" :icon="icon" />
-        <span>
-          {{ title }}
-        </span>
-      </div>
-    </template>
-    <template #item-1="{ title, icon }">
-      <div class="module__name">
-        <Icon v-if="icon" :icon="icon" />
-        <span>
-          {{ title }}
-        </span>
-      </div>
-    </template>
-  </c-menu>
+  <article class="aside-menu">
+    <menu-item v-for="menu in activeModule?.pages" :key="menu.path" :page="menu" />
+  </article>
 </template>

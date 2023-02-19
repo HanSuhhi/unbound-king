@@ -11,6 +11,7 @@ const useRouterHistoryStore = defineStore("router-history", () => {
   const { activePage, activeAsideModule } = storeToRefs(useGlobalStore());
   const { pageTransition } = storeToRefs(useGlobalStore());
   const { pages } = useAppAsideStore();
+  const router = useRouter();
 
   const parsePage = (page: RouteLocationNormalized): ModulePage => {
     const _path = page.name as string;
@@ -18,11 +19,11 @@ const useRouterHistoryStore = defineStore("router-history", () => {
     return _page;
   };
 
-  const router = useRouter();
   router.afterEach((to, from) => {
     const fromPage = parsePage(from);
     const toPage = parsePage(to);
     if (!toPage) return alert("error");
+
     const toName = toPage.title;
     if (!routes.value.includes(toName)) {
       routes.value.push(toName);
@@ -34,8 +35,8 @@ const useRouterHistoryStore = defineStore("router-history", () => {
       else pageTransition.value = "slide-left";
     }
 
-    activePage.value = toPage;
-    activeAsideModule.value = toPage.module;
+    if (toPage !== activePage.value) activePage.value = toPage;
+    if (activeAsideModule.value !== toPage.module) activeAsideModule.value = toPage.module;
   });
 
   return { routes };

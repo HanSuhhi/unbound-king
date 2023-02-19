@@ -1,6 +1,5 @@
-@import "./menu-module-0.css";
-@import "./menu-module-1.css";
 @import "./menu-mask.css";
+@import "./menu-item.css";
 
 .menu-module {
   --color: var(--gray);
