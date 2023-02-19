@@ -9,7 +9,7 @@ import { makeModuleDraggable } from "./moduleDraggable";
 
 export const useAsideLayout = () => {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
-  const { activeModules, activeModule } = storeToRefs(useAppAsideStore());
+  const { activeModules } = storeToRefs(useAppAsideStore());
 
   const tabs = useCsssTabs({
     style: {
@@ -27,12 +27,12 @@ export const useAsideLayout = () => {
   watch(
     () => tabs.state.value?.active,
     (active) => {
-      activeAsideModule.value = activeModules.value[active]?.key;
+      activeAsideModule.value = activeModules.value[active];
     },
   );
 
   watch(activeAsideModule, () => {
-    tabs.state.value.active = findIndex(activeModules.value, activeModule.value);
+    tabs.state.value.active = findIndex(activeModules.value, activeAsideModule.value);
   });
 
   defineModuleBlock(tabs);

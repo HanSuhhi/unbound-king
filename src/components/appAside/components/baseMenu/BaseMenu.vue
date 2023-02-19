@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import "./aside-menu.css";
-import { useAppAsideStore } from "../../store/aside.store";
-import MenuItem from "./MenuItem";
+import { useGlobalStore } from '@/stores/global.store';
+import { storeToRefs } from 'pinia';
 import { useMenuItemClip } from "../../composables/menuItemClip";
+import "./aside-menu.css";
+import MenuItem from "./MenuItem";
 
-const { activeModule } = useAppAsideStore();
+const { activeAsideModule } = storeToRefs(useGlobalStore());
 useMenuItemClip();
 </script>
 
 <template>
   <article class="aside-menu">
-    <menu-item v-for="menu in activeModule?.pages" :key="menu.path" :page="menu" />
+    <menu-item v-for="menu in activeAsideModule?.pages" :key="menu.path" :page="menu" />
   </article>
 </template>

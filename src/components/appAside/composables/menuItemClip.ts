@@ -1,5 +1,5 @@
 import { useGlobalStore } from "@/stores/global.store";
-import { defer, find, isEqual } from "lodash-es";
+import { defer, isEqual } from "lodash-es";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
@@ -44,16 +44,15 @@ const defineMaskPosition = (currentModule: AsideModule, index: number[]) => {
 };
 
 export const useMenuItemClip = () => {
-  const { activeMenuIndex, modules } = storeToRefs(useAppAsideStore());
+  const { activeMenuIndex } = storeToRefs(useAppAsideStore());
   const { activeAsideModule } = storeToRefs(useGlobalStore());
 
   defer(() => {
-    const module = find<AsideModule>(modules.value, (module) => module.key === activeAsideModule.value);
     watch(
       activeMenuIndex,
       () => {
         defineMaskPosition(
-          module!,
+          activeAsideModule.value!,
           activeMenuIndex.value.split("-").map((i) => Number(i)),
         );
       },

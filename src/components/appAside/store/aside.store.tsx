@@ -1,13 +1,11 @@
-import { useGlobalStore } from "@/stores/global.store";
 import { usePlayerStore } from "@/stores/player.store";
-import { find, findIndex, flatMap } from "lodash-es";
+import { flatMap } from "lodash-es";
 import { defineStore, storeToRefs } from "pinia";
-import { computed, onBeforeMount, ref } from "vue";
+import { computed, ref } from "vue";
 import { defineModuleAuthKey } from "../../../composables/routerAuth";
 import { defineModules } from "../data/modules";
 
 const useAppAsideStore = defineStore("app-aside", () => {
-  const { activeAsideModule } = storeToRefs(useGlobalStore());
   const { states } = storeToRefs(usePlayerStore());
   const modules = defineModules();
 
@@ -33,12 +31,9 @@ const useAppAsideStore = defineStore("app-aside", () => {
       return states.value[auth];
     });
   });
-  const activeModule = computed(() => {
-    return find(activeModules.value, (activeModule) => activeModule.key === activeAsideModule.value);
-  });
 
   const activeMenuIndex = ref<string>("0");
 
-  return { modules, pages, activeModules, activeModule, activeMenuIndex };
+  return { modules, pages, activeModules, activeMenuIndex };
 });
 export { useAppAsideStore };
