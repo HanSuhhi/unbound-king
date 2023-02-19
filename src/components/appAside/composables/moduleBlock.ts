@@ -1,9 +1,8 @@
 import type { useCsssTabs } from "csss-ui";
-import { storeToRefs } from "pinia";
-import { nextTick, watchEffect, computed, watch } from "vue";
-import { useSettingStore } from "@/views/setting/store/setting.store";
-import { useAppAsideStore } from "../store/aside.store";
 import { findIndex } from "lodash-es";
+import { storeToRefs } from "pinia";
+import { computed, nextTick, watchEffect } from "vue";
+import { useAppAsideStore } from "../store/aside.store";
 
 const calcModuleBorderRadius = (active: number, total: number): string => {
   if (total !== 1) {
@@ -15,7 +14,9 @@ const calcModuleBorderRadius = (active: number, total: number): string => {
 };
 
 export const defineModuleBlock = (tabs: ReturnType<typeof useCsssTabs>) => {
-  const { activeModules, activeModuleIndex } = storeToRefs(useAppAsideStore());
+  const { activeModules, activeModule } = storeToRefs(useAppAsideStore());
+
+  const activeModuleIndex = computed(() => findIndex(activeModules.value, activeModule.value));
 
   const updateModuleBlock = () => {
     const listElement = tabs.read.value.tabsList;

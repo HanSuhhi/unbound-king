@@ -1,23 +1,7 @@
 @import "./menu-mask.css";
 @import "./menu-item.css";
 
-.menu-module {
-  --color: var(--gray);
-  --active: var(--white);
-
-  color: var(--color);
-}
-
-.menu-item {
-  cursor: pointer;
-}
-
-.module__name {
-  display: flex;
-  align-items: center;
-  font-size: calc(var(--font-small) * 0.95);
-}
-
-.module__name > span {
-  margin-left: calc(var(--small) * 1.2);
+.aside-menu {
+  --title-size: calc(var(--font-small) * 0.95);
+  --title-height: calc(var(--title-size) + 2 * var(--normal) / 1.4);
 }

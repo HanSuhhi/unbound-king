@@ -5,6 +5,9 @@
   width: 3px;
   height: 100%;
   background-color: var(--main-color);
-  transition: top 0.45s;
+  opacity: var(--mask-opacity);
+  transition: var(--moment) ease-in-out;
+  transition-delay: var(--transition-delay);
+  transition-property: var(--transition-property);
   content: "";
 }

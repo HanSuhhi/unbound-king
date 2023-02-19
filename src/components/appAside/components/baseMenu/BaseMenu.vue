@@ -2,8 +2,10 @@
 import "./aside-menu.css";
 import { useAppAsideStore } from "../../store/aside.store";
 import MenuItem from "./MenuItem";
+import { useMenuItemClip } from "../../composables/menuItemClip";
 
 const { activeModule } = useAppAsideStore();
+useMenuItemClip();
 </script>
 
 <template>

@@ -1,9 +1,12 @@
 .aside-menu-block {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 15% 75% 10%;
   align-items: center;
-  justify-content: flex-start;
-  padding: var(--small);
+  justify-items: start;
+  box-sizing: border-box;
+  height: var(--title-height);
   padding-left: var(--normal);
   color: var(--gray);
   cursor: pointer;
@@ -13,13 +16,35 @@
 
 .aside-menu-block_title {
   margin-left: calc(var(--small) * 1.2);
-  font-size: calc(var(--font-small) * 0.95);
+  font-size: var(--title-size);
 }
 
 .aside-menu-block_sub {
+  --length: 0;
+  --total-height: calc(var(--length) * var(--title-height));
+
+  height: var(--total-height);
   margin-left: var(--normal);
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.aside-menu-block_sub[data-collapse] {
+  height: 0;
 }
 
 .aside-menu-block[data-active] {
   color: var(--white);
+}
+
+.aside-menu-block[data-active] > .icon {
+  color: var(--main-color);
+}
+
+.aside-menu-block > div:last-child {
+  transition: transform var(--moment);
+}
+
+.aside-menu-block[data-collapse] > div:last-child {
+  transform: rotate(180deg);
 }

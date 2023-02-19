@@ -1,3 +1,4 @@
+import { delay } from "lodash-es";
 import type { PropType } from "vue";
 import { computed, defineComponent } from "vue";
 import { useRouter } from "vue-router";
@@ -23,9 +24,25 @@ export default defineComponent({
       }
     };
 
+    const toggleModule = () => {
+      const AppAside = document.getElementsByClassName("app-aside")[0] as HTMLElement;
+      AppAside.style.setProperty("--transition-delay", ".45s");
+      AppAside.style.setProperty("--transition-property", "top");
+      // top, opacity;
+      delay(() => {
+        AppAside.style.setProperty("--transition-property", "top, opacity");
+        AppAside.style.setProperty("--transition-delay", "0s");
+      }, 450);
+    };
+
     return () => {
       return (
-        <div class="app-aside__list-item" onClick={routeToPage.bind(this, props.module)}>
+        <div
+          class="app-aside__list-item"
+          onClick={() => {
+            routeToPage(props.module);
+            toggleModule();
+          }}>
           <div class={classList.value} />
         </div>
       );

@@ -36,10 +36,9 @@ const useAppAsideStore = defineStore("app-aside", () => {
   const activeModule = computed(() => {
     return find(activeModules.value, (activeModule) => activeModule.key === activeAsideModule.value);
   });
-  const activeModuleIndex = computed(() => findIndex(activeModules.value, activeModule.value));
 
   const activeMenuIndex = ref<string>("0");
 
-  return { modules, pages, activeModules, activeModule, activeModuleIndex, activeMenuIndex };
+  return { modules, pages, activeModules, activeModule, activeMenuIndex };
 });
 export { useAppAsideStore };

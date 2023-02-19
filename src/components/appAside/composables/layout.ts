@@ -1,5 +1,6 @@
 import { useGlobalStore } from "@/stores/global.store";
 import { useCsssTabs } from "csss-ui";
+import { findIndex } from "lodash-es";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
@@ -8,7 +9,7 @@ import { makeModuleDraggable } from "./moduleDraggable";
 
 export const useAsideLayout = () => {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
-  const { activeModules, activeModuleIndex } = storeToRefs(useAppAsideStore());
+  const { activeModules, activeModule } = storeToRefs(useAppAsideStore());
 
   const tabs = useCsssTabs({
     style: {
@@ -30,8 +31,8 @@ export const useAsideLayout = () => {
     },
   );
 
-  watch(activeModuleIndex, (activeIndex) => {
-    tabs.state.value.active = activeIndex;
+  watch(activeAsideModule, () => {
+    tabs.state.value.active = findIndex(activeModules.value, activeModule.value);
   });
 
   defineModuleBlock(tabs);
