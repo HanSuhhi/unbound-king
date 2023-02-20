@@ -17,6 +17,11 @@ export default defineComponent({
           <div class="i-ps-tribe" v-show={false} />
           <div class="i-simple-icons-lineageos" v-show={false} />
           <div class="i-game-icons-abstract-065" v-show={false} />
+          <div class="i-game-icons-bandana" v-show={false} />
+          <div class="i-game-icons-brain-tentacle" v-show={false} />
+          <div class="i-game-icons-bear-face" v-show={false} />
+          <div class="i-game-icons-beech" v-show={false} />
+          <div class="i-game-icons-chemical-bolt" v-show={false} />
         </>
       );
     };

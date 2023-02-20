@@ -1,8 +1,7 @@
 .alert {
   display: flex;
   align-items: center;
-  padding: var(--mini) var(--small);
-  background-color: rgb(118 93 11 / 80%);
+  padding: calc(0.4 * var(--mini)) var(--small);
   border-radius: var(--small);
 }
 
@@ -11,4 +10,12 @@
   min-width: 1.2rem;
   min-height: 1.2rem;
   margin: var(--small);
+}
+
+.alert_warning {
+  background-color: rgb(118 93 11 / 80%);
+}
+
+.alert_info {
+  background-color: rgb(99 124 128 / 80%);
 }

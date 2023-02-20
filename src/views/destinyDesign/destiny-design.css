@@ -1,13 +1,15 @@
-.nation-design {
+@import "./styles/design-alert.css";
+@import "./styles/destiny-aside.css";
+
+.destiny-design {
+  --aside-width: 20rem;
+
   position: relative;
+  width: 100%;
   height: 100%;
 }
 
-.nation-design_alert {
-  margin: var(--mini) var(--normal);
-}
-
-.nation-design_alert p {
-  margin-block-start: 0.2em;
-  margin-block-end: 0.2em;
+.destiny-design_main {
+  min-width: calc(100% - var(--aside-width));
+  overflow: hidden;
 }

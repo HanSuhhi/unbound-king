@@ -8,4 +8,5 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--normal);
+  padding-bottom: var(--small);
 }

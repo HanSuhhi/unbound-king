@@ -48,3 +48,7 @@
 .aside-menu-block[data-collapse] > div:last-child {
   transform: rotate(180deg);
 }
+
+.aside-menu-block_sub > .aside-menu-block:hover {
+  /* background: linear-gradient(var(--bg-color), var(--bg-color-bright-2)); */
+}

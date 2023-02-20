@@ -14,7 +14,7 @@ export default defineComponent({
   setup: (props, { slots }) => {
     return () => {
       return (
-        <div class="alert">
+        <div class={["alert", `alert_${props.type}`]}>
           <div class="i-ph-info-bold alert_icon" />
           <div class="alert_words">{slots.default?.()}</div>
         </div>

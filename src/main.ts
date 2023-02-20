@@ -2,6 +2,7 @@ import "./styles/index.css";
 import "./config.css";
 import "uno.css";
 import "@hansuhhi-don/csss/dist/style.css";
+import "./styles/prism.css";
 
 import { createApp } from "vue";
 import App from "./App.vue";

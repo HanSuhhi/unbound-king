@@ -1,0 +1,8 @@
+.destiny-design_alert {
+  margin: var(--mini) var(--normal);
+}
+
+.destiny-design_alert p {
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+}
