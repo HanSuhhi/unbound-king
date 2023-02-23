@@ -1,19 +1,35 @@
 <script setup lang='ts'>
+import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
+import { defineTabs } from '../composables/mainTabs';
 import { useDestinyStore } from '../store/destiny.store';
 import DestinyItemCard from './DestinyItemCard.vue';
+import DestinyDetail from "./DestinyDetail.vue";
 
-const { destinies } = useDestinyStore();
+const { COMP, state, read } = defineTabs();
+const { destinies, tabsIndex: _tabsIndex } = storeToRefs(useDestinyStore());
+const tabsIndex = computed({
+  get: () => state.value?.active || 0,
+  set: (index) => {
+    (state.value.active = index);
+    _tabsIndex.value = index;
+  },
+});
+
+const changeTab = (index: number) => {
+  tabsIndex.value = index;
+};
 </script>
 
 <template>
-  <article class="destiny-cards">
-    <DestinyItemCard v-for="destiny in destinies" :key="destiny.key" :destiny="destiny" />
-  </article>
+  <c-tabs ref="COMP">
+    <template #list>
+      <DestinyItemCard v-for="(destiny, index) in destinies" :key="destiny.key" :destiny="destiny" :index="index"
+        @triggered="changeTab(index)" />
+    </template>
+    <template v-for="panel, index of read?.panels" :key="panel" #[panel]>
+      <destiny-detail :destiny="destinies[index]" />
+    </template>
+  </c-tabs>
 </template>
 
-<style scoped>
-.destiny-cards {
-  display: flex;
-  min-width: calc(100% - var(--aside-width));
-}
-</style>

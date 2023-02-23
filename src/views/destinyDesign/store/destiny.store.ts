@@ -5,6 +5,8 @@ import { DATA_Destiny } from "../data/destiny.data";
 const useDestinyStore = defineStore("destiny-store", () => {
   const destinies = ref<Destiny[]>(DATA_Destiny);
 
-  return { destinies };
+  const tabsIndex = ref(0);
+
+  return { destinies, tabsIndex };
 });
 export { useDestinyStore };

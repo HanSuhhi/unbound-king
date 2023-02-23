@@ -1,0 +1,9 @@
+.type-button_blue {
+  --bg-color-main: var(--blue-deep-1);
+  --bg-color-sub: var(--blue-bright-1);
+}
+
+.type-button_red {
+  --bg-color-main: var(--red-bright-2);
+  --bg-color-sub: var(--yellow-bright-1);
+}

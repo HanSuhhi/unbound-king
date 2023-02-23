@@ -11,6 +11,9 @@
   transition-delay: var(--flash);
 }
 
-.slide-down-leave-active.setting-body {
-  transition-delay: 0s;
+.slide-down-leave-active.setting-header,
+.slide-up-leave-active.setting-footer {
+  transition-delay: var(--flash);
+
+  /* transition-delay: 0s; */
 }

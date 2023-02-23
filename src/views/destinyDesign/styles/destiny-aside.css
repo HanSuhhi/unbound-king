@@ -1,10 +1,11 @@
 .destiny-design_aside {
-  min-width: var(--aside-width);
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .destiny-design_aside > .code-canvas {
   height: max-content;
   background-color: var(--bg-color-bright-1);
   border-top-left-radius: var(--normal);
-  border-bottom-left-radius: var(--normal);
 }

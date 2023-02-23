@@ -58,9 +58,6 @@
   border-radius: var(--mini);
   cursor: pointer;
   transition: all var(--moment);
-
-  --bg-color-main: var(--bg-color-bright-2);
-  --bg-color-sub: var(--bg-color-bright-1);
 }
 
 /* kbd */

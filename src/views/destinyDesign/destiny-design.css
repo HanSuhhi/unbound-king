@@ -1,8 +1,11 @@
-@import "./styles/design-alert.css";
+@import "./styles/destiny-alert.css";
 @import "./styles/destiny-aside.css";
+@import "./styles/destiny-main.css";
+@import "./styles/destiny-cards.css";
+@import "./styles/destiny-panel.css";
 
 .destiny-design {
-  --aside-width: 20rem;
+  --aside-width: 25%;
 
   position: relative;
   width: 100%;
@@ -10,6 +13,7 @@
 }
 
 .destiny-design_main {
-  min-width: calc(100% - var(--aside-width));
+  width: calc(100% - var(--normal) + 2px);
+  margin-left: var(--normal);
   overflow: hidden;
 }

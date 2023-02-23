@@ -16,8 +16,8 @@ export default defineComponent({
     const { settingPageActive } = storeToRefs(useSettingStore());
     const { quitDialog, applySetting, resetSetting } = useKeyCommand();
     provide("quit-dialog", quitDialog);
-    provide("apply-setting", applySetting);
     provide("reset-setting", resetSetting);
+    provide("apply-setting", applySetting);
 
     return () => {
       return (

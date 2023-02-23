@@ -1,0 +1,39 @@
+.title-card {
+  --padding: var(--normal);
+  --border-radius: var(--small);
+
+  color: var(--white);
+  background-color: var(--bg-color-bright-1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-2);
+}
+
+.title-card p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.title-card_header {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--small) var(--padding);
+  background-color: var(--bg-color-bright-2);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+.title-card_title {
+  font-size: calc(var(--large) * 0.5);
+}
+
+.title-card_subtitle {
+  display: flex;
+  align-items: center;
+  color: var(--gray);
+  font-size: calc(var(--small) * 1.9);
+}
+
+.title-card_main {
+  height: 100%;
+  padding: var(--padding);
+}

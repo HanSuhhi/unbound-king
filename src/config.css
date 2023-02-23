@@ -4,6 +4,11 @@
   font-display: swap;
 }
 
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 :root {
   font-size: 16px;
 }
@@ -49,4 +54,5 @@ body {
   --box-shadow-1: rgb(255 255 255 / 10%) -1px 0 1px 0 inset, rgb(50 50 93 / 25%) 20px 0 20px 3px, rgb(0 0 0 / 30%) 20px 0 20px 1px;
   /* stylelint-disable-next-line max-line-length */
   --box-shadow-1-luster: rgb(255 255 255 / 30%) -1px 0 1px 0 inset, rgb(50 50 93 / 25%) 20px 0 20px 3px, rgb(0 0 0 / 30%) 20px 0 20px 1px;
+  --box-shadow-2: rgb(0 0 0 / 20%) 0 12px 28px 0, rgb(0 0 0 / 10%) 0 2px 4px 0, rgb(255 255 255 / 5%) 0 0 0 1px inset;
 }
