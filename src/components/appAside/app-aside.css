@@ -19,6 +19,7 @@
   position: relative;
   flex-direction: row;
   height: calc(100% - var(--header-height));
+  margin-top: var(--small);
   color: var(--white);
 }
 

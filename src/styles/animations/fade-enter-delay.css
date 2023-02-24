@@ -1,0 +1,13 @@
+.fade-enter-delay-enter-active,
+.fade-enter-delay-leave-active {
+  --ani-time: 0.4s;
+
+  transition: all var(--ani-time) ease;
+}
+
+.fade-enter-delay-enter-from,
+.fade-enter-delay-leave-to {
+  --opacity-from: 0.3;
+
+  opacity: var(--opacity-from);
+}

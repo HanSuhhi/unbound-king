@@ -2,6 +2,7 @@
   --padding: var(--normal);
   --border-radius: var(--small);
 
+  z-index: 1;
   color: var(--white);
   background-color: var(--bg-color-bright-1);
   border-radius: var(--border-radius);
@@ -14,6 +15,9 @@
 }
 
 .title-card_header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   padding: var(--small) var(--padding);
@@ -24,13 +28,14 @@
 
 .title-card_title {
   font-size: calc(var(--large) * 0.5);
+  white-space: nowrap;
 }
 
 .title-card_subtitle {
   display: flex;
   align-items: center;
   color: var(--gray);
-  font-size: calc(var(--small) * 1.9);
+  font-size: calc(var(--small) * 1.7);
 }
 
 .title-card_main {

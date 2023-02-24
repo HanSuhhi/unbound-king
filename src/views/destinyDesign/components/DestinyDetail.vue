@@ -1,10 +1,17 @@
 <script setup lang='ts'>
 import { useCsssLayout } from 'csss-ui';
 import TitleCard from '@/components/titleCard/TitleCard';
+import { computed, onMounted } from 'vue';
 
-defineProps<{
+const props = defineProps<{
   destiny: Destiny
 }>();
+
+const destinyOrigin = computed(() => props.destiny.origin?.split(`
+
+`));
+
+
 
 const { COMP } = useCsssLayout({
   state: {
@@ -31,24 +38,24 @@ const { COMP } = useCsssLayout({
     <header class="destiny-detail_header">
       <title-card class="destiny-detail_main">
         <template #title>种族渊源</template>
-        <pre class="destiny-detail_origin">
-        {{ destiny.origin }}
-        </pre>
+        <p v-for="origin of destinyOrigin" :key="origin" class="destiny-detail_origin">
+          {{ origin }}
+        </p>
       </title-card>
       <aside class="destiny-detail_aside">
         <title-card class="destiny-detail_hero destiny-detail_sub">
           <template #title>人物技能</template>
           <template #subtitle>
-            <div class="i-mingcute-warning-line" style="margin-right: var(--mini);" />
-            该种族出身可能获得其中的任意技能，并非绝对
+            <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
+            该种族出身可能获得以下的技能
           </template>
           Lorem ipsum dolor sit amet consectetur, .
         </title-card>
         <title-card class="destiny-detail_land destiny-detail_sub">
           <template #title>聚落特色</template>
           <template #subtitle>
-            <div class="i-mingcute-warning-line" style="margin-right: var(--mini);" />
-            种族工匠可能拥有以下建筑的工艺
+            <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
+            该种族工匠可能拥有以下的建筑工艺
           </template>
           Lorem ipsum dolor sit amet consectetur, .
         </title-card>
@@ -82,6 +89,7 @@ const { COMP } = useCsssLayout({
   display: flex;
   width: 100%;
   height: calc(var(--header-height) - var(--clip-size));
+  max-height: 55vh;
   margin-bottom: var(--clip-size);
 }
 
@@ -104,6 +112,7 @@ const { COMP } = useCsssLayout({
 
 .destiny-detail_footer {
   height: calc(100% - var(--header-height));
+  max-height: 28.5vh;
 }
 
 .destiny-detail_description {
@@ -112,11 +121,17 @@ const { COMP } = useCsssLayout({
 
 .destiny-detail_origin {
   position: relative;
-  margin: 0;
   color: var(--yellow-bright-2);
   font-size: calc(var(--normal) * 1.04);
-  line-height: 1.5;
+  line-height: 1.8;
   white-space: pre-line;
+  text-indent: 2em;
+  margin-block-start: 0.8em !important;
+  margin-block-end: 0.8em !important;
+}
+
+.destiny-detail_origin:first-child {
+  margin-block-start: 0 !important;
 }
 </style>
 

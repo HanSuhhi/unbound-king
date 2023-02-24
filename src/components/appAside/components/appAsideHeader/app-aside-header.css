@@ -1,16 +1,21 @@
-.app-aside__header {
+.app-aside-header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: var(--header-height);
   font-family: Pacifico, sans-serif;
+  border-bottom: 1px dashed var(--main-color);
 }
 
-.app-aside__header > span {
-  padding-right: 2rem;
+.app-aside-header_title {
+  position: absolute;
+  left: var(--large);
   letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
-.app-aside__header > div {
-  margin-left: 1rem;
+.app-aside-header_icon {
+  margin-right: var(--large);
+  cursor: pointer;
+  transition-delay: var(--ani-time);
 }

@@ -3,9 +3,10 @@ import { useGlobalStore } from "@/stores/global.store";
 import { isEqual } from "lodash-es";
 import { storeToRefs } from "pinia";
 import type { PropType } from "vue";
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, Transition } from "vue";
 import { useRouter } from "vue-router";
 import { useMenuCollapse } from "../../composables/menuCollapse";
+import { useAppAsideStore } from "@/components/appAside/store/aside.store";
 
 const MenuItem = defineComponent({
   name: "MenuItem",
@@ -17,6 +18,7 @@ const MenuItem = defineComponent({
   },
   setup: (props) => {
     const { activePage } = storeToRefs(useGlobalStore());
+    const { asideCollapsed } = storeToRefs(useAppAsideStore());
 
     const router = useRouter();
     const children = computed(() => props.page.children);
@@ -34,16 +36,19 @@ const MenuItem = defineComponent({
       }
       return isEqual(props.page, activePage.value) ? "" : null;
     });
+
     return () => {
       return (
         <>
           <section class="aside-menu-block" data-collapse={collapse.value} data-active={active.value} onClick={children.value ? toggleCollapse : routeToPage}>
             {props.page.icon && <Icon icon={props.page.icon} />}
-            <span class="aside-menu-block_title">{props.page.title}</span>
-            {children.value && <div class="i-material-symbols-keyboard-arrow-down-rounded" />}
+            <Transition name="fade" mode="in-out">
+              {!asideCollapsed.value && <span class="aside-menu-block_title">{props.page.title}</span>}
+            </Transition>
+            {children.value && <div class="aside-menu-block_mask i-material-symbols-keyboard-arrow-down-rounded" />}
           </section>
           {props.page.children && (
-            <section class="aside-menu-block_sub" data-collapse={collapse.value} style={`--length: ${children.value?.length}`}>
+            <section class="aside-menu-block_sub" data-aside-collapse={asideCollapsed.value ? "" : null} data-collapse={collapse.value} style={`--length: ${children.value?.length}`}>
               {props.page.children.map((moduleChild) => (
                 <MenuItem page={moduleChild} />
               ))}

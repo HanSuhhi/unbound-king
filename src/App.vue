@@ -5,23 +5,21 @@ import AppAsideHeader from "./components/appAside/components/appAsideHeader/AppA
 import AppHeader from "./components/appHeader/AppHeader";
 import GlobalDialog from "./components/dialog/GlobalDialog";
 import IconPreset from "./components/IconPreset";
-import { useApp } from "./composables/app";
 import Setting from "./views/setting/Setting";
 import { useGlobalStore } from '@/stores/global.store';
 import { storeToRefs } from 'pinia';
+import { defineAppLayout } from "./composables/appLayout";
 
-const { Layout } = useApp();
+const { Layout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
 
 const iconPreset = ref(true);
-nextTick(() => {
-  iconPreset.value = false;
-});
+nextTick(() => iconPreset.value = false);
 </script>
 
 <template>
   <IconPreset v-if="iconPreset" />
-  <c-layout ref="Layout">
+  <c-layout ref="Layout" class="app app-delay">
     <router-view v-slot="{ Component }">
       <transition :name="pageTransition" mode="out-in">
         <component :is="Component" />

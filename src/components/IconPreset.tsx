@@ -9,7 +9,6 @@ export default defineComponent({
           <div class="i-material-symbols-view-module" v-show={false} />
           <div class="i-carbon-two-factor-authentication" v-show={false} />
           <div class="i-mdi-horse-human" v-show={false} />
-          <div class="i-ant-design-align-left-outlined" v-show={false} />
           <div class="i-icon-park-solid-more-four" v-show={false} />
           <div class="i-fontisto-bell" v-show={false} />
           <div class="i-tabler-device-analytics" v-show={false} />
@@ -22,6 +21,8 @@ export default defineComponent({
           <div class="i-game-icons-bear-face" v-show={false} />
           <div class="i-game-icons-beech" v-show={false} />
           <div class="i-game-icons-chemical-bolt" v-show={false} />
+          <div class="i-game-icons-skills" v-show={false}></div>
+          <div class="i-circum-no-waiting-sign" v-show={false}></div>
         </>
       );
     };

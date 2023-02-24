@@ -1,10 +1,8 @@
 .aside-menu-block {
   position: relative;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 15% 75% 10%;
+  display: flex;
   align-items: center;
-  justify-items: start;
+  justify-content: space-between;
   box-sizing: border-box;
   height: var(--title-height);
   padding-left: var(--normal);
@@ -15,8 +13,12 @@
 }
 
 .aside-menu-block_title {
+  position: relative;
+  width: 100%;
   margin-left: calc(var(--small) * 1.2);
   font-size: var(--title-size);
+  white-space: nowrap;
+  text-align: left;
 }
 
 .aside-menu-block_sub {
@@ -27,6 +29,10 @@
   margin-left: var(--normal);
   overflow: hidden;
   transition: all 0.3s ease-out;
+}
+
+.aside-menu-block_sub[data-aside-collapse] {
+  margin-left: 0;
 }
 
 .aside-menu-block_sub[data-collapse] {
@@ -45,10 +51,12 @@
   transition: transform var(--moment);
 }
 
-.aside-menu-block[data-collapse] > div:last-child {
-  transform: rotate(180deg);
+.aside-menu-block_mask {
+  position: relative;
+  right: var(--small);
+  transform: scale(1.2);
 }
 
-.aside-menu-block_sub > .aside-menu-block:hover {
-  /* background: linear-gradient(var(--bg-color), var(--bg-color-bright-2)); */
+.aside-menu-block[data-collapse] > .aside-menu-block_mask {
+  transform: rotate(180deg) scale(1.2);
 }

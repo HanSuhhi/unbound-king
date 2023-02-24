@@ -9,7 +9,7 @@ const useAppAsideStore = defineStore("app-aside", () => {
   const { states } = storeToRefs(usePlayerStore());
   const modules = defineModules();
 
-  const perfectPage = (page: ModulePage, module: AsideModule) => {
+  const _perfectPage = (page: ModulePage, module: AsideModule) => {
     const auth = defineModuleAuthKey(module.key);
     page.auth.add(auth);
     page.module = module.key;
@@ -21,7 +21,7 @@ const useAppAsideStore = defineStore("app-aside", () => {
       return flatMap(module.pages, (page) => {
         if (page.children) return page.children;
         else return page;
-      }).map((page) => perfectPage(page, module));
+      }).map((page) => _perfectPage(page, module));
     });
   });
 
@@ -34,6 +34,8 @@ const useAppAsideStore = defineStore("app-aside", () => {
 
   const activeMenuIndex = ref<string>("0");
 
-  return { modules, pages, activeModules, activeMenuIndex };
+  const asideCollapsed = ref(false);
+
+  return { modules, pages, activeModules, activeMenuIndex, asideCollapsed };
 });
 export { useAppAsideStore };

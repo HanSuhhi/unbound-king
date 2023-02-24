@@ -24,4 +24,9 @@ export const devModuleConfig: ModulePage[] = defineModuleConfig([
       },
     ],
   },
+  {
+    path: "skill-design",
+    title: "技能设计",
+    icon: "i-game-icons-skills",
+  },
 ]);
