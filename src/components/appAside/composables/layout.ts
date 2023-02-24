@@ -15,9 +15,9 @@ export const useAsideLayout = () => {
     style: {
       panelTransition: "aside-module",
       classList: {
-        tabs: ["", "app-aside__box"],
-        list: ["app-aside__list"],
-        listItem: ["app-aside__list-box"],
+        tabs: ["", "app-aside_box"],
+        list: ["app-aside_list"],
+        listItem: ["app-aside_item"],
         panel: ["app-aside_panel"],
         panelItem: ["_"],
       },

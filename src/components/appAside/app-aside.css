@@ -13,7 +13,7 @@
   box-shadow: var(--box-shadow-1);
 }
 
-.app-aside__box {
+.app-aside_box {
   --ani-time: 0.3s;
 
   position: relative;

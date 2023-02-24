@@ -1,6 +1,9 @@
 import { useDraggable } from "@vueuse/core";
 import type { useCsssTabs } from "csss-ui";
+import type { WatchStopHandle } from "vue";
 import { nextTick, watchEffect, watch } from "vue";
+import { storeToRefs } from "pinia";
+import { useAppAsideStore } from "@/components/appAside/store/aside.store";
 
 const addStylesWidthStyleString = (style: string, ele: HTMLElement | undefined) => {
   const styles = style.split(";");
@@ -12,8 +15,19 @@ const addStylesWidthStyleString = (style: string, ele: HTMLElement | undefined) 
   });
 };
 
+let limitX: WatchStopHandle;
+let limitY: WatchStopHandle;
+
+const clearLimits = () => {
+  limitX?.();
+  limitY?.();
+};
+
 export const makeModuleDraggable = (tabs: ReturnType<typeof useCsssTabs>) => {
-  nextTick(() => {
+  const { asideCollapsed } = storeToRefs(useAppAsideStore());
+
+  const setModuleDraggableLimit = () => {
+    clearLimits();
     const aside = tabs.read.value.tabs;
     const list = tabs.read.value.tabsList;
     const asideWidth = aside!.clientWidth;
@@ -27,14 +41,22 @@ export const makeModuleDraggable = (tabs: ReturnType<typeof useCsssTabs>) => {
       initialValue: { x: initX, y: initY },
     });
     watchEffect(() => addStylesWidthStyleString(style.value, tabs.read.value.tabsList));
-    watch(x, (newX) => {
+
+    const limitXMethod = (newX: number) => {
       if (newX > initX) x.value = initX;
       if (newX < 0) x.value = 0;
-    });
-    watch(y, (newY) => {
+    };
+    const limitYMethod = (newY: number) => {
       const bottomHeight = asideHeight - listHeight;
       if (newY > bottomHeight) y.value = bottomHeight;
       if (newY < 0) y.value = 0;
-    });
-  });
+    };
+
+    limitX = watch(x, limitXMethod);
+    limitY = watch(y, limitYMethod);
+  };
+
+  nextTick(setModuleDraggableLimit);
+
+  watch(asideCollapsed, setTimeout.bind(this, setModuleDraggableLimit, 1000));
 };

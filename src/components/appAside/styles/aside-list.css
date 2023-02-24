@@ -1,4 +1,4 @@
-.app-aside__list {
+.app-aside_list {
   --list-width: 4rem;
   --border-radius: var(--normal);
 
@@ -16,7 +16,7 @@
   box-shadow: var(--box-shadow-1);
 }
 
-.app-aside__list::before {
+.app-aside_list::before {
   --height: calc(100% / var(--module-length));
   --top: calc(var(--active) * var(--height));
 

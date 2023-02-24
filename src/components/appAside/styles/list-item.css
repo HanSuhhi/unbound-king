@@ -1,23 +1,23 @@
-.app-aside__list-item {
+.app-aside_list-item {
   position: relative;
   padding: calc(var(--normal) * 1.4);
   transition: all var(--moment);
 }
 
-.app-aside__list-item:first-child {
+.app-aside_list-item:first-child {
   border-top-left-radius: var(--normal);
   border-top-right-radius: var(--normal);
 }
 
-.app-aside__list-item:last-child {
+.app-aside_list-item:last-child {
   border-bottom-right-radius: var(--normal);
   border-bottom-left-radius: var(--normal);
 }
 
-.app-aside__list-item:hover {
+.app-aside_list-item:hover {
   cursor: pointer;
 }
 
-.app-aside__list-box[data-active] > .app-aside__list-item {
+.app-aside_item[data-active] > .app-aside_list-item {
   color: var(--main-color);
 }
