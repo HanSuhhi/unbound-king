@@ -21,7 +21,7 @@ export const defineTabs = () => {
   const setPanelTotalHeight = () => {
     const Tabs = document.getElementsByClassName("destiny-design-main_cards")[0];
     const Panels = document.getElementsByClassName("destiny-design-main_panel")[0] as HTMLElement;
-    Panels.style.height = `calc(100% - ${Tabs.clientHeight}px)`;
+    Panels.style.height = `calc(100% - ${Tabs.clientHeight}px - 1.7 * var(--clip-size))`;
   };
   nextTick(setPanelTotalHeight);
 

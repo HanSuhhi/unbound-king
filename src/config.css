@@ -41,6 +41,10 @@ body {
   inset: 0;
 }
 
+.app-main {
+  height: calc(100vh - var(--header-height));
+}
+
 .csss-layout.slide-left-enter-active,
 .csss-layout.slide-left-leave-active,
 .csss-layout.slide-right-enter-active,
