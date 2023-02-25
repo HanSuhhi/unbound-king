@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { useCsssLayout } from 'csss-ui';
 import TitleCard from '@/components/titleCard/TitleCard';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 const props = defineProps<{
   destiny: Destiny
@@ -10,6 +10,12 @@ const props = defineProps<{
 const destinyOrigin = computed(() => props.destiny.origin?.split(`
 
 `));
+
+const DestinyFooter = ref();
+const scroll = (wheelEvent: WheelEvent) => {
+  DestinyFooter.value.scrollLeft += wheelEvent.deltaY;
+};
+
 
 </script>
 
@@ -29,9 +35,9 @@ const destinyOrigin = computed(() => props.destiny.origin?.split(`
         </title-card>
       </aside>
     </header>
-    <footer class="destiny-detail_footer">
+    <footer ref="DestinyFooter" class="destiny-detail_footer" @wheel.prevent="scroll">
       <title-card class="destiny-detail_hero destiny-detail_sub">
-        <template #title>人物技能</template>
+        <template #title>聚落特色</template>
         <template #subtitle>
           <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
           该种族出身可能获得以下的技能
@@ -39,7 +45,7 @@ const destinyOrigin = computed(() => props.destiny.origin?.split(`
         Lorem ipsum dolor sit amet consectetur, .
       </title-card>
       <title-card class="destiny-detail_land destiny-detail_sub">
-        <template #title>聚落特色</template>
+        <template #title>心法</template>
         <template #subtitle>
           <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
           该种族工匠可能拥有以下的建筑工艺
@@ -47,7 +53,7 @@ const destinyOrigin = computed(() => props.destiny.origin?.split(`
         Lorem ipsum dolor sit amet consectetur, .
       </title-card>
       <title-card class="destiny-detail_hero destiny-detail_sub">
-        <template #title>人物技能</template>
+        <template #title>内功</template>
         <template #subtitle>
           <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
           该种族出身可能获得以下的技能
@@ -55,7 +61,7 @@ const destinyOrigin = computed(() => props.destiny.origin?.split(`
         Lorem ipsum dolor sit amet consectetur, .
       </title-card>
       <title-card class="destiny-detail_land destiny-detail_sub">
-        <template #title>聚落特色</template>
+        <template #title>技能</template>
         <template #subtitle>
           <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
           该种族工匠可能拥有以下的建筑工艺

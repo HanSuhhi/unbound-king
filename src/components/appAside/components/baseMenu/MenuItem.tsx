@@ -7,6 +7,7 @@ import { computed, defineComponent, Transition } from "vue";
 import { useRouter } from "vue-router";
 import { useMenuCollapse } from "../../composables/menuCollapse";
 import { useAppAsideStore } from "@/components/appAside/store/aside.store";
+import { useHtmlPropLint } from "../../../../composables/htmlPropLint";
 
 const MenuItem = defineComponent({
   name: "MenuItem",
@@ -26,9 +27,8 @@ const MenuItem = defineComponent({
       router.push({ name: children.value ? children.value[0].path : props.page.path });
     };
 
-    const { isCollapse, toggleCollapse } = useMenuCollapse();
+    const { toggleCollapse } = useMenuCollapse(props);
 
-    const collapse = computed(() => (isCollapse.value ? "" : null));
     const active = computed(() => {
       if (activePage.value?.key.length === 2 && props.page.children) {
         const parentIndex = activePage.value.key[0];
@@ -40,7 +40,7 @@ const MenuItem = defineComponent({
     return () => {
       return (
         <>
-          <section class="aside-menu-block" data-collapse={collapse.value} data-active={active.value} onClick={children.value ? toggleCollapse : routeToPage}>
+          <section class="aside-menu-block" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} data-active={active.value} onClick={children.value ? toggleCollapse : routeToPage}>
             {props.page.icon && <Icon icon={props.page.icon} />}
             <Transition name="fade" mode="in-out">
               {!asideCollapsed.value && <span class="aside-menu-block_title">{props.page.title}</span>}
@@ -48,7 +48,7 @@ const MenuItem = defineComponent({
             {children.value && <div class="aside-menu-block_mask i-material-symbols-keyboard-arrow-down-rounded" />}
           </section>
           {props.page.children && (
-            <section class="aside-menu-block_sub" data-aside-collapse={asideCollapsed.value ? "" : null} data-collapse={collapse.value} style={`--length: ${children.value?.length}`}>
+            <section class="aside-menu-block_sub" data-aside-collapse={asideCollapsed.value ? "" : null} data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} style={`--length: ${children.value?.length}`}>
               {props.page.children.map((moduleChild) => (
                 <MenuItem page={moduleChild} />
               ))}

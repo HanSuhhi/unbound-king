@@ -38,7 +38,7 @@ export default defineComponent({
     return () => {
       return (
         <div
-          class="app-aside_list-item"
+          class="app-aside_listitem"
           onClick={() => {
             routeToPage(props.module);
             toggleModule();

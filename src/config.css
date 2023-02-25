@@ -23,14 +23,15 @@ body {
   height: 100vh;
   overflow: hidden;
 
-  --ani-time: 0.45s;
+  --moment: 0.45s;
+  --ani-time: var(--moment);
 }
 
 .app {
   position: relative;
   color: var(--white);
   background: linear-gradient(240deg, var(--bg-color-bright-1), var(--bg-color-deep-1) 60%);
-  transition: grid-template var(--ani-time) ease-in-out;
+  transition: grid-template var(--ani-time);
 }
 
 .app::before {

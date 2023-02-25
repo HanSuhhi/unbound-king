@@ -15,6 +15,7 @@ export const defineModuleConfig = (pages: Pages): ModulePage[] => {
     setPageAuthAndModule(page);
     page.key = [index];
     if (page.children) {
+      page.collapse = false;
       page.children.forEach((childPage, childIndex) => {
         setPageAuthAndModule(childPage);
         childPage.key = [index, childIndex];

@@ -28,7 +28,7 @@
   height: var(--total-height);
   margin-left: var(--normal);
   overflow: hidden;
-  transition: all 0.3s ease-out;
+  transition: all var(--moment) ease-in-out;
 }
 
 .aside-menu-block_sub[data-aside-collapse] {

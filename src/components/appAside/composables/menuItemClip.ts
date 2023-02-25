@@ -4,13 +4,16 @@ import { storeToRefs } from "pinia";
 import { watch } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
 
-const defineMaskPosition = (currentModule: AsideModule, index: number[]) => {
+export const defineMaskPosition = () => {
+  const { activeAsideModule } = storeToRefs(useGlobalStore());
+  const { activeMenuIndex } = storeToRefs(useAppAsideStore());
+  const index = activeMenuIndex.value.split("-").map((i) => Number(i));
   const indexLength = index.length;
   let length: number = 0;
   let opaticy: "0%" | "100%" = "100%";
   A: {
-    for (const pageIndex in currentModule.pages) {
-      const page = currentModule.pages[pageIndex];
+    for (const pageIndex in activeAsideModule.value!.pages) {
+      const page = activeAsideModule.value!.pages[pageIndex];
       switch (indexLength) {
         default:
         case 1:
@@ -18,11 +21,11 @@ const defineMaskPosition = (currentModule: AsideModule, index: number[]) => {
             if (page.children) opaticy = "0%";
             break A;
           }
+
           if (page.children) {
-            length += 1 + page.children.length;
+            length += page.collapse ? 1 : 1 + page.children.length;
             break;
           }
-          // if (isEqual(page.key, index)) break A;
           break;
         case 2:
           if (!page.children) {
@@ -45,20 +48,10 @@ const defineMaskPosition = (currentModule: AsideModule, index: number[]) => {
 
 export const useMenuItemClip = () => {
   const { activeMenuIndex } = storeToRefs(useAppAsideStore());
-  const { activeAsideModule } = storeToRefs(useGlobalStore());
 
   defer(() => {
-    watch(
-      activeMenuIndex,
-      () => {
-        defineMaskPosition(
-          activeAsideModule.value!,
-          activeMenuIndex.value.split("-").map((i) => Number(i)),
-        );
-      },
-      {
-        immediate: true,
-      },
-    );
+    watch(activeMenuIndex, defineMaskPosition, {
+      immediate: true,
+    });
   });
 };

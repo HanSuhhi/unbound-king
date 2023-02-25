@@ -18,4 +18,5 @@ type ModulePage = {
   children?: ModulePage[];
   auth: Set<string>;
   module: string;
+  collapse?: boolean;
 };
