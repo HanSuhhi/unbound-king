@@ -1,9 +1,12 @@
 <script setup lang='ts'>
+import Extend from '@/components/Extend.vue';
+import { useHtmlPropLint } from "@/composables/htmlPropLint";
 import Prism from "prismjs";
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-json';
-import { ref, onMounted, onUpdated } from 'vue';
+import { onMounted, onUpdated, ref } from 'vue';
 import Operator from './components/Operator.vue';
+import { useIconCollapse } from './composables/iconCollapse';
 
 type Props = { code: string, language?: "javascript" | "json" }
 
@@ -13,19 +16,19 @@ withDefaults(defineProps<Props>(), {
 });
 
 const CodeRef = ref<HTMLElement>();
-
-const highlight = () => {
-  Prism.highlightAllUnder(CodeRef.value!);
-};
-
+const highlight = () => Prism.highlightAllUnder(CodeRef.value!);
 onMounted(highlight);
 onUpdated(highlight);
 
+const [value, toggle] = useIconCollapse();
 </script>
 
 <template>
-  <pre ref="CodeRef" class="code-canvas">
-    <header class="code-canvas_header code-canvas_position">language {{ language }}</header>
+  <pre ref="CodeRef" class="code-canvas" :data-collapse="useHtmlPropLint(value)">
+    <header class="code-canvas_header code-canvas_position">
+      <extend class="code-canvas_icon" :data-reverse="useHtmlPropLint(!value)" @click="toggle" />
+      language {{ language === 'javascript' ? 'typescript' : language }}
+    </header>
     <code :class="`code-canvas_code language-${language}`">{{ code }}</code>
     <footer class="code-canvas_footer code-canvas_position">
       <operator />
@@ -38,10 +41,12 @@ onUpdated(highlight);
   --position-height: 7%;
 
   position: relative;
+  width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  transition: all var(--ani-time) ease;
 }
 
 .code-canvas_position {
@@ -78,6 +83,16 @@ onUpdated(highlight);
   justify-content: space-between;
   padding: var(--normal);
   text-transform: capitalize;
+  border-bottom-right-radius: var(--normal);
+}
+
+.code-canvas[data-collapse] .code-canvas_footer *,
+.code-canvas[data-collapse] .code-canvas_code {
+  display: none;
+}
+
+.code-canvas_icon {
+  cursor: pointer;
 }
 </style>
 

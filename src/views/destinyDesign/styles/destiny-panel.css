@@ -2,7 +2,3 @@
 .destiny-design-main_panel {
   height: 100%;
 }
-
-.destiny-design-main_panels {
-  width: calc(100% - var(--small));
-}

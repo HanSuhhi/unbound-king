@@ -30,11 +30,7 @@ body {
   position: relative;
   color: var(--white);
   background: linear-gradient(240deg, var(--bg-color-bright-1), var(--bg-color-deep-1) 60%);
-  transition: all var(--ani-time) ease-in-out;
-}
-
-.app-delay {
-  transition-delay: var(--ani-time);
+  transition: grid-template var(--ani-time) ease-in-out;
 }
 
 .app::before {

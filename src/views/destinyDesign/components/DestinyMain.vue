@@ -6,19 +6,18 @@ import { useDestinyStore } from '../store/destiny.store';
 import DestinyItemCard from './DestinyItemCard.vue';
 import DestinyDetail from "./DestinyDetail.vue";
 
-const { COMP, state, read } = defineTabs();
+const { COMP, state, read, style } = defineTabs();
 const { destinies, tabsIndex: _tabsIndex } = storeToRefs(useDestinyStore());
 const tabsIndex = computed({
   get: () => state.value?.active || 0,
   set: (index) => {
+    style.value.panelTransition = index > state.value.active ? "slide-left" : "slide-right";
     (state.value.active = index);
     _tabsIndex.value = index;
   },
 });
 
-const changeTab = (index: number) => {
-  tabsIndex.value = index;
-};
+const changeTab = (index: number) => tabsIndex.value = index;
 </script>
 
 <template>

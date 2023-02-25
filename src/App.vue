@@ -19,7 +19,7 @@ nextTick(() => iconPreset.value = false);
 
 <template>
   <IconPreset v-if="iconPreset" />
-  <c-layout ref="Layout" class="app app-delay">
+  <c-layout ref="Layout" class="app ">
     <router-view v-slot="{ Component }">
       <transition :name="pageTransition" mode="out-in">
         <component :is="Component" />

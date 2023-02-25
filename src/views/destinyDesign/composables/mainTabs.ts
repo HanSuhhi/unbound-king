@@ -1,5 +1,5 @@
 import { useCsssTabs } from "csss-ui";
-import { onMounted, nextTick } from "vue";
+import { nextTick, watch } from "vue";
 
 export const defineTabs = () => {
   const tabs = useCsssTabs({
@@ -7,6 +7,7 @@ export const defineTabs = () => {
       autoTrigger: false,
     },
     style: {
+      panelTransition: "list",
       classList: {
         tabs: ["destiny-design-main_body"],
         list: ["destiny-design-main_cards"],

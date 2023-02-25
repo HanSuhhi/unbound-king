@@ -74,9 +74,9 @@ const { COMP } = useCsssLayout({
 .destiny-detail {
   --aside-width: 35%;
   --header-height: 55%;
-  --clip-size: var(--small);
+  --clip-size: calc(var(--normal));
 
-  width: 100%;
+  width: calc(100% - var(--clip-size));
   height: 100%;
   border-radius: 20px;
 }
@@ -88,7 +88,7 @@ const { COMP } = useCsssLayout({
 .destiny-detail_header {
   display: flex;
   width: 100%;
-  height: calc(var(--header-height) - var(--clip-size));
+  height: var(--header-height);
   max-height: 55vh;
   margin-bottom: var(--clip-size);
 }
@@ -107,11 +107,11 @@ const { COMP } = useCsssLayout({
 }
 
 .destiny-detail_sub {
-  height: 49%;
+  height: calc((100% - var(--clip-size)) / 2);
 }
 
 .destiny-detail_footer {
-  height: calc(100% - var(--header-height));
+  height: 100%;
   max-height: 28.5vh;
 }
 

@@ -39,7 +39,7 @@
   transition: all var(--ani-time);
 }
 
-.extend[data-collapsed] .extend-line {
+.extend[data-reverse] .extend-line {
   --left: calc(var(--width) - var(--line-width));
 }
 </style>

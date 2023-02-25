@@ -30,16 +30,8 @@ export const defineAppLayout = () => {
 
     if (isCollapsed) {
       style.value.property["--aside-width"] = "5rem";
-      console.log("element.classList: ", element.classList);
-      console.log("element: ", element);
-      setTimeout(() => {
-        element.classList.remove("app-delay");
-      }, 300);
     } else {
       style.value.property["--aside-width"] = import.meta.env.ASIDE_WIDTH;
-      setTimeout(() => {
-        element.classList.add("app-delay");
-      }, 300);
     }
   });
 

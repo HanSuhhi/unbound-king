@@ -53,6 +53,7 @@ const isChoosed = computed(() => props.index === tabsIndex.value);
   width: 14vw;
   min-width: 15rem;
   max-width: 20rem;
+  height: 65%;
   margin: var(--small);
   padding: var(--small);
   background: linear-gradient(to right, var(--bg-color-bright-1), var(--bg-color-bright-2));

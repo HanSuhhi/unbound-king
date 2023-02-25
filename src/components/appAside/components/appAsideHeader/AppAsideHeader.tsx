@@ -1,9 +1,9 @@
-import "./app-aside-header.css";
-import { defineComponent, Transition } from "vue";
-import Extend from "./components/Extend.vue";
-import { storeToRefs } from "pinia";
 import { useAppAsideStore } from "@/components/appAside/store/aside.store";
-import { debounce, throttle } from "lodash-es";
+import Extend from "@/components/Extend.vue";
+import { throttle } from "lodash-es";
+import { storeToRefs } from "pinia";
+import { defineComponent, Transition } from "vue";
+import "./app-aside-header.css";
 
 export default defineComponent({
   name: "AppAsideHeader",
@@ -19,7 +19,7 @@ export default defineComponent({
             </span>
           </Transition>
 
-          <Extend data-collapsed={asideCollapsed.value ? "" : null} class="app-aside-header_icon" onClick={toggle} />
+          <Extend data-reverse={asideCollapsed.value ? "" : null} class="app-aside-header_icon" onClick={toggle} />
         </header>
       );
     };
