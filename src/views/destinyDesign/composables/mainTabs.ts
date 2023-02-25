@@ -1,12 +1,7 @@
 import { useCsssTabs } from "csss-ui";
-import { delay } from "lodash-es";
-import { storeToRefs } from "pinia";
-import { nextTick, watch } from "vue";
-import { useDestinyStore } from "../store/destiny.store";
+import { nextTick } from "vue";
 
 export const defineTabs = () => {
-  const { tabsIndex } = storeToRefs(useDestinyStore());
-
   const tabs = useCsssTabs({
     state: {
       autoTrigger: false,
@@ -26,9 +21,19 @@ export const defineTabs = () => {
   const setPanelTotalHeight = () => {
     const Tabs = document.getElementsByClassName("destiny-design-main_cards")[0];
     const Panels = document.getElementsByClassName("destiny-design-main_panels")[0] as HTMLElement;
-    Panels.style.height = `calc(100% - ${Tabs.clientHeight}px - 1.7 * var(--clip-size))`;
+    Panels.style.height = `calc(100% - ${Tabs.clientHeight}px`;
   };
   nextTick(setPanelTotalHeight);
+
+  const watchTabsWheel = () => {
+    const box = document.getElementsByClassName("destiny-design-main_cards")[0];
+
+    box.addEventListener("wheel", (event: any) => {
+      event.preventDefault();
+      box.scrollLeft += event.deltaY;
+    });
+  };
+  nextTick(watchTabsWheel);
 
   return { ...tabs };
 };

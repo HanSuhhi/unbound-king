@@ -76,7 +76,6 @@ const scroll = (wheelEvent: WheelEvent) => {
 .destiny-detail {
   --aside-width: 35%;
   --header-height: 65%;
-  --clip-size: var(--normal);
 
   width: calc(100% - var(--clip-size));
   height: 100%;

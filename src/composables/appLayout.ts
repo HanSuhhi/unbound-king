@@ -3,7 +3,8 @@ import { useSettingStore } from "@/views/setting/store/setting.store";
 import { useCsssLayout } from "csss-ui";
 import { storeToRefs } from "pinia";
 import { useAppAsideStore } from "@/components/appAside/store/aside.store";
-import { watch } from "vue";
+import { watch, nextTick } from "vue";
+import { defer } from "lodash-es";
 
 export const defineAppLayout = () => {
   const { asideCollapsed } = storeToRefs(useAppAsideStore());
@@ -26,16 +27,15 @@ export const defineAppLayout = () => {
   });
 
   watch(asideCollapsed, (isCollapsed) => {
-    const element = document.getElementsByClassName("app")[0];
-
-    if (isCollapsed) {
-      style.value.property["--aside-width"] = "5rem";
-    } else {
-      style.value.property["--aside-width"] = import.meta.env.ASIDE_WIDTH;
-    }
+    style.value.property["--aside-width"] = isCollapsed ? "5rem" : import.meta.env.ASIDE_WIDTH;
   });
 
-  setTimeout(() => {}, 2000);
+  const setMainBlockHeight = () => {
+    const mainElement = document.getElementsByClassName("app-main")[0] as HTMLElement;
+    const headerElement = document.getElementsByClassName("app-header")[0] as HTMLElement;
+    mainElement.style.height = `100% - ${headerElement.clientHeight}px`;
+  };
+  defer(setMainBlockHeight);
 
   /**
    * @description keys

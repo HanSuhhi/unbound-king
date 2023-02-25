@@ -32,10 +32,7 @@ const isChoosed = computed(() => props.index === tabsIndex.value);
       <header class="destiny-design-card_header">
         <span>{{ destiny.title }}</span>
         <type-button color="blue" class="destiny-design-card_button" @click="method">
-          <!-- <transition> -->
-          <!-- <span v-if="isChoosed">已选择</span> -->
           <span>选择</span>
-          <!-- </transition> -->
         </type-button>
       </header>
       <footer class="destiny-design-card_footer">
