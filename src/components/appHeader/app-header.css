@@ -1,12 +1,21 @@
 @import "./styles/search.css";
 @import "./styles/user-message.css";
-@import "./styles/router-history.css";
+@import "./styles/system-info.css";
 
 .app-header {
   position: relative;
   display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color-bright-1);
+  border-bottom: var(--border);
+}
+
+.app-header_box {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--normal);
-  padding-bottom: var(--small);
+  height: 3.5rem;
+  background-color: var(--bg-color);
+  border-bottom: var(--border);
+  zoom: var(--zoom);
 }

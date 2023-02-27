@@ -4,7 +4,7 @@ import { watch } from 'vue';
 import "./button-color.css";
 
 withDefaults(defineProps<{
-  color?: "blue" | "red";
+  color?: "blue" | "red" | "green";
   size?: "large"
 }>(), {
   color: "blue"

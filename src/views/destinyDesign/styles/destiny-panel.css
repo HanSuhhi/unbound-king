@@ -1,6 +1,4 @@
 .destiny-design-main_panels,
 .destiny-design-main_panel {
-  --clip-size: var(--normal);
-
   height: 100%;
 }

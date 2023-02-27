@@ -9,12 +9,14 @@ export const defineModules = () => {
     modules.value = [
       {
         key: "auth",
+        title: "权限模块",
         icon: "i-carbon-two-factor-authentication",
         type: "default-menu",
         pages: authModuleConfig,
       },
       {
         key: "dev",
+        title: "开发者模块",
         icon: "i-tabler-device-analytics",
         type: "default-menu",
         pages: devModuleConfig,

@@ -3,44 +3,12 @@
 @import "./styles/list-item.css";
 @import "./styles/aside-panel.css";
 
-.app-aside {
-  --header-height: 4rem;
-
-  z-index: 700;
-  background: linear-gradient(100deg, var(--bg-color), var(--bg-color-bright-2));
-  border-top-right-radius: var(--normal);
-  border-bottom-right-radius: var(--normal);
-  box-shadow: var(--box-shadow-1);
-}
-
 .app-aside_box {
   --ani-time: 0.3s;
 
   position: relative;
+  z-index: 2;
   flex-direction: row;
-  height: calc(100% - var(--header-height));
-  margin-top: var(--small);
+  height: 100%;
   color: var(--white);
-}
-
-.aside-module-enter-active,
-.aside-module-leave-active {
-  position: relative;
-  left: 0;
-  width: 100%;
-  transition: all 0.4s ease;
-}
-
-.aside-module-enter-from {
-  position: relative;
-  left: -50%;
-  width: 150%;
-  opacity: 0;
-}
-
-.aside-module-leave-to {
-  position: relative;
-  left: -50%;
-  width: 150%;
-  opacity: 0;
 }

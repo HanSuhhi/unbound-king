@@ -24,7 +24,7 @@ const changeTab = (index: number) => tabsIndex.value = index;
   <c-tabs ref="COMP" class="destiny-main">
     <template #list>
       <DestinyItemCard v-for="(destiny, index) in destinies" :key="destiny.key"
-        :class="{ 'destiny-main_tabitem': true, 'destiny-main_last': index === destinies.length - 1 }"
+        :class="{ 'destiny-main_tabitem': true, 'destiny-main_last': index === destinies.length - 1, [`destiny-main_${destiny.key}`]: true }"
         :destiny="destiny" :index="index" @triggered="changeTab(index)" />
     </template>
     <template v-for="panel, index of read?.panels" :key="panel" #[panel]>
@@ -35,7 +35,9 @@ const changeTab = (index: number) => tabsIndex.value = index;
 
 <style>
 .destiny-main {
-  --clip-size: var(--normal);
+  --clip-size: var(--base-margin);
+
+  margin-right: var(--clip-size);
 }
 
 .destiny-main_last {

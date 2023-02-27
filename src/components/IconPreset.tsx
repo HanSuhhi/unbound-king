@@ -23,6 +23,7 @@ export default defineComponent({
           <div class="i-game-icons-chemical-bolt" v-show={false} />
           <div class="i-game-icons-skills" v-show={false}></div>
           <div class="i-circum-no-waiting-sign" v-show={false}></div>
+          <div class="i-ic-sharp-settings" v-show={false}></div>
         </>
       );
     };

@@ -1,5 +1,5 @@
 .destiny-design_alert {
-  margin: var(--mini) var(--normal);
+  margin-bottom: var(--base-margin);
 }
 
 .destiny-design_alert p {

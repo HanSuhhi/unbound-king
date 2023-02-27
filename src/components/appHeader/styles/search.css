@@ -4,7 +4,7 @@
   padding: var(--small);
   color: var(--gray-bright-2);
   background: linear-gradient(90deg, var(--bg-color-bright-1), var(--bg-color-bright-2));
-  border-radius: var(--normal);
+  border-radius: var(--border-radius);
   transition: all var(--moment);
 }
 

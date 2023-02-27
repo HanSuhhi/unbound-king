@@ -1,0 +1,60 @@
+.router-history {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - var(--aside-width) / var(--zoom));
+  min-height: 0;
+  margin-left: calc(var(--aside-width) / var(--zoom));
+  filter: brightness(0.85);
+  zoom: var(--zoom);
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+.router-history_block {
+  display: flex;
+}
+
+.router-history_item {
+  position: relative;
+  display: flex;
+  padding: var(--small) var(--normal);
+  color: var(--gray-bright-2);
+  border-right: var(--border);
+  cursor: pointer;
+  transition: all var(--moment);
+  place-items: center;
+}
+
+.router-history_block:last-child > .router-history_item {
+  position: relative;
+  display: flex;
+  padding: var(--small) var(--normal);
+  color: var(--gray-bright-2);
+  border-left: var(--border);
+  cursor: pointer;
+  transition: all var(--moment);
+  place-items: center;
+}
+
+.router-history_active::before {
+  --clip-begin: 15;
+  --clip-width: 40;
+
+  position: absolute;
+  width: 100%;
+  color: var(--main-color);
+  white-space: nowrap;
+  animation: router-history-active 0.8s;
+  content: attr(data-name);
+  clip-path: polygon(70% 0, 100% 0, 100% 100%, 30% 100%);
+}
+
+@keyframes router-history-active {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}

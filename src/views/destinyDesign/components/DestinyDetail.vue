@@ -77,7 +77,7 @@ const scroll = (wheelEvent: WheelEvent) => {
   --aside-width: 35%;
   --header-height: 65%;
 
-  width: calc(100% - var(--clip-size));
+  width: calc(100%);
   height: 100%;
 }
 

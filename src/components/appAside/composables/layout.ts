@@ -5,7 +5,6 @@ import { storeToRefs } from "pinia";
 import { watch } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
 import { defineModuleBlock } from "./moduleBlock";
-import { makeModuleDraggable } from "./moduleDraggable";
 
 export const useAsideLayout = () => {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
@@ -13,13 +12,13 @@ export const useAsideLayout = () => {
 
   const tabs = useCsssTabs({
     style: {
-      panelTransition: "aside-module",
+      panelTransition: "slide-down",
       classList: {
         tabs: ["", "app-aside_box"],
         list: ["app-aside_list"],
         listItem: ["app-aside_item"],
-        panel: ["app-aside_panel"],
-        panelItem: ["_"],
+        panel: ["app-aside_panels"],
+        panelItem: ["app-aside_panel"],
       },
     },
   });
@@ -36,7 +35,6 @@ export const useAsideLayout = () => {
   });
 
   defineModuleBlock(tabs);
-  makeModuleDraggable(tabs);
 
   return tabs;
 };

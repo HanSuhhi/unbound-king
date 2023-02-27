@@ -1,17 +1,16 @@
 type AsideModule = {
-  /**
-   * @description module unique name
-   */
   key: string;
+  title: string;
   icon: string;
   comp?: Component;
-  type: "default-menu";
-  pages: ModulePage[];
+  type: "default-menu" | "exter-module";
+  pages?: ModulePage[];
 };
 
 type ModulePage = {
   path: string;
   title: string;
+  description: string;
   icon: string;
   redirect?: string;
   key: number[];

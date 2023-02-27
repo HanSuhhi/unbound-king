@@ -1,10 +1,14 @@
 .destiny-design-main_cards {
   position: relative;
   display: flex;
-  min-width: calc(100% - var(--aside-width));
+  width: calc(100% + 2px + var(--base-margin));
   overflow: auto;
 }
 
 .destiny-design-main_cards .destiny-item-card:first-child {
+  margin-left: 0;
+}
+
+.destiny-main_human {
   margin-left: 0;
 }

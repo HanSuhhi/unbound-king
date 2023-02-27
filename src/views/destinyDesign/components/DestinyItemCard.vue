@@ -51,10 +51,13 @@ const isChoosed = computed(() => props.index === tabsIndex.value);
   min-width: 15rem;
   max-width: 20rem;
   height: 65%;
-  margin: var(--small);
+  margin: var(--base-margin);
+  margin-top: 1px;
   padding: var(--small);
-  background: linear-gradient(to right, var(--bg-color-bright-1), var(--bg-color-bright-2));
-  border-radius: var(--small);
+  padding-right: var(--normal);
+  background-color: var(--bg-color-bright-2);
+  border-radius: var(--border-radius);
+  outline: var(--border);
   box-shadow: var(--box-shadow-1-luster);
   filter: brightness(1.2);
 }
@@ -88,7 +91,7 @@ const isChoosed = computed(() => props.index === tabsIndex.value);
   padding: var(--small);
   overflow: hidden;
   background-color: v-bind("destiny.subColor");
-  border-radius: var(--small);
+  border-radius: var(--border-radius);
 }
 
 .destiny-design-card_icon .icon {

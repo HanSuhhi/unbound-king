@@ -91,7 +91,7 @@
   margin-left: var(--mini);
   padding: var(--small) var(--normal);
   color: var(--white);
-  border-radius: var(--small);
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: all var(--moment);
   place-items: center;

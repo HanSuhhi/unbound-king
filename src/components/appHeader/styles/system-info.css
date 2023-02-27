@@ -1,0 +1,18 @@
+.system-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: var(--header-height);
+  margin-left: var(--normal);
+  font-family: Pacifico, sans-serif;
+}
+
+.system-info_title {
+  margin-left: var(--mini);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.system-info_title:not(:last-child)::after {
+  content: "/";
+}

@@ -1,7 +1,6 @@
-@import "./menu-mask.css";
 @import "./menu-item.css";
 
 .aside-menu {
-  --title-size: calc(var(--font-small) * 0.95);
+  --title-size: calc(var(--font-normal) * 0.95);
   --title-height: calc(var(--title-size) + 2 * var(--normal) / 1.4);
 }

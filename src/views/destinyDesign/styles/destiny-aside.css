@@ -1,11 +1,15 @@
 .destiny-design_aside {
+  --plus-height: 4%;
+
   position: relative;
+  bottom: var(--plus-height);
   z-index: 1;
   width: 100%;
+  height: calc(100% + var(--plus-height));
 }
 
 .destiny-design_aside > .code-canvas {
   height: max-content;
   background-color: var(--bg-color-bright-1);
-  border-top-left-radius: var(--normal);
+  border-top-left-radius: var(--border-radius);
 }

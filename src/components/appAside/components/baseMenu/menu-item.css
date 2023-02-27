@@ -2,9 +2,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  justify-content: flex-start;
   height: var(--title-height);
+  margin-bottom: var(--base-margin);
+  padding: var(--small);
   padding-left: var(--normal);
   color: var(--gray);
   cursor: pointer;
@@ -12,18 +13,36 @@
   transition-property: color, background;
 }
 
+.aside-menu-block[data-active] {
+  background-color: var(--bg-color-deep-1);
+  border-radius: var(--border-radius);
+}
+
 .aside-menu-block_title {
   position: relative;
   width: 100%;
-  margin-left: calc(var(--small) * 1.2);
+  color: var(--white);
   font-size: var(--title-size);
   white-space: nowrap;
   text-align: left;
 }
 
+.aside-menu-main {
+  width: 100%;
+  margin-left: var(--small);
+}
+
+.aside-menu-block_description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--gray);
+  font-size: calc(var(--title-size) * 0.8);
+}
+
 .aside-menu-block_sub {
   --length: 0;
-  --total-height: calc(var(--length) * var(--title-height));
+  --total-height: calc(var(--length) * var(--title-height) + var(--length) * (var(--base-margin) + 2 * var(--small)));
 
   height: var(--total-height);
   margin-left: var(--normal);
@@ -39,12 +58,13 @@
   height: 0;
 }
 
-.aside-menu-block[data-active] {
-  color: var(--white);
-}
-
-.aside-menu-block[data-active] > .icon {
-  color: var(--main-color);
+.aside-menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--mini);
+  background-color: var(--white-deep-2);
+  border-radius: var(--border-radius);
 }
 
 .aside-menu-block > div:last-child {

@@ -4,6 +4,7 @@ interface ImportMetaEnv {
   readonly PROJECT_NAME: string;
   readonly SETTING_HEADER_LIST_MAX_NUM: string;
   readonly ASIDE_WIDTH: string;
+  readonly ASIDE_MODULES_WIDTH: string;
 }
 
 type Size = "small" | "normal" | "large";

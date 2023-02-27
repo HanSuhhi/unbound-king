@@ -8,15 +8,19 @@ export default defineComponent({
   props: {
     module: {
       type: Object as PropType<AsideModule>,
-      required: true,
+      required: false,
+    },
+    read: {
+      type: Boolean as PropType<boolean>,
+      default: false,
     },
   },
   setup: (props) => {
     const router = useRouter();
-    const classList = computed<string[]>(() => [props.module.icon, "app-aside_module"]);
+    const classList = computed<string[]>(() => [props.module!.icon, "app-aside_module"]);
 
     const routeToPage = (module: AsideModule) => {
-      const page = module.pages[0];
+      const page = module.pages![0];
       if (page.children) {
         router.push({ name: page.children[0].path });
       } else {
@@ -40,7 +44,8 @@ export default defineComponent({
         <div
           class="app-aside_listitem"
           onClick={() => {
-            routeToPage(props.module);
+            if (props.read) return;
+            routeToPage(props.module!);
             toggleModule();
           }}>
           <div class={classList.value} />

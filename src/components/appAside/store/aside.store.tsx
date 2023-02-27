@@ -34,8 +34,6 @@ const useAppAsideStore = defineStore("app-aside", () => {
 
   const activeMenuIndex = ref<string>("0");
 
-  const asideCollapsed = ref(false);
-
-  return { modules, pages, activeModules, activeMenuIndex, asideCollapsed };
+  return { modules, pages, activeModules, activeMenuIndex };
 });
 export { useAppAsideStore };

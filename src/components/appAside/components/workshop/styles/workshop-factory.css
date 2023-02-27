@@ -1,0 +1,32 @@
+.workshop-factory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--base-margin) 0;
+}
+
+.workshop-factory_more {
+  display: flex;
+  align-items: center;
+  padding: var(--small) calc(var(--large) * 1.2);
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+}
+
+.workshop-factory-operator_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--mini);
+  padding: var(--small);
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+}
+
+.workshop-factory_next {
+  margin-right: 0;
+}
+
+.workshop-factory-operator {
+  display: flex;
+}

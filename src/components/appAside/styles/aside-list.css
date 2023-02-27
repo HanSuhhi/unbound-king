@@ -1,33 +1,12 @@
 .app-aside_list {
-  --list-width: 4rem;
-  --border-radius: var(--normal);
-
-  position: fixed;
-  top: 45%;
-  right: calc(-0.4 * var(--list-width));
-  z-index: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: var(--list-width);
-  background: linear-gradient(190deg, var(--bg-color-bright-2), var(--bg-color-bright-1));
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-1);
-}
-
-.app-aside_list::before {
-  --height: calc(100% / var(--module-length));
-  --top: calc(var(--active) * var(--height));
-
-  position: absolute;
-  top: var(--top);
-  width: 100%;
-  height: var(--height);
-  background-color: var(--bg-color-bright-2);
-  border-radius: var(--clip-border-radius);
-  /* stylelint-disable-next-line max-line-length */
-  box-shadow: rgb(255 255 255 / 10%) 0 1px 1px 0 inset, rgb(50 50 93 / 25%) 0 50px 100px -20px, rgb(0 0 0 / 30%) 0 30px 60px -30px;
-  transition: top 0.25s ease-out;
-  content: "";
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: var(--modules-width);
+  height: 100%;
+  background-color: var(--bg-color);
+  border-right: var(--border);
 }

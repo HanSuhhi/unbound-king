@@ -1,0 +1,30 @@
+.workshop-package {
+  position: relative;
+  padding: var(--small);
+  background-color: var(--bg-color-deep-2);
+  border-radius: var(--border-radius);
+  filter: brightness(1.2);
+}
+
+.workshop-package_title {
+  font-size: calc(var(--font-normal) * 1.1);
+}
+
+.workshop-package_description {
+  color: var(--gray);
+  margin-block-start: 0.5em;
+  margin-block-end: 0.8em;
+  font-size: calc(var(--font-normal) * 0.85);
+}
+
+.workshop-package_button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: var(--white-deep-2);
+  transform: scale(1) !important;
+  filter: saturate(70%);
+
+  --bg-color-main: var(--orange-deep-2);
+  --bg-color-sub: #0E5B70;
+}
