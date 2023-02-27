@@ -32,7 +32,7 @@ const { activeAsideModule, activePage } = storeToRefs(useGlobalStore());
   margin-left: calc(var(--base-margin) * 1);
   color: var(--gray-bright-1);
   font-weight: 500;
-  font-size: calc(var(--font-normal) * 0.85);
+  font-size: var(--font-body-small);
 }
 
 .aside-setting_more {

@@ -1,11 +1,12 @@
 import { useGlobalStore } from "@/stores/global.store";
 import { find } from "lodash-es";
 import { storeToRefs } from "pinia";
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import { useRouter } from "vue-router";
 import { useAppAsideStore } from "../appAside/store/aside.store";
 import { useRouterHistoryStore } from "../appHeader/store/routerHistory.store";
 import "./router-history.css";
+import Icon from "@/components/icon/Icon";
 
 export default defineComponent({
   name: "RouterHistory",
@@ -20,15 +21,27 @@ export default defineComponent({
       router.push({ name: toPage?.path });
     };
 
+    const routeToHome = () => {
+      router.push({ path: "/" });
+    };
+
+    const index = computed(() => routes.value.findIndex((route) => route === activePage.value?.title));
+    const last = () => {
+      console.log("index: ", index.value);
+      // if (index !== 0)
+    };
+
+    const next = () => {};
+
     return () => {
       return (
         <ol class="router-history">
           <div class="router-history_block">
-            <li class="router-history_item">
-              <div class="i-ic-outline-keyboard-double-arrow-left"></div>
+            <li class="router-history_item" onClick={last}>
+              <Icon icon="i-ic-outline-keyboard-double-arrow-left" />
             </li>
-            <li class="router-history_item">
-              <div class="i-ic-round-home"></div>
+            <li class="router-history_item" onClick={routeToHome}>
+              <Icon icon="i-ic-round-home"></Icon>
             </li>
             {routes.value.map((route) => {
               return (
@@ -40,7 +53,7 @@ export default defineComponent({
           </div>
           <div class="router-history_block">
             <li class="router-history_item">
-              <div class="i-ic-outline-keyboard-double-arrow-right"></div>
+              <Icon icon="i-ic-outline-keyboard-double-arrow-right" />
             </li>
           </div>
         </ol>

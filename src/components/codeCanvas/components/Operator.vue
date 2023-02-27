@@ -20,7 +20,7 @@ import typeButton from '@/components/typeButton/TypeButton.vue';
 
 .code-canvas-operator_text {
   margin-right: var(--mini);
-  font-size: calc(var(--normal) * 1.3);
+  font-size: var(--font-title-main);
   transition: all var(--transition-time) ease;
 }
 </style>

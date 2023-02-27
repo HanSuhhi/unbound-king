@@ -24,12 +24,13 @@
   justify-content: space-between;
   padding: var(--small) var(--padding);
   background-color: var(--bg-color-bright-2);
+  border-bottom: 1px solid var(--gray-deep-2);
   border-top-left-radius: var(--border-radius-card);
   border-top-right-radius: var(--border-radius-card);
 }
 
 .title-card_title {
-  font-size: calc(var(--large) * 0.5);
+  font-size: var(--font-title-small);
   white-space: nowrap;
 }
 
@@ -37,10 +38,9 @@
   display: flex;
   align-items: center;
   color: var(--gray);
-  font-size: calc(var(--small) * 1.7);
+  font-size: var(--font-body);
 }
 
 .title-card_main {
-  height: 100%;
   padding: var(--padding);
 }

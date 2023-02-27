@@ -24,6 +24,9 @@ export default defineComponent({
           <div class="i-game-icons-skills" v-show={false}></div>
           <div class="i-circum-no-waiting-sign" v-show={false}></div>
           <div class="i-ic-sharp-settings" v-show={false}></div>
+          <div class="i-ic-outline-keyboard-double-arrow-left" v-show={false}></div>
+          <div class="i-ic-outline-keyboard-double-arrow-right" v-show={false}></div>
+          <div class="i-ic-round-home" v-show={false}></div>
         </>
       );
     };

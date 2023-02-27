@@ -19,6 +19,7 @@
   display: flex;
   padding: var(--small) var(--normal);
   color: var(--gray-bright-2);
+  font-size: var(--font-title);
   border-right: var(--border);
   cursor: pointer;
   transition: all var(--moment);

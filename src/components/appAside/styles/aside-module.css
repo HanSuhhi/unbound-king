@@ -1,4 +1,5 @@
 .app-aside_module {
   position: relative;
   padding: var(--tiny);
+  font-size: var(--font-title);
 }

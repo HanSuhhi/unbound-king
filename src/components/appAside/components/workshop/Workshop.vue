@@ -53,6 +53,6 @@ import "./styles/workshop-factory.css";
   margin-block-end: 0.5rem;
   color: var(--gray-deep-2);
   font-weight: bolder;
-  font-size: var(--font-normal);
+  font-size: var(--font-title);
 }
 </style>

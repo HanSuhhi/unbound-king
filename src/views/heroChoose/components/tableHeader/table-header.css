@@ -2,12 +2,10 @@
   display: flex;
   align-items: flex-end;
   color: var(--main-color);
-  font-size: calc(var(--large) * 1.6);
 }
 
 .table-header_desc {
   display: flex;
   margin-top: var(--normal);
   color: var(--gray-bright-2);
-  font-size: calc(var(--normal) * 1.2);
 }

@@ -12,7 +12,7 @@
 .app-aside_panel {
   --displacement: 10%;
 
-  margin-left: var(--margin);
   padding: var(--small);
+  padding-top: 0;
   border-radius: var(--border-radius);
 }

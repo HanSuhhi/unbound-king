@@ -112,7 +112,7 @@ const isChoosed = computed(() => props.index === tabsIndex.value);
 .destiny-design-card_footer {
   margin-top: var(--mini);
   color: var(--gray-deep-1);
-  font-size: calc(var(--small) * 1.6);
+  font-size: var(--font-body-small);
 }
 
 .destiny-design-card_button {

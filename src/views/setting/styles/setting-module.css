@@ -7,7 +7,7 @@
   position: relative;
   padding-bottom: var(--small);
   color: var(--main-color-deep-2);
-  font-size: x-large;
+  font-size: var(--font-title-main);
   margin-block-start: var(--small);
   margin-block-end: var(--normal);
 }

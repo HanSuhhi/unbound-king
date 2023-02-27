@@ -7,14 +7,13 @@
 }
 
 .workshop-package_title {
-  font-size: calc(var(--font-normal) * 1.1);
+  font-size: var(--font-title);
 }
 
 .workshop-package_description {
   color: var(--gray);
   margin-block-start: 0.5em;
   margin-block-end: 0.8em;
-  font-size: calc(var(--font-normal) * 0.85);
 }
 
 .workshop-package_button {
@@ -22,6 +21,7 @@
   bottom: 0;
   width: 100%;
   color: var(--white-deep-2);
+  font-size: var(--font-body);
   transform: scale(1) !important;
   filter: saturate(70%);
 

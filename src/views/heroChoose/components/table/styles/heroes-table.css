@@ -2,7 +2,6 @@
   --list-width: 8%;
   --list-item-max-num: 5;
   --list-item-active-height: 50%;
-  --list-item-font-size: var(--normal);
 
   /* disabled */
   --list-item-height: calc((100% - var(--list-item-active-height)) / var(--list-item-max-num));
@@ -54,7 +53,6 @@
 .heroes-table_item__box {
   display: inline-flex;
   padding: var(--mini);
-  font-size: var(--list-item-font-size);
   place-items: center;
 }
 

@@ -73,8 +73,7 @@ const [value, toggle] = useIconCollapse();
   left: 0;
   display: flex;
   justify-content: flex-end;
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
+  border-top: var(--border);
 }
 
 .code-canvas_header {
@@ -85,8 +84,7 @@ const [value, toggle] = useIconCollapse();
   justify-content: space-between;
   padding: var(--normal);
   text-transform: capitalize;
-  border-bottom-right-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
+  border-bottom: var(--border);
 }
 
 .code-canvas[data-collapse] .code-canvas_footer *,

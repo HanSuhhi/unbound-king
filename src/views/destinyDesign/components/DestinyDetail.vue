@@ -124,7 +124,6 @@ const scroll = (wheelEvent: WheelEvent) => {
 .destiny-detail_origin {
   position: relative;
   color: var(--yellow-bright-2);
-  font-size: calc(var(--normal) * 1.04);
   line-height: 1.8;
   white-space: pre-line;
   text-indent: 2em;

@@ -66,22 +66,22 @@
   background: linear-gradient(67deg, var(--main-color-bright-2) 5%, var(--main-color-deep-2) 60%);
 }
 
+.setting-footer_error kbd {
+  color: var(--bg-color);
+  background-color: var(--color);
+}
+
 .setting-footer_key:hover kbd {
   color: var(--bg-color);
   background-color: var(--color);
 }
 
 .setting-footer_key > span {
-  font-size: var(--small);
+  font-size: var(--font-body-small);
 }
 
 .setting-footer_error {
   --padding-x: calc(var(--normal) * 2);
 
   transform: scale(0.9);
-}
-
-.setting-footer_error kbd {
-  color: var(--bg-color);
-  background-color: var(--color);
 }

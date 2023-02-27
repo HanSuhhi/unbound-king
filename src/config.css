@@ -10,7 +10,7 @@
 }
 
 :root {
-  font-size: 16px;
+  font-size: var(--font-body);
 
   --base-margin: calc(var(--small));
 }
@@ -73,9 +73,6 @@ body {
   position: relative;
   top: calc(-1 * var(--history-height) * var(--zoom));
   height: calc(var(--main-height) + var(--history-height) * var(--zoom));
-  padding-right: var(--base-margin);
-
-  /* background: linear-gradient(100deg, var(--bg-color-deep-2), var(--bg-color-bright-2)); */
   background-color: var(--bg-color-bright-1);
   border-right: var(--border);
 }
