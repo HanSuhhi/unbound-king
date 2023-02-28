@@ -3,6 +3,17 @@
 @import "./styles/list-item.css";
 @import "./styles/aside-panel.css";
 
+.app-aside {
+  --list-width: 3.5rem;
+  --max-height: 65%;
+
+  position: relative;
+  top: calc(-1 * var(--history-height) * var(--zoom));
+  height: calc(var(--main-height) + var(--history-height) * var(--zoom));
+  background-color: var(--bg-color-bright-1);
+  border-right: var(--border);
+}
+
 .app-aside_box {
   --ani-time: 0.3s;
 

@@ -58,7 +58,6 @@ const isChoosed = computed(() => props.index === tabsIndex.value);
   background-color: var(--bg-color-bright-2);
   border-radius: var(--border-radius);
   outline: var(--border);
-  box-shadow: var(--box-shadow-1-luster);
   filter: brightness(1.2);
 }
 

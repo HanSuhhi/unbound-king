@@ -46,8 +46,9 @@ const [value, toggle] = useIconCollapse();
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: var(--bg-color-bright-1);
   border: var(--border);
-  transition: all var(--ani-time) ease;
+  transition: all var(--transition-prop);
 }
 
 .code-canvas_position {

@@ -1,32 +1,24 @@
 @import "csss-ui/dist/style.css";
 
-* {
-  font-display: swap;
-}
-
-*::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-
-:root {
-  font-size: var(--font-body);
-
-  --base-margin: calc(var(--small));
-}
-
-body {
-  margin: 0;
-  user-select: none;
-}
-
 #app {
   width: 100vw;
   height: 100vh;
+  user-select: none;
 
   --moment: 0.45s;
   --ani-time: var(--moment);
   --border-radius: var(--mini);
+  --border: 1px solid var(--gray);
+  --main-color: var(--yellow);
+  --main-color-bright-1: var(--yellow-bright-1);
+  --main-color-bright-2: var(--yellow-bright-2);
+  --main-color-deep-1: var(--yellow-deep-1);
+  --main-color-deep-2: var(--yellow-deep-2);
+  --bg-color-deep-1: rgb(37 37 37);
+  --bg-color-deep-2: rgb(30 30 30);
+  --bg-color: rgb(44 44 44);
+  --bg-color-bright-1: rgb(52 52 52);
+  --bg-color-bright-2: rgb(60 60 60);
 }
 
 .app {
@@ -35,19 +27,10 @@ body {
   height: 100vh;
   overflow: hidden;
   color: var(--white);
-
-  /* background: linear-gradient(240deg, var(--bg-color-bright-1), var(--bg-color-deep-1) 60%); */
   background-color: rgb(38 39 45);
   transition: grid-template var(--ani-time);
 
-  --background-color: var(--bg-color-bright-2);
   --zoom: 0.8;
-  --border: 1px solid var(--gray);
-  --bg-color-deep-1: rgb(37 37 37);
-  --bg-color-deep-2: rgb(30 30 30);
-  --bg-color: rgb(44 44 44);
-  --bg-color-bright-1: rgb(52 52 52);
-  --bg-color-bright-2: rgb(60 60 60);
 }
 
 .app::before {
@@ -66,33 +49,10 @@ body {
   margin-left: var(--base-margin);
 }
 
-.app-aside {
-  --list-width: 3.5rem;
-  --max-height: 65%;
-
-  position: relative;
-  top: calc(-1 * var(--history-height) * var(--zoom));
-  height: calc(var(--main-height) + var(--history-height) * var(--zoom));
-  background-color: var(--bg-color-bright-1);
-  border-right: var(--border);
-}
-
 .csss-layout.slide-left-enter-active,
 .csss-layout.slide-left-leave-active,
 .csss-layout.slide-right-enter-active,
 .csss-layout.slide-right-leave-active {
-  transition: all var(--ani-time) ease;
+  transition: all var(--transition-prop);
   transition-property: transform, opacity;
-}
-
-/* need to add to csss */
-:root {
-  /* stylelint-disable-next-line max-line-length */
-
-  /* --box-shadow-1: rgb(255 255 255 / 10%) -1px 0 1px 0 inset, rgb(50 50 93 / 25%) 20px 0 20px 3px, rgb(0 0 0 / 30%) 20px 0 20px 1px; */
-  /* stylelint-disable-next-line max-line-length */
-
-  /* --box-shadow-1-luster: rgb(255 255 255 / 30%) -1px 0 1px 0 inset, rgb(50 50 93 / 25%) 20px 0 20px 3px, rgb(0 0 0 / 30%) 20px 0 20px 1px; */
-
-  /* --box-shadow-2: rgb(0 0 0 / 20%) 0 12px 28px 0, rgb(0 0 0 / 10%) 0 2px 4px 0, rgb(255 255 255 / 5%) 0 0 0 1px inset; */
 }

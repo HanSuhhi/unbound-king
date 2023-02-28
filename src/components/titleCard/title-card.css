@@ -7,7 +7,6 @@
   background-color: var(--bg-color-bright-1);
   border: var(--border);
   border-radius: var(--border-radius-card);
-  box-shadow: var(--box-shadow-2);
 }
 
 .title-card p {

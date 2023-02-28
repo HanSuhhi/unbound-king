@@ -1,0 +1,8 @@
+.ethnicity-design {
+  --aside-width: 25%;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: grid-template var(--transition-prop);
+}

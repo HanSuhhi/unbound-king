@@ -3,5 +3,4 @@
   margin: 0 var(--large);
   background: linear-gradient(45deg, var(--bg-color), var(--bg-color-bright-1));
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-1-luster);
 }

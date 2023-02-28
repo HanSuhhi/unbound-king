@@ -1,0 +1,96 @@
+:root {
+  /* white */
+  --white: #FAFAFA;
+  --white-deep-1: #EFEFEF;
+  --white-deep-2: #EBEBEB;
+
+  /* green */
+  --green: #3BB56E;
+  --green-deep-1: #2DA961;
+  --green-deep-2: #1C944E;
+  --green-bright-1: #4CC57E;
+  --green-bright-2: #64D895;
+
+  /* red */
+  --red: #EF3F36;
+  --red-deep-1: #DE3027;
+  --red-deep-2: #CF1D14;
+  --red-bright-1: #ED524A;
+  --red-bright-2: #F3766F;
+
+  /* yellow */
+  --yellow: #F0C239;
+  --yellow-deep-1: #DDB029;
+  --yellow-deep-2: #D1A113;
+  --yellow-bright-1: #EDC859;
+  --yellow-bright-2: #F1D789;
+
+  /* purlple */
+  --purple: #9A7BA8;
+  --purple-deep-1: #856494;
+  --purple-deep-2: #653F77;
+
+  /* brown */
+  --brown: #756442;
+  --brown-deep-1: #675531;
+  --brown-deep-2: #4C3C1D;
+
+  /* blue  */
+  --blue: #97E3FE;
+  --blue-bright-1: #AAEDF9;
+  --blue-bright-2: #C5EAF7;
+  --blue-deep-1: #31ADE5;
+  --blue-deep-2: #3DA1C2;
+
+  /* black */
+  --black: rgb(15 15 15);
+  --black-bright-1: rgb(31 31 31);
+  --black-bright-2: rgb(40 39 39);
+
+  /* gray */
+  --gray: #6E6F71;
+  --gray-deep-1: #666769;
+  --gray-deep-2: #565658;
+  --gray-bright-1: #75777D;
+  --gray-bright-2: #A7A7AA;
+
+  /* orange */
+  --orange: #FA8C35;
+  --orange-deep-1: #EC7E2A;
+  --orange-deep-2: #D3640F;
+}
+
+:root {
+  /* warn */
+  --warning-color: var(--yellow);
+  --warning-color-deep-1: var(--yellow-deep-1);
+  --warning-color-deep-2: var(--yellow-deep-2);
+
+  /* error */
+  --error-color: var(--red);
+  --error-color-deep-1: var(--red-deep-1);
+  --error-color-deep-2: var(--red-deep-2);
+
+  /* success */
+  --success-color: var(--green);
+  --success-color-deep-1: var(--green-deep-1);
+  --success-color-deep-2: var(--green-deep-2);
+
+  /* info */
+  --info-color: var(--gray);
+  --info-color-deep-1: var(--gray-deep-1);
+  --info-color-deep-2: var(--gray-deep-2);
+}
+
+:root {
+  --main-color: var(--yellow);
+  --main-color-bright-1: var(--yellow-bright-1);
+  --main-color-bright-2: var(--yellow-bright-2);
+  --main-color-deep-1: var(--yellow-deep-1);
+  --main-color-deep-2: var(--yellow-deep-2);
+  --bg-color-deep-1: rgb(37 37 37);
+  --bg-color-deep-2: rgb(30 30 30);
+  --bg-color: rgb(44 44 44);
+  --bg-color-bright-1: rgb(52 52 52);
+  --bg-color-bright-2: rgb(60 60 60);
+}

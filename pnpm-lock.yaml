@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.3.0
   '@commitlint/config-conventional': ^17.3.0
-  '@hansuhhi-don/csss': 0.0.1-beta.4
   '@hansuhhi-don/eslint-config': ^0.3.2
   '@hansuhhi-don/lifehash-vue': ^0.1.6
   '@hansuhhi-don/stylelint-config': ^0.2.0
@@ -34,7 +33,6 @@ specifiers:
   vue-tsc: ^1.0.11
 
 dependencies:
-  '@hansuhhi-don/csss': 0.0.1-beta.4
   '@hansuhhi-don/eslint-config': 0.3.2_7uibuqfxkfaozanbtbziikiqje
   '@hansuhhi-don/lifehash-vue': 0.1.6
   '@types/lodash-es': 4.17.6
@@ -862,12 +860,6 @@ packages:
     resolution: {integrity: sha512-VCF4fwMpDhdQuXUEprlyWY7hEErY3B6DorI4AcBVCWs+iQwdTaZgdbZSoP4DsMKlsA9I8K78ksZYGUg+0uq6Tg==}
     dependencies:
       vue: 3.2.47
-    dev: false
-
-  /@hansuhhi-don/csss/0.0.1-beta.4:
-    resolution: {integrity: sha512-Z+e29OWwEYEIs4MC8lqZ1AYaXQFJ7P/A/q/C7ZdfEKskxg7hwfKZJC6pmunfd/pIhsNUnuaYlpyNve+xconpaQ==}
-    dependencies:
-      vue: 3.2.45
     dev: false
 
   /@hansuhhi-don/eslint-config/0.3.2_7uibuqfxkfaozanbtbziikiqje:

@@ -1,0 +1,3 @@
+type Ethnicity = {
+  title: string;
+};

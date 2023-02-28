@@ -4,4 +4,6 @@
   --font-title-small: 16px;
   --font-title: 18px;
   --font-title-main: 20px;
+
+  font-size: var(--font-body);
 }

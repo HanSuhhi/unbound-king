@@ -9,6 +9,8 @@ export default defineComponent({
         <>
           <Alert class="destiny-design_alert">
             <p>! 仅生成种族数据，以设计自定义种族。</p>
+          </Alert>
+          <Alert class="destiny-design_alert">
             <p>
               ! 一个完整种族由<b>种族</b>（ex:人族）/ <b>族裔</b>（ex: 西域人）/ <b>血统</b>（ex: 拜火族人）三者构成。
             </p>

@@ -10,6 +10,4 @@
 
 .destiny-design_aside > .code-canvas {
   height: max-content;
-  background-color: var(--bg-color-bright-1);
-  border-top-left-radius: var(--border-radius);
 }

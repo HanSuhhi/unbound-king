@@ -1,0 +1,3 @@
+:root {
+  --transition-prop: var(--ani-time) ease-out;
+}
