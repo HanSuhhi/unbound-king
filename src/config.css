@@ -8,7 +8,8 @@
   --moment: 0.45s;
   --ani-time: var(--moment);
   --border-radius: var(--mini);
-  --border: 1px solid var(--gray);
+  --border-color: var(--gray);
+  --border: 1px solid var(--border-color);
   --main-color: var(--yellow);
   --main-color-bright-1: var(--yellow-bright-1);
   --main-color-bright-2: var(--yellow-bright-2);
@@ -42,6 +43,7 @@
 }
 
 .app-main {
+  --root-base-margin: calc(var(--normal) * 0.8);
   --base-margin: calc(var(--normal) * 0.8);
 
   position: relative;

@@ -5,6 +5,9 @@ interface ImportMetaEnv {
   readonly SETTING_HEADER_LIST_MAX_NUM: string;
   readonly ASIDE_WIDTH: string;
   readonly ASIDE_MODULES_WIDTH: string;
+  readonly BOX_COLLAPSE_WIDTH: string;
+  readonly ANIMATION_DURATION: string;
+  readonly BOX_ECTEND_WIDTH: string;
 }
 
 type Size = "small" | "normal" | "large";

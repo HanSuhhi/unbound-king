@@ -15,6 +15,12 @@ const { pageTransition } = storeToRefs(useGlobalStore());
 
 const iconPreset = ref(true);
 nextTick(() => iconPreset.value = false);
+
+function setDefaultTransitionDuration() {
+  const element = document.getElementById("app");
+  element?.style.setProperty("--transition-duration", `${Number(import.meta.env.ANIMATION_DURATION) / 1000}s`);
+}
+nextTick(setDefaultTransitionDuration);
 </script>
 
 <template>

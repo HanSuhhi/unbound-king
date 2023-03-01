@@ -1,5 +1,9 @@
+@import "./styles/ethnicity-main.css";
+
 .ethnicity-design {
   --aside-width: 25%;
+  --base-margin: var(--normal);
+  --search-width: 80%;
 
   position: relative;
   width: 100%;

@@ -2,8 +2,8 @@ import { defineComponent, provide } from "vue";
 import EthnicityDesignDescription from "./components/Description";
 import { defineEthnicityLayout } from "./composables/layout";
 import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
-import EthnicityMain from "./components/ethnicityMain/EthnicityMain";
 import code from "./data/ethnicity.data?raw";
+import EthnicityMain from "./components/EthnicityMain.vue";
 import "./ethnicity-design.css";
 
 export default defineComponent({
@@ -18,12 +18,9 @@ export default defineComponent({
           {{
             header: () => <EthnicityDesignDescription />,
             aside: () => <CodeCanvas code={code} />,
-            default: () => <EthnicityMain />,
+            default: () => <EthnicityMain class="ethnicity-design_main" />,
           }}
         </c-layout>
-        // <article class="ethnicity-design">
-        //   <EthnicityDesignDescription />
-        // </article>
       );
     };
   },

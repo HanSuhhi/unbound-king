@@ -1,12 +1,13 @@
 <script setup lang='ts'>
 import Extend from '@/components/Extend.vue';
+import { useDelayExtend } from '@/composables/delayExtend';
 import { useHtmlPropLint } from "@/composables/htmlPropLint";
 import Prism from "prismjs";
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-json';
 import { onMounted, onUpdated, ref } from 'vue';
+import { defineExtender } from '../../composables/Extender';
 import Operator from './components/Operator.vue';
-import { useIconCollapse } from './composables/iconCollapse';
 
 type Props = { code: string, language?: "javascript" | "json" }
 
@@ -20,18 +21,20 @@ const highlight = () => Prism.highlightAllUnder(CodeRef.value!);
 onMounted(highlight);
 onUpdated(highlight);
 
-const [value, toggle] = useIconCollapse();
+const isExtend = defineExtender();
+const delayExtend = useDelayExtend(isExtend);
+
 </script>
 
 <template>
-  <pre ref="CodeRef" class="code-canvas" :data-collapse="useHtmlPropLint(value)">
+  <pre ref="CodeRef" class="code-canvas extender" :data-collapse="useHtmlPropLint(!isExtend)">
     <header class="code-canvas_header code-canvas_position">
-      <extend class="code-canvas_icon" :data-reverse="useHtmlPropLint(!value)" @click="toggle" />
-      language {{ language === 'javascript' ? 'typescript' : language }}
+      <extend class="code-canvas_icon" :data-reverse="useHtmlPropLint(isExtend)" @click="isExtend = !isExtend" />
+      <span v-show="delayExtend"> language {{ language === 'javascript' ? 'typescript' : language }} </span>
     </header>
-    <code :class="`code-canvas_code language-${language}`">{{ code }}</code>
+    <code v-show="delayExtend" :class="`code-canvas_code language-${language}`">{{ code }}</code>
     <footer class="code-canvas_footer code-canvas_position">
-      <operator />
+      <operator v-show="delayExtend" />
     </footer>
   </pre>
 </template>
@@ -86,11 +89,6 @@ const [value, toggle] = useIconCollapse();
   padding: var(--normal);
   text-transform: capitalize;
   border-bottom: var(--border);
-}
-
-.code-canvas[data-collapse] .code-canvas_footer *,
-.code-canvas[data-collapse] .code-canvas_code {
-  display: none;
 }
 
 .code-canvas_icon {

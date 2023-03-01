@@ -36,7 +36,7 @@ export default defineComponent({
       delay(() => {
         AppAside.style.setProperty("--transition-property", "top, opacity");
         AppAside.style.setProperty("--transition-delay", "0s");
-      }, 450);
+      }, Number(import.meta.env.ANIMATION_DURATION));
     };
 
     return () => {
