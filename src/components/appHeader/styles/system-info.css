@@ -4,6 +4,7 @@
   justify-content: flex-end;
   height: var(--header-height);
   margin-left: var(--normal);
+  font-size: var(--font-body-small);
   font-family: Pacifico, sans-serif;
 }
 

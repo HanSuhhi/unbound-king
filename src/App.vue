@@ -4,7 +4,7 @@ import AppAside from "./components/appAside/appAside";
 import AppHeader from "./components/appHeader/AppHeader";
 import GlobalDialog from "./components/dialog/GlobalDialog";
 import IconPreset from "./components/IconPreset";
-import Setting from "./views/setting/Setting";
+import Setting from "./modules/setting/Setting";
 import { useGlobalStore } from '@/stores/global.store';
 import { storeToRefs } from 'pinia';
 import { defineAppLayout } from "./composables/appLayout";

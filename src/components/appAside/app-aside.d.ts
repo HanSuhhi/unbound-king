@@ -12,7 +12,6 @@ type ModulePage = {
   title: string;
   description: string;
   icon: string;
-  redirect?: string;
   key: number[];
   children?: ModulePage[];
   auth: Set<string>;

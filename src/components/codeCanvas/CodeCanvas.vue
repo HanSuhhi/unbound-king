@@ -44,7 +44,8 @@ const delayExtend = useDelayExtend(isExtend);
   --position-height: 7%;
 
   position: relative;
-  width: calc(100% + var(--base-margin));
+  box-sizing: border-box;
+  width: calc(100% + var(--root-base-margin));
   height: 100%;
   margin: 0;
   padding: 0;

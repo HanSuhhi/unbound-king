@@ -7,7 +7,7 @@ interface ImportMetaEnv {
   readonly ASIDE_MODULES_WIDTH: string;
   readonly BOX_COLLAPSE_WIDTH: string;
   readonly ANIMATION_DURATION: string;
-  readonly BOX_ECTEND_WIDTH: string;
+  readonly BOX_EXTEND_WIDTH: string;
 }
 
 type Size = "small" | "normal" | "large";

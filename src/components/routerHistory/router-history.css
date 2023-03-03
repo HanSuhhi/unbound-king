@@ -1,11 +1,12 @@
 .router-history {
   display: flex;
   justify-content: space-between;
-  width: calc(100% - var(--aside-width) / var(--zoom));
+  width: var(--history-width);
+  height: var(--header-block-height);
   min-height: 0;
-  margin-left: calc(var(--aside-width) / var(--zoom));
+  margin-left: var(--aside-width);
+  font-size: var(--font-body-small);
   filter: brightness(0.85);
-  zoom: var(--zoom);
   margin-block-end: 0;
   margin-block-start: 0;
 }
@@ -19,7 +20,6 @@
   display: flex;
   padding: var(--small) var(--normal);
   color: var(--gray-bright-2);
-  font-size: var(--font-title);
   border-right: var(--border);
   cursor: pointer;
   transition: all var(--moment);

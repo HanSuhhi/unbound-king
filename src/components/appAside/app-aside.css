@@ -8,8 +8,7 @@
   --max-height: 65%;
 
   position: relative;
-  top: calc(-1 * var(--history-height) * var(--zoom));
-  height: calc(var(--main-height) + var(--history-height) * var(--zoom));
+  min-width: var(--aside-width);
   background-color: var(--bg-color-bright-1);
   border-right: var(--border);
 }

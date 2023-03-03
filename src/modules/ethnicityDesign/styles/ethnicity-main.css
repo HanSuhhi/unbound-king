@@ -1,0 +1,10 @@
+.ethnicity-main {
+  position: relative;
+  transition: grid-template var(--transition-prop);
+}
+
+.ethnicity-main_header {
+  display: flex;
+  justify-content: center;
+  margin: var(--base-margin);
+}

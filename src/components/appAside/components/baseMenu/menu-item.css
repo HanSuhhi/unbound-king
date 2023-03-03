@@ -37,6 +37,7 @@
   align-items: flex-start;
   color: var(--gray);
   font-size: var(--font-body-small);
+  white-space: nowrap;
 }
 
 .aside-menu-block_sub {
@@ -72,7 +73,9 @@
 
 .aside-menu-block_mask {
   position: relative;
+  top: var(--mini);
   right: var(--small);
+  margin-bottom: auto;
   transform: scale(1.2);
 }
 

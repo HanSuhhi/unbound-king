@@ -1,5 +1,5 @@
 import Icon from "@/components/icon/Icon";
-import { useSettingStore } from "@/views/setting/store/setting.store";
+import { useSettingStore } from "@/modules/setting/store/setting.store";
 import LifeHash from "@hansuhhi-don/lifehash-vue";
 import { useNow } from "@vueuse/core";
 import { storeToRefs } from "pinia";

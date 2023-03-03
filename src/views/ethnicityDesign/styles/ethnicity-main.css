@@ -1,8 +1,0 @@
-.ethnicity-main {
-  transition: grid-template var(--transition-prop);
-}
-
-.ethnicity-main_header {
-  display: flex;
-  justify-content: center;
-}

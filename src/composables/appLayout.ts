@@ -1,10 +1,8 @@
+import { useSettingStore } from "@/modules/setting/store/setting.store";
 import { useKeyStore } from "@/stores/key.store";
-import { useSettingStore } from "@/views/setting/store/setting.store";
 import { useCsssLayout } from "csss-ui";
-import { storeToRefs } from "pinia";
-import { useAppAsideStore } from "@/components/appAside/store/aside.store";
-import { watch, nextTick } from "vue";
 import { defer } from "lodash-es";
+import { storeToRefs } from "pinia";
 
 export const defineAppLayout = () => {
   const { COMP: Layout, style } = useCsssLayout({
@@ -20,24 +18,23 @@ export const defineAppLayout = () => {
       },
       property: {
         "--aside-width": import.meta.env.ASIDE_WIDTH,
-        "--header-height": "2.5rem",
       },
     },
   });
 
   const setLayoutProps = () => {
     const appElement = document.getElementsByClassName("app")[0] as HTMLElement;
-    const headerElement = document.getElementsByClassName("app-header")[0] as HTMLElement;
     const mainElement = document.getElementsByClassName("app-main")[0] as HTMLElement;
+    const asideElement = document.getElementsByClassName("app-aside")[0] as HTMLElement;
     const modulesELement = document.getElementsByClassName("app-aside_list")[0] as HTMLElement;
     const historyElement = document.getElementsByClassName("router-history")[0] as HTMLElement;
+    const headerElement = document.getElementsByClassName("app-header")[0] as HTMLElement;
 
-    const mainHeight = `calc(${window.innerHeight}px - ${headerElement.clientHeight}px)`;
-    mainElement.style.height = `calc(${mainHeight})`;
-    appElement.style.setProperty("--header-height", `${headerElement.clientHeight}px`);
+    const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 1px)`;
     appElement.style.setProperty("--main-height", mainHeight);
     appElement.style.setProperty("--modules-width", `${modulesELement.clientWidth}px`);
-    appElement.style.setProperty("--history-height", `${historyElement.clientHeight}px`);
+    appElement.style.setProperty("--aside-width", `${asideElement.clientWidth}px`);
+    appElement.style.setProperty("--history-width", `${window.innerWidth - asideElement.clientWidth}px`);
   };
   defer(setLayoutProps);
 

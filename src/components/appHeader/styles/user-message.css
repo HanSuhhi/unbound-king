@@ -52,8 +52,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(var(--large) * 1.4);
-  height: calc(var(--large) * 1.4);
+  width: var(--large);
+  height: var(--large);
   margin: 0 var(--normal);
   transform: scale(var(--avator-size));
 }
@@ -95,19 +95,6 @@
   cursor: pointer;
   transition: all var(--moment);
   place-items: center;
-}
-
-.user-message__box:hover > .icon {
-  color: var(--main-color);
-  background: linear-gradient(var(--main-color), var(--blue));
-  transform: scale(1.25);
-}
-
-.user-message__box:active > .icon {
-  color: var(--main-color);
-  background: linear-gradient(var(--main-color), var(--blue));
-  transform: scale(0.8);
-  transition: all 2.3s;
 }
 
 .shake {

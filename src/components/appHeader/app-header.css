@@ -14,8 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 3.5rem;
+  height: var(--header-block-height);
   background-color: var(--bg-color);
   border-bottom: var(--border);
-  zoom: var(--zoom);
 }

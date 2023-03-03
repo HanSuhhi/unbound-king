@@ -1,5 +1,5 @@
 import { usePlayerStore } from "@/stores/player.store";
-import { useSettingStore } from "@/views/setting/store/setting.store";
+import { useSettingStore } from "@/modules/setting/store/setting.store";
 import { useMousePressed } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { watchEffect } from "vue";

@@ -4,7 +4,7 @@ import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
 import { defineRouterAuth } from "./routerAuth";
 
-const pages = import.meta.glob<Record<"default", Component>>("@/views/*/*.{tsx,vue}", {
+const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}", {
   eager: true,
 });
 

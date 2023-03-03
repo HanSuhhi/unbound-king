@@ -17,15 +17,14 @@ const { activeAsideModule, activePage } = storeToRefs(useGlobalStore());
 <style scoped>
 .aside-setting {
   position: absolute;
-  top: 0;
+  top: calc(-1 * var(--header-block-height));
   left: var(--modules-width);
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: calc(100% - var(--modules-width));
-  height: calc(var(--history-height) * var(--zoom) - 1px);
+  height: var(--header-block-height);
   border-right: var(--border);
-  border-bottom: var(--border);
 }
 
 .aside-setting_path {

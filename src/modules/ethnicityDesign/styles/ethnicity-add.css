@@ -1,0 +1,11 @@
+.ethnicity-add {
+  position: absolute;
+  right: calc(var(--large) * 2);
+  bottom: var(--large);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--small);
+  background-color: var(--main-color);
+  border-radius: 50%;
+}

@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   max-height: var(--max-height);
-  margin-top: calc(var(--history-height) * var(--zoom) + var(--base-margin));
+  margin-top: var(--base-margin);
   overflow: hidden;
 }
 

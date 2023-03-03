@@ -1,8 +1,9 @@
 .header-search {
   position: relative;
   display: flex;
-  padding: var(--small);
+  padding: var(--mini);
   color: var(--gray-bright-2);
+  font-size: var(--font-body-small);
   background: linear-gradient(90deg, var(--bg-color-bright-1), var(--bg-color-bright-2));
   border-radius: var(--border-radius);
   transition: all var(--moment);

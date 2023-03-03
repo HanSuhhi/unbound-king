@@ -7,7 +7,7 @@ type Dataset = {
 };
 
 const defaultDataset: Dataset = {
-  SEARCH_RESULT_MAX_WIDTH: import.meta.env.BOX_ECTEND_WIDTH,
+  SEARCH_RESULT_MAX_WIDTH: import.meta.env.BOX_EXTEND_WIDTH,
   SEARCH_RESULT_MIN_WIDTH: import.meta.env.BOX_COLLAPSE_WIDTH,
 };
 

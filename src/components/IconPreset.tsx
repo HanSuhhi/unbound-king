@@ -27,6 +27,10 @@ export default defineComponent({
           <div class="i-ic-outline-keyboard-double-arrow-left" v-show={false}></div>
           <div class="i-ic-outline-keyboard-double-arrow-right" v-show={false}></div>
           <div class="i-ic-round-home" v-show={false}></div>
+          <div class="i-material-symbols-settings-rounded" v-show={false}></div>
+          <div class="i-game-icons-choice" v-show={false}></div>
+          <div class="i-carbon-property-relationship" v-show={false}></div>
+          <div class="i-iconoir-numbered-list-right" v-show={false}></div>
         </>
       );
     };
