@@ -15,6 +15,6 @@
 
 .destiny-design_main {
   z-index: 0;
-  width: 100%;
+  width: calc(100% + var(--base-margin));
   overflow: hidden;
 }

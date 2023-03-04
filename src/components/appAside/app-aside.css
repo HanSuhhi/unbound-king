@@ -8,7 +8,7 @@
   --max-height: 65%;
 
   position: relative;
-  min-width: var(--aside-width);
+  width: var(--aside-width);
   background-color: var(--bg-color-bright-1);
   border-right: var(--border);
 }

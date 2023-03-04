@@ -1,0 +1,12 @@
+.attribute-value {
+  transition: all var(--transition-prop);
+}
+
+.attribute-value_main {
+  width: calc(100% + var(--base-margin));
+}
+
+.attribute-value_aside {
+  position: relative;
+  left: var(--base-margin);
+}

@@ -1,0 +1,56 @@
+<script setup lang='ts'>
+import alert from '@/components/alert/alert';
+import ValueList from './ValueList.vue';
+import { DATA_AttributeValue } from '../data/attrbuteValue.data';
+import { computed } from 'vue';
+
+const baseAttributes = computed(() => DATA_AttributeValue.filter(attribute => attribute.type === 'base'));
+const advancedAttributes = computed(() => DATA_AttributeValue.filter(attribute => attribute.type === 'advanced'));
+const specialAttributes = computed(() => DATA_AttributeValue.filter(attribute => attribute.type === 'special'));
+
+</script>
+
+<template>
+  <div class="value-box">
+    <alert class="value-box_alert">
+      属性值，是作用于角色各项参数判定的直接数值，包括基础属性值，进阶属性值和特殊属性值。
+    </alert>
+    <article class="value-box_main">
+      <value-list class="value-box_list" :attribute-values="baseAttributes">
+        <template #title>
+          基础属性值
+        </template>
+      </value-list>
+      <value-list class="value-box_list" :attribute-values="advancedAttributes">
+        <template #title>
+          进阶属性值
+        </template>
+      </value-list>
+      <value-list class="value-box_list" :attribute-values="specialAttributes">
+        <template #title>
+          特殊属性值
+        </template>
+      </value-list>
+    </article>
+  </div>
+</template>
+
+<style scoped>
+.value-box {
+  margin-right: var(--base-margin);
+}
+
+.value-box_list {
+  width: 100%;
+}
+
+.value-box_alert {
+  box-sizing: border-box;
+}
+
+.value-box_main {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+</style>

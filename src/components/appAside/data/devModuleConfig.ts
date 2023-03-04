@@ -1,20 +1,20 @@
 import { defineModuleConfig } from "../composables/moduleConfig";
 
 export const devModuleConfig: ModulePage[] = defineModuleConfig([
-  // {
-  //   path: "attribute-design",
-  //   title: "属性设置",
-  //   description: "人物属性 / 属性值设置",
-  //   icon: "i-carbon-property-relationship",
-  //   children: [
-  //     {
-  //       path: "attribute-value",
-  //       title: "属性值",
-  //       description: "绑定到角色的属性数值及含义",
-  //       icon: "i-iconoir-numbered-list-right",
-  //     },
-  //   ],
-  // },
+  {
+    path: "attribute-design",
+    title: "属性设置",
+    description: "人物属性 / 属性值",
+    icon: "i-carbon-property-relationship",
+    children: [
+      {
+        path: "attribute-value",
+        title: "属性值",
+        description: "角色数值属性及含义",
+        icon: "i-iconoir-numbered-list-right",
+      },
+    ],
+  },
   {
     path: "nation-design",
     title: "种族一览",

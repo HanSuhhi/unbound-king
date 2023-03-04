@@ -23,7 +23,6 @@ onUpdated(highlight);
 
 const isExtend = defineExtender();
 const delayExtend = useDelayExtend(isExtend);
-
 </script>
 
 <template>
@@ -45,7 +44,6 @@ const delayExtend = useDelayExtend(isExtend);
 
   position: relative;
   box-sizing: border-box;
-  width: calc(100% + var(--root-base-margin));
   height: 100%;
   margin: 0;
   padding: 0;

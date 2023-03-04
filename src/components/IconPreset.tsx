@@ -31,6 +31,8 @@ export default defineComponent({
           <div class="i-game-icons-choice" v-show={false}></div>
           <div class="i-carbon-property-relationship" v-show={false}></div>
           <div class="i-iconoir-numbered-list-right" v-show={false}></div>
+          <div class="i-ic-outline-plus" v-show={false}></div>
+          <div class="i-ic-outline-more-horiz" v-show={false}></div>
         </>
       );
     };

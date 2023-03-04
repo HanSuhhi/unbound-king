@@ -11,6 +11,9 @@ export const defineEthnicityLayout = () => ({
         aside: ["", "ethnicity-design_aside"],
         main: ["", "ethnicity-design_main"],
       },
+      property: {
+        "--aside-width": import.meta.env.BOX_EXTEND_WIDTH,
+      },
     },
   }),
 });

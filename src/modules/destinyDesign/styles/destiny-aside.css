@@ -3,11 +3,7 @@
 
   position: relative;
   bottom: var(--plus-height);
+  left: var(--base-margin);
   z-index: 1;
-  width: 100%;
   height: calc(100% + var(--plus-height));
-}
-
-.destiny-design_aside > .code-canvas {
-  height: max-content;
 }

@@ -16,3 +16,8 @@
 .ethnicity-design_main {
   position: relative;
 }
+
+.ethnicity-design_aside {
+  position: relative;
+  left: var(--base-margin);
+}
