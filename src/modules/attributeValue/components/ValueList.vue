@@ -1,14 +1,22 @@
 <script setup lang='ts'>
-import ValueItem from './ValueItem.vue';
+import type { useCsssDialog } from 'csss-ui';
+import { CInput } from 'csss-ui';
+import type { Ref } from 'vue';
+import { inject } from 'vue';
 import { defineItemsSearch } from '../composables/ItemsSearch';
-import typeString from '../attribute-value-type.d.ts?raw';
-import { transformTypeToForm } from '@/composables/typeToForm';
+import ValueItem from './ValueItem.vue';
+
+const props = defineProps<{attributeValues: AttributeValue[], type: AttributeValue['type']}>();
 
 const { COMP: Input} = defineItemsSearch();
-defineProps<{attributeValues: AttributeValue[]}>();
 
-const formConfig = transformTypeToForm(typeString);
+const state = inject<ReturnType<typeof useCsssDialog>['state']>("dialog");
+const type = inject<Ref<AttributeValue['type']>>('type');
 
+const openDialog = () => {
+  state!.value.show = true;
+  type!.value = props.type;
+};
 </script>
 
 <template>
@@ -29,7 +37,7 @@ const formConfig = transformTypeToForm(typeString);
     <main class="value-list_main">
       <ValueItem v-for="attributeValue in attributeValues" :key="attributeValue.key" :attribute-value="attributeValue" />
     </main>
-    <footer class="value-list_footer">
+    <footer class="value-list_footer" @click="openDialog()">
       <div class="i-ic-outline-plus" style="margin-right: var(--mini);" />
       添加属性值...
     </footer>
@@ -86,6 +94,7 @@ const formConfig = transformTypeToForm(typeString);
 .value-list_side {
   display: flex;
   align-items: center;
+  white-space: nowrap;
 }
 
 .value-list_side:last-child {

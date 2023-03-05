@@ -82,6 +82,7 @@
   --info-color-deep-2: var(--gray-deep-2);
 }
 
+html.dark,
 :root {
   --main-color: var(--yellow);
   --main-color-bright-1: var(--yellow-bright-1);

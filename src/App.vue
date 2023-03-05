@@ -29,7 +29,7 @@ nextTick(setDefaultTransitionDuration);
     <div class="router-view-box">
       <router-view v-slot="{ Component }">
         <transition :name="pageTransition" mode="out-in">
-          <component :is="Component" />
+          <component :is="Component" class="page" />
         </transition>
       </router-view>
     </div>
@@ -45,10 +45,19 @@ nextTick(setDefaultTransitionDuration);
   <GlobalDialog />
 </template>
 
-<style scoped>
+<style>
 .router-view-box {
-  height: calc(100% - var(--base-margin));
-  margin-top: var(--base-margin);
-  margin-right: var(--base-margin);
+  height: 100%;
+}
+
+.page {
+  box-sizing: border-box;
+  padding-top: var(--base-margin);
+  padding-right: var(--base-margin);
+  padding-left: var(--base-margin);
+}
+
+.router-view-dialog {
+  border-radius: var(--border-radius);
 }
 </style>

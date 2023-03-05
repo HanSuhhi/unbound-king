@@ -32,7 +32,6 @@ defineProps<{attributeValue: AttributeValue}>();
 }
 
 .value-item_description {
-  font-size: var(--font-title-small);
   filter: brightness(0.7);
 }
 

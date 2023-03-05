@@ -20,8 +20,3 @@ type KeyCommand = {
   key: string;
   fn: (isPressed) => void;
 };
-
-type FormType = {
-  type: "input" | "select";
-  options?: Array;
-};

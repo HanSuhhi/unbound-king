@@ -38,13 +38,13 @@
 
   position: absolute;
   inset: 0;
+  top: calc((100% - var(--height)) / 2);
   height: var(--height);
   border: 1.5px solid var(--bg-color-bright-2);
-  filter: brightness(2);
-  content: "";
-  top: calc((100% - var(--height)) / 2);
   border-top: 0;
   border-bottom: 0;
+  filter: brightness(2);
+  content: "";
 }
 
 .user-message__user > div {
