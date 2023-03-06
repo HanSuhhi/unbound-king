@@ -1,5 +1,5 @@
 import CodeCanvasVue from "@/components/codeCanvas/CodeCanvas.vue";
-import { defineComponent, provide } from "vue";
+import { defineComponent, provide, watchEffect } from "vue";
 import AttributeValueBox from "./components/AttributeValueBox.vue";
 import { defineAttributeValueLayout } from "./composables/attributeLayout";
 import "./attribute-value.css";
@@ -10,9 +10,10 @@ export default defineComponent({
   name: "AttributeValue",
   setup: (props) => {
     const { COMP, style } = defineAttributeValueLayout();
-    const { codeCanvasCode } = storeToRefs(useAttributeValueStore());
+    const { codeCanvasCode, isChanged } = storeToRefs(useAttributeValueStore());
 
     provide("layout-style", style);
+    provide("changed", isChanged);
 
     return () => {
       return (

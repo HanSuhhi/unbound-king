@@ -5,15 +5,18 @@ import { useHtmlPropLint } from "@/composables/htmlPropLint";
 import Prism from "prismjs";
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-json';
-import { onMounted, onUpdated, ref } from 'vue';
+import type { Ref } from 'vue';
+import { onMounted, onUpdated, ref, computed, inject } from 'vue';
 import { defineExtender } from '../../composables/Extender';
 import Operator from './components/Operator.vue';
+import { useCodeCanvasStatus, CodeCanvasStatus } from './composables/status';
 
-type Props = { code: string, language?: "javascript" | "json" }
+type Props = { code: string, language?: "javascript" | "json",  }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   code: "",
-  language: "javascript"
+  language: "javascript",
+  changed: false,
 });
 
 const CodeRef = ref<HTMLElement>();
@@ -23,6 +26,14 @@ onUpdated(highlight);
 
 const isExtend = defineExtender();
 const delayExtend = useDelayExtend(isExtend);
+
+const changed = inject<Ref<boolean>>("changed")!;
+const {copied, status} = useCodeCanvasStatus(changed);
+
+function copy() {
+  navigator.clipboard.writeText(props.code);
+  copied.value = true;
+}
 </script>
 
 <template>
@@ -32,8 +43,10 @@ const delayExtend = useDelayExtend(isExtend);
       <span v-show="delayExtend"> language {{ language === 'javascript' ? 'typescript' : language }} </span>
     </header>
     <code v-show="delayExtend" :class="`code-canvas_code language-${language}`">{{ code }}</code>
-    <footer class="code-canvas_footer code-canvas_position">
-      <operator v-show="delayExtend" />
+    <footer class="code-canvas_footer code-canvas_position" :class="{'code-canvas_double': status}">
+      <span v-if="CodeCanvasStatus.Changed === status" class="code-canvas_text code-canvas_warning">文件已修改，牢记复制保存！</span>
+      <span v-if="CodeCanvasStatus.Copied === status" class="code-canvas_text code-canvas_success">已复制</span>
+      <operator v-show="delayExtend" @click="copy" />
     </footer>
   </pre>
 </template>
@@ -75,8 +88,13 @@ const delayExtend = useDelayExtend(isExtend);
   bottom: 0;
   left: 0;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   border-top: var(--border);
+}
+
+.code-canvas_double {
+  justify-content: space-between;
 }
 
 .code-canvas_header {
@@ -92,6 +110,18 @@ const delayExtend = useDelayExtend(isExtend);
 
 .code-canvas_icon {
   cursor: pointer;
+}
+
+.code-canvas_warning {
+  color: var(--error-color);
+}
+
+.code-canvas_success {
+  color: var(--success-color);
+}
+
+.code-canvas_text {
+  margin-left: var(--base-margin);
 }
 </style>
 
