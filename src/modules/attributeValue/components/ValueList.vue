@@ -35,7 +35,7 @@ const openDialog = () => {
       </div>
     </header>
     <main class="value-list_main">
-      <ValueItem v-for="attributeValue in attributeValues" :key="attributeValue.key" :attribute-value="attributeValue" />
+      <ValueItem v-for="attributeValue in attributeValues" :key="attributeValue.key" class="value-list_item" :attribute-value="attributeValue" />
     </main>
     <footer class="value-list_footer" @click="openDialog()">
       <div class="i-ic-outline-plus" style="margin-right: var(--mini);" />
@@ -53,6 +53,10 @@ const openDialog = () => {
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: color var(--flash) ease-out;
+}
+
+.value-list_item {
+  margin-bottom: var(--base-margin);
 }
 
 .value-list_footer:hover {

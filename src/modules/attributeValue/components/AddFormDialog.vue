@@ -8,6 +8,13 @@ import type {Ref} from 'vue';
 import autoForm from '@/components/autoForm/autoForm.vue';
 import typeString from '../attribute-value-type.d.ts?raw';
 import { withFormDetail } from '@/composables/formDetail';
+import { FormInstance } from 'element-plus';
+import { validateForm } from '../../../composables/validateForm';
+import { storeToRefs } from 'pinia';
+import { useAttributeValueStore } from '../store/attribute-value.store';
+import { cloneDeep } from 'lodash-es';
+
+const { attributeValues } = storeToRefs(useAttributeValueStore());
 
 const type = inject<Ref<AttributeValue['type']>>('type');
 
@@ -34,11 +41,6 @@ const formConfig = computed(() => withFormDetail<AttributeValue>(transformTypeTo
   }
 }));
 
-watchEffect(() => {
-
-  console.log('formConfig: ', formConfig);
-});
-
 const state = inject<ReturnType<typeof useCsssDialog>['state']>("dialog");
 const Dialog = inject("Dialog");
 
@@ -54,6 +56,15 @@ const typeTitle = computed(() => {
   }
 });
 
+
+const confirm =  (data: AttributeValue,formEl:FormInstance) => {
+  validateForm(formEl, () => {
+    attributeValues.value.push(cloneDeep(data));
+    state!.value.show = false;
+    formEl.resetFields();
+  });
+};
+
 </script>
 
 <template>
@@ -67,7 +78,14 @@ const typeTitle = computed(() => {
       <template #subtitle>
         <div class="i-mdi-close-thick" @click="state!.show = false" />
       </template>
-      <auto-form :config="formConfig" />
+      <auto-form :config="formConfig">
+        <template #footer="{data, form}">
+          <section class="form-dialog_confirm">
+            <type-button @click.prevent="state!.show = false">取消</type-button>
+            <type-button @click.prevent="confirm(data as AttributeValue, form as FormInstance);">确定</type-button>
+          </section>
+        </template>
+      </auto-form>
     </title-card>
   </c-dialog>
 </template>
@@ -87,5 +105,10 @@ const typeTitle = computed(() => {
 
 .form-dialog_title {
   font-size: var(--font-body);
+}
+
+.form-dialog_confirm {
+  width: 100%;
+  text-align: right;
 }
 </style>

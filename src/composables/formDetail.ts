@@ -20,9 +20,9 @@ function setPlaceholder(configItem: AutoformItem): AutoformItem {
 export const withFormDetail = <T>(config: AutoformItem[], details: Record<keyof T, Partial<AutoformItem>>): AutoformItem[] => {
   return config.map((configItem) => {
     const detail = details[configItem.key as keyof T];
-    setRules(configItem);
     selecterDefault(configItem);
     merge(configItem, detail);
+    setRules(configItem);
     setPlaceholder(configItem);
     return configItem;
   });

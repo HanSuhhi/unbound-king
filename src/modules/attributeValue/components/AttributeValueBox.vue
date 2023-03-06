@@ -1,14 +1,17 @@
 <script setup lang='ts'>
 import alert from '@/components/alert/alert';
 import ValueList from './ValueList.vue';
-import { DATA_AttributeValue } from '../data/attrbuteValue.data';
 import { computed, provide, ref } from 'vue';
 import addFormDialog from "./AddFormDialog.vue";
 import { useCsssDialog } from 'csss-ui';
+import { storeToRefs } from 'pinia';
+import { useAttributeValueStore } from '../store/attribute-value.store';
 
-const baseAttributes = computed(() => DATA_AttributeValue.filter(attribute => attribute.type === 'base'));
-const advancedAttributes = computed(() => DATA_AttributeValue.filter(attribute => attribute.type === 'advanced'));
-const specialAttributes = computed(() => DATA_AttributeValue.filter(attribute => attribute.type === 'special'));
+const { attributeValues } = storeToRefs(useAttributeValueStore());
+
+const baseAttributes = computed(() => attributeValues.value.filter(attribute => attribute.type === 'base'));
+const advancedAttributes = computed(() => attributeValues.value.filter(attribute => attribute.type === 'advanced'));
+const specialAttributes = computed(() => attributeValues.value.filter(attribute => attribute.type === 'special'));
 
 const {COMP, state } = useCsssDialog({state: { toBox: ".attribute-value"}, style: {classList: {dialog: ['', 'router-view-dialog']}}});
 const dialogType = ref<AttributeValue['type']>("base");

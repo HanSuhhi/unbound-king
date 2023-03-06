@@ -9,6 +9,7 @@ specifiers:
   '@iconify/json': ^2.2.2
   '@types/lodash-es': ^4.17.6
   '@types/node': ^18.11.18
+  '@types/prettier': ^2.7.2
   '@types/prismjs': ^1.26.0
   '@unocss/preset-icons': ^0.48.0
   '@vitejs/plugin-vue': ^4.0.0
@@ -24,6 +25,7 @@ specifiers:
   jsstore: ^4.5.0
   lodash-es: ^4.17.21
   pinia: ^2.0.28
+  prettier: ^2.8.4
   prismjs: ^1.29.0
   stylelint: ^14.16.1
   typescript: ^4.9.3
@@ -57,6 +59,7 @@ devDependencies:
   '@commitlint/config-conventional': 17.4.3
   '@hansuhhi-don/stylelint-config': 0.2.0_stylelint@14.16.1
   '@iconify/json': 2.2.2
+  '@types/prettier': 2.7.2
   '@types/prismjs': 1.26.0
   '@unocss/preset-icons': 0.48.0
   '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
@@ -65,6 +68,7 @@ devDependencies:
   cz-conventional-changelog: 3.3.0
   eslint: 8.32.0
   husky: 8.0.3
+  prettier: 2.8.4
   stylelint: 14.16.1
   typescript: 4.9.4
   unplugin-auto-import: 0.15.0_@vueuse+core@9.10.0
@@ -1168,6 +1172,10 @@ packages:
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: true
+
+  /@types/prettier/2.7.2:
+    resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
     dev: true
 
   /@types/prismjs/1.26.0:
@@ -5281,6 +5289,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+
+  /prettier/2.8.4:
+    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   /prismjs/1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
