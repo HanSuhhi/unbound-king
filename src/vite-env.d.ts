@@ -20,3 +20,10 @@ type KeyCommand = {
   key: string;
   fn: (isPressed) => void;
 };
+
+type TabListItem = {
+  icon: string;
+  title: string;
+};
+
+type Translator = Record<string, string>;

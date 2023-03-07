@@ -19,7 +19,7 @@ const useAttributeValueStore = defineStore("attribute-value", () => {
     },
   );
 
-  return { attributeValues, codeCanvasCode, isChanged };
+  return { attributeValues, codeCanvasCode, isChanged  };
 });
 
 export { useAttributeValueStore };

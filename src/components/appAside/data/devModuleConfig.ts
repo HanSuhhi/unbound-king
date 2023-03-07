@@ -1,6 +1,13 @@
+// @unocss-include
 import { defineModuleConfig } from "../composables/moduleConfig";
 
 export const devModuleConfig: ModulePage[] = defineModuleConfig([
+  {
+    path: "icon-setting",
+    title: "图标管理",
+    description: "所使用的所有图标",
+    icon: "i-uil-icons",
+  },
   {
     path: "attribute-design",
     title: "属性设置",

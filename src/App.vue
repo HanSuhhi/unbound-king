@@ -1,14 +1,14 @@
 <script setup lang='ts'>
+import { useGlobalStore } from '@/stores/global.store';
+import { storeToRefs } from 'pinia';
 import { nextTick, ref } from "vue";
 import AppAside from "./components/appAside/appAside";
 import AppHeader from "./components/appHeader/AppHeader";
 import GlobalDialog from "./components/dialog/GlobalDialog";
 import IconPreset from "./components/IconPreset";
-import Setting from "./modules/setting/Setting";
-import { useGlobalStore } from '@/stores/global.store';
-import { storeToRefs } from 'pinia';
-import { defineAppLayout } from "./composables/appLayout";
 import RouterHistory from "./components/routerHistory/RouterHistory";
+import { defineAppLayout } from "./composables/appLayout";
+import Setting from "./modules/setting/Setting";
 
 const { Layout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());

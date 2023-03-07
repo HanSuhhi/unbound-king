@@ -26,6 +26,7 @@ const usePlayerStore = defineStore("player-store", () => {
     aside_game_entry: true,
     aside_dev_entry: true,
     aside_auth_entry: true,
+    aside_package_entry: true,
   });
 
   return { authOperations, states };

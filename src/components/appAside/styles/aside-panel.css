@@ -6,7 +6,7 @@
   height: 100%;
   max-height: var(--max-height);
   margin-top: var(--base-margin);
-  overflow: hidden;
+  overflow: auto;
 }
 
 .app-aside_panel {

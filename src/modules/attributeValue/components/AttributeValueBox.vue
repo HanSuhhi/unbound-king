@@ -27,6 +27,8 @@ provide("type", dialogType);
     <alert class="value-box_alert">
       属性值，是作用于角色各项参数判定的直接数值，包括基础属性值，进阶属性值和特殊属性值。
     </alert>
+    <!-- <c-tabs> -->
+    <!-- <template #list></template> -->
     <article class="value-box_main">
       <value-list class="value-box_list" type="base" :attribute-values="baseAttributes">
         <template #title>
@@ -44,6 +46,7 @@ provide("type", dialogType);
         </template>
       </value-list>
     </article>
+    <!-- </c-tabs> -->
   </div>
 </template>
 
@@ -53,7 +56,7 @@ provide("type", dialogType);
 }
 
 .value-box_list {
-  width: 100%;
+  width: calc(100% / 3);
 }
 
 .value-box_alert {

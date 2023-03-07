@@ -1,18 +1,17 @@
 import CodeCanvasVue from "@/components/codeCanvas/CodeCanvas.vue";
-import { defineComponent, provide, watchEffect } from "vue";
-import AttributeValueBox from "./components/AttributeValueBox.vue";
-import { defineAttributeValueLayout } from "./composables/attributeLayout";
-import "./attribute-value.css";
 import { storeToRefs } from "pinia";
+import { defineComponent, provide } from "vue";
+import { defineCommonLayout } from "../../composables/components/commonLayout";
+import "./attribute-value.css";
+import AttributeValueBox from "./components/AttributeValueBox.vue";
 import { useAttributeValueStore } from "./store/attribute-value.store";
 
 export default defineComponent({
   name: "AttributeValue",
   setup: (props) => {
-    const { COMP, style } = defineAttributeValueLayout();
+    const { COMP } = defineCommonLayout("attribute-value");
     const { codeCanvasCode, isChanged } = storeToRefs(useAttributeValueStore());
 
-    provide("layout-style", style);
     provide("changed", isChanged);
 
     return () => {

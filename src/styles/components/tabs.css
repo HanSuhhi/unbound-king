@@ -1,0 +1,35 @@
+.common-tabs {
+  --border-height: 2px;
+  --left: 0;
+}
+
+.common-tabs-list {
+  display: flex;
+  width: 100%;
+  padding-bottom: var(--small);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.common-tabs-list_item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--base-margin);
+  cursor: pointer;
+}
+
+.common-tabs-list_item:first-child::before {
+  position: absolute;
+  bottom: calc(-1 * var(--small) - var(--border-height));
+  left: var(--rect-left);
+  width: var(--rect-width);
+  height: var(--border-height);
+  background-color: var(--main-color);
+  transition: all var(--transition-prop);
+  content: "";
+}
+
+.common-tabs-panels {
+  width: 100%;
+}

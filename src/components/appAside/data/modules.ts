@@ -1,6 +1,8 @@
+// @unocss-include
 import { ref, watchEffect } from "vue";
 import { authModuleConfig } from "./authModuleConfig";
 import { devModuleConfig } from "./devModuleConfig";
+import { packageModuleConfig } from "./PackageModuleConfig";
 
 export const defineModules = () => {
   const modules = ref<AsideModule[]>([]);
@@ -20,6 +22,13 @@ export const defineModules = () => {
         icon: "i-tabler-device-analytics",
         type: "default-menu",
         pages: devModuleConfig,
+      },
+      {
+        key: "package",
+        title: "包体模块",
+        icon: "i-lucide-package",
+        type: "default-menu",
+        pages: packageModuleConfig,
       },
       // {
       //   key: "game",

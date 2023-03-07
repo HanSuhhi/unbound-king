@@ -24,7 +24,7 @@ const openDialog = () => {
     <header class="value-list_header">
       <div class="value-list_side">
         <slot name="title" />
-        <div class="value-list_total">4</div>
+        <div class="value-list_total">{{ attributeValues.length }}</div>
       </div>
       <div class="value-list_side">
         <c-input ref="Input" class="value-list_search">
@@ -56,6 +56,8 @@ const openDialog = () => {
 }
 
 .value-list_item {
+  width: 100%;
+  min-width: auto;
   margin-bottom: var(--base-margin);
 }
 

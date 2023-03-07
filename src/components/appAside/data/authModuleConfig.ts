@@ -1,3 +1,4 @@
+// @unocss-include
 import { defineModuleConfig } from "../composables/moduleConfig";
 
 export const authModuleConfig: ModulePage[] = defineModuleConfig([

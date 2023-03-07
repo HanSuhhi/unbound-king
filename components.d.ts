@@ -29,9 +29,11 @@ declare module '@vue/runtime-core' {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     Extend: typeof import('./src/components/Extend.vue')['default']
+    IconListItem: typeof import('./src/components/tabs/IconListItem.vue')['default']
     Operator: typeof import('./src/components/codeCanvas/components/Operator.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TabsListItem: typeof import('./src/components/tabs/TabsListItem.vue')['default']
     TypeButton: typeof import('./src/components/typeButton/TypeButton.vue')['default']
     Workshop: typeof import('./src/components/appAside/components/workshop/Workshop.vue')['default']
   }
