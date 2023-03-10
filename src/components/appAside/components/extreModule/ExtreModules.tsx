@@ -7,8 +7,9 @@ export default defineComponent({
   setup: (props) => {
     const setting: AsideModule = {
       key: "setting",
-      icon: "i-ic-sharp-settings",
+      icon: "setting",
       type: "exter-module",
+      title: "管理",
     };
     return () => {
       return (

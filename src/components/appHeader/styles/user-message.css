@@ -4,12 +4,10 @@
   display: flex;
   place-items: center;
 }
-
-.user-message__functions {
-  display: flex;
-  place-items: center;
-  margin-right: var(--mini);
+.user-message_search {
+  margin-right: var(--normal);
 }
+
 
 .user-message__username {
   color: var(--white);
@@ -40,7 +38,7 @@
   inset: 0;
   top: calc((100% - var(--height)) / 2);
   height: var(--height);
-  border: 1.5px solid var(--bg-color-bright-2);
+  border-left: 1.5px solid var(--bg-color-bright-2);
   border-top: 0;
   border-bottom: 0;
   filter: brightness(2);
@@ -84,17 +82,6 @@
   width: 70%;
   height: 70%;
   border-radius: var(--border-radius);
-}
-
-.user-message__box {
-  display: flex;
-  margin-left: var(--mini);
-  padding: var(--small) var(--normal);
-  color: var(--white);
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: all var(--moment);
-  place-items: center;
 }
 
 .shake {

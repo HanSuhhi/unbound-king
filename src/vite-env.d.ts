@@ -8,6 +8,8 @@ interface ImportMetaEnv {
   readonly BOX_COLLAPSE_WIDTH: string;
   readonly ANIMATION_DURATION: string;
   readonly BOX_EXTEND_WIDTH: string;
+  readonly ENCRYPTED_KEY: string;
+  readonly IV: string;
 }
 
 type Size = "small" | "normal" | "large";
@@ -22,8 +24,13 @@ type KeyCommand = {
 };
 
 type TabListItem = {
-  icon: string;
-  title: string;
+  icon?: BaseIcon;
+  index: number;
+  injectData?: any;
+  tranlator: Translator;
 };
 
-type Translator = Record<string, string>;
+type Translator = {
+  name: string;
+  title: string;
+};

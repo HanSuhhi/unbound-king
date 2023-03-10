@@ -13,7 +13,7 @@ export const DATA_Destiny: Destiny[] = [
 然而，也有些人族之间存在着竞争和冲突。由于各自生活环境和资源的不同，有时候难免会出现争夺和抢夺的情况。在这种情况下，人族之间的关系会变得紧张甚至敌对，这也成为了人族发展历程中的一个不可避免的问题。
 
 总之，人族的分散和多样性既带来了文化的丰富性和技术的发展，又带来了竞争和冲突。在长期的历史演变中，人族不断适应自然环境和社会条件，形成了自己的独特文化和生活方式，也积累了丰富的历史和文化遗产。`,
-    icon: "i-game-icons-bandana",
+    // icon: "i-game-icons-bandana",
   },
   {
     title: "妖族",
@@ -22,7 +22,7 @@ export const DATA_Destiny: Destiny[] = [
     mainColor: "var(--purple-deep-2)",
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     subColor: "#ba9dc8",
-    icon: "i-game-icons-brain-tentacle",
+    // // icon: "i-game-icons-brain-tentacle",
   },
   {
     title: "灵族",
@@ -31,7 +31,7 @@ export const DATA_Destiny: Destiny[] = [
     mainColor: "var(--green-deep-2)",
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     subColor: "var(--green-bright-2)",
-    icon: "i-game-icons-beech",
+    // // icon: "i-game-icons-beech",
   },
   {
     title: "兽族",
@@ -40,7 +40,7 @@ export const DATA_Destiny: Destiny[] = [
     mainColor: "var(--orange-deep-2)",
     subColor: "#ffba83",
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
-    icon: "i-game-icons-bear-face",
+    // // icon: "i-game-icons-bear-face",
   },
   {
     title: "魂族",
@@ -49,6 +49,6 @@ export const DATA_Destiny: Destiny[] = [
     mainColor: "var(--blue-deep-2)",
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     subColor: "var(--blue-bright-2)",
-    icon: "i-game-icons-chemical-bolt",
+    // // icon: "i-game-icons-chemical-bolt",
   },
 ];

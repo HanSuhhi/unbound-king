@@ -1,14 +1,17 @@
-<script setup lang='ts'>
-import TitleCard from '@/components/titleCard/TitleCard';
-import { computed, ref, onMounted, nextTick } from 'vue';
+<script setup lang="ts">
+import TitleCard from "@/components/titleCard/TitleCard";
+import { computed, ref, onMounted, nextTick } from "vue";
+import Icon from "@/components/Icon.vue";
 
 const props = defineProps<{
-  destiny: Destiny
+  destiny: Destiny;
 }>();
 
-const destinyOrigin = computed(() => props.destiny.origin?.split(`
+const destinyOrigin = computed(() =>
+  props.destiny.origin?.split(`
 
-`));
+`),
+);
 
 const footerRef = ref<HTMLElement>();
 const scroll = (wheelEvent: WheelEvent) => {
@@ -36,7 +39,7 @@ const scroll = (wheelEvent: WheelEvent) => {
       <title-card class="destiny-detail_settlement destiny-detail_sub">
         <template #title>聚落</template>
         <template #subtitle>
-          <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
+          <Icon icon="warning" style="margin-right: var(--mini);" />
           该种族出身可能获得以下的技能
         </template>
         Lorem ipsum dolor sit amet consectetur, .
@@ -44,7 +47,7 @@ const scroll = (wheelEvent: WheelEvent) => {
       <title-card class="destiny-detail_class destiny-detail_sub">
         <template #title>职业</template>
         <template #subtitle>
-          <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
+          <Icon icon="warning" style="margin-right: var(--mini);" />
           该种族出身可能获得以下的职业
         </template>
         Lorem ipsum dolor sit amet consectetur, .
@@ -52,7 +55,7 @@ const scroll = (wheelEvent: WheelEvent) => {
       <title-card class="destiny-detail_technique destiny-detail_sub">
         <template #title>心法</template>
         <template #subtitle>
-          <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
+          <Icon icon="warning" style="margin-right: var(--mini);" />
           该种族工匠可能拥有以下的建筑工艺
         </template>
         Lorem ipsum dolor sit amet consectetur, .
@@ -60,7 +63,7 @@ const scroll = (wheelEvent: WheelEvent) => {
       <title-card class="destiny-detail_skill destiny-detail_sub">
         <template #title>技能</template>
         <template #subtitle>
-          <div class="i-ph-info-bold" style="margin-right: var(--mini);" />
+          <Icon icon="warning" style="margin-right: var(--mini);" />
           该种族工匠可能拥有以下的建筑工艺
         </template>
         Lorem ipsum dolor sit amet consectetur, .
@@ -130,4 +133,3 @@ const scroll = (wheelEvent: WheelEvent) => {
   margin-block-start: 0 !important;
 }
 </style>
-

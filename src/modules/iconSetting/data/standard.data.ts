@@ -1,1 +1,3 @@
-export const DATA_IconSetting_Base: IconSetting[] = [];
+// @unocss-include
+const data = {};
+export default data;

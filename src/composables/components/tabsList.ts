@@ -1,26 +1,36 @@
-import { map } from "lodash-es";
-import { getKeyFromPath } from "../ci/keyFromPath";
-
 type ReturnRecord = Record<string, TabListItem>;
 
-export const defineTabsList = (data: Record<string, any>, translator: ReturnRecord): ReturnRecord => {
+export const defineTabsOptions = (data: Record<string, any>, translator: ReturnRecord = {}) => {
   const returnRecord: ReturnRecord = {
     standard: {
-      title: "标准包",
-      icon: "i-ic-sharp-width-normal",
+      icon: "package",
+      index: 0,
+      injectData: data["standard"].default,
+      tranlator: {
+        name: "standard",
+        title: "标准包",
+      },
     },
   };
 
-  const keys = map(data, getKeyFromPath);
+  const keys = Object.keys(data);
+
   const index = keys.indexOf("standard");
   if (index !== -1) keys.splice(index, 1);
 
-  keys.forEach((key) => {
-    if (translator[key]) return (returnRecord[key] = translator[key]);
-    returnRecord[key] = {
-      title: key,
-      icon: "",
-    };
+  keys.forEach((key, index) => {
+    if (translator[key]) returnRecord[key] = translator[key];
+    else {
+      returnRecord[key] = {
+        tranlator: {
+          name: key,
+          title: key,
+        },
+        index: -1,
+      };
+    }
+    returnRecord[key]["index"] = index + 1;
+    returnRecord[key]["injectData"] = data[key].default;
   });
 
   return returnRecord;

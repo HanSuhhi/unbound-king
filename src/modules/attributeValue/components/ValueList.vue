@@ -1,17 +1,18 @@
-<script setup lang='ts'>
-import type { useCsssDialog } from 'csss-ui';
-import { CInput } from 'csss-ui';
-import type { Ref } from 'vue';
-import { inject } from 'vue';
-import { defineItemsSearch } from '../composables/ItemsSearch';
-import ValueItem from './ValueItem.vue';
+<script setup lang="ts">
+import Icon from "@/components/Icon.vue";
+import type { useCsssDialog } from "csss-ui";
+import { CInput } from "csss-ui";
+import type { Ref } from "vue";
+import { inject } from "vue";
+import { defineItemsSearch } from "../composables/ItemsSearch";
+import ValueItem from "./ValueItem.vue";
 
-const props = defineProps<{attributeValues: AttributeValue[], type: AttributeValue['type']}>();
+const props = defineProps<{ attributeValues: AttributeValue[]; type: AttributeValue["type"] }>();
 
-const { COMP: Input} = defineItemsSearch();
+const { COMP: Input } = defineItemsSearch();
 
-const state = inject<ReturnType<typeof useCsssDialog>['state']>("dialog");
-const type = inject<Ref<AttributeValue['type']>>('type');
+const state = inject<ReturnType<typeof useCsssDialog>["state"]>("dialog");
+const type = inject<Ref<AttributeValue["type"]>>("type");
 
 const openDialog = () => {
   state!.value.show = true;
@@ -29,16 +30,17 @@ const openDialog = () => {
       <div class="value-list_side">
         <c-input ref="Input" class="value-list_search">
           <template #header>
-            <div class="i-ri-search-eye-fill" />
+            <Icon icon="search-eye" />
           </template>
         </c-input>
       </div>
     </header>
     <main class="value-list_main">
-      <ValueItem v-for="attributeValue in attributeValues" :key="attributeValue.key" class="value-list_item" :attribute-value="attributeValue" />
+      <ValueItem v-for="attributeValue in attributeValues" :key="attributeValue.key" class="value-list_item"
+        :attribute-value="attributeValue" />
     </main>
     <footer class="value-list_footer" @click="openDialog()">
-      <div class="i-ic-outline-plus" style="margin-right: var(--mini);" />
+      <Icon icon="plus" style="margin-right: var(--mini);" />
       添加属性值...
     </footer>
   </section>
@@ -123,4 +125,3 @@ const openDialog = () => {
   border-radius: var(--border-radius);
 }
 </style>
-

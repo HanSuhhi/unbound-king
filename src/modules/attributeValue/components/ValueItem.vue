@@ -1,7 +1,8 @@
-<script setup lang='ts'>
-import Icon from '@/components/icon/Icon';
-import TitleCard from '@/components/titleCard/TitleCard';
-defineProps<{attributeValue: AttributeValue}>();
+<script setup lang="ts">
+import TitleCard from "@/components/titleCard/TitleCard";
+import { } from "../../baseIcon/data/baseIcon.data";
+import Icon from "@/components/Icon.vue";
+defineProps<{ attributeValue: AttributeValue }>();
 </script>
 
 <template>
@@ -14,7 +15,7 @@ defineProps<{attributeValue: AttributeValue}>();
     </template>
     <template #subtitle>
       <div class="value-item_operator">
-        <Icon icon="i-ic-outline-more-horiz" size="small" />
+        <Icon icon="more" size="small" />
       </div>
     </template>
     <p class="value-item_description p-reset">

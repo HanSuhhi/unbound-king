@@ -1,7 +1,5 @@
 <script setup lang='ts'>
 import { useCsssInput } from 'csss-ui';
-import TypeButton from '@/components/typeButton/TypeButton.vue';
-import Icon from '@/components/icon/Icon';
 
 const { COMP: Input, state } = useCsssInput({
   state: {

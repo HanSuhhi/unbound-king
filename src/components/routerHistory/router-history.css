@@ -26,6 +26,10 @@
   place-items: center;
 }
 
+.router-history_item > .icon {
+  font-size: var(--normal);
+}
+
 .router-history_block:last-child > .router-history_item {
   position: relative;
   display: flex;

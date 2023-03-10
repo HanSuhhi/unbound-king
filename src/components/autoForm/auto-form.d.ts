@@ -6,11 +6,12 @@ type Options = {
 type AutoformItem = {
   key: string;
   title: string;
-  type: "input" | "selecter";
+  type: "input" | "selecter" | "translator";
+  hide?: boolean;
   required?: boolean;
   options?: Options;
   placeholder?: string;
-  default?: string;
+  default?: any;
   disabled?: boolean;
   limit?: {
     max?: number;

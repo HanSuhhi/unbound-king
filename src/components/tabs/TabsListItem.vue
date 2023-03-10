@@ -6,7 +6,7 @@ defineProps<{
 
 <template>
   <div class="icon" :class="message.icon" />
-  {{ message.title }}
+  {{ message.tranlator.title }}
 </template>
 
 <style scoped>
@@ -14,5 +14,4 @@ defineProps<{
   display: inline-block;
   margin-right: var(--small);
 }
-
 </style>

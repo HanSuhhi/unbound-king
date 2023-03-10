@@ -1,8 +1,8 @@
-<script setup lang='ts'>
-import TypeButton from '@/components/typeButton/TypeButton.vue';
-import "./styles/workshop-package.css";
+<script setup lang="ts">
+import Icon from "@/components/Icon.vue";
+import TypeButton from "@/components/typeButton/TypeButton.vue";
 import "./styles/workshop-factory.css";
-
+import "./styles/workshop-package.css";
 </script>
 
 <template>
@@ -10,25 +10,23 @@ import "./styles/workshop-factory.css";
     <p class="workshop_title">工坊</p>
     <div class="workshop-package">
       <header class="workshop-package_title">基础包</header>
-      <p class="workshop-package_description">
-        此包为游戏基础包，包含了游戏本体的基本内容及所有相关系统。默认加载，无法卸除。
-      </p>
+      <p class="workshop-package_description">此包为游戏基础包，包含了游戏本体的基本内容及所有相关系统。默认加载，无法卸除。</p>
       <TypeButton class="workshop-package_button">
-        <div class="i-pixelarticons-bullseye" style="margin-right: var(--mini);" />
+        <Icon icon="coin" style="margin-right: var(--mini);" />
         了解更多
       </TypeButton>
     </div>
     <div class="workshop-factory">
       <div class="workshop-factory_more">
         插件市集
-        <div class="i-mdi-bird" style="margin-left: var(--small) ;" />
+        <Icon icon="bird" style="margin-left: var(--small);" />
       </div>
       <div class="workshop-factory-operator">
         <div class="workshop-factory-operator_item workshop-factory_last">
-          <div class="i-ic-baseline-keyboard-arrow-left" />
+          <Icon icon="single-left" />
         </div>
         <div class="workshop-factory-operator_item workshop-factory_next">
-          <div class="i-ic-baseline-keyboard-arrow-right" />
+          <Icon icon="single-right" />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import Icon from "@/components/icon/Icon";
+import Icon from "@/components/Icon.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -7,7 +7,7 @@ export default defineComponent({
     return () => {
       return (
         <div class="ethnicity-add">
-          <Icon icon="i-ic-outline-plus" />
+          <Icon icon="plus" />
         </div>
       );
     };

@@ -28,7 +28,7 @@
 
 .aside-menu-main {
   width: 100%;
-  margin-left: var(--small);
+  margin-left: var(--base-margin);
 }
 
 .aside-menu-block_description {
@@ -63,6 +63,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--mini);
+  font-size: calc(var(--normal) * 1.4);
   background-color: var(--white-deep-2);
   border-radius: var(--border-radius);
 }

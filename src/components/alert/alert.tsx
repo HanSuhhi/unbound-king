@@ -1,6 +1,7 @@
-import "./alert.css";
+import Icon from "@/components/Icon.vue";
 import type { PropType } from "vue";
 import { defineComponent } from "vue";
+import "./alert.css";
 
 export default defineComponent({
   name: "AlertComponent",
@@ -15,7 +16,7 @@ export default defineComponent({
     return () => {
       return (
         <div class={["alert", `alert_${props.type}`]}>
-          <div class="i-ph-info-bold alert_icon" />
+          <Icon icon={"warning"} class="alert_icon" />
           <div class="alert_words">{slots.default?.()}</div>
         </div>
       );

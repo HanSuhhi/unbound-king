@@ -3,22 +3,36 @@ import { defineModuleConfig } from "../composables/moduleConfig";
 
 export const devModuleConfig: ModulePage[] = defineModuleConfig([
   {
-    path: "icon-setting",
+    path: "icon-manage",
     title: "图标管理",
-    description: "所使用的所有图标",
-    icon: "i-uil-icons",
+    description: "图标相关内容",
+    icon: "icons",
+    children: [
+      {
+        path: "base-icon",
+        title: "基础图标",
+        description: "项目框架所使用图标",
+        icon: "dashboard",
+      },
+      {
+        path: "icon-setting",
+        title: "游戏图标",
+        description: "游玩中用到的图标",
+        icon: "game-icon",
+      },
+    ],
   },
   {
     path: "attribute-design",
     title: "属性设置",
     description: "人物属性 / 属性值",
-    icon: "i-carbon-property-relationship",
+    icon: "code",
     children: [
       {
         path: "attribute-value",
         title: "属性值",
         description: "角色数值属性及含义",
-        icon: "i-iconoir-numbered-list-right",
+        icon: "list",
       },
     ],
   },
@@ -26,25 +40,25 @@ export const devModuleConfig: ModulePage[] = defineModuleConfig([
     path: "nation-design",
     title: "种族一览",
     description: "种族相关参数修正",
-    icon: "i-emojione-monotone-alien-monster",
+    icon: "monster",
     children: [
       {
         path: "destiny-design",
         title: "种族设计",
         description: "查看所有种族参数",
-        icon: "i-ps-tribe",
+        icon: "relation",
       },
       {
         path: "ethnicity-design",
         title: "族裔设计",
         description: "查看、控制族裔参数",
-        icon: "i-game-icons-abstract-065",
+        icon: "abstract",
       },
       {
         path: "lineageo-design",
         title: "血统设计",
         description: "查看、控制血统参数",
-        icon: "i-simple-icons-lineageos",
+        icon: "lineageos",
       },
     ],
   },
@@ -52,12 +66,12 @@ export const devModuleConfig: ModulePage[] = defineModuleConfig([
     path: "skill-design",
     title: "技能设计",
     description: "技能参数设置",
-    icon: "i-game-icons-skills",
+    icon: "character-param",
   },
   {
     path: "ambition-design",
     title: "抱负设计",
     description: "角色抱负相关设计",
-    icon: "i-game-icons-choice",
+    icon: "choice",
   },
 ]);

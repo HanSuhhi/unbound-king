@@ -1,4 +1,4 @@
-import type { LiteralTypeNode, TypeLiteralNode, TypeNode, UnionTypeNode } from "typescript";
+import type { Identifier, LiteralTypeNode, TypeLiteralNode, TypeNode, TypeReferenceNode, UnionTypeNode } from "typescript";
 import { createSourceFile, forEachChild, isPropertySignature, isTypeAliasDeclaration, isTypeLiteralNode, ScriptTarget, SyntaxKind } from "typescript";
 
 function parseTypeAliasDeclaration(typeString: string): AutoformItem[] {
@@ -12,7 +12,7 @@ function parseTypeAliasDeclaration(typeString: string): AutoformItem[] {
     forEachChild(typeNode, (memberNode) => {
       if (!isPropertySignature(memberNode)) return;
       const key = (memberNode.name as any).text;
-      const [type, options] = getTypeString(memberNode.type!);
+      const [type, options] = getTypeFromNode(memberNode.type!);
       const required = !memberNode.questionToken;
 
       members.push({ key, type, options, title: "", required });
@@ -21,18 +21,22 @@ function parseTypeAliasDeclaration(typeString: string): AutoformItem[] {
   return members;
 }
 
-function getTypeString(node: TypeNode): [type: AutoformItem["type"], options?: AutoformItem["options"]] {
+function getTypeFromNode(node: TypeNode): [type: AutoformItem["type"], options?: AutoformItem["options"]] {
   switch (node.kind) {
     default:
     case SyntaxKind.StringKeyword:
       return ["input"];
     case SyntaxKind.UnionType:
       const unionType = node as UnionTypeNode;
-      const range = unionType.types.map(getTypeString) as unknown as string[];
+      const range = unionType.types.map(getTypeFromNode) as unknown as string[];
       return ["selecter", { range }];
     case SyntaxKind.LiteralType:
       const literalTypeNode = node as LiteralTypeNode;
       return (literalTypeNode.literal as any).text;
+    case SyntaxKind.TypeReference:
+      const referenceTypeNode = node as TypeReferenceNode;
+      const typeName = (referenceTypeNode.typeName as Identifier).escapedText as string;
+      return [typeName.toLowerCase() as AutoformItem["type"]];
   }
 }
 

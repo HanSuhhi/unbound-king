@@ -57,3 +57,7 @@
   transition: all var(--transition-prop);
   transition-property: transform, opacity;
 }
+
+.page-transition {
+  transition: grid-template var(--transition-prop);
+}

@@ -1,5 +1,4 @@
 <script setup lang='ts'>
-import Icon from '@/components/icon/Icon';
 import { storeToRefs } from 'pinia';
 import { useDestinyStore } from '../store/destiny.store';
 import { computed } from 'vue';
@@ -25,7 +24,7 @@ const isChoosed = computed(() => props.index === tabsIndex.value);
   <article class="destiny-design-card" :data-choosed="isChoosed ? '' : null">
     <aside class="destiny-design-card_aside">
       <div class="destiny-design-card_icon">
-        <Icon :icon="destiny.icon" />
+        <!-- <Icon :icon="destiny.icon" /> -->
       </div>
     </aside>
     <main class="destiny-design-card_main">

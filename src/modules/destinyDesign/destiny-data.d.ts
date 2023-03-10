@@ -6,5 +6,5 @@ type Destiny = {
   subColor: string;
   description: string;
   origin?: string;
-  icon: string;
+  // icon: string;
 };

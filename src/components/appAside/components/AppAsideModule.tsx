@@ -2,6 +2,7 @@ import { delay } from "lodash-es";
 import type { PropType } from "vue";
 import { computed, defineComponent } from "vue";
 import { useRouter } from "vue-router";
+import Icon from "@/components/Icon.vue";
 
 export default defineComponent({
   name: "AppAsideModule",
@@ -17,8 +18,6 @@ export default defineComponent({
   },
   setup: (props) => {
     const router = useRouter();
-    const classList = computed<string[]>(() => [props.module!.icon, "app-aside_module"]);
-
     const routeToPage = (module: AsideModule) => {
       const page = module.pages![0];
       if (page.children) {
@@ -48,7 +47,7 @@ export default defineComponent({
             routeToPage(props.module!);
             toggleModule();
           }}>
-          <div class={classList.value} />
+          <Icon icon={props.module!.icon} class="app-aside_module"></Icon>
         </div>
       );
     };

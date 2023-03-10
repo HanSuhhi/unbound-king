@@ -1,5 +1,5 @@
 import { useCsssTabs } from "csss-ui";
-import { nextTick } from "vue";
+import { nextTick, onMounted } from "vue";
 
 export const defineCommonTabs = (componentName: string) => {
   const tabsName = componentName;
@@ -39,7 +39,7 @@ export const defineCommonTabs = (componentName: string) => {
     });
   };
 
-  nextTick(calcListItemWidth);
+  onMounted(nextTick.bind(this, calcListItemWidth));
 
   return { ...Layout };
 };

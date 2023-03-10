@@ -1,40 +1,24 @@
-import Icon from "@/components/icon/Icon";
-import { useSettingStore } from "@/modules/setting/store/setting.store";
+import Icon from "@/components/Icon.vue";
 import LifeHash from "@hansuhhi-don/lifehash-vue";
 import { useNow } from "@vueuse/core";
-import { storeToRefs } from "pinia";
 import { defineComponent } from "vue";
-import { useFunctions } from "../composables/functions";
 import { useSearch } from "../composables/search";
-import { useSettingControl } from "../composables/settingControl";
 
 export default defineComponent({
   name: "UserMessage",
   setup: (props) => {
     const defaultImg = useNow().value.getTime().toString();
-    const { funcs } = useFunctions();
     const { Search } = useSearch();
-    const { settingPageActive } = storeToRefs(useSettingStore());
-    const { SettingEnterIconRef } = useSettingControl();
 
     return () => {
       return (
         <article class="user-message">
-          <section class="user-message__search">
+          <section class="user-message_search">
             <c-input ref={Search}>
               {{
-                header: () => <div class="i-ri-search-eye-fill"></div>,
+                header: () => <Icon icon="search-eye"></Icon>,
               }}
             </c-input>
-          </section>
-          <section class="user-message__functions">
-            {funcs.value.map((item) => {
-              return (
-                <div class="user-message__box">
-                  <Icon icon={item.icon!} size="small"></Icon>
-                </div>
-              );
-            })}
           </section>
           <section class="user-message__user">
             <span class="user-message__username">
@@ -46,9 +30,6 @@ export default defineComponent({
                 <LifeHash input={defaultImg} />
               </span>
             </div>
-          </section>
-          <section class="user-message__plus user-message__box" ref={SettingEnterIconRef} onClick={() => (settingPageActive.value = true)}>
-            <Icon icon="i-icon-park-solid-more-four" size="small" />
           </section>
         </article>
       );

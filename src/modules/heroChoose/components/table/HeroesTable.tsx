@@ -1,9 +1,9 @@
 import "./styles/heroes-table.css";
 
-import Icon from "@/components/icon/Icon";
 import { defineComponent } from "vue";
 import { useHeroesTable } from "./composables/heroesTable";
 import TableMain from "../tableMain/TableMain";
+import Icon from "@/components/Icon.vue";
 
 export default defineComponent({
   name: "HeroesTable",
@@ -17,19 +17,19 @@ export default defineComponent({
               return (
                 <>
                   <span class="heroes-table_item__box">
-                    <Icon icon="i-icon-park-solid-more-four" size="small" />
+                    <Icon icon="authentication" size="small" />
                   </span>
                   <span class="heroes-table_item__box">
-                    <Icon icon="i-icon-park-solid-more-four" size="small" />
+                    <Icon icon="authentication" size="small" />
                   </span>
                   <span class="heroes-table_item__box">
-                    <Icon icon="i-icon-park-solid-more-four" size="small" />
+                    <Icon icon="authentication" size="small" />
                   </span>
                   <span class="heroes-table_item__box">
-                    <Icon icon="i-icon-park-solid-more-four" size="small" />
+                    <Icon icon="authentication" size="small" />
                   </span>
                   <span class="heroes-table_item__box">
-                    <Icon icon="i-icon-park-solid-more-four" size="small" />
+                    <Icon icon="authentication" size="small" />
                   </span>
                 </>
               );

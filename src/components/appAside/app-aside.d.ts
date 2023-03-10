@@ -1,9 +1,9 @@
 type AsideModule = {
   key: string;
   title: string;
-  icon: string;
-  comp?: Component;
+  icon: BaseIconName;
   type: "default-menu" | "exter-module";
+  comp?: Component;
   pages?: ModulePage[];
 };
 
@@ -11,7 +11,7 @@ type ModulePage = {
   path: string;
   title: string;
   description: string;
-  icon: string;
+  icon: BaseIconName;
   key: number[];
   children?: ModulePage[];
   auth: Set<string>;

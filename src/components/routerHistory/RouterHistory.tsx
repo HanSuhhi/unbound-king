@@ -1,3 +1,4 @@
+import Icon from "@/components/Icon.vue";
 import { useGlobalStore } from "@/stores/global.store";
 import { find } from "lodash-es";
 import { storeToRefs } from "pinia";
@@ -6,7 +7,6 @@ import { useRouter } from "vue-router";
 import { useAppAsideStore } from "../appAside/store/aside.store";
 import { useRouterHistoryStore } from "../appHeader/store/routerHistory.store";
 import "./router-history.css";
-import Icon from "@/components/icon/Icon";
 
 export default defineComponent({
   name: "RouterHistory",
@@ -38,10 +38,10 @@ export default defineComponent({
         <ol class="router-history">
           <div class="router-history_block">
             <li class="router-history_item" onClick={last}>
-              <Icon icon="i-ic-outline-keyboard-double-arrow-left" />
+              <Icon icon="double-left" />
             </li>
             <li class="router-history_item" onClick={routeToHome}>
-              <Icon icon="i-ic-round-home"></Icon>
+              <Icon icon="home"></Icon>
             </li>
             {routes.value.map((route) => {
               return (
@@ -53,7 +53,7 @@ export default defineComponent({
           </div>
           <div class="router-history_block">
             <li class="router-history_item">
-              <Icon icon="i-ic-outline-keyboard-double-arrow-right" />
+              <Icon icon="double-right" />
             </li>
           </div>
         </ol>

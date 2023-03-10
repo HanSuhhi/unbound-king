@@ -23,7 +23,7 @@ export default defineConfig({
   server: {
     port: 20018,
   },
-  envPrefix: ["SETTING_HEADER_LIST_MAX_NUM", "PROJECT_NAME", "ASIDE_WIDTH", "ASIDE_MODULES_WIDTH", "BOX_COLLAPSE_WIDTH", "ANIMATION_DURATION", "BOX_EXTEND_WIDTH"],
+  envPrefix: ["SETTING_HEADER_LIST_MAX_NUM", "PROJECT_NAME", "ASIDE_WIDTH", "ASIDE_MODULES_WIDTH", "BOX_COLLAPSE_WIDTH", "ANIMATION_DURATION", "BOX_EXTEND_WIDTH", "ENCRYPTED_KEY", "IV"],
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),

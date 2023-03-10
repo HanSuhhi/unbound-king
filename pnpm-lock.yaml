@@ -7,6 +7,7 @@ specifiers:
   '@hansuhhi-don/lifehash-vue': ^0.1.6
   '@hansuhhi-don/stylelint-config': ^0.2.0
   '@iconify/json': ^2.2.2
+  '@types/crypto-js': ^4.1.1
   '@types/lodash-es': ^4.17.6
   '@types/node': ^18.11.18
   '@types/prettier': ^2.7.2
@@ -16,6 +17,7 @@ specifiers:
   '@vitejs/plugin-vue-jsx': ^3.0.0
   '@vueuse/core': ^9.10.0
   commitizen: ^4.2.5
+  crypto-js: ^4.1.1
   csss-ui: 0.2.0-beta.34
   cz-conventional-changelog: ^3.3.0
   dayjs: ^1.11.7
@@ -59,12 +61,14 @@ devDependencies:
   '@commitlint/config-conventional': 17.4.3
   '@hansuhhi-don/stylelint-config': 0.2.0_stylelint@14.16.1
   '@iconify/json': 2.2.2
+  '@types/crypto-js': 4.1.1
   '@types/prettier': 2.7.2
   '@types/prismjs': 1.26.0
   '@unocss/preset-icons': 0.48.0
   '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
   '@vitejs/plugin-vue-jsx': 3.0.0_vite@4.0.4+vue@3.2.45
   commitizen: 4.3.0
+  crypto-js: 4.1.1
   cz-conventional-changelog: 3.3.0
   eslint: 8.32.0
   husky: 8.0.3
@@ -1123,6 +1127,10 @@ packages:
 
   /@tsconfig/node16/1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
+    dev: true
+
+  /@types/crypto-js/4.1.1:
+    resolution: {integrity: sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==}
     dev: true
 
   /@types/estree/1.0.0:
@@ -2493,6 +2501,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  /crypto-js/4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+    dev: true
 
   /css-functions-list/3.1.0:
     resolution: {integrity: sha512-/9lCvYZaUbBGvYUgYGFJ4dcYiyqdhSjG7IPVluoV8A1ILjkF7ilmhp1OGUz8n+nmBcu0RNrQAzgD8B6FJbrt2w==}

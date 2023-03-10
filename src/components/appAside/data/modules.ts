@@ -12,30 +12,24 @@ export const defineModules = () => {
       {
         key: "auth",
         title: "权限模块",
-        icon: "i-carbon-two-factor-authentication",
+        icon: "authentication",
         type: "default-menu",
         pages: authModuleConfig,
       },
       {
         key: "dev",
         title: "开发者模块",
-        icon: "i-tabler-device-analytics",
+        icon: "development",
         type: "default-menu",
         pages: devModuleConfig,
       },
       {
         key: "package",
         title: "包体模块",
-        icon: "i-lucide-package",
+        icon: "package",
         type: "default-menu",
         pages: packageModuleConfig,
       },
-      // {
-      //   key: "game",
-      //   icon: "i-material-symbols-view-module",
-      //   type: "default-menu",
-      //   pages: authModuleConfig,
-      // },
     ];
   });
 

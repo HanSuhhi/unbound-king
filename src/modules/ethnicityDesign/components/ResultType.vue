@@ -1,22 +1,20 @@
 <script setup lang='ts'>
-import { useResultTypes } from '../composables/resultTypes';
-import { useHtmlPropLint } from '../../../composables/htmlPropLint';
+import Icon from '@/components/Icon.vue';
 import { storeToRefs } from 'pinia';
+import { useResultTypes } from '../composables/resultTypes';
 import { useEthnicityDesignStore } from '../store/ethnicityDesign.store';
-import TypeButton from '@/components/typeButton/TypeButton.vue';
-import Icon from '@/components/icon/Icon';
 
 const { DATA_Types } = useResultTypes();
 const { currentType } = storeToRefs(useEthnicityDesignStore());
 </script>
 
 <template>
-  <article class="result-type" :style="{'--index': currentType}">
+  <article class="result-type" :style="{ '--index': currentType }">
     <section v-for="type, index in DATA_Types" :key="type" class="result-type_item" @click="currentType = index">
       {{ type }}
     </section>
     <div class="result-type_setting result-type_item">
-      <Icon icon="i-material-symbols-settings-rounded" />
+      <Icon icon="setting" />
     </div>
   </article>
 </template>
@@ -30,7 +28,7 @@ const { currentType } = storeToRefs(useEthnicityDesignStore());
   border-bottom: var(--border);
 }
 
-.result-type > * {
+.result-type>* {
   display: flex;
   place-items: center;
 }

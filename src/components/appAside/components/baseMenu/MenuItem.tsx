@@ -1,4 +1,3 @@
-import Icon from "@/components/icon/Icon";
 import { useGlobalStore } from "@/stores/global.store";
 import { isEqual } from "lodash-es";
 import { storeToRefs } from "pinia";
@@ -7,6 +6,7 @@ import { computed, defineComponent } from "vue";
 import { useRouter } from "vue-router";
 import { useHtmlPropLint } from "../../../../composables/htmlPropLint";
 import { useMenuCollapse } from "../../composables/menuCollapse";
+import Icon from "@/components/Icon.vue";
 
 const MenuItem = defineComponent({
   name: "MenuItem",
