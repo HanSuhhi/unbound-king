@@ -27,7 +27,7 @@ type TabListItem = {
   icon?: BaseIconName;
   index: number;
   injectData?: any;
-  tranlator: Translator;
+  name: string;
 };
 
 type Translator = {

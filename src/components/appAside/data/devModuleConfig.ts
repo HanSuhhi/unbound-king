@@ -3,24 +3,10 @@ import { defineModuleConfig } from "../composables/moduleConfig";
 
 export const devModuleConfig: ModulePage[] = defineModuleConfig([
   {
-    path: "icon-manage",
-    title: "图标管理",
-    description: "图标相关内容",
+    path: "game-icon",
+    title: "游戏图标",
+    description: "游玩中用到的图标",
     icon: "icons",
-    children: [
-      {
-        path: "base-icon",
-        title: "基础图标",
-        description: "项目框架所使用图标",
-        icon: "dashboard",
-      },
-      {
-        path: "game-icon",
-        title: "游戏图标",
-        description: "游玩中用到的图标",
-        icon: "game-icon",
-      },
-    ],
   },
   {
     path: "attribute-design",

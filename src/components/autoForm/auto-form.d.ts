@@ -5,7 +5,7 @@ type Options = {
 type AutoformItem = {
   key: string;
   title: string;
-  type: "input" | "selecter" | "translator" | "game-icon";
+  type: "input" | "selecter" | "translator" | "icon";
   hide?: boolean;
   required?: boolean;
   options?: Options;

@@ -23,7 +23,7 @@ const list = ref(defineTabsOptions(data));
 
 const active = computed(() => find(list.value, (listItem) => listItem.index === state.value?.active));
 const activeIcons = computed(() => active.value?.injectData);
-const activeItem = computed(() => active.value?.tranlator);
+const activeItem = computed(() => active.value?.name);
 
 const codeTemplate = computed(() => [unocssInclude, defineDataTemplate(JSON.stringify(activeIcons.value))]);
 const { code } = applyDataToModule(activeIcons, codeTemplate);

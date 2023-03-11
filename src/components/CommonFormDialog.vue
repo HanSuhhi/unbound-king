@@ -19,7 +19,7 @@ const Dialog = inject("Dialog");
 
 const currentConfig = ref(props.formConfig);
 
-const confirm = (data: GameIcon, formEl: FormInstance) => {
+const confirm = (data: any, formEl: FormInstance) => {
   validateForm(formEl, () => {
     props.confirm?.(cloneDeep(data));
     state!.value.show = false;

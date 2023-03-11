@@ -1,7 +1,8 @@
 type AttributeValue = {
+  id: string;
   key: string;
   title: string;
   description: string;
-  icon: GameIcon;
+  icon: Icon;
   type: "base" | "advanced" | "special";
 };

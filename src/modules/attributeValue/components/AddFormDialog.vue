@@ -2,6 +2,7 @@
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import { withFormDetail } from "@/composables/formDetail";
 import { transformTypeToForm } from "@/composables/typeToForm";
+import { defineUniqueId } from "@/composables/uniqueId";
 import type { useCsssDialog } from "csss-ui";
 // import { FormInstance } from "element-plus";
 import { cloneDeep } from "lodash-es";
@@ -27,6 +28,11 @@ const typeTitle = computed(() => {
 
 const formConfig = computed(() =>
   withFormDetail<AttributeValue>(transformTypeToForm(typeString), {
+    id: {
+      title: "id",
+      disabled: true,
+      default: "自动生成，无需操作",
+    },
     key: {
       title: "关键字",
     },
@@ -56,7 +62,8 @@ const formConfig = computed(() =>
 );
 
 const confirm = (data: AttributeValue) => {
-  attributeValues!.value.push(cloneDeep(data));
+  data.id = defineUniqueId("atv");
+  attributeValues!.value.push(data);
 };
 </script>
 

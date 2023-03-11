@@ -33,7 +33,7 @@ const formConfig = computed(() =>
     },
     from: {
       title: "来源",
-      default: key?.value.title,
+      default: key,
       disabled: true,
     },
   }),

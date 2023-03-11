@@ -3,6 +3,7 @@ import { ref, watchEffect } from "vue";
 import { authModuleConfig } from "./authModuleConfig";
 import { devModuleConfig } from "./devModuleConfig";
 import { packageModuleConfig } from "./PackageModuleConfig";
+import { projectModuleConfig } from "./projectModuleConfig";
 
 export const defineModules = () => {
   const modules = ref<AsideModule[]>([]);
@@ -29,6 +30,13 @@ export const defineModules = () => {
         icon: "package",
         type: "default-menu",
         pages: packageModuleConfig,
+      },
+      {
+        key: "project",
+        title: "项目模块",
+        icon: "project",
+        type: "default-menu",
+        pages: projectModuleConfig,
       },
     ];
   });

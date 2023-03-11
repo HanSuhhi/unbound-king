@@ -126,4 +126,8 @@ export const DATA_BaseIcons = {
     translator: { name: "home", title: "主页" },
     path: "i-ic-round-home",
   },
+  project: {
+    translator: { name: "project", title: "项目" },
+    path: "i-octicon-project-symlink-16",
+  },
 };

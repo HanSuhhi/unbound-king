@@ -66,7 +66,7 @@ const rules = computed(() => {
         <el-select v-if="formItem.type === 'selecter'" v-model="model[formItem.key]" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''">
           <el-option v-for="option in formItem.options!.range" :key="option.name" :label="option.title" :value="option.name" />
         </el-select>
-        <form-icon v-if="formItem.type === 'game-icon'" v-model="model[formItem.key]" />
+        <form-icon v-if="formItem.type === 'icon'" v-model="model[formItem.key]" />
         <form-translator v-if="formItem.type === 'translator'" v-model="model[formItem.key]" />
       </template>
     </el-form-item>

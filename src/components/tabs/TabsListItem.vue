@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
   <Icon :icon="message.icon" />
-  {{ message.tranlator.title }}
+  {{ message.name }}
 </template>
 
 <style scoped>

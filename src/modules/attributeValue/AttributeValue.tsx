@@ -4,13 +4,14 @@ import { applyDataToModule } from "../../composables/codeChanged";
 import { defineCommonLayout } from "../../composables/components/commonLayout";
 import "./attribute-value.css";
 import AttributeValueBox from "./components/AttributeValueBox.vue";
+import { DATA_AttributeValue } from "./data/attrbuteValue.data";
 
 export default defineComponent({
   name: "AttributeValue",
   setup: (props) => {
     const { COMP } = defineCommonLayout("attribute-value");
 
-    const attributeValues = ref<AttributeValue[]>([]);
+    const attributeValues = ref<AttributeValue[]>(DATA_AttributeValue);
     const codeTemplate = computed(() => ["export const DATA_AttributeValue: AttributeValue[] =", JSON.stringify(attributeValues.value)]);
     const { code } = applyDataToModule(attributeValues, codeTemplate);
 

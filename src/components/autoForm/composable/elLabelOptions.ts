@@ -1,4 +1,5 @@
-import { map, groupBy, values, transform } from "lodash-es";
+import { transform } from "lodash-es";
+import { GlobalEnum } from "../../../enums/global.enum";
 
 type OptionReturn = {
   label: string;
@@ -10,7 +11,7 @@ export function transformIconToElLabelOptions(gameicons: Record<string, GameIcon
     gameicons,
     (result: OptionReturn[], value, key) => {
       result.push({
-        label: value.from,
+        label: GlobalEnum[value.from] || value.from,
         options: {
           [key]: value,
         },
