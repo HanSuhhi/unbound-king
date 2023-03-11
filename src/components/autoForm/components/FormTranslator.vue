@@ -1,23 +1,12 @@
 <script setup lang="ts">
-import { debounce } from "lodash-es";
-import { ref, watch } from "vue";
+import { autoVModel } from "../composable/formItemDiy";
 
-type Props = { modelValue: Translator };
-const props = defineProps<Props>();
+const props = defineProps<{ modelValue: Translator }>();
 const emits = defineEmits<{
   (e: "update:modelValue", translator: Translator): void;
 }>();
 
-const model = ref<Translator>({
-  name: props.modelValue.name,
-  title: props.modelValue.title,
-});
-
-watch(
-  model,
-  debounce(() => emits("update:modelValue", model.value)),
-  { deep: true },
-);
+const model = autoVModel(emits, props.modelValue);
 </script>
 
 <template>

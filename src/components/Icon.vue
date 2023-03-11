@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { DATA_BaseIcons } from '../modules/baseIcon/data/baseIcon.data';
 import { computed } from 'vue';
+import  { DATA_GameIcons } from '../modules/gameIcon/data/index';
 
 const props = defineProps<{
-  icon?: keyof typeof DATA_BaseIcons;
-  path?: string;
+  icon?: BaseIcon;
+  // type is might keyof typeof DATA_BaseIcons or ids of game icons.
+  // this setting just for compatibility
+  name?: keyof typeof DATA_BaseIcons;
 }>();
 
 const icon = computed(() => {
-  if (props.icon) {
-    return DATA_BaseIcons[props.icon].path;
-  } if (props.path) return props.path;
+  if (props.icon) return props.icon.path;
+  if (props.name) return  DATA_BaseIcons[props.name]?.path || DATA_GameIcons[props.name].path;
   return '';
 });
 
@@ -19,3 +21,9 @@ const icon = computed(() => {
 <template>
   <div :class="icon" class="icon" />
 </template>
+
+<style scoped>
+.icon {
+  display: inline-block;
+}
+</style>

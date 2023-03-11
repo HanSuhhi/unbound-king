@@ -17,19 +17,19 @@ export default defineComponent({
               return (
                 <>
                   <span class="heroes-table_item__box">
-                    <Icon icon="authentication" size="small" />
+                    <Icon name="authentication" size="small" />
                   </span>
                   <span class="heroes-table_item__box">
-                    <Icon icon="authentication" size="small" />
+                    <Icon name="authentication" size="small" />
                   </span>
                   <span class="heroes-table_item__box">
-                    <Icon icon="authentication" size="small" />
+                    <Icon name="authentication" size="small" />
                   </span>
                   <span class="heroes-table_item__box">
-                    <Icon icon="authentication" size="small" />
+                    <Icon name="authentication" size="small" />
                   </span>
                   <span class="heroes-table_item__box">
-                    <Icon icon="authentication" size="small" />
+                    <Icon name="authentication" size="small" />
                   </span>
                 </>
               );

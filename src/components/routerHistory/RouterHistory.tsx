@@ -38,10 +38,10 @@ export default defineComponent({
         <ol class="router-history">
           <div class="router-history_block">
             <li class="router-history_item" onClick={last}>
-              <Icon icon="double-left" />
+              <Icon name="double-left" />
             </li>
             <li class="router-history_item" onClick={routeToHome}>
-              <Icon icon="home"></Icon>
+              <Icon name="home" />
             </li>
             {routes.value.map((route) => {
               return (
@@ -53,7 +53,7 @@ export default defineComponent({
           </div>
           <div class="router-history_block">
             <li class="router-history_item">
-              <Icon icon="double-right" />
+              <Icon name="double-right" />
             </li>
           </div>
         </ol>

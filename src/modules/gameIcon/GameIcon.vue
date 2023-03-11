@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
 import TabsListItem from "@/components/tabs/TabsListItem.vue";
+import { defineDataTemplate } from "@/composables/ci/dataTemplate";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
 import { defineTabsOptions } from "@/composables/components/tabsList";
 import { unocssInclude } from "@/composables/constant/unocssInclude";
 import { CLayout, CTabs } from "csss-ui";
-import { find, keys } from "lodash-es";
-import { computed, provide, ref, watch } from "vue";
+import { find } from "lodash-es";
+import { computed, provide, ref } from "vue";
 import { parseImportModule } from "../../composables/ci/importModule";
-import { formatCodeString } from "../../composables/formatCodeString";
+import { applyDataToModule } from "../../composables/codeChanged";
 import IconDashboard from "./components/IconDashboard.vue";
-import "./icon-setting.css";
-import { defineDataTemplate } from "@/composables/ci/dataTemplate";
+import "./game-icon.css";
 
-const { COMP: Layout } = defineCommonLayout("icon-setting");
-const { COMP, read, state } = defineCommonTabs("icon-setting");
+const { COMP: Layout } = defineCommonLayout("game-icon");
+const { COMP, read, state } = defineCommonTabs("game-icon");
 provide("changed", ref(false));
 
 const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: true }));
@@ -25,23 +25,14 @@ const active = computed(() => find(list.value, (listItem) => listItem.index === 
 const activeIcons = computed(() => active.value?.injectData);
 const activeItem = computed(() => active.value?.tranlator);
 
-const code = ref(``);
-const changed = ref(false);
-watch(
-  activeIcons,
-  async (_) => {
-    code.value = formatCodeString(unocssInclude, defineDataTemplate(JSON.stringify(activeIcons.value)));
-  },
-  { deep: true },
-);
+const codeTemplate = computed(() => [unocssInclude, defineDataTemplate(JSON.stringify(activeIcons.value))]);
+const { code } = applyDataToModule(activeIcons, codeTemplate);
 
-provide("active-icons", activeIcons);
 provide("active-key", activeItem);
-provide("changed", changed);
 </script>
 
 <template>
-  <c-layout ref="Layout" class="icon-setting">
+  <c-layout ref="Layout" class="game-icon">
     <template #aside>
       <CodeCanvas :code="code" />
     </template>
@@ -57,7 +48,7 @@ provide("changed", changed);
 </template>
 
 <style scoped>
-.icon-setting {
+.game-icon {
   transition: all var(--transition-prop);
 }
 </style>

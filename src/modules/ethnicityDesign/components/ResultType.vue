@@ -14,7 +14,7 @@ const { currentType } = storeToRefs(useEthnicityDesignStore());
       {{ type }}
     </section>
     <div class="result-type_setting result-type_item">
-      <Icon icon="setting" />
+      <icon name="setting" />
     </div>
   </article>
 </template>
@@ -28,7 +28,7 @@ const { currentType } = storeToRefs(useEthnicityDesignStore());
   border-bottom: var(--border);
 }
 
-.result-type>* {
+.result-type > * {
   display: flex;
   place-items: center;
 }

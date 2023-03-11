@@ -1,12 +1,11 @@
 type Options = {
-  range?: string[];
-  titleRange?: string[];
+  range?: Translator[];
 };
 
 type AutoformItem = {
   key: string;
   title: string;
-  type: "input" | "selecter" | "translator";
+  type: "input" | "selecter" | "translator" | "game-icon";
   hide?: boolean;
   required?: boolean;
   options?: Options;

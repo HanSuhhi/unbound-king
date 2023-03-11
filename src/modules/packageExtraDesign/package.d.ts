@@ -1,3 +1,1 @@
-type Package = {
-  icon: Array<IconSetting[]>;
-};
+type Package = {};

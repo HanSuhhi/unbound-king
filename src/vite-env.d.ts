@@ -24,13 +24,13 @@ type KeyCommand = {
 };
 
 type TabListItem = {
-  icon?: BaseIcon;
+  icon?: BaseIconName;
   index: number;
   injectData?: any;
   tranlator: Translator;
 };
 
 type Translator = {
-  name: string;
-  title: string;
+  name: string | Ref<string>;
+  title: string | Ref<string>;
 };

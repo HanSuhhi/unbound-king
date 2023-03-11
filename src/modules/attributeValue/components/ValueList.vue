@@ -30,7 +30,7 @@ const openDialog = () => {
       <div class="value-list_side">
         <c-input ref="Input" class="value-list_search">
           <template #header>
-            <Icon icon="search-eye" />
+            <icon name="search-eye" />
           </template>
         </c-input>
       </div>
@@ -40,7 +40,7 @@ const openDialog = () => {
         :attribute-value="attributeValue" />
     </main>
     <footer class="value-list_footer" @click="openDialog()">
-      <Icon icon="plus" style="margin-right: var(--mini);" />
+      <icon name="plus" style="margin-right: var(--mini);" />
       添加属性值...
     </footer>
   </section>

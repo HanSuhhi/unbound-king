@@ -2,17 +2,23 @@
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import { withFormDetail } from "@/composables/formDetail";
 import { transformTypeToForm } from "@/composables/typeToForm";
-import type { ComputedRef, Ref } from "vue";
+import { defineUniqueId } from "@/composables/uniqueId";
+import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
 import { defineTranslatorValidator } from "../../../composables/components/TranslatorValidator";
-import typeString from "../icon-setting-type.d.ts?raw";
+import typeString from "../game-icon-type.d.ts?raw";
 
 const key = inject<ComputedRef<Translator>>("active-key");
-const icons = inject<ComputedRef<Record<string, IconSetting>>>("active-icons");
-const changed = inject<Ref<boolean>>("changed")!;
+const icons = inject<ComputedRef<Record<string, GameIcon>>>("data");
 
 const formConfig = computed(() =>
-  withFormDetail<IconSetting>(transformTypeToForm(typeString), {
+
+  withFormDetail<GameIcon>(transformTypeToForm(typeString), {
+    id: {
+      title: "id",
+      disabled: true,
+      default: "自动生成，无需操作",
+    },
     translator: {
       title: "key 值",
       rules: [
@@ -32,12 +38,10 @@ const formConfig = computed(() =>
     },
   }),
 );
-
-const confirm = (data: IconSetting) => {
-  data.from = key?.value.name || "";
+const confirm = (data: GameIcon) => {
   if (!data.translator.title) data.translator.title = data.translator.name;
-  icons!.value[data.translator.name] = data;
-  changed.value = true;
+  data.id = defineUniqueId("GI");
+  icons!.value[data.id] = data;
 };
 </script>
 
@@ -46,26 +50,3 @@ const confirm = (data: IconSetting) => {
     <template #header> Icon 新增 </template>
   </common-form-dialog>
 </template>
-
-<style scoped>
-.form-dialog {
-  cursor: auto;
-}
-
-.i-mdi-close-thick {
-  cursor: pointer;
-}
-
-.i-mdi-close-thick:hover {
-  color: var(--main-color);
-}
-
-.form-dialog_title {
-  font-size: var(--font-body);
-}
-
-.form-dialog_confirm {
-  width: 100%;
-  text-align: right;
-}
-</style>

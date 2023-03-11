@@ -7,7 +7,7 @@ export default defineComponent({
     return () => {
       return (
         <div class="ethnicity-add">
-          <Icon icon="plus" />
+          <Icon name="plus" />
         </div>
       );
     };

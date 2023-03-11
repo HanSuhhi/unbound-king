@@ -12,21 +12,21 @@ import "./styles/workshop-package.css";
       <header class="workshop-package_title">基础包</header>
       <p class="workshop-package_description">此包为游戏基础包，包含了游戏本体的基本内容及所有相关系统。默认加载，无法卸除。</p>
       <TypeButton class="workshop-package_button">
-        <Icon icon="coin" style="margin-right: var(--mini);" />
+        <icon name="coin" style="margin-right: var(--mini);" />
         了解更多
       </TypeButton>
     </div>
     <div class="workshop-factory">
       <div class="workshop-factory_more">
         插件市集
-        <Icon icon="bird" style="margin-left: var(--small);" />
+        <icon name="bird" style="margin-left: var(--small);" />
       </div>
       <div class="workshop-factory-operator">
         <div class="workshop-factory-operator_item workshop-factory_last">
-          <Icon icon="single-left" />
+          <icon name="single-left" />
         </div>
         <div class="workshop-factory-operator_item workshop-factory_next">
-          <Icon icon="single-right" />
+          <icon name="single-right" />
         </div>
       </div>
     </div>

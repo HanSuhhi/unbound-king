@@ -47,7 +47,7 @@ export default defineComponent({
             routeToPage(props.module!);
             toggleModule();
           }}>
-          <Icon icon={props.module!.icon} class="app-aside_module"></Icon>
+          <Icon name={props.module!.icon} class="app-aside_module" />
         </div>
       );
     };

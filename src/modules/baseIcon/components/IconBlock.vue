@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import Icon from "../../../components/Icon.vue";
 
-type Props = { icon: BaseIcon };
-defineProps<Props>();
+defineProps<{ icon: BaseIcon }>();
 </script>
 
 <template>
   <section class="icon-block">
-    <icon class="icon-block_icon" :path="icon.path" />
-    <span class="icon-block_title">{{ icon.translator.title }}</span>
+    <icon class="icon-block_icon" :icon="icon" />
+    <span class="icon-block_title">{{ icon.translator!.title }}</span>
   </section>
 </template>
 

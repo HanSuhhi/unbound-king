@@ -1,52 +1,17 @@
 <script setup lang="ts">
-import autoForm from "@/components/autoForm/autoForm.vue";
-import Icon from "@/components/Icon.vue";
-import TitleCard from "@/components/titleCard/TitleCard";
+import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import { withFormDetail } from "@/composables/formDetail";
 import { transformTypeToForm } from "@/composables/typeToForm";
 import type { useCsssDialog } from "csss-ui";
-import { CDialog } from "csss-ui";
-import { FormInstance } from "element-plus";
+// import { FormInstance } from "element-plus";
 import { cloneDeep } from "lodash-es";
-import { storeToRefs } from "pinia";
 import type { Ref } from "vue";
-import { computed, inject } from "vue";
-import { validateForm } from "../../../composables/validateForm";
-import { } from "../../baseIcon/data/baseIcon.data";
+import { computed, inject, watch } from "vue";
+import {} from "../../baseIcon/data/baseIcon.data";
 import typeString from "../attribute-value-type.d.ts?raw";
-import { useAttributeValueStore } from "../store/attribute-value.store";
-
-const { attributeValues } = storeToRefs(useAttributeValueStore());
 
 const type = inject<Ref<AttributeValue["type"]>>("type");
-
-const formConfig = computed(() =>
-  withFormDetail<AttributeValue>(transformTypeToForm(typeString), {
-    key: {
-      title: "关键字",
-    },
-    title: {
-      title: "标题",
-    },
-    description: {
-      title: "描述",
-    },
-    icon: {
-      title: "icon",
-    },
-    type: {
-      options: {
-        titleRange: ["基础属性值", "进阶属性值", "特殊属性值"],
-      },
-      disabled: true,
-      title: "类型",
-      default: type?.value || "",
-    },
-  }),
-);
-
-const state = inject<ReturnType<typeof useCsssDialog>["state"]>("dialog");
-const Dialog = inject("Dialog");
+const attributeValues = inject<Ref<AttributeValue[]>>("data");
 
 const typeTitle = computed(() => {
   switch (type!.value) {
@@ -60,34 +25,45 @@ const typeTitle = computed(() => {
   }
 });
 
-const confirm = (data: AttributeValue, formEl: FormInstance) => {
-  validateForm(formEl, () => {
-    attributeValues.value.push(cloneDeep(data));
-    state!.value.show = false;
-    formEl.resetFields();
-  });
+const formConfig = computed(() =>
+  withFormDetail<AttributeValue>(transformTypeToForm(typeString), {
+    key: {
+      title: "关键字",
+    },
+    title: {
+      title: "标题",
+    },
+    description: {
+      title: "描述",
+    },
+    icon: {
+      title: "图标",
+    },
+    type: {
+      options: {
+        range: [
+          {
+            name: type,
+            title: typeTitle,
+          },
+        ],
+      },
+      disabled: true,
+      title: "类型",
+      default: type || "",
+    },
+  }),
+);
+
+const confirm = (data: AttributeValue) => {
+  attributeValues!.value.push(cloneDeep(data));
 };
 </script>
 
 <template>
-  <c-dialog ref="Dialog">
-    <title-card class="form-dialog">
-      <template #title>
-        <p class="p-reset form-dialog_title">{{ typeTitle }}表</p>
-      </template>
-      <template #subtitle>
-        <Icon icon="close" @click="state!.show = false" />
-      </template>
-      <auto-form :config="formConfig">
-        <template #footer="{ data, form }">
-          <section class="form-dialog_confirm">
-            <type-button @click.prevent="state!.show = false">取消</type-button>
-            <type-button @click.prevent="confirm(data as AttributeValue, form as FormInstance)">确定</type-button>
-          </section>
-        </template>
-      </auto-form>
-    </title-card>
-  </c-dialog>
+  <common-form-dialog :form-config="formConfig" :confirm="confirm">
+    <template #header>{{ typeTitle }}</template>
+  </common-form-dialog>
 </template>
 
 <style scoped>

@@ -19,7 +19,7 @@ const Dialog = inject("Dialog");
 
 const currentConfig = ref(props.formConfig);
 
-const confirm = (data: IconSetting, formEl: FormInstance) => {
+const confirm = (data: GameIcon, formEl: FormInstance) => {
   validateForm(formEl, () => {
     props.confirm?.(cloneDeep(data));
     state!.value.show = false;
@@ -38,13 +38,13 @@ const confirm = (data: IconSetting, formEl: FormInstance) => {
         </p>
       </template>
       <template #subtitle>
-        <Icon icon="close" />
+        <Icon name="close" @click="state!.show = false" />
       </template>
       <auto-form :config="currentConfig">
         <template #footer="{ data, form }">
           <section class="form-dialog_confirm">
             <type-button @click.prevent="state!.show = false">取消</type-button>
-            <type-button @click.prevent="confirm(data as IconSetting, form as FormInstance)">确定</type-button>
+            <type-button @click.prevent="confirm(data as GameIcon, form as FormInstance)">确定</type-button>
           </section>
         </template>
       </auto-form>

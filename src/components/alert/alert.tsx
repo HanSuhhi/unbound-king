@@ -16,7 +16,7 @@ export default defineComponent({
     return () => {
       return (
         <div class={["alert", `alert_${props.type}`]}>
-          <Icon icon={"warning"} class="alert_icon" />
+          <Icon name={"warning"} class="alert_icon" />
           <div class="alert_words">{slots.default?.()}</div>
         </div>
       );

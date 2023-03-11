@@ -16,7 +16,7 @@ export default defineComponent({
           <section class="user-message_search">
             <c-input ref={Search}>
               {{
-                header: () => <Icon icon="search-eye"></Icon>,
+                header: () => <Icon name="search-eye" />,
               }}
             </c-input>
           </section>

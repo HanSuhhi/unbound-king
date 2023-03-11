@@ -2,6 +2,8 @@
 import type { FormInstance, FormRules } from "element-plus";
 import { computed, ref, watch, withDefaults } from "vue";
 import FormTranslator from "./components/FormTranslator.vue";
+import FormIcon from "./components/FormIcon.vue";
+import { DATA_GameIcons } from "@/modules/gameIcon/data";
 
 const FormRef = ref<FormInstance>();
 
@@ -44,6 +46,9 @@ function resetForm() {
 
 const model = ref<Record<string, any>>(init());
 watch(() => props.config, resetForm, { deep: true });
+watch(model, v => {
+  console.log('v: ', v);
+}, {deep: true});
 
 const rules = computed(() => {
   const rule: FormRules = {};
@@ -59,8 +64,9 @@ const rules = computed(() => {
       <template v-if="!formItem.hide">
         <el-input v-if="formItem.type === 'input'" v-model="model[formItem.key]" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''" />
         <el-select v-if="formItem.type === 'selecter'" v-model="model[formItem.key]" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''">
-          <el-option v-for="text, index in formItem.options!.range" :key="text" :label="formItem.options?.titleRange?.[index] || text" :value="text" />
+          <el-option v-for="option in formItem.options!.range" :key="option.name" :label="option.title" :value="option.name" />
         </el-select>
+        <form-icon v-if="formItem.type === 'game-icon'" v-model="model[formItem.key]" />
         <form-translator v-if="formItem.type === 'translator'" v-model="model[formItem.key]" />
       </template>
     </el-form-item>

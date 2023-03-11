@@ -15,7 +15,7 @@ defineProps<{ attributeValue: AttributeValue }>();
     </template>
     <template #subtitle>
       <div class="value-item_operator">
-        <Icon icon="more" size="small" />
+        <icon name="more" size="small" />
       </div>
     </template>
     <p class="value-item_description p-reset">

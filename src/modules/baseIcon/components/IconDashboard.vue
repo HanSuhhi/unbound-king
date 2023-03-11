@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import IconBlock from "@/modules/iconSetting/components/IconBlock.vue";
-import { DATA_BaseIcons } from "../data/baseIcon.data";
-import { ref, nextTick } from 'vue';
+import IconBlock from "@/modules/baseIcon/components/IconBlock.vue";
 import { delay } from 'lodash-es';
+import { ref } from 'vue';
+import { DATA_BaseIcons } from "../data/baseIcon.data";
 
 const container = ref<HTMLElement>();
 const defineMaxWidth = () => {
   const width = document.querySelector(".base-icon_header")?.getBoundingClientRect().width;
-  console.log('width: ', width);
   container.value!.style.width = `${width}px`;
-  console.log('container.value: ', container.value);
 };
 delay(defineMaxWidth, 0);
 </script>
 
 <template>
   <article ref="container" class="icon-dashboard">
-    <icon-block v-for="icon in DATA_BaseIcons" :key="icon.translator.name" :icon="icon" class="icon-dashboard_block" />
+    <icon-block v-for="icon, key in DATA_BaseIcons" :key="key" :icon="icon" class="icon-dashboard_block" />
   </article>
 </template>
 

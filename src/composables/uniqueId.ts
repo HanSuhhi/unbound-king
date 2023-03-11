@@ -1,6 +1,6 @@
-export const defineUniqueId = () => {
+export const defineUniqueId = (prefix: string = "") => {
   const randomNumber = Math.random();
   const timestamp = new Date().getTime().toString();
-  const uniqueNumber = timestamp.substring(timestamp.length - 5) + randomNumber.toString().substring(2, 14);
-  return uniqueNumber;
+  const uniqueNumber = randomNumber.toString().substring(2, 5) + timestamp;
+  return `${prefix.toUpperCase()}${uniqueNumber}`;
 };

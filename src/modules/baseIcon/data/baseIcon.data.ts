@@ -26,7 +26,7 @@ export const DATA_BaseIcons = {
   },
   more: {
     translator: { name: "more", title: "更多" },
-    path: "i-icon-park-solid-more-four",
+    path: "i-ion-more",
   },
   authentication: {
     translator: { name: "authentication", title: "权限" },

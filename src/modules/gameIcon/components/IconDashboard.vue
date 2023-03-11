@@ -4,11 +4,11 @@ import type { ComputedRef } from "vue";
 import { inject } from "vue";
 import { defineCommonDialog } from "../../../composables/components/commonDialog";
 import AddIconDialog from "./AddIconDialog.vue";
-import IconBlock from "./IconBlock.vue";
+import IconBlock from "../../baseIcon/components/IconBlock.vue";
 
-const { openDialog } = defineCommonDialog("icon-setting");
+const { openDialog } = defineCommonDialog("game-icon");
 
-const icons = inject<ComputedRef<IconSetting[]>>("active-icons");
+const icons = inject<ComputedRef<GameIcon[]>>("data");
 </script>
 
 <template>

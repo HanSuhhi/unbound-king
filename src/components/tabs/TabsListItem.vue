@@ -1,11 +1,12 @@
-<script setup lang='ts'>
+import Icon from '@/components/Icon.vue';
+<script setup lang="ts">
 defineProps<{
-  message: TabListItem
+  message: TabListItem;
 }>();
 </script>
 
 <template>
-  <div class="icon" :class="message.icon" />
+  <Icon :icon="message.icon" />
   {{ message.tranlator.title }}
 </template>
 

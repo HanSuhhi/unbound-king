@@ -41,7 +41,7 @@ const MenuItem = defineComponent({
           <section class="aside-menu-block" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} data-active={active.value} onClick={children.value ? toggleCollapse : routeToPage}>
             {props.page.icon && (
               <div class="aside-menu-icon">
-                <Icon icon={props.page.icon} />
+                <Icon name={props.page.icon} />
               </div>
             )}
             <div class="aside-menu-main">

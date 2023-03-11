@@ -15,7 +15,7 @@ export const devModuleConfig: ModulePage[] = defineModuleConfig([
         icon: "dashboard",
       },
       {
-        path: "icon-setting",
+        path: "game-icon",
         title: "游戏图标",
         description: "游玩中用到的图标",
         icon: "game-icon",
