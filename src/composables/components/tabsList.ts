@@ -6,6 +6,7 @@ export const defineTabsOptions = (data: Record<string, any>, translator: ReturnR
     standard: {
       icon: "package",
       index: 0,
+      key: "standard",
       injectData: data["standard"].default,
       name: GlobalEnum["standard"] || "standard",
     },
@@ -21,6 +22,7 @@ export const defineTabsOptions = (data: Record<string, any>, translator: ReturnR
     else {
       returnRecord[key] = {
         name: GlobalEnum[key] || key,
+        key,
         index: -1,
       };
     }

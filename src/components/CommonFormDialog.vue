@@ -6,8 +6,9 @@ import type { useCsssDialog } from "csss-ui";
 import { CDialog } from "csss-ui";
 import { FormInstance } from "element-plus";
 import { inject, ref } from "vue";
-import { cloneDeep, defer } from "lodash-es";
+import { cloneDeep, defer, delay } from "lodash-es";
 import Icon from "@/components/Icon.vue";
+import type {Ref} from 'vue';
 
 const props = defineProps<{
   formConfig: AutoformItem[];
@@ -18,13 +19,17 @@ const state = inject<ReturnType<typeof useCsssDialog>["state"]>("dialog");
 const Dialog = inject("Dialog");
 
 const currentConfig = ref(props.formConfig);
+const changed = inject<Ref<boolean>>("changed")!;
 
 const confirm = (data: any, formEl: FormInstance) => {
   validateForm(formEl, () => {
     props.confirm?.(cloneDeep(data));
+    changed.value = true;
     state!.value.show = false;
-    currentConfig.value = [];
-    defer(() => (currentConfig.value = props.formConfig));
+    delay(() => {
+      currentConfig.value = [];
+      defer(() => (currentConfig.value = props.formConfig));
+    }, Number(import.meta.env.ANIMATION_DURATION));
   });
 };
 </script>

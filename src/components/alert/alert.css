@@ -1,7 +1,9 @@
 .alert {
   display: flex;
   align-items: center;
-  padding: calc(0.4 * var(--mini)) var(--small);
+  box-sizing: border-box;
+  height: var(--large);
+  padding: 0 var(--small);
   white-space: nowrap;
   border-radius: var(--border-radius);
 }

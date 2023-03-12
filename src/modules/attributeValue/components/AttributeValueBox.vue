@@ -40,11 +40,16 @@ provide("type", dialogType);
 
 <style scoped>
 .value-box {
+  height: calc(var(--main-height) - var(--base-margin));
   margin-right: var(--base-margin);
 }
 
 .value-box_list {
+  position: relative;
+  box-sizing: border-box;
   width: calc(100% / 3);
+  height: 100%;
+  overflow: auto;
 }
 
 .value-box_alert {
@@ -55,5 +60,6 @@ provide("type", dialogType);
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: calc(100% - var(--large));
 }
 </style>

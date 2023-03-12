@@ -5,14 +5,12 @@ import { formatCodeString } from "./formatCodeString";
 
 export const applyDataToModule = (watchResources: Ref, codeTemplate: ComputedRef<string[]>) => {
   const code = ref(formatCodeString(...codeTemplate.value));
-  const changed = ref<boolean>();
+  const changed = ref<boolean>(false);
 
   watch(
     watchResources,
     async (_) => {
       code.value = formatCodeString(...codeTemplate.value);
-      if (isUndefined(changed.value)) changed.value = false;
-      else changed.value = true;
     },
     { deep: true },
   );

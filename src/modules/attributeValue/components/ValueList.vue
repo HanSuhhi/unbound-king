@@ -37,7 +37,8 @@ const openDialog = () => {
     </header>
     <main class="value-list_main">
       <ValueItem v-for="attributeValue in attributeValues" :key="attributeValue.key" class="value-list_item"
-        :attribute-value="attributeValue" />
+                 :attribute-value="attributeValue"
+      />
     </main>
     <footer class="value-list_footer" @click="openDialog()">
       <icon name="plus" style="margin-right: var(--mini);" />
@@ -47,6 +48,12 @@ const openDialog = () => {
 </template>
 
 <style scoped>
+.value-list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--base-margin);
+}
+
 .value-list_footer {
   display: flex;
   align-items: center;
@@ -58,7 +65,6 @@ const openDialog = () => {
 }
 
 .value-list_item {
-  width: 100%;
   min-width: auto;
   margin-bottom: var(--base-margin);
 }
@@ -84,12 +90,12 @@ const openDialog = () => {
   margin-right: var(--small);
 }
 
-.value-list {
-  margin: var(--base-margin);
-}
-
 .value-list_main {
-  margin: var(--base-margin) 0;
+  flex: 1;
+  box-sizing: border-box;
+  height: 100%;
+  margin: var(--base-margin);
+  overflow: auto;
 }
 
 .value-list_header {

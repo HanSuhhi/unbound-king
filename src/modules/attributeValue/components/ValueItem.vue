@@ -9,8 +9,8 @@ defineProps<{ attributeValue: AttributeValue }>();
   <TitleCard class="value-item">
     <template #title>
       <p class="value-item_name p-reset">
-        <Icon :icon="attributeValue.icon" class="value-item_icon" />
-        {{ attributeValue.title }} {{ attributeValue.key }}
+        <Icon :name="attributeValue.icon" class="value-item_icon" />
+        {{ attributeValue.title }} ~ {{ attributeValue.key }}
       </p>
     </template>
     <template #subtitle>

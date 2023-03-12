@@ -7,8 +7,10 @@ import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
 import { defineTranslatorValidator } from "../../../composables/components/TranslatorValidator";
 import typeString from "../game-icon-type.d.ts?raw";
+import { GlobalEnum, invertGlobalEnum } from '../../../enums/global.enum';
+import { find } from 'lodash-es';
 
-const key = inject<ComputedRef<Translator>>("active-key");
+const key = inject<ComputedRef<string>>("active-key");
 const icons = inject<ComputedRef<Record<string, GameIcon>>>("data");
 
 const formConfig = computed(() =>
@@ -41,6 +43,7 @@ const formConfig = computed(() =>
 const confirm = (data: GameIcon) => {
   if (!data.translator.title) data.translator.title = data.translator.name;
   data.id = defineUniqueId("GI");
+  data.from = invertGlobalEnum[data.from] || data.from;
   icons!.value[data.id] = data;
 };
 </script>
