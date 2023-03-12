@@ -40,6 +40,7 @@ provide("type", dialogType);
 
 <style scoped>
 .value-box {
+  width: calc(100%);
   height: calc(var(--main-height) - var(--base-margin));
   margin-right: var(--base-margin);
 }

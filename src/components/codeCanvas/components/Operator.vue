@@ -5,7 +5,7 @@ import typeButton from "@/components/typeButton/TypeButton.vue";
 
 <template>
   <type-button color="blue" class="code-canvas-operator">
-    <Icon class="code-canvas-operator_icon" icon="copy" />
+    <Icon class="code-canvas-operator_icon" name="copy" />
     <span class="code-canvas-operator_text">复制</span>
   </type-button>
 </template>

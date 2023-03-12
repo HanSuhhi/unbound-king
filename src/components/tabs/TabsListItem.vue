@@ -1,18 +1,32 @@
 import Icon from '@/components/Icon.vue';
 <script setup lang="ts">
-defineProps<{
+import { size } from 'lodash-es';
+import NumberMark from '../NumberMark.vue';
+
+const props = defineProps<{
   message: TabListItem;
 }>();
 </script>
 
 <template>
-  <Icon :icon="message.icon" />
-  {{ message.name }}
+  <div class="tabs-list-item">
+    <Icon :name="message.icon" />
+    <span class="tabs-list-item_title">{{ message.name }}</span>
+    <number-mark>{{ size(message.injectData) }}</number-mark>
+  </div>
 </template>
 
 <style scoped>
 .icon {
-  display: inline-block;
   margin-right: var(--small);
+}
+
+.tabs-list-item {
+  display: flex;
+  align-items: center;
+}
+
+.tabs-list-item_sub {
+  transform: scale();
 }
 </style>

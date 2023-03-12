@@ -16,9 +16,6 @@
 }
 
 .title-card_header {
-  /* position: sticky;
-  top: 0;
-  z-index: 2; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,5 +39,8 @@
 }
 
 .title-card_main {
-  padding: var(--padding);
+  position: relative;
+  left: var(--padding);
+  width: calc(100% - 2 * var(--padding));
+  margin: var(--padding) 0;
 }

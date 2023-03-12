@@ -8,6 +8,7 @@ import { inject, nextTick, ref, watch } from 'vue';
 import { defineItemsSearch } from "../composables/ItemsSearch";
 import { onBeforeEnter, onEnter, onLeave } from '../composables/transitionFunc';
 import ValueItem from "./ValueItem.vue";
+import NumberMark from "@/components/NumberMark.vue";
 
 const props = defineProps<{ attributeValues: AttributeValue[]; type: AttributeValue["type"] }>();
 const modelAttributeValues = ref(props.attributeValues);
@@ -30,11 +31,6 @@ const openDialog = () => {
   type!.value = props.type;
 };
 
-function init() {
-  const element = document.querySelector(".value-list_main") as HTMLElement;
-  element!.style.width = element.getBoundingClientRect().width + 'px';
-}
-nextTick(init);
 </script>
 
 <template>
@@ -42,7 +38,7 @@ nextTick(init);
     <header class="value-list_header">
       <div class="value-list_side">
         <slot name="title" />
-        <div class="value-list_total">{{ modelAttributeValues.length }}</div>
+        <number-mark>{{ modelAttributeValues.length }}</number-mark>
       </div>
       <div class="value-list_side">
         <c-input ref="Input" class="value-list_search">
@@ -137,18 +133,4 @@ nextTick(init);
   justify-content: flex-end;
 }
 
-.value-list_total {
-  --padding-size: 1.2;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(var(--font-body-small) * var(--padding-size));
-  margin-left: var(--mini);
-  color: var(--black);
-  font-weight: bolder;
-  font-size: var(--font-body-small);
-  background-color: var(--gray-bright-1);
-  border-radius: var(--border-radius);
-}
 </style>
