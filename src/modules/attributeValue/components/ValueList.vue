@@ -2,14 +2,25 @@
 import Icon from "@/components/Icon.vue";
 import type { useCsssDialog } from "csss-ui";
 import { CInput } from "csss-ui";
+import { throttle } from "lodash-es";
 import type { Ref } from "vue";
-import { inject } from "vue";
+import { inject, nextTick, ref, watch } from 'vue';
 import { defineItemsSearch } from "../composables/ItemsSearch";
+import { onBeforeEnter, onEnter, onLeave } from '../composables/transitionFunc';
 import ValueItem from "./ValueItem.vue";
 
 const props = defineProps<{ attributeValues: AttributeValue[]; type: AttributeValue["type"] }>();
+const modelAttributeValues = ref(props.attributeValues);
 
-const { COMP: Input } = defineItemsSearch();
+const { COMP: Input, state: InputState } = defineItemsSearch();
+watch(() => InputState.value?.model, throttle((input) => {
+  modelAttributeValues.value = props.attributeValues.filter(attributeValue => {
+    if (attributeValue.title.includes(input)) return true;
+    if (attributeValue.key.includes(input)) return true;
+    if (attributeValue.description.includes(input)) return true;
+    return false;
+  });
+}, Number(import.meta.env.ANIMATION_DURATION)));
 
 const state = inject<ReturnType<typeof useCsssDialog>["state"]>("dialog");
 const type = inject<Ref<AttributeValue["type"]>>("type");
@@ -18,6 +29,12 @@ const openDialog = () => {
   state!.value.show = true;
   type!.value = props.type;
 };
+
+function init() {
+  const element = document.querySelector(".value-list_main") as HTMLElement;
+  element!.style.width = element.getBoundingClientRect().width + 'px';
+}
+nextTick(init);
 </script>
 
 <template>
@@ -25,7 +42,7 @@ const openDialog = () => {
     <header class="value-list_header">
       <div class="value-list_side">
         <slot name="title" />
-        <div class="value-list_total">{{ attributeValues.length }}</div>
+        <div class="value-list_total">{{ modelAttributeValues.length }}</div>
       </div>
       <div class="value-list_side">
         <c-input ref="Input" class="value-list_search">
@@ -35,11 +52,15 @@ const openDialog = () => {
         </c-input>
       </div>
     </header>
-    <main class="value-list_main">
-      <ValueItem v-for="attributeValue in attributeValues" :key="attributeValue.key" class="value-list_item"
-                 :attribute-value="attributeValue"
+    <transition-group tag="main" class="value-list_main" :css="false"
+                      @before-enter="onBeforeEnter"
+                      @enter="onEnter"
+                      @leave="onLeave"
+    >
+      <ValueItem v-for="attributeValue, index in modelAttributeValues" :key="attributeValue.key" class="value-list_item"
+                 :attribute-value="attributeValue" :data-index="index"
       />
-    </main>
+    </transition-group>
     <footer class="value-list_footer" @click="openDialog()">
       <icon name="plus" style="margin-right: var(--mini);" />
       添加属性值...
@@ -94,13 +115,13 @@ const openDialog = () => {
   flex: 1;
   box-sizing: border-box;
   height: 100%;
-  margin: var(--base-margin);
   overflow: auto;
 }
 
 .value-list_header {
   display: flex;
   justify-content: space-between;
+  padding-bottom: var(--base-margin);
   color: var(--gray-bright-2);
   filter: brightness(1.2);
 }

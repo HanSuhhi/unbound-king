@@ -17,7 +17,7 @@ export const devModuleConfig: ModulePage[] = defineModuleConfig([
       {
         path: "attribute-value",
         title: "属性值",
-        description: "角色数值属性及含义",
+        description: "人物数值属性及含义",
         icon: "list",
       },
     ],
@@ -57,7 +57,7 @@ export const devModuleConfig: ModulePage[] = defineModuleConfig([
   {
     path: "ambition-design",
     title: "抱负设计",
-    description: "角色抱负相关设计",
+    description: "人物抱负相关设计",
     icon: "choice",
   },
 ]);

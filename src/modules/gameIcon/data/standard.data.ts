@@ -36,5 +36,65 @@ const data = {
     path: "i-clarity-coin-bag-solid",
     from: "standard",
   },
+  GI9361678597231428: {
+    id: "GI9361678597231428",
+    translator: { name: "mind", title: "精神" },
+    path: "i-mdi-brain",
+    from: "standard",
+  },
+  GI8661678597313889: {
+    id: "GI8661678597313889",
+    translator: { name: "worship", title: "虔诚" },
+    path: "i-game-icons-kneeling",
+    from: "standard",
+  },
+  GI1081678597354840: {
+    id: "GI1081678597354840",
+    translator: { name: "aim", title: "命中" },
+    path: "i-mingcute-aiming-fill",
+    from: "standard",
+  },
+  GI1481678597577481: {
+    id: "GI1481678597577481",
+    translator: { name: "dodge", title: "闪躲" },
+    path: "i-game-icons-run",
+    from: "standard",
+  },
+  GI9821678597747408: {
+    id: "GI9821678597747408",
+    translator: { name: "leaf", title: "幸运" },
+    path: "i-fa6-solid-leaf",
+    from: "standard",
+  },
+  GI5951678597933016: {
+    id: "GI5951678597933016",
+    translator: { name: "fire", title: "火焰" },
+    path: "i-mdi-fire",
+    from: "standard",
+  },
+  GI8111678598082854: {
+    id: "GI8111678598082854",
+    translator: { name: "anger", title: "愤怒" },
+    path: "i-fxemoji-leftangerbubble",
+    from: "standard",
+  },
+  GI2091678598157815: {
+    id: "GI2091678598157815",
+    translator: { name: "star", title: "星星" },
+    path: "i-material-symbols-star-half-rounded",
+    from: "standard",
+  },
+  GI9511678598216938: {
+    id: "GI9511678598216938",
+    translator: { name: "mind", title: "道德" },
+    path: "i-fluent-thinking-20-filled",
+    from: "standard",
+  },
+  GI1831678599608000: {
+    id: "GI1831678599608000",
+    translator: { name: "self", title: "唯我" },
+    path: "i-game-icons-self-love",
+    from: "standard",
+  },
 };
 export default data;

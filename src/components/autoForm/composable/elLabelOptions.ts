@@ -1,6 +1,5 @@
-import data from "@/modules/gameIcon/data/standard.data";
-import { groupBy, identity, keyBy, map, mapValues, transform } from "lodash-es";
-import { GlobalEnum } from "../../../enums/global.enum";
+import { groupBy, mapValues } from "lodash-es";
+import { getGlobalEnumNameOrNot } from "../../../enums/global.enum";
 
 type OptionReturn = {
   label: string;
@@ -12,7 +11,7 @@ export function transformIconToElLabelOptions(gameicons: Record<string, GameIcon
 
   const transformed = mapValues(grouped, (group) => {
     const options = group.reduce((acc, cur) => ({ ...acc, [cur.id]: cur }), {});
-    return { label: group[0].from, options };
+    return { label: getGlobalEnumNameOrNot(group[0].from), options };
   });
 
   return Object.values(transformed);

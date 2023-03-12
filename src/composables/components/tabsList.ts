@@ -1,4 +1,4 @@
-import { GlobalEnum } from "../../enums/global.enum";
+import { getGlobalEnumNameOrNot, GlobalEnum } from "../../enums/global.enum";
 type ReturnRecord = Record<string, TabListItem>;
 
 export const defineTabsOptions = (data: Record<string, any>, translator: ReturnRecord = {}) => {
@@ -8,7 +8,7 @@ export const defineTabsOptions = (data: Record<string, any>, translator: ReturnR
       index: 0,
       key: "standard",
       injectData: data["standard"].default,
-      name: GlobalEnum["standard"] || "standard",
+      name: getGlobalEnumNameOrNot("standard"),
     },
   };
 
@@ -21,7 +21,7 @@ export const defineTabsOptions = (data: Record<string, any>, translator: ReturnR
     if (translator[key]) returnRecord[key] = translator[key];
     else {
       returnRecord[key] = {
-        name: GlobalEnum[key] || key,
+        name: getGlobalEnumNameOrNot(key),
         key,
         index: -1,
       };

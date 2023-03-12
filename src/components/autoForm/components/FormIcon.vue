@@ -4,7 +4,6 @@ import { ElSelect } from "element-plus";
 import { transformIconToElLabelOptions } from '../composable/elLabelOptions';
 
 const options = transformIconToElLabelOptions(DATA_GameIcons);
-console.log('options: ', options);
 </script>
 
 <template>

@@ -17,6 +17,7 @@
     "csss-ui": "0.2.0-beta.34",
     "dayjs": "^1.11.7",
     "element-plus": "^2.2.33",
+    "gsap": "^3.11.4",
     "jsstore": "^4.5.0",
     "lodash-es": "^4.17.21",
     "pinia": "^2.0.28",

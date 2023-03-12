@@ -23,7 +23,7 @@ provide("type", dialogType);
 <template>
   <add-form-dialog />
   <div class="value-box">
-    <alert class="value-box_alert"> 属性值，是作用于角色各项参数判定的直接数值，包括基础属性值，进阶属性值和特殊属性值。 </alert>
+    <alert class="value-box_alert"> 属性值，是作用于人物各项参数判定的直接数值，包括基础属性值，进阶属性值和特殊属性值。 </alert>
     <article class="value-box_main">
       <value-list class="value-box_list" type="base" :attribute-values="baseAttributes">
         <template #title> 基础属性值 </template>

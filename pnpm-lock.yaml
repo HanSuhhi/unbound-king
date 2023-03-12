@@ -23,6 +23,7 @@ specifiers:
   dayjs: ^1.11.7
   element-plus: ^2.2.33
   eslint: ^8.32.0
+  gsap: ^3.11.4
   husky: ^8.0.2
   jsstore: ^4.5.0
   lodash-es: ^4.17.21
@@ -48,6 +49,7 @@ dependencies:
   csss-ui: 0.2.0-beta.34
   dayjs: 1.11.7
   element-plus: 2.2.33_vue@3.2.45
+  gsap: 3.11.4
   jsstore: 4.5.0
   lodash-es: 4.17.21
   pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
@@ -3547,6 +3549,10 @@ packages:
 
   /grapheme-splitter/1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
+
+  /gsap/3.11.4:
+    resolution: {integrity: sha512-McHhEguHyExMMnjqKA8G+7TvxmlKQGMbjgwAilnFe1e4id7V/tFveRQ2YMZhTYu0oxHGWvbPltdVYQOu3z1SCA==}
+    dev: false
 
   /gzip-size/6.0.0:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
