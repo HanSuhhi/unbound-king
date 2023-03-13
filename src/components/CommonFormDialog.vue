@@ -23,6 +23,7 @@ const changed = inject<Ref<boolean>>("changed")!;
 
 const confirm = (data: any, formEl: FormInstance) => {
   validateForm(formEl, () => {
+    console.log('cloneDeep(data): ', cloneDeep(data));
     props.confirm?.(cloneDeep(data));
     changed.value = true;
     state!.value.show = false;

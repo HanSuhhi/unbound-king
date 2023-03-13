@@ -35,3 +35,5 @@ type Translator = {
   name: string | Ref<string>;
   title: string | Ref<string>;
 };
+
+type IdValue<T> = Record<string, T>;

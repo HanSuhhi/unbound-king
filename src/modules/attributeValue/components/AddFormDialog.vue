@@ -1,18 +1,17 @@
 <script setup lang="ts">
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
+import { defineTranslatorValidator } from "@/composables/form/TranslatorValidator";
 import { withFormDetail } from "@/composables/formDetail";
 import { transformTypeToForm } from "@/composables/typeToForm";
 import { defineUniqueId } from "@/composables/uniqueId";
-import type { useCsssDialog } from "csss-ui";
 // import { FormInstance } from "element-plus";
-import { cloneDeep } from "lodash-es";
 import type { Ref } from "vue";
-import { computed, inject, watch } from "vue";
-import {} from "../../baseIcon/data/baseIcon.data";
+import { computed, inject } from "vue";
 import typeString from "../attribute-value-type.d.ts?raw";
+import { idFormConfig, translatorFormConfig } from '../../../composables/form/formConfigs';
 
 const type = inject<Ref<AttributeValue["type"]>>("type");
-const attributeValues = inject<Ref<AttributeValue[]>>("data");
+const attributeValues = inject<Ref<IdValue<AttributeValue>>>("data");
 
 const typeTitle = computed(() => {
   switch (type!.value) {
@@ -28,22 +27,16 @@ const typeTitle = computed(() => {
 
 const formConfig = computed(() =>
   withFormDetail<AttributeValue>(transformTypeToForm(typeString), {
-    id: {
-      title: "id",
-      disabled: true,
-      default: "自动生成，无需操作",
-    },
-    key: {
-      title: "关键字",
-    },
-    title: {
-      title: "标题",
-    },
+    ...idFormConfig,
+    ...translatorFormConfig,
     description: {
       title: "描述",
     },
     icon: {
       title: "图标",
+    },
+    dataType: {
+      title: "数据类型"
     },
     type: {
       options: {
@@ -63,7 +56,7 @@ const formConfig = computed(() =>
 
 const confirm = (data: AttributeValue) => {
   data.id = defineUniqueId("atv");
-  attributeValues!.value.push(data);
+  attributeValues!.value[data.id] = data;
 };
 </script>
 

@@ -1,6 +1,6 @@
 import { defineModuleConfig } from "../composables/moduleConfig";
 
-export const authModuleConfig: ModulePage[] = defineModuleConfig([
+export default <ModulePage[]>defineModuleConfig([
   {
     path: "hero-choose",
     title: "英雄选择",

@@ -14,7 +14,6 @@ function parseTypeAliasDeclaration(typeString: string): AutoformItem[] {
       if (!isPropertySignature(memberNode)) return;
       const key = (memberNode.name as any).text;
       const [type, options] = getTypeFromNode(memberNode.type!);
-
       const required = !memberNode.questionToken;
 
       members.push({ key, type, options, title: "", required });

@@ -37,8 +37,9 @@ export const DATA_BaseIcons = {
     path: "i-tabler-device-analytics",
   },
   package: {
-    translator: { name: "package", title: "包" },
-    path: "i-lucide-package",
+    translator: { name: "package", title: "包裹" },
+    path: "i-vaadin-package",
+    from: "standard",
   },
   coin: {
     translator: { name: "coin", title: "硬币" },
@@ -104,11 +105,6 @@ export const DATA_BaseIcons = {
     translator: { name: "choice", title: "选择" },
     path: "i-game-icons-choice",
   },
-  bundle: {
-    translator: { name: "bundle", title: "包裹" },
-    path: "i-vaadin-package",
-    from: "standard",
-  },
   copy: {
     translator: { name: "copy", title: "复制" },
     path: "i-bxs-copy-alt",
@@ -129,5 +125,17 @@ export const DATA_BaseIcons = {
   project: {
     translator: { name: "project", title: "项目" },
     path: "i-octicon-project-symlink-16",
+  },
+  line: {
+    translator: { name: "line", title: "线" },
+    path: "i-gg-attribution",
+  },
+  light: {
+    translator: { name: "light", title: "光" },
+    path: "i-material-symbols-lightbulb-rounded",
+  },
+  combine: {
+    translator: { name: "combine", title: "组合" },
+    path: "i-mdi-vector-combine",
   },
 };

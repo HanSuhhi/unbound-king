@@ -2,6 +2,8 @@ type Options = {
   range?: Translator[];
 };
 
+type Autoform = AutoformItem[];
+
 type AutoformItem = {
   key: string;
   title: string;

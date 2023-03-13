@@ -1,8 +1,8 @@
 type AttributeValue = {
   id: string;
-  key: string;
-  title: string;
+  translator: Translator;
   description: string;
   icon: Icon;
+  dataType: "number" | "boolean";
   type: "base" | "advanced" | "special";
 };

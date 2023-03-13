@@ -16,8 +16,8 @@ const modelAttributeValues = ref(props.attributeValues);
 const { COMP: Input, state: InputState } = defineItemsSearch();
 watch(() => InputState.value?.model, throttle((input) => {
   modelAttributeValues.value = props.attributeValues.filter(attributeValue => {
-    if (attributeValue.title.includes(input)) return true;
-    if (attributeValue.key.includes(input)) return true;
+    if (attributeValue.translator.name.includes(input)) return true;
+    if (attributeValue.translator.title.includes(input)) return true;
     if (attributeValue.description.includes(input)) return true;
     return false;
   });
@@ -53,7 +53,7 @@ const openDialog = () => {
                       @enter="onEnter"
                       @leave="onLeave"
     >
-      <ValueItem v-for="attributeValue, index in modelAttributeValues" :key="attributeValue.key" class="value-list_item"
+      <ValueItem v-for="attributeValue, index in modelAttributeValues" :key="attributeValue.id" class="value-list_item"
                  :attribute-value="attributeValue" :data-index="index"
       />
     </transition-group>

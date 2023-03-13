@@ -1,7 +1,6 @@
-// @unocss-include
 import { defineModuleConfig } from "../composables/moduleConfig";
 
-export const devModuleConfig: ModulePage[] = defineModuleConfig([
+export default <ModulePage[]>defineModuleConfig([
   {
     path: "game-icon",
     title: "游戏图标",

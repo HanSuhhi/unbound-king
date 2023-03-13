@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
+import { idFormConfig } from "@/composables/form/formConfigs";
 import { withFormDetail } from "@/composables/formDetail";
 import { transformTypeToForm } from "@/composables/typeToForm";
 import { defineUniqueId } from "@/composables/uniqueId";
 import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
-import { defineTranslatorValidator } from "../../../composables/components/TranslatorValidator";
+import { defineTranslatorValidator } from "../../../composables/form/TranslatorValidator";
 import { getInvertGlobalEnumNameOrNot } from '../../../enums/global.enum';
 import typeString from "../game-icon-type.d.ts?raw";
+import { translatorFormConfig } from '../../../composables/form/formConfigs';
 
 const key = inject<ComputedRef<string>>("active-key");
 const icons = inject<ComputedRef<Record<string, GameIcon>>>("data");
@@ -15,20 +17,8 @@ const icons = inject<ComputedRef<Record<string, GameIcon>>>("data");
 const formConfig = computed(() =>
 
   withFormDetail<GameIcon>(transformTypeToForm(typeString), {
-    id: {
-      title: "id",
-      disabled: true,
-      default: "自动生成，无需操作",
-    },
-    translator: {
-      title: "key 值",
-      rules: [
-        {
-          validator: defineTranslatorValidator(),
-          trigger: "blur",
-        },
-      ],
-    },
+    ...idFormConfig,
+    ...translatorFormConfig,
     path: {
       title: "路径",
     },

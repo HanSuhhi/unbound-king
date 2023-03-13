@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import type { FormInstance, FormRules } from "element-plus";
 import { computed, ref, watch, withDefaults } from "vue";
-import FormTranslator from "./components/FormTranslator.vue";
 import FormIcon from "./components/FormIcon.vue";
-import { DATA_GameIcons } from "@/modules/gameIcon/data";
+import FormTranslator from "./components/FormTranslator.vue";
 
 const FormRef = ref<FormInstance>();
 
@@ -45,10 +44,8 @@ function resetForm() {
 }
 
 const model = ref<Record<string, any>>(init());
+
 watch(() => props.config, resetForm, { deep: true });
-watch(model, v => {
-  console.log('v: ', v);
-}, {deep: true});
 
 const rules = computed(() => {
   const rule: FormRules = {};
