@@ -42,7 +42,7 @@ const formConfig = computed(() =>
       options: {
         range: [
           {
-            name: type,
+            key: type,
             title: typeTitle,
           },
         ],

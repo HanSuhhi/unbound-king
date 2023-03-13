@@ -26,7 +26,7 @@ function init() {
   return props.config.reduce((values, { key, default: defaultValue }) => {
     if (key === "translator") {
       const defaultTranslator: Translator = defaultValue || {
-        name: "",
+        key: "",
         title: "",
       };
 
@@ -61,7 +61,7 @@ const rules = computed(() => {
       <template v-if="!formItem.hide">
         <el-input v-if="formItem.type === 'input'" v-model="model[formItem.key]" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''" />
         <el-select v-if="formItem.type === 'selecter'" v-model="model[formItem.key]" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''">
-          <el-option v-for="option in formItem.options!.range" :key="option.name" :label="option.title" :value="option.name" />
+          <el-option v-for="option in formItem.options!.range" :key="option.key" :label="option.title" :value="option.key" />
         </el-select>
         <form-icon v-if="formItem.type === 'icon'" v-model="model[formItem.key]" />
         <form-translator v-if="formItem.type === 'translator'" v-model="model[formItem.key]" />

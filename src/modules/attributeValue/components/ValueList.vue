@@ -16,7 +16,7 @@ const modelAttributeValues = ref(props.attributeValues);
 const { COMP: Input, state: InputState } = defineItemsSearch();
 watch(() => InputState.value?.model, throttle((input) => {
   modelAttributeValues.value = props.attributeValues.filter(attributeValue => {
-    if (attributeValue.translator.name.includes(input)) return true;
+    if (attributeValue.translator.key.includes(input)) return true;
     if (attributeValue.translator.title.includes(input)) return true;
     if (attributeValue.description.includes(input)) return true;
     return false;

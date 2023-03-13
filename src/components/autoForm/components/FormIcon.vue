@@ -12,7 +12,7 @@ const options = transformIconToElLabelOptions(DATA_GameIcons);
       <el-option v-for="(icon, id) in group.options" :key="id" :label="icon.translator.title" :value="id">
         <p class="p-reset form-icon_option">
           <Icon :icon="icon" />
-          {{ icon.translator.title }} / {{ icon.translator.name }}
+          {{ icon.translator.title }} / {{ icon.translator.key }}
         </p>
       </el-option>
     </el-option-group>

@@ -32,7 +32,7 @@ type TabListItem = {
 };
 
 type Translator = {
-  name: string | Ref<string>;
+  key: string | Ref<string>;
   title: string | Ref<string>;
 };
 

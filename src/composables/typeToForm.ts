@@ -30,10 +30,10 @@ function getTypeFromNode(node: TypeNode): [type: AutoformItem["type"], options?:
     case SyntaxKind.UnionType:
       const unionType = node as UnionTypeNode;
       const range = unionType.types.map((type) => {
-        const name = getTypeFromNode(type) as unknown as string;
+        const key = getTypeFromNode(type) as unknown as string;
         return {
-          name,
-          title: name,
+          key,
+          title: key,
         };
       });
       return ["selecter", { range }];

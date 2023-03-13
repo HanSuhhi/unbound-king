@@ -10,7 +10,7 @@ defineProps<{ attributeValue: AttributeValue }>();
     <template #title>
       <p class="value-item_name p-reset">
         <Icon :name="attributeValue.icon" class="value-item_icon" />
-        {{ attributeValue.translator.title }} ~ {{ attributeValue.translator.name }}
+        {{ attributeValue.translator.title }} ~ {{ attributeValue.translator.key }}
       </p>
     </template>
     <template #subtitle>
