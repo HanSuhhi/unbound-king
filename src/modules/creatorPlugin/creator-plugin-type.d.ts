@@ -1,13 +1,15 @@
-type PluginChild = {
+type PluginStruct = {
   id: string;
-  name: Translator;
-  generator?: string;
-  generatorForm?: Autoform;
-  generatorParams?: Parameters<GeneratorFunc>;
+  translator: Translator;
+  generator: string;
+  generatorForm: Autoform;
+  generatorParams: object;
 };
 
 type CreatorPlugin = {
-  name: Translator;
-  belong: "character";
-  data: PluginChild[] | PluginChild;
+  translator: Translator;
+  belong: "_" | "character";
+  description: string;
+  icon: BaseIconName;
+  data: PluginStruct[];
 };

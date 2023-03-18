@@ -8,7 +8,7 @@ import { FormInstance } from "element-plus";
 import { inject, ref } from "vue";
 import { cloneDeep, defer, delay } from "lodash-es";
 import Icon from "@/components/Icon.vue";
-import type {Ref} from 'vue';
+import type { Ref } from "vue";
 
 const props = defineProps<{
   formConfig: AutoformItem[];
@@ -23,7 +23,6 @@ const changed = inject<Ref<boolean>>("changed")!;
 
 const confirm = (data: any, formEl: FormInstance) => {
   validateForm(formEl, () => {
-    console.log('cloneDeep(data): ', cloneDeep(data));
     props.confirm?.(cloneDeep(data));
     changed.value = true;
     state!.value.show = false;

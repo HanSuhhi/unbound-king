@@ -1,7 +1,3 @@
-.attribute-value {
-  transition: all var(--transition-prop);
-}
-
 .attribute-value_main {
   width: calc(100% + var(--base-margin));
   height: calc(var(--main-height) - var(--base-margin));

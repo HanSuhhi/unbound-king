@@ -29,13 +29,6 @@ export const defineModules = () => {
         type: "default-menu",
         pages: data["project"],
       },
-      {
-        key: "creator",
-        title: "创造器模块",
-        icon: "light",
-        type: "default-menu",
-        pages: data["creator"],
-      },
     ];
   });
 

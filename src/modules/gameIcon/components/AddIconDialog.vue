@@ -6,15 +6,14 @@ import { transformTypeToForm } from "@/composables/typeToForm";
 import { defineUniqueId } from "@/composables/uniqueId";
 import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
-import { translatorFormConfig } from '../../../composables/form/formConfigs';
-import { getInvertGlobalEnumNameOrNot } from '../../../enums/global.enum';
+import { translatorFormConfig } from "../../../composables/form/formConfigs";
+import { getInvertGlobalEnumNameOrNot } from "../../../enums/global.enum";
 import typeString from "../game-icon-type.d.ts?raw";
 
 const key = inject<ComputedRef<string>>("active-key");
 const icons = inject<ComputedRef<Record<string, GameIcon>>>("data");
 
 const formConfig = computed(() =>
-
   withFormDetail<GameIcon>(transformTypeToForm(typeString), {
     ...idFormConfig,
     ...translatorFormConfig,
@@ -23,7 +22,7 @@ const formConfig = computed(() =>
     },
     from: {
       title: "来源",
-      default: key,
+      defaultValue: key,
       disabled: true,
     },
   }),

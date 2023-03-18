@@ -18,13 +18,10 @@ import typeButton from "@/components/typeButton/TypeButton.vue";
 
 .code-canvas-operator {
   --hover-opacity: 1;
-
-  transform: scale(0.8);
 }
 
 .code-canvas-operator_text {
   margin-right: var(--mini);
-  font-size: var(--font-title-main);
   transition: all var(--transition-time) ease;
 }
 </style>

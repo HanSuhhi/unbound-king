@@ -4,11 +4,7 @@ import { ref, watch } from "vue";
 export const autoVModel = <T>(emits: any, defaultValue: T) => {
   const model = ref<T>(defaultValue);
 
-  watch(
-    model,
-    debounce(() => emits("update:modelValue", model.value)),
-    { deep: true },
-  );
+  watch(model, () => emits("update:modelValue", model.value), { deep: true });
 
   return model;
 };

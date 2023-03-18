@@ -2,6 +2,7 @@
 import TitleCard from "@/components/titleCard/TitleCard";
 import { computed, ref, onMounted, nextTick } from "vue";
 import Icon from "@/components/Icon.vue";
+import { scroll } from "@/composables/wheelScroll";
 
 const props = defineProps<{
   destiny: Destiny;
@@ -14,9 +15,6 @@ const destinyOrigin = computed(() =>
 );
 
 const footerRef = ref<HTMLElement>();
-const scroll = (wheelEvent: WheelEvent) => {
-  footerRef.value!.scrollLeft += wheelEvent.deltaY;
-};
 </script>
 
 <template>
@@ -35,7 +33,7 @@ const scroll = (wheelEvent: WheelEvent) => {
         </title-card>
       </aside>
     </header>
-    <footer ref="footerRef" class="destiny-detail_footer" @wheel.prevent="scroll">
+    <footer ref="footerRef" class="destiny-detail_footer" @wheel.prevent="scroll(footerRef!, $event)">
       <title-card class="destiny-detail_settlement destiny-detail_sub">
         <template #title>聚落</template>
         <template #subtitle>

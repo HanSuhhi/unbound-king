@@ -1,17 +1,17 @@
-<script setup lang='ts'>
-import Extend from '@/components/Extend.vue';
-import { useDelayExtend } from '@/composables/delayExtend';
+<script setup lang="ts">
+import Extend from "@/components/Extend.vue";
+import { useDelayExtend } from "@/composables/delayExtend";
 import { useHtmlPropLint } from "@/composables/htmlPropLint";
 import Prism from "prismjs";
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-json';
-import type { Ref } from 'vue';
-import { onMounted, onUpdated, ref, computed, inject } from 'vue';
-import { defineExtender } from '../../composables/Extender';
-import Operator from './components/Operator.vue';
-import { useCodeCanvasStatus, CodeCanvasStatus } from './composables/status';
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-json";
+import type { Ref } from "vue";
+import { onMounted, onUpdated, ref, computed, inject } from "vue";
+import { defineExtender } from "../../composables/Extender";
+import Operator from "./components/Operator.vue";
+import { useCodeCanvasStatus, CodeCanvasStatus } from "./composables/status";
 
-type Props = { code: string, language?: "javascript" | "json",  }
+type Props = { code: string; language?: "javascript" | "json" };
 
 const props = withDefaults(defineProps<Props>(), {
   code: "",
@@ -28,7 +28,7 @@ const isExtend = defineExtender();
 const delayExtend = useDelayExtend(isExtend);
 
 const changed = inject<Ref<boolean>>("changed")!;
-const {copied, status} = useCodeCanvasStatus(changed);
+const { copied, status } = useCodeCanvasStatus(changed);
 
 function copy() {
   navigator.clipboard.writeText(props.code);
@@ -124,4 +124,3 @@ function copy() {
   margin-left: var(--base-margin);
 }
 </style>
-

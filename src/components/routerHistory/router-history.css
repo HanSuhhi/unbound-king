@@ -20,6 +20,7 @@
   display: flex;
   padding: var(--small) var(--normal);
   color: var(--gray-bright-2);
+  font-weight: bold;
   border-right: var(--border);
   cursor: pointer;
   transition: all var(--moment);
@@ -51,7 +52,7 @@
   white-space: nowrap;
   animation: router-history-active 0.8s;
   content: attr(data-name);
-  clip-path: polygon(70% 0, 100% 0, 100% 100%, 30% 100%);
+  clip-path: polygon(45% 0, 100% 0, 100% 100%, 10% 100%);
 }
 
 @keyframes router-history-active {

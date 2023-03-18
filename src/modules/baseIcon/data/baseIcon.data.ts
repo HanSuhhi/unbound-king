@@ -24,6 +24,10 @@ export const DATA_BaseIcons = {
     translator: { key: "warning", title: "提示" },
     path: "i-ph-info-bold",
   },
+  question: {
+    translator: { key: "question", title: "疑问" },
+    path: "i-ph-question",
+  },
   more: {
     translator: { key: "more", title: "更多" },
     path: "i-ion-more",
@@ -38,7 +42,7 @@ export const DATA_BaseIcons = {
   },
   package: {
     translator: { key: "package", title: "包裹" },
-    path: "i-vaadin-package",
+    path: "i-lucide-package",
     from: "standard",
   },
   coin: {
@@ -137,5 +141,17 @@ export const DATA_BaseIcons = {
   combine: {
     translator: { key: "combine", title: "组合" },
     path: "i-mdi-vector-combine",
+  },
+  character: {
+    translator: { key: "character", title: "角色" },
+    path: "i-mdi-human-greeting",
+  },
+  "add-package": {
+    translator: { key: "add-package", title: "拓展包" },
+    path: "i-lucide-package-plus",
+  },
+  plugin: {
+    translator: { key: "plugin", title: "插件" },
+    path: "i-dashicons-admin-plugins",
   },
 };

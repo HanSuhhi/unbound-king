@@ -12,4 +12,5 @@ html.dark {
   --el-bg-color: var(--bg-color-bright-1);
   --el-color-primary: var(--main-color);
   --el-bg-color-overlay: var(--bg-color-bright-1);
+  --el-box-shadow-light: none;
 }

@@ -1,4 +1,3 @@
-import { isUndefined } from "lodash-es";
 import type { ComputedRef, Ref } from "vue";
 import { provide, ref, watch } from "vue";
 import { formatCodeString } from "./formatCodeString";

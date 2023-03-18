@@ -8,7 +8,7 @@
 .number-mark {
   --padding-size: 1.2;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-left: var(--mini);

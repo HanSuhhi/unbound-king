@@ -17,7 +17,7 @@ export default defineComponent({
 
     return () => {
       return (
-        <c-layout ref={COMP} class="attribute-value">
+        <c-layout ref={COMP} class="attribute-value page-transition">
           {{
             aside: () => <CodeCanvasVue code={code.value} />,
             default: () => <AttributeValueBox />,

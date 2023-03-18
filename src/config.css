@@ -47,6 +47,8 @@
 
   position: relative;
   z-index: 1;
+
+  /* width: calc(100vw - var(--aside-width)); */
   height: var(--main-height);
 }
 
@@ -60,4 +62,12 @@
 
 .page-transition {
   transition: grid-template var(--transition-prop);
+}
+
+.form-inline-flex {
+  display: inline-flex !important;
+}
+
+.form-inline-flex:not(:first-child) {
+  margin-left: var(--base-margin);
 }

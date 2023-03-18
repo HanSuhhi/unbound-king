@@ -1,0 +1,14 @@
+.creator-main_main {
+  height: calc(var(--main-height) - 60px - 3 * var(--base-margin));
+}
+
+.creator-main_aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 300px;
+  max-width: 300px;
+  height: calc(var(--main-height) - 60px - 3 * var(--base-margin));
+  margin-left: var(--base-margin);
+}

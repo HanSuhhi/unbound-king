@@ -4,8 +4,8 @@ export const idFormConfig = {
   id: {
     title: "id",
     disabled: true,
-    default: "自动生成，无需操作",
-  },
+    defaultValue: "自动生成，无需操作",
+  } as Partial<AutoformItem>,
 };
 
 export const translatorFormConfig = {
@@ -17,5 +17,5 @@ export const translatorFormConfig = {
         trigger: "blur",
       },
     ],
-  },
+  } as Partial<AutoformItem>,
 };

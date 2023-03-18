@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
-import { defineTranslatorValidator } from "@/composables/form/TranslatorValidator";
 import { withFormDetail } from "@/composables/formDetail";
 import { transformTypeToForm } from "@/composables/typeToForm";
 import { defineUniqueId } from "@/composables/uniqueId";
-// import { FormInstance } from "element-plus";
 import type { Ref } from "vue";
 import { computed, inject } from "vue";
+import { idFormConfig, translatorFormConfig } from "../../../composables/form/formConfigs";
 import typeString from "../attribute-value-type.d.ts?raw";
-import { idFormConfig, translatorFormConfig } from '../../../composables/form/formConfigs';
 
 const type = inject<Ref<AttributeValue["type"]>>("type");
 const attributeValues = inject<Ref<IdValue<AttributeValue>>>("data");
@@ -36,7 +34,7 @@ const formConfig = computed(() =>
       title: "图标",
     },
     dataType: {
-      title: "数据类型"
+      title: "数据类型",
     },
     type: {
       options: {
@@ -49,7 +47,7 @@ const formConfig = computed(() =>
       },
       disabled: true,
       title: "类型",
-      default: type || "",
+      defaultValue: type || "",
     },
   }),
 );

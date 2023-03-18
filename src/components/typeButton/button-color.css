@@ -7,3 +7,8 @@
   --bg-color-main: var(--red-bright-2);
   --bg-color-sub: var(--yellow-bright-1);
 }
+
+.type-button_gray {
+  --bg-color-main: var(--main-color-deep-2);
+  --bg-color-sub: var(--main-color);
+}

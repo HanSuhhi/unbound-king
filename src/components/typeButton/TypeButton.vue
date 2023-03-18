@@ -1,32 +1,35 @@
-<script setup lang='ts'>
-import { useCsssButton } from 'csss-ui';
-import { watch } from 'vue';
+<script setup lang="ts">
+import { useCsssButton } from "csss-ui";
+import { watch } from "vue";
 import "./button-color.css";
 
-withDefaults(defineProps<{
-  color?: "blue" | "red" | "green";
-  size?: "large"
-}>(), {
-  color: "blue"
-});
+withDefaults(
+  defineProps<{
+    color?: "blue" | "red" | "green" | "gray";
+    size?: "large";
+  }>(),
+  {
+    color: "gray",
+  },
+);
 
-const { COMP, } = useCsssButton({
+const { COMP } = useCsssButton({
   style: {
     classList: {
-      button: ["", "type-button"]
+      button: ["", "type-button"],
     },
     property: {
       "--padding-x": "calc(var(--small) * 4)",
-      "--padding-y": "var(--mini)"
-    }
-  }
+      "--padding-y": "var(--small)",
+    },
+  },
 });
 
 watch;
 </script>
 
 <template>
-  <c-button ref="COMP" :color="color" :class="[size === 'large' ? 'type-button_large' : '', `type-button_${color}`]">
+  <c-button ref="COMP" :class="[`type-button_${color}`]">
     <slot />
   </c-button>
 </template>
@@ -36,15 +39,12 @@ watch;
   position: relative;
   top: 0;
   white-space: nowrap;
+  border: var(--border);
+  box-shadow: none;
   transform: scale(0.8);
 }
 
 .type-button:active {
   top: calc(var(--mini) * 0.7);
-}
-
-.type-button_large {
-  --padding-y: var(--small) !important;
-  --padding-x: calc(var(--normal) * 3) !important;
 }
 </style>

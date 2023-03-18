@@ -1,14 +1,15 @@
 import { useCsssLayout } from "csss-ui";
 import { provide } from "vue";
 
-export const defineCommonLayout = (name: string) => {
+export const defineCommonLayout = (name: string, reverse = true) => {
   const main = `${name}_main`;
   const aside = `${name}_aside`;
 
   const layout = useCsssLayout({
-    state: { reverse: true },
+    state: { reverse },
     style: {
       classList: {
+        layout: ["", name],
         main: ["", main],
         aside: ["", aside],
       },

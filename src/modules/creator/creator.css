@@ -1,0 +1,13 @@
+@import "./styles/creator-main.css";
+@import "./styles/creator-form.css";
+
+.creator_aside {
+  position: relative;
+  left: var(--base-margin);
+}
+
+.creator_main {
+  position: relative;
+  left: calc(-1 * var(--base-margin));
+  width: calc(100% + 2 * var(--base-margin));
+}

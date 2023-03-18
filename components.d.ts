@@ -25,6 +25,7 @@ declare module '@vue/runtime-core' {
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElOptionGroup: typeof import('element-plus/es')['ElOptionGroup']
     ElRadio: typeof import('element-plus/es')['ElRadio']
@@ -39,12 +40,19 @@ declare module '@vue/runtime-core' {
     Icon: typeof import('./src/components/Icon.vue')['default']
     IconBlock: typeof import('./src/components/IconBlock.vue')['default']
     IconListItem: typeof import('./src/components/tabs/IconListItem.vue')['default']
+    ItemCard: typeof import('./src/components/ItemCard.vue')['default']
+    KeyValueCard: typeof import('./src/components/KeyValueCard.vue')['default']
     NumberMark: typeof import('./src/components/NumberMark.vue')['default']
     Operator: typeof import('./src/components/codeCanvas/components/Operator.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Step: typeof import('./src/components/Step.vue')['default']
+    SubButton: typeof import('./src/components/SubButton.vue')['default']
     TabsListItem: typeof import('./src/components/tabs/TabsListItem.vue')['default']
     TypeButton: typeof import('./src/components/typeButton/TypeButton.vue')['default']
     Workshop: typeof import('./src/components/appAside/components/workshop/Workshop.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
