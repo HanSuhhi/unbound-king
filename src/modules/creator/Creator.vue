@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
-import { provide, ref } from "vue";
 import { defineCommonLayout } from "../../composables/components/commonLayout";
 import CreatorHeader from "./components/CreatorHeader.vue";
 import CreatorMain from "./components/CreatorMain";
+import { useActiveCreator } from "./composables/activeCreator";
 import { useCode } from "./composables/code";
 import "./creator.css";
-import { useActiveCreator } from "./composables/activeCreator";
 
 const { COMP } = defineCommonLayout("creator");
 

@@ -33,7 +33,46 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 5, max: 2 },
+          generatorParams: { min: 23, max: 200 },
+        },
+        {
+          id: "ATV3721679470297067",
+          translator: { key: "maxHp", title: "生命上限" },
+          generator: "paste",
+          generatorForm: [
+            {
+              key: "pasteFrom",
+              type: "selecter",
+              options: {
+                range: [
+                  { key: "hp", title: "生命值" },
+                  { key: "maxHp", title: "生命上限" },
+                  { key: "minDef", title: "防御力下限" },
+                  { key: "maxDef", title: "防御力上限" },
+                  { key: "minAtk", title: "攻击力下限" },
+                  { key: "maxAtk", title: "攻击力上限" },
+                  { key: "matk", title: "法术攻击力" },
+                  { key: "apr", title: "法术防御力" },
+                  { key: "wt", title: "负重" },
+                  { key: "res", title: "抗性" },
+                  { key: "pct", title: "虔诚" },
+                  { key: "acc", title: "命中" },
+                  { key: "eva", title: "闪避" },
+                  { key: "luc", title: "幸运" },
+                  { key: "hex", title: "诅咒" },
+                  { key: "crit", title: "会心" },
+                  { key: "cha", title: "魅力" },
+                  { key: "moral", title: "道德" },
+                  { key: "sp", title: "唯我" },
+                ],
+              },
+              title: "数值同步于",
+              required: true,
+              placeholder: "请选择数据需要同步的属性",
+              rules: [{ required: true, message: "数值同步于项不可为空" }],
+            },
+          ],
+          generatorParams: { pasteFrom: "hp" },
         },
         {
           id: "ATV5981678549140226",
@@ -59,7 +98,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 2, max: 0 },
+          generatorParams: { min: 12, max: 123 },
         },
         {
           id: "ATV7371678551178444",
@@ -85,7 +124,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 4, max: 4 },
+          generatorParams: { min: 2, max: 241 },
         },
         {
           id: "ATV9741678552626905",
@@ -111,7 +150,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 23, max: 213 },
         },
         {
           id: "ATV8911678552735783",
@@ -137,7 +176,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 5, max: 231 },
         },
         {
           id: "ATV8041678553102618",
@@ -163,7 +202,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 12, max: 123 },
         },
         {
           id: "ATV2041678553356839",
@@ -189,7 +228,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 3, max: 213 },
         },
         {
           id: "ATV6471678553803991",
@@ -215,7 +254,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 2, max: 123 },
         },
         {
           id: "ATV4851678598427597",
@@ -241,7 +280,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 2, max: 23 },
         },
         {
           id: "ATV0811678598789926",
@@ -267,7 +306,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 2, max: 123 },
         },
         {
           id: "ATV5321678598891068",
@@ -293,7 +332,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 1, max: 1231 },
         },
         {
           id: "ATV1771678598987284",
@@ -319,7 +358,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 1, max: 123 },
         },
         {
           id: "ATV7271678599141629",
@@ -345,7 +384,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 1, max: 123 },
         },
         {
           id: "ATV1751678599231565",
@@ -371,7 +410,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 1, max: 123 },
         },
         {
           id: "ATV7041678599371532",
@@ -397,7 +436,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 1, max: 123 },
         },
         {
           id: "ATV2921678599431612",
@@ -423,7 +462,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 1, max: 123 },
         },
         {
           id: "ATV2171678599469748",
@@ -449,7 +488,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 1, max: 123 },
         },
         {
           id: "ATV6141678599631858",
@@ -475,7 +514,7 @@ export default <Creator>{
               placeholder: "有关于最大值的内容...",
             },
           ],
-          generatorParams: { min: 0, max: 0 },
+          generatorParams: { min: 1, max: 123 },
         },
       ],
     },

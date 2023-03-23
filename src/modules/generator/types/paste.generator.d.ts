@@ -1,0 +1,3 @@
+type PasteGeneratorProps = {
+  pasteFrom?: string;
+};

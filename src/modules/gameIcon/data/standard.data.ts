@@ -96,5 +96,41 @@ const data = {
     path: "i-game-icons-self-love",
     from: "standard",
   },
+  GI6471679233296028: {
+    id: "GI6471679233296028",
+    translator: { key: "stone", title: "石" },
+    path: "i-game-icons-stone-pile",
+    from: "standard",
+  },
+  GI5441679233350181: {
+    id: "GI5441679233350181",
+    translator: { key: "jin", title: "金" },
+    path: "i-game-icons-rock",
+    from: "standard",
+  },
+  GI1531679233401651: {
+    id: "GI1531679233401651",
+    translator: { key: "mu", title: "木" },
+    path: "i-emojione-monotone-deciduous-tree",
+    from: "standard",
+  },
+  GI3541679233453483: {
+    id: "GI3541679233453483",
+    translator: { key: "shui", title: "水" },
+    path: "i-entypo-water",
+    from: "standard",
+  },
+  GI0171679233503675: {
+    id: "GI0171679233503675",
+    translator: { key: "huo", title: "火" },
+    path: "i-game-icons-celebration-fire",
+    from: "standard",
+  },
+  GI9911679233724875: {
+    id: "GI9911679233724875",
+    translator: { key: "tu", title: "土" },
+    path: "i-ic-sharp-terrain",
+    from: "standard",
+  },
 };
 export default data;

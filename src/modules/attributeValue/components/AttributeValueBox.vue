@@ -5,19 +5,21 @@ import type { Ref } from "vue";
 import { computed, inject, provide, ref } from "vue";
 import addFormDialog from "./AddFormDialog.vue";
 import ValueList from "./ValueList.vue";
-import { filter } from 'lodash-es';
+import { filter } from "lodash-es";
 
 const attributeValues = inject<Ref<AttributeValue[]>>("data");
 
-const baseAttributes = computed(() => filter(attributeValues?.value, attributeValue => attributeValue.type === 'base'));
+const baseAttributes = computed(() => filter(attributeValues?.value, (attributeValue) => attributeValue.type === "base"));
 const advancedAttributes = computed(() => filter(attributeValues?.value, (attributeValue) => attributeValue.type === "advanced"));
 const specialAttributes = computed(() => filter(attributeValues?.value, (attributeValue) => attributeValue.type === "special"));
 
-const { COMP, state } = useCsssDialog({ state: { toBox: ".attribute-value" }, style: { classList: { dialog: ["", "router-view-dialog"] } } });
 const dialogType = ref<AttributeValue["type"]>("base");
+
+const { COMP, state } = useCsssDialog({ state: { toBox: ".attribute-value" }, style: { classList: { dialog: ["", "router-view-dialog"] } } });
 
 provide("dialog", state);
 provide("Dialog", COMP);
+
 provide("type", dialogType);
 </script>
 
@@ -51,11 +53,12 @@ provide("type", dialogType);
   box-sizing: border-box;
   width: calc(100% / 3);
   height: 100%;
-  overflow: auto;
+  overflow: hidden auto;
 }
 
 .value-box_alert {
   box-sizing: border-box;
+  margin-right: var(--base-margin);
 }
 
 .value-box_main {

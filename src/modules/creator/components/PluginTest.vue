@@ -1,29 +1,19 @@
 <script setup lang="ts">
-import { DATA_Generators } from "@/modules/generator/data";
 import KeyValueCard from "@/components/KeyValueCard.vue";
-import TypeButton from "@/components/typeButton/TypeButton.vue";
-import { ref } from "vue";
-import { throttle } from "lodash-es";
 
-defineProps<{ formConfig: CreatorPlugin["data"] }>();
-
-const flush = ref(true);
-const generater = throttle(() => {
-  flush.value = !flush.value;
-  flush.value = !flush.value;
-}, 400);
+defineProps<{ data: ReturnStruct[] }>();
 </script>
 
 <template>
   <article class="plugin-test">
     <section class="plugin-test_main">
       <p class="p-reset plugin-test_title">生成数据</p>
-      <div v-for="plugin in formConfig" :key="plugin.id" class="plugin-test_data">
-        <key-value-card v-if="flush" :title="`${plugin.translator.title} - ${plugin.translator.key}`" :value="DATA_Generators[plugin.generator](plugin.generatorParams)" />
+      <div v-for="item of data" :key="item[0]" class="plugin-test_data">
+        <key-value-card :title="item[0]" :value="item[1]" />
       </div>
     </section>
     <section class="plugin-test_bottom">
-      <type-button @click="generater">重新生成</type-button>
+      <slot name="operator" />
     </section>
   </article>
 </template>

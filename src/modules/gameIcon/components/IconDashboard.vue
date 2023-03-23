@@ -15,7 +15,7 @@ const icons = inject<ComputedRef<GameIcon[]>>("data");
   <add-icon-dialog />
   <article class="icon-dashboard">
     <icon-block v-for="icon in icons" :key="icon.translator.key" :icon="icon" class="icon-dashboard_block" />
-    <icon-block class="icon-dashboard_block" :icon="DATA_BaseIcons.plus" @click="openDialog" />
+    <icon-block class="icon-dashboard_block" :icon="DATA_BaseIcons.plus" not-copy @click="openDialog" />
   </article>
 </template>
 

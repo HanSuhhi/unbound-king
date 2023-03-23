@@ -4,24 +4,27 @@ import type { useCsssDialog } from "csss-ui";
 import { CInput } from "csss-ui";
 import { throttle } from "lodash-es";
 import type { Ref } from "vue";
-import { inject, nextTick, ref, watch } from 'vue';
+import { inject, nextTick, ref, watch } from "vue";
 import { defineItemsSearch } from "../composables/ItemsSearch";
-import { onBeforeEnter, onEnter, onLeave } from '../composables/transitionFunc';
 import ValueItem from "./ValueItem.vue";
 import NumberMark from "@/components/NumberMark.vue";
+import { onBeforeEnter } from "@/composables/transition/transitionFunc";
 
 const props = defineProps<{ attributeValues: AttributeValue[]; type: AttributeValue["type"] }>();
 const modelAttributeValues = ref(props.attributeValues);
 
 const { COMP: Input, state: InputState } = defineItemsSearch();
-watch(() => InputState.value?.model, throttle((input) => {
-  modelAttributeValues.value = props.attributeValues.filter(attributeValue => {
-    if (attributeValue.translator.key.includes(input)) return true;
-    if (attributeValue.translator.title.includes(input)) return true;
-    if (attributeValue.description.includes(input)) return true;
-    return false;
-  });
-}, Number(import.meta.env.ANIMATION_DURATION)));
+watch(
+  () => InputState.value?.model,
+  throttle((input) => {
+    modelAttributeValues.value = props.attributeValues.filter((attributeValue) => {
+      if (attributeValue.translator.key.includes(input)) return true;
+      if (attributeValue.translator.title.includes(input)) return true;
+      if (attributeValue.description.includes(input)) return true;
+      return false;
+    });
+  }, Number(import.meta.env.ANIMATION_DURATION)),
+);
 
 const state = inject<ReturnType<typeof useCsssDialog>["state"]>("dialog");
 const type = inject<Ref<AttributeValue["type"]>>("type");
@@ -30,7 +33,6 @@ const openDialog = () => {
   state!.value.show = true;
   type!.value = props.type;
 };
-
 </script>
 
 <template>
@@ -48,17 +50,11 @@ const openDialog = () => {
         </c-input>
       </div>
     </header>
-    <transition-group tag="main" class="value-list_main" :css="false"
-                      @before-enter="onBeforeEnter"
-                      @enter="onEnter"
-                      @leave="onLeave"
-    >
-      <ValueItem v-for="attributeValue, index in modelAttributeValues" :key="attributeValue.id" class="value-list_item"
-                 :attribute-value="attributeValue" :data-index="index"
-      />
+    <transition-group tag="main" class="value-list_main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+      <ValueItem v-for="(attributeValue, index) in modelAttributeValues" :key="attributeValue.id" class="value-list_item" :attribute-value="attributeValue" :data-index="index" />
     </transition-group>
     <footer class="value-list_footer" @click="openDialog()">
-      <icon name="plus" style="margin-right: var(--mini);" />
+      <icon name="plus" style="margin-right: var(--mini)" />
       添加属性值...
     </footer>
   </section>
@@ -132,5 +128,4 @@ const openDialog = () => {
   display: flex;
   justify-content: flex-end;
 }
-
 </style>

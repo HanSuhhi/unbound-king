@@ -1,11 +1,17 @@
-import { ref, provide, watch } from "vue";
-import type { WritableComputedRef } from "vue";
-import { DATA_Creators } from "../data/index";
 import { isUndefined } from "lodash-es";
+import type { WritableComputedRef } from "vue";
+import { provide, ref, watch } from "vue";
+import { DATA_Creators } from "../data/index";
 
 export const useActiveCreator = (code: WritableComputedRef<string>) => {
-  const activeCreator = ref<Creator>(DATA_Creators[0]);
-  const changed = ref();
+  const activeIndex = ref(0);
+  const activeCreator = ref<Creator>(DATA_Creators[activeIndex.value]);
+  const changed = ref<boolean>();
+
+  watch(activeIndex, (newIndex) => {
+    activeCreator.value = DATA_Creators[newIndex];
+    changed.value = undefined;
+  });
 
   watch(
     activeCreator,
@@ -18,6 +24,7 @@ export const useActiveCreator = (code: WritableComputedRef<string>) => {
   );
 
   provide("changed", changed);
+  provide("creator-tabs-index", activeIndex);
   provide("creator", activeCreator);
 
   return [activeCreator];

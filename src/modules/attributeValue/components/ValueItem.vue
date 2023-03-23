@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import TitleCard from "@/components/titleCard/TitleCard";
-import { } from "../../baseIcon/data/baseIcon.data";
 import Icon from "@/components/Icon.vue";
 defineProps<{ attributeValue: AttributeValue }>();
 </script>

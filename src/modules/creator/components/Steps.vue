@@ -4,7 +4,7 @@ import type { Ref } from "vue";
 import { inject, computed } from "vue";
 import { DATA_Creator_Plugins } from "../../creatorPlugin/data/index";
 import StepController from "./StepController.vue";
-import { onBeforeEnter, onEnter, onLeave } from "../../attributeValue/composables/transitionFunc";
+import { onBeforeEnter, onEnter, onLeave } from "@/composables/transition/transitionFunc";
 import { useHtmlPropLint } from "@/composables/htmlPropLint";
 
 const creator = inject<Ref<Creator>>("creator");

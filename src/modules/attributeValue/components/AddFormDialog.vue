@@ -5,7 +5,7 @@ import { transformTypeToForm } from "@/composables/typeToForm";
 import { defineUniqueId } from "@/composables/uniqueId";
 import type { Ref } from "vue";
 import { computed, inject } from "vue";
-import { idFormConfig, translatorFormConfig } from "../../../composables/form/formConfigs";
+import { idFormConfig, translatorFormConfig, iconFormConfig } from "../../../composables/form/formConfigs";
 import typeString from "../attribute-value-type.d.ts?raw";
 
 const type = inject<Ref<AttributeValue["type"]>>("type");
@@ -27,11 +27,9 @@ const formConfig = computed(() =>
   withFormDetail<AttributeValue>(transformTypeToForm(typeString), {
     ...idFormConfig,
     ...translatorFormConfig,
+    ...iconFormConfig,
     description: {
       title: "描述",
-    },
-    icon: {
-      title: "图标",
     },
     dataType: {
       title: "数据类型",

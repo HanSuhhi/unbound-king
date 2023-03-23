@@ -41,6 +41,13 @@
 .title-card_main {
   position: relative;
   left: var(--padding);
+  flex: 1;
   width: calc(100% - 2 * var(--padding));
   margin: var(--padding) 0;
+}
+
+.title-card_footer {
+  padding: var(--base-margin);
+  background-color: var(--bg-color);
+  border-top: var(--border);
 }

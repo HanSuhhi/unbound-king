@@ -1,61 +1,33 @@
 <script lang="ts" setup>
-import type { FormInstance, FormRules } from "element-plus";
-import { computed, ref, watch } from "vue";
+import type { FormInstance } from "element-plus";
+import { ref, watch } from "vue";
 import FormIcon from "./components/FormIcon.vue";
 import FormTranslator from "./components/FormTranslator.vue";
+import { defineAutoFormRules } from "./composable/rules";
+import { defineAutoFormModel } from "./composable/model";
 
 const FormRef = ref<FormInstance>();
 
-const props = defineProps<{ config: AutoformItem[]; updateWatch?: boolean; activeModel?: any }>();
+const props = defineProps<{ config: AutoformItem[]; params?: any }>();
+const { rules } = defineAutoFormRules(props);
+const { model, init } = defineAutoFormModel(props);
 
 function reset() {
   if (!FormRef.value) return;
   FormRef.value.resetFields();
 }
-function init() {
-  return props.config.reduce((values, { key, defaultValue, type }) => {
-    if (key === "translator") {
-      const defaultTranslator: Translator = defaultValue || {
-        key: "",
-        title: "",
-      };
-
-      return {
-        ...values,
-        [key]: defaultTranslator,
-      };
-    }
-    if (type === "number") {
-      return {
-        ...values,
-        [key]: defaultValue || 0,
-      };
-    }
-    return { ...values, [key]: defaultValue || "" };
-  }, {});
-}
 function resetForm() {
   reset();
-  if (!props.activeModel) model.value = init();
+  model.value = init();
 }
 
-const model = ref<Record<string, any>>(props.activeModel || init());
-
 watch(() => props.config, resetForm, { deep: true });
-
-const rules = computed(() => {
-  const rule: FormRules = {};
-  props.config.forEach((formItem) => {
-    if (formItem.rules) rule[formItem.key] = formItem.rules;
-  });
-  return rule;
-});
 </script>
 <template>
   <el-form ref="FormRef" class="auto-form" :model="model" :rules="rules" :validate-on-rule-change="false">
     <el-form-item v-for="formItem in config" :key="formItem.key" :class="{ 'form-inline-flex': formItem.type === 'number' }" :label="formItem.title" :prop="formItem.key" :required="formItem.required">
       <template v-if="!formItem.hide">
-        <el-input v-if="formItem.type === 'input'" v-model="model[formItem.key]" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''" />
+        <el-input v-if="formItem.type === 'input' || formItem.type === 'textarea'" v-model="model[formItem.key]" :type="formItem.type" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''" />
         <el-select v-if="formItem.type === 'selecter'" v-model="model[formItem.key]" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''">
           <el-option v-for="option in formItem.options!.range" :key="option.key" :label="option.title" :value="option.key" />
         </el-select>

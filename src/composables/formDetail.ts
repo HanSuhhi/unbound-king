@@ -1,7 +1,9 @@
 import { merge } from "lodash-es";
 
 function selecterDefault(configItem: AutoformItem): AutoformItem {
-  const needDefault = configItem.type === "selecter" && configItem.required;
+  const isSelect = configItem.type === "selecter";
+  const needDefault = isSelect && configItem.required;
+  if (isSelect && !configItem.options) configItem.options = { range: [] };
   if (needDefault) configItem.defaultValue = configItem.options?.range![0].key;
   return configItem;
 }

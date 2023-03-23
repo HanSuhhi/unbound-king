@@ -19,3 +19,9 @@ export const translatorFormConfig = {
     ],
   } as Partial<AutoformItem>,
 };
+
+export const iconFormConfig = {
+  icon: {
+    title: "图标",
+  } as Partial<AutoformItem>,
+};

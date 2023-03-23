@@ -7,6 +7,7 @@
   max-height: var(--max-height);
   margin-top: var(--base-margin);
   overflow: auto;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .app-aside_panel {

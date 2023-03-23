@@ -11,8 +11,7 @@ interface ImportMetaEnv {
   readonly ENCRYPTED_KEY: string;
   readonly IV: string;
 }
-
-type Size = "small" | "normal" | "large";
+type ReturnStruct = [title: string, value: string, key: string];
 
 type KeyCommand = {
   /**

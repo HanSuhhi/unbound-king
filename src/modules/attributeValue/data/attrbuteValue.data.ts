@@ -7,6 +7,14 @@ export default {
     dataType: "number",
     type: "base",
   },
+  ATV3721679470297067: {
+    id: "ATV3721679470297067",
+    translator: { key: "maxHp", title: "生命上限" },
+    description: "角色的生命数值上限",
+    icon: "GI5961678501381745",
+    dataType: "number",
+    type: "base",
+  },
   ATV5981678549140226: {
     id: "ATV5981678549140226",
     translator: { key: "minDef", title: "防御力下限" },

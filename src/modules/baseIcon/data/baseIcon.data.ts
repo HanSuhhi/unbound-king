@@ -154,4 +154,8 @@ export const DATA_BaseIcons = {
     translator: { key: "plugin", title: "插件" },
     path: "i-dashicons-admin-plugins",
   },
+  thinking: {
+    translator: { key: "thinking", title: "思考" },
+    path: "i-icon-park-outline-thinking-problem",
+  },
 };

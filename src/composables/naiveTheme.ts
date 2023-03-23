@@ -8,6 +8,9 @@ const no = "none";
 
 export const defineNaiveTheme = () => {
   const darkThemeOverrides: GlobalThemeOverrides = {
+    common: {
+      lineHeight: "1",
+    },
     Message: {
       colorInfo: bg2,
       textColorInfo: white,

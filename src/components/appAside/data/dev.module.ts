@@ -19,6 +19,12 @@ export default <ModulePage[]>defineModuleConfig([
         description: "人物数值属性及含义",
         icon: "list",
       },
+      {
+        path: "attribute",
+        title: "属性",
+        description: "人物属性及属性效果",
+        icon: "thinking",
+      },
     ],
   },
   {

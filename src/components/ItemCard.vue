@@ -6,10 +6,10 @@ import SubButton from "./SubButton.vue";
 type Props = { icon: BaseIconName };
 defineProps<Props>();
 
-// type Emit = { (e: "triggered"): void };
-// const emits = defineEmits<Emit>();
+type Emit = { (e: "triggered"): void };
+const emits = defineEmits<Emit>();
 
-// const method = () => emits("triggered");
+const method = () => emits("triggered");
 </script>
 
 <template>
@@ -22,7 +22,7 @@ defineProps<Props>();
           <slot name="number" />
         </NumberMark>
       </p>
-      <sub-button>选择</sub-button>
+      <sub-button @click="method">选择</sub-button>
     </header>
     <footer class="item-card_footer">
       <slot name="description" />

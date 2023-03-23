@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import { defineComponent, ref, provide, inject } from "vue";
+import { defineComponent, ref, provide, inject, watchEffect } from "vue";
 import { defineCommonLayout } from "../../../composables/components/commonLayout";
 import Forms from "./Forms.vue";
 import Steps from "./Steps.vue";
@@ -10,7 +10,8 @@ export default defineComponent({
     const { COMP } = defineCommonLayout("creator-main", false);
     const creator = inject<Ref<Creator>>("creator");
 
-    const plugin = ref<CreatorPlugin | null>(creator?.value.plugins[0] || null);
+    const plugin = ref<CreatorPlugin | null>();
+    watchEffect(() => (plugin.value = creator?.value.plugins[0] || null));
     provide("plugin", plugin);
 
     return () => {

@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import Icon from "../../../components/Icon.vue";
+import { useMessage } from "naive-ui";
+import { throttle } from "lodash-es";
 
-defineProps<{ icon: BaseIcon }>();
+const message = useMessage();
+
+const props = defineProps<{ icon: BaseIcon; notCopy?: boolean }>();
+
+const copy = throttle((name: string) => {
+  if (props.notCopy) return;
+  navigator.clipboard.writeText(name);
+  message.info("图标 key 复制成功");
+}, 500);
 </script>
 
 <template>
-  <section class="icon-block">
+  <section class="icon-block" @click="copy(icon.translator.key)">
     <icon class="icon-block_icon" :icon="icon" />
     <span class="icon-block_title">{{ icon.translator!.title }}</span>
   </section>
