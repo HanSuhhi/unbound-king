@@ -1,19 +1,31 @@
 <script setup lang="ts">
 import KeyValueCard from "@/components/KeyValueCard.vue";
+import { isObject } from "lodash-es";
+import type { Ref } from "vue";
+import { inject, onMounted, computed } from "vue";
+import typeButton from "@/components/typeButton/TypeButton.vue";
+import type { usePluginTest } from "../composables/pluginTest";
 
-defineProps<{ data: ReturnStruct[] }>();
+type ReturnData = Record<string, ReturnType<typeof usePluginTest>>;
+
+const props = defineProps<{ pluginKey: string }>();
+
+const testData = inject<Ref<ReturnData>>("test-data")!;
+const data = computed(() => testData!.value[props.pluginKey]) as any;
 </script>
 
 <template>
   <article class="plugin-test">
-    <section class="plugin-test_main">
+    <section class="plugin-test_title">
       <p class="p-reset plugin-test_title">生成数据</p>
-      <div v-for="item of data" :key="item[0]" class="plugin-test_data">
-        <key-value-card :title="item[0]" :value="item[1]" />
+    </section>
+    <section class="plugin-test_main">
+      <div v-for="item of data.data" :key="item[0]" class="plugin-test_data">
+        <key-value-card :title="item[0]" :value="isObject(item[1]) ? (item[1] as Translator).title : item[1].toString()" />
       </div>
     </section>
     <section class="plugin-test_bottom">
-      <slot name="operator" />
+      <type-button @click="data.genData">重新生成</type-button>
     </section>
   </article>
 </template>
@@ -24,6 +36,11 @@ defineProps<{ data: ReturnStruct[] }>();
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+}
+
+.plugin-test_main {
+  flex: 1;
+  overflow: auto;
 }
 
 .plugin-test_data {

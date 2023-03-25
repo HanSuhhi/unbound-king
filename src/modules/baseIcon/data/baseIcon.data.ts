@@ -158,4 +158,8 @@ export const DATA_BaseIcons = {
     translator: { key: "thinking", title: "思考" },
     path: "i-icon-park-outline-thinking-problem",
   },
+  mesasge: {
+    translator: { key: "message", title: "消息" },
+    path: "i-material-symbols-android-chat",
+  },
 };

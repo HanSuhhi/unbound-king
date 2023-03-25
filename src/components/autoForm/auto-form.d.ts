@@ -5,9 +5,9 @@ type Options = {
 type Autoform = AutoformItem[];
 
 type AutoformItem = {
-  key: string;
+  key?: string;
   title: string;
-  type: "input" | "selecter" | "translator" | "icon" | "number" | "textarea";
+  type: "input" | "selecter" | "translator" | "icon" | "number" | "textarea" | "text";
   hide?: boolean;
   required?: boolean;
   options?: Options;

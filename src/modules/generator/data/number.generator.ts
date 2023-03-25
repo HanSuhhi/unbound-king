@@ -3,7 +3,7 @@ import { random } from "lodash-es";
 import type from "../types/number.generator.d.ts?raw";
 import { withFormDetail } from "../../../composables/formDetail";
 
-const numberGenerator: GeneratorFunc<number, NumberGeneratorProps> = ({ min, max } = { min: 0, max: 0 }) => {
+const numberGenerator: GeneratorFunc<number, NumberGeneratorProps> = (_, { min, max } = { min: 0, max: 0 }) => {
   return random(min!, max!);
 };
 

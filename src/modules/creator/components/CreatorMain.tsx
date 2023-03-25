@@ -10,9 +10,15 @@ export default defineComponent({
     const { COMP } = defineCommonLayout("creator-main", false);
     const creator = inject<Ref<Creator>>("creator");
 
+    const activePlugin = ref(0);
     const plugin = ref<CreatorPlugin | null>();
-    watchEffect(() => (plugin.value = creator?.value.plugins[0] || null));
+
+    watchEffect(() => {
+      plugin.value = creator?.value.plugins[activePlugin.value] || null;
+    });
+
     provide("plugin", plugin);
+    provide("plugin-index", activePlugin);
 
     return () => {
       return (

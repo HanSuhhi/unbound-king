@@ -4,10 +4,8 @@ import AutoForm from "@/components/autoForm/autoForm.vue";
 import Icon from '@/components/Icon.vue';
 import { NTooltip } from "naive-ui";
 import { getDataFromDataset } from "../../../composables/data";
-import { onBeforeEnter,onEnter,onLeave } from '../../../composables/transition/transitionFunc';
 
 defineProps<{ formConfig: CreatorPlugin["data"]; }>();
-
 </script>
 
 <template>
@@ -16,20 +14,18 @@ defineProps<{ formConfig: CreatorPlugin["data"]; }>();
       此处表单，仅在随机生成人物时提供数据。
     </alert>
     <template v-if="formConfig.length">
-      <transition-group :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
-        <section v-for="config of formConfig" :key="config.id" class="forms-config_form">
-          <div class="forms-config_header">
-            <p class="p-reset forms-config_title">{{ config.translator.title }}</p>
-            <n-tooltip trigger="hover">
-              <template #trigger>
-                <icon class="forms-config_icon" :name="'question'" />
-              </template>
-              <span class="forms-config_description">{{ getDataFromDataset<AttributeValue>(config.id).description }}</span>
-            </n-tooltip>
-          </div>
-          <auto-form class="forms-config_formbox" :config="config.generatorForm" :params="config.generatorParams" />
-        </section>
-      </transition-group>
+      <section v-for="config of formConfig" :key="config.id" class="forms-config_form">
+        <div class="forms-config_header">
+          <p class="p-reset forms-config_title">{{ config.translator.title }}</p>
+          <n-tooltip trigger="hover">
+            <template #trigger>
+              <icon class="forms-config_icon" :name="'question'" />
+            </template>
+            <span class="forms-config_description">{{ getDataFromDataset<AttributeValue>(config.id).description }}</span>
+          </n-tooltip>
+        </div>
+        <auto-form class="forms-config_formbox" :config="config.generatorForm" :params="config.generatorParams" />
+      </section>
     </template>
   </article>
 </template>

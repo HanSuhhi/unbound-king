@@ -1,1 +1,1 @@
-type GeneratorFunc<T, E> = (params: E, generatedData: ReturnStruct[]) => T;
+type GeneratorFunc<T, E> = (generatedData: ReturnStruct[], params?: E) => T;

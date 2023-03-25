@@ -1,4 +1,4 @@
-import { Gender } from "@/enums/Hero.enum";
+import { DATA_Gender } from "@/enums/character.enum";
 import type { ITable } from "jsstore";
 import { DATA_TYPE } from "jsstore";
 
@@ -15,7 +15,7 @@ const idbHero: ITable = {
     },
     gender: {
       dataType: DATA_TYPE.Number,
-      default: Gender.MALE,
+      default: DATA_Gender.MALE,
     },
     nature: {
       dataType: DATA_TYPE.Array,

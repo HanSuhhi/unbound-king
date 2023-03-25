@@ -3,8 +3,8 @@ import { find } from "lodash-es";
 import { withFormDetail } from "../../../composables/formDetail";
 import type from "../types/paste.generator.d.ts?raw";
 
-const pasteGenerator: GeneratorFunc<any, PasteGeneratorProps> = (key, data) => {
-  return find(data, (item) => item[2] === key.pasteFrom)?.[1];
+const pasteGenerator: GeneratorFunc<any, PasteGeneratorProps> = (data, key) => {
+  return find(data, (item) => item[2] === key!.pasteFrom)?.[1] || "";
 };
 
 const pasteGeneratorFormConfig: Autoform = withFormDetail<PasteGeneratorProps>(transformTypeToForm(type), {

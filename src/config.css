@@ -66,8 +66,9 @@
 
 .form-inline-flex {
   display: inline-flex !important;
+  margin-right: var(--base-margin);
 }
 
-.form-inline-flex:not(:first-child) {
+/* .form-inline-flex:not(:first-child) {
   margin-left: var(--base-margin);
-}
+} */

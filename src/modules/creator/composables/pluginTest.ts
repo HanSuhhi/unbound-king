@@ -1,20 +1,21 @@
 import { DATA_Generators } from "@/modules/generator/data";
 import { forEach } from "lodash-es";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
-export const usePluginTest = (plugins: PluginStruct[]) => {
+export function usePluginTest(plugin: CreatorPlugin) {
   const data = ref<ReturnStruct[]>([]);
 
   const genData = () => {
     const _data: ReturnStruct[] = [];
-    forEach(plugins, (plugin: PluginStruct) => {
+    forEach(plugin?.data, (plugin: PluginStruct) => {
       const title = `${plugin.translator.title} - ${plugin.translator.key}`;
-      const value = DATA_Generators[plugin.generator](plugin.generatorParams, _data).toString();
-      _data.push([title, value, plugin.translator.key]);
+      const value = DATA_Generators[plugin.generator](_data, plugin.generatorParams);
+
+      _data.push([title, value, plugin.id]);
     });
     data.value = _data;
   };
-  genData();
+  watch(plugin!, genData, { immediate: true });
 
   return { data, genData };
-};
+}
