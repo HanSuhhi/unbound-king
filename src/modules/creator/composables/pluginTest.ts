@@ -10,6 +10,7 @@ export function usePluginTest(plugin: CreatorPlugin) {
     forEach(plugin?.data, (plugin: PluginStruct) => {
       const title = `${plugin.translator.title} - ${plugin.translator.key}`;
       const value = DATA_Generators[plugin.generator](_data, plugin.generatorParams);
+      console.log("value: ", value);
 
       _data.push([title, value, plugin.id]);
     });

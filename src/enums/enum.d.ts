@@ -1,1 +1,1 @@
-type Enum = Record<string, Translator>;
+type Enum<T = Translator> = Record<string, T>;

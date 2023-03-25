@@ -2,3 +2,4 @@
 @import "./config";
 @import "./components/";
 @import "./prism.css";
+@import "./transition/";

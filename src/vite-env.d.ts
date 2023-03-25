@@ -36,3 +36,6 @@ type Translator = {
 };
 
 type IdValue<T> = Record<string, T>;
+
+type TranslatorObj = { translator: Translator };
+type CanBeGenerated = { canBeGenerated: boolean };

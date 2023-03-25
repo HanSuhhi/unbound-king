@@ -4,6 +4,7 @@ import { computed, defineComponent, ref } from "vue";
 import { defineCommonLayout } from "../../composables/components/commonLayout";
 import AttributeMain from "./components/AttributeMain.vue";
 import { DATA_Attributes } from "./data";
+import "./attribute.css";
 
 export default defineComponent({
   name: "Attribute",

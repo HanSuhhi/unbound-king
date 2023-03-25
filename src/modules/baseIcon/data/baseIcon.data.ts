@@ -61,6 +61,14 @@ export const DATA_BaseIcons = {
     translator: { key: "single-right", title: "右箭头 - 单" },
     path: "i-ic-baseline-keyboard-arrow-right",
   },
+  "single-up": {
+    translator: { key: "single-up", title: "上箭头 - 单" },
+    path: "i-ic-baseline-keyboard-arrow-up",
+  },
+  "single-down": {
+    translator: { key: "single-down", title: "下箭头 - 单" },
+    path: "i-ic-baseline-keyboard-arrow-down",
+  },
   knight: {
     translator: { key: "knight", title: "骑士" },
     path: "i-mdi-horse-human",
@@ -161,5 +169,9 @@ export const DATA_BaseIcons = {
   mesasge: {
     translator: { key: "message", title: "消息" },
     path: "i-material-symbols-android-chat",
+  },
+  write: {
+    translator: { key: "write", title: "写" },
+    path: "i-mdi-rename-outline",
   },
 };

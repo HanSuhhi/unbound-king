@@ -8,6 +8,12 @@ export default <ModulePage[]>defineModuleConfig([
     icon: "icons",
   },
   {
+    path: "name-design",
+    title: "姓名设计",
+    description: "设计人物姓名",
+    icon: "write",
+  },
+  {
     path: "attribute-design",
     title: "属性设置",
     description: "人物属性 / 属性值",

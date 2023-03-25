@@ -9,7 +9,7 @@ export default <Creator>{
         title: "角色基础信息插件",
       },
       belong: "character",
-      description: "生成人物笃信与性别",
+      description: "生成人物追求与性别",
       icon: "mesasge",
       data: [
         {
@@ -25,16 +25,32 @@ export default <Creator>{
           },
         },
         {
-          id: "choose",
-          translator: { key: "choose", title: "笃信" },
+          id: "chase",
+          translator: { key: "chase", title: "追求" },
           generator: "random",
           generatorForm: [{ type: "text", title: "随机生成" }],
           generatorParams: {
-            range: {
-              RU: { key: "ru", title: "儒" },
-              SHI: { key: "shi", title: "释" },
-              DAO: { key: "dao", title: "道" },
-            },
+            range: [
+              { key: "dadao", title: "大道" },
+              { key: "hongyuan", title: "宏愿" },
+              { key: "lizhi", title: "立志" },
+            ],
+          },
+        },
+        {
+          id: "age",
+          translator: { key: "age", title: "年龄" },
+          generator: "random",
+          generatorForm: [{ type: "text", title: "随机生成" }],
+          generatorParams: {
+            range: [
+              { key: "adolescence", title: "少年" },
+              { key: "youth", title: "青年" },
+              { key: "prime", title: "壮年" },
+              { key: "middle ", title: "中年" },
+              { key: "old ", title: "老年" },
+              { key: "twilight", title: "暮年" },
+            ],
           },
         },
       ],

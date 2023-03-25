@@ -1,8 +1,15 @@
 import { computed } from 'vue';
 <script setup lang="ts">
-defineProps<{ plugin: CreatorPlugin }>();
-</script>
+import { NPopconfirm } from "naive-ui";
+import Icon from "@/components/Icon.vue";
 
+defineProps<{ plugin: CreatorPlugin }>();
+const emits = defineEmits<{
+  (e: "deleteItem"): void;
+}>();
+
+const deletePlugin = () => emits("deleteItem");
+</script>
 <template>
   <article class="step">
     <section class="step-left">
@@ -11,8 +18,19 @@ defineProps<{ plugin: CreatorPlugin }>();
       </div>
     </section>
     <section class="step-message">
-      <p class="step-message_title p-reset">{{ plugin.translator.title }}</p>
+      <p class="step-message_title p-reset">
+        {{ plugin.translator.title }}
+        <n-popconfirm :show-icon="false" negative-text="取消" positive-text="确定" @positive-click="deletePlugin">
+          <template #trigger>
+            <a class="step-message_delete" @click.stop>删除</a>
+          </template>
+          是否确认删除此插件
+        </n-popconfirm>
+      </p>
       <p class="step-message_description p-reset">{{ plugin.description }}</p>
+    </section>
+    <section class="step-right">
+      <slot name="operator" />
     </section>
   </article>
 </template>
@@ -31,12 +49,21 @@ defineProps<{ plugin: CreatorPlugin }>();
   cursor: pointer;
 }
 
-.step:hover .step-left_icon,
+.step-message_delete {
+  margin-left: var(--base-margin);
+  color: var(--red-bright-1);
+  font-size: var(--font-body);
+  text-decoration: underline;
+}
+
+.step-message_delete:hover {
+  color: var(--red-deep-1);
+}
+
 .step[data-active] .step-left_icon {
   border-color: var(--main-color);
 }
 
-.step:hover .step-message_title,
 .step[data-active] .step-message_title {
   color: var(--main-color);
 }
@@ -44,13 +71,6 @@ defineProps<{ plugin: CreatorPlugin }>();
 .step:hover .step-message_description,
 .step[data-active] .step-message_description {
   color: var(--white);
-}
-
-.step-left {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: var(--icon-width);
 }
 
 .step-left_icon {
@@ -69,27 +89,20 @@ defineProps<{ plugin: CreatorPlugin }>();
   aspect-ratio: 1 / 1;
 }
 
+.step-left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: var(--icon-width);
+}
+
 .step-left_icon > .icon {
   zoom: 1.8;
 }
 
-.step:not(:first-child) {
-  margin-top: calc(var(--line-height));
-}
-
-.step:not(:last-child) > .step-left::after {
-  --width: 2px;
-
-  position: absolute;
-  bottom: calc(-1 * var(--base-margin) - var(--line-height));
-  left: 50%;
-  width: 2px;
-  height: var(--line-height);
-  background-color: var(--gray-bright-2);
-  content: "";
-}
-
 .step-message_title {
+  display: flex;
+  align-items: flex-end;
   font-size: var(--font-title-small);
 }
 

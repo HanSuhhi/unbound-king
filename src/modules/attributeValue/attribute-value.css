@@ -5,5 +5,11 @@
 
 .attribute-value_aside {
   position: relative;
+  top: calc(-1 * var(--base-margin));
   left: var(--base-margin);
+  height: calc(100% + var(--base-margin));
+}
+
+.attribute-value_aside > .code-canvas {
+  border-top: 0;
 }
