@@ -16,7 +16,7 @@ export const useActiveCreator = (code: WritableComputedRef<string>) => {
     (newIndex) => {
       activeCreator.value = DATA_Creators[newIndex];
       activeCreator.value.plugins.forEach((plugin) => {
-        creatorTestData.value[plugin.translator.key] = usePluginTest(plugin);
+        creatorTestData.value[plugin.translator.key] = usePluginTest(plugin, creatorTestData.value);
       });
       changed.value = undefined;
     },

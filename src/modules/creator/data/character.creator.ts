@@ -4,58 +4,6 @@ export default <Creator>{
   description: "用于随机生成角色基础信息，属性。",
   plugins: [
     {
-      translator: {
-        key: "character-baseinfo-plugin",
-        title: "角色基础信息插件",
-      },
-      belong: "character",
-      description: "生成人物追求与性别",
-      icon: "mesasge",
-      data: [
-        {
-          id: "gender",
-          translator: { key: "gender", title: "性別" },
-          generator: "random",
-          generatorForm: [{ type: "text", title: "随机生成" }],
-          generatorParams: {
-            range: {
-              MALE: { key: "male", title: "男" },
-              FEMALE: { key: "female", title: "女" },
-            },
-          },
-        },
-        {
-          id: "chase",
-          translator: { key: "chase", title: "追求" },
-          generator: "random",
-          generatorForm: [{ type: "text", title: "随机生成" }],
-          generatorParams: {
-            range: [
-              { key: "dadao", title: "大道" },
-              { key: "hongyuan", title: "宏愿" },
-              { key: "lizhi", title: "立志" },
-            ],
-          },
-        },
-        {
-          id: "age",
-          translator: { key: "age", title: "年龄" },
-          generator: "random",
-          generatorForm: [{ type: "text", title: "随机生成" }],
-          generatorParams: {
-            range: [
-              { key: "adolescence", title: "少年" },
-              { key: "youth", title: "青年" },
-              { key: "prime", title: "壮年" },
-              { key: "middle ", title: "中年" },
-              { key: "old ", title: "老年" },
-              { key: "twilight", title: "暮年" },
-            ],
-          },
-        },
-      ],
-    },
-    {
       translator: { key: "attribute-value-plugin", title: "属性值插件" },
       belong: "character",
       description: "通过配置，随机生成一份属性值表",
@@ -567,6 +515,38 @@ export default <Creator>{
             },
           ],
           generatorParams: { min: 2, max: 231 },
+        },
+      ],
+    },
+    {
+      translator: {
+        key: "character-baseinfo-plugin",
+        title: "角色基础信息插件",
+      },
+      belong: "character",
+      description: "生成人物追求与性别",
+      icon: "mesasge",
+      data: [
+        {
+          id: "gender",
+          translator: { key: "gender", title: "性別" },
+          generator: "random",
+          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
+          generatorParams: { range: "DATA_Genders" },
+        },
+        {
+          id: "chase",
+          translator: { key: "chase", title: "追求" },
+          generator: "random",
+          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
+          generatorParams: { range: "DATA_Chases", needTransform: true },
+        },
+        {
+          id: "age",
+          translator: { key: "age", title: "年龄" },
+          generator: "random",
+          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
+          generatorParams: { range: "DATA_Ages", needTransform: true },
         },
       ],
     },

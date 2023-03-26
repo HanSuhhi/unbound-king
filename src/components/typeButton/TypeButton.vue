@@ -47,7 +47,7 @@ watchEffect(() => {
   white-space: nowrap;
   border: var(--border);
   box-shadow: none;
-  transform: scale(0.8);
+  zoom: 0.8;
 }
 
 .type-button:active {

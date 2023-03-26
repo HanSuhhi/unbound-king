@@ -13,9 +13,7 @@ export default defineComponent({
     const activePlugin = ref(0);
     const plugin = ref<CreatorPlugin | null>();
 
-    watchEffect(() => {
-      plugin.value = creator?.value.plugins[activePlugin.value] || null;
-    });
+    watchEffect(() => (plugin.value = creator?.value.plugins[activePlugin.value] || null));
 
     provide("plugin", plugin);
     provide("plugin-index", activePlugin);

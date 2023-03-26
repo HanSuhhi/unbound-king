@@ -37,5 +37,7 @@ type Translator = {
 
 type IdValue<T> = Record<string, T>;
 
+type Data = keyof typeof import("@/composables/data")["DATA"];
+
 type TranslatorObj = { translator: Translator };
 type CanBeGenerated = { canBeGenerated: boolean };

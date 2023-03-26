@@ -1,0 +1,7 @@
+.inline-leave-active {
+  position: absolute;
+}
+
+.inline-move {
+  transition: transform 600ms ease-out;
+}

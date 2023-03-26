@@ -1,3 +1,5 @@
 type RandomGeneratorProps = {
-  range: Array | Object;
+  range: Data;
+  filter?: Function;
+  needTransform?: boolean;
 };

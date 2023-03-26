@@ -1,11 +1,17 @@
-import { sample } from "lodash-es";
+import { transformGeneraterEnumToRange } from "@/modules/creatorPlugin/composables/enumToRange";
+import { sample, filter } from "lodash-es";
+import { DATA } from "../../../composables/data";
 
-const randomGenerator: GeneratorFunc<any, RandomGeneratorProps> = (_, data) => sample(data?.range);
+const randomGenerator: GeneratorFunc<any, RandomGeneratorProps> = (_, data) => {
+  const _data = DATA[data!.range];
+  const range = (data?.needTransform ? transformGeneraterEnumToRange(_data as any) : _data) as Translator[];
+  return sample(filter(range, data!.filter));
+};
 
 const randomGeneratorFormConfig: Autoform = [
   {
     type: "text",
-    title: "随机生成",
+    title: "根据条件随机生成",
   },
 ];
 

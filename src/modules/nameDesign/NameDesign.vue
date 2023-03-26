@@ -1,7 +1,47 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { defineCommonLayout } from "@/composables/components/commonLayout";
+import FamilyName from "./components/FamilyName.vue";
+import { useNames } from "./composables/names";
+import FirstNames from './components/FirstNames.vue';
+import "./name-design.css";
+import { scroll } from '../../composables/wheelScroll';
+import { ref } from 'vue';
+
+const { COMP: Layout } = defineCommonLayout("name-design");
+const { code } = useNames();
+
+const ele = ref<HTMLElement>();
+</script>
 
 <template>
-  <div class="123">123123</div>
+  <c-layout ref="Layout" class="name-design">
+    <template #aside>
+      <CodeCanvas :code="code" class="code-canvas_design" />
+    </template>
+    <div ref="ele" class="name-design_parts" @wheel.prevent="scroll(ele!, $event)">
+      <family-name />
+      <first-names />
+    </div>
+  </c-layout>
 </template>
 
-<style scoped></style>
+<style scoped>
+.name-design_parts {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  margin-left: var(--base-margin);
+  overflow: auto;
+}
+
+.name-design_parts :deep(.title-card) {
+  box-sizing: border-box;
+  height: fit-content;
+  max-height: 100%;
+  margin-right: var(--base-margin);
+}
+
+.name-design_parts :deep(.title-card:not(:first-child)) {
+  margin-bottom: var(--base-margin);
+}
+</style>

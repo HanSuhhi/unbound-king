@@ -1,30 +1,24 @@
 <script setup lang="ts">
 import Icon from "@/components/Icon.vue";
-import type { useCsssDialog } from "csss-ui";
-import { CInput } from "csss-ui";
-import { throttle } from "lodash-es";
-import type { Ref } from "vue";
-import { inject, nextTick, ref, watch } from "vue";
-import { defineItemsSearch } from "../composables/ItemsSearch";
-import ValueItem from "./ValueItem.vue";
 import NumberMark from "@/components/NumberMark.vue";
-import { onBeforeEnter } from "@/composables/transition/transitionFunc";
+import SearchInput from '@/components/SearchInput.vue';
+import { onBeforeEnter, onEnter, onLeave } from "@/composables/transition/transitionFunc";
+import type { useCsssDialog } from "csss-ui";
+import type { Ref } from "vue";
+import { inject, ref } from "vue";
+import ValueItem from "./ValueItem.vue";
 
 const props = defineProps<{ attributeValues: AttributeValue[]; type: AttributeValue["type"] }>();
 const modelAttributeValues = ref(props.attributeValues);
 
-const { COMP: Input, state: InputState } = defineItemsSearch();
-watch(
-  () => InputState.value?.model,
-  throttle((input) => {
-    modelAttributeValues.value = props.attributeValues.filter((attributeValue) => {
-      if (attributeValue.translator.key.includes(input)) return true;
-      if (attributeValue.translator.title.includes(input)) return true;
-      if (attributeValue.description.includes(input)) return true;
-      return false;
-    });
-  }, Number(import.meta.env.ANIMATION_DURATION)),
-);
+const watchEvent = (input: string) => {
+  modelAttributeValues.value = props.attributeValues.filter((attributeValue) => {
+    if (attributeValue.translator.key.includes(input)) return true;
+    if (attributeValue.translator.title.includes(input)) return true;
+    if (attributeValue.description.includes(input)) return true;
+    return false;
+  });
+};
 
 const state = inject<ReturnType<typeof useCsssDialog>["state"]>("dialog");
 const type = inject<Ref<AttributeValue["type"]>>("type");
@@ -43,18 +37,16 @@ const openDialog = () => {
         <number-mark>{{ modelAttributeValues.length }}</number-mark>
       </div>
       <div class="value-list_side">
-        <c-input ref="Input" class="value-list_search">
-          <template #header>
-            <icon name="search-eye" />
-          </template>
-        </c-input>
+        <search-input :watch-event="watchEvent" />
       </div>
     </header>
-    <transition-group tag="main" class="value-list_main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
-      <ValueItem v-for="(attributeValue, index) in modelAttributeValues" :key="attributeValue.id" class="value-list_item" :attribute-value="attributeValue" :data-index="index" />
+    <transition-group tag="main" class="value-list_main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter"
+      @leave="onLeave">
+      <ValueItem v-for="(attributeValue, index) in modelAttributeValues" :key="attributeValue.id" class="value-list_item"
+        :attribute-value="attributeValue" :data-index="index" />
     </transition-group>
     <footer class="value-list_footer" @click="openDialog()">
-      <icon name="plus" style="margin-right: var(--mini)" />
+      <icon name="plus" style="margin-right: var(--mini);" />
       添加属性值...
     </footer>
   </section>
@@ -84,23 +76,6 @@ const openDialog = () => {
 
 .value-list_footer:hover {
   color: var(--main-color);
-}
-
-.value-list_search {
-  width: 70%;
-  padding: var(--small);
-  border: none;
-  border-bottom: var(--border);
-  border-radius: 0;
-  transition: all var(--transition-prop);
-}
-
-.value-list_search[data-active] {
-  width: 100%;
-}
-
-.value-list_search :deep(.value-list_search_icon) {
-  margin-right: var(--small);
 }
 
 .value-list_main {

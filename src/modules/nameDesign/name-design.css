@@ -1,0 +1,17 @@
+.name-design {
+  overflow: auto;
+  transition: all var(--transition-prop);
+}
+
+.name-design_main {
+  width: 100%;
+  height: calc(var(--main-height) - 2 * var(--base-margin));
+}
+
+.name-design_main > * {
+  height: 100%;
+}
+
+.name-design_main .title-card {
+  max-width: 500px;
+}

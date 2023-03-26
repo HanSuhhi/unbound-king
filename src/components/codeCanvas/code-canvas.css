@@ -1,0 +1,6 @@
+.code-canvas_design {
+  top: calc(-1 * var(--base-margin));
+  left: var(--base-margin);
+  height: calc(100% + var(--base-margin)) !important;
+  border-top: 0 !important;
+}

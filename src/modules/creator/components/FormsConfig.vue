@@ -2,8 +2,8 @@
 import Alert from '@/components/alert/alert';
 import AutoForm from "@/components/autoForm/autoForm.vue";
 import Icon from '@/components/Icon.vue';
+import { getDataById } from '@/composables/data';
 import { NTooltip } from "naive-ui";
-import { getDataFromDataset } from "../../../composables/data";
 
 defineProps<{ formConfig: CreatorPlugin["data"]; }>();
 </script>
@@ -21,7 +21,8 @@ defineProps<{ formConfig: CreatorPlugin["data"]; }>();
             <template #trigger>
               <icon class="forms-config_icon" :name="'question'" />
             </template>
-            <span class="forms-config_description">{{ getDataFromDataset<AttributeValue>(config.id).description }}</span>
+            <span class="forms-config_description">{{ getDataById<AttributeValue>(config.id).description
+            }}</span>
           </n-tooltip>
         </div>
         <auto-form class="forms-config_formbox" :config="config.generatorForm" :params="config.generatorParams" />

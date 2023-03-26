@@ -18,6 +18,8 @@ import typeButton from "@/components/typeButton/TypeButton.vue";
 
 .code-canvas-operator {
   --hover-opacity: 1;
+
+  margin-right: var(--base-margin);
 }
 
 .code-canvas-operator_text {

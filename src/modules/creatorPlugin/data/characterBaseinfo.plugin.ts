@@ -1,4 +1,3 @@
-import { DATA_Age, DATA_Chase, DATA_Gender } from "@/enums/character.enum";
 import { DATA_Generator_Forms } from "@/modules/generator/data";
 import { transformGeneraterEnumToRange } from "../composables/enumToRange";
 
@@ -9,7 +8,7 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: DATA_Gender,
+      range: "DATA_Genders",
     },
   },
   {
@@ -18,7 +17,8 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: transformGeneraterEnumToRange(DATA_Chase),
+      range: "DATA_Chases",
+      needTransform: true,
     },
   },
   {
@@ -27,7 +27,8 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: transformGeneraterEnumToRange(DATA_Age),
+      range: "DATA_Ages",
+      needTransform: true,
     },
   },
 ];

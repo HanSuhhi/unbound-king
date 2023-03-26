@@ -47,8 +47,6 @@
 
   position: relative;
   z-index: 1;
-
-  /* width: calc(100vw - var(--aside-width)); */
   height: var(--main-height);
 }
 

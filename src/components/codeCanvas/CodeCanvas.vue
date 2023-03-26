@@ -6,10 +6,11 @@ import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-json";
 import type { Ref } from "vue";
-import { onMounted, onUpdated, ref, computed, inject } from "vue";
+import { inject, onMounted, onUpdated, ref } from "vue";
 import { defineExtender } from "../../composables/Extender";
+import "./code-canvas.css";
 import Operator from "./components/Operator.vue";
-import { useCodeCanvasStatus, CodeCanvasStatus } from "./composables/status";
+import { CodeCanvasStatus, useCodeCanvasStatus } from "./composables/status";
 
 type Props = { code: string; language?: "javascript" | "json" };
 

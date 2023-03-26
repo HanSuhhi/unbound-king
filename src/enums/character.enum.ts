@@ -1,9 +1,9 @@
-export const DATA_Gender: Enum = {
+export const DATA_Genders: Record<Gender, Translator> = {
   MALE: { key: "male", title: "男" },
   FEMALE: { key: "female", title: "女" },
 };
 
-export const DATA_Chase: Enum<TranslatorObj & CanBeGenerated> = {
+export const DATA_Chases: Record<Chase, TranslatorObj & CanBeGenerated> = {
   DaDao: {
     translator: { key: "dadao", title: "大道" },
     canBeGenerated: true,
@@ -22,7 +22,7 @@ export const DATA_Chase: Enum<TranslatorObj & CanBeGenerated> = {
   },
 };
 
-export const DATA_Age: Enum<TranslatorObj & CanBeGenerated> = {
+export const DATA_Ages: Record<Age, TranslatorObj & CanBeGenerated> = {
   Childhood: {
     translator: { key: "childhood", title: "幼年" },
     canBeGenerated: false,
