@@ -9,7 +9,21 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
     const _data: ReturnStruct[] = [];
     forEach(plugin?.data, (plugin: PluginStruct) => {
       const title = `${plugin.translator.title} - ${plugin.translator.key}`;
-      const value = DATA_Generators[plugin.generator](_data, plugin.generatorParams);
+      // inject data
+      if (plugin?.generatorParams?.needInject) {
+        forEach(plugin.generatorParams.needInject, (injectName: string) => {
+          const { data }: { data: ReturnStruct[] } = pastData[injectName];
+          Object.defineProperty(plugin, 'pastData', {
+            value: {},
+            writable: true,
+            enumerable: true,
+          });
+          forEach(data, (_data: ReturnStruct) => {
+            plugin['pastData'][_data[2]] = _data[1];
+          });
+        });
+      }
+      const value = DATA_Generators[plugin.generator](_data, plugin.generatorParams, plugin);
 
       _data.push([title, value, plugin.id]);
     });

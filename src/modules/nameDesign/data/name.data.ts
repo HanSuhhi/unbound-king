@@ -1,5 +1,4 @@
 export const DATA_FamilyNames: FamilyName[] = [
-  "阿",
   "阿贺",
   "阿会",
   "阿里",

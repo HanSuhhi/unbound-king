@@ -41,3 +41,4 @@ type Data = keyof typeof import("@/composables/data")["DATA"];
 
 type TranslatorObj = { translator: Translator };
 type CanBeGenerated = { canBeGenerated: boolean };
+type NeedDescription = { description: string };

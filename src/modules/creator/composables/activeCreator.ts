@@ -27,6 +27,7 @@ export const useActiveCreator = (code: WritableComputedRef<string>) => {
     activeCreator,
     (newCreator) => {
       code.value = JSON.stringify(newCreator);
+
       if (isUndefined(changed.value)) changed.value = false;
       else changed.value = true;
     },

@@ -1,6 +1,7 @@
 import { getGlobalEnumNameOrNot } from "@/enums/global.enum";
 import { DATA_Genders, DATA_Ages, DATA_Chases } from "../enums/character.enum";
 import { DATA_AttributeValues } from "../modules/attributeValue/data/index";
+import { DATA_FamilyNames, DATA_FirstNames } from "../modules/nameDesign/data/name.data";
 
 const getKeyFromId = (id: string): string => id.match(/[a-zA-Z]+/)?.[0] || "";
 const getDataKey = (key: string): string => `DATA_${key}s`;
@@ -10,6 +11,8 @@ export const DATA = {
   DATA_AttributeValues,
   DATA_Ages,
   DATA_Chases,
+  DATA_FamilyNames,
+  DATA_FirstNames,
 };
 
 export const getDataById = <T>(id: string): T => {

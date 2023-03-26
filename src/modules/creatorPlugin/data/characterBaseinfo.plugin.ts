@@ -1,10 +1,10 @@
 import { DATA_Generator_Forms } from "@/modules/generator/data";
-import { transformGeneraterEnumToRange } from "../composables/enumToRange";
 
 const data: PluginStruct[] = [
   {
     id: "gender",
     translator: { key: "gender", title: "性別" },
+    description: "",
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
@@ -14,6 +14,7 @@ const data: PluginStruct[] = [
   {
     id: "chase",
     translator: { key: "chase", title: "追求" },
+    description: "角色毕生的追求，在诸多方面对角色产生影响",
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
@@ -24,6 +25,7 @@ const data: PluginStruct[] = [
   {
     id: "age",
     translator: { key: "age", title: "年龄" },
+    description: "",
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{

@@ -22,9 +22,10 @@ const addPlugin = throttle(() => {
   <article class="step-controller">
     <section class="step-controller_add">
       <el-select v-model="selectedPlugin" placeholder="请选择新增插件">
-        <el-option v-for="plugin in plugins" :key="plugin.translator.key" :label="plugin.translator.title" :value="plugin.translator.key" />
+        <el-option v-for="plugin in plugins" :key="plugin.translator.key" :label="plugin.translator.title"
+          :value="plugin.translator.key" />
       </el-select>
-      <type-button @click="addPlugin">新增节点</type-button>
+      <type-button class="step-controller_button" @click="addPlugin">新增节点</type-button>
     </section>
   </article>
 </template>
@@ -41,5 +42,9 @@ const addPlugin = throttle(() => {
 .step-controller_add {
   display: flex;
   align-items: center;
+}
+
+.step-controller_button {
+  margin-left: var(--base-margin);
 }
 </style>

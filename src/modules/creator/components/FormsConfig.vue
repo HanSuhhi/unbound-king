@@ -17,11 +17,12 @@ defineProps<{ formConfig: CreatorPlugin["data"]; }>();
       <section v-for="config of formConfig" :key="config.id" class="forms-config_form">
         <div class="forms-config_header">
           <p class="p-reset forms-config_title">{{ config.translator.title }}</p>
-          <n-tooltip trigger="hover">
+          <n-tooltip v-if="!(config.description === '')" trigger="hover">
             <template #trigger>
               <icon class="forms-config_icon" :name="'question'" />
             </template>
-            <span class="forms-config_description">{{ getDataById<AttributeValue>(config.id).description
+            <span class="forms-config_description">{{ config.description || getDataById<AttributeValue>
+              (config.id).description
             }}</span>
           </n-tooltip>
         </div>

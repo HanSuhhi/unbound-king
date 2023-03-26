@@ -1,9 +1,11 @@
 type PluginStruct = {
   id: string;
   translator: Translator;
+  description?: string;
   generator: string;
   generatorForm: Autoform;
-  generatorParams: object;
+  generatorParams: GeneratorProp;
+  pastData?: any;
 };
 
 type CreatorPlugin = {

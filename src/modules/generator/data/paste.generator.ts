@@ -4,7 +4,6 @@ import { withFormDetail } from "../../../composables/formDetail";
 import type from "../types/paste.generator.d.ts?raw";
 
 const pasteGenerator: GeneratorFunc<any, PasteGeneratorProps> = (data, key) => {
-  console.log("data1: ", JSON.stringify(data));
   return find(data, (item) => item[2] === key!.pasteFrom)?.[1] || "";
 };
 

@@ -4,7 +4,7 @@ import { DATA } from "../../../composables/data";
 
 const randomGenerator: GeneratorFunc<any, RandomGeneratorProps> = (_, data) => {
   const _data = DATA[data!.range];
-  const range = (data?.needTransform ? transformGeneraterEnumToRange(_data as any) : _data) as Translator[];
+  const range = (data?.needTransform ? transformGeneraterEnumToRange(_data as any) : _data) as string[] | Translator[];
   return sample(filter(range, data!.filter));
 };
 
