@@ -16,3 +16,6 @@ const { router } = await useRouteConfig();
 await useIndexDb();
 
 createApp(App).use(csssUI).use(pinia).use(router).mount("#app");
+
+
+import "./modules/character/character.model";

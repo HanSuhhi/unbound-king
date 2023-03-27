@@ -1,154 +1,116 @@
 export default {
-  ATV6241678522351350: {
-    id: "ATV6241678522351350",
+  hp: {
     translator: { key: "hp", title: "生命值" },
     description: "人物的生命值，数值为 0 时人物重伤",
     icon: "GI5961678501381745",
-    dataType: "number",
     type: "base",
   },
-  ATV3721679470297067: {
-    id: "ATV3721679470297067",
+  maxHp: {
     translator: { key: "maxHp", title: "生命上限" },
     description: "角色的生命数值上限",
     icon: "GI5961678501381745",
-    dataType: "number",
     type: "base",
   },
-  ATV5981678549140226: {
-    id: "ATV5981678549140226",
+  minDef: {
     translator: { key: "minDef", title: "防御力下限" },
     description: "减免即将受到的兵器伤害值，减免值受防御力上下限影响",
     icon: "GI7071678548922924",
-    dataType: "number",
     type: "base",
   },
-  ATV7371678551178444: {
-    id: "ATV7371678551178444",
+  maxDef: {
     translator: { key: "maxDef", title: "防御力上限" },
     description: "减免即将受到的兵器伤害值，减免值受防御力上下限影响",
     icon: "GI7071678548922924",
-    dataType: "number",
     type: "base",
   },
-  ATV9741678552626905: {
-    id: "ATV9741678552626905",
+  minAtk: {
     translator: { key: "minAtk", title: "攻击力下限" },
     description: "增加即将造成的兵器伤害值，增加值受攻击力上下限影响",
     icon: "GI0251678552548383",
-    dataType: "number",
     type: "base",
   },
-  ATV8911678552735783: {
-    id: "ATV8911678552735783",
+  maxAtk: {
     translator: { key: "maxAtk", title: "攻击力上限" },
     description: "增加即将造成的兵器伤害值，增加值受攻击力上下限影响",
     icon: "GI0251678552548383",
-    dataType: "number",
     type: "base",
   },
-  ATV8041678553102618: {
-    id: "ATV8041678553102618",
+  matk: {
     translator: { key: "matk", title: "法术攻击力" },
     description: "增加即将造成的法术伤害值",
     icon: "GI0011678552921097",
-    dataType: "number",
     type: "base",
   },
-  ATV2041678553356839: {
-    id: "ATV2041678553356839",
+  apr: {
     translator: { key: "apr", title: "法术防御力" },
     description: "减免即将收到的法术伤害值",
     icon: "GI7251678553293700",
-    dataType: "number",
     type: "base",
   },
-  ATV6471678553803991: {
-    id: "ATV6471678553803991",
+  wt: {
     translator: { key: "wt", title: "负重" },
     description: "人物的装备总负重不可超过人物负重值，否则会对人物造成各类负面效果",
     icon: "GI4891678553485093",
-    dataType: "number",
     type: "base",
   },
-  ATV4851678598427597: {
-    id: "ATV4851678598427597",
+  res: {
     translator: { key: "res", title: "抗性" },
     description: "影响负面效果持续时间",
     icon: "GI9361678597231428",
-    dataType: "number",
     type: "advanced",
   },
-  ATV0811678598789926: {
-    id: "ATV0811678598789926",
+  pct: {
     translator: { key: "pct", title: "虔诚" },
     description: "影响正面效果持续时间，以及为辅助技能提供额外效果",
     icon: "GI8661678597313889",
-    dataType: "number",
     type: "advanced",
   },
-  ATV5321678598891068: {
-    id: "ATV5321678598891068",
+  acc: {
     translator: { key: "acc", title: "命中" },
     description: "影响兵器及法术的命中率",
     icon: "GI1081678597354840",
-    dataType: "number",
     type: "advanced",
   },
-  ATV1771678598987284: {
-    id: "ATV1771678598987284",
+  eva: {
     translator: { key: "eva", title: "闪避" },
     description: "影响兵器及法术的躲避率",
     icon: "GI1481678597577481",
-    dataType: "number",
     type: "advanced",
   },
-  ATV7271678599141629: {
-    id: "ATV7271678599141629",
+  luc: {
     translator: { key: "luc", title: "幸运" },
     description: "影响触发攻击力上限的概率，以及为法术提供额外效果",
     icon: "GI9821678597747408",
-    dataType: "number",
     type: "advanced",
   },
-  ATV1751678599231565: {
-    id: "ATV1751678599231565",
+  hex: {
     translator: { key: "hex", title: "诅咒" },
     description: "影响触发攻击力下限的概率，以及为法术提供额外效果",
     icon: "GI5951678597933016",
-    dataType: "number",
     type: "advanced",
   },
-  ATV7041678599371532: {
-    id: "ATV7041678599371532",
+  crit: {
     translator: { key: "crit", title: "会心" },
     description: "影响兵器伤害和法术伤害的暴击概率",
     icon: "GI8111678598082854",
-    dataType: "number",
     type: "advanced",
   },
-  ATV2921678599431612: {
-    id: "ATV2921678599431612",
+  cha: {
     translator: { key: "cha", title: "魅力" },
     description: "对特殊事件及部分技能产生影响",
     icon: "GI2091678598157815",
-    dataType: "number",
     type: "special",
   },
-  ATV2171678599469748: {
-    id: "ATV2171678599469748",
+  moral: {
     translator: { key: "moral", title: "道德" },
     description: "对特殊事件及部分技能产生影响",
     icon: "GI9511678598216938",
-    dataType: "number",
     type: "special",
   },
-  ATV6141678599631858: {
-    id: "ATV6141678599631858",
+  sp: {
     translator: { key: "sp", title: "唯我" },
     description: "对特殊事件及部分技能产生影响",
     icon: "GI1831678599608000",
-    dataType: "number",
     type: "special",
   },
 };

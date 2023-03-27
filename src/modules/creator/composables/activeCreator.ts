@@ -2,22 +2,21 @@ import { isUndefined } from "lodash-es";
 import type { WritableComputedRef } from "vue";
 import { provide, ref, watch } from "vue";
 import { DATA_Creators } from "../data/index";
-import { usePluginTest } from "./pluginTest";
+import { genCreatorData } from "./data";
+import type { usePluginTest } from "./pluginTest";
 
 export const useActiveCreator = (code: WritableComputedRef<string>) => {
-  const activeCreatorIndex = ref(0);
-  const activeCreator = ref<Creator>(DATA_Creators[activeCreatorIndex.value]);
+  const activeCreatorKey = ref<CreatorKey>("character");
+  const activeCreator = ref(DATA_Creators[activeCreatorKey.value]);
   const creatorTestData = ref<Record<string, ReturnType<typeof usePluginTest>>>({});
 
   const changed = ref<boolean>();
 
   watch(
-    activeCreatorIndex,
-    (newIndex) => {
-      activeCreator.value = DATA_Creators[newIndex];
-      activeCreator.value.plugins.forEach((plugin) => {
-        creatorTestData.value[plugin.translator.key] = usePluginTest(plugin, creatorTestData.value);
-      });
+    activeCreatorKey,
+    (key) => {
+      activeCreator.value = DATA_Creators[key];
+      creatorTestData.value = genCreatorData("character");
       changed.value = undefined;
     },
     { immediate: true },
@@ -35,7 +34,7 @@ export const useActiveCreator = (code: WritableComputedRef<string>) => {
   );
 
   provide("changed", changed);
-  provide("creator-tabs-index", activeCreatorIndex);
+  provide("creator-key", activeCreatorKey);
   provide("creator", activeCreator);
   provide("test-data", creatorTestData);
 

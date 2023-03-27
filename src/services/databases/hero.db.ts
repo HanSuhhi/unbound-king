@@ -1,4 +1,4 @@
-import { DATA_Genders } from "@/enums/character.enum";
+import { DATA_Genders } from "@/modules/character/enums/character.enum";
 import type { ITable } from "jsstore";
 import { DATA_TYPE } from "jsstore";
 

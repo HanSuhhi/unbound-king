@@ -1,22 +1,18 @@
-import { ref, computed } from "vue";
+import { ref } from 'vue';
+import { genCreatorData } from '../creator/composables/data';
+import { bindCharacterAttributeValue } from './composables/characterAttributeValue';
 
-const defineCharacterModel = () => {
-  const attributeValues = {
-    wuli: {
-      base: ref(20),
-    },
-  };
 
-  const attributes = {
-    atk: {
-      base: ref(20),
-      extra: [computed(() => attributeValues.wuli.base.value * 1.6)],
-      total: computed(() => attributes.atk.base.value + attributes.atk.extra[0].value),
-    },
-  };
+const defineCharacterModel = (characterData: ReturnType<typeof genCreatorData>) => {
+  const character = ref<Character>({
+    "attribute-values": {}
+  });
 
-  return { attributes };
+  bindCharacterAttributeValue(characterData['attribute-value-plugin'].data as any, character);
+
+  return character;
 };
 
-const a = defineCharacterModel();
-console.log("a: ", a.attributes.atk.total);
+
+defineCharacterModel(genCreatorData("character"));
+

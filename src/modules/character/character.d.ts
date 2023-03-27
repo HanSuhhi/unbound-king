@@ -1,3 +1,3 @@
-type Gender = "MALE" | "FEMALE";
-type Chase = "DaDao" | "HongYuan" | "LiZhi" | "YangJiao";
-type Age = "Childhood" | "Adolescence" | "Youth" | "Prime" | "Middle" | "Old" | "Twilight";
+type Character = {
+  'attribute-values': Dictionary<import("./numberAttribute/numberAttribute.model").NumberAttribute>
+}

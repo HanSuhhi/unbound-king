@@ -51,8 +51,7 @@ const formConfig = computed(() =>
 );
 
 const confirm = (data: AttributeValue) => {
-  data.id = defineUniqueId("atv");
-  attributeValues!.value[data.id] = data;
+  attributeValues!.value[data.translator.key] = data;
 };
 </script>
 

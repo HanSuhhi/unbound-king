@@ -1,7 +1,5 @@
-import { map } from "lodash-es";
+import characterCreator from "./character.creator";
 
-export const DATA_Creators: Creator[] = [];
-
-map(import.meta.glob("./*.creator.ts", { eager: true }), (creatorModule: any) => {
-  DATA_Creators.push(creatorModule.default);
-});
+export const DATA_Creators = {
+  character: characterCreator
+};

@@ -1,9 +1,9 @@
-export const DATA_Genders: Record<Gender, Translator> = {
+export const DATA_Genders = {
   MALE: { key: "male", title: "男" },
   FEMALE: { key: "female", title: "女" },
 };
 
-export const DATA_Chases: Record<Chase, TranslatorObj & CanBeGenerated & NeedDescription> = {
+export const DATA_Chases = {
   DaDao: {
     translator: { key: "dadao", title: "大道" },
     canBeGenerated: true,
@@ -26,7 +26,7 @@ export const DATA_Chases: Record<Chase, TranslatorObj & CanBeGenerated & NeedDes
   },
 };
 
-export const DATA_Ages: Record<Age, TranslatorObj & CanBeGenerated> = {
+export const DATA_Ages = {
   Childhood: {
     translator: { key: "childhood", title: "幼年" },
     canBeGenerated: false,

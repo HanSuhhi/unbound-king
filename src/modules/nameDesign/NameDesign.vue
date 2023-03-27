@@ -2,10 +2,10 @@
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import FamilyName from "./components/FamilyName.vue";
 import { useNames } from "./composables/names";
-import FirstNames from './components/FirstNames.vue';
+import FirstNames from "./components/FirstNames.vue";
 import "./name-design.css";
-import { scroll } from '../../composables/wheelScroll';
-import { ref } from 'vue';
+import { scroll } from "../../composables/wheelScroll";
+import { ref } from "vue";
 
 const { COMP: Layout } = defineCommonLayout("name-design");
 const { code } = useNames();
@@ -30,7 +30,7 @@ const ele = ref<HTMLElement>();
   display: flex;
   flex-flow: column wrap;
   width: 100%;
-  margin-left: var(--base-margin);
+  padding-left: var(--base-margin);
   overflow: auto;
 }
 

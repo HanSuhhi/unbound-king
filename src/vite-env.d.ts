@@ -42,3 +42,8 @@ type Data = keyof typeof import("@/composables/data")["DATA"];
 type TranslatorObj = { translator: Translator };
 type CanBeGenerated = { canBeGenerated: boolean };
 type NeedDescription = { description: string };
+
+
+type Gender = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Genders'];
+type Chase = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Chases'];
+type Age = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Ages'];

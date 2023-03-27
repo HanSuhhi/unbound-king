@@ -12,7 +12,7 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
       // inject data
       if (plugin?.generatorParams?.needInject) {
         forEach(plugin.generatorParams.needInject, (injectName: string) => {
-          const { data }: { data: ReturnStruct[] } = pastData[injectName];
+          const { data }: { data: ReturnStruct[] } = pastData.value[injectName];
           Object.defineProperty(plugin, 'pastData', {
             value: {},
             writable: true,
@@ -29,7 +29,7 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
     });
     data.value = _data;
   };
-  watch(plugin!, genData, { immediate: true });
+  watch(() => plugin, genData, { immediate: true });
 
   return { data, genData };
 }

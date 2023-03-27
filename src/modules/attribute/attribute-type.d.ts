@@ -1,5 +1,4 @@
 type Attribute = {
-  id: string;
   translator: Translator;
   icon: Icon;
   explanation: string;

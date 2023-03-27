@@ -78,4 +78,8 @@ const confirm = (data: any, formEl: FormInstance) => {
   width: 100%;
   text-align: right;
 }
+
+.form-dialog_confirm :deep(button:first-child) {
+  margin-right: var(--base-margin);
+}
 </style>

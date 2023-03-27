@@ -1,5 +1,5 @@
 type PluginStruct = {
-  id: string;
+  id?: string;
   translator: Translator;
   description?: string;
   generator: string;

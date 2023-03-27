@@ -7,7 +7,6 @@ import { withFormDetail } from "@/composables/formDetail";
 import { transformTypeToForm } from "@/composables/typeToForm";
 import type { Ref } from "vue";
 import { computed, inject } from "vue";
-import { defineUniqueId } from "../../../composables/uniqueId";
 import typeString from "../attribute-type.d.ts?raw";
 
 const attributes = inject<Ref<IdValue<Attribute>>>("data");
@@ -28,8 +27,7 @@ const formConfig = computed(() =>
 const { openDialog } = defineCommonDialog("attribute");
 
 const confirm = (data: Attribute) => {
-  data.id = defineUniqueId("AT");
-  attributes!.value[data.id] = data;
+  attributes!.value[data.translator.key] = data;
 };
 </script>
 

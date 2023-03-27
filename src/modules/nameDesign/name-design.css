@@ -4,7 +4,9 @@
 }
 
 .name-design_main {
-  width: 100%;
+  position: relative;
+  left: calc(-1 * var(--base-margin));
+  width: calc(100% + var(--base-margin));
   height: calc(var(--main-height) - 2 * var(--base-margin));
 }
 

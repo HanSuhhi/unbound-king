@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Icon from "@/components/Icon.vue";
 import NumberMark from "@/components/NumberMark.vue";
-import SearchInput from '@/components/SearchInput.vue';
+import SearchInput from "@/components/SearchInput.vue";
 import { onBeforeEnter, onEnter, onLeave } from "@/composables/transition/transitionFunc";
 import type { useCsssDialog } from "csss-ui";
 import type { Ref } from "vue";
@@ -40,10 +40,8 @@ const openDialog = () => {
         <search-input :watch-event="watchEvent" />
       </div>
     </header>
-    <transition-group tag="main" class="value-list_main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter"
-      @leave="onLeave">
-      <ValueItem v-for="(attributeValue, index) in modelAttributeValues" :key="attributeValue.id" class="value-list_item"
-        :attribute-value="attributeValue" :data-index="index" />
+    <transition-group tag="main" class="value-list_main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+      <ValueItem v-for="(attributeValue, index) in modelAttributeValues" :key="attributeValue.translator.key" class="value-list_item" :attribute-value="attributeValue" :data-index="index" />
     </transition-group>
     <footer class="value-list_footer" @click="openDialog()">
       <icon name="plus" style="margin-right: var(--mini);" />
