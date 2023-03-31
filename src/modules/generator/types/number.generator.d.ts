@@ -1,4 +1,4 @@
-type NumberGeneratorProps = GeneratorProp<{
+type NumberGeneratorProps = {
   min?: number;
   max?: number;
-}>;
+};

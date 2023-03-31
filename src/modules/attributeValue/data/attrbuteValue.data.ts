@@ -49,7 +49,8 @@ export default {
   },
   wt: {
     translator: { key: "wt", title: "负重" },
-    description: "人物的装备总负重不可超过人物负重值，否则会对人物造成各类负面效果",
+    description:
+      "人物的装备总负重不可超过人物负重值，否则会对人物造成各类负面效果",
     icon: "GI4891678553485093",
     type: "base",
   },
@@ -112,5 +113,11 @@ export default {
     description: "对特殊事件及部分技能产生影响",
     icon: "GI1831678599608000",
     type: "special",
+  },
+  leader: {
+    translator: { key: "ld", title: "指挥" },
+    description: "提升可率领的角色数量及能力",
+    icon: "GI0041680176515587",
+    type: "base",
   },
 };

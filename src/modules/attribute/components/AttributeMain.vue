@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Alert from "@/components/alert/alert";
-import { DATA_Attributes } from "../data";
 import Operator from "./Operator.vue";
 import AttributeBlock from "./AttributeBlock.vue";
+import { DATA_Attributes } from "../data/index";
 </script>
 
 <template>

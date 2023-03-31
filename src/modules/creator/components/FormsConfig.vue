@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import Alert from '@/components/alert/alert';
+import Alert from "@/components/alert/alert";
 import AutoForm from "@/components/autoForm/autoForm.vue";
-import Icon from '@/components/Icon.vue';
-import { getDataById } from '@/composables/data';
+import Icon from "@/components/Icon.vue";
+import { getDataById } from "@/composables/data";
 import { NTooltip } from "naive-ui";
+import { getDataByKey } from "../../../composables/data";
 
-defineProps<{ formConfig: CreatorPlugin["data"]; }>();
+defineProps<{ formConfig: CreatorPlugin["data"] }>();
 </script>
 
 <template>
   <article class="forms-config">
-    <alert class="forms-config_alert">
-      此处表单，仅在随机生成人物时提供数据。
-    </alert>
+    <alert class="forms-config_alert"> 此处表单，仅在随机生成人物时提供数据。 </alert>
     <template v-if="formConfig.length">
       <section v-for="config of formConfig" :key="config.id" class="forms-config_form">
         <div class="forms-config_header">
@@ -21,9 +20,7 @@ defineProps<{ formConfig: CreatorPlugin["data"]; }>();
             <template #trigger>
               <icon class="forms-config_icon" :name="'question'" />
             </template>
-            <span class="forms-config_description">{{ config.description || getDataById<AttributeValue>
-              (config.id).description
-            }}</span>
+            <span class="forms-config_description">{{ config.description || getDataByKey(config.translator.key).description }}</span>
           </n-tooltip>
         </div>
         <auto-form class="forms-config_formbox" :config="config.generatorForm" :params="config.generatorParams" />

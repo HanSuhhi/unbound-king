@@ -1,6 +1,7 @@
 import { DATA_Generators } from "@/modules/generator/data";
 import { forEach } from "lodash-es";
 import { ref, watch } from "vue";
+import { getDataByKey } from '../../../composables/data';
 
 export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
   const data = ref<ReturnStruct[]>([]);
@@ -25,7 +26,7 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
       }
       const value = DATA_Generators[plugin.generator](_data, plugin.generatorParams, plugin);
 
-      _data.push([title, value, plugin.id]);
+      _data.push([title, value, plugin.translator.key]);
     });
     data.value = _data;
   };

@@ -4,6 +4,7 @@
   text-decoration: none;
 }
 
+.ol-reset,
 .p-reset {
   margin-block-start: 0;
   margin-block-end: 0;

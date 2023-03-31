@@ -3,6 +3,7 @@ import Icon from "@/components/Icon.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
 import { NTooltip } from "naive-ui";
 import typeButton from "@/components/typeButton/TypeButton.vue";
+import AttributeExplanation from "./AttributeExplanation.vue";
 
 defineProps<{ attribute: Attribute }>();
 </script>
@@ -15,21 +16,18 @@ defineProps<{ attribute: Attribute }>();
           <template #trigger>
             <icon class="attribute-block_icon" :name="attribute.icon" />
           </template>
-          <p class="attribute-block_explanation">{{ attribute.explanation }}</p>
+          <p class="attribute-block_explanation">{{ attribute.description }}</p>
         </n-tooltip>
         {{ attribute.translator.title }} ~ {{ attribute.translator.key }}
       </p>
     </template>
     <template #footer>
       <p class="p-reset attribute-block_description">
-        {{ attribute.description }}
+        {{ attribute.explanation }}
       </p>
     </template>
     <article class="attribute-block_main">
-      <section class="p-reset attribute-block_addition">asdasd</section>
-      <section class="attribute-block_add">
-        <type-button transparent>新增</type-button>
-      </section>
+      <attribute-explanation :buffs="attribute.buffs" />
     </article>
   </title-card>
 </template>
@@ -71,14 +69,6 @@ defineProps<{ attribute: Attribute }>();
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-.attribute-block_addition {
-  flex: 1;
-}
-
-.attribute-block_add {
-  text-align: center;
 }
 
 .attribute-block_description {

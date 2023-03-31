@@ -113,10 +113,6 @@ export const DATA_BaseIcons = {
     translator: { key: "character-param", title: "人物参数" },
     path: "i-game-icons-skills",
   },
-  choice: {
-    translator: { key: "choice", title: "选择" },
-    path: "i-game-icons-choice",
-  },
   copy: {
     translator: { key: "copy", title: "复制" },
     path: "i-bxs-copy-alt",

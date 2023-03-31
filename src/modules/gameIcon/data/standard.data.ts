@@ -132,5 +132,11 @@ const data = {
     path: "i-ic-sharp-terrain",
     from: "standard",
   },
+  GI0041680176515587: {
+    id: "GI0041680176515587",
+    translator: { key: "leader", title: "指挥" },
+    path: "i-game-icons-horn-internal",
+    from: "standard",
+  },
 };
 export default data;

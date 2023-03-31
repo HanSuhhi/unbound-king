@@ -9,6 +9,7 @@
 
   position: relative;
   width: var(--aside-width);
+  height: var(--main-height);
   background-color: var(--bg-color-bright-1);
   border-right: var(--border);
 }

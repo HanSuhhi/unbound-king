@@ -1,18 +1,21 @@
 import { ref } from 'vue';
 import { genCreatorData } from '../creator/composables/data';
-import { bindCharacterAttributeValue } from './composables/characterAttributeValue';
+import { bindCharacterAttributeValue } from './composables/model/attributeValue';
+import { bindCharacterAttribute } from './composables/model/attribute';
+import { CharacterBuff } from './buff/characterBuff.model';
 
 
-const defineCharacterModel = (characterData: ReturnType<typeof genCreatorData>) => {
+export const defineCharacterModel = (characterData: ReturnType<typeof genCreatorData>) => {
   const character = ref<Character>({
-    "attribute-values": {}
+    buffs: new CharacterBuff(),
+    "attribute-values": {},
+    "attributes": {},
   });
 
-  bindCharacterAttributeValue(characterData['attribute-value-plugin'].data as any, character);
+  bindCharacterAttributeValue(characterData['attribute-value-plugin'].data as any, character as any);
+  bindCharacterAttribute(characterData['attribute-plugin'].data as any, character as any);
 
   return character;
 };
 
-
-defineCharacterModel(genCreatorData("character"));
-
+const character = defineCharacterModel(genCreatorData("character"));

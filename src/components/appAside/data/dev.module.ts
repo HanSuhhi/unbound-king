@@ -66,9 +66,15 @@ export default <ModulePage[]>defineModuleConfig([
     icon: "character-param",
   },
   {
+    path: "personality-design",
+    title: "个性设计",
+    description: "每个角色都有脾气！",
+    icon: "thinking",
+  },
+  {
     path: "ambition-design",
     title: "抱负设计",
     description: "人物抱负相关设计",
-    icon: "choice",
+    icon: "thinking",
   },
 ]);

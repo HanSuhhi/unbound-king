@@ -3,5 +3,5 @@ type Attribute = {
   icon: Icon;
   explanation: string;
   description: string;
-  addition?: Record<string, number>;
+  buffs: Array<BuffName>;
 };

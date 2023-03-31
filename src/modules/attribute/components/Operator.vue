@@ -18,9 +18,8 @@ const formConfig = computed(() =>
     ...iconFormConfig,
     description: { title: "说明", type: "textarea" },
     explanation: { title: "阐述", type: "textarea" },
-    addition: {
+    buffs: {
       hide: true,
-      defaultValue: {},
     },
   }),
 );

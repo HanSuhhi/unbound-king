@@ -3,7 +3,7 @@ import { applyDataToModule } from "@/composables/codeChanged";
 import { computed, defineComponent, ref } from "vue";
 import { defineCommonLayout } from "../../composables/components/commonLayout";
 import AttributeMain from "./components/AttributeMain.vue";
-import { DATA_Attributes } from "./data";
+import { DATA_Attributes } from "./data/index";
 import "./attribute.css";
 
 export default defineComponent({

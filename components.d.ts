@@ -41,6 +41,7 @@ declare module '@vue/runtime-core' {
     Icon: typeof import('./src/components/Icon.vue')['default']
     IconBlock: typeof import('./src/components/IconBlock.vue')['default']
     IconListItem: typeof import('./src/components/tabs/IconListItem.vue')['default']
+    InlineMustache: typeof import('./src/components/InlineMustache.vue')['default']
     ItemCard: typeof import('./src/components/ItemCard.vue')['default']
     KeyValueCard: typeof import('./src/components/KeyValueCard.vue')['default']
     NumberMark: typeof import('./src/components/NumberMark.vue')['default']

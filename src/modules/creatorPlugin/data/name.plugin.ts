@@ -4,7 +4,6 @@ import { DATA_Generator_Params } from '../../generator/data/index';
 
 const data: PluginStruct[] = [
   {
-    id: "familyName",
     translator: { key: "familyName", title: "姓氏" },
     description: "",
     generator: "random",
@@ -14,7 +13,6 @@ const data: PluginStruct[] = [
     },
   },
   {
-    id: "firstname",
     translator: { key: "firstname", title: "名辞" },
     description: "",
     generator: "firstname",
@@ -22,7 +20,6 @@ const data: PluginStruct[] = [
     generatorParams: DATA_Generator_Params.firstname,
   },
   {
-    id: "firstname-second",
     translator: { key: "firstname-second", title: "名辞 2" },
     description: "当第一个名辞为单字时，有几率产生第二个单字，组成复名",
     generator: "firstname",
