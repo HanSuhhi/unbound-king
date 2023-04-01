@@ -680,7 +680,7 @@ export default <Creator>{
           generatorParams: { min: 1, max: 18 },
         },
         {
-          translator: { key: "str", title: "勇力" },
+          translator: { key: "str", title: "勇气" },
           generator: "number",
           generatorForm: [
             {

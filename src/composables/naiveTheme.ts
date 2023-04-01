@@ -15,6 +15,9 @@ export const defineNaiveTheme = () => {
       primaryColorHover: mainb1,
       primaryColorPressed: mainb1,
     },
+    Drawer: {
+      color: bg2
+    },
     Message: {
       colorInfo: bg2,
       textColorInfo: white,

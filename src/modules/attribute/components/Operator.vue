@@ -18,9 +18,6 @@ const formConfig = computed(() =>
     ...iconFormConfig,
     description: { title: "说明", type: "textarea" },
     explanation: { title: "阐述", type: "textarea" },
-    buffs: {
-      hide: true,
-    },
   }),
 );
 const { openDialog } = defineCommonDialog("attribute");

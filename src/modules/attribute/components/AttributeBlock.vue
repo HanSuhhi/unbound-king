@@ -2,8 +2,7 @@
 import Icon from "@/components/Icon.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
 import { NTooltip } from "naive-ui";
-import typeButton from "@/components/typeButton/TypeButton.vue";
-import AttributeExplanation from "./AttributeExplanation.vue";
+import BuffExplanation from "@/components/BuffExplanation.vue";
 
 defineProps<{ attribute: Attribute }>();
 </script>
@@ -27,7 +26,7 @@ defineProps<{ attribute: Attribute }>();
       </p>
     </template>
     <article class="attribute-block_main">
-      <attribute-explanation :buffs="attribute.buffs" />
+      <buff-explanation :buff-name="attribute.translator.key" :buff-key="'attribute'" />
     </article>
   </title-card>
 </template>

@@ -4,7 +4,7 @@ import TabsListItem from "@/components/tabs/TabsListItem.vue";
 import { defineDataTemplate } from "@/composables/ci/dataTemplate";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
-import { defineTabsOptions } from "@/composables/components/tabsList";
+import { defineTabsData } from "@/composables/components/tabsList";
 import { unocssInclude } from "@/composables/constant/unocssInclude";
 import { CLayout, CTabs } from "csss-ui";
 import { find } from "lodash-es";
@@ -16,19 +16,12 @@ import "./game-icon.css";
 
 const { COMP: Layout } = defineCommonLayout("game-icon");
 const { COMP, read, state } = defineCommonTabs("game-icon");
-provide("changed", ref(false));
 
 const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: true }));
-const list = ref(defineTabsOptions(data));
+const { list, activeItemData } = defineTabsData(data, state);
 
-const active = computed(() => find(list.value, (listItem) => listItem.index === state.value?.active));
-const activeIcons = computed(() => active.value?.injectData);
-const activeItem = computed(() => active.value?.name);
-
-const codeTemplate = computed(() => [unocssInclude, defineDataTemplate(JSON.stringify(activeIcons.value))]);
-const { code } = applyDataToModule(activeIcons, codeTemplate);
-
-provide("active-key", activeItem);
+const codeTemplate = computed(() => [unocssInclude, defineDataTemplate(JSON.stringify(activeItemData.value))]);
+const { code } = applyDataToModule(activeItemData, codeTemplate);
 </script>
 
 <template>

@@ -5,6 +5,8 @@ import { DATA_AttributeValues } from "../modules/attributeValue/data/index";
 import { DATA_Ages, DATA_Chases, DATA_Genders } from "../modules/character/enums/character.enum";
 import { DATA_FamilyNames, DATA_FirstNames } from "../modules/nameDesign/data/name.data";
 import { DATA_Buffs } from '../modules/buff/data/index';
+import { DATA_GameIcons } from '../modules/gameIcon/data/index';
+import { DATA_Personalities } from "@/modules/personalityDesign/data";
 
 const getKeyFromId = (id: string): string => id.match(/[a-zA-Z]+/)?.[0] || "";
 const getDataKey = (key: string): string => `DATA_${key}s`;
@@ -17,7 +19,9 @@ export const DATA = {
   DATA_Chases,
   DATA_FamilyNames,
   DATA_FirstNames,
-  DATA_Buffs
+  DATA_Buffs,
+  DATA_GameIcons,
+  DATA_Personalities
 };
 
 export const getDataById = <T>(id: string): T => {

@@ -1,1 +1,1 @@
-export const defineDataTemplate = (data: any) => `const data = ${data}; export default data;`;
+export const defineDataTemplate = (data: any) => `const data = ${data};\n\nexport default data;`;

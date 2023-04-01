@@ -31,9 +31,6 @@ const formConfig = computed(() =>
     description: {
       title: "描述",
     },
-    dataType: {
-      title: "数据类型",
-    },
     type: {
       options: {
         range: [

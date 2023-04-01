@@ -6,20 +6,19 @@ import { transformTypeToForm } from "@/composables/typeToForm";
 import { defineUniqueId } from "@/composables/uniqueId";
 import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
-import { translatorFormConfig } from "../../../composables/form/formConfigs";
+import { translatorFormConfig, descriptionFormConfig, iconFormConfig } from "../../../composables/form/formConfigs";
 import { getInvertGlobalEnumNameOrNot } from "../../../enums/global.enum";
-import typeString from "../game-icon-type.d.ts?raw";
+import typeString from "../personality-type.d.ts?raw";
 
 const item = inject<ComputedRef<TabListItem>>("active-item");
-const icons = inject<ComputedRef<Record<string, GameIcon>>>("data");
+const moduleData = inject<ComputedRef<Record<string, Personality>>>("data");
 
 const formConfig = computed(() =>
-  withFormDetail<GameIcon>(transformTypeToForm(typeString), {
+  withFormDetail<Personality>(transformTypeToForm(typeString), {
     ...idFormConfig,
     ...translatorFormConfig,
-    path: {
-      title: "路径",
-    },
+    ...descriptionFormConfig,
+    ...iconFormConfig,
     from: {
       title: "来源",
       defaultValue: item?.value.name,
@@ -27,16 +26,16 @@ const formConfig = computed(() =>
     },
   }),
 );
-const confirm = (data: GameIcon) => {
+const confirm = (data: Personality) => {
   if (!data.translator.title) data.translator.title = data.translator.key;
-  data.id = defineUniqueId("GI");
+  data.id = defineUniqueId("P");
   data.from = getInvertGlobalEnumNameOrNot(data.from);
-  icons!.value[data.id] = data;
+  moduleData!.value[data.id] = data;
 };
 </script>
 
 <template>
   <common-form-dialog :form-config="formConfig" :confirm="confirm">
-    <template #header> Icon 新增 </template>
+    <template #header> 个性 新增 </template>
   </common-form-dialog>
 </template>

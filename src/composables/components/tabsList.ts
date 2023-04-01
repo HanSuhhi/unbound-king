@@ -1,7 +1,11 @@
+import { find } from "lodash-es";
+import type { Ref } from "vue";
+import { provide } from "vue";
+import { computed, ref } from "vue";
 import { getGlobalEnumNameOrNot, GlobalEnum } from "../../enums/global.enum";
 type ReturnRecord = Record<string, TabListItem>;
 
-export const defineTabsOptions = (data: Record<string, any>, translator: ReturnRecord = {}) => {
+const useTabsStruct = (data: Record<string, any>, translator: ReturnRecord = {}) => {
   const returnRecord: ReturnRecord = {
     standard: {
       icon: "package",
@@ -31,4 +35,16 @@ export const defineTabsOptions = (data: Record<string, any>, translator: ReturnR
   });
 
   return returnRecord;
+};
+
+export const defineTabsData = (data: Record<string, any>, state: Ref<UseCsssTabsProps['state']>, translator: ReturnRecord = {}) => {
+  const returnRecord = useTabsStruct(data, translator);
+
+  const list = ref(returnRecord);
+  const activeItem = computed(() => find(list.value, (listItem) => listItem.index === state.value?.active));
+  const activeItemData = computed(() => activeItem.value?.injectData);
+
+  provide("active-item", activeItem);
+
+  return { list, activeItem, activeItemData };
 };

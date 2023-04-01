@@ -12,7 +12,14 @@ export default defineComponent({
     const { COMP } = defineCommonLayout("attribute");
 
     const data = ref<IdValue<Attribute>>(DATA_Attributes);
-    const codeTemplate = computed(() => ["export default", JSON.stringify(data.value)]);
+
+    const codeTemplate = computed(() => [
+      "const data: Record<string, Attribute> = ",
+      JSON.stringify(data.value),
+      `\n
+export default data;
+export type StandardAttributeName = keyof typeof data`,
+    ]);
     const { code } = applyDataToModule(data, codeTemplate);
 
     return () => {

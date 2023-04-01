@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Icon from "../../../components/Icon.vue";
-import { useMessage } from "naive-ui";
 import { throttle } from "lodash-es";
+import { useMessage } from "naive-ui";
+import Icon from "../../../components/Icon.vue";
 
 const message = useMessage();
 
@@ -15,7 +15,7 @@ const copy = throttle((name: string) => {
 </script>
 
 <template>
-  <section class="icon-block" @click="copy(icon.translator.key)">
+  <section class="common-block icon-block" @click="copy(icon.translator.key)">
     <icon class="icon-block_icon" :icon="icon" />
     <span class="icon-block_title">{{ icon.translator!.title }}</span>
   </section>
@@ -29,26 +29,5 @@ const copy = throttle((name: string) => {
 
 .icon-block_title {
   margin-top: var(--small);
-}
-
-.icon-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 80px;
-  border: 1px solid var(--border-color);
-  border-top: 0;
-  border-right: 0;
-  cursor: pointer;
-  aspect-ratio: 1 / 1;
-}
-
-.icon-block:hover {
-  background-color: var(--main-color-deep-1);
-}
-
-.icon-block:active {
-  background-color: var(--main-color);
 }
 </style>

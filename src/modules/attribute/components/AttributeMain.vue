@@ -22,7 +22,6 @@ import { DATA_Attributes } from "../data/index";
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-right: var(--base-margin);
 }
 
 .attribute-main_main {

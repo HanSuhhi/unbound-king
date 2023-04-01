@@ -1,9 +1,6 @@
-import { DATA } from "@/composables/data";
-import { defineUniqueId } from '../../composables/uniqueId';
-
 type BuffProp = {
   character: Character,
-  value: number
+  baseValue?: number
 }
 
 const getCharacterTarget = (character: Character, target: BuffStruct['target']): NumberModelValue => {
@@ -14,14 +11,20 @@ const getCharacterTarget = (character: Character, target: BuffStruct['target']):
   return value;
 };
 
-export const useBuff = (buffName: BuffName, { character, value }: BuffProp) => {
-  const { target, buffType, description } = DATA['DATA_Buffs'][buffName];
+const getBuffName = (from: BuffStruct['from'], target: BuffStruct['target']) => {
+  return `${from}_${target.slice(1).join("_")}`;
+};
+
+export const useBuff = ({ target, from, buffType, description, value }: BuffStruct, { character, baseValue = 0 }: BuffProp) => {
+  const buffName = getBuffName(from, target);
 
   function main() {
     const modelValue = getCharacterTarget(character, target);
     switch (buffType) {
       case 'buff':
-        modelValue.setBuffValue(buffName, [value, description]);
+        const { scale = 1, increase = 0 } = value!;
+        const finalValue = scale * baseValue + increase;
+        modelValue.setBuffValue(buffName, [finalValue, description]);
         break;
 
       default:

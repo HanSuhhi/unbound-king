@@ -40,6 +40,9 @@ nextTick(setDefaultTransitionDuration);
         <template #aside>
           <AppAside />
         </template>
+        <template #footer>
+          <div class="12">123123123</div>
+        </template>
       </c-layout>
       <Setting />
       <GlobalDialog />

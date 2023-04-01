@@ -33,6 +33,6 @@ export const useNumberModelValue = (baseValue: number) => {
     return (baseValue + buffTotal) * percentTotal + finalBuffTotal;
   });
 
-  return { value, setBuffValue, setPercentValue, setFinalBuffValue };
+  return { value, setBuffValue, setPercentValue, setFinalBuffValue, buffValue };
 };
 

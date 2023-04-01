@@ -31,6 +31,8 @@
   color: var(--white);
   background-color: rgb(38 39 45);
   transition: grid-template var(--ani-time);
+
+  --footer-height: 7rem !important;
 }
 
 .app::before {
@@ -50,6 +52,14 @@
   height: var(--main-height);
 }
 
+.app-footer {
+  display: flex;
+  align-items: center;
+  height: 1rem;
+  font-size: var(--font-body);
+  background-color: red;
+}
+
 .csss-layout.slide-left-enter-active,
 .csss-layout.slide-left-leave-active,
 .csss-layout.slide-right-enter-active,
@@ -66,7 +76,3 @@
   display: inline-flex !important;
   margin-right: var(--base-margin);
 }
-
-/* .form-inline-flex:not(:first-child) {
-  margin-left: var(--base-margin);
-} */

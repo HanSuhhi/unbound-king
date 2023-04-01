@@ -1,0 +1,7 @@
+.special-inline-block {
+  display: inline-flex;
+}
+
+.special-inline-block > .icon {
+  margin: 0 var(--mini);
+}

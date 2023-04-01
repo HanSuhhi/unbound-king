@@ -25,3 +25,9 @@ export const iconFormConfig = {
     title: "图标",
   } as Partial<AutoformItem>,
 };
+
+export const descriptionFormConfig = {
+  description: {
+    title: "说明"
+  } as Partial<AutoformItem>,
+};

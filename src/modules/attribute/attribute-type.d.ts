@@ -3,5 +3,4 @@ type Attribute = {
   icon: Icon;
   explanation: string;
   description: string;
-  buffs: Array<BuffName>;
 };
