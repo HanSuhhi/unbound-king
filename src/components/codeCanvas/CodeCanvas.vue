@@ -63,7 +63,7 @@ function copy() {
   padding: 0;
   overflow: hidden;
   background-color: var(--bg-color-bright-1);
-  border: var(--border);
+  border-left: var(--border);
   transition: all var(--transition-prop);
 }
 

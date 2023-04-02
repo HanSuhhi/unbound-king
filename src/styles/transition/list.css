@@ -1,0 +1,19 @@
+.horizontal-list-move,
+.horizontal-list-enter-active,
+.horizontal-list-leave-active {
+  transition: var(--transition-prop) !important;
+}
+
+.horizontal-list-enter-from {
+  transform: translateX(var(--large));
+  opacity: 0;
+}
+
+.horizontal-list-leave-to {
+  transform: translateX(calc(-1 * var(--large)));
+  opacity: 0;
+}
+
+.horizontal-list-leave-active {
+  position: absolute !important;
+}

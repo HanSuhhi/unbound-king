@@ -9,6 +9,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppFooter: typeof import('./src/components/app/AppFooter.vue')['default']
     AsideSetting: typeof import('./src/components/appAside/components/AsideSetting.vue')['default']
     AutoForm: typeof import('./src/components/autoForm/autoForm.vue')['default']
     BaseMenu: typeof import('./src/components/appAside/components/baseMenu/BaseMenu.vue')['default']
@@ -47,6 +48,7 @@ declare module '@vue/runtime-core' {
     KeyValueCard: typeof import('./src/components/KeyValueCard.vue')['default']
     NumberMark: typeof import('./src/components/NumberMark.vue')['default']
     Operator: typeof import('./src/components/codeCanvas/components/Operator.vue')['default']
+    RouterHistory: typeof import('./src/components/routerHistory/RouterHistory.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchInput: typeof import('./src/components/SearchInput.vue')['default']

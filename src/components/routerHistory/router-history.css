@@ -13,36 +13,60 @@
 
 .router-history_block {
   display: flex;
+  overflow: auto;
 }
 
 .router-history_item {
-  position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
   padding: var(--small) var(--normal);
   color: var(--gray-bright-2);
   font-weight: bold;
-  border-right: var(--border);
+  white-space: nowrap;
   cursor: pointer;
-  transition: all var(--moment);
-  place-items: center;
 }
 
 .router-history_item > .icon {
   font-size: var(--normal);
 }
 
-.router-history_block:last-child > .router-history_item {
+.router-history_close {
   position: relative;
+  left: var(--base-margin);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  font-size: var(--normal);
+  border-radius: 50%;
+}
+
+.router-history_close:hover {
+  background-color: var(--gray);
+}
+
+.router-history_special:active,
+.router-history_active {
+  background-color: var(--bg-color);
+}
+
+.router-history_block:last-child > .router-history_item {
   display: flex;
   padding: var(--small) var(--normal);
   color: var(--gray-bright-2);
-  border-left: var(--border);
   cursor: pointer;
   transition: all var(--moment);
   place-items: center;
 }
 
-.router-history_active::before {
+.router-history_text {
+  position: relative;
+  margin-left: var(--base-margin);
+  transition: var(--transition-prop);
+}
+
+.router-history_active > .router-history_text::before {
   --clip-begin: 15;
   --clip-width: 40;
 
@@ -63,4 +87,16 @@
   to {
     width: 100%;
   }
+}
+
+.router-history_mask {
+  position: absolute;
+  z-index: 1;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(to right, var(--bg-color-bright-2) 30%, transparent);
+}
+
+.router-history_mask[data-reversed] {
+  background: linear-gradient(to left, var(--bg-color-bright-2) 30%, transparent);
 }

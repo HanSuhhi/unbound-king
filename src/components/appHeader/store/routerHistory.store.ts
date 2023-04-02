@@ -7,7 +7,7 @@ import type { RouteLocationNormalized } from "vue-router";
 import { useRouter } from "vue-router";
 
 const useRouterHistoryStore = defineStore("router-history", () => {
-  const routes = ref<string[]>([]);
+  const routes = ref<[router: string, icon: BaseIconName][]>([]);
   const { activePage, activeAsideModule } = storeToRefs(useGlobalStore());
   const { pageTransition } = storeToRefs(useGlobalStore());
   const { pages, activeModules } = useAppAsideStore();
@@ -24,13 +24,13 @@ const useRouterHistoryStore = defineStore("router-history", () => {
     const toPage = parsePage(to);
     if (!toPage) return alert("error");
 
-    const toName = toPage.title;
-    if (!routes.value.includes(toName)) {
-      routes.value.push(toName);
+    const { title, icon } = toPage;
+    if (!routes.value.map(route => route[0]).includes(title)) {
+      routes.value.unshift([title, icon]);
       pageTransition.value = "slide-left";
     } else {
-      const fromIndex = findIndex(routes.value, (route) => route === fromPage.title);
-      const toIndex = findIndex(routes.value, (route) => route === toPage.title);
+      const fromIndex = findIndex(routes.value, (route) => route[0] === fromPage.title);
+      const toIndex = findIndex(routes.value, (route) => route[0] === toPage.title);
       if (toIndex < fromIndex) pageTransition.value = "slide-right";
       else pageTransition.value = "slide-left";
     }
@@ -44,4 +44,5 @@ const useRouterHistoryStore = defineStore("router-history", () => {
 
   return { routes };
 });
+
 export { useRouterHistoryStore };

@@ -1,11 +1,13 @@
 @import "./styles/search.css";
 @import "./styles/user-message.css";
 @import "./styles/system-info.css";
+@import "./styles/avator.css";
 
 .app-header {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100vw;
   background-color: var(--bg-color-bright-1);
   border-bottom: var(--border);
 }
@@ -14,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--header-block-height);
+  height: calc(var(--header-block-height) - var(--border-height));
   background-color: var(--bg-color);
   border-bottom: var(--border);
 }

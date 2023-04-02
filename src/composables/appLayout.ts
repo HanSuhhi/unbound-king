@@ -2,9 +2,10 @@ import { useSettingStore } from "@/modules/setting/store/setting.store";
 import { useKeyStore } from "@/stores/key.store";
 import { useWindowSize } from "@vueuse/core";
 import { useCsssLayout } from "csss-ui";
-import { defer, throttle } from 'lodash-es';
+import { defer, throttle, debounce } from 'lodash-es';
 import { storeToRefs } from "pinia";
 import { watch } from 'vue';
+import { animationDuration } from './constant/env';
 
 export const defineAppLayout = () => {
   const { COMP: Layout, style } = useCsssLayout({
@@ -21,6 +22,7 @@ export const defineAppLayout = () => {
       },
       property: {
         "--aside-width": import.meta.env.ASIDE_WIDTH,
+        "--footer-height": '1rem'
       },
     },
   });
@@ -32,19 +34,17 @@ export const defineAppLayout = () => {
     const headerElement = document.getElementsByClassName("app-header")[0] as HTMLElement;
     const footerElement = document.querySelector(".app-footer");
 
-    const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 1px - ${footerElement?.clientHeight}px)`;
+    const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 2px - ${footerElement?.clientHeight}px)`;
     appElement.style.setProperty("--main-height", mainHeight);
-    appElement.style.setProperty("--modules-width", `${modulesELement.clientWidth}px`);
+    appElement.style.setProperty("--modules-width", `${modulesELement.clientWidth + 1}px`);
     appElement.style.setProperty("--aside-width", `${asideElement.clientWidth}px`);
-    console.log(1);
-
   };
   defer(setLayoutProps);
   const { width, height } = useWindowSize();
-  defer(throttle(() => {
-    watch(width, setLayoutProps);
-    watch(height, setLayoutProps);
-  }, 100));
+  defer(() => {
+    watch(width, debounce(setLayoutProps, animationDuration));
+    watch(height, debounce(setLayoutProps, animationDuration));
+  });
 
   /**
    * @description keys

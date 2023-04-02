@@ -6,10 +6,11 @@ import { nextTick } from "vue";
 import AppAside from "./components/appAside/appAside";
 import AppHeader from "./components/appHeader/AppHeader";
 import GlobalDialog from "./components/dialog/GlobalDialog";
-import RouterHistory from "./components/routerHistory/RouterHistory";
+import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import { defineAppLayout } from "./composables/appLayout";
 import { defineNaiveTheme } from "./composables/naiveTheme";
 import Setting from "./modules/setting/Setting";
+import AppFooter from "./components/app/AppFooter.vue";
 
 const { Layout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
@@ -41,7 +42,7 @@ nextTick(setDefaultTransitionDuration);
           <AppAside />
         </template>
         <template #footer>
-          <div class="12">123123123</div>
+          <app-footer />
         </template>
       </c-layout>
       <Setting />

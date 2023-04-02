@@ -18,7 +18,7 @@ export const DATA_BaseIcons = {
   },
   close: {
     translator: { key: "close", title: "关闭" },
-    path: "i-mdi-close-thick",
+    path: "i-ion-close-outline",
   },
   warning: {
     translator: { key: "warning", title: "提示" },

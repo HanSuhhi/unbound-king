@@ -9,7 +9,8 @@
   --ani-time: var(--moment);
   --border-radius: var(--mini);
   --border-color: var(--gray);
-  --border: 1px solid var(--border-color);
+  --border-height: 1px;
+  --border: var(--border-height) solid var(--border-color);
   --main-color: var(--yellow);
   --main-color-bright-1: var(--yellow-bright-1);
   --main-color-bright-2: var(--yellow-bright-2);
@@ -31,8 +32,6 @@
   color: var(--white);
   background-color: rgb(38 39 45);
   transition: grid-template var(--ani-time);
-
-  --footer-height: 7rem !important;
 }
 
 .app::before {
@@ -53,11 +52,12 @@
 }
 
 .app-footer {
+  z-index: 1;
   display: flex;
   align-items: center;
-  height: 1rem;
   font-size: var(--font-body);
-  background-color: red;
+  background-color: var(--bg-color-bright-2);
+  border-top: var(--border);
 }
 
 .csss-layout.slide-left-enter-active,
