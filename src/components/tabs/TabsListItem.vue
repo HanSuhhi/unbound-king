@@ -1,9 +1,9 @@
 import Icon from '@/components/Icon.vue';
 <script setup lang="ts">
-import { size } from 'lodash-es';
-import NumberMark from '../NumberMark.vue';
+import { size } from "lodash-es";
+import NumberMark from "../NumberMark.vue";
 
-const props = defineProps<{
+defineProps<{
   message: TabListItem;
 }>();
 </script>

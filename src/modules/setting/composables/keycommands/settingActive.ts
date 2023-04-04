@@ -1,4 +1,4 @@
-import { mountKeyCommand } from "@/composables/mountKeyCommand";
+import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
 import type { ComputedRef, Ref } from "vue";
 import { ref } from "vue";
 

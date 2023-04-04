@@ -1,7 +1,7 @@
-<script setup lang='ts'>
-import { defineExtender } from '@/composables/Extender';
-import Extend from '@/components/Extend.vue';
-import { useHtmlPropLint } from '@/composables/htmlPropLint';
+<script setup lang="ts">
+import { defineExtender } from "@/composables/experience/Extender";
+import Extend from "@/components/Extend.vue";
+import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 
 const isExtend = defineExtender();
 </script>

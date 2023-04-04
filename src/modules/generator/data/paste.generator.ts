@@ -1,6 +1,6 @@
-import { transformTypeToForm } from "@/composables/typeToForm";
+import { transformTypeToForm } from "@/composables/form/typeToForm";
 import { find } from "lodash-es";
-import { withFormDetail } from "../../../composables/formDetail";
+import { withFormDetail } from "../../../composables/form/formDetail";
 import type from "../types/paste.generator.d.ts?raw";
 
 const pasteGenerator: GeneratorFunc<any, PasteGeneratorProps> = (data, key) => {

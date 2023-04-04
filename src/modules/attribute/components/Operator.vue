@@ -3,13 +3,13 @@ import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import typeButton from "@/components/typeButton/TypeButton.vue";
 import { defineCommonDialog } from "@/composables/components/commonDialog";
 import { iconFormConfig, idFormConfig, translatorFormConfig } from "@/composables/form/formConfigs";
-import { withFormDetail } from "@/composables/formDetail";
-import { transformTypeToForm } from "@/composables/typeToForm";
+import { withFormDetail } from "@/composables/form/formDetail";
+import { transformTypeToForm } from "@/composables/form/typeToForm";
 import type { Ref } from "vue";
 import { computed, inject } from "vue";
 import typeString from "../attribute-type.d.ts?raw";
 
-const attributes = inject<Ref<IdValue<Attribute>>>("data");
+const attributes = inject<Ref<Dictionary<Attribute>>>("data");
 
 const formConfig = computed(() =>
   withFormDetail<Attribute>(transformTypeToForm(typeString), {

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ItemCard from "@/components/ItemCard.vue";
-import { scroll } from "@/composables/wheelScroll";
 import type { Ref } from "vue";
 import { ref, inject } from "vue";
 import { DATA_Creators } from "../data";
+import { scroll } from "@/composables/experience/wheelScroll";
 
 const ele = ref<HTMLElement>();
 const creatorKey = inject<Ref<CreatorKey>>("creator-key");

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Extend from "@/components/Extend.vue";
-import { useDelayExtend } from "@/composables/delayExtend";
-import { useHtmlPropLint } from "@/composables/htmlPropLint";
+import { useDelayExtend } from "@/composables/experience/delayExtend";
+import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-json";
 import type { Ref } from "vue";
 import { inject, onMounted, onUpdated, ref } from "vue";
-import { defineExtender } from "../../composables/Extender";
+import { defineExtender } from "../../composables/experience/Extender";
 import "./code-canvas.css";
 import Operator from "./components/Operator.vue";
 import { CodeCanvasStatus, useCodeCanvasStatus } from "./composables/status";
@@ -57,8 +57,10 @@ function copy() {
   --position-height: 7%;
 
   position: relative;
+  bottom: var(--base-margin);
+  left: var(--base-margin);
   box-sizing: border-box;
-  height: 100%;
+  height: calc(100% + var(--base-margin));
   margin: 0;
   padding: 0;
   overflow: hidden;

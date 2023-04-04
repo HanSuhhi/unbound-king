@@ -1,4 +1,4 @@
-import { formatCodeString } from "@/composables/formatCodeString";
+import { formatCodeString } from "@/composables/ci/codeString";
 import { provide, ref, watch, computed } from "vue";
 import { DATA_FamilyNames, DATA_FirstNames } from "../data/name.data";
 import { isUndefined } from "lodash-es";

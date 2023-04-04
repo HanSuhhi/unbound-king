@@ -7,7 +7,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import createCsssUI from "csss-ui";
 import { createPinia } from "pinia";
-import { useRouteConfig } from "./composables/router";
+import { useRouteConfig } from "./composables/router/router";
 import { useIndexDb } from "./services/index";
 import Icon from "./components/Icon.vue";
 

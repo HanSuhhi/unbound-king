@@ -11,7 +11,6 @@ interface ImportMetaEnv {
   readonly ENCRYPTED_KEY: string;
   readonly IV: string;
 }
-type ReturnStruct<T = string> = [title: string, value: string | Translator, key: T];
 
 type KeyCommand = {
   /**
@@ -22,28 +21,24 @@ type KeyCommand = {
   fn: (isPressed) => void;
 };
 
-type TabListItem = {
-  icon?: BaseIconName;
-  index: number;
-  injectData?: any;
-  key: string;
-  name: string;
-};
-
 type Translator = {
   key: string | Ref<string>;
   title: string | Ref<string>;
 };
+type Dictionary<T> = Record<string, T>;
+type BaseItem = {
+  icon?: Icon;
+  translator: Translator;
+  description: string;
+}
 
-type IdValue<T> = Record<string, T>;
-
-type Data = keyof typeof import("@/composables/data")["DATA"];
 
 type TranslatorObj = { translator: Translator };
 type CanBeGenerated = { canBeGenerated: boolean };
 type NeedDescription = { description: string };
-
+type NeedIcon = { icon: Icon }
 
 type Gender = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Genders'];
 type Chase = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Chases'];
 type Age = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Ages'];
+type Data = keyof typeof import("@/composables/data")["DATA"];

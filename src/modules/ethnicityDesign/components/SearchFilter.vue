@@ -1,8 +1,8 @@
-<script setup lang='ts'>
-import Extend from '@/components/Extend.vue';
-import { useDelayExtend } from '@/composables/delayExtend';
-import { useHtmlPropLint } from '@/composables/htmlPropLint';
-import { defineExtender } from '@/composables/Extender';
+<script setup lang="ts">
+import Extend from "@/components/Extend.vue";
+import { useDelayExtend } from "@/composables/experience/delayExtend";
+import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
+import { defineExtender } from "@/composables/experience/Extender";
 
 const isExtend = defineExtender();
 const delayExtend = useDelayExtend(isExtend);

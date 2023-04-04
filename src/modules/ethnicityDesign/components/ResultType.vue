@@ -1,16 +1,13 @@
-<script setup lang='ts'>
-import Icon from '@/components/Icon.vue';
-import { storeToRefs } from 'pinia';
-import { useResultTypes } from '../composables/resultTypes';
-import { useEthnicityDesignStore } from '../store/ethnicityDesign.store';
+<script setup lang="ts">
+import Icon from "@/components/Icon.vue";
+import { useResultTypes } from "../composables/resultTypes";
 
 const { DATA_Types } = useResultTypes();
-const { currentType } = storeToRefs(useEthnicityDesignStore());
 </script>
 
 <template>
-  <article class="result-type" :style="{ '--index': currentType }">
-    <section v-for="type, index in DATA_Types" :key="type" class="result-type_item" @click="currentType = index">
+  <article class="result-type" :style="{ '--index': 1 }">
+    <section v-for="(type, index) in DATA_Types" :key="type" class="result-type_item">
       {{ type }}
     </section>
     <div class="result-type_setting result-type_item">

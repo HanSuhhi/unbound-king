@@ -4,7 +4,7 @@ import FamilyName from "./components/FamilyName.vue";
 import { useNames } from "./composables/names";
 import FirstNames from "./components/FirstNames.vue";
 import "./name-design.css";
-import { scroll } from "../../composables/wheelScroll";
+import { scroll } from "@/composables/experience/wheelScroll";
 import { ref } from "vue";
 
 const { COMP: Layout } = defineCommonLayout("name-design");

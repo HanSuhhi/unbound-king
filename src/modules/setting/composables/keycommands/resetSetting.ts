@@ -1,5 +1,5 @@
 import { useGlobalDialogStore } from "@/components/dialog/store/dialog.store";
-import { mountKeyCommand } from "@/composables/mountKeyCommand";
+import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
 import { useSettingStore } from "@/modules/setting/store/setting.store";
 import { storeToRefs } from "pinia";
 

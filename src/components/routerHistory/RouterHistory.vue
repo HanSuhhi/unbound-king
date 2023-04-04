@@ -6,8 +6,8 @@ import { storeToRefs } from "pinia";
 import { computed, ref, TransitionGroup } from "vue";
 import { useRouter } from "vue-router";
 import { animationDuration } from "../../composables/constant/env";
-import { useAppAsideStore } from "../appAside/store/aside.store";
-import { useRouterHistoryStore } from "../appHeader/store/routerHistory.store";
+import { useAppAsideStore } from "../app/appAside/store/aside.store";
+import { useRouterHistoryStore } from "../app/appHeader/store/routerHistory.store";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
 import { smoothScrollTo } from "./composables/jsAnimation";
 import "./router-history.css";
@@ -28,7 +28,7 @@ const index = computed(() =>
 );
 
 router.afterEach((v) => {
-  const currentWidth = routeBlocks.value[index.value].clientWidth;
+  const currentWidth = routeBlocks.value[index.value]?.clientWidth || 0;
   const beforeTotalWidth = routeBlocks.value.slice(0, index.value).reduce((acc, element) => acc + element.offsetWidth, 0) + currentWidth;
   const routeBox = document.querySelector(".router-history_box")!;
   const routeBlockWidth = routeBox.clientWidth;

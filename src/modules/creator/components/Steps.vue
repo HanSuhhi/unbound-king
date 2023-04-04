@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useHtmlPropLint } from "@/composables/htmlPropLint";
+import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 import Step from "@/modules/creator/components/Step.vue";
 import type { Ref } from "vue";
 import { computed, inject } from "vue";

@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
-import { withFormDetail } from "@/composables/formDetail";
-import { transformTypeToForm } from "@/composables/typeToForm";
-import { defineUniqueId } from "@/composables/uniqueId";
+import { transformTypeToForm } from "@/composables/form/typeToForm";
+import { withFormDetail } from "@/composables/form/formDetail";
 import type { Ref } from "vue";
 import { computed, inject } from "vue";
-import { idFormConfig, translatorFormConfig, iconFormConfig } from "../../../composables/form/formConfigs";
+import { iconFormConfig, idFormConfig, translatorFormConfig } from "../../../composables/form/formConfigs";
 import typeString from "../attribute-value-type.d.ts?raw";
 
 const type = inject<Ref<AttributeValue["type"]>>("type");
-const attributeValues = inject<Ref<IdValue<AttributeValue>>>("data");
+const attributeValues = inject<Ref<Dictionary<AttributeValue>>>("data");
 
 const typeTitle = computed(() => {
   switch (type!.value) {

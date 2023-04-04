@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import autoForm from "@/components/autoForm/autoForm.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
-import { validateForm } from "@/composables/validateForm";
+import { validateForm } from "@/composables/form/validateForm";
 import type { useCsssDialog } from "csss-ui";
 import { CDialog } from "csss-ui";
 import { FormInstance } from "element-plus";

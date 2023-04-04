@@ -1,5 +1,5 @@
 import { computed, provide, ref } from "vue";
-import { formatCodeString } from "../../../composables/formatCodeString";
+import { formatCodeString } from "../../../composables/ci/codeString";
 
 export const useCode = () => {
   const _code = ref("");

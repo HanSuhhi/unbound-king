@@ -1,14 +1,11 @@
-<script setup lang='ts'>
-import { storeToRefs } from 'pinia';
-import { useDestinyStore } from '../store/destiny.store';
-import { computed } from 'vue';
-import typeButton from '@/components/typeButton/TypeButton.vue';
-
-const { tabsIndex } = storeToRefs(useDestinyStore());
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { computed } from "vue";
+import typeButton from "@/components/typeButton/TypeButton.vue";
 
 const props = defineProps<{
   destiny: Destiny;
-  index: number
+  index: number;
 }>();
 
 const emits = defineEmits<{
@@ -16,8 +13,7 @@ const emits = defineEmits<{
 }>();
 
 const method = () => emits("triggered");
-const isChoosed = computed(() => props.index === tabsIndex.value);
-
+const isChoosed = computed(() => props.index === 0);
 </script>
 
 <template>

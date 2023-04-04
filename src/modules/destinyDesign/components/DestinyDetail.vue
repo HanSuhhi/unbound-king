@@ -2,7 +2,7 @@
 import TitleCard from "@/components/titleCard/TitleCard";
 import { computed, ref, onMounted, nextTick } from "vue";
 import Icon from "@/components/Icon.vue";
-import { scroll } from "@/composables/wheelScroll";
+import { scroll } from "@/composables/experience/wheelScroll";
 
 const props = defineProps<{
   destiny: Destiny;
@@ -37,7 +37,7 @@ const footerRef = ref<HTMLElement>();
       <title-card class="destiny-detail_settlement destiny-detail_sub">
         <template #title>聚落</template>
         <template #subtitle>
-          <icon name="warning" style="margin-right: var(--mini);" />
+          <icon name="warning" style="margin-right: var(--mini)" />
           该种族出身可能获得以下的技能
         </template>
         Lorem ipsum dolor sit amet consectetur, .
@@ -45,7 +45,7 @@ const footerRef = ref<HTMLElement>();
       <title-card class="destiny-detail_class destiny-detail_sub">
         <template #title>职业</template>
         <template #subtitle>
-          <icon name="warning" style="margin-right: var(--mini);" />
+          <icon name="warning" style="margin-right: var(--mini)" />
           该种族出身可能获得以下的职业
         </template>
         Lorem ipsum dolor sit amet consectetur, .
@@ -53,7 +53,7 @@ const footerRef = ref<HTMLElement>();
       <title-card class="destiny-detail_technique destiny-detail_sub">
         <template #title>心法</template>
         <template #subtitle>
-          <icon name="warning" style="margin-right: var(--mini);" />
+          <icon name="warning" style="margin-right: var(--mini)" />
           该种族工匠可能拥有以下的建筑工艺
         </template>
         Lorem ipsum dolor sit amet consectetur, .
@@ -61,7 +61,7 @@ const footerRef = ref<HTMLElement>();
       <title-card class="destiny-detail_skill destiny-detail_sub">
         <template #title>技能</template>
         <template #subtitle>
-          <icon name="warning" style="margin-right: var(--mini);" />
+          <icon name="warning" style="margin-right: var(--mini)" />
           该种族工匠可能拥有以下的建筑工艺
         </template>
         Lorem ipsum dolor sit amet consectetur, .

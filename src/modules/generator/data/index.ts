@@ -1,8 +1,8 @@
 import { clone, map, merge } from "lodash-es";
 
-export const DATA_Generators: IdValue<GeneratorFunc<any, any>> = {};
-export const DATA_Generator_Forms: IdValue<Autoform> = {};
-export const DATA_Generator_Params: IdValue<Parameters<GeneratorFunc<any, any>>> = {};
+export const DATA_Generators: Dictionary<GeneratorFunc<any, any>> = {};
+export const DATA_Generator_Forms: Dictionary<Autoform> = {};
+export const DATA_Generator_Params: Dictionary<Parameters<GeneratorFunc<any, any>>> = {};
 
 map(import.meta.glob("./*.generator.ts", { eager: true }), ({ generator, generatorForm, generatorParams }: any) => {
   merge(DATA_Generators, generator);

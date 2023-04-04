@@ -10,7 +10,7 @@ import { CLayout, CTabs } from "csss-ui";
 import { find } from "lodash-es";
 import { computed, provide, ref } from "vue";
 import { parseImportModule } from "../../composables/ci/importModule";
-import { applyDataToModule } from "../../composables/codeChanged";
+import { applyDataToModule } from "../../composables/experience/codeChanged";
 import IconDashboard from "./components/IconDashboard.vue";
 import "./game-icon.css";
 

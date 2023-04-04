@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import { idFormConfig } from "@/composables/form/formConfigs";
-import { withFormDetail } from "@/composables/formDetail";
-import { transformTypeToForm } from "@/composables/typeToForm";
-import { defineUniqueId } from "@/composables/uniqueId";
+import { withFormDetail } from "@/composables/form/formDetail";
+import { transformTypeToForm } from "@/composables/form/typeToForm";
+import { defineUniqueId } from "@/composables/ci/uniqueId";
 import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
 import { translatorFormConfig } from "../../../composables/form/formConfigs";

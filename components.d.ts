@@ -9,10 +9,11 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppAsideRight: typeof import('./src/components/app/AppAsideRight.vue')['default']
     AppFooter: typeof import('./src/components/app/AppFooter.vue')['default']
-    AsideSetting: typeof import('./src/components/appAside/components/AsideSetting.vue')['default']
+    AsideSetting: typeof import('./src/components/app/appAside/components/AsideSetting.vue')['default']
     AutoForm: typeof import('./src/components/autoForm/autoForm.vue')['default']
-    BaseMenu: typeof import('./src/components/appAside/components/baseMenu/BaseMenu.vue')['default']
+    BaseMenu: typeof import('./src/components/app/appAside/components/baseMenu/BaseMenu.vue')['default']
     BuffExplanation: typeof import('./src/components/BuffExplanation.vue')['default']
     CodeCanvas: typeof import('./src/components/codeCanvas/CodeCanvas.vue')['default']
     CommonDialog: typeof import('./src/components/CommonDialog.vue')['default']
@@ -56,8 +57,10 @@ declare module '@vue/runtime-core' {
     Step: typeof import('./src/components/Step.vue')['default']
     SubButton: typeof import('./src/components/SubButton.vue')['default']
     TabsListItem: typeof import('./src/components/tabs/TabsListItem.vue')['default']
+    TitleCardList: typeof import('./src/components/titleCardList/TitleCardList.vue')['default']
+    TitleCardListItem: typeof import('./src/components/titleCardList/TitleCardListItem.vue')['default']
     TypeButton: typeof import('./src/components/typeButton/TypeButton.vue')['default']
-    Workshop: typeof import('./src/components/appAside/components/workshop/Workshop.vue')['default']
+    Workshop: typeof import('./src/components/app/appAside/components/workshop/Workshop.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

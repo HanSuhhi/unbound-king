@@ -5,12 +5,12 @@ import { defineDataTemplate } from "@/composables/ci/dataTemplate";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
 import { defineTabsData } from "@/composables/components/tabsList";
-import { capitalize } from "@/composables/text/capitalize";
+import { capitalize } from "@/composables/router/text/capitalize";
 import { CLayout, CTabs } from "csss-ui";
 import { find } from "lodash-es";
 import { computed, ref, provide } from "vue";
 import { parseImportModule } from "../../composables/ci/importModule";
-import { applyDataToModule } from "../../composables/codeChanged";
+import { applyDataToModule } from "../../composables/experience/codeChanged";
 import personalityDashboard from "./components/PersonalityDashboard.vue";
 
 const { COMP: Layout } = defineCommonLayout("game-icon");

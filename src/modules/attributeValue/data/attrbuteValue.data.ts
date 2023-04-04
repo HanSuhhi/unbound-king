@@ -114,7 +114,7 @@ export default {
     icon: "GI1831678599608000",
     type: "special",
   },
-  leader: {
+  ld: {
     translator: { key: "ld", title: "指挥" },
     description: "提升可率领的角色数量及能力",
     icon: "GI0041680176515587",
