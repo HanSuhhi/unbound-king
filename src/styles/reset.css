@@ -4,11 +4,24 @@
   text-decoration: none;
 }
 
+.button-reset {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.input-reset {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
 .ol-reset,
 .ul-reset {
-  padding-inline-start: 0;
   min-height: 100%;
   list-style: none;
+  padding-inline-start: 0;
 }
 
 .ol-reset,

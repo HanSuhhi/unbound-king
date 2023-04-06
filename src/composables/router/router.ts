@@ -1,9 +1,8 @@
-import { map } from "lodash-es";
+import { kebabCase, map } from "lodash-es";
 import type { Component } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
 import { defineRouterAuth } from "./routerAuth";
-import { transformToKebab } from "../text/kebab";
 
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}", {
   eager: true,
@@ -12,7 +11,7 @@ const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx
 export const useRouteConfig = async () => {
   const routes = map(pages, (component, path) => {
     const paths = path.split("/");
-    const name = transformToKebab(paths[paths.length - 2]);
+    const name = kebabCase(paths[paths.length - 2]);
     return { path: `/${name}`, component: component.default, name };
   }) as unknown as RouteRecordRaw[];
 

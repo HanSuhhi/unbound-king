@@ -19,14 +19,14 @@ const tabsIndex = computed({
 </script>
 
 <template>
-  <c-tabs ref="COMP" class="destiny-main">
+  <base-tabs ref="COMP" class="destiny-main">
     <template #list>
       <DestinyItemCard v-for="(destiny, index) in DATA_Destiny" :key="destiny.key" :class="{ 'destiny-main_tabitem': true, 'destiny-main_last': index === destinies.length - 1, [`destiny-main_${destiny.key}`]: true }" :destiny="destiny" :index="index" />
     </template>
     <template v-for="(panel, index) of read?.panels" :key="panel" #[panel]>
       <destiny-detail :destiny="destinies[index]" />
     </template>
-  </c-tabs>
+  </base-tabs>
 </template>
 
 <style>

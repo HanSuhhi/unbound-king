@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import alert from "@/components/alert/alert";
-import { useCsssDialog } from "csss-ui";
 import type { Ref } from "vue";
 import { computed, inject, provide, ref } from "vue";
 import addFormDialog from "./AddFormDialog.vue";
@@ -15,17 +14,9 @@ const advancedAttributes = computed(() => filter(attributeValues?.value, (attrib
 const specialAttributes = computed(() => filter(attributeValues?.value, (attributeValue) => attributeValue.type === "special"));
 
 const dialogType = ref<AttributeValue["type"]>("base");
-
-const { COMP, state } = useCsssDialog({ state: { toBox: ".attribute-value" }, style: { classList: { dialog: ["", "router-view-dialog"] } } });
-
-provide("Dialog", COMP);
+const modalShow = ref(false);
 provide("type", dialogType);
-provide("dialog", state);
-
-const openDialog = (type: AttributeValue["type"]) => {
-  state!.value.show = true;
-  dialogType!.value = type;
-};
+provide("modal", modalShow);
 </script>
 
 <template>

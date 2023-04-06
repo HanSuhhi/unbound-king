@@ -1,0 +1,11 @@
+.csss-layout-header-height-large {
+  --header-height: 4rem;
+}
+
+.csss-layout-header-height-normal {
+  --header-height: 3rem;
+}
+
+.csss-layout-header-height-small {
+  --header-height: 2rem;
+}

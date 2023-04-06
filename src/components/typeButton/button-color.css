@@ -8,7 +8,7 @@
   --bg-color-sub: var(--yellow-bright-1);
 }
 
-.type-button_gray {
+.type-button_default {
   --bg-color-main: var(--main-color-deep-2);
   --bg-color-sub: var(--main-color);
 }

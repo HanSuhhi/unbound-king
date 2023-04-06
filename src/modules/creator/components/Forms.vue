@@ -14,7 +14,7 @@ const toggle = (index: number) => (state.value.active = index);
 </script>
 
 <template>
-  <c-tabs ref="COMP">
+  <base-tabs ref="COMP">
     <template #list>
       <p class="p-reset" @click="toggle(0)">表单配置</p>
       <p class="p-reset" @click="toggle(1)">插件测试</p>
@@ -28,7 +28,7 @@ const toggle = (index: number) => (state.value.active = index);
     <template #panel-2>
       <creator-preview />
     </template>
-  </c-tabs>
+  </base-tabs>
 </template>
 
 <style scoped>

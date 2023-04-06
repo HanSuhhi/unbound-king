@@ -1,4 +1,5 @@
-import { useCsssLayout, useCsssRadio } from "csss-ui";
+import { useCsssLayout } from "@/components/ui/layout";
+
 export const useTableHeader = () => {
   const { COMP: Layout } = useCsssLayout({
     style: {
@@ -8,13 +9,6 @@ export const useTableHeader = () => {
     },
   });
 
-  const { COMP: Radio, state } = useCsssRadio({
-    style: {
-      classList: {
-        radio: ["table-header_nation-radio"],
-      },
-    },
-  });
 
-  return { Layout, Radio };
+  return { Layout };
 };

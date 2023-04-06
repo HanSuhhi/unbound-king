@@ -1,7 +1,6 @@
 .router-history {
   display: flex;
   justify-content: space-between;
-  width: calc(100% - var(--aside-width));
   height: var(--header-block-height);
   min-height: 0;
   margin-left: var(--aside-width);

@@ -1,16 +1,16 @@
 import { useMagicKeys } from "@vueuse/core";
+import { forEach, toArray } from "lodash-es";
 import { defineStore } from "pinia";
 import type { WatchStopHandle } from "vue";
-import { ref, watch, computed, onUnmounted } from "vue";
-import { findIndex, forEach, toArray } from "lodash-es";
+import { computed, ref, watch } from "vue";
 
-const commandStagingStore = ref<Record<string, KeyCommand>>({});
+const commandStagingStore = ref<Dictionary<KeyEvent>>({});
 const clearCommandStagingStore = () => (commandStagingStore.value = {});
 
-const commandsStore = ref<Record<string, KeyCommand>>({});
+const commandsStore = ref<Dictionary<KeyEvent>>({});
 const clearCommandStore = () => (commandsStore.value = {});
 
-const runningKeyCammands = ref<Record<string, WatchStopHandle>>({});
+const runningKeyCammands = ref<Dictionary<WatchStopHandle>>({});
 
 const stopRunningKeyCommand = (key: string) => {
   if (!runningKeyCammands.value[key]) return;
@@ -30,13 +30,15 @@ const useKeyStore = defineStore("key", () => {
     return key[0] === "_" ? keys : KEYS[key];
   }
 
-  const addKeyCommand = (newKeyCommand: KeyCommand) => {
-    commandsStore.value[newKeyCommand.key] = newKeyCommand;
-    runningKeyCammands.value[newKeyCommand.key] = watch(defineCommandKey(newKeyCommand.key), newKeyCommand.fn.bind(this));
+  const addKeyCommand = (newKeyCommand: KeyEvent): KeyEvent => {
+    commandsStore.value[newKeyCommand.translator.key] = newKeyCommand;
+    runningKeyCammands.value[newKeyCommand.translator.key] = watch(defineCommandKey(newKeyCommand.translator.key), newKeyCommand.fn.bind(this));
+    return newKeyCommand;
   };
 
-  const addKeyCommands = (newKeyCommands: KeyCommand[]) => {
+  const addKeyCommands = (newKeyCommands: KeyEvent[]): KeyEvent[] => {
     forEach(newKeyCommands, (newKeyCommand) => addKeyCommand(newKeyCommand));
+    return newKeyCommands;
   };
 
   const uninstallKeyCommand = (key: string) => {
@@ -83,3 +85,4 @@ const useKeyStore = defineStore("key", () => {
 });
 
 export { useKeyStore };
+

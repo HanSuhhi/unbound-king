@@ -69,7 +69,7 @@ const closeIndex = ref(1);
 </script>
 
 <template>
-  <ol relative class="router-history">
+  <ol relative class="router-history ol-reset">
     <div ref="leftBlock" class="router-history_block">
       <li class="router-history_item router-history_special" @click="routeByDirection(true)">
         <Icon name="double-left" />

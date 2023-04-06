@@ -1,0 +1,16 @@
+@import "./style/config.css";
+
+.csss-tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.csss-tabs__list {
+  position: relative;
+  display: flex;
+}
+
+.csss-tabs__panels {
+  width: 100%;
+}

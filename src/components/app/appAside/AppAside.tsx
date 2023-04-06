@@ -33,12 +33,12 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <c-tabs ref={COMP}>
+          <base-tabs ref={COMP}>
             {{
               list: lists.value,
               ...panels.value,
             }}
-          </c-tabs>
+          </base-tabs>
           <AsideSetting />
           <ExtreModules />
           <Workshop />

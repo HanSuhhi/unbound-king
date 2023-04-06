@@ -14,13 +14,13 @@ export default defineComponent({
 
     return () => {
       return (
-        <c-layout class="ethnicity-design" ref={COMP}>
+        <base-layout class="ethnicity-design" ref={COMP}>
           {{
             header: () => <EthnicityDesignDescription />,
             aside: () => <CodeCanvas code={code} />,
             default: () => <EthnicityMain class="ethnicity-design_main" />,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

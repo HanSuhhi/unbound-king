@@ -9,7 +9,7 @@ export default defineComponent({
     const { Tabs } = useTableHeaderTabs();
     return () => {
       return (
-        <c-tabs ref={Tabs}>
+        <base-tabs ref={Tabs}>
           {{
             list: () => (
               <>
@@ -19,7 +19,7 @@ export default defineComponent({
             ),
             "panel-0": () => <p>123123</p>,
           }}
-        </c-tabs>
+        </base-tabs>
       );
     };
   },

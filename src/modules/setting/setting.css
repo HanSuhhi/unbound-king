@@ -1,25 +1,18 @@
 /* stylelint-disable max-line-length */
-@import "./styles/setting-body.css";
-@import "./styles/setting-header.css";
 @import "./styles/setting-footer.css";
-@import "./styles/setting-module.css";
-@import "./styles/setting-item.css";
+@import "./styles/setting-header.css";
 
 .setting {
   --line-break-height: 1rem;
   --line-break-base-width: 20%;
   --line-break-width: 1%;
   --line-border-size: 2px;
-  --side-bg: rgb(33 30 45 / 70%);
-  --ani-time: 0.35s;
-
-  /* --border-color: var(--main-color); */
+  --side-bg: rgb(43 43 43 / 70%);
 
   position: fixed;
   z-index: var(--setting-z-index);
   background-color: var(--side-bg);
   backdrop-filter: blur(2px);
-  pointer-events: none;
   inset: 0;
 }
 
@@ -60,8 +53,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: left;
-  pointer-events: auto;
 }
 
 .setting-footer::before {

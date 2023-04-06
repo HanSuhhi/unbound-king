@@ -9,12 +9,12 @@ export default defineComponent({
     const { COMP } = defineCommonLayout("creator-plugin");
     return () => {
       return (
-        <c-layout ref={COMP}>
+        <base-layout ref={COMP}>
           {{
             aside: () => <div />,
             default: () => <Dashboard />,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

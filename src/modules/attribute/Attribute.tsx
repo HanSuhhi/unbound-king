@@ -23,12 +23,12 @@ export type StandardAttributeName = keyof typeof data`,
 
     return () => {
       return (
-        <c-layout ref={COMP}>
+        <base-layout ref={COMP}>
           {{
             aside: () => <CodeCanvasVue code={code.value} />,
             default: () => <AttributeMain />,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

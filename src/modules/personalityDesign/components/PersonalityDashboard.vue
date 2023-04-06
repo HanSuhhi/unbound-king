@@ -9,7 +9,7 @@ import IconBlock from "../../baseIcon/components/IconBlock.vue";
 import AddPersonalityDialog from "./AddPersonalityDialog.vue";
 import PersonalityBlock from "./personalityBlock.vue";
 
-const { openDialog } = defineCommonDialog("personality-design");
+const { modalShow } = defineCommonDialog();
 
 const data = inject<ComputedRef<Personality[]>>("data");
 
@@ -27,7 +27,7 @@ const activeData = ref<Personality>();
         <BuffExplanation :buff-name="activeData?.id || ''" :buff-key="'personality'" />
       </n-popover>
     </template>
-    <icon-block class="personality-dashboard_block" :icon="DATA_BaseIcons.plus" not-copy @click="openDialog" />
+    <icon-block class="personality-dashboard_block" :icon="DATA_BaseIcons.plus" not-copy @click="modalShow = true" />
   </article>
 </template>
 

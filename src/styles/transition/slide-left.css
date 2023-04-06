@@ -1,0 +1,14 @@
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all var(--transition-prop);
+}
+
+.slide-left-enter-from {
+  transform: translateX(var(--large));
+  opacity: 0;
+}
+
+.slide-left-leave-to {
+  transform: translateX(calc(-1 * var(--large)));
+  opacity: 0;
+}

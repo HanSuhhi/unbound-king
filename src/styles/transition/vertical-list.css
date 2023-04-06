@@ -1,0 +1,15 @@
+.vertical-list-move,
+.vertical-list-enter-active,
+.vertical-list-leave-active {
+  transition: all var(--transition-prop);
+}
+
+.vertical-list-enter-from,
+.vertical-list-leave-to {
+  transform: translate(30px, 0);
+  opacity: 0;
+}
+
+.vertical-list-leave-active {
+  position: absolute;
+}

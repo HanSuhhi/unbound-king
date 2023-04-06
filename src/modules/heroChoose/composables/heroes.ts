@@ -1,4 +1,4 @@
-import { useCsssLayout } from "csss-ui";
+import { useCsssLayout } from "@/components/ui/layout";
 import { watchEffect } from "vue";
 
 export const useHeroes = () => {

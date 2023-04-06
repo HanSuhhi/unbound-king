@@ -1,0 +1,19 @@
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all var(--transition-prop);
+}
+
+.slide-down-enter-from {
+  transform: translateY(calc(var(--large) * -1));
+  opacity: 0;
+}
+
+.slide-down-leave-to {
+  transform: translateY(var(--large));
+  opacity: 0;
+}
+
+.slide-down-enter-to,
+.slide-down-leave-from {
+  opacity: 1;
+}

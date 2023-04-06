@@ -14,7 +14,7 @@ const ele = ref<HTMLElement>();
 </script>
 
 <template>
-  <c-layout ref="Layout" class="name-design">
+  <base-layout ref="Layout" class="name-design">
     <template #aside>
       <CodeCanvas :code="code" class="code-canvas_design" />
     </template>
@@ -22,7 +22,7 @@ const ele = ref<HTMLElement>();
       <family-name />
       <first-names />
     </div>
-  </c-layout>
+  </base-layout>
 </template>
 
 <style scoped>

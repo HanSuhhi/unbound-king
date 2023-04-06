@@ -16,7 +16,7 @@ const canUsePlugins = computed(() => DATA_Creator_Plugins.filter((plugin) => plu
 
 <template>
   <article class="creator-steps">
-    <transition-group tag="section" class="value-list_main" name="fade">
+    <transition-group tag="section" class="value-list_main" name="vertical-list">
       <step v-for="_plugin, index of creator?.plugins!" :key="_plugin.translator.key" :plugin="_plugin" :data-active="useHtmlPropLint(index === activePlugin)" @delete-item="deletePlugin(index)" @click="activePlugin = index">
         <template #operator>
           <div class="icon-box">

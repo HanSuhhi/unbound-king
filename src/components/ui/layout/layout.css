@@ -1,0 +1,34 @@
+@import "./style/config.css";
+@import "./style/aside-width.css";
+@import "./style/footer-height.css";
+@import "./style/header-height.css";
+@import "./style/type.css";
+
+.csss-layout {
+  position: relative;
+  display: grid;
+  grid-template:
+    "header header" minmax(min-content, var(--header-height))
+    "aside main" auto
+    "footer footer" minmax(min-content, var(--footer-height))
+    / var(--grid-template-columns);
+  grid-template-areas: var(--grid-template-areas);
+  width: 100%;
+  height: 100%;
+}
+
+.csss-layout__header {
+  grid-area: header;
+}
+
+.csss-layout__aside {
+  grid-area: aside;
+}
+
+.csss-layout__main {
+  grid-area: main;
+}
+
+.csss-layout__footer {
+  grid-area: footer;
+}

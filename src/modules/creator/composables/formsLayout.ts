@@ -1,4 +1,4 @@
-import { useCsssTabs } from "csss-ui";
+import { useCsssTabs } from "@/components/ui/tabs";
 
 export const defineFormsTabs = (componentName: string) => {
   const tabsName = componentName;

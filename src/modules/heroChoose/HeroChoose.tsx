@@ -11,12 +11,12 @@ export default defineComponent({
 
     return () => {
       return (
-        <c-layout ref={Layout}>
+        <base-layout ref={Layout}>
           {{
             aside: () => <HeroesDetail />,
             default: () => <HeroesTable />,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

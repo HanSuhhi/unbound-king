@@ -38,6 +38,7 @@ import "./styles/workshop-package.css";
   position: absolute;
   bottom: 0;
   left: calc(var(--modules-width) + 1 * var(--base-margin));
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

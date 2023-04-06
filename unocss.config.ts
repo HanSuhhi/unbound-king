@@ -6,6 +6,11 @@ export default defineConfig({
   rules: [
     [/^z-(\d+)$/, ([, d]) => ({ 'z-index': d })],
     [/^flex-(\d+)$/, ([, d]) => ({ 'flex': d })],
+    ['dialog_reset', {
+      'padding': '0',
+      "border": 'none'
+    }],
+    ['pointer', { 'cursor': 'pointer' }],
     [
       'flex_center',
       {

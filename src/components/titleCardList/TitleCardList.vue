@@ -52,7 +52,7 @@ const watchEvent = (input: string) => {
   text-decoration: underline;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: color var(--flash) ease-out;
+  transition: color var(--transition-prop);
 }
 
 .value-list_item {

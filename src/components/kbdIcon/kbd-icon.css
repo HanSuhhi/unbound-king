@@ -5,10 +5,15 @@
   padding: 0 var(--small);
   color: var(--color);
   font-weight: bold;
+  font-size: var(--font-body-small);
   font-family: Jaldi, sans-serif;
   text-transform: uppercase;
   background-color: var(--gray-deep-2);
   border-top: 0.1px solid var(--gray-bright-1);
   border-radius: var(--border-radius);
-  zoom: 0.75;
+}
+
+.kbd-icon[data-reversed] {
+  color: var(--gray-deep-2);
+  background-color: var(--white-deep-2);
 }

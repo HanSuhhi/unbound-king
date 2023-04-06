@@ -1,0 +1,24 @@
+.csss-tabs {
+  /* list item */
+  --list-item-x: var(--mini);
+  --list-item-y: var(--normal);
+  --list-item-color: var(--black-bright-1);
+  --list-item-bg-color: var(--white-deep-2);
+  --list-item-tag-width: var(--mini);
+  --list-item-tag-bg-color: var(--gray-bright-2);
+  --list-item-hover-bg-color: var(--white);
+  --list-item-active-bg-color: var(--white);
+  --list-item-active-x: var(--mini);
+  --list-item-active-y: var(--large);
+  --list-item-active-tag-bg-color: var(--main-color);
+
+  /* panel */
+  --panel-padding: var(--small);
+
+  /* animation */
+  --ani-time: var(--moment);
+
+  /* disabled */
+  --list-item-padding: var(--list-item-x) var(--list-item-y);
+  --list-item-active-padding: var(--list-item-active-x) var(--list-item-active-y);
+}

@@ -1,6 +1,6 @@
+import { kebabCase } from "lodash-es";
 import type { Identifier, LiteralTypeNode, TypeLiteralNode, TypeNode, TypeReferenceNode, UnionTypeNode } from "typescript";
 import { createSourceFile, forEachChild, isPropertySignature, isTypeAliasDeclaration, isTypeLiteralNode, ScriptTarget, SyntaxKind } from "typescript";
-import { transformToKebab } from "../text/kebab";
 
 function parseTypeAliasDeclaration(typeString: string): AutoformItem[] {
   const sourceFile = createSourceFile("_", typeString, ScriptTarget.Latest);
@@ -43,7 +43,7 @@ function getTypeFromNode(node: TypeNode): [type: AutoformItem["type"], options?:
     case SyntaxKind.TypeReference:
       const referenceTypeNode = node as TypeReferenceNode;
       const typeName = (referenceTypeNode.typeName as Identifier).escapedText as string;
-      return [transformToKebab(typeName) as AutoformItem["type"]];
+      return [kebabCase(typeName) as AutoformItem["type"]];
   }
 }
 

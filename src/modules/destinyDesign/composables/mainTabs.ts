@@ -1,4 +1,4 @@
-import { useCsssTabs } from "csss-ui";
+import { useCsssTabs } from "@/components/ui/tabs";
 import { nextTick } from "vue";
 
 export const defineTabs = () => {

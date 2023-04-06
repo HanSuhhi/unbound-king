@@ -1,0 +1,11 @@
+.csss-layout-aside-width-large {
+  --aside-width: 14.5rem;
+}
+
+.csss-layout-aside-width-normal {
+  --aside-width: 12.5rem;
+}
+
+.csss-layout-aside-width-small {
+  --aside-width: 10.5rem;
+}

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import type { FormInstance } from "element-plus";
-import { ref, watch, computed } from "vue";
+import { ref, watch } from "vue";
 import FormIcon from "./components/FormIcon.vue";
 import FormTranslator from "./components/FormTranslator.vue";
-import { defineAutoFormRules } from "./composable/rules";
 import { defineAutoFormModel } from "./composable/model";
+import { defineAutoFormRules } from "./composable/rules";
 
 const FormRef = ref<FormInstance>();
 
@@ -20,18 +20,6 @@ function resetForm() {
   reset();
   model.value = init();
 }
-const tag = (item: AutoformItem) => {
-  const tags: Record<AutoformItem["type"], string> = {
-    input: "el-input",
-    selecter: "el-select",
-    number: "el-input-number",
-    icon: "form-icon",
-    translator: "form-translator",
-    textarea: "el-input",
-    text: "",
-  };
-  return tags[item.type];
-};
 
 watch(() => props.config, resetForm, { deep: true });
 </script>

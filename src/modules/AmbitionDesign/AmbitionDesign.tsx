@@ -16,12 +16,12 @@ export default defineComponent({
 
     return () => {
       return (
-        <c-layout ref={COMP} class="attribute-value page-transition">
+        <base-layout ref={COMP} class="attribute-value page-transition">
           {{
             aside: () => <CodeCanvasVue code={code.value} />,
             default: () => <AmbitionMain />,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

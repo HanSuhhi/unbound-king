@@ -1,5 +1,14 @@
 /// <reference types="vite/client" />
 
+
+declare module '*.vue' {
+  import type { DefineComponent } from 'vue';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
+}
+
+
 interface ImportMetaEnv {
   readonly PROJECT_NAME: string;
   readonly SETTING_HEADER_LIST_MAX_NUM: string;
@@ -12,14 +21,11 @@ interface ImportMetaEnv {
   readonly IV: string;
 }
 
-type KeyCommand = {
-  /**
-   * @description which key to watch
-   * @description if begin with "_", means watch all keys
-   */
-  key: string;
+type KeyEvent = {
+  translator: Translator;
   fn: (isPressed) => void;
-};
+  alive?: boolean;
+}
 
 type Translator = {
   key: string | Ref<string>;

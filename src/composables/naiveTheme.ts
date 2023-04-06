@@ -2,6 +2,7 @@ import type { GlobalThemeOverrides } from "naive-ui";
 import { darkTheme } from "naive-ui";
 
 const white = "var(--white)";
+
 const bg2 = "var(--bg-color-bright-2)";
 const main = "var(--main-color)";
 const mainb1 = "var(--main-color-bright-1)";
@@ -14,6 +15,11 @@ export const defineNaiveTheme = () => {
       primaryColor: main,
       primaryColorHover: mainb1,
       primaryColorPressed: mainb1,
+    },
+    Button: {
+      textColorHover: 'var(--white-bright-2)',
+      textColorPressed: 'var(--white-bright-2)',
+      textColorFocus: 'var(--white-bright-2)'
     },
     Drawer: {
       color: bg2

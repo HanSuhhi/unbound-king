@@ -14,13 +14,13 @@ export default defineComponent({
     provide("layout-style", style);
     return () => {
       return (
-        <c-layout class="destiny-design" ref={COMP}>
+        <base-layout class="destiny-design" ref={COMP}>
           {{
             header: () => <DestinyDescription />,
             aside: () => <CodeCanvas code={code} />,
             default: () => <DestinyMain />,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

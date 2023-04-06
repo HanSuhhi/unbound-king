@@ -20,12 +20,12 @@ export default defineComponent({
 
     return () => {
       return (
-        <c-layout ref={COMP}>
+        <base-layout ref={COMP}>
           {{
             aside: () => <Steps />,
             default: () => <Forms />,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

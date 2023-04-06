@@ -1,22 +1,20 @@
 <script setup lang="ts">
 import autoForm from "@/components/autoForm/autoForm.vue";
+import Icon from "@/components/Icon.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
 import { validateForm } from "@/composables/form/validateForm";
-import type { useCsssDialog } from "csss-ui";
-import { CDialog } from "csss-ui";
 import { FormInstance } from "element-plus";
-import { inject, ref } from "vue";
 import { cloneDeep, defer, delay } from "lodash-es";
-import Icon from "@/components/Icon.vue";
+import { NModal } from "naive-ui";
 import type { Ref } from "vue";
+import { inject, ref } from "vue";
 
 const props = defineProps<{
   formConfig: AutoformItem[];
   confirm?: Function;
 }>();
 
-const state = inject<ReturnType<typeof useCsssDialog>["state"]>("dialog");
-const Dialog = inject("Dialog");
+const modal = inject<Ref<boolean>>("modal")!;
 
 const currentConfig = ref(props.formConfig);
 const changed = inject<Ref<boolean>>("changed")!;
@@ -25,7 +23,7 @@ const confirm = (data: any, formEl: FormInstance) => {
   validateForm(formEl, () => {
     props.confirm?.(cloneDeep(data));
     changed.value = true;
-    state!.value.show = false;
+    modal.value = false;
     delay(() => {
       currentConfig.value = [];
       defer(() => (currentConfig.value = props.formConfig));
@@ -35,7 +33,7 @@ const confirm = (data: any, formEl: FormInstance) => {
 </script>
 
 <template>
-  <c-dialog ref="Dialog">
+  <NModal v-model:show="modal" class="router-view-dialog">
     <title-card class="form-dialog">
       <template #title>
         <p class="p-reset form-dialog_title">
@@ -43,18 +41,18 @@ const confirm = (data: any, formEl: FormInstance) => {
         </p>
       </template>
       <template #subtitle>
-        <Icon name="close" @click="state!.show = false" />
+        <Icon pointer class="form-dialog_close" name="close" @click="modal = false" />
       </template>
       <auto-form :config="currentConfig">
         <template #footer="{ data, form }">
           <section class="form-dialog_confirm">
-            <type-button @click.prevent="state!.show = false">取消</type-button>
+            <type-button @click.prevent="modal = false">取消</type-button>
             <type-button @click.prevent="confirm(data as GameIcon, form as FormInstance)">确定</type-button>
           </section>
         </template>
       </auto-form>
     </title-card>
-  </c-dialog>
+  </NModal>
 </template>
 
 <style scoped>
@@ -62,12 +60,12 @@ const confirm = (data: any, formEl: FormInstance) => {
   cursor: auto;
 }
 
-.i-mdi-close-thick {
-  cursor: pointer;
+.form-dialog_close {
+  transform: scale(1.5);
 }
 
-.i-mdi-close-thick:hover {
-  color: var(--main-color);
+.form-dialog_close:hover {
+  filter: brightness(0.8);
 }
 
 .form-dialog_title {

@@ -17,12 +17,9 @@
 }
 
 .workshop-package_button {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   color: var(--white-deep-2);
   font-size: var(--font-body);
-  transform: scale(1) !important;
   filter: saturate(70%);
 
   --bg-color-main: var(--orange-deep-2);

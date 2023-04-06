@@ -18,33 +18,3 @@
   pointer-events: auto;
   place-items: center;
 }
-
-.setting-header-item_arrow:hover {
-  transform: scale(1.2);
-}
-
-.setting-header-item_arrow:active {
-  transform: scale(1);
-}
-
-.setting-header-item {
-  position: relative;
-  margin: 0 var(--large);
-  color: var(--gray-bright-1);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.setting-header-item > kbd {
-  margin-left: var(--mini);
-}
-
-.setting-header-item:hover {
-  color: rgb(255 255 255 / 70%);
-  transform: scale(1.05);
-}
-
-.setting-header-item[data-active] {
-  color: var(--white-deep-2);
-  transform: scale(1.15);
-}

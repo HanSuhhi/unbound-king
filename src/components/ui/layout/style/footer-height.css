@@ -1,0 +1,11 @@
+.csss-layout-footer-height-large {
+  --footer-height: 4rem;
+}
+
+.csss-layout-footer-height-normal {
+  --footer-height: 3rem;
+}
+
+.csss-layout-footer-height-small {
+  --footer-height: 2rem;
+}

@@ -1,4 +1,4 @@
-import { useCsssLayout } from "csss-ui";
+import { useCsssLayout } from "@/components/ui/layout";
 
 export const useTableMain = () => {
   const { COMP: Layout } = useCsssLayout({

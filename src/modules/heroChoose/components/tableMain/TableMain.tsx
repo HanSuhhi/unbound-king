@@ -9,12 +9,12 @@ export default defineComponent({
     const { Layout } = useTableMain();
     return () => {
       return (
-        <c-layout ref={Layout}>
+        <base-layout ref={Layout}>
           {{
             header: () => <TableHeader />,
             default: () => <div class="table-main_table">asdasd</div>,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

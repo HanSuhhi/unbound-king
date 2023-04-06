@@ -11,7 +11,7 @@ export default defineComponent({
     const { HeroesTable } = useHeroesTable();
     return () => {
       return (
-        <c-tabs ref={HeroesTable}>
+        <base-tabs ref={HeroesTable}>
           {{
             list: () => {
               return (
@@ -36,7 +36,7 @@ export default defineComponent({
             },
             "panel-0": () => <TableMain />,
           }}
-        </c-tabs>
+        </base-tabs>
       );
     };
   },

@@ -1,4 +1,4 @@
-import { useCsssTabs } from "csss-ui";
+import { useCsssTabs } from "@/components/ui/tabs";
 export const useTableHeaderTabs = () => {
   const { COMP: Tabs } = useCsssTabs({
     style: {

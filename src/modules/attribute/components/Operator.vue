@@ -20,7 +20,7 @@ const formConfig = computed(() =>
     explanation: { title: "阐述", type: "textarea" },
   }),
 );
-const { openDialog } = defineCommonDialog("attribute");
+const { modalShow } = defineCommonDialog();
 
 const confirm = (data: Attribute) => {
   attributes!.value[data.translator.key] = data;
@@ -32,7 +32,7 @@ const confirm = (data: Attribute) => {
     <template #header>属性</template>
   </common-form-dialog>
   <div class="operator">
-    <type-button @click="openDialog">新增</type-button>
+    <type-button @click="modalShow = true">新增</type-button>
   </div>
 </template>
 

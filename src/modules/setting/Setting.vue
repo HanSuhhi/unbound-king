@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import SettingFooter from "./components/SettingFooter.vue";
+import SettingHeader from "./components/SettingHeader.vue";
+import "./setting.css";
+import { useDelayShowFromInjectData } from "../../composables/experience/delayShow";
+
+const [globalShow, partShow] = useDelayShowFromInjectData("setting");
+</script>
+
+<template>
+  <teleport to="body">
+    <transition name="slide-down">
+      <template v-if="globalShow">
+        <base-layout class="setting">
+          <template #header>
+            <transition name="slide-down">
+              <SettingHeader v-if="partShow" />
+            </transition>
+          </template>
+          <template #footer>
+            <transition name="slide-up"> <SettingFooter v-if="partShow" /></transition>
+          </template>
+          <!-- <transition name="slide-down">
+            <div v-if="partShow">hello wrold</div>
+          </transition> -->
+        </base-layout>
+      </template>
+    </transition>
+  </teleport>
+</template>
+
+<style scoped>
+.slide-down-leave-to {
+  transform: translateY(0);
+}
+
+.slide-up-leave-to {
+  transform: translateY(0);
+}
+</style>

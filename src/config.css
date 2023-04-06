@@ -1,10 +1,4 @@
-@import "csss-ui/dist/style.css";
-
-#app {
-  width: 100vw;
-  height: 100vh;
-  user-select: none;
-
+body {
   --moment: 0.45s;
   --ani-time: var(--moment);
   --border-radius: var(--mini);
@@ -21,6 +15,12 @@
   --bg-color: rgb(44 44 44);
   --bg-color-bright-1: rgb(52 52 52);
   --bg-color-bright-2: rgb(60 60 60);
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  user-select: none;
 }
 
 .app {

@@ -6,9 +6,7 @@ import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
 import { defineTabsData } from "@/composables/components/tabsList";
 import { unocssInclude } from "@/composables/constant/unocssInclude";
-import { CLayout, CTabs } from "csss-ui";
-import { find } from "lodash-es";
-import { computed, provide, ref } from "vue";
+import { computed } from "vue";
 import { parseImportModule } from "../../composables/ci/importModule";
 import { applyDataToModule } from "../../composables/experience/codeChanged";
 import IconDashboard from "./components/IconDashboard.vue";
@@ -25,19 +23,19 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
 </script>
 
 <template>
-  <c-layout ref="Layout" class="game-icon">
+  <base-layout ref="Layout" class="game-icon">
     <template #aside>
       <CodeCanvas :code="code" />
     </template>
-    <c-tabs ref="COMP">
+    <base-tabs ref="COMP">
       <template #list>
         <TabsListItem v-for="(item, key) in list" :key="key" :message="item" />
       </template>
       <template v-for="panel in read?.panels" :key="panel" #[panel]>
         <icon-dashboard />
       </template>
-    </c-tabs>
-  </c-layout>
+    </base-tabs>
+  </base-layout>
 </template>
 
 <style scoped>

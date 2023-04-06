@@ -13,9 +13,7 @@ export default defineComponent({
     const urls = props.text?.split(".");
     let data: any = DATA;
     urls?.forEach((url) => {
-      console.log("url: ", url);
       data = data[url.trim()];
-      console.log("data: ", data);
     });
     return () => {
       return (

@@ -1,40 +1,39 @@
-<script setup lang='ts'>
-import { defineItemsSearch } from '@/composables/components/ItemsSearch';
-import { throttle } from 'lodash-es';
-import { watch } from 'vue';
-import { animationDuration } from '../composables/constant/env';
+<script setup lang="ts">
+import { defineItemsSearch } from "@/composables/components/ItemsSearch";
+import { throttle } from "lodash-es";
+import { watch, ref } from "vue";
+import { animationDuration } from "../composables/constant/env";
+import { NInput } from "naive-ui";
 
 const props = defineProps<{ watchEvent: (...args: any) => any }>();
 
-const { COMP: Input, state: InputState } = defineItemsSearch();
+// const { COMP: Input, state: InputState } = defineItemsSearch();
+const value = ref("");
 
-watch(
-  () => InputState.value?.model,
-  throttle(props.watchEvent, animationDuration),
-);
-
+watch(value, throttle(props.watchEvent, animationDuration));
 </script>
 
 <template>
-  <c-input ref="Input" class="search-input">
-    <template #header>
-      <icon name="search-eye" />
-    </template>
-  </c-input>
+  <div class="search-input" flex_center>
+    <icon name="search-eye" />
+    <input v-model="value" class="input-reset search-input_input" />
+  </div>
 </template>
 
 <style scoped>
 .search-input {
-  width: 70%;
-  padding: var(--small);
-  padding-bottom: var(--mini);
-  border: none;
+  width: fit-content;
   border-bottom: var(--border);
+}
+
+.search-input_input {
+  padding: var(--mini) var(--small);
+  border: none;
   border-radius: 0;
   transition: all var(--transition-prop);
 }
 
-.search-input[data-active] {
+.search-input:active {
   width: 100%;
 }
 </style>

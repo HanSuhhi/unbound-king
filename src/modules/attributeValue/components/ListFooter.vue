@@ -1,15 +1,15 @@
-<script setup lang='ts'>
-import type { useCsssDialog } from 'csss-ui';
-import type { Ref } from 'vue';
-import { inject } from 'vue';
+<script setup lang="ts">
+// import type { useCsssDialog } from "@/components/ui/dialog";
+import type { Ref } from "vue";
+import { inject } from "vue";
 
 const props = defineProps<{ type: AttributeValue["type"] }>();
 
-const state = inject<ReturnType<typeof useCsssDialog>["state"]>("dialog");
+const modal = inject<Ref<boolean>>('modal')!;
 const type = inject<Ref<AttributeValue["type"]>>("type");
 
 const openDialog = () => {
-  state!.value.show = true;
+  modal.value = true;
   type!.value = props.type;
 };
 </script>

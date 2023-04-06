@@ -1,0 +1,71 @@
+.csss-layout-header-footer {
+  --grid-template-areas: "header header" "aside main" "footer footer";
+}
+
+.csss-layout-header-aside {
+  --grid-template-areas: "header header" "aside main" "aside footer";
+}
+
+.csss-layout-footer-aside {
+  --grid-template-areas: "aside header" "aside main" "footer footer";
+}
+
+.csss-layout-aside {
+  --grid-template-areas: "aside header" "aside main" "aside footer";
+}
+
+.csss-layout-header-footer[data-reverse] {
+  --grid-template-areas: "header header" "main aside" "footer footer";
+}
+
+.csss-layout-header-aside[data-reverse] {
+  --grid-template-areas: "header header" "main aside" "footer aside";
+}
+
+.csss-layout-footer-aside[data-reverse] {
+  --grid-template-areas: "header aside" "main aside" "footer footer";
+}
+
+.csss-layout-aside[data-reverse] {
+  --grid-template-areas: "header aside" "main aside" "footer aside";
+}
+
+.csss-layout[data-reverse] {
+  grid-template-columns: auto minmax(min-content, var(--aside-width));
+}
+
+.csss-only-header {
+  --grid-template-areas: "header header" "main main" "main main";
+}
+
+.csss-only-footer {
+  --grid-template-areas: "main main" "main main" "footer footer";
+}
+
+.csss-only-aside {
+  --grid-template-areas: "aside main" "aside main" "aside main";
+}
+
+.csss-only-aside[data-reverse] {
+  --grid-template-areas: "main aside" "main aside" "main aside";
+}
+
+.csss-header-footer {
+  --grid-template-areas: "header header" "main main" "footer footer";
+}
+
+.csss-header-aside {
+  --grid-template-areas: "header header" "aside main" "aside main";
+}
+
+.csss-header-aside[data-reverse] {
+  --grid-template-areas: "header header" "main aside" "main aside";
+}
+
+.csss-aside-footer {
+  --grid-template-areas: "aside main" "aside main" "footer footer";
+}
+
+.csss-aside-footer[data-reverse] {
+  --grid-template-areas: "main aside" "main aside" "footer footer";
+}

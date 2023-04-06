@@ -1,3 +1,4 @@
+import { useGlobalDialog } from "@/composables/components/globalDialog";
 import LifeHash from "@hansuhhi-don/lifehash-vue";
 import { useNow } from "@vueuse/core";
 import { defineComponent } from "vue";

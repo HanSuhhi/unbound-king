@@ -17,15 +17,15 @@ const loading = provideLoading();
 </script>
 
 <template>
-  <c-layout ref="COMP" v-loading="loading" class="page-transition">
+  <base-layout ref="COMP" v-loading="loading" class="page-transition">
     <template #aside>
       <CodeCanvas :code="code" />
     </template>
-    <c-layout>
+    <base-layout>
       <template #header>
         <CreatorHeader />
       </template>
       <CreatorMain />
-    </c-layout>
-  </c-layout>
+    </base-layout>
+  </base-layout>
 </template>

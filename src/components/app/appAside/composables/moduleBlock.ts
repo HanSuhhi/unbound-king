@@ -1,9 +1,9 @@
-import type { useCsssTabs } from "csss-ui";
 import { findIndex } from "lodash-es";
 import { storeToRefs } from "pinia";
 import { computed, nextTick, watchEffect } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
 import { useGlobalStore } from "@/stores/global.store";
+import type { useCsssTabs } from "@/components/ui/tabs";
 
 const calcModuleBorderRadius = (active: number, total: number): string => {
   if (total !== 1) {

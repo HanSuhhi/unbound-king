@@ -9,12 +9,12 @@ export default defineComponent({
     const { COMP } = defineBaseIconLayout();
     return () => {
       return (
-        <c-layout ref={COMP}>
+        <base-layout ref={COMP}>
           {{
             header: () => <Tips />,
             default: () => <IconDashboard />,
           }}
-        </c-layout>
+        </base-layout>
       );
     };
   },

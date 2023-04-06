@@ -1,5 +1,5 @@
+import { useCsssTabs } from "@/components/ui/tabs";
 import { useGlobalStore } from "@/stores/global.store";
-import { useCsssTabs } from "csss-ui";
 import { findIndex } from "lodash-es";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";

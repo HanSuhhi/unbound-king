@@ -1,14 +1,35 @@
-import { useSettingStore } from "@/modules/setting/store/setting.store";
+import { useCsssLayout } from "@/components/ui/layout";
 import { useKeyStore } from "@/stores/key.store";
 import { useWindowSize } from "@vueuse/core";
-import { useCsssLayout } from "csss-ui";
-import { defer, throttle, debounce } from 'lodash-es';
-import { storeToRefs } from "pinia";
-import { watch } from 'vue';
+import { debounce, defer } from 'lodash-es';
+import { provide, ref, watch } from 'vue';
 import { animationDuration } from '../../../composables/constant/env';
 
+const autoAdjust = (adjust: () => void) => {
+  defer(adjust);
+  const { width, height } = useWindowSize();
+  defer(() => {
+    watch(width, debounce(adjust, animationDuration));
+    watch(height, debounce(adjust, animationDuration));
+  });
+};
+
+const globalSettintControl = () => {
+  const { addKeyCommand } = useKeyStore();
+
+  const settingShow = ref(false);
+  provide("setting", settingShow);
+
+  addKeyCommand({
+    translator: { key: "escape", title: "设置" },
+    fn: (isPressed: boolean) => {
+      if (!isPressed && !settingShow.value) settingShow.value = true;
+    },
+  });
+};
+
 export const defineAppLayout = () => {
-  const { COMP: Layout, style } = useCsssLayout({
+  const { COMP: Layout } = useCsssLayout({
     state: {
       layoutType: "header-footer",
     },
@@ -39,25 +60,9 @@ export const defineAppLayout = () => {
     appElement.style.setProperty("--modules-width", `${modulesELement.clientWidth + 1}px`);
     appElement.style.setProperty("--aside-width", `${asideElement.clientWidth}px`);
   };
-  defer(setLayoutProps);
-  const { width, height } = useWindowSize();
-  defer(() => {
-    watch(width, debounce(setLayoutProps, animationDuration));
-    watch(height, debounce(setLayoutProps, animationDuration));
-  });
+  autoAdjust(setLayoutProps);
 
-  /**
-   * @description keys
-   */
-  const { addKeyCommand } = useKeyStore();
-  const { settingPageActive } = storeToRefs(useSettingStore());
-
-  addKeyCommand({
-    key: "escape",
-    fn: (isPressed: boolean) => {
-      if (!isPressed) settingPageActive.value = !settingPageActive.value;
-    },
-  });
+  globalSettintControl();
 
   return { Layout };
 };

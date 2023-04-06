@@ -9,7 +9,7 @@
   padding-left: var(--normal);
   color: var(--gray);
   cursor: pointer;
-  transition-duration: var(--flash);
+  transition: var(--transition-prop);
   transition-property: color, background;
 }
 

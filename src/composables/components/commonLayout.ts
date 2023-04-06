@@ -1,4 +1,4 @@
-import { useCsssLayout } from "csss-ui";
+import { useCsssLayout } from "@/components/ui/layout";
 import { provide } from "vue";
 
 export const defineCommonLayout = (name: string, reverse = true) => {

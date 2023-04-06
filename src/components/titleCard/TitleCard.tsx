@@ -12,7 +12,7 @@ export default defineComponent({
             <p class="title-card_subtitle">{slots.subtitle?.()}</p>
           </header>
           <section class="title-card_main">{slots.default?.()}</section>
-          {slots.footer && <section className="title-card_footer">{slots.footer?.()}</section>}{" "}
+          {slots.footer && <section class="title-card_footer">{slots.footer?.()}</section>}{" "}
         </article>
       );
     };
