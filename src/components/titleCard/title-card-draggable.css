@@ -1,0 +1,7 @@
+.title-card_draggable {
+  position: fixed;
+
+  .title-card_header {
+    cursor: all-scroll;
+  }
+}

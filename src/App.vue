@@ -23,18 +23,18 @@ function setDefaultTransitionDuration() {
 }
 nextTick(setDefaultTransitionDuration);
 
-// setTimeout(() => {
-//   const { warning } = useGlobalDialog();
-//   warning({
-//     title: '退出游戏',
-//     text: '是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。',
-//     confirm() {
-//       window.close();
-//     },
-//     cancel() {
-//     },
-//   });
-// }, 1000);
+setTimeout(() => {
+  const { warning } = useGlobalDialog();
+  warning({
+    title: '退出游戏',
+    text: '是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。',
+    confirm() {
+      window.close();
+    },
+    cancel() {
+    },
+  });
+}, 1000);
 </script>
 
 <template>

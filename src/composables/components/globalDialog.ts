@@ -33,7 +33,7 @@ export const useGlobalDialog = (): Record<GlobalDialog['type'], (message: Messag
   const dialog = (type: GlobalDialog['type']) => (message: MessageReceiveProp) => {
     dialogMessage.value = {
       ...message,
-      toSelecter: ".router-view-box",
+      // toSelecter: ".router-view-box",
       type,
       _cancel() {
         message?.cancel?.();

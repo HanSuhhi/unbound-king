@@ -1,12 +1,21 @@
 <script setup lang="ts">
-import TitleCard from "@/components/titleCard/TitleCard";
+import TitleCardDraggable from "@/components/titleCard/TitleCardDraggable";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import { useDelayShowFromRef } from "@/composables/experience/delayShow";
+import { ref, provide, onMounted } from 'vue';
 import TypeButton from "../typeButton/TypeButton.vue";
+import { useBoundary } from './composables/boundary';
 import { useGlobalDialogKey } from './composables/key';
 
 const [delayshow] = useDelayShowFromRef(dialogMessage);
-console.log('delayshow: ', delayshow);
+
+const props = withDefaults(defineProps<{ headerAsBody?: boolean }>(), { headerAsBody: false });
+
+const container = ref();
+const boxClass = "global-dialog_main";
+const box = ref();
+onMounted(() => box.value = document.querySelector(`.${boxClass}`)!);
+const [x, y] = useBoundary(container, box, props.headerAsBody);
 
 useGlobalDialogKey();
 </script>
@@ -14,10 +23,10 @@ useGlobalDialogKey();
 <template>
   <transition>
     <teleport v-if="dialogMessage" :to="dialogMessage?.toSelecter || 'body'">
-      <div class="global-dialog" flex_center>
+      <div ref="container" class="global-dialog" flex_center>
         <transition name="slide-down">
           <dialog v-if="delayshow" open dialog_reset>
-            <title-card class="global-dialog_main">
+            <title-card-draggable ref="box" :class="boxClass" :x="x" :y="y">
               <template #title>
                 {{ dialogMessage.title }}
               </template>
@@ -31,7 +40,7 @@ useGlobalDialogKey();
                 </section>
               </template>
               {{ dialogMessage.text }}
-            </title-card>
+            </title-card-draggable>
           </dialog>
         </transition>
       </div>
