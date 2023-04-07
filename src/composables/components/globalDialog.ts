@@ -4,6 +4,7 @@ type GlobalDialog = {
   title: string;
   type: "info" | "warning" | "danger",
   text: string;
+  headerAsBody?: boolean;
   confirm?: () => void;
   cancel?: () => void;
   _confirm: () => void;
@@ -13,27 +14,13 @@ type GlobalDialog = {
 
 export const dialogMessage = ref<GlobalDialog>();
 
-// setTimeout(() => {
-//   dialogMessage.value = {
-//     title: "title",
-//     text: "asdasdasd",
-//     type: "info",
-//     _cancel() {
-
-//     },
-//     _confirm() {
-
-//     },
-//   };
-// }, 1000);
-
 type MessageReceiveProp = Omit<GlobalDialog, "type" | "_confirm" | "_cancel">
 
 export const useGlobalDialog = (): Record<GlobalDialog['type'], (message: MessageReceiveProp) => void> => {
   const dialog = (type: GlobalDialog['type']) => (message: MessageReceiveProp) => {
     dialogMessage.value = {
       ...message,
-      // toSelecter: ".router-view-box",
+      headerAsBody: true,
       type,
       _cancel() {
         message?.cancel?.();

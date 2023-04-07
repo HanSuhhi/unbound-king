@@ -1,5 +1,5 @@
 .title-card_draggable {
-  position: fixed;
+  user-select: none;
 
   .title-card_header {
     cursor: all-scroll;

@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import TitleCardCore from "./components/TitleCardCore";
+import TitleCardCore from "./components/TitleCardCore.vue";
 import "./title-card.css";
 
 export default defineComponent({

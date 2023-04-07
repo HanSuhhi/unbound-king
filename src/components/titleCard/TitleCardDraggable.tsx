@@ -1,11 +1,11 @@
-import type { Ref, StyleValue } from 'vue';
-import { computed } from 'vue';
-import { defineComponent, provide, ref, inject, watch } from 'vue';
-import TitleCardCore from "./components/TitleCardCore";
 import { UseDraggable } from "@vueuse/components";
-import "./title-card-draggable.css";
-import { dialogMessage } from '../../composables/components/globalDialog';
 import type { Position } from '@vueuse/core';
+import type { Ref, StyleValue } from 'vue';
+import { ref } from 'vue';
+import { computed, defineComponent, inject } from 'vue';
+import { useFixed } from "@/components/dialog/composables/fixed";
+import TitleCardCore from "./components/TitleCardCore.vue";
+import "./title-card-draggable.css";
 
 export default defineComponent({
   name: "TitleCard",
@@ -15,6 +15,10 @@ export default defineComponent({
     },
     y: {
       type: Number,
+    },
+    changeFixed: {
+      type: Function,
+      required: false
     }
   },
   setup: (props, { slots }) => {
@@ -28,11 +32,12 @@ export default defineComponent({
 
     return () => {
       return (
-        <UseDraggable as="article" handle={handle.value} style={style.value} class="title-card title-card_draggable">
+        <UseDraggable
+          as="article" handle={handle.value} style={style.value} class={`title-card title-card_draggable`}>
           {{
             default: (position: Position) => {
               draggableBoundary(position);
-              return <TitleCardCore handle={handle}>
+              return <TitleCardCore handle={handle} changeFixed={props.changeFixed}>
                 {{
                   title: () => <>{slots.title?.()}</>,
                   subtitle: () => <>{slots.subtitle?.()}</>,

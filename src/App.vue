@@ -11,7 +11,7 @@ import GlobalDialog from "./components/dialog/GlobalDialog.vue";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import { defineNaiveTheme } from "./composables/naiveTheme";
 import Setting from "./modules/setting/Setting.vue";
-import { useGlobalDialog } from '@/composables/components/globalDialog';
+import { useGlobalDialog, dialogMessage } from '@/composables/components/globalDialog';
 
 const { Layout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
@@ -23,22 +23,20 @@ function setDefaultTransitionDuration() {
 }
 nextTick(setDefaultTransitionDuration);
 
-setTimeout(() => {
-  const { warning } = useGlobalDialog();
-  warning({
-    title: '退出游戏',
-    text: '是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。',
-    confirm() {
-      window.close();
-    },
-    cancel() {
-    },
-  });
-}, 1000);
+const { warning } = useGlobalDialog();
+const a = warning.bind(this, {
+  title: '退出游戏',
+  text: '是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。',
+  confirm() {
+    window.close();
+  },
+  cancel() {
+  },
+});
 </script>
 
 <template>
-  <n-config-provider :theme="darkTheme" :theme-overrides="darkThemeOverrides">
+  <n-config-provider :theme="darkTheme" :theme-overrides="darkThemeOverrides" @click="a">
     <n-message-provider>
       <base-layout ref="Layout" class="app">
         <div class="router-view-box">
@@ -60,7 +58,7 @@ setTimeout(() => {
         </template>
       </base-layout>
       <Setting />
-      <global-dialog />
+      <global-dialog v-if="dialogMessage" />
     </n-message-provider>
   </n-config-provider>
 </template>

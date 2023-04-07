@@ -2,46 +2,43 @@
 import TitleCardDraggable from "@/components/titleCard/TitleCardDraggable";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import { useDelayShowFromRef } from "@/composables/experience/delayShow";
-import { ref, provide, onMounted } from 'vue';
+import { ref } from 'vue';
 import TypeButton from "../typeButton/TypeButton.vue";
 import { useBoundary } from './composables/boundary';
 import { useGlobalDialogKey } from './composables/key';
+import { useFixed } from './composables/fixed';
 
 const [delayshow] = useDelayShowFromRef(dialogMessage);
 
-const props = withDefaults(defineProps<{ headerAsBody?: boolean }>(), { headerAsBody: false });
-
 const container = ref();
-const boxClass = "global-dialog_main";
 const box = ref();
-onMounted(() => box.value = document.querySelector(`.${boxClass}`)!);
-const [x, y] = useBoundary(container, box, props.headerAsBody);
+const [x, y] = useBoundary(container, box);
+const { fixed, changeFixed, scrolling } = useFixed();
 
 useGlobalDialogKey();
 </script>
 
 <template>
   <transition>
-    <teleport v-if="dialogMessage" :to="dialogMessage?.toSelecter || 'body'">
-      <div ref="container" class="global-dialog" flex_center>
+    <teleport :to="dialogMessage?.toSelecter || 'body'">
+      <div ref="container" :class="['global-dialog', scrolling && 'global-dialog_scrolling']" flex_center>
         <transition name="slide-down">
-          <dialog v-if="delayshow" open dialog_reset>
-            <title-card-draggable ref="box" :class="boxClass" :x="x" :y="y">
-              <template #title>
-                {{ dialogMessage.title }}
-              </template>
-              <template #subtitle>
-                <icon class="global-dialog_close" :name="'close'" @click="dialogMessage?._cancel" />
-              </template>
-              <template #footer>
-                <section class="global-dialog_operator" flex_center>
-                  <type-button class="global-dialog_button" plain @click="dialogMessage?._cancel">取消</type-button>
-                  <type-button class="global-dialog_button" @click="dialogMessage?._confirm">确定</type-button>
-                </section>
-              </template>
-              {{ dialogMessage.text }}
-            </title-card-draggable>
-          </dialog>
+          <title-card-draggable v-if="delayshow" ref="box" :class="['global-dialog_main', `${fixed && 'fixed'}`]" :x="x"
+            :y="y" :change-fixed="changeFixed">
+            <template #title>
+              {{ dialogMessage?.title }}
+            </template>
+            <template #subtitle>
+              <icon class="global-dialog_close" :name="'close'" @click="dialogMessage?._cancel" />
+            </template>
+            <template #footer>
+              <section class="global-dialog_operator" flex_center>
+                <type-button class="global-dialog_button" plain @click="dialogMessage?._cancel">取消</type-button>
+                <type-button class="global-dialog_button" @click="dialogMessage?._confirm">确定</type-button>
+              </section>
+            </template>
+            {{ dialogMessage?.text }}
+          </title-card-draggable>
         </transition>
       </div>
     </teleport>
@@ -49,6 +46,10 @@ useGlobalDialogKey();
 </template>
 
 <style scoped>
+.global-dialog_scrolling {
+  opacity: 0.8;
+}
+
 .global-dialog {
   position: absolute;
   z-index: var(--global-dialog-z-index);
