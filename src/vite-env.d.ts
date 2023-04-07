@@ -22,15 +22,13 @@ interface ImportMetaEnv {
 }
 
 type KeyEvent = {
+  key: string;
   translator: Translator;
   fn: (isPressed) => void;
   alive?: boolean;
 }
 
-type Translator = {
-  key: string | Ref<string>;
-  title: string | Ref<string>;
-};
+type Translator = [key: string | Ref<string>, title: string | Ref<string>];
 type Dictionary<T> = Record<string, T>;
 type BaseItem = {
   icon?: Icon;

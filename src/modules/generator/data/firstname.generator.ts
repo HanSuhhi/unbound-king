@@ -3,17 +3,11 @@ import { DATA_FirstNames } from '../../nameDesign/data/name.data';
 import { compareIgnoreCase } from '../../../composables/util/string';
 
 const firstnameGenerator: GeneratorFunc<any, FirstnameGeneratorProps> = (data, paramsm, { pastData }) => {
-
-  // const range = DATA_FirstNames.filter(firstname => {
-  //   if (!firstname.chase && !firstname.gender) return true;
-  //   if (firstname.chase && !firstname.gender) return compareIgnoreCase(firstname.chase, pastData.chase.key);
-  //   if (!firstname.chase && firstname.gender) return compareIgnoreCase(firstname.gender, pastData.gender.key);
-  //   if (firstname.chase && firstname.gender) return compareIgnoreCase(firstname.gender, pastData.gender.key) && compareIgnoreCase(firstname.chase, pastData.chase.key);
-  // });
+  console.log('pastData: ', pastData);
   const range = DATA_FirstNames.filter(firstname => {
     if (!firstname.chase && !firstname.gender) return true;
-    if (firstname.chase && !compareIgnoreCase(firstname.chase, pastData.chase.key)) return false;
-    if (firstname.gender && !compareIgnoreCase(firstname.gender, pastData.gender.key)) return false;
+    if (firstname.chase && !compareIgnoreCase(firstname.chase, pastData.chase[0])) return false;
+    if (firstname.gender && !compareIgnoreCase(firstname.gender, pastData.gender[0])) return false;
     return true;
   });
 
@@ -32,6 +26,7 @@ const firstnameGenerator: GeneratorFunc<any, FirstnameGeneratorProps> = (data, p
 };
 
 const firstnameGeneratorFormConfig: Autoform = [{
+  key: "firstname",
   type: "text",
   title: "根据条件随机生成",
 }];

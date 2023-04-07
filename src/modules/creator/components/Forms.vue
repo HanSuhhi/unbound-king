@@ -23,7 +23,7 @@ const toggle = (index: number) => (state.value.active = index);
     </template>
     <template #panel-0> <froms-config :form-config="plugin?.data || []" /> </template>
     <template #panel-1>
-      <plugin-test :plugin-key="plugin?.translator.key" />
+      <plugin-test :plugin-key="plugin?.translator[0]" />
     </template>
     <template #panel-2>
       <creator-preview />

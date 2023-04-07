@@ -1,7 +1,6 @@
 import { DATA_Generators } from "@/modules/generator/data";
 import { forEach } from "lodash-es";
 import { ref, watch } from "vue";
-import { getDataByKey } from '../../../composables/data';
 
 export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
   const data = ref<ReturnStruct[]>([]);
@@ -9,7 +8,7 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
   const genData = () => {
     const _data: ReturnStruct[] = [];
     forEach(plugin?.data, (plugin: PluginStruct) => {
-      const title = `${plugin.translator.title} - ${plugin.translator.key}`;
+      const title = `${plugin.translator[1]} - ${plugin.translator[0]}`;
       // inject data
       if (plugin?.generatorParams?.needInject) {
         forEach(plugin.generatorParams.needInject, (injectName: string) => {
@@ -19,6 +18,7 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
             writable: true,
             enumerable: true,
           });
+          console.log('plugin: ', plugin);
           forEach(data, (_data: ReturnStruct) => {
             plugin['pastData'][_data[2]] = _data[1];
           });
@@ -26,7 +26,7 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
       }
       const value = DATA_Generators[plugin.generator](_data, plugin.generatorParams, plugin);
 
-      _data.push([title, value, plugin.translator.key]);
+      _data.push([title, value, plugin.translator[0]]);
     });
     data.value = _data;
   };

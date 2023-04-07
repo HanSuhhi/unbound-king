@@ -1,33 +1,30 @@
 export default <Creator>{
-  translator: { key: "character", title: "角色创造器" },
+  translator: ["character", "角色创造器"],
   icon: "character",
   description: "用于随机生成角色基础信息，属性。",
   plugins: [
     {
-      translator: {
-        key: "character-baseinfo-plugin",
-        title: "角色基础信息插件",
-      },
+      translator: ["character-baseinfo-plugin", "角色基础信息插件"],
       belong: "character",
       description: "生成人物追求与性别",
       icon: "mesasge",
       data: [
         {
-          translator: { key: "gender", title: "性別" },
+          translator: ["gender", "性別"],
           description: "",
           generator: "random",
           generatorForm: [{ type: "text", title: "根据条件随机生成" }],
           generatorParams: { range: "DATA_Genders" },
         },
         {
-          translator: { key: "chase", title: "追求" },
+          translator: ["chase", "追求"],
           description: "角色毕生的追求，在诸多方面对角色产生影响",
           generator: "random",
           generatorForm: [{ type: "text", title: "根据条件随机生成" }],
           generatorParams: { range: "DATA_Chases", needTransform: true },
         },
         {
-          translator: { key: "age", title: "年龄" },
+          translator: ["age", "年龄"],
           description: "",
           generator: "random",
           generatorForm: [{ type: "text", title: "根据条件随机生成" }],
@@ -36,55 +33,49 @@ export default <Creator>{
       ],
     },
     {
-      translator: { key: "character-name-plugin", title: "角色姓名插件" },
+      translator: ["character-name-plugin", "角色姓名插件"],
       belong: "character",
       description: "根据人物性别、追求生成姓名",
       icon: "write",
       data: [
         {
-          translator: { key: "familyName", title: "姓氏" },
+          translator: ["familyName", "姓氏"],
           description: "",
           generator: "random",
           generatorForm: [{ type: "text", title: "根据条件随机生成" }],
           generatorParams: { range: "DATA_FamilyNames" },
         },
         {
-          translator: { key: "firstname", title: "名辞" },
+          translator: ["firstname", "名辞"],
           description: "",
           generator: "firstname",
-          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
+          generatorForm: [
+            { key: "firstname", type: "text", title: "根据条件随机生成" },
+          ],
           generatorParams: { needInject: ["character-baseinfo-plugin"] },
-          pastData: {
-            gender: { key: "male", title: "男" },
-            chase: { key: "lizhi", title: "立志" },
-            age: { key: "youth", title: "青年" },
-          },
         },
         {
-          translator: { key: "firstname-second", title: "名辞 2" },
+          translator: ["firstname-second", "名辞 2"],
           description: "当第一个名辞为单字时，有几率产生第二个单字，组成复名",
           generator: "firstname",
-          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
+          generatorForm: [
+            { key: "firstname", type: "text", title: "根据条件随机生成" },
+          ],
           generatorParams: {
             needInject: ["character-baseinfo-plugin"],
             second: true,
-          },
-          pastData: {
-            gender: { key: "male", title: "男" },
-            chase: { key: "lizhi", title: "立志" },
-            age: { key: "youth", title: "青年" },
           },
         },
       ],
     },
     {
-      translator: { key: "attribute-value-plugin", title: "属性值插件" },
+      translator: ["attribute-value-plugin", "属性值插件"],
       belong: "character",
       description: "通过配置，随机生成一份属性值表",
       icon: "character-param",
       data: [
         {
-          translator: { key: "hp", title: "生命值" },
+          translator: ["hp", "生命值"],
           generator: "number",
           generatorForm: [
             {
@@ -109,7 +100,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "maxHp", title: "生命上限" },
+          translator: ["maxHp", "生命上限"],
           generator: "paste",
           generatorForm: [
             {
@@ -147,7 +138,7 @@ export default <Creator>{
           generatorParams: { pasteFrom: "hp" },
         },
         {
-          translator: { key: "minDef", title: "防御力下限" },
+          translator: ["minDef", "防御力下限"],
           generator: "number",
           generatorForm: [
             {
@@ -172,7 +163,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "maxDef", title: "防御力上限" },
+          translator: ["maxDef", "防御力上限"],
           generator: "number",
           generatorForm: [
             {
@@ -197,7 +188,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "minAtk", title: "攻击力下限" },
+          translator: ["minAtk", "攻击力下限"],
           generator: "number",
           generatorForm: [
             {
@@ -222,7 +213,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "maxAtk", title: "攻击力上限" },
+          translator: ["maxAtk", "攻击力上限"],
           generator: "number",
           generatorForm: [
             {
@@ -247,7 +238,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "matk", title: "法术攻击力" },
+          translator: ["matk", "法术攻击力"],
           generator: "number",
           generatorForm: [
             {
@@ -272,7 +263,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "apr", title: "法术防御力" },
+          translator: ["apr", "法术防御力"],
           generator: "number",
           generatorForm: [
             {
@@ -297,7 +288,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "wt", title: "负重" },
+          translator: ["wt", "负重"],
           generator: "number",
           generatorForm: [
             {
@@ -322,7 +313,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "res", title: "抗性" },
+          translator: ["res", "抗性"],
           generator: "number",
           generatorForm: [
             {
@@ -347,7 +338,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "pct", title: "虔诚" },
+          translator: ["pct", "虔诚"],
           generator: "number",
           generatorForm: [
             {
@@ -372,7 +363,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "acc", title: "命中" },
+          translator: ["acc", "命中"],
           generator: "number",
           generatorForm: [
             {
@@ -397,7 +388,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "eva", title: "闪避" },
+          translator: ["eva", "闪避"],
           generator: "number",
           generatorForm: [
             {
@@ -422,7 +413,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "luc", title: "幸运" },
+          translator: ["luc", "幸运"],
           generator: "number",
           generatorForm: [
             {
@@ -447,7 +438,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "hex", title: "诅咒" },
+          translator: ["hex", "诅咒"],
           generator: "number",
           generatorForm: [
             {
@@ -472,7 +463,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "crit", title: "会心" },
+          translator: ["crit", "会心"],
           generator: "number",
           generatorForm: [
             {
@@ -497,7 +488,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "cha", title: "魅力" },
+          translator: ["cha", "魅力"],
           generator: "number",
           generatorForm: [
             {
@@ -522,7 +513,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "moral", title: "道德" },
+          translator: ["moral", "道德"],
           generator: "number",
           generatorForm: [
             {
@@ -547,7 +538,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "sp", title: "唯我" },
+          translator: ["sp", "唯我"],
           generator: "number",
           generatorForm: [
             {
@@ -572,7 +563,7 @@ export default <Creator>{
           generatorParams: { min: 2, max: 222 },
         },
         {
-          translator: { key: "ld", title: "指挥" },
+          translator: ["ld", "指挥"],
           generator: "number",
           generatorForm: [
             {
@@ -599,13 +590,13 @@ export default <Creator>{
       ],
     },
     {
-      translator: { key: "attribute-plugin", title: "属性插件" },
+      translator: ["attribute-plugin", "属性插件"],
       belong: "character",
       description: "随机生成一份人物属性",
       icon: "list",
       data: [
         {
-          translator: { key: "ldr", title: "统帅" },
+          translator: ["ldr", "统帅"],
           generator: "number",
           generatorForm: [
             {
@@ -630,7 +621,7 @@ export default <Creator>{
           generatorParams: { min: 1, max: 18 },
         },
         {
-          translator: { key: "ep", title: "佐佑" },
+          translator: ["ep", "佐佑"],
           generator: "number",
           generatorForm: [
             {
@@ -655,7 +646,7 @@ export default <Creator>{
           generatorParams: { min: 1, max: 18 },
         },
         {
-          translator: { key: "int", title: "奇术" },
+          translator: ["int", "奇术"],
           generator: "number",
           generatorForm: [
             {
@@ -680,7 +671,7 @@ export default <Creator>{
           generatorParams: { min: 1, max: 18 },
         },
         {
-          translator: { key: "str", title: "勇气" },
+          translator: ["str", "勇气"],
           generator: "number",
           generatorForm: [
             {
@@ -705,7 +696,7 @@ export default <Creator>{
           generatorParams: { min: 1, max: 18 },
         },
         {
-          translator: { key: "df", title: "守御" },
+          translator: ["df", "守御"],
           generator: "number",
           generatorForm: [
             {

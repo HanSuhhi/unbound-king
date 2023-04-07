@@ -11,13 +11,15 @@ const creator = inject<Ref<Creator>>("creator");
 const activePlugin = inject<Ref<number>>("plugin-index");
 
 const [deletePlugin, upPlugin, downPlugin] = usePluginFunc();
-const canUsePlugins = computed(() => DATA_Creator_Plugins.filter((plugin) => plugin.belong === creator?.value.translator.key));
+const canUsePlugins = computed(() => DATA_Creator_Plugins.filter((plugin) => plugin.belong === creator?.value.translator[0]));
 </script>
 
 <template>
   <article class="creator-steps">
     <transition-group tag="section" class="value-list_main" name="vertical-list">
-      <step v-for="_plugin, index of creator?.plugins!" :key="_plugin.translator.key" :plugin="_plugin" :data-active="useHtmlPropLint(index === activePlugin)" @delete-item="deletePlugin(index)" @click="activePlugin = index">
+      <step v-for="_plugin, index of creator?.plugins!" :key="_plugin.translator[0]" :plugin="_plugin"
+        :data-active="useHtmlPropLint(index === activePlugin)" @delete-item="deletePlugin(index)"
+        @click="activePlugin = index">
         <template #operator>
           <div class="icon-box">
             <div v-if="index !== 0" class="icon" @click.stop="upPlugin(index)">

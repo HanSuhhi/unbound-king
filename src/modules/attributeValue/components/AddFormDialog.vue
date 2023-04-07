@@ -47,7 +47,7 @@ const formConfig = computed(() =>
 );
 
 const confirm = (data: AttributeValue) => {
-  attributeValues!.value[data.translator.key] = data;
+  attributeValues!.value[data.translator[0]] = data;
 };
 </script>
 

@@ -13,10 +13,7 @@ const data: PluginStruct[] = map(DATA['DATA_Attributes'], ({ translator }) => {
 });
 
 export default <CreatorPlugin>{
-  translator: {
-    key: "attribute-plugin",
-    title: "属性插件",
-  },
+  translator: ["attribute-plugin", "属性插件",],
   belong: "character",
   description: "随机生成一份人物属性",
   icon: "list",

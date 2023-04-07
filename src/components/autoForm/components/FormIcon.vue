@@ -9,10 +9,10 @@ const options = transformIconToElLabelOptions(DATA_GameIcons);
 <template>
   <el-select placeholder="请选择一个图标" filterable>
     <el-option-group v-for="group in options" :key="group.label" :label="group.label">
-      <el-option v-for="(icon, id) in group.options" :key="id" :label="icon.translator.title" :value="id">
+      <el-option v-for="(icon, id) in group.options" :key="id" :label="icon.translator[1]" :value="id">
         <p class="p-reset form-icon_option">
           <Icon :icon="icon" />
-          {{ icon.translator.title }} / {{ icon.translator.key }}
+          {{ icon.translator[1] }} / {{ icon.translator[0] }}
         </p>
       </el-option>
     </el-option-group>
@@ -25,8 +25,7 @@ const options = transformIconToElLabelOptions(DATA_GameIcons);
   align-items: center;
 }
 
-.form-icon_option > .icon {
+.form-icon_option>.icon {
   margin-right: var(--base-margin);
 }
-
 </style>

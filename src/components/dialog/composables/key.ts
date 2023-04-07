@@ -6,14 +6,15 @@ export const useGlobalDialogKey = () => {
   const { addKeyCommand, uninstallKeyCommand } = useKeyStore();
 
   const close: KeyEvent = {
-    translator: { key: "escape", title: "关闭弹窗" },
+    key: "escape",
+    translator: ["close-global-dialog", "关闭弹窗"],
     fn(isPressed) {
       if (!isPressed) dialogMessage.value?._cancel();
     },
   };
 
   watch(dialogMessage, show => {
-    show ? addKeyCommand(close) : uninstallKeyCommand(close.translator.key);
+    show ? addKeyCommand(close) : uninstallKeyCommand(close);
   });
 
 };

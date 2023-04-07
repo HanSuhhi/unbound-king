@@ -7,7 +7,7 @@ const props = defineProps<{ personality: Personality }>();
 <template>
   <section class="common-block personality-block">
     <icon class="personality-block_icon" :name="personality.icon" />
-    <span class="personality-block_title">{{ personality.translator.title }}</span>
+    <span class="personality-block_title">{{ personality.translator[1] }}</span>
   </section>
 </template>
 

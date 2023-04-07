@@ -28,7 +28,7 @@ const formConfig = computed(() =>
   }),
 );
 const confirm = (data: GameIcon) => {
-  if (!data.translator.title) data.translator.title = data.translator.key;
+  if (!data.translator[1]) data.translator[1] = data.translator[0];
   data.id = defineUniqueId("GI");
   data.from = getInvertGlobalEnumNameOrNot(data.from);
   icons!.value[data.id] = data;

@@ -6,7 +6,8 @@ export const defineFooterQuitEvent = () => {
   const { warning } = useGlobalDialog();
 
   const event: KeyEvent = {
-    translator: { key: "q", title: "退出游戏" },
+    key: "q",
+    translator: ["quit-game-alive", "退出游戏"],
     alive: false,
     fn: (isPressed: boolean) => {
       if (!isPressed && !event.alive) {

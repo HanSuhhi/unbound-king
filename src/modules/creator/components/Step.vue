@@ -19,7 +19,7 @@ const deletePlugin = () => emits("deleteItem");
     </section>
     <section class="step-message">
       <p class="step-message_title p-reset">
-        {{ plugin.translator.title }}
+        {{ plugin.translator[1] }}
         <n-popconfirm :show-icon="false" negative-text="取消" positive-text="确定" @positive-click="deletePlugin">
           <template #trigger>
             <a class="step-message_delete" @click.stop>删除</a>
@@ -96,7 +96,7 @@ const deletePlugin = () => emits("deleteItem");
   width: var(--icon-width);
 }
 
-.step-left_icon > .icon {
+.step-left_icon>.icon {
   zoom: 1.8;
 }
 

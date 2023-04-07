@@ -10,8 +10,8 @@ const modelValues = ref(props.data);
 
 const watchEvent = (input: string) => {
   modelValues.value = props.data.filter((item) => {
-    if (item.translator.key.includes(input)) return true;
-    if (item.translator.title.includes(input)) return true;
+    if (item.translator[0].includes(input)) return true;
+    if (item.translator[1].includes(input)) return true;
     if (item.description.includes(input)) return true;
     return false;
   });
@@ -29,8 +29,10 @@ const watchEvent = (input: string) => {
         <search-input :watch-event="watchEvent" />
       </div>
     </header>
-    <transition-group class="value-list_main" tag="main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
-      <title-card-list-item v-for="(item, index) of modelValues" :key="item.translator.key" class="value-list_item" :data="item" :data-index="index" />
+    <transition-group class="value-list_main" tag="main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter"
+      @leave="onLeave">
+      <title-card-list-item v-for="(item, index) of modelValues" :key="item.translator[0]" class="value-list_item"
+        :data="item" :data-index="index" />
     </transition-group>
     <footer class="value-list_footer">
       <slot name="footer" />

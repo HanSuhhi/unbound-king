@@ -7,6 +7,6 @@ export const mountKeyCommand = (time: Ref<boolean>, keyCommand: KeyEvent) => {
 
   watch(time, (isShow) => {
     if (isShow) addKeyCommand(keyCommand);
-    else uninstallKeyCommand(keyCommand.translator.key);
+    else uninstallKeyCommand(keyCommand);
   });
 };

@@ -27,7 +27,7 @@ const formConfig = computed(() =>
   }),
 );
 const confirm = (data: Personality) => {
-  if (!data.translator.title) data.translator.title = data.translator.key;
+  if (!data.translator[1]) data.translator[1] = data.translator[0];
   data.id = defineUniqueId("P");
   data.from = getInvertGlobalEnumNameOrNot(data.from);
   moduleData!.value[data.id] = data;

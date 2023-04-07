@@ -9,7 +9,7 @@ defineProps<{ data: BaseItem }>();
     <template #title>
       <p class="value-item_name p-reset">
         <Icon :name="data.icon" class="value-item_icon" />
-        {{ data.translator.title }} ~ {{ data.translator.key }}
+        {{ data.translator[1] }} ~ {{ data.translator[0] }}
       </p>
     </template>
     <template #subtitle>

@@ -19,7 +19,7 @@ export default defineComponent({
       return (
         <span class="special-inline-block">
           <icon name={data.icon} />
-          {data.translator.title}
+          {data.translator[1]}
         </span>
       );
     };

@@ -59,6 +59,8 @@ declare module '@vue/runtime-core' {
     Step: typeof import('./src/components/Step.vue')['default']
     SubButton: typeof import('./src/components/SubButton.vue')['default']
     TabsListItem: typeof import('./src/components/tabs/TabsListItem.vue')['default']
+    TitleCardCore: typeof import('./src/components/titleCard/components/TitleCardCore.vue')['default']
+    TitleCardDraggable: typeof import('./src/components/titleCard/TitleCardDraggable.vue')['default']
     TitleCardList: typeof import('./src/components/titleCardList/TitleCardList.vue')['default']
     TitleCardListItem: typeof import('./src/components/titleCardList/TitleCardListItem.vue')['default']
     TypeButton: typeof import('./src/components/typeButton/TypeButton.vue')['default']

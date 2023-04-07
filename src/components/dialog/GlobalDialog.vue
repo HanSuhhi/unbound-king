@@ -6,33 +6,36 @@ import TypeButton from "../typeButton/TypeButton.vue";
 import { useGlobalDialogKey } from './composables/key';
 
 const [delayshow] = useDelayShowFromRef(dialogMessage);
+console.log('delayshow: ', delayshow);
 
 useGlobalDialogKey();
 </script>
 
 <template>
   <transition>
-    <div v-if="dialogMessage" class="global-dialog" flex_center @keyup.enter="dialogMessage?._cancel">
-      <transition name="slide-down">
-        <dialog v-if="delayshow" open dialog_reset>
-          <title-card class="global-dialog_main">
-            <template #title>
-              {{ dialogMessage.title }}
-            </template>
-            <template #subtitle>
-              <icon class="global-dialog_close" :name="'close'" @click="dialogMessage?._cancel" />
-            </template>
-            <template #footer>
-              <section class="global-dialog_operator" flex_center>
-                <type-button class="global-dialog_button" plain @click="dialogMessage?._cancel">取消</type-button>
-                <type-button class="global-dialog_button" @click="dialogMessage?._confirm">确定</type-button>
-              </section>
-            </template>
-            {{ dialogMessage.text }}
-          </title-card>
-        </dialog>
-      </transition>
-    </div>
+    <teleport v-if="dialogMessage" :to="dialogMessage?.toSelecter || 'body'">
+      <div class="global-dialog" flex_center>
+        <transition name="slide-down">
+          <dialog v-if="delayshow" open dialog_reset>
+            <title-card class="global-dialog_main">
+              <template #title>
+                {{ dialogMessage.title }}
+              </template>
+              <template #subtitle>
+                <icon class="global-dialog_close" :name="'close'" @click="dialogMessage?._cancel" />
+              </template>
+              <template #footer>
+                <section class="global-dialog_operator" flex_center>
+                  <type-button class="global-dialog_button" plain @click="dialogMessage?._cancel">取消</type-button>
+                  <type-button class="global-dialog_button" @click="dialogMessage?._confirm">确定</type-button>
+                </section>
+              </template>
+              {{ dialogMessage.text }}
+            </title-card>
+          </dialog>
+        </transition>
+      </div>
+    </teleport>
   </transition>
 </template>
 

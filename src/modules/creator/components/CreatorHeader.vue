@@ -15,8 +15,9 @@ const choosed = (key: CreatorKey) => {
 
 <template>
   <div ref="ele" class="item-cards" @wheel.prevent="scroll(ele!, $event)">
-    <item-card v-for="(creator, key) of DATA_Creators" :key="key" :class="{ choosed: creatorKey === key }" :icon="creator.icon" @triggered="choosed(key)">
-      <template #title>{{ creator.translator.title }}</template>
+    <item-card v-for="(creator, key) of DATA_Creators" :key="key" :class="{ choosed: creatorKey === key }"
+      :icon="creator.icon" @triggered="choosed(key)">
+      <template #title>{{ creator.translator[1] }}</template>
       <template #number>{{ creator.plugins.length }}</template>
       <template #description>{{ creator.description }}</template>
     </item-card>

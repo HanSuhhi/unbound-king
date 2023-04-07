@@ -19,10 +19,11 @@ const activeData = ref<Personality>();
 <template>
   <add-personality-dialog />
   <article class="personality-dashboard">
-    <template v-for="personality in data" :key="personality.translator.key">
+    <template v-for="personality in data" :key="personality.translator[0]">
       <n-popover trigger="hover" placement="bottom">
         <template #trigger>
-          <personality-block :personality="personality" class="personality-dashboard_block" @mouseover="activeData = personality" />
+          <personality-block :personality="personality" class="personality-dashboard_block"
+            @mouseover="activeData = personality" />
         </template>
         <BuffExplanation :buff-name="activeData?.id || ''" :buff-key="'personality'" />
       </n-popover>

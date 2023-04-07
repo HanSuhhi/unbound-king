@@ -11,6 +11,7 @@ import GlobalDialog from "./components/dialog/GlobalDialog.vue";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import { defineNaiveTheme } from "./composables/naiveTheme";
 import Setting from "./modules/setting/Setting.vue";
+import { useGlobalDialog } from '@/composables/components/globalDialog';
 
 const { Layout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
@@ -21,6 +22,19 @@ function setDefaultTransitionDuration() {
   element?.style.setProperty("--transition-duration", `${Number(import.meta.env.ANIMATION_DURATION) / 1000}s`);
 }
 nextTick(setDefaultTransitionDuration);
+
+// setTimeout(() => {
+//   const { warning } = useGlobalDialog();
+//   warning({
+//     title: '退出游戏',
+//     text: '是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。',
+//     confirm() {
+//       window.close();
+//     },
+//     cancel() {
+//     },
+//   });
+// }, 1000);
 </script>
 
 <template>

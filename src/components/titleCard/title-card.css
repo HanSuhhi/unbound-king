@@ -12,11 +12,6 @@
   border-radius: var(--border-radius-card);
 }
 
-.title-card p {
-  margin-block-start: 0;
-  margin-block-end: 0;
-}
-
 .title-card_header {
   display: flex;
   align-items: center;
@@ -27,6 +22,7 @@
   border-bottom: 1px solid var(--gray-deep-2);
   border-top-left-radius: var(--border-radius-card);
   border-top-right-radius: var(--border-radius-card);
+  cursor: all-scroll;
 }
 
 .title-card_title {

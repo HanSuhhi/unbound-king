@@ -7,14 +7,14 @@ const props = defineProps<{
   reversed?: boolean;
 }>();
 
-const kbds = computed(() => props.keyEvent.translator.key.split("_"));
+const kbds = computed(() => props.keyEvent.key.split("_"));
 </script>
 
 <template>
   <div class="keyboard-event">
     <kbd-icon v-for="(kbd, index) of kbds" :key="index" :reversed="reversed" class="keyboard-event_kbd" :text="kbd" />
     <span>
-      {{ keyEvent.translator.title }}
+      {{ keyEvent.translator[1] }}
     </span>
   </div>
 </template>

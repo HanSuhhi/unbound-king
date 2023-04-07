@@ -23,7 +23,7 @@ const formConfig = computed(() =>
 const { modalShow } = defineCommonDialog();
 
 const confirm = (data: Attribute) => {
-  attributes!.value[data.translator.key] = data;
+  attributes!.value[data.translator[0]] = data;
 };
 </script>
 

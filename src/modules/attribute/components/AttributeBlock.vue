@@ -17,7 +17,7 @@ defineProps<{ attribute: Attribute }>();
           </template>
           <p class="attribute-block_explanation">{{ attribute.description }}</p>
         </n-tooltip>
-        {{ attribute.translator.title }} ~ {{ attribute.translator.key }}
+        {{ attribute.translator[1] }} ~ {{ attribute.translator[0] }}
       </p>
     </template>
     <template #footer>
@@ -26,7 +26,7 @@ defineProps<{ attribute: Attribute }>();
       </p>
     </template>
     <article class="attribute-block_main">
-      <buff-explanation :buff-name="attribute.translator.key" :buff-key="'attribute'" />
+      <buff-explanation :buff-name="attribute.translator[0]" :buff-key="'attribute'" />
     </article>
   </title-card>
 </template>

@@ -31,8 +31,9 @@ const useKeyStore = defineStore("key", () => {
   }
 
   const addKeyCommand = (newKeyCommand: KeyEvent): KeyEvent => {
-    commandsStore.value[newKeyCommand.translator.key] = newKeyCommand;
-    runningKeyCammands.value[newKeyCommand.translator.key] = watch(defineCommandKey(newKeyCommand.translator.key), newKeyCommand.fn.bind(this));
+    const key = `${newKeyCommand.key}_${newKeyCommand.translator[0]}`;
+    commandsStore.value[key] = newKeyCommand;
+    runningKeyCammands.value[key] = watch(defineCommandKey(newKeyCommand.key), newKeyCommand.fn.bind(this));
     return newKeyCommand;
   };
 
@@ -41,7 +42,8 @@ const useKeyStore = defineStore("key", () => {
     return newKeyCommands;
   };
 
-  const uninstallKeyCommand = (key: string) => {
+  const uninstallKeyCommand = (key: string | KeyEvent) => {
+    if (typeof key !== "string") key = `${key.key}_${key.translator[0]}`;
     delete commandsStore.value[key];
     stopRunningKeyCommand(key);
   };

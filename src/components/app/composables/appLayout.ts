@@ -15,17 +15,23 @@ const autoAdjust = (adjust: () => void) => {
 };
 
 const globalSettintControl = () => {
-  const { addKeyCommand } = useKeyStore();
+  const { addKeyCommand, uninstallKeyCommand } = useKeyStore();
 
   const settingShow = ref(false);
   provide("setting", settingShow);
 
-  addKeyCommand({
-    translator: { key: "escape", title: "设置" },
+  const event: KeyEvent = {
+    key: "escape",
+    translator: ["enter-setting", "进入设置"],
     fn: (isPressed: boolean) => {
       if (!isPressed && !settingShow.value) settingShow.value = true;
     },
-  });
+  };
+  watch(settingShow, showing => {
+    if (showing) uninstallKeyCommand(event);
+    else addKeyCommand(event);
+  }, { immediate: true });
+
 };
 
 export const defineAppLayout = () => {

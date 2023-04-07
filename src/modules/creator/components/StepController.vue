@@ -13,7 +13,7 @@ const selectedPlugin = ref<string>();
 
 const addPlugin = throttle(() => {
   if (!selectedPlugin.value) return message!.info("请选择一个创造器插件");
-  creator?.value.plugins.push(find(props.plugins, (plugin) => plugin.translator.key === selectedPlugin.value)!);
+  creator?.value.plugins.push(find(props.plugins, (plugin) => plugin.translator[0] === selectedPlugin.value)!);
   selectedPlugin.value = "";
 }, 500);
 </script>
@@ -22,8 +22,8 @@ const addPlugin = throttle(() => {
   <article class="step-controller">
     <section class="step-controller_add">
       <el-select v-model="selectedPlugin" placeholder="请选择新增插件">
-        <el-option v-for="plugin in plugins" :key="plugin.translator.key" :label="plugin.translator.title"
-          :value="plugin.translator.key" />
+        <el-option v-for="plugin in plugins" :key="plugin.translator[0]" :label="plugin.translator[1]"
+          :value="plugin.translator[0]" />
       </el-select>
       <type-button class="step-controller_button" @click="addPlugin">新增节点</type-button>
     </section>

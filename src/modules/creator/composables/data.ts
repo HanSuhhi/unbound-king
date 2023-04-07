@@ -9,7 +9,7 @@ export const genCreatorData = (key: CreatorKey) => {
 
   creator.plugins.forEach((plugin) => {
     const pluginData = usePluginTest(plugin, _data);
-    _data.value[plugin.translator.key] = pluginData;
+    _data.value[plugin.translator[0]] = pluginData;
   });
 
   return _data.value;

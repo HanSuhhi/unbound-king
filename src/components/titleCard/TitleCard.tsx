@@ -1,19 +1,30 @@
 import "./title-card.css";
-import { defineComponent } from "vue";
+import type { StyleValue } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
+import { UseDraggable } from "@vueuse/components";
+import type { Position } from "@vueuse/core";
+import { throttle, forEach } from "lodash-es";
+import { dialogMessage } from "../../composables/components/globalDialog";
+import TitleCardCore from "./components/TitleCardCore";
 
 export default defineComponent({
   name: "TitleCard",
+
   setup: (props, { slots }) => {
     return () => {
       return (
-        <article class="title-card">
-          <header class="title-card_header">
-            <p class="title-card_title">{slots.title?.()}</p>
-            <p class="title-card_subtitle">{slots.subtitle?.()}</p>
-          </header>
-          <section class="title-card_main">{slots.default?.()}</section>
-          {slots.footer && <section class="title-card_footer">{slots.footer?.()}</section>}{" "}
-        </article>
+        <TitleCardCore>
+          {{
+            header: () => (
+              <>
+                <p class="title-card_title p-reset">{slots.title?.()}</p>
+                <p class="title-card_subtitle p-reset">{slots.subtitle?.()}</p>
+              </>
+            ),
+            footer: () => <>{slots.footer?.()}</>,
+            default: () => <>{slots.default?.()}</>,
+          }}
+        </TitleCardCore>
       );
     };
   },

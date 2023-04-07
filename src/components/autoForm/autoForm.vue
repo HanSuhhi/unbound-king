@@ -30,7 +30,7 @@ watch(() => props.config, resetForm, { deep: true });
         <el-form-item :class="{ 'form-inline-flex': formItem.type === 'number' }" :label="formItem.title" :prop="formItem.key" :required="formItem.required">
           <el-input v-if="formItem.type === 'input' || formItem.type === 'textarea'" v-model="model[formItem.key]" :type="formItem.type" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''" />
           <el-select v-if="formItem.type === 'selecter'" v-model="model[formItem.key]" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''">
-            <el-option v-for="option in formItem.options!.range" :key="option.key" :label="option.title" :value="option.key" />
+            <el-option v-for="option in formItem.options!.range" :key="option[0]" :label="option[1]" :value="option[0]" />
           </el-select>
           <el-input-number v-if="formItem.type === 'number'" v-model="model[formItem.key]" :disabled="formItem.disabled" :min="formItem.limit?.min" :max="formItem.limit?.max" />
           <form-icon v-if="formItem.type === 'icon'" v-model="model[formItem.key]" />
