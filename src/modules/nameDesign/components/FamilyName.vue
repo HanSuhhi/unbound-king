@@ -1,26 +1,30 @@
 <script setup lang="ts">
 import NumberMark from "@/components/NumberMark.vue";
-import SearchInput from '@/components/SearchInput.vue';
+import SearchInput from "@/components/SearchInput.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
 import typeButton from "@/components/typeButton/TypeButton.vue";
 import { ElInput } from "element-plus";
 import type { Ref } from "vue";
-import { inject, ref, watch } from 'vue';
-import { copy } from '../../../composables/experience/copy';
+import { inject, ref, watch } from "vue";
+import { copy } from "../../../composables/experience/copy";
 import { useFamilyNames } from "../composables/familyName";
 import NameTag from "./NameTag.vue";
 
 const familyNames = inject<Ref<FamilyName[]>>("family-names");
 const showFamilyNames = ref<FamilyName[]>(familyNames?.value!);
-watch(familyNames!, () => {
-  showFamilyNames.value = familyNames?.value!;
-}, { deep: true });
+watch(
+  familyNames!,
+  () => {
+    showFamilyNames.value = familyNames?.value!;
+  },
+  { deep: true },
+);
 
 const newName = ref("");
 const [addFamilyName, removeFamilyName] = useFamilyNames(newName);
 
 const watchSearchEvent = (input: string) => {
-  showFamilyNames.value = familyNames?.value.filter(familyName => familyName.includes(input)) || [];
+  showFamilyNames.value = familyNames?.value.filter((familyName) => familyName.includes(input)) || [];
 };
 </script>
 
@@ -40,8 +44,7 @@ const watchSearchEvent = (input: string) => {
     </section>
     <template #footer>
       <section class="family-name_input">
-        <el-input v-model="newName" placeholder="请输入新增的姓氏..." show-word-limit maxlength="3"
-          @keyup.enter="addFamilyName" />
+        <el-input v-model="newName" placeholder="请输入新增的姓氏..." show-word-limit maxlength="3" @keyup.enter="addFamilyName" />
         <type-button class="family-name_button" @click="addFamilyName">新增</type-button>
       </section>
     </template>
@@ -55,6 +58,7 @@ const watchSearchEvent = (input: string) => {
 
 .family-name_input {
   display: flex;
+  align-items: center;
 }
 
 .family-name_button {

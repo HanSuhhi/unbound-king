@@ -29,10 +29,8 @@ const watchEvent = (input: string) => {
         <search-input :watch-event="watchEvent" />
       </div>
     </header>
-    <transition-group class="value-list_main" tag="main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter"
-      @leave="onLeave">
-      <title-card-list-item v-for="(item, index) of modelValues" :key="item.translator[0]" class="value-list_item"
-        :data="item" :data-index="index" />
+    <transition-group class="value-list_main" tag="main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+      <title-card-list-item v-for="(item, index) of modelValues" :key="item.translator[0]" class="value-list_item" :data="item" :data-index="index" />
     </transition-group>
     <footer class="value-list_footer">
       <slot name="footer" />
@@ -50,7 +48,7 @@ const watchEvent = (input: string) => {
 .value-list_footer {
   display: flex;
   align-items: center;
-  width: fit-content;
+  width: 100%;
   text-decoration: underline;
   border-radius: var(--border-radius);
   cursor: pointer;

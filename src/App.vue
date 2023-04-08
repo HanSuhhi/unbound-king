@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { dialogMessage } from "@/composables/components/globalDialog";
 import { useGlobalStore } from "@/stores/global.store";
-import { NConfigProvider, NMessageProvider } from "naive-ui";
+import { NConfigProvider, NLoadingBarProvider, NMessageProvider } from "naive-ui";
 import { storeToRefs } from "pinia";
 import { nextTick } from "vue";
 import AppAside from "./components/app/appAside/appAside";
@@ -26,29 +26,31 @@ nextTick(setDefaultTransitionDuration);
 
 <template>
   <n-config-provider :theme="darkTheme" :theme-overrides="darkThemeOverrides">
-    <n-message-provider>
-      <base-layout ref="Layout" class="app">
-        <div class="router-view-box">
-          <router-view v-slot="{ Component }">
-            <transition :name="pageTransition" mode="out-in">
-              <component :is="Component" class="page" />
-            </transition>
-          </router-view>
-        </div>
-        <template #header>
-          <app-header />
-          <router-history />
-        </template>
-        <template #aside>
-          <AppAside />
-        </template>
-        <template #footer>
-          <app-footer />
-        </template>
-      </base-layout>
-      <Setting />
-      <global-dialog v-if="dialogMessage" />
-    </n-message-provider>
+    <n-loading-bar-provider>
+      <n-message-provider>
+        <base-layout ref="Layout" class="app">
+          <div class="router-view-box">
+            <router-view v-slot="{ Component }">
+              <transition :name="pageTransition" mode="out-in">
+                <component :is="Component" class="page" />
+              </transition>
+            </router-view>
+          </div>
+          <template #header>
+            <app-header />
+            <router-history />
+          </template>
+          <template #aside>
+            <AppAside />
+          </template>
+          <template #footer>
+            <app-footer />
+          </template>
+        </base-layout>
+        <Setting />
+        <global-dialog v-if="dialogMessage" />
+      </n-message-provider>
+    </n-loading-bar-provider>
   </n-config-provider>
 </template>
 

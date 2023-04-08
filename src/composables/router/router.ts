@@ -2,7 +2,6 @@ import { kebabCase, map } from "lodash-es";
 import type { Component } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
-import { defineRouterAuth } from "./routerAuth";
 
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}", {
   eager: true,
@@ -25,6 +24,5 @@ export const useRouteConfig = async () => {
     routes,
   });
 
-  defineRouterAuth(router);
   return { router };
 };

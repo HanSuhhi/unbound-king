@@ -26,7 +26,7 @@ export type StandardAttributeName = keyof typeof data`,
         <base-layout ref={COMP}>
           {{
             aside: () => <CodeCanvasVue code={code.value} />,
-            default: () => <AttributeMain />,
+            default: () => <AttributeMain />
           }}
         </base-layout>
       );

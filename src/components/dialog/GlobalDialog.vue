@@ -66,7 +66,6 @@ const [confirm] = key_confrim();
   height: 100%;
   background-color: rgb(0 0 0 / 40%);
   inset: 0;
-  transition: opcatity var(--transition-prop);
 }
 
 .global-dialog_main {

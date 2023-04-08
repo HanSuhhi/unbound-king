@@ -1,9 +1,10 @@
-import { defineModuleAuthKey } from "@/composables/router/routerAuth";
 import { usePlayerStore } from "@/stores/player.store";
 import { flatMap } from "lodash-es";
 import { defineStore, storeToRefs } from "pinia";
 import { computed, ref } from "vue";
 import { defineModules } from "../data/modules";
+
+const defineModuleAuthKey = (key: string) => `aside_${key}_entry`;
 
 const useAppAsideStore = defineStore("app-aside", () => {
   const { states } = storeToRefs(usePlayerStore());

@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { defineRouterChange } from "@/composables/experience/loadingbar";
+import { useLoadingBar } from "naive-ui";
+import { useDelayShowFromInjectData } from "../../composables/experience/delayShow";
 import SettingFooter from "./components/SettingFooter.vue";
 import SettingHeader from "./components/SettingHeader.vue";
 import "./setting.css";
-import { useDelayShowFromInjectData } from "../../composables/experience/delayShow";
 
 const [globalShow, partShow] = useDelayShowFromInjectData("setting");
+
+defineRouterChange();
 </script>
 
 <template>

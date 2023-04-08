@@ -30,7 +30,9 @@ body {
   width: 100vw;
   height: 100vh;
   color: var(--white);
-  background-color: rgb(38 39 45);
+
+  /* background-color: rgb(38 39 45); */
+  background-color: var(--bg-color-deep-2);
   transition: grid-template var(--ani-time);
 }
 

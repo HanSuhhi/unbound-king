@@ -7,13 +7,12 @@ import { computed, ref, TransitionGroup } from "vue";
 import { useRouter } from "vue-router";
 import { animationDuration } from "../../composables/constant/env";
 import { useAppAsideStore } from "../app/appAside/store/aside.store";
-import { useRouterHistoryStore } from "../app/appHeader/store/routerHistory.store";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
 import { smoothScrollTo } from "./composables/jsAnimation";
 import "./router-history.css";
+import { routes } from "../app/appHeader/AppHeader";
 
 const { activePage } = storeToRefs(useGlobalStore());
-const { routes } = storeToRefs(useRouterHistoryStore());
 const { pages } = storeToRefs(useAppAsideStore());
 const router = useRouter();
 
