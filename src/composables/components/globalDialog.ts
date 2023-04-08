@@ -1,26 +1,37 @@
-import { ref } from 'vue';
+import { defer } from 'lodash-es';
+import { ref, computed, nextTick } from 'vue';
 
 type GlobalDialog = {
   title: string;
   type: "info" | "warning" | "danger",
   text: string;
-  headerAsBody?: boolean;
   confirm?: () => void;
   cancel?: () => void;
   _confirm: () => void;
   _cancel: () => void;
+  init?: () => void;
   toSelecter?: string;
+  headerAsBody?: boolean;
+  needBg?: boolean;
 }
 
-export const dialogMessage = ref<GlobalDialog>();
+const _dialogMessage = ref<GlobalDialog>();
+export const dialogMessage = computed({
+  get: () => _dialogMessage.value,
+  set: (state) => {
+    _dialogMessage.value = state;
+  }
+});
+
 
 type MessageReceiveProp = Omit<GlobalDialog, "type" | "_confirm" | "_cancel">
 
 export const useGlobalDialog = (): Record<GlobalDialog['type'], (message: MessageReceiveProp) => void> => {
   const dialog = (type: GlobalDialog['type']) => (message: MessageReceiveProp) => {
+    if (message.init) message.init();
     dialogMessage.value = {
       ...message,
-      headerAsBody: true,
+      needBg: true,
       type,
       _cancel() {
         message?.cancel?.();

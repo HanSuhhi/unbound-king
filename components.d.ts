@@ -48,6 +48,7 @@ declare module '@vue/runtime-core' {
     InlineMustache: typeof import('./src/components/inlineMustache/InlineMustache.vue')['default']
     ItemCard: typeof import('./src/components/ItemCard.vue')['default']
     KeyEvent: typeof import('./src/components/KeyEvent.vue')['default']
+    KeyEventButton: typeof import('./src/components/KeyEventButton.vue')['default']
     KeyValueCard: typeof import('./src/components/KeyValueCard.vue')['default']
     NumberMark: typeof import('./src/components/NumberMark.vue')['default']
     Operator: typeof import('./src/components/codeCanvas/components/Operator.vue')['default']

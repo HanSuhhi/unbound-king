@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { dialogMessage } from "@/composables/components/globalDialog";
 import { useGlobalStore } from "@/stores/global.store";
 import { NConfigProvider, NMessageProvider } from "naive-ui";
 import { storeToRefs } from "pinia";
@@ -11,7 +12,6 @@ import GlobalDialog from "./components/dialog/GlobalDialog.vue";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import { defineNaiveTheme } from "./composables/naiveTheme";
 import Setting from "./modules/setting/Setting.vue";
-import { useGlobalDialog, dialogMessage } from '@/composables/components/globalDialog';
 
 const { Layout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
@@ -22,21 +22,10 @@ function setDefaultTransitionDuration() {
   element?.style.setProperty("--transition-duration", `${Number(import.meta.env.ANIMATION_DURATION) / 1000}s`);
 }
 nextTick(setDefaultTransitionDuration);
-
-const { warning } = useGlobalDialog();
-const a = warning.bind(this, {
-  title: '退出游戏',
-  text: '是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。',
-  confirm() {
-    window.close();
-  },
-  cancel() {
-  },
-});
 </script>
 
 <template>
-  <n-config-provider :theme="darkTheme" :theme-overrides="darkThemeOverrides" @click="a">
+  <n-config-provider :theme="darkTheme" :theme-overrides="darkThemeOverrides">
     <n-message-provider>
       <base-layout ref="Layout" class="app">
         <div class="router-view-box">

@@ -1,14 +1,10 @@
 import type { ComputedRef, Ref } from "vue";
 import { inject, ref, watch, nextTick } from 'vue';
-import { throttle } from "lodash-es";
+import { defer, throttle } from "lodash-es";
 
 const watchRefData = (watchData: Ref, delayShow: Ref, immediate = false) => watch(watchData, throttle((show) => {
-  setTimeout(() => {
-    delayShow.value = Boolean(show);
-  }, 80);
-}, 80), {
-  immediate
-});
+  nextTick(() => delayShow.value = Boolean(show));
+}, 80), { immediate });
 
 export const useDelayShowFromInjectData = (injectDataName: string) => {
   const injectShow = inject<Ref<boolean>>(injectDataName)!;

@@ -25,7 +25,6 @@ type KeyEvent = {
   key: string;
   translator: Translator;
   fn: (isPressed) => void;
-  alive?: boolean;
 }
 
 type Translator = [key: string | Ref<string>, title: string | Ref<string>];

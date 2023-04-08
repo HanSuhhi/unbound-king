@@ -8,11 +8,19 @@ const props = defineProps<{
 }>();
 
 const kbds = computed(() => props.keyEvent.key.split("_"));
+const kbdKey = (name: string) => {
+  switch (name.toLowerCase()) {
+    case "escape":
+      return "esc";
+    default:
+      return name;
+  }
+};
 </script>
 
 <template>
   <div class="keyboard-event">
-    <kbd-icon v-for="(kbd, index) of kbds" :key="index" :reversed="reversed" class="keyboard-event_kbd" :text="kbd" />
+    <kbd-icon v-for="(kbd, index) of kbds" :key="index" :reversed="reversed" class="keyboard-event_kbd" :text="kbdKey(kbd)" />
     <span>
       {{ keyEvent.translator[1] }}
     </span>
@@ -27,6 +35,5 @@ const kbds = computed(() => props.keyEvent.key.split("_"));
 
 .keyboard-event_kbd {
   margin-right: var(--mini);
-  font-size: var(--font-title-small);
 }
 </style>

@@ -9,7 +9,7 @@ const [globalShow, partShow] = useDelayShowFromInjectData("setting");
 
 <template>
   <teleport to="body">
-    <transition name="slide-down">
+    <transition>
       <template v-if="globalShow">
         <base-layout class="setting">
           <template #header>
@@ -20,9 +20,6 @@ const [globalShow, partShow] = useDelayShowFromInjectData("setting");
           <template #footer>
             <transition name="slide-up"> <SettingFooter v-if="partShow" /></transition>
           </template>
-          <!-- <transition name="slide-down">
-            <div v-if="partShow">hello wrold</div>
-          </transition> -->
         </base-layout>
       </template>
     </transition>
