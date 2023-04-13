@@ -21,21 +21,12 @@ const icons = inject<ComputedRef<GameIcon[]>>("data");
 
 <style scoped>
 .icon-dashboard {
-  --column-count: 12;
-
-  display: grid;
-  grid-template-columns: repeat(var(--column-count), 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  border-left: var(--border);
 }
 
 .icon-dashboard_block {
   box-sizing: border-box;
-}
-
-.icon-dashboard_block:last-child {
-  border-right: 1px solid var(--border-color);
-}
-
-.icon-dashboard_block:nth-child(12n) {
-  border-right: 1px solid var(--border-color);
 }
 </style>

@@ -4,13 +4,10 @@ import FamilyName from "./components/FamilyName.vue";
 import { useNames } from "./composables/names";
 import FirstNames from "./components/FirstNames.vue";
 import "./name-design.css";
-import { scroll } from "@/composables/experience/wheelScroll";
 import { ref } from "vue";
 
 const { COMP: Layout } = defineCommonLayout("name-design");
 const { code } = useNames();
-
-const ele = ref<HTMLElement>();
 </script>
 
 <template>
@@ -18,7 +15,7 @@ const ele = ref<HTMLElement>();
     <template #aside>
       <CodeCanvas :code="code" class="code-canvas_design" />
     </template>
-    <div ref="ele" class="name-design_parts" @wheel.prevent="scroll(ele!, $event)">
+    <div class="name-design_parts">
       <family-name />
       <first-names />
     </div>

@@ -9,16 +9,11 @@ import { inject, ref, watch } from "vue";
 import { copy } from "../../../composables/experience/copy";
 import { useFamilyNames } from "../composables/familyName";
 import NameTag from "./NameTag.vue";
+import { NSpin } from "naive-ui";
 
 const familyNames = inject<Ref<FamilyName[]>>("family-names");
 const showFamilyNames = ref<FamilyName[]>(familyNames?.value!);
-watch(
-  familyNames!,
-  () => {
-    showFamilyNames.value = familyNames?.value!;
-  },
-  { deep: true },
-);
+watch(familyNames!, () => (showFamilyNames.value = familyNames?.value!), { deep: true });
 
 const newName = ref("");
 const [addFamilyName, removeFamilyName] = useFamilyNames(newName);
@@ -26,6 +21,13 @@ const [addFamilyName, removeFamilyName] = useFamilyNames(newName);
 const watchSearchEvent = (input: string) => {
   showFamilyNames.value = familyNames?.value.filter((familyName) => familyName.includes(input)) || [];
 };
+
+const loadingShow = ref(true);
+const initFamilyNames = watch(showFamilyNames, (names) => {
+  if (!names) return;
+  loadingShow.value = false;
+  initFamilyNames();
+});
 </script>
 
 <template>
@@ -37,11 +39,14 @@ const watchSearchEvent = (input: string) => {
     <template #subtitle>
       <search-input :watch-event="watchSearchEvent" />
     </template>
-    <section class="family-name_names">
-      <name-tag v-for="(name, index) of showFamilyNames" :key="name" @close="removeFamilyName(index)" @copy="copy(name)">
-        {{ name }}
-      </name-tag>
-    </section>
+    <n-spin :show="loadingShow">
+      <section class="family-name_names">
+        <name-tag v-for="(name, index) of showFamilyNames" :key="name" @close="removeFamilyName(index)" @copy="copy(name)">
+          {{ name }}
+        </name-tag>
+      </section>
+      <template #description> 数据加载中... </template>
+    </n-spin>
     <template #footer>
       <section class="family-name_input">
         <el-input v-model="newName" placeholder="请输入新增的姓氏..." show-word-limit maxlength="3" @keyup.enter="addFamilyName" />
@@ -54,11 +59,16 @@ const watchSearchEvent = (input: string) => {
 <style scoped>
 .family-name {
   max-width: 500px;
+  min-height: 100%;
 }
 
 .family-name_input {
   display: flex;
   align-items: center;
+}
+
+.family-name_names {
+  min-height: 60vh;
 }
 
 .family-name_button {

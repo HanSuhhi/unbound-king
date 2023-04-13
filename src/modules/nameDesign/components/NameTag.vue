@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { NTag } from "naive-ui";
+
 const emits = defineEmits<{
   (e: "close"): void;
   (e: "copy"): void;
@@ -9,9 +11,9 @@ const copy = () => emits("copy");
 </script>
 
 <template>
-  <el-tag class="name-tag" closable :size="'large'" @close.stop="close" @click="copy">
+  <n-tag class="name-tag" closable :size="'large'" @close.stop="close" @click="copy">
     <slot />
-  </el-tag>
+  </n-tag>
 </template>
 
 <style scoped>
