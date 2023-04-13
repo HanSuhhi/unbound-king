@@ -2,14 +2,14 @@
 import Alert from "@/components/alert/alert";
 import Operator from "./Operator.vue";
 import AttributeBlock from "./AttributeBlock.vue";
-import { DATA_Attributes } from "../data/index";
+import { DATA } from "../../../composables/data";
 </script>
 
 <template>
   <article class="attribute-main">
     <alert class="attribute-main_alert">属性目前仅设置 5 条，对应五行，暂不支持新增。</alert>
     <article class="attribute-main_main">
-      <attribute-block v-for="(attribute, id) of DATA_Attributes" :key="id" :attribute="attribute" />
+      <attribute-block v-for="(attribute, id) of DATA['DATA_Attributes']" :key="id" :attribute="attribute[1]" />
     </article>
     <footer class="attribute-main_operator">
       <operator />

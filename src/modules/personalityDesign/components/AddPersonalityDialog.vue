@@ -11,7 +11,7 @@ import { getInvertGlobalEnumNameOrNot } from "../../../enums/global.enum";
 import typeString from "../personality-type.d.ts?raw";
 
 const item = inject<ComputedRef<TabListItem>>("active-item");
-const moduleData = inject<ComputedRef<Record<string, Personality>>>("data");
+const moduleData = inject<ComputedRef<Array<Personality>>>("data");
 
 const formConfig = computed(() =>
   withFormDetail<Personality>(transformTypeToForm(typeString), {
@@ -30,7 +30,7 @@ const confirm = (data: Personality) => {
   if (!data.translator[1]) data.translator[1] = data.translator[0];
   data.id = defineUniqueId("P");
   data.from = getInvertGlobalEnumNameOrNot(data.from);
-  moduleData!.value[data.id] = data;
+  moduleData!.value.push(data);
 };
 </script>
 

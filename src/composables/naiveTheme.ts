@@ -12,7 +12,7 @@ export const defineNaiveTheme = () => {
   const darkThemeOverrides: GlobalThemeOverrides = {
     common: {
       lineHeight: "1",
-      primaryColor: main,
+      primaryColor: '#F0C239',
       primaryColorHover: mainb1,
       primaryColorPressed: mainb1,
     },

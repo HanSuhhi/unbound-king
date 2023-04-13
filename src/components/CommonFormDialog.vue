@@ -33,7 +33,7 @@ const confirm = (data: any, formEl: FormInstance) => {
 </script>
 
 <template>
-  <NModal v-model:show="modal" class="router-view-dialog">
+  <n-modal v-model:show="modal" :trap-focus="false" class="router-view-dialog">
     <title-card class="form-dialog">
       <template #title>
         <p class="p-reset form-dialog_title">
@@ -52,7 +52,7 @@ const confirm = (data: any, formEl: FormInstance) => {
         </template>
       </auto-form>
     </title-card>
-  </NModal>
+  </n-modal>
 </template>
 
 <style scoped>

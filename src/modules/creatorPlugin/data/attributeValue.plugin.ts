@@ -1,13 +1,12 @@
-import { DATA_AttributeValues } from "@/modules/attributeValue/data";
 import { DATA_Generator_Forms } from "@/modules/generator/data";
 import { clone, map } from "lodash-es";
-import { DATA_Generator_Params } from "../../generator/data/index";
 import { DATA } from '../../../composables/data';
+import { DATA_Generator_Params } from "../../generator/data/index";
 
-const data: PluginStruct[] = map(DATA['DATA_AttributeValues'], ({ translator }) => {
+const data: PluginStruct[] = map([...DATA['DATA_AttributeValues'].values()], ({ translator }) => {
   if (translator[1].includes("生命上限")) {
     const generatorForm = DATA_Generator_Forms.paste;
-    generatorForm[0].options!.range = map(DATA_AttributeValues, (attributeValue) => {
+    generatorForm[0].options!.range = map([...DATA['DATA_AttributeValues'].values()], (attributeValue) => {
       const _translator = clone(attributeValue.translator);
       _translator[0] = attributeValue.translator[0];
       return _translator;

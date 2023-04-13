@@ -6,8 +6,8 @@ type OptionReturn = {
   options: Record<string, GameIcon>;
 };
 
-export function transformIconToElLabelOptions(gameicons: Record<string, GameIcon>): OptionReturn[] {
-  const grouped = groupBy(gameicons, "from");
+export function transformIconToElLabelOptions(gameicons: Map<string, GameIcon>): OptionReturn[] {
+  const grouped = groupBy(Object.fromEntries(gameicons), "from");
 
   const transformed = mapValues(grouped, (group) => {
     const options = group.reduce((acc, cur) => ({ ...acc, [cur.id]: cur }), {});

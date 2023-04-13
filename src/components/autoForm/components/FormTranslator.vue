@@ -11,8 +11,8 @@ const model = autoVModel(emits, props.modelValue);
 
 <template>
   <div class="form-translator">
-    <el-input v-model="model['key']" class="form-translator_input" placeholder="唯一的key值..." />
-    -<el-input v-model="model['title']" class="form-translator_input" placeholder="显示名，默认为key值" />
+    <el-input v-model="model[0]" class="form-translator_input" placeholder="唯一的key值..." />
+    -<el-input v-model="model[1]" class="form-translator_input" placeholder="显示名，默认为key值" />
   </div>
 </template>
 

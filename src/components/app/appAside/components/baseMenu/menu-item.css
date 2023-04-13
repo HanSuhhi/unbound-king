@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   height: var(--title-height);
-  margin-bottom: var(--base-margin);
+  margin-top: var(--base-margin);
   padding: var(--small);
   padding-left: var(--normal);
   color: var(--gray);
@@ -42,7 +42,7 @@
 
 .aside-menu-block_sub {
   --length: 0;
-  --total-height: calc(var(--length) * var(--title-height) + var(--length) * (var(--base-margin) + 2 * var(--small)));
+  --total-height: calc(var(--length) * var(--title-height) + var(--length) * ( var(--base-margin) +  2 * var(--small)));
 
   height: var(--total-height);
   margin-left: var(--normal);

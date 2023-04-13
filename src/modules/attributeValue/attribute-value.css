@@ -3,6 +3,9 @@
   height: calc(var(--main-height) - var(--base-margin));
 }
 
-.attribute-value_aside > .code-canvas {
-  border-top: 0;
+.attribute-value_aside {
+  .code-canvas {
+    width: var(--aside-width);
+    border-top: 0;
+  }
 }

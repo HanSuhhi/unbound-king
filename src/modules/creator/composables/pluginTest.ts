@@ -18,7 +18,6 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
             writable: true,
             enumerable: true,
           });
-          console.log('plugin: ', plugin);
           forEach(data, (_data: ReturnStruct) => {
             plugin['pastData'][_data[2]] = _data[1];
           });

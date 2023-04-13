@@ -1,3 +1,4 @@
+import { isMap } from "lodash-es";
 import { defineComponent } from "vue";
 import { DATA } from "../../composables/data";
 import "./special-inline-block.css";
@@ -13,12 +14,14 @@ export default defineComponent({
     const urls = props.text?.split(".");
     let data: any = DATA;
     urls?.forEach((url) => {
-      data = data[url.trim()];
+      url = url.trim();
+      if (isMap(data)) data = data.get(url);
+      else data = data[url];
     });
     return () => {
       return (
         <span class="special-inline-block">
-          <icon name={data.icon} />
+          <icon style={{ transform: "translateY(1px)" }} name={data.icon} />
           {data.translator[1]}
         </span>
       );

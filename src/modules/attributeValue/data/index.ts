@@ -1,7 +1,9 @@
-import { map, merge } from "lodash-es";
+import { forEach, map } from 'lodash-es';
 
-export const DATA_AttributeValues: Dictionary<AttributeValue> = {};
+export const DATA_AttributeValues = new Map<string, AttributeValue>();
 
 map(import.meta.glob("./*.data.ts", { eager: true }), (module: any) => {
-  merge(DATA_AttributeValues, module.default);
+  forEach<AttributeValue>(module.default, attributeValue => {
+    DATA_AttributeValues.set(attributeValue.translator[0], attributeValue);
+  });
 });

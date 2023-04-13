@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppAsideRight: typeof import('./src/components/app/AppAsideRight.vue')['default']
     AppFooter: typeof import('./src/components/app/AppFooter.vue')['default']
+    Asd: typeof import('./src/components/asd.vue')['default']
     AsideSetting: typeof import('./src/components/app/appAside/components/AsideSetting.vue')['default']
     AutoForm: typeof import('./src/components/autoForm/autoForm.vue')['default']
     BaseMenu: typeof import('./src/components/app/appAside/components/baseMenu/BaseMenu.vue')['default']
@@ -25,6 +26,7 @@ declare module '@vue/runtime-core' {
     ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']

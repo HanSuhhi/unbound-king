@@ -12,10 +12,7 @@ export const defineAutoFormModel = (props: any) => {
       }
 
       if (key === "translator") {
-        const defaultTranslator: Translator = defaultValue || {
-          key: "",
-          title: "",
-        };
+        const defaultTranslator: Translator = defaultValue || [];
 
         return {
           ...values,

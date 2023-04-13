@@ -3,7 +3,6 @@ import { DATA_FirstNames } from '../../nameDesign/data/name.data';
 import { compareIgnoreCase } from '../../../composables/util/string';
 
 const firstnameGenerator: GeneratorFunc<any, FirstnameGeneratorProps> = (data, paramsm, { pastData }) => {
-  console.log('pastData: ', pastData);
   const range = DATA_FirstNames.filter(firstname => {
     if (!firstname.chase && !firstname.gender) return true;
     if (firstname.chase && !compareIgnoreCase(firstname.chase, pastData.chase[0])) return false;

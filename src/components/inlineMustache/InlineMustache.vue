@@ -26,7 +26,4 @@ const showText = computed(() => parseMustacheString(props.text));
 span.inline-musache_content {
   color: var(--gray-bright-1);
 }
-
-strong.inline-musache_content {
-}
 </style>

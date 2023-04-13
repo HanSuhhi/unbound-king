@@ -1,3 +1,4 @@
+import { forEach } from "lodash-es";
 import { defineComponent } from "vue";
 import TitleCardCore from "./components/TitleCardCore.vue";
 import "./title-card.css";
@@ -5,23 +6,15 @@ import "./title-card.css";
 export default defineComponent({
   name: "TitleCard",
   setup: (props, { slots }) => {
-    const container = slots.footer
-      ? {
-        title: () => <>{slots.title?.()}</>,
-        subtitle: () => <>{slots.subtitle?.()}</>,
-        footer: () => <>{slots.footer?.()}</>,
-        default: () => <>{slots.default?.()}</>,
-      }
-      : {
-        title: () => <>{slots.title?.()}</>,
-        subtitle: () => <>{slots.subtitle?.()}</>,
-        default: () => <>{slots.default?.()}</>,
-      };
+    const injectSlots: Dictionary<() => JSX.Element> = {};
+    forEach(slots, (slot, slotName) => {
+      injectSlots[slotName] = () => <>{slot?.()}</>;
+    });
 
     return () => {
       return (
         <article class="title-card">
-          <TitleCardCore>{container}</TitleCardCore>
+          <TitleCardCore>{injectSlots}</TitleCardCore>
         </article>
       );
     };

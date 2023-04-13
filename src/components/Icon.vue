@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { DATA_BaseIcons } from '../modules/baseIcon/data/baseIcon.data';
-import { computed } from 'vue';
-import  { DATA_GameIcons } from '../modules/gameIcon/data/index';
+import { DATA } from "@/composables/data";
+import { computed } from "vue";
+import { DATA_BaseIcons } from "../modules/baseIcon/data/baseIcon.data";
 
 const props = defineProps<{
   icon?: BaseIcon;
@@ -12,10 +12,9 @@ const props = defineProps<{
 
 const icon = computed(() => {
   if (props.icon) return props.icon.path;
-  if (props.name) return  DATA_BaseIcons[props.name]?.path || DATA_GameIcons[props.name].path;
-  return '';
+  if (props.name) return DATA_BaseIcons[props.name]?.path || DATA["DATA_GameIcons"].get(props.name)!.path;
+  return "";
 });
-
 </script>
 
 <template>

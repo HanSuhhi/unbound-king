@@ -10,7 +10,7 @@ export const useHeroesTable = () => {
       classList: {
         tabs: ["", "heroes-table"],
         list: ["heroes-table__list"],
-        listItem: ["heroes-table__list__item"],
+        listItem: ["heroes-table__list__item",],
         panel: ["heroes-table__panels"],
         panelItem: ["heroes-table__panel"],
       },

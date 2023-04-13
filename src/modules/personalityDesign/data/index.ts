@@ -1,7 +1,9 @@
-import { map, merge } from "lodash-es";
+import { forEach, map } from 'lodash-es';
 
-export const DATA_Personalities: Record<string, Attribute> = {};
+export const DATA_Personalities = new Map<string, Personality>();
 
 map(import.meta.glob("./*.data.ts", { eager: true }), (module: any) => {
-  merge(DATA_Personalities, module.default);
+  forEach<Personality>(module.default, personality => {
+    DATA_Personalities.set(personality.id, personality);
+  });
 });

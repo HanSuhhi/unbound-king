@@ -8,7 +8,7 @@ import { iconFormConfig, idFormConfig, translatorFormConfig } from "../../../com
 import typeString from "../attribute-value-type.d.ts?raw";
 
 const type = inject<Ref<AttributeValue["type"]>>("type");
-const attributeValues = inject<Ref<Dictionary<AttributeValue>>>("data");
+const attributeValues = inject<Ref<Array<AttributeValue>>>("data");
 
 const typeTitle = computed(() => {
   switch (type!.value) {
@@ -33,10 +33,11 @@ const formConfig = computed(() =>
     type: {
       options: {
         range: [
-          {
-            key: type,
-            title: typeTitle,
-          },
+          [type, typeTitle],
+          // {
+          //   key: type,
+          //   title: typeTitle,
+          // },
         ],
       },
       disabled: true,
@@ -47,7 +48,7 @@ const formConfig = computed(() =>
 );
 
 const confirm = (data: AttributeValue) => {
-  attributeValues!.value[data.translator[0]] = data;
+  attributeValues!.value.push(data);
 };
 </script>
 

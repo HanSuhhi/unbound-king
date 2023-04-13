@@ -9,7 +9,7 @@ export const defineCommonLayout = (name: string, reverse = true) => {
     state: { reverse },
     style: {
       classList: {
-        layout: ["", name],
+        layout: ["", name, "common-layout"],
         main: ["", main],
         aside: ["", aside],
       },

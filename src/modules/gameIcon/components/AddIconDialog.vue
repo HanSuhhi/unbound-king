@@ -11,7 +11,7 @@ import { getInvertGlobalEnumNameOrNot } from "../../../enums/global.enum";
 import typeString from "../game-icon-type.d.ts?raw";
 
 const item = inject<ComputedRef<TabListItem>>("active-item");
-const icons = inject<ComputedRef<Record<string, GameIcon>>>("data");
+const icons = inject<ComputedRef<Array<GameIcon>>>("data");
 
 const formConfig = computed(() =>
   withFormDetail<GameIcon>(transformTypeToForm(typeString), {
@@ -31,7 +31,7 @@ const confirm = (data: GameIcon) => {
   if (!data.translator[1]) data.translator[1] = data.translator[0];
   data.id = defineUniqueId("GI");
   data.from = getInvertGlobalEnumNameOrNot(data.from);
-  icons!.value[data.id] = data;
+  icons!.value.push(data);
 };
 </script>
 

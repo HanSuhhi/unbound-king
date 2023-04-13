@@ -3,7 +3,7 @@ import { DATA_Generator_Forms } from "@/modules/generator/data";
 import { map } from "lodash-es";
 import { DATA_Generator_Params } from "../../generator/data/index";
 
-const data: PluginStruct[] = map(DATA['DATA_Attributes'], ({ translator }) => {
+const data: PluginStruct[] = map([...DATA['DATA_Attributes'].values()], ({ translator }) => {
   return {
     translator,
     generator: 'number',

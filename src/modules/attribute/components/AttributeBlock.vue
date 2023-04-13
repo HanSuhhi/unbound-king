@@ -10,7 +10,7 @@ defineProps<{ attribute: Attribute }>();
 <template>
   <title-card class="attribute-block">
     <template #title>
-      <p class="attribute-block_title">
+      <p class="attribute-block_title p-reset">
         <n-tooltip trigger="hover">
           <template #trigger>
             <icon class="attribute-block_icon" :name="attribute.icon" />

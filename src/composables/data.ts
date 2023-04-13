@@ -13,10 +13,10 @@ const getDataKey = (key: string): string => `DATA_${key}s`;
 
 export const DATA = {
   DATA_Genders,
-  DATA_Attributes,
-  DATA_AttributeValues,
   DATA_Ages,
   DATA_Chases,
+  DATA_Attributes,
+  DATA_AttributeValues,
   DATA_FamilyNames,
   DATA_FirstNames,
   DATA_Buffs,
@@ -38,8 +38,4 @@ export const getDataByKey = (key: string) => {
     const value = (dataRange as Record<string, Object>)[key];
     if (value) return value;
   }
-  // forEach(DATA, dataRange => {
-  //   if (!isObject(dataRange)) return;
-
-  // })
 };

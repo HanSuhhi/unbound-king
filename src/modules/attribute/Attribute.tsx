@@ -3,21 +3,21 @@ import { applyDataToModule } from "@/composables/experience/codeChanged";
 import { computed, defineComponent, ref } from "vue";
 import { defineCommonLayout } from "../../composables/components/commonLayout";
 import AttributeMain from "./components/AttributeMain.vue";
-import { DATA_Attributes } from "./data/index";
+import { DATA_Attributes } from './data/index';
 
 export default defineComponent({
   name: "Attribute",
   setup: (props) => {
     const { COMP } = defineCommonLayout("attribute");
 
-    const data = ref<Dictionary<Attribute>>(DATA_Attributes);
+    const data = ref([...DATA_Attributes.values()]);
+    const typeName = computed(() => data.value.map(attribute => `"${attribute.translator[0]}"`).join("|"));
 
     const codeTemplate = computed(() => [
-      "const data: Record<string, Attribute> = ",
+      "const data: Attribute[] = ",
       JSON.stringify(data.value),
-      `\n
-export default data;
-export type StandardAttributeName = keyof typeof data`,
+      `\n\nexport default data;`,
+      `\nexport type SubAttributeName = ${typeName.value}`,
     ]);
     const { code } = applyDataToModule(data, codeTemplate);
 

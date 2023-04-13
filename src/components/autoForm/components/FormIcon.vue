@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { DATA_GameIcons } from "@/modules/gameIcon/data";
 import { ElSelect } from "element-plus";
-import { transformIconToElLabelOptions } from '../composable/elLabelOptions';
+import { transformIconToElLabelOptions } from "../composable/elLabelOptions";
+import { DATA } from "@/composables/data";
 
-const options = transformIconToElLabelOptions(DATA_GameIcons);
+const options = transformIconToElLabelOptions(DATA["DATA_GameIcons"]);
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const options = transformIconToElLabelOptions(DATA_GameIcons);
   align-items: center;
 }
 
-.form-icon_option>.icon {
+.form-icon_option > .icon {
   margin-right: var(--base-margin);
 }
 </style>
