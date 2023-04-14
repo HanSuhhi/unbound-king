@@ -4,21 +4,19 @@ import { NSelect } from "naive-ui";
 import type { VNodeChild } from "vue";
 import { h } from "vue";
 import { autoVModel } from "../composable/formItemDiy";
-import { transformIconToElLabelOptions } from "../composable/GameiconOptions";
-import { DATA } from "@/composables/data";
+import { transformChaseOptions } from "../composable/chaseOptions";
 import Icon from "@/components/Icon.vue";
 
 const props = defineProps<{ modelValue: string }>();
 const emits = defineEmits<{
-  (e: "update:modelValue", icon: string): void
+  (e: "update:modelValue", chase: string): void
 }>();
 
 const model = autoVModel(emits, props.modelValue);
 
-const options = transformIconToElLabelOptions(DATA.DATA_GameIcons);
+const options = transformChaseOptions();
 
-function renderLabel(option: SelectOption): VNodeChild {
-  if (option.type === "group") return `${option.label}`;
+function renderLabel(option: SelectOption & { icon: string }): VNodeChild {
   return [
     h(
       "p",
@@ -31,7 +29,7 @@ function renderLabel(option: SelectOption): VNodeChild {
       {
         default: () => [
           h(Icon, {
-            icon: option as BaseIcon,
+            path: option.icon,
             style: {
               "margin-right": "var(--base-margin)"
             }
@@ -45,5 +43,5 @@ function renderLabel(option: SelectOption): VNodeChild {
 </script>
 
 <template>
-  <n-select v-model:value="model" placeholder="请选择一个图标" filterable :options="options" :render-label="renderLabel" />
+  <n-select v-model:value="model" placeholder="请选择抱负" clearable filterable :options="options" :render-label="renderLabel" />
 </template>

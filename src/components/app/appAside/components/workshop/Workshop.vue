@@ -7,19 +7,25 @@ import "./styles/workshop-package.css";
 
 <template>
   <section class="workshop">
-    <p class="workshop_title">工坊</p>
+    <p class="workshop_title">
+      工坊
+    </p>
     <div class="workshop-package">
-      <header class="workshop-package_title">基础包</header>
-      <p class="workshop-package_description">此包为游戏基础包，包含了游戏本体的基本内容及所有相关系统。默认加载，无法卸除。</p>
-      <TypeButton class="workshop-package_button">
-        <icon name="coin" style="margin-right: var(--mini)" />
+      <header class="workshop-package_title">
+        基础包
+      </header>
+      <p class="workshop-package_description">
+        此包为游戏基础包，包含了游戏本体的基本内容及所有相关系统。默认加载，无法卸除。
+      </p>
+      <type-button class="workshop-package_button">
+        <icon name="coin" style="margin-right: var(--mini);" />
         了解更多
-      </TypeButton>
+      </type-button>
     </div>
     <div class="workshop-factory">
       <div class="workshop-factory_more">
         插件市集
-        <icon name="bird" style="margin-left: var(--small)" />
+        <icon name="bird" style="margin-left: var(--small);" />
       </div>
       <div class="workshop-factory-operator">
         <div class="workshop-factory-operator_item workshop-factory_last">

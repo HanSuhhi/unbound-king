@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { NTooltip } from "naive-ui";
 import Icon from "@/components/Icon.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
-import { NTooltip } from "naive-ui";
 import BuffExplanation from "@/components/BuffExplanation.vue";
 
 defineProps<{ attribute: Attribute }>();
@@ -15,7 +15,9 @@ defineProps<{ attribute: Attribute }>();
           <template #trigger>
             <icon class="attribute-block_icon" :name="attribute.icon" />
           </template>
-          <p class="attribute-block_explanation">{{ attribute.description }}</p>
+          <p class="attribute-block_explanation">
+            {{ attribute.description }}
+          </p>
         </n-tooltip>
         {{ attribute.translator[1] }} ~ {{ attribute.translator[0] }}
       </p>
@@ -26,7 +28,7 @@ defineProps<{ attribute: Attribute }>();
       </p>
     </template>
     <article class="attribute-block_main">
-      <buff-explanation :buff-name="attribute.translator[0]" :buff-key="'attribute'" />
+      <buff-explanation :buff-name="attribute.translator[0]" buff-key="attribute" />
     </article>
   </title-card>
 </template>

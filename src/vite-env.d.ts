@@ -45,3 +45,5 @@ type Gender = keyof typeof import("@/modules/character/enums/character.enum")['D
 type Chase = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Chases'];
 type Age = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Ages'];
 type Data = keyof typeof import("@/composables/data")["DATA"];
+
+interface ModuleArray<T> { default: Array<T> }

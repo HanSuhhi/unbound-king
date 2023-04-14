@@ -1,6 +1,6 @@
 <script setup lang='ts'>
-import { storeToRefs } from 'pinia';
-import { useGlobalStore } from '@/stores/global.store';
+import { storeToRefs } from "pinia";
+import { useGlobalStore } from "@/stores/global.store";
 
 const { activeAsideModule, activePage } = storeToRefs(useGlobalStore());
 </script>

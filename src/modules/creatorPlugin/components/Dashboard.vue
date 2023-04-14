@@ -6,4 +6,3 @@
     123
   </div>
 </template>
-

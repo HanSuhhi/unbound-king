@@ -15,7 +15,7 @@ const copy = throttle((name: string) => {
 </script>
 
 <template>
-  <section class="common-block icon-block" @click="copy(icon.translator[0])">
+  <section class="common-block icon-block" @click="copy(icon.id || icon.translator[0])">
     <icon class="icon-block_icon" :icon="icon" />
     <span class="icon-block_title">{{ icon.translator[1] }}</span>
   </section>

@@ -6,11 +6,13 @@ import { DATA } from "@/composables/data";
 const props = defineProps<{
   icon?: BaseIcon
   name?: keyof typeof DATA_BaseIcons
+  path?: string
 }>();
 
 const icon = computed(() => {
+  if (props.path) return props.path;
   if (props.icon) return props.icon.path;
-  if (props.name) return DATA_BaseIcons[props.name]?.path || DATA.DATA_GameIcons.get(props.name)!.path;
+  if (props.name) return DATA_BaseIcons[props.name]?.path || DATA.DATA_GameIcons.get(props.name)?.path || DATA_BaseIcons.close?.path;
   return "";
 });
 </script>

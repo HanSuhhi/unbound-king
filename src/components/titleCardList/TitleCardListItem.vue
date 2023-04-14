@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import TitleCard from "@/components/titleCard/TitleCard";
 import Icon from "@/components/Icon.vue";
+
 defineProps<{ data: BaseItem }>();
 </script>
 
 <template>
-  <TitleCard class="value-item">
+  <title-card class="value-item">
     <template #title>
       <p class="value-item_name p-reset">
-        <Icon :name="data.icon" class="value-item_icon" />
+        <icon :name="data.icon" class="value-item_icon" />
         {{ data.translator[1] }} ~ {{ data.translator[0] }}
       </p>
     </template>
@@ -20,7 +21,7 @@ defineProps<{ data: BaseItem }>();
     <p class="value-item_description p-reset">
       {{ data.description }}
     </p>
-  </TitleCard>
+  </title-card>
 </template>
 
 <style scoped>

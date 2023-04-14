@@ -1,7 +1,9 @@
-import { map, merge } from "lodash-es";
+import { map } from "lodash-es";
 
-export const DATA_Ambitions: Dictionary<Ambition> = {};
+export const DATA_Ambitions = new Map<string, Ambition>();
 
-map(import.meta.glob("./*.ambition.ts", { eager: true }), (module: any) => {
-  merge(DATA_Ambitions, module.default);
+map(import.meta.glob("./*.ambition.ts", { eager: true }), (module: ModuleArray<Ambition>) => {
+  module.default.forEach((ambition) => {
+    DATA_Ambitions.set(ambition.id, ambition);
+  });
 });

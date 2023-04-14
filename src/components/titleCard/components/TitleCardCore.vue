@@ -4,15 +4,15 @@ import type { Ref } from "vue";
 import { useSlots } from "vue";
 
 defineProps<{
-  handle?: Ref;
-  changeFixed?: Function;
+  handle?: Ref
+  changeFixed?: Function
 }>();
 
 const slots = useSlots();
 
-const stopMouseEvent = () => {
+function stopMouseEvent() {
   document.onmousemove = null;
-};
+}
 </script>
 
 <template>

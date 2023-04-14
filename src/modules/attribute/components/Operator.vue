@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import { computed } from "vue";
+import typeString from "../attribute-type.d.ts?raw";
+import { useConfirm } from "../composables/operator";
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import typeButton from "@/components/typeButton/TypeButton.vue";
 import { defineCommonDialog } from "@/composables/components/commonDialog";
 import { iconFormConfig, idFormConfig, translatorFormConfig } from "@/composables/form/formConfigs";
 import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
-import { computed } from "vue";
-import typeString from "../attribute-type.d.ts?raw";
-import { useConfirm } from "../composables/operator";
 
 const formConfig = computed(() =>
   withFormDetail<Attribute>(transformTypeToForm(typeString), {
@@ -15,8 +15,8 @@ const formConfig = computed(() =>
     ...translatorFormConfig,
     ...iconFormConfig,
     description: { title: "说明", type: "textarea" },
-    explanation: { title: "阐述", type: "textarea" },
-  }),
+    explanation: { title: "阐述", type: "textarea" }
+  })
 );
 const { modalShow } = defineCommonDialog();
 const [confirm] = useConfirm();
@@ -24,10 +24,14 @@ const [confirm] = useConfirm();
 
 <template>
   <common-form-dialog :form-config="formConfig" :confirm="confirm">
-    <template #header>属性</template>
+    <template #header>
+      属性
+    </template>
   </common-form-dialog>
   <div class="operator">
-    <type-button @click="modalShow = true">新增</type-button>
+    <type-button @click="modalShow = true">
+      新增
+    </type-button>
   </div>
 </template>
 

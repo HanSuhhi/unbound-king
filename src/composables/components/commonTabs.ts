@@ -1,7 +1,7 @@
-import { useCsssTabs } from "@/components/ui/tabs";
 import { nextTick, onMounted } from "vue";
+import { useCsssTabs } from "@/components/ui/tabs";
 
-export const defineCommonTabs = (componentName: string) => {
+export function defineCommonTabs(componentName: string) {
   const tabsName = componentName;
   const listName = `${componentName}_list`;
   const listItemName = `${componentName}_item`;
@@ -15,9 +15,9 @@ export const defineCommonTabs = (componentName: string) => {
         list: [listName, "common-tabs-list"],
         listItem: [listItemName, "common-tabs-list_item"],
         panel: [listPanelsName, "common-tabs-panels"],
-        panelItem: [listPanelName],
-      },
-    },
+        panelItem: [listPanelName]
+      }
+    }
   });
 
   const calcListItemWidth = () => {
@@ -42,4 +42,4 @@ export const defineCommonTabs = (componentName: string) => {
   onMounted(nextTick.bind(this, calcListItemWidth));
 
   return { ...Layout };
-};
+}

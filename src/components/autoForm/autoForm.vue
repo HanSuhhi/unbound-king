@@ -6,6 +6,7 @@ import FormIcon from "./components/FormIcon.vue";
 import FormTranslator from "./components/FormTranslator.vue";
 import { defineAutoFormModel } from "./composable/model";
 import { defineAutoFormRules } from "./composable/rules";
+import FormChase from "./components/FormChase.vue";
 
 const props = defineProps<{ config: AutoformItem[]; params?: any }>();
 
@@ -34,6 +35,9 @@ const { model } = defineAutoFormModel(props);
           </template>
           <template v-if="formItem.type === 'translator'">
             <form-translator v-model="model[formItem.key]" />
+          </template>
+          <template v-if="formItem.type === 'chase'">
+            <form-chase v-model="model[formItem.key]" />
           </template>
         </n-form-item>
       </template>

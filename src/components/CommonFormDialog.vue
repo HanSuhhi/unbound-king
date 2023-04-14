@@ -20,8 +20,6 @@ const currentConfig = ref(props.formConfig);
 const changed = inject<Ref<boolean>>("changed")!;
 
 function confirm(data: any, formEl: FormInst) {
-  console.log("data: ", data);
-
   validateForm(formEl, () => {
     props.confirm?.(cloneDeep(data));
     changed.value = true;

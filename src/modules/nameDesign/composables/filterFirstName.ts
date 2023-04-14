@@ -2,23 +2,23 @@ import type { Ref } from "vue";
 import { inject, ref, watch } from "vue";
 import { deepImmediate } from "../../../composables/plus/watch";
 
-export const defineDataKey = ({ gender, chase }: { gender?: Gender; chase?: Chase }) => {
+export function defineDataKey({ gender, chase }: { gender?: Gender; chase?: Chase }) {
   if (gender && chase) return `${gender.toLowerCase()}${chase}`;
   if (gender && !chase) return `${gender.toLowerCase()}`;
   if (!gender && chase) return `${chase.toLowerCase()})`;
   return "empty";
-};
+}
 
-export const useFilterFirstNames = () => {
+export function useFilterFirstNames() {
   const firstNames = inject<Ref<FirstName[]>>("first-names");
   const genders = ref<Gender[]>(["FEMALE", "MALE"]);
   const chases = ref<Chase[]>(["DaDao", "HongYuan", "LiZhi"]);
 
   const filter = ({ gender, chase }: { gender?: Gender; chase?: Chase }) => {
-    if (gender && chase) return firstNames?.value!.filter((firstName) => firstName.chase === chase && firstName.gender === gender);
-    if (gender && !chase) return firstNames?.value!.filter((firstName) => firstName.gender === gender && !firstName.chase);
-    if (!gender && chase) return firstNames?.value!.filter((firstName) => firstName.chase === chase && !firstName.gender);
-    return firstNames?.value!.filter((firstName) => !firstName.chase && !firstName.gender);
+    if (gender && chase) return firstNames?.value!.filter(firstName => firstName.chase === chase && firstName.gender === gender);
+    if (gender && !chase) return firstNames?.value!.filter(firstName => firstName.gender === gender && !firstName.chase);
+    if (!gender && chase) return firstNames?.value!.filter(firstName => firstName.chase === chase && !firstName.gender);
+    return firstNames?.value!.filter(firstName => !firstName.chase && !firstName.gender);
   };
   const filterNames = ref<Record<string, FirstName[]>>({});
 
@@ -44,4 +44,4 @@ export const useFilterFirstNames = () => {
   watch(firstNames!, filterAllFirstNames, deepImmediate);
 
   return { filterNames, genders, chases };
-};
+}

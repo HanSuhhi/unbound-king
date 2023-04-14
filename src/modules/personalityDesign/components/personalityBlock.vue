@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { DATA } from "../../../composables/data";
-const props = defineProps<{ personality: Personality }>();
+defineProps<{ personality: Personality }>();
 </script>
 
 <template>

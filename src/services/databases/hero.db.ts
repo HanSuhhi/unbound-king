@@ -1,55 +1,55 @@
-import { DATA_Genders } from "@/modules/character/enums/character.enum";
 import type { ITable } from "jsstore";
 import { DATA_TYPE } from "jsstore";
+import { DATA_Genders } from "@/modules/character/enums/character.enum";
 
 const idbHero: ITable = {
   name: "Heroes",
   columns: {
     id: {
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
     name: {
       notNull: true,
-      dataType: DATA_TYPE.String,
+      dataType: DATA_TYPE.String
     },
     gender: {
       dataType: DATA_TYPE.Number,
-      default: DATA_Genders.MALE,
+      default: DATA_Genders.MALE
     },
     nature: {
       dataType: DATA_TYPE.Array,
-      default: [],
+      default: []
     },
     personality: {
       dataType: DATA_TYPE.Array,
-      default: [],
+      default: []
     },
     nation: {
       dataType: DATA_TYPE.Number,
-      notNull: true,
+      notNull: true
     },
     country: {
       dataType: DATA_TYPE.Number,
-      notNull: true,
+      notNull: true
     },
     area: {
       dataType: DATA_TYPE.Number,
-      notNull: true,
+      notNull: true
     },
     role: {
       dataType: DATA_TYPE.Number,
-      notNull: true,
+      notNull: true
     },
     attrubute: {
       dataType: DATA_TYPE.Number,
-      notNull: true,
+      notNull: true
     },
     skill: {
       dataType: DATA_TYPE.Array,
-      default: [],
-    },
-  },
+      default: []
+    }
+  }
 };
 
 export default idbHero;

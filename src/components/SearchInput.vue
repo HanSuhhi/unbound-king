@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { defineItemsSearch } from "@/composables/components/ItemsSearch";
 import { throttle } from "lodash-es";
-import { watch, ref } from "vue";
+import { ref, watch } from "vue";
 import { animationDuration } from "../composables/constant/env";
-import { NInput } from "naive-ui";
 
 const props = defineProps<{ watchEvent: (...args: any) => any }>();
 
-// const { COMP: Input, state: InputState } = defineItemsSearch();
 const value = ref("");
 
 watch(value, throttle(props.watchEvent, animationDuration));
@@ -16,7 +13,7 @@ watch(value, throttle(props.watchEvent, animationDuration));
 <template>
   <div class="search-input" flex_center>
     <icon name="search-eye" />
-    <input v-model="value" class="input-reset search-input_input" />
+    <input v-model="value" class="input-reset search-input_input" placeholder="请输入搜索内容...">
   </div>
 </template>
 
@@ -28,6 +25,7 @@ watch(value, throttle(props.watchEvent, animationDuration));
 
 .search-input_input {
   padding: var(--mini) var(--small);
+  color: var(--white);
   border: none;
   border-radius: 0;
   transition: all var(--transition-prop);

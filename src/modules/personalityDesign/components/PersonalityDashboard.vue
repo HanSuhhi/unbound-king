@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import BuffExplanation from "@/components/BuffExplanation.vue";
-import { DATA_BaseIcons } from "@/modules/baseIcon/data/baseIcon.data";
 import { NPopover } from "naive-ui";
 import type { ComputedRef } from "vue";
 import { inject, ref } from "vue";
@@ -8,6 +6,8 @@ import { defineCommonDialog } from "../../../composables/components/commonDialog
 import IconBlock from "../../baseIcon/components/IconBlock.vue";
 import AddPersonalityDialog from "./AddPersonalityDialog.vue";
 import PersonalityBlock from "./personalityBlock.vue";
+import { DATA_BaseIcons } from "@/modules/baseIcon/data/baseIcon.data";
+import BuffExplanation from "@/components/BuffExplanation.vue";
 
 const { modalShow } = defineCommonDialog();
 
@@ -24,7 +24,7 @@ const activeData = ref<Personality>();
         <template #trigger>
           <personality-block :personality="personality" class="personality-dashboard_block" @mouseover="activeData = personality" />
         </template>
-        <BuffExplanation :buff-name="activeData?.id || ''" :buff-key="'personality'" />
+        <buff-explanation :buff-name="activeData?.id || ''" buff-key="personality" />
       </n-popover>
     </template>
     <icon-block class="personality-dashboard_block" :icon="DATA_BaseIcons.plus" not-copy @click="modalShow = true" />
