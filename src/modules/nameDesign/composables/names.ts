@@ -1,11 +1,10 @@
 import { formatCodeString } from "@/composables/ci/codeString";
-import { provide, ref, watch, computed } from "vue";
+import { isUndefined } from "lodash-es";
+import { computed, provide, ref, watch } from "vue";
 import { DATA_FamilyNames, DATA_FirstNames } from "../data/name.data";
-import { defer, isUndefined } from "lodash-es";
 
 export const useNames = () => {
-  const familyNames = ref<FamilyName[]>([]);
-  defer(() => familyNames.value = DATA_FamilyNames);
+  const familyNames = ref<FamilyName[]>(DATA_FamilyNames);
 
   const firstNames = ref<FirstName[]>(DATA_FirstNames);
   const changed = ref();

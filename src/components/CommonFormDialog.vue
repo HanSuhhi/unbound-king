@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import autoForm from "@/components/autoForm/autoForm.vue";
-import Icon from "@/components/Icon.vue";
-import TitleCard from "@/components/titleCard/TitleCard";
-import { validateForm } from "@/composables/form/validateForm";
-import { FormInstance } from "element-plus";
+import { FormInst, NModal } from "naive-ui";
 import { cloneDeep, defer, delay } from "lodash-es";
-import { NModal } from "naive-ui";
+
 import type { Ref } from "vue";
 import { inject, ref } from "vue";
+import { validateForm } from "@/composables/form/validateForm";
+import TitleCard from "@/components/titleCard/TitleCard";
+import Icon from "@/components/Icon.vue";
+import autoForm from "@/components/autoForm/autoForm.vue";
 
 const props = defineProps<{
-  formConfig: AutoformItem[];
-  confirm?: Function;
+  formConfig: AutoformItem[]
+  confirm?: Function
 }>();
 
 const modal = inject<Ref<boolean>>("modal")!;
@@ -19,7 +19,9 @@ const modal = inject<Ref<boolean>>("modal")!;
 const currentConfig = ref(props.formConfig);
 const changed = inject<Ref<boolean>>("changed")!;
 
-const confirm = (data: any, formEl: FormInstance) => {
+function confirm(data: any, formEl: FormInst) {
+  console.log("data: ", data);
+
   validateForm(formEl, () => {
     props.confirm?.(cloneDeep(data));
     changed.value = true;
@@ -29,7 +31,7 @@ const confirm = (data: any, formEl: FormInstance) => {
       defer(() => (currentConfig.value = props.formConfig));
     }, Number(import.meta.env.ANIMATION_DURATION));
   });
-};
+}
 </script>
 
 <template>
@@ -41,13 +43,17 @@ const confirm = (data: any, formEl: FormInstance) => {
         </p>
       </template>
       <template #subtitle>
-        <Icon pointer class="form-dialog_close" name="close" @click="modal = false" />
+        <icon pointer class="form-dialog_close" name="close" @click="modal = false" />
       </template>
       <auto-form :config="currentConfig">
         <template #footer="{ data, form }">
           <section class="form-dialog_confirm">
-            <type-button @click.prevent="modal = false">取消</type-button>
-            <type-button @click.prevent="confirm(data as GameIcon, form as FormInstance)">确定</type-button>
+            <type-button @click.prevent="modal = false">
+              取消
+            </type-button>
+            <type-button @click.prevent="confirm(data as GameIcon, form as unknown as FormInst)">
+              确定
+            </type-button>
           </section>
         </template>
       </auto-form>

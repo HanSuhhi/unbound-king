@@ -1,7 +1,11 @@
-import { useProvide } from "./provide";
 import type { Ref } from "vue";
 import { inject } from "vue";
+import { useProvide } from "./provide";
 
-export const provideLoading = () => useProvide("loading", false);
+export function provideLoading() {
+  return useProvide("loading", false);
+}
 
-export const injectLoading = () => inject<Ref<boolean>>("loading")!;
+export function injectLoading() {
+  return inject<Ref<boolean>>("loading")!;
+}

@@ -22,8 +22,7 @@ const activeData = ref<Personality>();
     <template v-for="personality in data" :key="personality.translator[0]">
       <n-popover trigger="hover" placement="bottom">
         <template #trigger>
-          <personality-block :personality="personality" class="personality-dashboard_block"
-            @mouseover="activeData = personality" />
+          <personality-block :personality="personality" class="personality-dashboard_block" @mouseover="activeData = personality" />
         </template>
         <BuffExplanation :buff-name="activeData?.id || ''" :buff-key="'personality'" />
       </n-popover>
@@ -34,21 +33,12 @@ const activeData = ref<Personality>();
 
 <style scoped>
 .personality-dashboard {
-  --column-count: 12;
-
-  display: grid;
-  grid-template-columns: repeat(var(--column-count), 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  border-left: var(--border);
 }
 
 .personality-dashboard_block {
   box-sizing: border-box;
-}
-
-.personality-dashboard_block:last-child {
-  border-right: 1px solid var(--border-color);
-}
-
-.personality-dashboard_block:nth-child(12n) {
-  border-right: 1px solid var(--border-color);
 }
 </style>

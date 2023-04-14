@@ -10,18 +10,28 @@ const { COMP, state } = defineFormsTabs("creator-forms");
 
 const plugin = inject<Ref<CreatorPlugin | null>>("plugin");
 
-const toggle = (index: number) => (state.value.active = index);
+function toggle(index: number) {
+  return state.value.active = index;
+}
 </script>
 
 <template>
   <base-tabs ref="COMP">
     <template #list>
-      <p class="p-reset" @click="toggle(0)">表单配置</p>
-      <p class="p-reset" @click="toggle(1)">插件测试</p>
-      <p class="p-reset" @click="toggle(2)">人物预览</p>
+      <p class="p-reset" @click="toggle(0)">
+        表单配置
+      </p>
+      <p class="p-reset" @click="toggle(1)">
+        插件测试
+      </p>
+      <p class="p-reset" @click="toggle(2)">
+        人物预览
+      </p>
       <p class="p-reset" />
     </template>
-    <template #panel-0> <froms-config :form-config="plugin?.data || []" /> </template>
+    <template #panel-0>
+      <froms-config :form-config="plugin?.data || []" />
+    </template>
     <template #panel-1>
       <plugin-test :plugin-key="plugin?.translator[0]" />
     </template>

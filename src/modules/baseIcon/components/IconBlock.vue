@@ -3,9 +3,9 @@ import { throttle } from "lodash-es";
 import { useMessage } from "naive-ui";
 import Icon from "../../../components/Icon.vue";
 
-const message = useMessage();
-
 const props = defineProps<{ icon: BaseIcon; notCopy?: boolean }>();
+
+const message = useMessage();
 
 const copy = throttle((name: string) => {
   if (props.notCopy) return;

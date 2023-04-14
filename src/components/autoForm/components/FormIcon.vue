@@ -1,31 +1,51 @@
 <script setup lang="ts">
-import { ElSelect } from "element-plus";
+import type { SelectOption } from "naive-ui";
+import { NSelect } from "naive-ui";
+import type { VNodeChild } from "vue";
+import { h } from "vue";
 import { transformIconToElLabelOptions } from "../composable/elLabelOptions";
+import { autoVModel } from "../composable/formItemDiy";
 import { DATA } from "@/composables/data";
+import Icon from "@/components/Icon.vue";
 
-const options = transformIconToElLabelOptions(DATA["DATA_GameIcons"]);
+const props = defineProps<{ modelValue: string }>();
+const emits = defineEmits<{
+  (e: "update:modelValue", icon: string): void
+}>();
+
+const model = autoVModel(emits, props.modelValue);
+
+const options = transformIconToElLabelOptions(DATA.DATA_GameIcons);
+
+function renderLabel(option: SelectOption): VNodeChild {
+  if (option.type === "group") return `${option.label}(Cool!)`;
+  return [
+    h(
+      "p",
+      {
+        style: {
+          "display": "flex",
+          "align-items": "center"
+        }
+      },
+      {
+        default: () => [
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          h(Icon, {
+            icon: option,
+            style: {
+              "margin-right": "var(--base-margin)"
+            }
+          }),
+          `${option.label} / ${option.value}`
+        ]
+      }
+    )
+  ];
+}
 </script>
 
 <template>
-  <el-select placeholder="请选择一个图标" filterable>
-    <el-option-group v-for="group in options" :key="group.label" :label="group.label">
-      <el-option v-for="(icon, id) in group.options" :key="id" :label="icon.translator[1]" :value="id">
-        <p class="p-reset form-icon_option">
-          <Icon :icon="icon" />
-          {{ icon.translator[1] }} / {{ icon.translator[0] }}
-        </p>
-      </el-option>
-    </el-option-group>
-  </el-select>
+  <n-select v-model:value="model" placeholder="请选择一个图标" filterable :options="options" :render-label="renderLabel" />
 </template>
-
-<style scoped>
-.form-icon_option {
-  display: flex;
-  align-items: center;
-}
-
-.form-icon_option > .icon {
-  margin-right: var(--base-margin);
-}
-</style>

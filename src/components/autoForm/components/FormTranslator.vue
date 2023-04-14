@@ -1,18 +1,20 @@
 <script setup lang="ts">
+import { NInput } from "naive-ui";
 import { autoVModel } from "../composable/formItemDiy";
 
 const props = defineProps<{ modelValue: Translator }>();
 const emits = defineEmits<{
-  (e: "update:modelValue", translator: Translator): void;
+  (e: "update:modelValue", translator: Translator): void
 }>();
 
 const model = autoVModel(emits, props.modelValue);
+
+const placeholder: [string, string] = ["请输入唯一 key", "显示名称，默认为 key"];
 </script>
 
 <template>
   <div class="form-translator">
-    <el-input v-model="model[0]" class="form-translator_input" placeholder="唯一的key值..." />
-    -<el-input v-model="model[1]" class="form-translator_input" placeholder="显示名，默认为key值" />
+    <n-input v-model:value="model" pair separator="-" clearable :placeholder="placeholder" />
   </div>
 </template>
 
@@ -21,9 +23,5 @@ const model = autoVModel(emits, props.modelValue);
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-.form-translator_input {
-  width: 45%;
 }
 </style>

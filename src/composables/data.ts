@@ -1,15 +1,19 @@
-import { getGlobalEnumNameOrNot } from "@/enums/global.enum";
-import { isObject } from 'lodash-es';
-import { DATA_Attributes } from '../modules/attribute/data/index';
+import { isMap, isObject } from "lodash-es";
+import { DATA_Attributes } from "../modules/attribute/data/index";
 import { DATA_AttributeValues } from "../modules/attributeValue/data/index";
 import { DATA_Ages, DATA_Chases, DATA_Genders } from "../modules/character/enums/character.enum";
 import { DATA_FamilyNames, DATA_FirstNames } from "../modules/nameDesign/data/name.data";
-import { DATA_Buffs } from '../modules/buff/data/index';
-import { DATA_GameIcons } from '../modules/gameIcon/data/index';
+import { DATA_Buffs } from "../modules/buff/data/index";
+import { DATA_GameIcons } from "../modules/gameIcon/data/index";
+import { getGlobalEnumNameOrNot } from "@/enums/global.enum";
 import { DATA_Personalities } from "@/modules/personalityDesign/data";
 
-const getKeyFromId = (id: string): string => id.match(/[a-zA-Z]+/)?.[0] || "";
-const getDataKey = (key: string): string => `DATA_${key}s`;
+function getKeyFromId(id: string): string {
+  return id.match(/[a-zA-Z]+/)?.[0] || "";
+}
+function getDataKey(key: string): string {
+  return `DATA_${key}s`;
+}
 
 export const DATA = {
   DATA_Genders,
@@ -24,18 +28,20 @@ export const DATA = {
   DATA_Personalities
 };
 
-export const getDataById = <T>(id: string): T => {
+export function getDataById<T>(id: string): T {
   let key = getKeyFromId(id);
   key = getGlobalEnumNameOrNot(key);
-  key = getDataKey(key);
-  return (DATA as any)[key][id];
-};
+  key = getDataKey(key) as unknown as keyof typeof DATA;
+  return DATA[key][id];
+}
 
-export const getDataByKey = (key: string) => {
+export function getDataByKey<T>(key: string) {
   for (const _key in DATA) {
     const dataRange = (DATA as Record<string, Object>)[_key];
     if (!isObject(dataRange)) return;
-    const value = (dataRange as Record<string, Object>)[key];
+    let value: T;
+    if (isMap(dataRange)) value = (dataRange as Map<string, T>).get(key)!;
+    else value = (dataRange as Dictionary<T>)[key];
     if (value) return value;
   }
-};
+}

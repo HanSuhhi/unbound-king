@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { defineCommonLayout } from "@/composables/components/commonLayout";
 import FamilyName from "./components/FamilyName.vue";
 import { useNames } from "./composables/names";
 import FirstNames from "./components/FirstNames.vue";
+import { defineCommonLayout } from "@/composables/components/commonLayout";
 import "./name-design.css";
-import { ref } from "vue";
+import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
 
 const { COMP: Layout } = defineCommonLayout("name-design");
 const { code } = useNames();
@@ -13,7 +13,7 @@ const { code } = useNames();
 <template>
   <base-layout ref="Layout" class="name-design">
     <template #aside>
-      <CodeCanvas :code="code" class="code-canvas_design" />
+      <code-canvas :code="code" class="code-canvas_design" />
     </template>
     <div class="name-design_parts">
       <family-name />

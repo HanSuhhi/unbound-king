@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import { defineComponent, ref, provide, inject, watchEffect } from "vue";
+import { defineComponent, inject, provide, ref, watchEffect } from "vue";
 import { defineCommonLayout } from "../../../composables/components/commonLayout";
 import Forms from "./Forms.vue";
 import Steps from "./Steps.vue";
@@ -23,10 +23,10 @@ export default defineComponent({
         <base-layout ref={COMP}>
           {{
             aside: () => <Steps />,
-            default: () => <Forms />,
+            default: () => <Forms />
           }}
         </base-layout>
       );
     };
-  },
+  }
 });

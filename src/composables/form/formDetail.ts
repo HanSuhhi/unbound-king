@@ -4,13 +4,14 @@ function selecterDefault(configItem: AutoformItem): AutoformItem {
   const isSelect = configItem.type === "selecter";
   const needDefault = isSelect && configItem.required;
   if (isSelect && !configItem.options) configItem.options = { range: [] };
+
   if (needDefault) configItem.defaultValue = configItem.options?.range![0][0];
   return configItem;
 }
 
 function setRules(configItem: AutoformItem): AutoformItem {
   if (!configItem.rules) configItem.rules = [];
-  if (configItem.required) configItem.rules.push({ required: true, message: `${configItem.title}项不可为空` });
+  if (configItem.required && configItem.key !== "translator") configItem.rules.push({ required: true, message: `${configItem.title}项不可为空`, trigger: ["blur"] });
   return configItem;
 }
 
@@ -19,7 +20,7 @@ function setPlaceholder(configItem: AutoformItem): AutoformItem {
   return configItem;
 }
 
-export const withFormDetail = <T>(config: AutoformItem[], details: Record<keyof T, Partial<AutoformItem>>): AutoformItem[] => {
+export function withFormDetail<T>(config: AutoformItem[], details: Record<keyof T, Partial<AutoformItem>>): AutoformItem[] {
   return config.map((configItem) => {
     const detail = details[configItem.key as keyof T];
     selecterDefault(configItem);
@@ -28,4 +29,4 @@ export const withFormDetail = <T>(config: AutoformItem[], details: Record<keyof 
     setPlaceholder(configItem);
     return configItem;
   });
-};
+}

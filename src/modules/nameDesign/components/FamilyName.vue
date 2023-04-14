@@ -1,26 +1,25 @@
 <script setup lang="ts">
-import NumberMark from "@/components/NumberMark.vue";
-import SearchInput from "@/components/SearchInput.vue";
-import TitleCard from "@/components/titleCard/TitleCard";
-import typeButton from "@/components/typeButton/TypeButton.vue";
-import { ElInput } from "element-plus";
 import type { Ref } from "vue";
 import { inject, ref, watch } from "vue";
+import { NInput } from "naive-ui";
 import { copy } from "../../../composables/experience/copy";
 import { useFamilyNames } from "../composables/familyName";
 import NameTag from "./NameTag.vue";
-import { NSpin } from "naive-ui";
+import typeButton from "@/components/typeButton/TypeButton.vue";
+import TitleCard from "@/components/titleCard/TitleCard";
+import SearchInput from "@/components/SearchInput.vue";
+import NumberMark from "@/components/NumberMark.vue";
 
-const familyNames = inject<Ref<FamilyName[]>>("family-names");
-const showFamilyNames = ref<FamilyName[]>(familyNames?.value!);
-watch(familyNames!, () => (showFamilyNames.value = familyNames?.value!), { deep: true });
+const familyNames = inject<Ref<FamilyName[]>>("family-names")!;
+const showFamilyNames = ref<FamilyName[]>(familyNames?.value);
+watch(familyNames!, () => (showFamilyNames.value = familyNames?.value), { deep: true });
 
 const newName = ref("");
-const [addFamilyName, removeFamilyName] = useFamilyNames(newName);
+const { addFamilyName, removeFamilyName } = useFamilyNames(newName);
 
-const watchSearchEvent = (input: string) => {
-  showFamilyNames.value = familyNames?.value.filter((familyName) => familyName.includes(input)) || [];
-};
+function watchSearchEvent(input: string) {
+  showFamilyNames.value = familyNames?.value.filter(familyName => familyName.includes(input)) || [];
+}
 
 const loadingShow = ref(true);
 const initFamilyNames = watch(showFamilyNames, (names) => {
@@ -39,18 +38,17 @@ const initFamilyNames = watch(showFamilyNames, (names) => {
     <template #subtitle>
       <search-input :watch-event="watchSearchEvent" />
     </template>
-    <n-spin :show="loadingShow">
-      <section class="family-name_names">
-        <name-tag v-for="(name, index) of showFamilyNames" :key="name" @close="removeFamilyName(index)" @copy="copy(name)">
-          {{ name }}
-        </name-tag>
-      </section>
-      <template #description> 数据加载中... </template>
-    </n-spin>
+    <section class="family-name_names">
+      <name-tag v-for="(name, index) of showFamilyNames" :key="name" @close="removeFamilyName(index)" @copy="copy(name)">
+        {{ name }}
+      </name-tag>
+    </section>
     <template #footer>
       <section class="family-name_input">
-        <el-input v-model="newName" placeholder="请输入新增的姓氏..." show-word-limit maxlength="3" @keyup.enter="addFamilyName" />
-        <type-button class="family-name_button" @click="addFamilyName">新增</type-button>
+        <n-input v-model:value="newName" placeholder="请输入新增的姓氏..." show-count clearable maxlength="3" @keyup.enter="addFamilyName" />
+        <type-button class="family-name_button" @click="addFamilyName">
+          新增
+        </type-button>
       </section>
     </template>
   </title-card>

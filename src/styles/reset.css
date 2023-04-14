@@ -42,3 +42,7 @@ body {
   font-family: v-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.6;
 }
+.n-input.n-input--pair .n-input__input-el,
+.n-input.n-input--pair .n-input__placeholder {
+  text-align: left;
+}

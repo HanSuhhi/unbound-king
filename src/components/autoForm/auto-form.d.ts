@@ -7,7 +7,7 @@ type Autoform = AutoformItem[];
 type AutoformItem = {
   key: string;
   title: string;
-  type: "input" | "selecter" | "translator" | "icon" | "number" | "textarea" | "text";
+  type: "text" | "selecter" | "translator" | "icon" | "number" | "textarea" | "none";
   hide?: boolean;
   required?: boolean;
   options?: Options;
@@ -18,5 +18,6 @@ type AutoformItem = {
     max?: number;
     min?: number;
   };
-  rules?: import("element-plus").FormItemRule[];
+  rules?: import("naive-ui").FormItemRule[];
 };
+

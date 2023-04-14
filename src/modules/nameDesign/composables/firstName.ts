@@ -31,5 +31,5 @@ export const useFirstName = (nameModel: Ref, gender?: Gender, chase?: Chase) => 
     if (index !== undefined && index !== -1) firstNames?.value.splice(index, 1);
   };
 
-  return [addFirstName, removeFirstName];
+  return { addFirstName, removeFirstName };
 };

@@ -13,24 +13,24 @@ export default <Creator>{
           translator: ["gender", "性別"],
           description: "",
           generator: "random",
-          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
-          generatorParams: { range: "DATA_Genders" },
+          generatorForm: [{ type: "none", title: "根据条件随机生成" }],
+          generatorParams: { range: "DATA_Genders" }
         },
         {
           translator: ["chase", "追求"],
           description: "角色毕生的追求，在诸多方面对角色产生影响",
           generator: "random",
-          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
-          generatorParams: { range: "DATA_Chases", needTransform: true },
+          generatorForm: [{ type: "none", title: "根据条件随机生成" }],
+          generatorParams: { range: "DATA_Chases", needTransform: true }
         },
         {
           translator: ["age", "年龄"],
           description: "",
           generator: "random",
-          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
-          generatorParams: { range: "DATA_Ages", needTransform: true },
-        },
-      ],
+          generatorForm: [{ type: "none", title: "根据条件随机生成" }],
+          generatorParams: { range: "DATA_Ages", needTransform: true }
+        }
+      ]
     },
     {
       translator: ["character-name-plugin", "角色姓名插件"],
@@ -42,31 +42,31 @@ export default <Creator>{
           translator: ["familyName", "姓氏"],
           description: "",
           generator: "random",
-          generatorForm: [{ type: "text", title: "根据条件随机生成" }],
-          generatorParams: { range: "DATA_FamilyNames" },
+          generatorForm: [{ type: "none", title: "根据条件随机生成" }],
+          generatorParams: { range: "DATA_FamilyNames" }
         },
         {
           translator: ["firstname", "名辞"],
           description: "",
           generator: "firstname",
           generatorForm: [
-            { key: "firstname", type: "text", title: "根据条件随机生成" },
+            { key: "firstname", type: "none", title: "根据条件随机生成" }
           ],
-          generatorParams: { needInject: ["character-baseinfo-plugin"] },
+          generatorParams: { needInject: ["character-baseinfo-plugin"] }
         },
         {
           translator: ["firstname-second", "名辞 2"],
           description: "当第一个名辞为单字时，有几率产生第二个单字，组成复名",
           generator: "firstname",
           generatorForm: [
-            { key: "firstname", type: "text", title: "根据条件随机生成" },
+            { key: "firstname", type: "none", title: "根据条件随机生成" }
           ],
           generatorParams: {
             needInject: ["character-baseinfo-plugin"],
-            second: true,
-          },
-        },
-      ],
+            second: true
+          }
+        }
+      ]
     },
     {
       translator: ["attribute-value-plugin", "属性值插件"],
@@ -85,7 +85,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -94,10 +94,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["maxHp", "生命上限"],
@@ -127,16 +127,16 @@ export default <Creator>{
                   ["cha", "魅力"],
                   ["moral", "道德"],
                   ["sp", "唯我"],
-                  ["ld", "指挥"],
-                ],
+                  ["ld", "指挥"]
+                ]
               },
               title: "数值同步于",
               required: true,
               placeholder: "请选择数据需要同步的属性",
-              rules: [{ required: true, message: "数值同步于项不可为空" }],
-            },
+              rules: [{ required: true, message: "数值同步于项不可为空" }]
+            }
           ],
-          generatorParams: { pasteFrom: "hp" },
+          generatorParams: { pasteFrom: "hp" }
         },
         {
           translator: ["minDef", "防御力下限"],
@@ -149,7 +149,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -158,10 +158,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["maxDef", "防御力上限"],
@@ -174,7 +174,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -183,10 +183,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["minAtk", "攻击力下限"],
@@ -199,7 +199,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -208,10 +208,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["maxAtk", "攻击力上限"],
@@ -224,7 +224,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -233,10 +233,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["matk", "法术攻击力"],
@@ -249,7 +249,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -258,10 +258,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["apr", "法术防御力"],
@@ -274,7 +274,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -283,10 +283,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["wt", "负重"],
@@ -299,7 +299,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -308,10 +308,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["res", "抗性"],
@@ -324,7 +324,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -333,10 +333,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["pct", "虔诚"],
@@ -349,7 +349,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -358,10 +358,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["acc", "命中"],
@@ -374,7 +374,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -383,10 +383,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["eva", "闪避"],
@@ -399,7 +399,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -408,10 +408,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["luc", "幸运"],
@@ -424,7 +424,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -433,10 +433,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["hex", "诅咒"],
@@ -449,7 +449,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -458,10 +458,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["crit", "会心"],
@@ -474,7 +474,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -483,10 +483,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["cha", "魅力"],
@@ -499,7 +499,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -508,10 +508,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["moral", "道德"],
@@ -524,7 +524,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -533,10 +533,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["sp", "唯我"],
@@ -549,7 +549,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -558,10 +558,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 2, max: 222 },
+          generatorParams: { min: 2, max: 222 }
         },
         {
           translator: ["ld", "指挥"],
@@ -574,7 +574,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -583,12 +583,12 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 1, max: 222 },
-        },
-      ],
+          generatorParams: { min: 1, max: 222 }
+        }
+      ]
     },
     {
       translator: ["attribute-plugin", "属性插件"],
@@ -607,7 +607,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -616,10 +616,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 1, max: 18 },
+          generatorParams: { min: 1, max: 18 }
         },
         {
           translator: ["ep", "佐佑"],
@@ -632,7 +632,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -641,10 +641,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 1, max: 18 },
+          generatorParams: { min: 1, max: 18 }
         },
         {
           translator: ["int", "奇术"],
@@ -657,7 +657,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -666,10 +666,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 1, max: 18 },
+          generatorParams: { min: 1, max: 18 }
         },
         {
           translator: ["str", "勇气"],
@@ -682,7 +682,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -691,10 +691,10 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 1, max: 18 },
+          generatorParams: { min: 1, max: 18 }
         },
         {
           translator: ["df", "守御"],
@@ -707,7 +707,7 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最小值的内容...",
+              placeholder: "有关于最小值的内容..."
             },
             {
               key: "max",
@@ -716,12 +716,12 @@ export default <Creator>{
               required: false,
               limit: { min: 0 },
               rules: [],
-              placeholder: "有关于最大值的内容...",
-            },
+              placeholder: "有关于最大值的内容..."
+            }
           ],
-          generatorParams: { min: 1, max: 18 },
-        },
-      ],
-    },
-  ],
+          generatorParams: { min: 1, max: 18 }
+        }
+      ]
+    }
+  ]
 };

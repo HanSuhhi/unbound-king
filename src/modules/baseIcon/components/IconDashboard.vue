@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import IconBlock from "@/modules/baseIcon/components/IconBlock.vue";
-import { delay } from "lodash-es";
 import { ref } from "vue";
 import { DATA_BaseIcons } from "../data/baseIcon.data";
+import IconBlock from "@/modules/baseIcon/components/IconBlock.vue";
 
 const container = ref<HTMLElement>();
 </script>
@@ -17,6 +16,8 @@ const container = ref<HTMLElement>();
 .icon-dashboard {
   display: flex;
   flex-wrap: wrap;
+
+  /* width: 100vw; */
   border-top: var(--border);
   border-left: var(--border);
 }

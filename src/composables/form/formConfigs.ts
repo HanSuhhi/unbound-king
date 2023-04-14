@@ -4,8 +4,8 @@ export const idFormConfig = {
   id: {
     title: "id",
     disabled: true,
-    defaultValue: "自动生成，无需操作",
-  } as Partial<AutoformItem>,
+    defaultValue: "自动生成，无需操作"
+  } as Partial<AutoformItem>
 };
 
 export const translatorFormConfig = {
@@ -14,20 +14,20 @@ export const translatorFormConfig = {
     rules: [
       {
         validator: defineTranslatorValidator(),
-        trigger: "blur",
-      },
-    ],
-  } as Partial<AutoformItem>,
+        trigger: ["blur"]
+      }
+    ]
+  } as Partial<AutoformItem>
 };
 
 export const iconFormConfig = {
   icon: {
-    title: "图标",
-  } as Partial<AutoformItem>,
+    title: "图标"
+  } as Partial<AutoformItem>
 };
 
 export const descriptionFormConfig = {
   description: {
     title: "说明"
-  } as Partial<AutoformItem>,
+  } as Partial<AutoformItem>
 };

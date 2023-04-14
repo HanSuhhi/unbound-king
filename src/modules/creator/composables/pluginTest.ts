@@ -1,6 +1,6 @@
-import { DATA_Generators } from "@/modules/generator/data";
 import { forEach } from "lodash-es";
 import { ref, watch } from "vue";
+import { DATA_Generators } from "@/modules/generator/data";
 
 export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
   const data = ref<ReturnStruct[]>([]);
@@ -13,13 +13,13 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
       if (plugin?.generatorParams?.needInject) {
         forEach(plugin.generatorParams.needInject, (injectName: string) => {
           const { data }: { data: ReturnStruct[] } = pastData.value[injectName];
-          Object.defineProperty(plugin, 'pastData', {
+          Object.defineProperty(plugin, "pastData", {
             value: {},
             writable: true,
-            enumerable: true,
+            enumerable: true
           });
           forEach(data, (_data: ReturnStruct) => {
-            plugin['pastData'][_data[2]] = _data[1];
+            plugin.pastData[_data[2]] = _data[1];
           });
         });
       }

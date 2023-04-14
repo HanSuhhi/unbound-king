@@ -27,7 +27,7 @@ type KeyEvent = {
   fn: (isPressed) => void;
 }
 
-type Translator = [key: string | Ref<string>, title: string | Ref<string>];
+type Translator = [key: string, title: string];
 type Dictionary<T> = Record<string, T>;
 type BaseItem = {
   icon?: Icon;

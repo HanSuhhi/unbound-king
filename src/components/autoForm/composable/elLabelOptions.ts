@@ -1,17 +1,14 @@
 import { groupBy, mapValues } from "lodash-es";
+import type { SelectGroupOption, SelectOption } from "naive-ui";
 import { getGlobalEnumNameOrNot } from "../../../enums/global.enum";
+import { defineUniqueId } from "../../../composables/ci/uniqueId";
 
-type OptionReturn = {
-  label: string;
-  options: Record<string, GameIcon>;
-};
-
-export function transformIconToElLabelOptions(gameicons: Map<string, GameIcon>): OptionReturn[] {
+export function transformIconToElLabelOptions(gameicons: Map<string, GameIcon>): SelectGroupOption[] {
   const grouped = groupBy(Object.fromEntries(gameicons), "from");
 
-  const transformed = mapValues(grouped, (group) => {
-    const options = group.reduce((acc, cur) => ({ ...acc, [cur.id]: cur }), {});
-    return { label: getGlobalEnumNameOrNot(group[0].from), options };
+  const transformed = mapValues(grouped, (group): SelectGroupOption => {
+    const children = group.map((option): SelectOption => ({ ...option, label: option.translator[1], value: option.translator[0] }));
+    return { label: getGlobalEnumNameOrNot(group[0].from), type: "group", key: defineUniqueId(), children };
   });
 
   return Object.values(transformed);

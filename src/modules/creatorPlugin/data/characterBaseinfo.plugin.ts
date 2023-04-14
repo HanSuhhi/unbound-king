@@ -7,8 +7,8 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: "DATA_Genders",
-    },
+      range: "DATA_Genders"
+    }
   },
   {
     translator: ["chase", "追求"],
@@ -17,8 +17,8 @@ const data: PluginStruct[] = [
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
       range: "DATA_Chases",
-      needTransform: true,
-    },
+      needTransform: true
+    }
   },
   {
     translator: ["age", "年龄"],
@@ -27,15 +27,15 @@ const data: PluginStruct[] = [
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
       range: "DATA_Ages",
-      needTransform: true,
-    },
-  },
+      needTransform: true
+    }
+  }
 ];
 
 export default <CreatorPlugin>{
-  translator: ["character-baseinfo-plugin", "角色基础信息插件",],
+  translator: ["character-baseinfo-plugin", "角色基础信息插件"],
   belong: "character",
   description: "生成人物追求与性别",
   icon: "mesasge",
-  data,
+  data
 };

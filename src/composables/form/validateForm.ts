@@ -1,13 +1,10 @@
-import type { FormInstance } from "element-plus";
+import type { FormInst } from "naive-ui";
 
-export const validateForm = (formEl: FormInstance, callback: Function) => {
+export async function validateForm(formEl: FormInst, callback: Function) {
   if (!formEl) return;
 
-  formEl.validate((valid, fields) => {
-    if (valid) {
-      callback();
-    } else {
-      console.log("error submit!", fields);
-    }
+  await formEl.validate((errors) => {
+    if (!errors) callback();
+    else console.error("error submit!", errors);
   });
-};
+}

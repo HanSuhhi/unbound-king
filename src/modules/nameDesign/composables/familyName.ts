@@ -1,10 +1,10 @@
-import { animationDuration } from "@/composables/constant/env";
-import { throttle, includes } from "lodash-es";
+import { includes, throttle } from "lodash-es";
 import { useMessage } from "naive-ui";
 import type { Ref } from "vue";
 import { inject } from "vue";
+import { animationDuration } from "@/composables/constant/env";
 
-export const useFamilyNames = (nameModel: Ref) => {
+export function useFamilyNames(nameModel: Ref<string>) {
   const familyNames = inject<Ref<FamilyName[]>>("family-names");
   const message = useMessage();
 
@@ -20,5 +20,5 @@ export const useFamilyNames = (nameModel: Ref) => {
     familyNames?.value.splice(index, 1);
   };
 
-  return [addFamilyName, removeFamilyName];
-};
+  return { addFamilyName, removeFamilyName };
+}

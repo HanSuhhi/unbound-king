@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import KeyValueCard from "@/components/KeyValueCard.vue";
-import typeButton from "@/components/typeButton/TypeButton.vue";
 import { isObject } from "lodash-es";
 import type { Ref } from "vue";
 import { computed, inject } from "vue";
 import type { usePluginTest } from "../composables/pluginTest";
+import typeButton from "@/components/typeButton/TypeButton.vue";
+import KeyValueCard from "@/components/KeyValueCard.vue";
 
 type ReturnData = Record<string, ReturnType<typeof usePluginTest>>;
 
-const props = defineProps<{ pluginKey: string }>();
+const props = defineProps<{ pluginKey?: string }>();
 
 const testData = inject<Ref<ReturnData>>("test-data")!;
 const data = computed(() => testData!.value[props.pluginKey]) as any;
@@ -17,7 +17,9 @@ const data = computed(() => testData!.value[props.pluginKey]) as any;
 <template>
   <article class="plugin-test">
     <section class="plugin-test_title">
-      <p class="p-reset plugin-test_title">生成数据</p>
+      <p class="p-reset plugin-test_title">
+        生成数据
+      </p>
     </section>
     <section class="plugin-test_main">
       <div v-for="item of data.data" :key="item[0]" class="plugin-test_data">
@@ -25,7 +27,9 @@ const data = computed(() => testData!.value[props.pluginKey]) as any;
       </div>
     </section>
     <section class="plugin-test_bottom">
-      <type-button @click="data.genData">重新生成</type-button>
+      <type-button @click="data.genData">
+        重新生成
+      </type-button>
     </section>
   </article>
 </template>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { dialogMessage } from "@/composables/components/globalDialog";
-import { useGlobalStore } from "@/stores/global.store";
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider } from "naive-ui";
 import { storeToRefs } from "pinia";
 import { nextTick } from "vue";
@@ -12,6 +10,8 @@ import GlobalDialog from "./components/dialog/GlobalDialog.vue";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import { defineNaiveTheme } from "./composables/naiveTheme";
 import Setting from "./modules/setting/Setting.vue";
+import { useGlobalStore } from "@/stores/global.store";
+import { dialogMessage } from "@/composables/components/globalDialog";
 
 const { Layout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
@@ -41,13 +41,13 @@ nextTick(setDefaultTransitionDuration);
             <router-history />
           </template>
           <template #aside>
-            <AppAside />
+            <app-aside />
           </template>
           <template #footer>
             <app-footer />
           </template>
         </base-layout>
-        <Setting />
+        <setting />
         <global-dialog v-if="dialogMessage" />
       </n-message-provider>
     </n-loading-bar-provider>

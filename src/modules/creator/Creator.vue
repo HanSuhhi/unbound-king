@@ -1,31 +1,28 @@
 <script setup lang="ts">
-import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
 import { defineCommonLayout } from "../../composables/components/commonLayout";
-import { provideLoading } from "../../composables/plus/loading";
 import CreatorHeader from "./components/CreatorHeader.vue";
 import CreatorMain from "./components/CreatorMain";
 import { useActiveCreator } from "./composables/activeCreator";
 import { useCode } from "./composables/code";
+import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
 import "./creator.css";
 
 const { COMP } = defineCommonLayout("creator");
 
 const [code] = useCode();
 useActiveCreator(code);
-
-const loading = provideLoading();
 </script>
 
 <template>
-  <base-layout ref="COMP" v-loading="loading" class="page-transition">
+  <base-layout ref="COMP" class="page-transition">
     <template #aside>
-      <CodeCanvas :code="code" />
+      <code-canvas :code="code" />
     </template>
     <base-layout>
       <template #header>
-        <CreatorHeader />
+        <creator-header />
       </template>
-      <CreatorMain />
+      <creator-main />
     </base-layout>
   </base-layout>
 </template>

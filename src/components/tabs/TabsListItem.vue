@@ -1,16 +1,15 @@
-import Icon from '@/components/Icon.vue';
 <script setup lang="ts">
 import { size } from "lodash-es";
 import NumberMark from "../NumberMark.vue";
 
 defineProps<{
-  message: TabListItem;
+  message: TabListItem
 }>();
 </script>
 
 <template>
   <div class="tabs-list-item">
-    <Icon :name="message.icon" />
+    <icon :name="message.icon" />
     <span class="tabs-list-item_title">{{ message.name }}</span>
     <number-mark>{{ size(message.injectData) }}</number-mark>
   </div>
