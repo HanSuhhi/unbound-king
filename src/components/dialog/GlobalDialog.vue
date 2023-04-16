@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import TitleCardDraggable from "@/components/titleCard/TitleCardDraggable";
-import { dialogMessage } from "@/composables/components/globalDialog";
-import { useDelayShowFromRef } from "@/composables/experience/delayShow";
 import { ref } from "vue";
-import TypeButton from "../typeButton/TypeButton.vue";
+import KeyEventButton from "../KeyEventButton.vue";
 import { useBoundary } from "./composables/boundary";
 import { useFixed } from "./composables/fixed";
 import { key_closeDialog } from "./composables/key/close";
 import { key_confrim } from "./composables/key/confirm";
-import KeyEvent from "@/components/KeyEvent.vue";
-import KeyEventButton from "../KeyEventButton.vue";
+import TitleCardDraggable from "@/components/titleCard/TitleCardDraggable";
+import { dialogMessage } from "@/composables/components/globalDialog";
+import { useDelayShowFromRef } from "@/composables/experience/delayShow";
 
 const [delayshow] = useDelayShowFromRef(dialogMessage);
 const [dialogDelayShow] = useDelayShowFromRef(delayshow);
@@ -26,14 +24,14 @@ const [confirm] = key_confrim();
 <template>
   <teleport :to="dialogMessage?.toSelecter || 'body'">
     <transition>
-      <div v-if="delayshow" ref="container" :class="['global-dialog', scrolling && 'global-dialog_scrolling', !dialogMessage?.needBg && 'global-dialog_penetrate']" flex_center>
+      <div v-if="delayshow" ref="container" class="global-dialog" :class="[scrolling && 'global-dialog_scrolling', !dialogMessage?.needBg && 'global-dialog_penetrate']" flex_center>
         <transition name="slide-down">
-          <title-card-draggable v-if="dialogDelayShow" ref="box" :class="['global-dialog_main', `${fixed && 'fixed'}`]" :x="x" :y="y" :change-fixed="changeFixed">
+          <title-card-draggable v-if="dialogDelayShow" ref="box" class="global-dialog_main" :class="[`${fixed && 'fixed'}`]" :x="x" :y="y" :change-fixed="changeFixed">
             <template #title>
               {{ dialogMessage?.title }}
             </template>
             <template #subtitle>
-              <icon class="global-dialog_close" :name="'close'" @click="close.fn(false)" />
+              <icon class="global-dialog_close" name="close" @click="close.fn(false)" />
             </template>
             <template #footer>
               <section class="global-dialog_operator" flex_center>

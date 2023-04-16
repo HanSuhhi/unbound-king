@@ -7,7 +7,7 @@ const { activeAsideModule, activePage } = storeToRefs(useGlobalStore());
 
 <template>
   <section class="aside-setting">
-    <span class="aside-setting_path">{{ activeAsideModule?.title }} >
+    <span class="aside-setting_path">{{ activeAsideModule?.title }} ~
       {{ activePage?.title }}
     </span>
     <div class="aside-setting_more i-material-symbols-more-horiz" />

@@ -7,7 +7,7 @@ export function transformIconToElLabelOptions(gameicons: Map<string, GameIcon>):
   const grouped = groupBy(Object.fromEntries(gameicons), "from");
 
   const transformed = mapValues(grouped, (group): SelectGroupOption => {
-    const children = group.map((option): SelectOption => ({ ...option, label: option.translator[1], value: option.translator[0] }));
+    const children = group.map((option): SelectOption => ({ ...option, label: option.translator[1], value: option.id }));
     return { label: getGlobalEnumNameOrNot(group[0].from), type: "group", key: defineUniqueId(), children };
   });
 

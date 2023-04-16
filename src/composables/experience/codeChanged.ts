@@ -3,13 +3,14 @@ import { provide, ref, watch } from "vue";
 import { formatCodeString } from "../ci/codeString";
 
 export function applyDataToModule(watchResources: Ref, codeTemplate: ComputedRef<string[]>) {
-  console.log("codeTemplate: ", codeTemplate);
   const code = ref(formatCodeString(...codeTemplate.value));
   const changed = ref<boolean>(false);
 
   watch(
     watchResources,
-    () => code.value = formatCodeString(...codeTemplate.value),
+    () => {
+      code.value = formatCodeString(...codeTemplate.value);
+    },
     { deep: true }
   );
 

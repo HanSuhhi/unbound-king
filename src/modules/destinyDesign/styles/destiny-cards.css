@@ -1,14 +1,14 @@
 .destiny-design-main_cards {
   position: relative;
   display: flex;
-  width: calc(100% + 2px + var(--base-margin));
   overflow: auto;
+  border-bottom: var(--border);
 }
 
-.destiny-design-main_cards .destiny-item-card:first-child {
-  margin-left: 0;
+.destiny-design-main_cards > div[data-active] > article {
+  color: var(--main-color);
 }
 
-.destiny-main_human {
-  margin-left: 0;
+.destiny-design-main_cards>div:first-child > article{
+  border-left: var(--border);
 }

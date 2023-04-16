@@ -155,6 +155,42 @@ const data = [
     translator: ["dadao", "大道"],
     path: "da-dao",
     from: "standard"
+  },
+  {
+    id: "GI6301681484083587",
+    translator: ["human", "人族"],
+    path: "i-game-icons-backup",
+    from: "standard"
+  },
+  {
+    id: "GI3871681484181795",
+    translator: ["demon", "妖族"],
+    path: "i-game-icons-brain-tentacle",
+    from: "standard"
+  },
+  {
+    id: "GI9501681484207350",
+    translator: ["plant", "灵族"],
+    path: "i-game-icons-beech",
+    from: "standard"
+  },
+  {
+    id: "GI6281681484260044",
+    translator: ["ghost", "魂族"],
+    path: "i-game-icons-chemical-bolt",
+    from: "standard"
+  },
+  {
+    id: "GI1001681484332242",
+    translator: ["beast", "兽族"],
+    path: "i-game-icons-fox",
+    from: "standard"
+  },
+  {
+    id: "GI0481681484558918",
+    translator: ["slave", "奴族"],
+    path: "i-game-icons-hatchets",
+    from: "standard"
   }
 ];
 

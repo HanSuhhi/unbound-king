@@ -31,3 +31,11 @@ export const descriptionFormConfig = {
     title: "说明"
   } as Partial<AutoformItem>
 };
+
+export const colorFormConfig = {
+  color: {
+    title: "颜色"
+  } as Partial<AutoformItem>
+};
+
+export const hideFormConfig = { hide: true };

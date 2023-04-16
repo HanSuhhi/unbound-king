@@ -1,11 +1,8 @@
-import { useCsssTabs } from "@/components/ui/tabs";
 import { nextTick } from "vue";
+import { useCsssTabs } from "@/components/ui/tabs";
 
-export const defineTabs = () => {
+export function defineTabs() {
   const tabs = useCsssTabs({
-    state: {
-      autoTrigger: false,
-    },
     style: {
       panelTransition: "list",
       classList: {
@@ -13,9 +10,9 @@ export const defineTabs = () => {
         list: ["destiny-design-main_cards"],
         panel: ["destiny-design-main_panels"],
         panelItem: ["destiny-design-main_panel"],
-        listItem: ["_"],
-      },
-    },
+        listItem: ["_"]
+      }
+    }
   });
 
   const setPanelTotalHeight = () => {
@@ -36,4 +33,4 @@ export const defineTabs = () => {
   nextTick(watchTabsWheel);
 
   return { ...tabs };
-};
+}

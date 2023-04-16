@@ -1,133 +1,90 @@
 <script setup lang="ts">
+import { NInput } from "naive-ui";
+import { useTextareaTheme } from "../composables/textareaTheme";
+import { useDestiny } from "../composables/activeItem";
+import DestinySetting from "./DestinySetting.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
-import { computed, ref, onMounted, nextTick } from "vue";
-import Icon from "@/components/Icon.vue";
-import { scroll } from "@/composables/experience/wheelScroll";
+import AutoForm from "@/components/autoForm/autoForm.vue";
 
-const props = defineProps<{
-  destiny: Destiny;
-}>();
+const props = defineProps<{ index: number }>();
 
-const destinyOrigin = computed(() =>
-  props.destiny.origin?.split(`
+const { destiny, form: destinyFormconfig } = useDestiny(props);
+function getNewModel(_destiny: Destiny) {
+  destiny.value = _destiny;
+}
 
-`),
-);
-
-const footerRef = ref<HTMLElement>();
+const textareaTheme = useTextareaTheme();
 </script>
 
 <template>
   <article class="destiny-detail">
-    <header class="destiny-detail_header">
+    <section class="destiny-detail_part">
+      <title-card class="destiny-detail_description">
+        <template #title>
+          种族基础信息
+        </template>
+        <auto-form :config="destinyFormconfig" hot-update @model="getNewModel" />
+      </title-card>
       <title-card class="destiny-detail_main">
-        <template #title>种族渊源</template>
-        <p v-for="origin of destinyOrigin" :key="origin" class="destiny-detail_origin">
-          {{ origin }}
-        </p>
-      </title-card>
-      <aside class="destiny-detail_aside">
-        <title-card class="destiny-detail_description">
-          <template #title>种族一览</template>
-          Lorem ipsum dolor sit amet consectetur, .
-        </title-card>
-      </aside>
-    </header>
-    <footer ref="footerRef" class="destiny-detail_footer" @wheel.prevent="scroll(footerRef!, $event)">
-      <title-card class="destiny-detail_settlement destiny-detail_sub">
-        <template #title>聚落</template>
-        <template #subtitle>
-          <icon name="warning" style="margin-right: var(--mini)" />
-          该种族出身可能获得以下的技能
+        <template #title>
+          种族渊源
         </template>
-        Lorem ipsum dolor sit amet consectetur, .
+        <n-input v-model:value="destiny!.origin" :theme-overrides="textareaTheme" class="destiny-detail_origin" type="textarea" />
       </title-card>
-      <title-card class="destiny-detail_class destiny-detail_sub">
-        <template #title>职业</template>
-        <template #subtitle>
-          <icon name="warning" style="margin-right: var(--mini)" />
-          该种族出身可能获得以下的职业
-        </template>
-        Lorem ipsum dolor sit amet consectetur, .
-      </title-card>
-      <title-card class="destiny-detail_technique destiny-detail_sub">
-        <template #title>心法</template>
-        <template #subtitle>
-          <icon name="warning" style="margin-right: var(--mini)" />
-          该种族工匠可能拥有以下的建筑工艺
-        </template>
-        Lorem ipsum dolor sit amet consectetur, .
-      </title-card>
-      <title-card class="destiny-detail_skill destiny-detail_sub">
-        <template #title>技能</template>
-        <template #subtitle>
-          <icon name="warning" style="margin-right: var(--mini)" />
-          该种族工匠可能拥有以下的建筑工艺
-        </template>
-        Lorem ipsum dolor sit amet consectetur, .
-      </title-card>
-    </footer>
+    </section>
+    <destiny-setting class="destiny-setting" />
   </article>
 </template>
 
-<style>
+<style scoped>
 .destiny-detail {
   --aside-width: 35%;
   --header-height: 65%;
 
-  width: 100%;
-  height: 100%;
-}
-
-.destiny-detail * {
-  box-sizing: border-box;
-}
-
-.destiny-detail_header {
+  position: relative;
+  top: var(--base-margin);
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: var(--header-height);
-  margin-bottom: var(--clip-size);
+  height: calc(100% - var(--base-margin));
 }
 
-.destiny-detail_main {
-  width: calc(100% - var(--aside-width));
-  margin-right: var(--clip-size);
+/* :deep(.n-form-item-feedback-wrapper) {
+  display: none;
+} */
+
+.destiny-detail_part {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  margin-bottom: var(--base-margin);
   overflow: auto;
 }
 
-.destiny-detail_aside {
-  width: var(--aside-width);
-}
+.destiny-detail_part > .title-card {
+  box-sizing: border-box;
+  height: calc(100% - 2px);
 
-.destiny-detail_footer {
-  display: flex;
-  width: calc(100% + var(--clip-size));
-  height: calc(100% - var(--header-height) - 2 * var(--clip-size));
-  overflow-x: auto;
-  overflow-y: hidden;
-}
+  &:first-child {
+    width: 100%;
+    margin-right: calc(var(--base-margin) / 2);
+  }
 
-.destiny-detail_sub {
-  min-width: calc(15 * var(--large));
-  margin-right: var(--clip-size);
-}
-
-.destiny-detail_description {
-  height: 100%;
+  &:last-child {
+    width: 35%;
+    margin-left: calc(var(--base-margin) / 2);
+  }
 }
 
 .destiny-detail_origin {
-  position: relative;
-  color: var(--yellow-bright-2);
-  line-height: 1.8;
-  white-space: pre-line;
-  text-indent: 2em;
-  margin-block-start: 0.8em !important;
-  margin-block-end: 0.8em !important;
+  height: 100%;
 }
 
-.destiny-detail_origin:first-child {
-  margin-block-start: 0 !important;
+.destiny-detail_origin textarea {
+  white-space: pre-line;
+}
+
+.destiny-detail_form > * {
+  margin-bottom: var(--base-margin);
 }
 </style>

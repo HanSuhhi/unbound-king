@@ -5,13 +5,13 @@ import { inject } from "vue";
 
 const props = defineProps<{ type: AttributeValue["type"] }>();
 
-const modal = inject<Ref<boolean>>('modal')!;
+const modal = inject<Ref<boolean>>("modal")!;
 const type = inject<Ref<AttributeValue["type"]>>("type");
 
-const openDialog = () => {
+function openDialog() {
   modal.value = true;
   type!.value = props.type;
-};
+}
 </script>
 
 <template>

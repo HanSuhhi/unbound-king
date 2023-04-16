@@ -27,14 +27,14 @@ type KeyEvent = {
   fn: (isPressed) => void;
 }
 
-type Translator = [key: string, title: string];
+type Translator = [key: string, title?: string];
+type Color = [color1: string, color2: string];
 type Dictionary<T> = Record<string, T>;
 type BaseItem = {
   icon?: Icon;
   translator: Translator;
   description: string;
 }
-
 
 type TranslatorObj = { translator: Translator };
 type CanBeGenerated = { canBeGenerated: boolean };

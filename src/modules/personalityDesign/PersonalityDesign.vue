@@ -1,20 +1,20 @@
 <script setup lang="ts">
+import { computed } from "vue";
+import { parseImportModule } from "../../composables/ci/importModule";
+import { applyDataToModule } from "../../composables/experience/codeChanged";
+import personalityDashboard from "./components/PersonalityDashboard.vue";
 import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
 import TabsListItem from "@/components/tabs/TabsListItem.vue";
 import { defineDataTemplate } from "@/composables/ci/dataTemplate";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
 import { defineTabsData } from "@/composables/components/tabsList";
-import { computed } from "vue";
-import { parseImportModule } from "../../composables/ci/importModule";
-import { applyDataToModule } from "../../composables/experience/codeChanged";
-import personalityDashboard from "./components/PersonalityDashboard.vue";
 
 const { COMP: Layout } = defineCommonLayout("game-icon");
 const { COMP, read, state } = defineCommonTabs("game-icon");
 
 const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: true }));
-const { list, activeItem, activeItemData } = defineTabsData(data, state);
+const { list, activeItemData } = defineTabsData(data, state);
 
 const codeTemplate = computed(() => [defineDataTemplate(JSON.stringify(activeItemData.value))]);
 const { code } = applyDataToModule(activeItemData, codeTemplate);
@@ -23,11 +23,11 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
 <template>
   <base-layout ref="Layout" class="personality-design">
     <template #aside>
-      <CodeCanvas :code="code" />
+      <code-canvas :code="code" />
     </template>
     <base-tabs ref="COMP">
       <template #list>
-        <TabsListItem v-for="(item, key) in list" :key="key" :message="item" />
+        <tabs-list-item v-for="(item, key) in list" :key="key" :message="item" />
       </template>
       <template v-for="panel in read?.panels" :key="panel" #[panel]>
         <personality-dashboard />

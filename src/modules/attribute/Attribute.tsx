@@ -7,7 +7,7 @@ import CodeCanvasVue from "@/components/codeCanvas/CodeCanvas.vue";
 
 export default defineComponent({
   name: "Attribute",
-  setup: (props) => {
+  setup: () => {
     const { COMP } = defineCommonLayout("attribute");
 
     const data = ref([...DATA_Attributes.values()]);

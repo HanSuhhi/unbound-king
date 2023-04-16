@@ -1,9 +1,0 @@
-.destiny-design_aside {
-  --plus-height: 4%;
-
-  position: relative;
-  bottom: var(--plus-height);
-  left: var(--base-margin);
-  z-index: 1;
-  height: calc(100% + var(--plus-height));
-}

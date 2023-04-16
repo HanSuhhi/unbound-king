@@ -1,27 +1,29 @@
 <script setup lang="ts">
-import Extend from "@/components/Extend.vue";
-import { useDelayExtend } from "@/composables/experience/delayExtend";
-import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 import Prism from "prismjs";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-json";
 import type { Ref } from "vue";
 import { inject, onMounted, onUpdated, ref } from "vue";
 import { defineExtender } from "../../composables/experience/Extender";
-import "./code-canvas.css";
 import Operator from "./components/Operator.vue";
 import { CodeCanvasStatus, useCodeCanvasStatus } from "./composables/status";
+import { useDelayExtend } from "@/composables/experience/delayExtend";
+import Extend from "@/components/Extend.vue";
+import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-json";
+import "./code-canvas.css";
 
-type Props = { code: string; language?: "javascript" | "json" };
+interface Props { code: string; language?: "javascript" | "json" }
 
 const props = withDefaults(defineProps<Props>(), {
   code: "",
   language: "javascript",
-  changed: false,
+  changed: false
 });
 
 const CodeRef = ref<HTMLElement>();
-const highlight = () => Prism.highlightAllUnder(CodeRef.value!);
+function highlight() {
+  return Prism.highlightAllUnder(CodeRef.value!);
+}
 onMounted(highlight);
 onUpdated(highlight);
 
@@ -44,7 +46,7 @@ function copy() {
       <span v-show="delayExtend"> language {{ language === 'javascript' ? 'typescript' : language }} </span>
     </header>
     <code v-show="delayExtend" :class="`code-canvas_code language-${language}`">{{ code }}</code>
-    <footer class="code-canvas_footer code-canvas_position" :class="{'code-canvas_double': status}">
+    <footer class="code-canvas_footer code-canvas_position" :class="{ 'code-canvas_double': status }">
       <span v-if="CodeCanvasStatus.Changed === status" class="code-canvas_text code-canvas_warning">文件已修改，牢记复制保存！</span>
       <span v-if="CodeCanvasStatus.Copied === status" class="code-canvas_text code-canvas_success">已复制</span>
       <operator v-show="delayExtend" @click="copy" />

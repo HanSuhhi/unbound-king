@@ -17,7 +17,7 @@ const model = autoVModel(emits, props.modelValue);
 
 const options = transformIconToElLabelOptions(DATA.DATA_GameIcons);
 
-function renderLabel(option: SelectOption): VNodeChild {
+function renderLabel(option: SelectOption & { translator: Translator }): VNodeChild {
   if (option.type === "group") return `${option.label}`;
   return [
     h(
@@ -36,7 +36,7 @@ function renderLabel(option: SelectOption): VNodeChild {
               "margin-right": "var(--base-margin)"
             }
           }),
-          `${option.label} / ${option.value}`
+          `${option.label} / ${option.translator[0]}`
         ]
       }
     )

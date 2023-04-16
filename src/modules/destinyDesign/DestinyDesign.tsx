@@ -1,27 +1,29 @@
 import "./destiny-design.css";
-import { defineComponent, provide } from "vue";
-import DestinyDescription from "./components/DestinyDescription";
+import { computed, defineComponent, ref } from "vue";
 import DestinyMain from "./components/DestinyMain.vue";
 import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
-import { defineLayout } from "./composables/layout";
-import code from "./data/destiny.data?raw";
+import { DATA } from "@/composables/data";
+import { applyDataToModule } from "@/composables/experience/codeChanged";
+import { defineCommonLayout } from "@/composables/components/commonLayout";
 
 export default defineComponent({
   name: "DestinyDesign",
-  setup: (props) => {
-    const { COMP, style } = defineLayout();
+  setup: () => {
+    const { COMP } = defineCommonLayout("destiny-design");
 
-    provide("layout-style", style);
+    const destinyValues = ref<Array<Destiny>>(DATA.DATA_Destiny);
+    const codeTemplate = computed(() => ["export const DATA_Destiny: Destiny[] =", JSON.stringify(destinyValues.value)]);
+    const { code } = applyDataToModule(destinyValues, codeTemplate);
+
     return () => {
       return (
         <base-layout class="destiny-design" ref={COMP}>
           {{
-            header: () => <DestinyDescription />,
-            aside: () => <CodeCanvas code={code} />,
-            default: () => <DestinyMain />,
+            aside: () => <CodeCanvas code={code.value} />,
+            default: () => <DestinyMain />
           }}
         </base-layout>
       );
     };
-  },
+  }
 });

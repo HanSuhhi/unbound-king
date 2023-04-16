@@ -24,8 +24,4 @@ defineProps<{
   display: flex;
   align-items: center;
 }
-
-.tabs-list-item_sub {
-  transform: scale();
-}
 </style>

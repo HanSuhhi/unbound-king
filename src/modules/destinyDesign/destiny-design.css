@@ -1,6 +1,4 @@
 @import "./styles/destiny-alert.css";
-@import "./styles/destiny-aside.css";
-@import "./styles/destiny-main.css";
 @import "./styles/destiny-cards.css";
 @import "./styles/destiny-panel.css";
 
@@ -15,6 +13,6 @@
 
 .destiny-design_main {
   z-index: 0;
-  width: calc(100% + var(--base-margin));
   overflow: hidden;
+  height: 100%;
 }

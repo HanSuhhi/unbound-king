@@ -5,6 +5,7 @@ import { DATA_Ages, DATA_Chases, DATA_Genders } from "../modules/character/enums
 import { DATA_FamilyNames, DATA_FirstNames } from "../modules/nameDesign/data/name.data";
 import { DATA_Buffs } from "../modules/buff/data/index";
 import { DATA_GameIcons } from "../modules/gameIcon/data/index";
+import { DATA_Destiny } from "../modules/destinyDesign/data/destiny.data";
 import { getGlobalEnumNameOrNot } from "@/enums/global.enum";
 import { DATA_Personalities } from "@/modules/personalityDesign/data";
 
@@ -25,7 +26,8 @@ export const DATA = {
   DATA_FirstNames,
   DATA_Buffs,
   DATA_GameIcons,
-  DATA_Personalities
+  DATA_Personalities,
+  DATA_Destiny
 };
 
 export function getDataById<T>(id: string): T {

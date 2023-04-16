@@ -8,18 +8,18 @@ const main = "var(--main-color)";
 const mainb1 = "var(--main-color-bright-1)";
 const no = "none";
 
-export const defineNaiveTheme = () => {
+export function defineNaiveTheme() {
   const darkThemeOverrides: GlobalThemeOverrides = {
     common: {
       lineHeight: "1",
-      primaryColor: '#F0C239',
+      primaryColor: "#F0C239",
       primaryColorHover: mainb1,
-      primaryColorPressed: mainb1,
+      primaryColorPressed: mainb1
     },
     Button: {
-      textColorHover: 'var(--white-bright-2)',
-      textColorPressed: 'var(--white-bright-2)',
-      textColorFocus: 'var(--white-bright-2)'
+      textColorHover: "var(--white-bright-2)",
+      textColorPressed: "var(--white-bright-2)",
+      textColorFocus: "var(--white-bright-2)"
     },
     Drawer: {
       color: bg2
@@ -28,16 +28,16 @@ export const defineNaiveTheme = () => {
       colorInfo: bg2,
       textColorInfo: white,
       boxShadowInfo: no,
-      iconColorInfo: main,
+      iconColorInfo: main
     },
     Tooltip: {
       color: bg2,
-      textColor: white,
+      textColor: white
     },
     Popover: {
-      color: bg2,
-    },
+      color: bg2
+    }
   };
 
   return { darkTheme, darkThemeOverrides };
-};
+}

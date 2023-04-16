@@ -1,10 +1,8 @@
 type Destiny = {
-  title: string;
-  key: string;
-  main: boolean;
-  mainColor: string;
-  subColor: string;
+  translator: Translator;
+  main?: boolean;
+  color: Color;
   description: string;
   origin?: string;
-  // icon: string;
+  icon: Icon;
 };

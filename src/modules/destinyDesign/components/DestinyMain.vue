@@ -1,42 +1,43 @@
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
-import { computed } from "vue";
 import { defineTabs } from "../composables/mainTabs";
-import DestinyItemCard from "./DestinyItemCard.vue";
+import DestinyDescription from "./DestinyDescription";
+import DestinyTabs from "./DestinyTabs.vue";
 import DestinyDetail from "./DestinyDetail.vue";
-import { DATA_Destiny } from "@/modules/destinyDesign/data/destiny.data";
+import { DATA } from "@/composables/data";
 
-const { COMP, state, read, style } = defineTabs();
-const tabsIndex = computed({
-  get: () => state.value?.active || 0,
-  set: (index) => {
-    style.value.panelTransition = index > state.value.active ? "slide-left" : "slide-right";
-    state.value.active = index;
-    // _tabsIndex.value = index;
-  },
-});
-// const changeTab = (index: number) => tabsIndex.value = index;
+const { COMP, read, state } = defineTabs();
 </script>
 
 <template>
-  <base-tabs ref="COMP" class="destiny-main">
-    <template #list>
-      <DestinyItemCard v-for="(destiny, index) in DATA_Destiny" :key="destiny.key" :class="{ 'destiny-main_tabitem': true, 'destiny-main_last': index === destinies.length - 1, [`destiny-main_${destiny.key}`]: true }" :destiny="destiny" :index="index" />
-    </template>
-    <template v-for="(panel, index) of read?.panels" :key="panel" #[panel]>
-      <destiny-detail :destiny="destinies[index]" />
-    </template>
-  </base-tabs>
+  <article class="destiny-main">
+    <destiny-description />
+    <base-tabs ref="COMP" class="destiny-main_tabs">
+      <template #list>
+        <template v-for="destiny, index of DATA.DATA_Destiny" :key="destiny.key">
+          <destiny-tabs class="destiny-main_tab" :destiny="destiny" :is-choosed="state?.active === index" />
+        </template>
+      </template>
+      <template v-for="(panel, index) of read?.panels" :key="panel" #[panel]>
+        <destiny-detail :index="index" />
+      </template>
+    </base-tabs>
+  </article>
 </template>
 
-<style>
+<style scoped>
 .destiny-main {
-  --clip-size: var(--base-margin);
-
-  margin-right: var(--clip-size);
+  display: flex;
+  flex-direction: column;
+  height: calc(var(--main-height) - var(--base-margin));
+  overflow: hidden;
 }
 
-.destiny-main_last {
-  margin-right: var(--clip-size) !important;
+.destiny-main_tabs {
+  --clip-size: var(--base-margin);
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
 }
 </style>
