@@ -12,6 +12,30 @@ const data = [
     from: "standard",
     provideHeight: [100, 200],
     provideWeight: [20, 100]
+  },
+  {
+    id: "LA2711681799820209",
+    translator: ["1", "123"],
+    description: "123",
+    origin: "123123",
+    destiny: "demon",
+    icon: "GI0011678552921097",
+    color: ["#924B4BFF", "#6C5A5AFF"],
+    from: "standard",
+    provideHeight: [100, 200],
+    provideWeight: [20, 100]
+  },
+  {
+    id: "LA3041681799831856",
+    translator: ["123", "23"],
+    description: "123",
+    origin: "123",
+    destiny: "plant",
+    icon: "GI7071678548922924",
+    color: ["#760A0AFF", "#282424FF"],
+    from: "standard",
+    provideHeight: [100, 200],
+    provideWeight: [20, 100]
   }
 ];
 

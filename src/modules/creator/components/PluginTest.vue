@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { isObject } from "lodash-es";
 import type { Ref } from "vue";
 import { computed, inject } from "vue";
+import { isObject } from "lodash-es";
 import type { usePluginTest } from "../composables/pluginTest";
 import typeButton from "@/components/typeButton/TypeButton.vue";
 import KeyValueCard from "@/components/KeyValueCard.vue";
@@ -11,7 +11,7 @@ type ReturnData = Record<string, ReturnType<typeof usePluginTest>>;
 const props = defineProps<{ pluginKey?: string }>();
 
 const testData = inject<Ref<ReturnData>>("test-data")!;
-const data = computed(() => testData!.value[props.pluginKey]) as any;
+const data = computed(() => testData!.value[props.pluginKey!]) as any;
 </script>
 
 <template>
@@ -22,8 +22,8 @@ const data = computed(() => testData!.value[props.pluginKey]) as any;
       </p>
     </section>
     <section class="plugin-test_main">
-      <div v-for="item of data.data" :key="item[0]" class="plugin-test_data">
-        <key-value-card :title="item[0]" :value="isObject(item[1]) ? (item[1] as Translator)[1] : item[1].toString()" />
+      <div v-for="[title, value, key] of data.data" :key="key" class="plugin-test_data">
+        <key-value-card :title="title" :value="isObject(value) ? (value as Translator)[1] : value.toString()" />
       </div>
     </section>
     <section class="plugin-test_bottom">

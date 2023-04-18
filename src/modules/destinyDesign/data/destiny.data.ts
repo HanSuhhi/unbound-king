@@ -1,7 +1,6 @@
 export default <Destiny[]> [
   {
     translator: ["human", "人族"],
-    main: true,
     color: ["#EBEBEB", "#F3766F"],
     description: "万化参差谁信道，不与群芳同列",
     origin:
@@ -10,7 +9,6 @@ export default <Destiny[]> [
   },
   {
     translator: ["demon", "妖族"],
-    main: true,
     color: ["var(--purple-deep-2)", "#ba9dc8"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     origin: "",
@@ -18,13 +16,13 @@ export default <Destiny[]> [
   },
   {
     translator: ["plant", "灵族"],
-    main: true,
     color: ["var(--green-deep-2)", "var(--green-bright-2)"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     icon: "GI9501681484207350"
   },
   {
     translator: ["beast", "野兽族"],
+    notBeGenerated: true,
     color: ["#ffba83", "var(--orange-deep-2)"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     origin: "",
@@ -32,7 +30,7 @@ export default <Destiny[]> [
   },
   {
     translator: ["ghost", "魂族"],
-    main: true,
+    notBeGenerated: true,
     color: ["var(--blue-deep-2)", "var(--blue-bright-2)"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     origin: "",
@@ -40,7 +38,7 @@ export default <Destiny[]> [
   },
   {
     translator: ["slave", "奴族"],
-    main: true,
+    notBeGenerated: true,
     color: ["var(--blue-deep-2)", "var(--blue-bright-2)"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     origin: "",

@@ -34,9 +34,21 @@ export default defineModuleConfig([
     ]
   },
   {
-    path: "nation-design",
-    title: "种族一览",
-    description: "种族相关参数修正",
+    path: "personality-design",
+    title: "个性设计",
+    description: "每个角色都有脾气！",
+    icon: "thinking"
+  },
+  {
+    path: "ambition-design",
+    title: "抱负设计",
+    description: "人物抱负相关设计",
+    icon: "thinking"
+  },
+  {
+    path: "ethnicity-design",
+    title: "族裔设计",
+    description: "包含种族、血统",
     icon: "monster",
     children: [
       {
@@ -58,17 +70,6 @@ export default defineModuleConfig([
     title: "技能设计",
     description: "技能参数设置",
     icon: "character-param"
-  },
-  {
-    path: "personality-design",
-    title: "个性设计",
-    description: "每个角色都有脾气！",
-    icon: "thinking"
-  },
-  {
-    path: "ambition-design",
-    title: "抱负设计",
-    description: "人物抱负相关设计",
-    icon: "thinking"
   }
+
 ]);

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { forEach } from "lodash-es";
 import { ref, watch } from "vue";
 import { DATA_Generators } from "@/modules/generator/data";
@@ -10,7 +11,7 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
     forEach(plugin?.data, (plugin: PluginStruct) => {
       const title = `${plugin.translator[1]} - ${plugin.translator[0]}`;
       // inject data
-      if (plugin?.generatorParams?.needInject) {
+      if (plugin.generatorParams?.needInject) {
         forEach(plugin.generatorParams.needInject, (injectName: string) => {
           const { data }: { data: ReturnStruct[] } = pastData.value[injectName];
           Object.defineProperty(plugin, "pastData", {
@@ -23,6 +24,7 @@ export function usePluginTest(plugin: CreatorPlugin, pastData: any) {
           });
         });
       }
+
       const value = DATA_Generators[plugin.generator](_data, plugin.generatorParams, plugin);
 
       _data.push([title, value, plugin.translator[0]]);

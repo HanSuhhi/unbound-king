@@ -45,6 +45,7 @@ type BaseItem = {
 
 type TranslatorObj = { translator: Translator };
 type CanBeGenerated = { canBeGenerated: boolean };
+type NotBeGenerated = { notBeGenerated: boolean };
 type NeedDescription = { description: string };
 type NeedIcon = { icon: Icon }
 

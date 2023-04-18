@@ -52,7 +52,12 @@ export default <Creator>{
           generatorForm: [
             { key: "firstname", type: "none", title: "根据条件随机生成" }
           ],
-          generatorParams: { needInject: ["character-baseinfo-plugin"] }
+          generatorParams: { needInject: ["character-baseinfo-plugin"] },
+          pastData: {
+            gender: ["FEMALE", "女"],
+            chase: ["DaDao", "大道"],
+            age: ["Prime", "壮年"]
+          }
         },
         {
           translator: ["firstname-second", "名辞 2"],
@@ -64,6 +69,11 @@ export default <Creator>{
           generatorParams: {
             needInject: ["character-baseinfo-plugin"],
             second: true
+          },
+          pastData: {
+            gender: ["FEMALE", "女"],
+            chase: ["DaDao", "大道"],
+            age: ["Prime", "壮年"]
           }
         }
       ]
@@ -720,6 +730,32 @@ export default <Creator>{
             }
           ],
           generatorParams: { min: 1, max: 18 }
+        }
+      ]
+    },
+    {
+      translator: ["ethnicity-plugin", "族裔插件"],
+      belong: "character",
+      description: "随机生成人物的种族、血统",
+      icon: "thinking",
+      data: [
+        {
+          translator: ["destiny", "种族"],
+          description: "",
+          generator: "random",
+          generatorForm: [
+            { key: "name", type: "none", title: "根据条件随机生成" }
+          ],
+          generatorParams: { range: "DATA_Destiny" }
+        },
+        {
+          translator: ["lineageo", "血统"],
+          description: "仅获得对应种族的血统🙌",
+          generator: "lineageo",
+          generatorForm: [
+            { key: "lineageo", type: "none", title: "根据条件随机生成" }
+          ],
+          generatorParams: { range: "DATA_Lineageo" }
         }
       ]
     }

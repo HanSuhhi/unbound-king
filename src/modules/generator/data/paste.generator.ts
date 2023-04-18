@@ -3,8 +3,8 @@ import { withFormDetail } from "../../../composables/form/formDetail";
 import type from "../types/paste.generator.d.ts?raw";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
 
-const pasteGenerator: GeneratorFunc<any, PasteGeneratorProps> = (data, key) => {
-  return find(data, item => item[2] === key!.pasteFrom)?.[1] || "";
+const pasteGenerator: GeneratorFunc<any, PasteGeneratorProps> = (data, { pasteFrom }) => {
+  return find(data, item => item[2] === pasteFrom)?.[1] || "";
 };
 
 const pasteGeneratorFormConfig: Autoform = withFormDetail<PasteGeneratorProps>(transformTypeToForm(type), {

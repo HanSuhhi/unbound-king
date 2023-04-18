@@ -10,5 +10,9 @@ map(import.meta.glob("./*.generator.ts", { eager: true }), ({ generator, generat
   merge(DATA_Generator_Params, generatorParams);
 });
 
-export const getGeneratorForm = (key: string) => DATA_Generator_Forms[key];
-export const getGeneratorParams = (key: string) => clone(DATA_Generator_Params[key]);
+export function getGeneratorForm(key: string) {
+  return DATA_Generator_Forms[key];
+}
+export function getGeneratorParams(key: string) {
+  return clone(DATA_Generator_Params[key]);
+}

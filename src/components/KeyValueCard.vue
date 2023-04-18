@@ -4,8 +4,12 @@ defineProps<{ title: string; value: string }>();
 
 <template>
   <article class="key-value-card">
-    <section class="key-value-card_key">{{ title }}</section>
-    <section class="key-value-card_value">{{ value }}</section>
+    <section class="key-value-card_key">
+      {{ title }}
+    </section>
+    <section class="key-value-card_value">
+      {{ value }}
+    </section>
   </article>
 </template>
 

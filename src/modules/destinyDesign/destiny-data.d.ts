@@ -1,6 +1,6 @@
 type Destiny = {
   translator: Translator;
-  main?: boolean;
+  canBeGenerated?: boolean;
   color: Color;
   description: string;
   origin?: string;
