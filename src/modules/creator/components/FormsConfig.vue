@@ -68,4 +68,12 @@ defineProps<{ formConfig: CreatorPlugin["data"] }>();
   font-size: var(--font-title-small);
   cursor: pointer;
 }
+
+.forms-config_formbox > :deep(.n-form-item:last-child) {
+  display: none;
+}
+
+.forms-config_formbox {
+  margin-bottom: var(--base-margin);
+}
 </style>

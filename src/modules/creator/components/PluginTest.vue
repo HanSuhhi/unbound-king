@@ -22,9 +22,11 @@ const data = computed(() => testData!.value[props.pluginKey!]) as any;
       </p>
     </section>
     <section class="plugin-test_main">
-      <div v-for="[title, value, key] of data.data" :key="key" class="plugin-test_data">
-        <key-value-card :title="title" :value="isObject(value) ? (value as Translator)[1] : value.toString()" />
-      </div>
+      <template v-for="[title, value, key] of data.data" :key="key">
+        <div class="plugin-test_data">
+          <key-value-card :title="title" :value="isObject(value) ? (value as Translator)[1] : value.toString()" />
+        </div>
+      </template>
     </section>
     <section class="plugin-test_bottom">
       <type-button @click="data.genData">

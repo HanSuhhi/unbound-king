@@ -7,6 +7,6 @@ type Lineageo = {
   icon: Icon,
   color: Color
   from: string;
-  provideHeight?: MinMax;
-  provideWeight?: MinMax;
+  provideHeight: MinMax;
+  provideWeight: MinMax;
 };

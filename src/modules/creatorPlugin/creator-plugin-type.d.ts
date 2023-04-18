@@ -4,7 +4,7 @@ type PluginStruct = {
   generator: string;
   generatorForm: Autoform;
   generatorParams: GeneratorProp;
-  pastData?: any;
+  pastData?: T;
 };
 
 type CreatorPlugin = {

@@ -10,8 +10,9 @@ declare module '*.vue' {
 
 
 interface ImportMetaEnv {
+  readonly PARAM_SETTING_CHARACTER_HEIGHT_DEFAULT_MAX: string;
+  readonly PARAM_SETTING_CHARACTER_WEIGHT_DEFAULT_MAX: string;
   readonly PROJECT_NAME: string;
-  readonly SETTING_HEADER_LIST_MAX_NUM: string;
   readonly ASIDE_WIDTH: string;
   readonly ASIDE_MODULES_WIDTH: string;
   readonly BOX_COLLAPSE_WIDTH: string;

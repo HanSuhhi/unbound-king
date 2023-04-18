@@ -18,6 +18,22 @@ const data: PluginStruct[] = [
     generatorParams: <RandomGeneratorProps>{
       range: "DATA_Lineageo"
     }
+  },
+  {
+    translator: ["height", "身高"],
+    generator: "habitus",
+    generatorForm: DATA_Generator_Forms.habitus,
+    generatorParams: {
+      type: "height"
+    }
+  },
+  {
+    translator: ["weight", "体重"],
+    generator: "habitus",
+    generatorForm: DATA_Generator_Forms.habitus,
+    generatorParams: {
+      type: "weight"
+    }
   }
 ];
 

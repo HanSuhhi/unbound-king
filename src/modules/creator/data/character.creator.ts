@@ -54,7 +54,7 @@ export default <Creator>{
           ],
           generatorParams: { needInject: ["character-baseinfo-plugin"] },
           pastData: {
-            gender: ["FEMALE", "女"],
+            gender: ["MALE", "男"],
             chase: ["DaDao", "大道"],
             age: ["Prime", "壮年"]
           }
@@ -71,7 +71,7 @@ export default <Creator>{
             second: true
           },
           pastData: {
-            gender: ["FEMALE", "女"],
+            gender: ["MALE", "男"],
             chase: ["DaDao", "大道"],
             age: ["Prime", "壮年"]
           }
@@ -756,6 +756,30 @@ export default <Creator>{
             { key: "lineageo", type: "none", title: "根据条件随机生成" }
           ],
           generatorParams: { range: "DATA_Lineageo" }
+        },
+        {
+          translator: ["height", "身高"],
+          generator: "habitus",
+          generatorForm: [
+            {
+              key: "habitus",
+              type: "none",
+              title: "根据血统参数随机生成体型数据"
+            }
+          ],
+          generatorParams: { type: "height" }
+        },
+        {
+          translator: ["weight", "体重"],
+          generator: "habitus",
+          generatorForm: [
+            {
+              key: "habitus",
+              type: "none",
+              title: "根据血统参数随机生成体型数据"
+            }
+          ],
+          generatorParams: { type: "weight" }
         }
       ]
     }
