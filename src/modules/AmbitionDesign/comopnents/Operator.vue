@@ -8,8 +8,10 @@ import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import SearchInput from "@/components/SearchInput.vue";
+import AddButton from "@/components/performance/AddButton.vue";
 
-const { modalShow } = defineCommonDialog();
+defineCommonDialog();
+
 const formConfig = computed(() =>
   withFormDetail<Ambition>(transformTypeToForm(typeString), {
     ...idFormConfig,
@@ -31,9 +33,7 @@ const [confirm] = useConfirm();
   </common-form-dialog>
   <footer class="operator">
     <search-input :watch-event="() => {}" />
-    <type-button @click="modalShow = true">
-      新增
-    </type-button>
+    <add-button />
   </footer>
 </template>
 

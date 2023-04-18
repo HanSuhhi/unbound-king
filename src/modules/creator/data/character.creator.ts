@@ -36,7 +36,7 @@ export default <Creator>{
       translator: ["character-name-plugin", "角色姓名插件"],
       belong: "character",
       description: "根据人物性别、追求生成姓名",
-      icon: "write",
+      icon: "thinking",
       data: [
         {
           translator: ["familyName", "姓氏"],
@@ -594,7 +594,7 @@ export default <Creator>{
       translator: ["attribute-plugin", "属性插件"],
       belong: "character",
       description: "随机生成一份人物属性",
-      icon: "list",
+      icon: "thinking",
       data: [
         {
           translator: ["ldr", "统帅"],

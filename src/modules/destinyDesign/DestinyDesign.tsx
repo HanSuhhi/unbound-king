@@ -1,8 +1,8 @@
 import "./destiny-design.css";
 import { computed, defineComponent, ref } from "vue";
 import DestinyMain from "./components/DestinyMain.vue";
+import data from "./data/destiny.data";
 import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
-import { DATA } from "@/composables/data";
 import { applyDataToModule } from "@/composables/experience/codeChanged";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 
@@ -11,8 +11,8 @@ export default defineComponent({
   setup: () => {
     const { COMP } = defineCommonLayout("destiny-design");
 
-    const destinyValues = ref<Array<Destiny>>(DATA.DATA_Destiny);
-    const codeTemplate = computed(() => ["export const DATA_Destiny: Destiny[] =", JSON.stringify(destinyValues.value)]);
+    const destinyValues = ref<Array<Destiny>>(data);
+    const codeTemplate = computed(() => ["export default <Destiny[]> ", JSON.stringify(destinyValues.value)]);
     const { code } = applyDataToModule(destinyValues, codeTemplate);
 
     return () => {

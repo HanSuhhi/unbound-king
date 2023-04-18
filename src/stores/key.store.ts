@@ -1,26 +1,30 @@
 import { useMagicKeys } from "@vueuse/core";
-import { debounce, defer, forEach, toArray, throttle } from 'lodash-es';
+import { forEach, toArray } from "lodash-es";
 import { defineStore } from "pinia";
 import type { WatchStopHandle } from "vue";
 import { computed, ref, watch } from "vue";
 
 const commandStagingStore = ref<Dictionary<KeyEvent>>({});
-const clearCommandStagingStore = () => (commandStagingStore.value = {});
+function clearCommandStagingStore() {
+  return commandStagingStore.value = {};
+}
 
 const commandsStore = ref<Dictionary<KeyEvent>>({});
-const clearCommandStore = () => (commandsStore.value = {});
+function clearCommandStore() {
+  return commandsStore.value = {};
+}
 
 const runningKeyCammands = ref<Dictionary<WatchStopHandle>>({});
 
-const stopRunningKeyCommand = (key: string) => {
+function stopRunningKeyCommand(key: string) {
   if (!runningKeyCammands.value[key]) return;
   runningKeyCammands.value[key]();
   delete runningKeyCammands.value[key];
-};
-const stopRunningAllKeyCommands = () => {
-  forEach(runningKeyCammands.value, (stopRunningKeyCammand) => stopRunningKeyCammand());
+}
+function stopRunningAllKeyCommands() {
+  forEach(runningKeyCammands.value, stopRunningKeyCammand => stopRunningKeyCammand());
   runningKeyCammands.value = {};
-};
+}
 
 const useKeyStore = defineStore("key", () => {
   const KEYS = useMagicKeys();
@@ -38,7 +42,7 @@ const useKeyStore = defineStore("key", () => {
   };
 
   const addKeyCommands = (newKeyCommands: KeyEvent[]): KeyEvent[] => {
-    forEach(newKeyCommands, (newKeyCommand) => addKeyCommand(newKeyCommand));
+    forEach(newKeyCommands, newKeyCommand => addKeyCommand(newKeyCommand));
     return newKeyCommands;
   };
 
@@ -49,7 +53,7 @@ const useKeyStore = defineStore("key", () => {
   };
 
   const uninstallKeyCommands = (keys: string[]) => {
-    forEach(keys, (key) => uninstallKeyCommand(key));
+    forEach(keys, key => uninstallKeyCommand(key));
   };
 
   const clearKeyCommands = () => {
@@ -65,13 +69,14 @@ const useKeyStore = defineStore("key", () => {
         commandStagingStore.value = commandsStore.value;
         clearKeyCommands();
         _freeze.value = true;
-      } else {
+      }
+      else {
         clearKeyCommands();
         addKeyCommands(toArray(commandStagingStore.value));
         clearCommandStagingStore();
         _freeze.value = false;
       }
-    },
+    }
   });
 
   return {
@@ -82,9 +87,8 @@ const useKeyStore = defineStore("key", () => {
     freeze,
     commandStagingStore,
     commandsStore,
-    runningKeyCammands,
+    runningKeyCammands
   };
 });
 
 export { useKeyStore };
-

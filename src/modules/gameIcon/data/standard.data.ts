@@ -191,6 +191,12 @@ const data = [
     translator: ["slave", "奴族"],
     path: "i-game-icons-hatchets",
     from: "standard"
+  },
+  {
+    id: "GI4971681717234542",
+    translator: ["cave", "洞穴"],
+    path: "i-game-icons-cave-entrance",
+    from: "standard"
   }
 ];
 

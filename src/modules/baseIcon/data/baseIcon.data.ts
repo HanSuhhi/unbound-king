@@ -76,37 +76,13 @@ export const DATA_BaseIcons: Dictionary<BaseIcon> = {
     translator: ["icons", "图标集"],
     path: "i-uil-icons"
   },
-  "dashboard": {
-    translator: ["dashboard", "看板"],
-    path: "i-ic-baseline-dashboard"
-  },
   "game-icon": {
     translator: ["game-icon", "游戏图标"],
     path: "i-ri-gamepad-line"
   },
-  "code": {
-    translator: ["code", "代码"],
-    path: "i-carbon-property-relationship"
-  },
-  "list": {
-    translator: ["list", "列表"],
-    path: "i-iconoir-numbered-list-right"
-  },
   "monster": {
     translator: ["monster", "怪物"],
     path: "i-emojione-monotone-alien-monster"
-  },
-  "relation": {
-    translator: ["relation", "关系"],
-    path: "i-ps-tribe"
-  },
-  "abstract": {
-    translator: ["abstract", "抽象"],
-    path: "i-game-icons-abstract-065"
-  },
-  "lineageos": {
-    translator: ["lineageos", "血统"],
-    path: "i-simple-icons-lineageos"
   },
   "character-param": {
     translator: ["character-param", "人物参数"],
@@ -163,9 +139,5 @@ export const DATA_BaseIcons: Dictionary<BaseIcon> = {
   "mesasge": {
     translator: ["message", "消息"],
     path: "i-material-symbols-android-chat"
-  },
-  "write": {
-    translator: ["write", "写"],
-    path: "i-mdi-rename-outline"
   }
 };

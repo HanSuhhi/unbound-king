@@ -8,11 +8,13 @@ import { defineAutoFormModel } from "./composable/model";
 import { defineAutoFormRules } from "./composable/rules";
 import FormChase from "./components/FormChase.vue";
 import FormColor from "./components/FormColor.vue";
+import FormMinMax from "./components/FormMinMax.vue";
 
-const props = defineProps<{ config: AutoformItem[]; params?: any; hotUpdate?: boolean }>();
-const emits = defineEmits<{
-  (e: "model", model: any): void
-}>();
+interface Prop { config: AutoformItem[]; params?: any; hotUpdate?: boolean }
+interface Emit { (e: "model", model: any): void}
+
+const props = defineProps<Prop>();
+const emits = defineEmits<Emit>();
 
 const FormRef = ref<FormInst>();
 
@@ -51,6 +53,9 @@ if (props.hotUpdate) {
           </template>
           <template v-if="formItem.type === 'color'">
             <form-color v-model="model[formItem.key]" />
+          </template>
+          <template v-if="formItem.type === 'minmax'">
+            <form-min-max v-model="model[formItem.key]" :limit="formItem.limit" />
           </template>
         </n-form-item>
       </template>

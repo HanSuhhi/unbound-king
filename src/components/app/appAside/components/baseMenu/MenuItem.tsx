@@ -1,10 +1,10 @@
-import { useGlobalStore } from "@/stores/global.store";
 import { isEqual } from "lodash-es";
 import { storeToRefs } from "pinia";
 import type { PropType } from "vue";
 import { computed, defineComponent } from "vue";
 import { useRouter } from "vue-router";
 import { useMenuCollapse } from "../../composables/menuCollapse";
+import { useGlobalStore } from "@/stores/global.store";
 import Icon from "@/components/Icon.vue";
 import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 
@@ -13,8 +13,8 @@ const MenuItem = defineComponent({
   props: {
     page: {
       type: Object as PropType<ModulePage>,
-      required: true,
-    },
+      required: true
+    }
   },
   setup: (props) => {
     const { activePage } = storeToRefs(useGlobalStore());
@@ -52,7 +52,7 @@ const MenuItem = defineComponent({
           </section>
           {props.page.children && (
             <section class="aside-menu-block_sub" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} style={`--length: ${children.value?.length}`}>
-              {props.page.children.map((moduleChild) => (
+              {props.page.children.map(moduleChild => (
                 <MenuItem page={moduleChild} />
               ))}
             </section>
@@ -60,7 +60,7 @@ const MenuItem = defineComponent({
         </>
       );
     };
-  },
+  }
 });
 
 export default MenuItem;

@@ -6,7 +6,7 @@ import { getGlobalEnumNameOrNot } from "../../enums/global.enum";
 
 type ReturnRecord<T> = Record<string, TabListItem<T>>;
 
-function useTabsStruct<T>(data: Record<string, T>, translator: ReturnRecord<T> = {}) {
+function useTabsStruct<T extends { default: any }>(data: Record<string, T >, translator: ReturnRecord<T> = {}) {
   const returnRecord: ReturnRecord<T> = {
     standard: {
       icon: "package",

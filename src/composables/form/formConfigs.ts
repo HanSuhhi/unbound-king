@@ -1,3 +1,4 @@
+import data from "../../modules/destinyDesign/data/destiny.data";
 import { defineTranslatorValidator } from "./TranslatorValidator";
 
 export const idFormConfig = {
@@ -34,7 +35,25 @@ export const descriptionFormConfig = {
 
 export const colorFormConfig = {
   color: {
-    title: "颜色"
+    title: "颜色",
+    rules: [
+      {
+        validator: defineTranslatorValidator(),
+        trigger: ["blur"]
+      }
+    ]
+  } as Partial<AutoformItem>
+};
+
+export const destinyFormConfig = {
+  destiny: {
+    title: "种族",
+    type: "selecter",
+    defaultValue: data[0].translator[0],
+    options: {
+      range: data.map(destiny => destiny.translator)
+    }
+
   } as Partial<AutoformItem>
 };
 

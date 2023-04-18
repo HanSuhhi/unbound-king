@@ -1,4 +1,4 @@
-export const DATA_Destiny: Destiny[] = [
+export default <Destiny[]> [
   {
     translator: ["human", "人族"],
     main: true,
@@ -13,14 +13,13 @@ export const DATA_Destiny: Destiny[] = [
     main: true,
     color: ["var(--purple-deep-2)", "#ba9dc8"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
-    icon: "GI9501681484207350"
+    origin: "",
+    icon: "GI3871681484181795"
   },
   {
     translator: ["plant", "灵族"],
     main: true,
-    color: ["var(--green-deep-2)",
-      "var(--green-bright-2)"
-    ],
+    color: ["var(--green-deep-2)", "var(--green-bright-2)"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
     icon: "GI9501681484207350"
   },
@@ -28,20 +27,23 @@ export const DATA_Destiny: Destiny[] = [
     translator: ["beast", "野兽族"],
     color: ["#ffba83", "var(--orange-deep-2)"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
-    icon: "GI9501681484207350"
+    origin: "",
+    icon: "GI1001681484332242"
   },
   {
     translator: ["ghost", "魂族"],
     main: true,
     color: ["var(--blue-deep-2)", "var(--blue-bright-2)"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
-    icon: "GI9501681484207350"
+    origin: "",
+    icon: "GI6281681484260044"
   },
   {
     translator: ["slave", "奴族"],
     main: true,
     color: ["var(--blue-deep-2)", "var(--blue-bright-2)"],
     description: "啊啊啊啊，啊啊啊啊，啊啊啊啊，啊啊啊啊。",
-    icon: "GI9501681484207350"
+    origin: "",
+    icon: "GI0481681484558918"
   }
 ];

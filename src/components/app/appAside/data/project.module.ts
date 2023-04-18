@@ -1,11 +1,11 @@
 import { defineModuleConfig } from "../composables/moduleConfig";
 
-export default <ModulePage[]>defineModuleConfig([
+export default defineModuleConfig([
   {
     path: "base-icon",
     title: "基础图标",
     description: "项目框架所使用图标",
-    icon: "dashboard",
+    icon: "icons"
   },
   {
     path: "package-design",
@@ -17,9 +17,9 @@ export default <ModulePage[]>defineModuleConfig([
         path: "package-extra-design",
         title: "拓展包设计",
         description: "设计第二个世界！",
-        icon: "add-package",
-      },
-    ],
+        icon: "add-package"
+      }
+    ]
   },
   {
     path: "creator-settings",
@@ -31,14 +31,14 @@ export default <ModulePage[]>defineModuleConfig([
         path: "creator-plugin",
         title: "创造器插件",
         icon: "plugin",
-        description: "把它理解为乐高积木！",
+        description: "把它理解为乐高积木！"
       },
       {
         path: "creator",
         title: "创造器",
         icon: "combine",
-        description: "用乐高搭建大厦！",
-      },
-    ],
-  },
+        description: "用乐高搭建大厦！"
+      }
+    ]
+  }
 ]);

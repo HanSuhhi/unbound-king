@@ -10,7 +10,7 @@ import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
 import { defineUniqueId } from "@/composables/ci/uniqueId";
 
-const item = inject<ComputedRef<TabListItem>>("active-item");
+const item = inject<ComputedRef<TabListItem<GameIcon>>>("active-item");
 const icons = inject<ComputedRef<Array<GameIcon>>>("data");
 
 const formConfig = computed(() =>

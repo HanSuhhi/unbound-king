@@ -7,7 +7,7 @@ type Autoform = AutoformItem[];
 type AutoformItem = {
   key: string;
   title: string;
-  type: "text" | "selecter" | "translator" | "icon" | "number" | "textarea" | "none" | 'chase' | 'color';
+  type: "text" | "selecter" | "translator" | "icon" | "number" | "textarea" | "none" | 'chase' | 'color' | "minmax";
   hide?: boolean;
   required?: boolean;
   options?: Options;

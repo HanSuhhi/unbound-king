@@ -1,8 +1,8 @@
-import { provide, ref } from 'vue';
+import { provide, ref } from "vue";
 
-export const defineCommonDialog = () => {
+export function defineCommonDialog() {
   const modalShow = ref(false);
   provide("modal", modalShow);
 
   return { modalShow };
-};
+}

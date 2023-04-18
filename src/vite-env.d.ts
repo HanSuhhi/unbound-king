@@ -27,8 +27,15 @@ type KeyEvent = {
   fn: (isPressed) => void;
 }
 
-type Translator = [key: string, title?: string];
+type Translator = [key: string, title: string];
 type Color = [color1: string, color2: string];
+type MinMax = [min: number, max: number];
+type BaseCard = {
+  translator: Translator;
+  description: string;
+  icon: Icon;
+  color?: Color;
+}
 type Dictionary<T> = Record<string, T>;
 type BaseItem = {
   icon?: Icon;

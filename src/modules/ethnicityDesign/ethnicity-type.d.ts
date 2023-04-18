@@ -1,3 +1,0 @@
-type Ethnicity = {
-  title: string;
-};

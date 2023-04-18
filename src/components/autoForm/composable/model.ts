@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { forEach, isUndefined } from "lodash-es";
 import { ref, watch } from "vue";
 
@@ -7,25 +8,21 @@ export function defineAutoFormModel(props: { config: AutoformItem[]; params?: Au
       if (props.params) {
         return {
           ...values,
-          [key]: props.params[key]
+          [key]: (props.params)[key]
         };
       }
 
-      if (key === "translator") {
-        const defaultTranslator: Translator = defaultValue as Translator || [];
-
-        return {
-          ...values,
-          [key]: defaultTranslator
-        };
+      switch (type) {
+        case "number":
+          return { ...values, [key]: defaultValue || 0 };
+        case "color":
+          return { ...values, [key]: defaultValue || ["#000", "#000"] };
+        case "minmax":
+        case "translator":
+          return { ...values, [key]: defaultValue || [] };
+        default:
+          return { ...values, [key]: defaultValue || "" };
       }
-      if (type === "number") {
-        return {
-          ...values,
-          [key]: defaultValue as number || 0
-        };
-      }
-      return { ...values, [key]: defaultValue as string || "" };
     }, {});
 
     return model;
@@ -37,9 +34,7 @@ export function defineAutoFormModel(props: { config: AutoformItem[]; params?: Au
     watch(
       model,
       (v) => {
-        forEach(v, (_, key) => {
-          props.params[key] = _;
-        });
+        forEach(v, (_, key) => props.params[key] = _);
       },
       { deep: true }
     );

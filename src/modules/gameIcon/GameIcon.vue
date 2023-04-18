@@ -8,7 +8,7 @@ const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: tru
 </script>
 
 <template>
-  <tabs-design name="tabs-design" :data="data" unocss>
+  <tabs-design name="game-icon" :data="data" unocss>
     <icon-dashboard />
   </tabs-design>
 </template>
