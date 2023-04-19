@@ -42,9 +42,9 @@ defineProps<{
 .ambition-block_title {
   display: flex;
   align-items: center;
+}
 
-  .icon {
-    margin-right: var(--small);
-  }
+.ambition-block_title > .icon {
+  margin-right: var(--small);
 }
 </style>

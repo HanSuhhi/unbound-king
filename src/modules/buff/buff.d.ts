@@ -1,4 +1,4 @@
-type BuffTag = "attribute" | "number" | "personality" | "ambition";
+type BuffTag = "attribute" | "number" | "personality" | "ambition" | "trait";
 
 type AttributeBuff = {
   explanation?: string,

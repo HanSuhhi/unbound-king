@@ -197,6 +197,12 @@ const data = [
     translator: ["cave", "洞穴"],
     path: "i-game-icons-cave-entrance",
     from: "standard"
+  },
+  {
+    id: "GI1881681827196300",
+    translator: ["light", "光"],
+    path: "i-game-icons-light-bulb",
+    from: "standard"
   }
 ];
 

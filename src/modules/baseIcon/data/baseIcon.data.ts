@@ -85,7 +85,7 @@ export const DATA_BaseIcons: Dictionary<BaseIcon> = {
     path: "i-emojione-monotone-alien-monster"
   },
   "character-param": {
-    translator: ["character-param", "人物参数"],
+    translator: ["character-param", "角色参数"],
     path: "i-game-icons-skills"
   },
   "copy": {

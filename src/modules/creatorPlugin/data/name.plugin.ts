@@ -31,7 +31,7 @@ const data: PluginStruct[] = [
 export default <CreatorPlugin>{
   translator: ["character-name-plugin", "角色姓名插件"],
   belong: "character",
-  description: "根据人物性别、追求生成姓名",
+  description: "根据角色性别、追求生成姓名",
   icon: "thinking",
   data
 };

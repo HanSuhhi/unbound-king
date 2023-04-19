@@ -1,21 +1,9 @@
 <script setup lang="ts">
+import IconBlock from "@/components/IconBlock.vue";
+
 defineProps<{ personality: Personality }>();
 </script>
 
 <template>
-  <section class="common-block personality-block">
-    <icon class="personality-block_icon" :name="personality.icon" />
-    <span class="personality-block_title">{{ personality.translator[1] }}</span>
-  </section>
+  <icon-block :icon-path="personality.icon" :translator="personality.translator" />
 </template>
-
-<style scoped>
-.personality-block_icon {
-  min-width: 2em;
-  min-height: 2em;
-}
-
-.personality-block_title {
-  margin-top: var(--small);
-}
-</style>

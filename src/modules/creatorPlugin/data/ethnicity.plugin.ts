@@ -40,7 +40,7 @@ const data: PluginStruct[] = [
 export default <CreatorPlugin>{
   translator: ["ethnicity-plugin", "族裔插件"],
   belong: "character",
-  description: "随机生成人物的种族、血统",
+  description: "随机生成角色的种族、血统",
   icon: "thinking",
   data
 };

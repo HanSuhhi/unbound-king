@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
-import { translatorFormConfig } from "../../../composables/form/formConfigs";
+import { fromFormConfig, translatorFormConfig } from "../../../composables/form/formConfigs";
 import { getInvertGlobalEnumNameOrNot } from "../../../enums/global.enum";
 import typeString from "../game-icon-type.d.ts?raw";
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
@@ -10,20 +10,15 @@ import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
 import { defineUniqueId } from "@/composables/ci/uniqueId";
 
-const item = inject<ComputedRef<TabListItem<GameIcon>>>("active-item");
 const icons = inject<ComputedRef<Array<GameIcon>>>("data");
 
 const formConfig = computed(() =>
   withFormDetail<GameIcon>(transformTypeToForm(typeString), {
     ...idFormConfig,
     ...translatorFormConfig,
+    ...fromFormConfig(),
     path: {
       title: "路径"
-    },
-    from: {
-      title: "来源",
-      defaultValue: item?.value.name,
-      disabled: true
     }
   })
 );

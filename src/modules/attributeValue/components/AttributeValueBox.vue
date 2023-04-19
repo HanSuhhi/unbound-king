@@ -23,7 +23,7 @@ provide("modal", modalShow);
   <add-form-dialog />
   <div class="value-box">
     <alert class="value-box_alert">
-      属性值，是作用于人物各项参数判定的直接数值，包括基础属性值，进阶属性值和特殊属性值。
+      属性值，是作用于角色各项参数判定的直接数值，包括基础属性值，进阶属性值和特殊属性值。
     </alert>
     <article class="value-box_main">
       <title-card-list class="value-box_list" :data="baseAttributes">

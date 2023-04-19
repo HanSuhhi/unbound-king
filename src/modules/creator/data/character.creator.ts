@@ -6,7 +6,7 @@ export default <Creator>{
     {
       translator: ["character-baseinfo-plugin", "角色基础信息插件"],
       belong: "character",
-      description: "生成人物追求与性别",
+      description: "生成角色追求与性别",
       icon: "mesasge",
       data: [
         {
@@ -35,7 +35,7 @@ export default <Creator>{
     {
       translator: ["character-name-plugin", "角色姓名插件"],
       belong: "character",
-      description: "根据人物性别、追求生成姓名",
+      description: "根据角色性别、追求生成姓名",
       icon: "thinking",
       data: [
         {
@@ -603,7 +603,7 @@ export default <Creator>{
     {
       translator: ["attribute-plugin", "属性插件"],
       belong: "character",
-      description: "随机生成一份人物属性",
+      description: "随机生成一份角色属性",
       icon: "thinking",
       data: [
         {
@@ -736,7 +736,7 @@ export default <Creator>{
     {
       translator: ["ethnicity-plugin", "族裔插件"],
       belong: "character",
-      description: "随机生成人物的种族、血统",
+      description: "随机生成角色的种族、血统",
       icon: "thinking",
       data: [
         {

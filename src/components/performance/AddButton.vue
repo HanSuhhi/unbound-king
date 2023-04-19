@@ -1,9 +1,8 @@
 <script setup lang='ts'>
-import type { Ref } from "vue";
-import { inject } from "vue";
 import TypeButton from "../typeButton/TypeButton.vue";
+import { getCommonDialog } from "@/composables/components/commonDialog";
 
-const modal = inject<Ref<boolean>>("modal")!;
+const { modal } = getCommonDialog();
 </script>
 
 <template>

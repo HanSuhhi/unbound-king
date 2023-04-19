@@ -4,28 +4,28 @@ import { inject } from "vue";
 import { defineCommonDialog } from "../../../composables/components/commonDialog";
 import IconBlock from "../../baseIcon/components/IconBlock.vue";
 import AddIconDialog from "./AddIconDialog.vue";
-import { DATA_BaseIcons } from "@/modules/baseIcon/data/baseIcon.data";
+import Operator from "./Operator.vue";
+import TabsBody from "@/components/tabs/TabsBody.vue";
+import TabsIconLayout from "@/components/tabs/TabsIconLayout.vue";
 
-const { modalShow } = defineCommonDialog();
+defineCommonDialog();
 
 const icons = inject<ComputedRef<GameIcon[]>>("data");
 </script>
 
 <template>
   <add-icon-dialog />
-  <article class="icon-dashboard">
-    <icon-block v-for="icon in icons" :key="icon.translator[0]" :icon="icon" class="icon-dashboard_block" />
-    <icon-block class="icon-dashboard_block" :icon="DATA_BaseIcons.plus as BaseIcon" not-copy @click="modalShow = true" />
-  </article>
+  <tabs-body not-body-margin-top>
+    <tabs-icon-layout>
+      <icon-block v-for="icon in icons" :key="icon.translator[0]" :icon="icon" class="icon-dashboard_block" />
+    </tabs-icon-layout>
+    <template #operator>
+      <operator />
+    </template>
+  </tabs-body>
 </template>
 
 <style scoped>
-.icon-dashboard {
-  display: flex;
-  flex-wrap: wrap;
-  border-left: var(--border);
-}
-
 .icon-dashboard_block {
   box-sizing: border-box;
 }

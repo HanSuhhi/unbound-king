@@ -1,9 +1,11 @@
-import { personalityBuffs } from "./personailaty/index";
-import { attributeBuffs } from "./attribute/index";
-import { ambitionBuffs } from "./ambition/index";
+import { personalityBuffs } from "./personailaty";
+import { attributeBuffs } from "./attribute";
+import { ambitionBuffs } from "./ambition";
+import { traitBuffs } from "./trait";
 
 export const DATA_Buffs = {
   attribute: attributeBuffs,
   personality: personalityBuffs,
-  ambition: ambitionBuffs
+  ambition: ambitionBuffs,
+  trait: traitBuffs
 };

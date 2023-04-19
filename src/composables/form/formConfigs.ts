@@ -1,3 +1,5 @@
+import type { ComputedRef } from "vue";
+import { inject } from "vue";
 import data from "../../modules/destinyDesign/data/destiny.data";
 import { defineTranslatorValidator } from "./TranslatorValidator";
 
@@ -56,5 +58,16 @@ export const destinyFormConfig = {
 
   } as Partial<AutoformItem>
 };
+
+export function fromFormConfig() {
+  const item = inject<ComputedRef<TabListItem<GameIcon>>>("active-item");
+  return {
+    from: {
+      title: "来源",
+      defaultValue: item?.value.name,
+      disabled: true
+    }
+  };
+}
 
 export const hideFormConfig = { hide: true };

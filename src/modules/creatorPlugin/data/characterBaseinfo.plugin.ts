@@ -35,7 +35,7 @@ const data: PluginStruct[] = [
 export default <CreatorPlugin>{
   translator: ["character-baseinfo-plugin", "角色基础信息插件"],
   belong: "character",
-  description: "生成人物追求与性别",
+  description: "生成角色追求与性别",
   icon: "mesasge",
   data
 };

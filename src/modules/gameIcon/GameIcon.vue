@@ -12,9 +12,3 @@ const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: tru
     <icon-dashboard />
   </tabs-design>
 </template>
-
-<style scoped>
-.game-icon {
-  transition: all var(--transition-prop);
-}
-</style>

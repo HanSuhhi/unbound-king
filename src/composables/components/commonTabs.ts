@@ -15,7 +15,7 @@ export function defineCommonTabs(componentName: string, common = true) {
         list: [listName, common ? "common-tabs-list" : ""],
         listItem: [listItemName, common ? "common-tabs-list_item" : ""],
         panel: [listPanelsName, common ? "common-tabs-panels" : ""],
-        panelItem: [listPanelName]
+        panelItem: [listPanelName, common ? "common-tabs-panel" : ""]
       }
     }
   });

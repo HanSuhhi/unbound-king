@@ -3,7 +3,7 @@ import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
 import typeString from "../lineageo-type.d.ts?raw";
 import { useConfirm } from "../composables/confirm";
-import { colorFormConfig, descriptionFormConfig } from "../../../composables/form/formConfigs";
+import { colorFormConfig, descriptionFormConfig, fromFormConfig } from "../../../composables/form/formConfigs";
 import { destinyFormConfig, iconFormConfig, idFormConfig, translatorFormConfig } from "@/composables/form/formConfigs";
 import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
@@ -17,14 +17,10 @@ const formConfig = computed(() =>
     ...translatorFormConfig,
     ...destinyFormConfig,
     ...descriptionFormConfig,
+    ...fromFormConfig(),
     origin: {
       title: "起源",
       type: "textarea"
-    },
-    from: {
-      title: "来源",
-      defaultValue: item?.value.name,
-      disabled: true
     },
     ...colorFormConfig,
     ...iconFormConfig,

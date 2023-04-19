@@ -1,0 +1,31 @@
+<script setup lang='ts'>
+defineProps<{
+  notBodyMarginTop?: boolean
+}>();
+</script>
+
+<template>
+  <article class="tabs-body">
+    <main class="tabs-body_main" :style="{ 'margin-top': notBodyMarginTop ? '0' : '' }">
+      <slot />
+    </main>
+    <slot name="operator" />
+  </article>
+</template>
+
+<style scoped>
+.tabs-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-right: var(--base-margin);
+}
+
+.tabs-body_main {
+  display: inline-flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin-top: var(--base-margin);
+}
+</style>

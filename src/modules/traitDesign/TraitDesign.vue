@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { parseImportModule } from "../../composables/ci/importModule";
-import personalityDashboard from "./components/PersonalityDashboard.vue";
+import TraitDashboard from "./components/TraitDashboard.vue";
 import TabsDesign from "@/components/tabs/TabsDesign.vue";
 import Alert from "@/components/alert/alert";
 
@@ -10,8 +10,10 @@ const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: tru
 <template>
   <tabs-design name="personality-design" :data="data">
     <template #alert>
-      <alert>个性不仅表现在对角色的属性影响，还会影响剧情表现——角色往往会根据自己的个性在对话中做出选择。</alert>
+      <alert class="trait-main_alert">
+        类似于个性，但个性是唯一的且会对剧情对话产生影响。但特征不会，且分正面特征和负面特征。
+      </alert>
     </template>
-    <personality-dashboard />
+    <trait-dashboard />
   </tabs-design>
 </template>

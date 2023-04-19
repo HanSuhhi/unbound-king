@@ -1,7 +1,7 @@
 export default [
   {
     translator: ["hp", "生命值"],
-    description: "人物的生命值，数值为 0 时人物重伤",
+    description: "角色的生命值，数值为 0 时角色重伤",
     icon: "GI5961678501381745",
     type: "base"
   },
@@ -50,7 +50,7 @@ export default [
   {
     translator: ["wt", "负重"],
     description:
-      "人物的装备总负重不可超过人物负重值，否则会对人物造成各类负面效果",
+      "角色的装备总负重不可超过角色负重值，否则会对角色造成各类负面效果",
     icon: "GI4891678553485093",
     type: "base"
   },

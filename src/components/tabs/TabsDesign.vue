@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { computed } from "vue";
+import { computed, useSlots } from "vue";
 import TabsListItem from "./TabsListItem.vue";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
@@ -14,6 +14,7 @@ const props = defineProps<{
   data: Dictionary<any>
   unocss?: boolean
 }>();
+const slots = useSlots();
 
 const { COMP: Layout } = defineCommonLayout(props.name);
 const { COMP, read, state } = defineCommonTabs(props.name);
@@ -33,13 +34,31 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
     <template #aside>
       <code-canvas-vue :code="code" />
     </template>
-    <base-tabs ref="COMP">
-      <template #list>
-        <tabs-list-item v-for="(item, key) in list" :key="key" :message="item" />
-      </template>
-      <template v-for="panel in read?.panels" :key="panel" #[panel]>
-        <slot />
-      </template>
-    </base-tabs>
+    <div class="tabs-design_body">
+      <div v-if="slots.alert" class="tabs-design_alert">
+        <slot name="alert" />
+      </div>
+      <base-tabs ref="COMP">
+        <template #list>
+          <tabs-list-item v-for="(item, key) in list" :key="key" :message="item" />
+        </template>
+        <template v-for="panel in read?.panels" :key="panel" #[panel]>
+          <slot />
+        </template>
+      </base-tabs>
+    </div>
   </base-layout>
 </template>
+
+<style scoped>
+.tabs-design_body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tabs-design_alert {
+  width: 100%;
+  margin-bottom: var(--base-margin);
+}
+</style>

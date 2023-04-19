@@ -11,7 +11,7 @@ defineProps<{ formConfig: CreatorPlugin["data"] }>();
 <template>
   <article class="forms-config">
     <alert class="forms-config_alert">
-      此处表单，仅在随机生成人物时提供数据。
+      此处表单，仅在随机生成角色时提供数据。
     </alert>
     <template v-if="formConfig.length">
       <section v-for="config of formConfig" :key="config.translator[0]" class="forms-config_form">

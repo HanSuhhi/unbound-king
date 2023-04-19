@@ -15,7 +15,7 @@ const data: PluginStruct[] = map([...DATA.DATA_Attributes.values()], ({ translat
 export default <CreatorPlugin>{
   translator: ["attribute-plugin", "属性插件"],
   belong: "character",
-  description: "随机生成一份人物属性",
+  description: "随机生成一份角色属性",
   icon: "thinking",
   data
 };

@@ -1,9 +1,9 @@
-import { ref, provide } from "vue";
+import { provide, ref } from "vue";
 
-export const useProvide = <T>(key: string, value: T) => {
+export function useProvide<T>(key: string, value: T) {
   const _value = ref(value);
 
   provide(key, _value);
 
   return _value;
-};
+}

@@ -25,7 +25,7 @@ function toggle(index: number) {
         插件测试
       </p>
       <p class="p-reset" @click="toggle(2)">
-        人物预览
+        角色预览
       </p>
       <p class="p-reset" />
     </template>

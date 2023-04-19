@@ -1,6 +1,6 @@
-import { ref, computed } from "vue";
+import { computed, ref } from "vue";
 
-export const useActive = <T>() => {
+export function useActive<T>() {
   const activeData = ref<T>();
   const active = computed({
     get() {
@@ -12,4 +12,4 @@ export const useActive = <T>() => {
   });
 
   return { active, activeData };
-};
+}
