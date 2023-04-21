@@ -1,11 +1,23 @@
 <script setup lang="ts">
-defineProps<{ iconPath: string; translator: Translator }>();
+import { NGradientText } from "naive-ui";
+
+defineProps<{ iconPath: string; translator: Translator; color?: Color }>();
 </script>
 
 <template>
   <section class="common-block icon-block">
-    <icon class="icon-block_icon" :name="iconPath" />
-    <span class="icon-block_title">{{ translator[1] }}</span>
+    <icon class="icon-block_icon" :name="iconPath" :color="color" />
+    <component
+      :is="color ? NGradientText : 'span'"
+      class="icon-block_title"
+      :gradient="color ? {
+        from: color[0],
+        to: color[1],
+      } : null"
+    >
+      {{ translator[1] }}
+    </component>
+    <!-- <span class="icon-block_title">{{ translator[1] }}</span> -->
   </section>
 </template>
 

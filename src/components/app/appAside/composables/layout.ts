@@ -1,12 +1,12 @@
-import { useCsssTabs } from "@/components/ui/tabs";
-import { useGlobalStore } from "@/stores/global.store";
 import { findIndex } from "lodash-es";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
 import { defineModuleBlock } from "./moduleBlock";
+import { useGlobalStore } from "@/stores/global.store";
+import { useCsssTabs } from "@/components/ui/tabs";
 
-export const useAsideLayout = () => {
+export function useAsideLayout() {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
   const { activeModules } = storeToRefs(useAppAsideStore());
 
@@ -18,16 +18,16 @@ export const useAsideLayout = () => {
         list: ["app-aside_list"],
         listItem: ["app-aside_item"],
         panel: ["app-aside_panels"],
-        panelItem: ["app-aside_panel"],
-      },
-    },
+        panelItem: ["app-aside_panel"]
+      }
+    }
   });
 
   watch(
     () => tabs.state.value?.active,
     (active) => {
       activeAsideModule.value = activeModules.value[active];
-    },
+    }
   );
 
   watch(activeAsideModule, () => {
@@ -37,4 +37,4 @@ export const useAsideLayout = () => {
   defineModuleBlock(tabs);
 
   return tabs;
-};
+}

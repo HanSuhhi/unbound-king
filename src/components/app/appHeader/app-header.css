@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: calc(var(--header-block-height) - var(--border-height));
-  background-color: var(--bg-color);
-  border-bottom: var(--border);
+  height: var(--header-block-height);
+  background-color: var(--main-color-deep-3);
+  box-shadow: rgb(0 0 0 / 45%) 0 25px 20px -20px;
 }

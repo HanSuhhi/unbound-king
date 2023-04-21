@@ -21,8 +21,8 @@ const MenuItem = defineComponent({
 
     const router = useRouter();
     const children = computed(() => props.page.children);
-    const routeToPage = () => {
-      router.push({ name: children.value ? children.value[0].path : props.page.path });
+    const routeToPage = async () => {
+      await router.push({ name: children.value ? children.value[0].path : props.page.path });
     };
 
     const { toggleCollapse } = useMenuCollapse(props);
@@ -51,7 +51,7 @@ const MenuItem = defineComponent({
             {children.value && <div class="aside-menu-block_mask i-material-symbols-keyboard-arrow-down-rounded" />}
           </section>
           {props.page.children && (
-            <section class="aside-menu-block_sub" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} style={`--length: ${children.value?.length}`}>
+            <section class="aside-menu-block_sub" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} style={`--length: ${children.value?.length || 0}`}>
               {props.page.children.map(moduleChild => (
                 <MenuItem page={moduleChild} />
               ))}

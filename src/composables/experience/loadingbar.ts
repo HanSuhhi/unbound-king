@@ -1,16 +1,15 @@
-import { useAppAsideStore } from "@/components/app/appAside/store/aside.store";
-import { routes } from "@/components/app/appHeader/AppHeader";
-import { useGlobalStore } from "@/stores/global.store";
-import { usePlayerStore } from "@/stores/player.store";
 import { find, findIndex } from "lodash-es";
 import { useLoadingBar } from "naive-ui";
 import { storeToRefs } from "pinia";
 import type { RouteLocationNormalized } from "vue-router";
 import { useRouter } from "vue-router";
-import { animationDuration } from '../constant/env';
+import { animationDuration } from "../constant/env";
+import { usePlayerStore } from "@/stores/player.store";
+import { useGlobalStore } from "@/stores/global.store";
+import { routes } from "@/components/app/appHeader/AppHeader";
+import { useAppAsideStore } from "@/components/app/appAside/store/aside.store";
 
-
-const useRouterBefore = () => {
+function useRouterBefore() {
   const loadingBar = useLoadingBar();
   const router = useRouter();
 
@@ -18,7 +17,7 @@ const useRouterBefore = () => {
     const { pages, activeMenuIndex } = storeToRefs(useAppAsideStore());
     const { states } = storeToRefs(usePlayerStore());
 
-    const toPage = pages.value.find((page) => page.path === to.name);
+    const toPage = pages.value.find(page => page.path === to.name);
     loadingBar.start();
 
     if (!toPage) {
@@ -31,19 +30,19 @@ const useRouterBefore = () => {
     try {
       auths.forEach((auth) => {
         const pass = states.value[auth as keyof typeof states.value];
-        if (!pass) throw "no permission";
+        if (!pass) throw new Error("no permission");
       });
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return false;
     }
 
     activeMenuIndex.value = toPage.key.join("-");
   });
+}
 
-};
-
-const useRouteAfter = () => {
+function useRouteAfter() {
   const loadingBar = useLoadingBar();
   const router = useRouter();
   const { activePage, activeAsideModule } = storeToRefs(useGlobalStore());
@@ -52,7 +51,7 @@ const useRouteAfter = () => {
 
   const parsePage = (page: RouteLocationNormalized): ModulePage => {
     const _path = page.name as string;
-    const _page = find(pages, (page) => page.path === _path) as ModulePage;
+    const _page = find(pages, page => page.path === _path) as ModulePage;
     return _page;
   };
 
@@ -60,34 +59,33 @@ const useRouteAfter = () => {
     const fromPage = parsePage(from);
     const toPage = parsePage(to);
 
-    if (!toPage) {
+    if (!toPage)
       return alert("error");
-    };
 
     const { title, icon } = toPage;
     if (!routes.value.map(route => route[0]).includes(title)) {
       routes.value.unshift([title, icon]);
       pageTransition.value = "slide-left";
-    } else {
-      const fromIndex = findIndex(routes.value, (route) => route[0] === fromPage.title);
-      const toIndex = findIndex(routes.value, (route) => route[0] === toPage.title);
+    }
+    else {
+      const fromIndex = findIndex(routes.value, route => route[0] === fromPage.title);
+      const toIndex = findIndex(routes.value, route => route[0] === toPage.title);
       if (toIndex < fromIndex) pageTransition.value = "slide-right";
       else pageTransition.value = "slide-left";
     }
 
     if (toPage !== activePage.value) activePage.value = toPage;
     if (activeAsideModule.value?.key !== toPage.module) {
-      const toModule = activeModules.find((module) => module.key === toPage.module);
+      const toModule = activeModules.find(module => module.key === toPage.module);
       activeAsideModule.value = toModule;
     }
 
     setTimeout(() => {
       loadingBar.finish();
     }, animationDuration);
-
   });
-};
-export const defineRouterChange = () => {
+}
+export function defineRouterChange() {
   useRouterBefore();
   useRouteAfter();
-};
+}

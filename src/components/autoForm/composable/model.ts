@@ -12,17 +12,15 @@ export function defineAutoFormModel(props: { config: AutoformItem[]; params?: Au
         };
       }
 
-      switch (type) {
-        case "number":
-          return { ...values, [key]: defaultValue || 0 };
-        case "color":
-          return { ...values, [key]: defaultValue || ["#000", "#000"] };
-        case "minmax":
-        case "translator":
-          return { ...values, [key]: defaultValue || [] };
-        default:
-          return { ...values, [key]: defaultValue || "" };
-      }
+      const typeMap: Partial <Record<AutoformItem["type"], any>> = {
+        number: 0,
+        switch: false,
+        color: ["#000", "#000"],
+        minmax: [],
+        translator: []
+      };
+
+      return { ...values, [key]: defaultValue || typeMap[type] || "" };
     }, {});
 
     return model;

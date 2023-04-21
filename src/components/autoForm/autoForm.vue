@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, watch } from "vue";
 import type { FormInst } from "naive-ui";
-import { FormRules, NForm, NFormItem, NInput, NInputNumber, NSelect } from "naive-ui";
+import { FormRules, NForm, NFormItem, NInput, NInputNumber, NSelect, NSwitch } from "naive-ui";
 import FormIcon from "./components/FormIcon.vue";
 import FormTranslator from "./components/FormTranslator.vue";
 import { defineAutoFormModel } from "./composable/model";
@@ -56,6 +56,9 @@ if (props.hotUpdate) {
           </template>
           <template v-if="formItem.type === 'minmax'">
             <form-min-max v-model="model[formItem.key]" :limit="formItem.limit" />
+          </template>
+          <template v-if="formItem.type === 'switch'">
+            <n-switch v-model:value="model[formItem.key]" />
           </template>
         </n-form-item>
       </template>

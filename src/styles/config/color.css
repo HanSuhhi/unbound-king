@@ -51,6 +51,7 @@
   --gray: #6E6F71;
   --gray-deep-1: #666769;
   --gray-deep-2: #565658;
+  --gray-deep-3: rgb(125 125 125);
   --gray-bright-1: #75777D;
   --gray-bright-2: #A7A7AA;
 
@@ -89,6 +90,7 @@ html.dark,
   --main-color-bright-2: var(--yellow-bright-2);
   --main-color-deep-1: var(--yellow-deep-1);
   --main-color-deep-2: var(--yellow-deep-2);
+  --main-color-deep-3: #A48424;
   --bg-color-deep-1: rgb(37 37 37);
   --bg-color-deep-2: rgb(30 30 30);
   --bg-color: rgb(44 44 44);

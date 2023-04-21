@@ -1,9 +1,0 @@
-.extre-modules {
-  position: absolute;
-  bottom: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--modules-width);
-}

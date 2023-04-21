@@ -44,6 +44,9 @@ function getTypeFromNode(node: TypeNode): [type: AutoformItem["type"], options?:
       const typeName = (referenceTypeNode.typeName as Identifier).escapedText as string;
       return [kebabCase(typeName) as AutoformItem["type"]];
     }
+    case SyntaxKind.BooleanKeyword: {
+      return ["switch"];
+    }
     case SyntaxKind.StringKeyword:
     default:
       return ["text"];

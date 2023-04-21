@@ -7,6 +7,7 @@ export function useConfirm() {
 
   const confirm = (data: Trait) => {
     if (!data.translator[1]) data.translator[1] = data.translator[0];
+    if (!data.negative) delete data.negative;
     data.id = defineUniqueId("T");
     data.from = getInvertGlobalEnumNameOrNot(data.from);
     traits.value.push(data);

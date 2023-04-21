@@ -14,7 +14,10 @@ const formConfig = computed(() =>
     ...translatorFormConfig,
     ...colorFormConfig,
     ...iconFormConfig,
-    ...fromFormConfig()
+    ...fromFormConfig(),
+    negative: {
+      title: "是否负面"
+    }
   })
 );
 </script>

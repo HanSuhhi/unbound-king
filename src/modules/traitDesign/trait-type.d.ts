@@ -4,4 +4,5 @@ type Trait = {
   icon: Icon;
   color: Color;
   from: string;
+  negative?: boolean;
 }

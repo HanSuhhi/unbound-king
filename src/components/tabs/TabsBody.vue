@@ -18,7 +18,6 @@ defineProps<{
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-right: var(--base-margin);
 }
 
 .tabs-body_main {

@@ -1,10 +1,12 @@
-import { usePlayerStore } from "@/stores/player.store";
 import { flatMap } from "lodash-es";
 import { defineStore, storeToRefs } from "pinia";
 import { computed, ref } from "vue";
 import { defineModules } from "../data/modules";
+import { usePlayerStore } from "@/stores/player.store";
 
-const defineModuleAuthKey = (key: string) => `aside_${key}_entry`;
+function defineModuleAuthKey(key: string) {
+  return `aside_${key}_entry`;
+}
 
 const useAppAsideStore = defineStore("app-aside", () => {
   const { states } = storeToRefs(usePlayerStore());
@@ -22,10 +24,13 @@ const useAppAsideStore = defineStore("app-aside", () => {
       return flatMap(module.pages, (page) => {
         if (page.children) return page.children;
         else return page;
-      }).map((page) => _perfectPage(page, module));
+      }).map(page => _perfectPage(page, module));
     });
   });
 
+  /**
+   * @description Filter the aside entry list based on permissions
+   */
   const activeModules = computed<AsideModule[]>(() => {
     return modules.value.filter((module) => {
       const auth = defineModuleAuthKey(module.key) as keyof typeof states.value;

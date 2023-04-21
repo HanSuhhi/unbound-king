@@ -21,6 +21,9 @@ export function defineNaiveTheme() {
       textColorPressed: "var(--white-bright-2)",
       textColorFocus: "var(--white-bright-2)"
     },
+    Switch: {
+      railColorActive: main
+    },
     Drawer: {
       color: bg2
     },

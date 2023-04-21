@@ -5,15 +5,10 @@
   width: 100%;
   height: 100%;
   max-height: var(--max-height);
-  margin-top: var(--base-margin);
-  overflow: auto;
   border-bottom: var(--border);
 }
 
 .app-aside_panel {
-  --displacement: 10%;
-
-  padding: var(--small);
-  padding-top: 0;
-  border-radius: var(--border-radius);
+  position: relative;
+  height: 100%;
 }

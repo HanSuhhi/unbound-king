@@ -1,7 +1,7 @@
-import type { Auth } from "@/auth/auth";
 import { filter } from "lodash-es";
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import type { Auth } from "@/auth/auth";
 
 const usePlayerStore = defineStore("player-store", () => {
   const auths = ref<Record<string, Auth>>({});
@@ -18,14 +18,13 @@ const usePlayerStore = defineStore("player-store", () => {
       if (auth.unmount) auth.unmount();
       delete auths.value[auth.ticket];
     },
-    reset: () => filter(auths.value, (auth) => auth.from === "setting").forEach((auth) => authOperations.remove(auth.ticket)),
+    reset: () => filter(auths.value, auth => auth.from === "setting").forEach(auth => authOperations.remove(auth.ticket))
   };
 
   const states = ref({
-    setting_dev_entry: false,
-    aside_auth_entry: true,
     aside_dev_entry: true,
     aside_project_entry: true,
+    aside_setting_entry: true
   });
 
   return { authOperations, states };

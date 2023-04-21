@@ -1,7 +1,8 @@
 import { delay } from "lodash-es";
 import type { PropType } from "vue";
-import { computed, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
+import { NTooltip } from "naive-ui";
 import Icon from "@/components/Icon.vue";
 
 export default defineComponent({
@@ -9,22 +10,19 @@ export default defineComponent({
   props: {
     module: {
       type: Object as PropType<AsideModule>,
-      required: false,
+      required: false
     },
     read: {
       type: Boolean as PropType<boolean>,
-      default: false,
-    },
+      default: false
+    }
   },
   setup: (props) => {
     const router = useRouter();
-    const routeToPage = (module: AsideModule) => {
+    const routeToPage = async (module: AsideModule) => {
       const page = module.pages![0];
-      if (page.children) {
-        router.push({ name: page.children[0].path });
-      } else {
-        router.push({ name: page.path });
-      }
+      if (page.children) await router.push({ name: page.children[0].path });
+      else await router.push({ name: page.path });
     };
 
     const toggleModule = () => {
@@ -38,18 +36,26 @@ export default defineComponent({
       }, Number(import.meta.env.ANIMATION_DURATION));
     };
 
+    async function routeOut() {
+      if (props.read) return;
+      await routeToPage(props.module!);
+      toggleModule();
+    }
+
     return () => {
       return (
-        <div
-          class="app-aside_listitem"
-          onClick={() => {
-            if (props.read) return;
-            routeToPage(props.module!);
-            toggleModule();
-          }}>
-          <Icon name={props.module!.icon} class="app-aside_module" />
-        </div>
+        <NTooltip placement="right" >
+          {{
+            trigger: () => <div
+                class="app-aside_listitem"
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                onClick={routeOut}>
+                <Icon name={props.module!.icon} class="app-aside_module" />
+              </div>,
+            default: () => <p class='p-reset'>{ props.module?.title}</p>
+          }}
+          </NTooltip>
       );
     };
-  },
+  }
 });

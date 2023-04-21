@@ -4,10 +4,10 @@ import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
 
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}", {
-  eager: true,
+  eager: true
 });
 
-export const useRouteConfig = async () => {
+export function useRouteConfig() {
   const routes = map(pages, (component, path) => {
     const paths = path.split("/");
     const name = kebabCase(paths[paths.length - 2]);
@@ -16,13 +16,13 @@ export const useRouteConfig = async () => {
 
   routes.unshift({
     path: "/",
-    redirect: "/hero-choose",
+    redirect: import.meta.env.DEFAULT_ROUTE_INDEX
   });
 
   const router = createRouter({
     history: createWebHistory(),
-    routes,
+    routes
   });
 
   return { router };
-};
+}

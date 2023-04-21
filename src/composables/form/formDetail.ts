@@ -10,10 +10,10 @@ function selecterDefault(configItem: AutoformItem): AutoformItem {
 }
 
 function setRules(configItem: AutoformItem): AutoformItem {
-  const excludedItems: Array<AutoformItem["type"]> = ["translator", "color"];
+  const excludedItems: Array<AutoformItem["type"]> = ["translator", "color", "switch"];
 
   if (!configItem.rules) configItem.rules = [];
-  if (configItem.required && !excludedItems.includes(configItem.key as AutoformItem["type"])) configItem.rules.push({ required: true, message: `${configItem.title}项不可为空`, trigger: ["blur"] });
+  if (configItem.required && !excludedItems.includes(configItem.type)) configItem.rules.push({ required: true, message: `${configItem.title}项不可为空`, trigger: ["blur"] });
   return configItem;
 }
 
