@@ -7,7 +7,7 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: "DATA_Destiny"
+      range: "Destiny"
     }
   },
   {
@@ -16,7 +16,7 @@ const data: PluginStruct[] = [
     generator: "lineageo",
     generatorForm: DATA_Generator_Forms.lineageo,
     generatorParams: <RandomGeneratorProps>{
-      range: "DATA_Lineageo"
+      range: "Lineageo"
     }
   },
   {

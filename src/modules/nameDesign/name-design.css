@@ -1,6 +1,6 @@
 .name-design {
   overflow: auto;
-  transition: all var(--transition-prop);
+  transition: grid-template var(--transition-prop);
 }
 
 .name-design_main {

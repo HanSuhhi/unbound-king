@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { DATA_Destiny } from "../../destinyDesign/data/index";
+import { DATA } from "@/composables/data";
 
 defineProps<{ data: Lineageo }>();
 </script>
@@ -12,7 +12,7 @@ defineProps<{ data: Lineageo }>();
           <icon :name="data.icon" :color="data.color" />
           {{ data.translator[1] }} / {{ data.translator[0] }}
         </div>
-        <icon :name="DATA_Destiny.get(data.destiny)?.icon" :color="DATA_Destiny.get(data.destiny)?.color" />
+        <icon :name="DATA.Destinies.get(data.destiny)?.icon" :color="DATA.Destinies.get(data.destiny)?.color" />
       </div>
       <p class="p-reset base-card_description">
         {{ data.description }}

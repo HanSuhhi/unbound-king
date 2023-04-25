@@ -13,7 +13,7 @@ import CTabs from "./components/ui/tabs";
 import CLayout from "./components/ui/layout";
 
 const pinia = createPinia();
-const { router } = await useRouteConfig();
+const { router } = useRouteConfig();
 await useIndexDb();
 
 createApp(App)

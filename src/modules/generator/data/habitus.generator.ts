@@ -1,9 +1,9 @@
 import { random } from "lodash-es";
-import { DATA_Lineageo } from "@/modules/lineageoDesign/data";
+import { DATA } from "@/composables/data";
 
 const habitusGenerator: GeneratorFunc<any, HabitusGeneratorProps> = (data, { type }) => {
   const lineageoId = data[1][1][0];
-  const lineageo = DATA_Lineageo.get(lineageoId);
+  const lineageo = DATA.Lineageos.get(lineageoId);
   switch (type) {
     case "height": {
       const height = random(...lineageo!.provideHeight);

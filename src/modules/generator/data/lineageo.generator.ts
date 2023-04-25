@@ -1,12 +1,13 @@
 import { sample } from "lodash-es";
-import { DATA_Lineageo } from "@/modules/lineageoDesign/data";
+import { DATA } from "@/composables/data";
 
 /**
  * @description always use this generator after destiny
  */
 const lineageoGenerator: GeneratorFunc<any, {}> = (data) => {
+  console.log("data: ", data);
   const destiny = data[0][1][0];
-  const range = [...DATA_Lineageo.values()].filter(lineageo => lineageo.destiny === destiny).map(lineageo => [lineageo.id, lineageo.translator[1]]);
+  const range = [...DATA.Lineageos.values()].filter(lineageo => lineageo.destiny === destiny).map(lineageo => [lineageo.id, lineageo.translator[1]]);
   return sample(range);
 };
 

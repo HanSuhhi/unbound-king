@@ -7,9 +7,6 @@ import "./styles/workshop-package.css";
 
 <template>
   <section class="workshop">
-    <p class="workshop_title">
-      工坊
-    </p>
     <div class="workshop-package">
       <header class="workshop-package_title">
         基础包
@@ -23,17 +20,17 @@ import "./styles/workshop-package.css";
       </type-button>
     </div>
     <div class="workshop-factory">
-      <div class="workshop-factory_more">
+      <type-button plain>
         插件市集
         <icon name="bird" style="margin-left: var(--small);" />
-      </div>
+      </type-button>
       <div class="workshop-factory-operator">
-        <div class="workshop-factory-operator_item workshop-factory_last">
+        <type-button plain class="workshop-factory-operator_item workshop-factory_last">
           <icon name="single-left" />
-        </div>
-        <div class="workshop-factory-operator_item workshop-factory_next">
+        </type-button>
+        <type-button plain class="workshop-factory-operator_item workshop-factory_next">
           <icon name="single-right" />
-        </div>
+        </type-button>
       </div>
     </div>
   </section>
@@ -41,23 +38,10 @@ import "./styles/workshop-package.css";
 
 <style scoped>
 .workshop {
-  position: absolute;
-  bottom: 0;
-  left: calc(var(--modules-width) + 1 * var(--base-margin));
+  position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: calc(100% - var(--modules-width) - 2 * var(--base-margin));
-  height: calc(100% - var(--max-height));
-  overflow: hidden;
-}
-
-.workshop_title {
-  margin-block-start: 0;
-  margin-block-end: 0.5rem;
-  color: var(--gray-deep-2);
-  font-weight: bolder;
-  font-size: var(--font-title);
+  box-sizing: border-box;
+  height: var(--workshop-height);
+  margin: var(--base-margin);
 }
 </style>

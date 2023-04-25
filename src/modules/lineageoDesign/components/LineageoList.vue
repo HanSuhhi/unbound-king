@@ -1,13 +1,13 @@
 <script setup lang='ts'>
 import { NCheckbox, NCheckboxGroup } from "naive-ui";
 import { useDestinyFilter } from "../composables/destinyFilter";
-import { DATA_Destiny } from "../../destinyDesign/data/";
 import TitleCard from "@/components/titleCard/TitleCard";
-import SearchInput from "@/components/SearchInput.vue";
+import SearchInput from "@/components/inputs/SearchInput.vue";
 import DestinyText from "@/components/DestinyText.vue";
 import BaseCard from "@/modules/lineageoDesign/components/BaseCard.vue";
 import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 import AddButton from "@/components/performance/AddButton.vue";
+import { DATA } from "@/composables/data";
 
 const { destinyChoosed, showLineageos, activeIndex } = useDestinyFilter();
 </script>
@@ -28,7 +28,7 @@ const { destinyChoosed, showLineageos, activeIndex } = useDestinyFilter();
         种族筛选
       </p>
       <n-checkbox-group v-model:value="destinyChoosed" class="lineageo-list_group">
-        <template v-for="[_, destiny] in DATA_Destiny" :key="_">
+        <template v-for="[id, destiny] in DATA.Destinies" :key="id">
           <n-checkbox :value="destiny.translator[0]" class="lineageo-checkbox">
             <destiny-text :destiny="destiny" />
           </n-checkbox>

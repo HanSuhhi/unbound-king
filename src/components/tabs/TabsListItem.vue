@@ -2,9 +2,10 @@
 import { size } from "lodash-es";
 import NumberMark from "../NumberMark.vue";
 
-defineProps<{
+const props = defineProps<{
   message: TabListItem
 }>();
+console.log("props: ", props.message);
 </script>
 
 <template>

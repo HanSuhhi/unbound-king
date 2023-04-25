@@ -15,7 +15,7 @@ const emits = defineEmits<{
 
 const model = autoVModel(emits, props.modelValue);
 
-const options = transformIconToElLabelOptions(DATA.DATA_GameIcons);
+const options = transformIconToElLabelOptions(DATA.GameIcons);
 
 function renderLabel(option: SelectOption & { translator: Translator }): VNodeChild {
   if (option.type === "group") return `${option.label}`;

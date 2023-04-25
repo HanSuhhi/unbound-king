@@ -4,8 +4,6 @@
 
   width: 100%;
   height: 100%;
-  max-height: var(--max-height);
-  border-bottom: var(--border);
 }
 
 .app-aside_panel {

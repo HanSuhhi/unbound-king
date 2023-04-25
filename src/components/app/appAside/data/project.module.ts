@@ -14,10 +14,16 @@ export default defineModuleConfig([
     icon: "package",
     children: [
       {
-        path: "package-extra-design",
-        title: "拓展包设计",
-        description: "设计第二个世界！",
-        icon: "add-package"
+        path: "package-name",
+        title: "包名设计",
+        description: "每个人都需要有一个名字",
+        icon: "package"
+      },
+      {
+        path: "data-package-design",
+        title: "数据包设计",
+        description: "设计数据包内容！",
+        icon: "package"
       }
     ]
   },

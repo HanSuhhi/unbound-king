@@ -1,7 +1,7 @@
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref } from "vue";
 import "./app-header.css";
 import RouterHistory from "./components/SystemInfo";
-import UserMessage from "./components/UserMessage";
+import AsideModules from "./components/AsideModules.vue";
 
 export const routes = ref<[router: string, icon: BaseIconName][]>([]);
 
@@ -12,9 +12,10 @@ export default defineComponent({
       return (
         <div class="app-header_box">
           <RouterHistory />
-          <UserMessage />
+          <AsideModules />
+          {/* <UserMessage /> */}
         </div>
       );
     };
-  },
+  }
 });

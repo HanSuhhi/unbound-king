@@ -3,7 +3,7 @@ import { DATA_Generator_Params } from "../../generator/data/index";
 import { DATA } from "@/composables/data";
 import { DATA_Generator_Forms } from "@/modules/generator/data";
 
-const data: PluginStruct[] = map([...DATA.DATA_Attributes.values()], ({ translator }) => {
+const data: PluginStruct[] = map([...DATA.Attributes.values()], ({ translator }) => {
   return {
     translator,
     generator: "number",

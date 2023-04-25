@@ -14,21 +14,21 @@ export default <Creator>{
           description: "",
           generator: "random",
           generatorForm: [{ type: "none", title: "根据条件随机生成" }],
-          generatorParams: { range: "DATA_Genders" }
+          generatorParams: { range: "Genders" }
         },
         {
           translator: ["chase", "追求"],
           description: "角色毕生的追求，在诸多方面对角色产生影响",
           generator: "random",
           generatorForm: [{ type: "none", title: "根据条件随机生成" }],
-          generatorParams: { range: "DATA_Chases", needTransform: true }
+          generatorParams: { range: "Chases", needTransform: true }
         },
         {
           translator: ["age", "年龄"],
           description: "",
           generator: "random",
           generatorForm: [{ type: "none", title: "根据条件随机生成" }],
-          generatorParams: { range: "DATA_Ages", needTransform: true }
+          generatorParams: { range: "Ages", needTransform: true }
         }
       ]
     },
@@ -43,7 +43,7 @@ export default <Creator>{
           description: "",
           generator: "random",
           generatorForm: [{ type: "none", title: "根据条件随机生成" }],
-          generatorParams: { range: "DATA_FamilyNames" }
+          generatorParams: { range: "FamilyNames" }
         },
         {
           translator: ["firstname", "名辞"],
@@ -746,7 +746,7 @@ export default <Creator>{
           generatorForm: [
             { key: "name", type: "none", title: "根据条件随机生成" }
           ],
-          generatorParams: { range: "DATA_Destiny" }
+          generatorParams: { range: "Destinies" }
         },
         {
           translator: ["lineageo", "血统"],
@@ -755,7 +755,7 @@ export default <Creator>{
           generatorForm: [
             { key: "lineageo", type: "none", title: "根据条件随机生成" }
           ],
-          generatorParams: { range: "DATA_Lineageo" }
+          generatorParams: { range: "Lineageos" }
         },
         {
           translator: ["height", "身高"],

@@ -11,7 +11,7 @@ export default defineComponent({
   setup: () => {
     const { COMP } = defineCommonLayout("attribute-value");
 
-    const attributeValues = ref<Array<AttributeValue>>([...DATA.DATA_AttributeValues.values()]);
+    const attributeValues = ref<Array<AttributeValue>>([...DATA.AttributeValues.values()]);
     const codeTemplate = computed(() => ["export default", JSON.stringify(attributeValues.value)]);
     const { code } = applyDataToModule(attributeValues, codeTemplate);
 

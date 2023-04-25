@@ -11,7 +11,7 @@ import Alert from "@/components/alert/alert";
       属性目前仅设置 5 条，对应五行，暂不支持新增。
     </alert>
     <article class="attribute-main_main">
-      <attribute-block v-for="(attribute, id) of DATA.DATA_Attributes" :key="id" :attribute="attribute[1]" />
+      <attribute-block v-for="(attribute, id) of DATA.Attributes" :key="id" :attribute="attribute[1]" />
     </article>
     <footer class="attribute-main_operator">
       <operator />

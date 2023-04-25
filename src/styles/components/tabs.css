@@ -2,8 +2,11 @@
   --border-height: 2px;
   --left: 0;
 
-  height: calc(var(--main-height) - var(--base-margin));
+  position: relative;
   flex: 1;
+  height: calc(var(--main-height) - var(--base-margin));
+  max-height: calc(var(--main-height) - var(--base-margin));
+  overflow-y: auto;
 }
 
 .common-tabs-list {
@@ -37,6 +40,7 @@
   width: 100%;
   height: 100%;
 }
+
 .common-tabs-panel {
   height: 100%;
 }

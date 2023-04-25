@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import NumberMark from "@/components/NumberMark.vue";
-import SearchInput from "@/components/SearchInput.vue";
-import { onBeforeEnter, onEnter, onLeave } from "@/composables/transition/transitionFunc";
 import { ref } from "vue";
 import TitleCardListItem from "./TitleCardListItem.vue";
+import NumberMark from "@/components/NumberMark.vue";
+import SearchInput from "@/components/inputs/SearchInput.vue";
+import { onBeforeEnter, onEnter, onLeave } from "@/composables/transition/transitionFunc";
 
 const props = defineProps<{ data: BaseItem[] }>();
 const modelValues = ref(props.data);
 
-const watchEvent = (input: string) => {
+function watchEvent(input: string) {
   modelValues.value = props.data.filter((item) => {
     if (item.translator[0].includes(input)) return true;
     if (item.translator[1].includes(input)) return true;
     if (item.description.includes(input)) return true;
     return false;
   });
-};
+}
 </script>
 
 <template>

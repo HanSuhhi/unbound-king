@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import { computed, useSlots } from "vue";
+import { NTooltip } from "naive-ui";
 import TabsListItem from "./TabsListItem.vue";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
@@ -45,6 +46,12 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
         <template v-for="panel in read?.panels" :key="panel" #[panel]>
           <slot />
         </template>
+        <n-tooltip placement="bottom">
+          <template #trigger>
+            <icon class="tabs-design_question" name="question" />
+          </template>
+          如果没有对应包名。请在相应的 src/modules/data 文件夹下新建 packageName.data.ts 的文件。
+        </n-tooltip>
       </base-tabs>
     </div>
   </base-layout>
@@ -60,5 +67,13 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
 .tabs-design_alert {
   width: 100%;
   margin-bottom: var(--base-margin);
+}
+
+.tabs-design_question {
+  position: absolute;
+  top: calc(var(--base-margin) / 3);
+  right: 0;
+  font-size: var(--font-title-main);
+  cursor: pointer;
 }
 </style>

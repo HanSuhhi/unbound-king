@@ -1,16 +1,10 @@
 <script setup lang='ts'>
-import { storeToRefs } from "pinia";
-import { useGlobalStore } from "@/stores/global.store";
 
-const { activeAsideModule, activePage } = storeToRefs(useGlobalStore());
 </script>
 
 <template>
   <section class="aside-setting">
-    <span class="aside-setting_path">{{ activeAsideModule?.title }} &
-      {{ activePage?.title }}
-    </span>
-    <div class="aside-setting_more i-material-symbols-more-horiz" />
+    <input class="aside-setting_input input-reset" placeholder="请输入搜索模块名...">
   </section>
 </template>
 
@@ -27,14 +21,8 @@ const { activeAsideModule, activePage } = storeToRefs(useGlobalStore());
   border-right: var(--border);
 }
 
-.aside-setting_path {
-  margin-left: calc(var(--base-margin) * 1);
-  color: var(--gray-bright-1);
-  font-weight: 500;
-  font-size: var(--font-body-small);
-}
-
-.aside-setting_more {
-  margin-right: calc(var(--base-margin) * 2);
+.aside-setting_input {
+  width: 100%;
+  color: var(--white);
 }
 </style>

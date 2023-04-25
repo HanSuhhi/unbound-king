@@ -6,9 +6,7 @@ export function formatCodeString(...codeString: string[]): string {
     parser: "typescript",
     plugins: [parserTypescript],
     bracketSpacing: true,
-    trailingComma: "all",
+    trailingComma: "all"
   });
   return formattedCode;
 }
-
-

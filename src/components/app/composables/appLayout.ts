@@ -58,11 +58,13 @@ export function defineAppLayout() {
     const asideElement = document.getElementsByClassName("app-aside")[0] as HTMLElement;
     const headerElement = document.getElementsByClassName("app-header")[0] as HTMLElement;
     const footerElement = document.querySelector(".app-footer");
+    const workshopElement = document.querySelector(".workshop");
 
-    const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 2px - ${footerElement?.clientHeight}px)`;
+    const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 2px - ${footerElement?.clientHeight || 0}px)`;
     appElement.style.setProperty("--main-height", mainHeight);
     appElement.style.setProperty("--modules-width", "4.5rem");
     appElement.style.setProperty("--aside-width", `${asideElement.clientWidth}px`);
+    appElement.style.setProperty("--workshop-height", `${workshopElement?.getBoundingClientRect().height || 0}px`);
   };
   autoAdjust(setLayoutProps);
 

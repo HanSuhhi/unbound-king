@@ -8,6 +8,7 @@
 
 .workshop-package_title {
   font-size: var(--font-title);
+  text-align: center;
 }
 
 .workshop-package_description {

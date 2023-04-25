@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { DATA_BaseIcons } from "../modules/baseIcon/data/baseIcon.data";
-import { DATA_GameIcons } from "@/modules/gameIcon/data";
+import { DATA } from "@/composables/data";
 
 const props = defineProps<{
   icon?: BaseIcon
@@ -13,7 +13,7 @@ const props = defineProps<{
 const icon = computed(() => {
   if (props.path) return props.path;
   if (props.icon) return props.icon.path;
-  if (props.name) return DATA_BaseIcons[props.name]?.path || DATA_GameIcons.get(props.name)?.path || DATA_BaseIcons.close?.path;
+  if (props.name) return DATA_BaseIcons[props.name]?.path || DATA.GameIcons.get(props.name)?.path || DATA_BaseIcons.close?.path;
   return "";
 });
 

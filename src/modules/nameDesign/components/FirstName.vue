@@ -4,7 +4,7 @@ import { NInput } from "naive-ui";
 import { useFirstName } from "../composables/firstName";
 import NameTag from "./NameTag.vue";
 import NumberMark from "@/components/NumberMark.vue";
-import SearchInput from "@/components/SearchInput.vue";
+import SearchInput from "@/components/inputs/SearchInput.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
 import typeButton from "@/components/typeButton/TypeButton.vue";
 import { copy } from "@/composables/experience/copy";

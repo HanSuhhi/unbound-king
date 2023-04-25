@@ -9,7 +9,7 @@ export default defineComponent({
       return (
         <article class="base-icon">
           <Tips class="base-icon_header"/>
-          <IconDashboard class="base-icon_main" />
+          <IconDashboard class="base-icon_main" style={{ "margin-top": "var(--base-margin)" }} />
         </article>
       );
     };

@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import AddButton from "../performance/AddButton.vue";
-import SearchInput from "@/components/SearchInput.vue";
+import SearchInput from "@/components/inputs/SearchInput.vue";
 
 defineProps<{
   needAddButton?: boolean

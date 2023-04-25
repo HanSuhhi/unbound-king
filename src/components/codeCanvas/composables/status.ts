@@ -1,13 +1,15 @@
 import type { Ref } from "vue";
-import { ref, watch, watchEffect } from "vue";
+import { inject, ref, watch } from "vue";
 
 export enum CodeCanvasStatus {
   None,
   Changed,
-  Copied,
+  Copied
 }
 
-export const useCodeCanvasStatus = (changed: Ref<Boolean>) => {
+export function useCodeCanvasStatus() {
+  const changed = inject<Ref<boolean>>("changed")!;
+
   const copied = ref(false);
   const status = ref<CodeCanvasStatus>(CodeCanvasStatus.None);
 
@@ -23,4 +25,4 @@ export const useCodeCanvasStatus = (changed: Ref<Boolean>) => {
   });
 
   return { copied, status };
-};
+}

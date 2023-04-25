@@ -1,6 +1,6 @@
 import type { ITable } from "jsstore";
 import { DATA_TYPE } from "jsstore";
-import { DATA_Genders } from "@/modules/character/enums/character.enum";
+import { DATA } from "../../composables/data";
 
 const idbHero: ITable = {
   name: "Heroes",
@@ -15,7 +15,7 @@ const idbHero: ITable = {
     },
     gender: {
       dataType: DATA_TYPE.Number,
-      default: DATA_Genders.MALE
+      default: DATA.Genders.MALE
     },
     nature: {
       dataType: DATA_TYPE.Array,

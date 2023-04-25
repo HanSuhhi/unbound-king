@@ -7,7 +7,7 @@ import { useFamilyNames } from "../composables/familyName";
 import NameTag from "./NameTag.vue";
 import typeButton from "@/components/typeButton/TypeButton.vue";
 import TitleCard from "@/components/titleCard/TitleCard";
-import SearchInput from "@/components/SearchInput.vue";
+import SearchInput from "@/components/inputs/SearchInput.vue";
 import NumberMark from "@/components/NumberMark.vue";
 
 const familyNames = inject<Ref<FamilyName[]>>("family-names")!;

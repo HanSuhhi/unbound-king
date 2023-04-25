@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { NButton } from "naive-ui";
-import { watch, watchEffect } from "vue";
 import "./button-color.css";
 
 const props = withDefaults(
   defineProps<{
-    color?: "blue" | "red" | "green" | "default";
+    color?: "blue" | "red" | "green" | "default"
     plain?: boolean
   }>(),
   {
-    color: "default",
-  },
+    color: "default"
+  }
 );
-
 </script>
 
 <template>

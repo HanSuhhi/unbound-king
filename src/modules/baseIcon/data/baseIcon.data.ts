@@ -139,5 +139,9 @@ export const DATA_BaseIcons: Dictionary<BaseIcon> = {
   "mesasge": {
     translator: ["message", "消息"],
     path: "i-material-symbols-android-chat"
+  },
+  "module": {
+    translator: ["module", "模块"],
+    path: "i-material-symbols-view-module"
   }
 };

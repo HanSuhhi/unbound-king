@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Prism from "prismjs";
-import type { Ref } from "vue";
-import { inject, onMounted, onUpdated, ref } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 import { defineExtender } from "../../composables/experience/Extender";
 import Operator from "./components/Operator.vue";
 import { CodeCanvasStatus, useCodeCanvasStatus } from "./composables/status";
@@ -30,8 +29,7 @@ onUpdated(highlight);
 const isExtend = defineExtender();
 const delayExtend = useDelayExtend(isExtend);
 
-const changed = inject<Ref<boolean>>("changed")!;
-const { copied, status } = useCodeCanvasStatus(changed);
+const { copied, status } = useCodeCanvasStatus();
 
 function copy() {
   navigator.clipboard.writeText(props.code);

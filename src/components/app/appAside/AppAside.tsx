@@ -1,12 +1,12 @@
 import { storeToRefs } from "pinia";
-import { computed, defineComponent } from "vue";
-import "./app-aside.css";
+import { computed, defineAsyncComponent, defineComponent } from "vue";
 import AppAsideModule from "./components/AppAsideModule";
 import BaseMenu from "./components/baseMenu/BaseMenu.vue";
 import Workshop from "./components/workshop/Workshop.vue";
 import { useAsideLayout } from "./composables/layout";
 import { useAppAsideStore } from "./store/aside.store";
 import AsideSetting from "./components/AsideSetting.vue";
+import "./app-aside.css";
 
 export default defineComponent({
   name: "AppAside",
@@ -29,18 +29,22 @@ export default defineComponent({
       return _panels;
     });
 
+    const Tabs = defineAsyncComponent(() =>
+      import("@/components/ui/tabs")
+    );
+
     return () => {
       return (
-        <>
-          <base-tabs ref={COMP}>
+        <div class="app-aside_main">
+          <Tabs ref={COMP}>
             {{
               list: lists.value,
               ...panels.value
             }}
-          </base-tabs>
-          <AsideSetting />
+          </Tabs>
           <Workshop />
-        </>
+          <AsideSetting />
+        </div>
       );
     };
   }

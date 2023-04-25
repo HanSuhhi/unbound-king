@@ -1,12 +1,12 @@
-import { formatCodeString } from "@/composables/ci/codeString";
 import { isUndefined } from "lodash-es";
 import { computed, provide, ref, watch } from "vue";
-import { DATA_FamilyNames, DATA_FirstNames } from "../data/name.data";
+import { DATA } from "../../../composables/data";
+import { formatCodeString } from "@/composables/ci/codeString";
 
-export const useNames = () => {
-  const familyNames = ref<FamilyName[]>(DATA_FamilyNames);
+export function useNames() {
+  const familyNames = ref<FamilyName[]>(DATA.FamilyNames);
 
-  const firstNames = ref<FirstName[]>(DATA_FirstNames);
+  const firstNames = ref<FirstName[]>(DATA.FirstNames);
   const changed = ref();
 
   provide("family-names", familyNames);
@@ -29,4 +29,4 @@ export const useNames = () => {
   provide("changed", changed);
 
   return { code };
-};
+}

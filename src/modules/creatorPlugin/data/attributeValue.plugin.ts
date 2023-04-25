@@ -3,10 +3,10 @@ import { DATA } from "../../../composables/data";
 import { DATA_Generator_Params } from "../../generator/data/index";
 import { DATA_Generator_Forms } from "@/modules/generator/data";
 
-const data: PluginStruct[] = map([...DATA.DATA_AttributeValues.values()], ({ translator }) => {
+const data: PluginStruct[] = map([...DATA.AttributeValues.values()], ({ translator }) => {
   if (translator[1].includes("生命上限")) {
     const generatorForm = DATA_Generator_Forms.paste;
-    generatorForm[0].options!.range = map([...DATA.DATA_AttributeValues.values()], (attributeValue) => {
+    generatorForm[0].options!.range = map([...DATA.AttributeValues.values()], (attributeValue) => {
       const _translator = clone(attributeValue.translator);
       _translator[0] = attributeValue.translator[0];
       return _translator;

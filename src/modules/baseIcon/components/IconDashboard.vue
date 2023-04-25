@@ -16,8 +16,6 @@ const container = ref<HTMLElement>();
 .icon-dashboard {
   display: flex;
   flex-wrap: wrap;
-
-  /* width: 100vw; */
   border-top: var(--border);
   border-left: var(--border);
 }

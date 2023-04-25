@@ -12,7 +12,7 @@ defineProps<{
   <title-card class="ambition-block">
     <template #title>
       <div class="ambition-block_title">
-        <icon v-if="ambition.chase" :path="DATA.DATA_Chases[ambition.chase].icon" />
+        <icon v-if="ambition.chase" :path="DATA.Chases[ambition.chase].icon" />
         {{ ambition.translator[1] }}
       </div>
     </template>

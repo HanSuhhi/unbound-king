@@ -17,16 +17,11 @@ export function defineModules() {
       {
         key: "project",
         title: "项目模块",
-        icon: "package",
+        icon: "add-package",
         type: "default-menu",
         pages: data.project
-      },
-      {
-        key: "setting",
-        icon: "setting",
-        type: "exter-module",
-        title: "管理"
       }
+
     ];
   });
 

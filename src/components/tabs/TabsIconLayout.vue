@@ -9,6 +9,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: var(--base-margin);
   border-left: var(--border);
 }
 </style>

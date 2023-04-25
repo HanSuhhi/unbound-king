@@ -7,8 +7,8 @@ export default defineComponent({
   name: "SpecialInlineBlock",
   props: {
     text: {
-      type: String,
-    },
+      type: String
+    }
   },
   setup: (props) => {
     const urls = props.text?.split(".");
@@ -26,5 +26,5 @@ export default defineComponent({
         </span>
       );
     };
-  },
+  }
 });

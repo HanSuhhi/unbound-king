@@ -1,8 +1,8 @@
-import { ref } from 'vue';
-import { DATA_Creators } from '../data/index';
-import { usePluginTest } from './pluginTest';
+import { ref } from "vue";
+import { DATA_Creators } from "../data/index";
+import { usePluginTest } from "./pluginTest";
 
-export const genCreatorData = (key: CreatorKey) => {
+export function genCreatorData(key: CreatorKey) {
   const creator = DATA_Creators[key];
 
   const _data = ref<Record<string, ReturnType<typeof usePluginTest>>>({});
@@ -13,4 +13,4 @@ export const genCreatorData = (key: CreatorKey) => {
   });
 
   return _data.value;
-};
+}

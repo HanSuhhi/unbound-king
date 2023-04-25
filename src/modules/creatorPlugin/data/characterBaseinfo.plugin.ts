@@ -7,7 +7,7 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: "DATA_Genders"
+      range: "Genders"
     }
   },
   {
@@ -16,7 +16,7 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: "DATA_Chases",
+      range: "Chases",
       needTransform: true
     }
   },
@@ -26,7 +26,7 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: "DATA_Ages",
+      range: "Ages",
       needTransform: true
     }
   }

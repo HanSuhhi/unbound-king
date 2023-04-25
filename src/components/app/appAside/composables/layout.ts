@@ -31,6 +31,7 @@ export function useAsideLayout() {
   );
 
   watch(activeAsideModule, () => {
+    if (!tabs?.state?.value) return;
     tabs.state.value.active = findIndex(activeModules.value, activeAsideModule.value);
   });
 

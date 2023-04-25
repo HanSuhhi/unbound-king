@@ -5,7 +5,7 @@ import { DATA_Creators } from "../data/index";
 import { genCreatorData } from "./data";
 import type { usePluginTest } from "./pluginTest";
 
-export const useActiveCreator = (code: WritableComputedRef<string>) => {
+export function useActiveCreator(code: WritableComputedRef<string>) {
   const activeCreatorKey = ref<CreatorKey>("character");
   const activeCreator = ref(DATA_Creators[activeCreatorKey.value]);
   const creatorTestData = ref<Record<string, ReturnType<typeof usePluginTest>>>({});
@@ -19,7 +19,7 @@ export const useActiveCreator = (code: WritableComputedRef<string>) => {
       creatorTestData.value = genCreatorData("character");
       changed.value = undefined;
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   watch(
@@ -30,7 +30,7 @@ export const useActiveCreator = (code: WritableComputedRef<string>) => {
       if (isUndefined(changed.value)) changed.value = false;
       else changed.value = true;
     },
-    { immediate: true, deep: true },
+    { immediate: true, deep: true }
   );
 
   provide("changed", changed);
@@ -39,4 +39,4 @@ export const useActiveCreator = (code: WritableComputedRef<string>) => {
   provide("test-data", creatorTestData);
 
   return [activeCreator];
-};
+}

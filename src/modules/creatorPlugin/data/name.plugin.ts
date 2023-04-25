@@ -9,7 +9,7 @@ const data: PluginStruct[] = [
     generator: "random",
     generatorForm: DATA_Generator_Forms.random,
     generatorParams: <RandomGeneratorProps>{
-      range: "DATA_FamilyNames"
+      range: "FamilyNames"
     }
   },
   {

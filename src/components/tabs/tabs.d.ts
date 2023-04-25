@@ -1,4 +1,4 @@
-type TabListItem<T> = {
+type TabListItem<T = any> = {
   icon?: BaseIconName;
   index: number;
   injectData?: T;

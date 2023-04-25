@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { throttle } from "lodash-es";
 import { ref, watch } from "vue";
-import { animationDuration } from "../composables/constant/env";
+import { animationDuration } from "../../composables/constant/env";
 
-const props = defineProps<{ watchEvent: (...args: any) => any }>();
+const props = withDefaults(defineProps<{ watchEvent: (...args: any) => any; placeholder?: string }>(), {
+  placeholder: "请输入搜索内容..."
+});
 
 const value = ref("");
 
@@ -13,7 +15,7 @@ watch(value, throttle(props.watchEvent, animationDuration));
 <template>
   <div class="search-input" flex_center>
     <icon name="search-eye" />
-    <input v-model="value" class="input-reset search-input_input" placeholder="请输入搜索内容...">
+    <input v-model="value" class="input-reset search-input_input" :placeholder="placeholder">
   </div>
 </template>
 

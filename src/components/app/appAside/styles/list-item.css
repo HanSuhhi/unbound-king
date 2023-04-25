@@ -1,15 +1,11 @@
-.app-aside_item:nth-last-child(2) {
-  flex: 1;
-}
 
 .app-aside_item[data-active] > .app-aside_listitem {
   color: var(--main-color);
   filter: brightness(1.1);
+  outline: var(--border);
 }
 
-.app-aside_item:last-child {
-  margin-bottom: var(--base-margin);
-}
+
 
 .app-aside_listitem {
   position: relative;
