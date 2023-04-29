@@ -1,8 +1,8 @@
-import { useGlobalStore } from "@/stores/global.store";
 import { storeToRefs } from "pinia";
 import { useAppAsideStore } from "../store/aside.store";
+import { useGlobalStore } from "@/stores/global.store";
 
-export const useMenuCollapse = (props: { page: ModulePage }) => {
+export function useMenuCollapse(props: { page: ModulePage }) {
   const { activeMenuIndex } = storeToRefs(useAppAsideStore());
   const { activePage } = storeToRefs(useGlobalStore());
 
@@ -13,4 +13,4 @@ export const useMenuCollapse = (props: { page: ModulePage }) => {
   };
 
   return { toggleCollapse };
-};
+}

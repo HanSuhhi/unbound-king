@@ -18,6 +18,10 @@ export default defineConfig({
         'justify-content': 'center',
         'align-items': 'center'
       }
-    ]
+    ],
+    ["m_l", {"margin-left": "var(--base-margin)"}],
+    ["m_r", {"margin-right": "var(--base-margin)"}],
+    ["f_b_s", { "font-size": "var(--font-body-small)" }],
+    ["c_g_b_2", { "color": "var(--gray-bright-2)" }],
   ]
 });

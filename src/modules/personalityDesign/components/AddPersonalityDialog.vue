@@ -2,7 +2,6 @@
 import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
 import { descriptionFormConfig, fromFormConfig, iconFormConfig, translatorFormConfig } from "../../../composables/form/formConfigs";
-import { getInvertGlobalEnumNameOrNot } from "../../../enums/global.enum";
 import typeString from "../personality-type.d.ts?raw";
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import { idFormConfig } from "@/composables/form/formConfigs";
@@ -24,7 +23,6 @@ const formConfig = computed(() =>
 function confirm(data: Personality) {
   if (!data.translator[1]) data.translator[1] = data.translator[0];
   data.id = defineUniqueId("P");
-  data.from = getInvertGlobalEnumNameOrNot(data.from);
   moduleData!.value.push(data);
 }
 </script>

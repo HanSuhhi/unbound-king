@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { useConfirm } from "../composables/operator";
 import typeString from "../ambition-type.d.ts?raw";
+import { fromFormConfig } from "../../../composables/form/formConfigs";
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import { idFormConfig, translatorFormConfig } from "@/composables/form/formConfigs";
 import { withFormDetail } from "@/composables/form/formDetail";
@@ -14,7 +15,8 @@ const formConfig = computed(() =>
     description: { title: "说明", type: "textarea" },
     chase: {
       title: "追求"
-    }
+    },
+    ...fromFormConfig()
   })
 );
 const [confirm] = useConfirm();

@@ -1,18 +1,15 @@
 import { initJsStore } from "./idbService";
 
-export const useIndexDb = async () => {
+export async function useIndexDb() {
   try {
     const isDbCreated = await initJsStore();
-    if (isDbCreated) {
+    if (isDbCreated)
       console.log("db created");
       // prefill database
-    } else {
+    else
       console.log("db opened");
-    }
-  } catch (ex) {
-    console.log("ex: ", ex);
-    // @TODO
-    // console.error(ex.message);
-    // Global.isIndexedDbSupported = false;
   }
-};
+  catch (ex) {
+    console.error("ex: ", ex);
+  }
+}

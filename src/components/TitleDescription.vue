@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import { NGradientText } from "naive-ui";
+import { useMainGradient } from "@/composables/constant/naiveStyle";
 
 defineProps<{ title: string; description: string }>();
 </script>
@@ -8,10 +9,7 @@ defineProps<{ title: string; description: string }>();
   <header class="title-description">
     <n-gradient-text
       class="title-description_title"
-      :gradient="{
-        from: 'var(--main-color)',
-        to: 'var(--main-color-bright-2)',
-      }"
+      :gradient="useMainGradient"
     >
       {{ title }}
     </n-gradient-text>
@@ -23,7 +21,7 @@ defineProps<{ title: string; description: string }>();
 
 <style scoped>
 .title-description_title {
-  font-size: var(--font-title);
+  font-size: var(--font-title-main);
 }
 
 .title-description_description {

@@ -1,0 +1,1 @@
+type TooltipOverrides = NonNullable<import("naive-ui").TooltipProps["themeOverrides"]>

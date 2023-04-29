@@ -25,7 +25,6 @@ function highlight() {
 }
 onMounted(highlight);
 onUpdated(highlight);
-
 const isExtend = defineExtender();
 const delayExtend = useDelayExtend(isExtend);
 

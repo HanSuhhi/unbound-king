@@ -12,9 +12,14 @@ import TypeButton from "./components/typeButton/TypeButton.vue";
 import CTabs from "./components/ui/tabs";
 import CLayout from "./components/ui/layout";
 
+// import "./modules/character/character.model";
+import { usePaperRipple } from "./directives/paperRipple";
+
 const pinia = createPinia();
 const { router } = useRouteConfig();
 await useIndexDb();
+
+const { paperRipple } = usePaperRipple();
 
 createApp(App)
   .use(pinia)
@@ -23,6 +28,5 @@ createApp(App)
   .component("base-tabs", CTabs)
   .component("icon", Icon)
   .component("type-button", TypeButton)
+  .directive("paperRipple", paperRipple)
   .mount("#app");
-
-// import "./modules/character/character.model";

@@ -7,12 +7,12 @@ export default defineComponent({
   props: {
     text: {
       type: String,
-      required: true,
+      required: true
     },
     reversed: {
       type: Boolean,
-      required: false,
-    },
+      required: false
+    }
   },
   setup: (props) => {
     return () => {
@@ -22,5 +22,5 @@ export default defineComponent({
         </kbd>
       );
     };
-  },
+  }
 });

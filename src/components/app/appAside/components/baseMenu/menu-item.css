@@ -6,6 +6,7 @@
   height: var(--title-height);
   margin-top: var(--base-margin);
   padding: var(--small);
+  padding-top: calc(var(--small));
   padding-left: var(--normal);
   color: var(--gray);
   cursor: pointer;
@@ -68,9 +69,9 @@
   border-radius: var(--border-radius);
 }
 
-.aside-menu-block > div:last-child {
+/* .aside-menu-block > div:last-child {
   transition: transform var(--moment);
-}
+} */
 
 .aside-menu-block_mask {
   position: relative;

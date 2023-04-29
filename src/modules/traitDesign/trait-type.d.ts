@@ -3,6 +3,6 @@ type Trait = {
   translator: Translator;
   icon: Icon;
   color: Color;
-  from: string;
+  from: From;
   negative?: boolean;
 }

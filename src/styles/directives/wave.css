@@ -1,0 +1,9 @@
+.wave {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--white);
+  border-radius: 50%;
+  opacity: 0.2;
+  transition: all 3.5s cubic-bezier(0, 0.9, 0.3, 0.75);
+}

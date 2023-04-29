@@ -9,6 +9,7 @@ import { defineAutoFormRules } from "./composable/rules";
 import FormChase from "./components/FormChase.vue";
 import FormColor from "./components/FormColor.vue";
 import FormMinMax from "./components/FormMinMax.vue";
+import { DATA_PackageNames } from "@/modules/packageName/data/packageName.data";
 
 interface Prop { config: AutoformItem[]; params?: any; hotUpdate?: boolean }
 interface Emit { (e: "model", model: any): void}
@@ -35,6 +36,9 @@ if (props.hotUpdate) {
         <n-form-item :class="{ 'form-inline-flex': formItem.type === 'number' }" :label="formItem.title" :path="formItem.key" :required="formItem.required">
           <template v-if="formItem.type === 'text' || formItem.type === 'textarea'">
             <n-input v-model:value="model[formItem.key]" :type="formItem.type" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''" />
+          </template>
+          <template v-if="formItem.type === 'from'">
+            <n-input :value="DATA_PackageNames[model[formItem.key]]" :disabled="formItem.disabled" readonly />
           </template>
           <template v-if="formItem.type === 'selecter'">
             <n-select v-model:value="model[formItem.key]" :options="formItem.options!.range?.map(option => ({ value: option[0], label: option[1] }))" :disabled="formItem.disabled" :placeholder="formItem.placeholder || ''" />

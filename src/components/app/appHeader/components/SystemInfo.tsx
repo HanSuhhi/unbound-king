@@ -1,10 +1,10 @@
 import { defineComponent } from "vue";
-// @ts-ignore
+// @ts-expect-error
 import packageJson from "/package.json";
 
 export default defineComponent({
   name: "RouterHistory",
-  setup: (props) => {
+  setup: () => {
     return () => {
       return (
         <section class="system-info">
@@ -13,5 +13,5 @@ export default defineComponent({
         </section>
       );
     };
-  },
+  }
 });

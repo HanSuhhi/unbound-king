@@ -1,5 +1,5 @@
 // @unocss-include
-export const DATA_BaseIcons: Dictionary<BaseIcon> = {
+export const DATA_BaseIcons = {
   "plus": {
     translator: ["plus", "新增"],
     path: "i-ic-outline-plus"
@@ -143,5 +143,13 @@ export const DATA_BaseIcons: Dictionary<BaseIcon> = {
   "module": {
     translator: ["module", "模块"],
     path: "i-material-symbols-view-module"
+  },
+  "exit": {
+    translator: ["exit", "退出"],
+    path: "i-mdi-location-exit"
+  },
+  "update": {
+    translator: ["update", "更新"],
+    path: "i-mingcute-refresh-2-fill"
   }
 };

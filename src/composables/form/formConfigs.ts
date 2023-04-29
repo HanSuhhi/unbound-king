@@ -64,7 +64,7 @@ export function fromFormConfig() {
   return {
     from: {
       title: "来源",
-      defaultValue: item?.value.name,
+      defaultValue: item?.value.key,
       disabled: true
     }
   };

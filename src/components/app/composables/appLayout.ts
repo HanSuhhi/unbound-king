@@ -1,8 +1,7 @@
 import { useWindowSize } from "@vueuse/core";
 import { debounce, defer } from "lodash-es";
-import { provide, ref, watch } from "vue";
+import { watch } from "vue";
 import { animationDuration } from "../../../composables/constant/env";
-import { useKeyStore } from "@/stores/key.store";
 import { useCsssLayout } from "@/components/ui/layout";
 
 function autoAdjust(adjust: () => void) {
@@ -12,25 +11,6 @@ function autoAdjust(adjust: () => void) {
     watch(width, debounce(adjust, animationDuration));
     watch(height, debounce(adjust, animationDuration));
   });
-}
-
-function globalSettintControl() {
-  const { addKeyCommand, uninstallKeyCommand } = useKeyStore();
-
-  const settingShow = ref(false);
-  provide("setting", settingShow);
-
-  const event: KeyEvent = {
-    key: "escape",
-    translator: ["enter-setting", "进入设置"],
-    fn: (isPressed: boolean) => {
-      if (!isPressed && !settingShow.value) settingShow.value = true;
-    }
-  };
-  watch(settingShow, (showing) => {
-    if (showing) uninstallKeyCommand(event);
-    else addKeyCommand(event);
-  }, { immediate: true });
 }
 
 export function defineAppLayout() {
@@ -62,13 +42,11 @@ export function defineAppLayout() {
 
     const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 2px - ${footerElement?.clientHeight || 0}px)`;
     appElement.style.setProperty("--main-height", mainHeight);
-    appElement.style.setProperty("--modules-width", "4.5rem");
+    appElement.style.setProperty("--modules-width", import.meta.env.ASIDE_MODULES_WIDTH);
     appElement.style.setProperty("--aside-width", `${asideElement.clientWidth}px`);
     appElement.style.setProperty("--workshop-height", `${workshopElement?.getBoundingClientRect().height || 0}px`);
   };
   autoAdjust(setLayoutProps);
-
-  globalSettintControl();
 
   return { Layout };
 }

@@ -1,9 +1,9 @@
 import { tables } from "./databases";
 import { connection } from "./ibdCon";
 
-export const initJsStore = async () => {
+export async function initJsStore() {
   return await connection.initDb({
     name: "land",
-    tables,
+    tables
   });
-};
+}

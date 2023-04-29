@@ -1,11 +1,12 @@
 .user-message_avator {
+  --size: calc(var(--large) * 1.5);
+
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--large);
-  height: var(--large);
-  margin: 0 var(--normal);
+  width: var(--size);
+  height: var(--size);
   transform: scale(var(--avator-size));
 }
 

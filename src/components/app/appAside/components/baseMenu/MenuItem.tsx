@@ -32,13 +32,14 @@ const MenuItem = defineComponent({
         const parentIndex = activePage.value.key[0];
         if (parentIndex === props.page.key[0]) return true;
       }
+
       return isEqual(props.page, activePage.value) ? "" : null;
     });
 
     return () => {
       return (
         <>
-          <section class="aside-menu-block" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} data-active={active.value} onClick={children.value ? toggleCollapse : routeToPage}>
+          <section v-paper-ripple class="aside-menu-block" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} data-active={active.value} onClick={children.value ? toggleCollapse : routeToPage}>
             {props.page.icon && (
               <div class="aside-menu-icon">
                 <Icon name={props.page.icon} />
@@ -52,9 +53,7 @@ const MenuItem = defineComponent({
           </section>
           {props.page.children && (
             <section class="aside-menu-block_sub" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} style={`--length: ${children.value?.length || 0}`}>
-              {props.page.children.map(moduleChild => (
-                <MenuItem page={moduleChild} />
-              ))}
+              {props.page.children.map(moduleChild => <MenuItem page={moduleChild} />)}
             </section>
           )}
         </>

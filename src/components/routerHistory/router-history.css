@@ -27,6 +27,10 @@
   cursor: pointer;
 }
 
+.router-history_item:hover {
+  background-color: var(--gray-deep-2);
+}
+
 .router-history_item > .icon {
   font-size: var(--normal);
 }

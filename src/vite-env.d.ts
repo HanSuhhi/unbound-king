@@ -31,6 +31,7 @@ type KeyEvent = {
 type Translator = [key: string, title: string];
 type Color = [color1: string, color2: string];
 type MinMax = [min: number, max: number];
+type From = string;
 type BaseCard = {
   translator: Translator;
   description: string;

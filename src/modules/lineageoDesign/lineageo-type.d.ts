@@ -6,7 +6,7 @@ type Lineageo = {
   destiny: string;
   icon: Icon,
   color: Color
-  from: string;
+  from: From;
   provideHeight: MinMax;
   provideWeight: MinMax;
 };

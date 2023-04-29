@@ -2,7 +2,6 @@
 import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
 import { fromFormConfig, translatorFormConfig } from "../../../composables/form/formConfigs";
-import { getInvertGlobalEnumNameOrNot } from "../../../enums/global.enum";
 import typeString from "../game-icon-type.d.ts?raw";
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
 import { idFormConfig } from "@/composables/form/formConfigs";
@@ -25,7 +24,6 @@ const formConfig = computed(() =>
 function confirm(data: GameIcon) {
   if (!data.translator[1]) data.translator[1] = data.translator[0];
   data.id = defineUniqueId("GI");
-  data.from = getInvertGlobalEnumNameOrNot(data.from);
   icons!.value.push(data);
 }
 </script>

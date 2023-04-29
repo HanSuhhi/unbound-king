@@ -1,6 +1,5 @@
 <script setup lang='ts'>
 import { computed, useSlots } from "vue";
-import { NTooltip } from "naive-ui";
 import TabsListItem from "./TabsListItem.vue";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
@@ -9,6 +8,7 @@ import { defineTabsData } from "@/composables/components/tabsList";
 import CodeCanvasVue from "@/components/codeCanvas/CodeCanvas.vue";
 import { defineDataTemplate } from "@/composables/ci/dataTemplate";
 import { unocssInclude } from "@/composables/constant/unocssInclude";
+import QuestionExplanation from "@/components/experience/QuestionExplanation.vue";
 
 const props = defineProps<{
   name: string
@@ -46,12 +46,9 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
         <template v-for="panel in read?.panels" :key="panel" #[panel]>
           <slot />
         </template>
-        <n-tooltip placement="bottom">
-          <template #trigger>
-            <icon class="tabs-design_question" name="question" />
-          </template>
+        <question-explanation icon-class="tabs-design_question">
           如果没有对应包名。请在相应的 src/modules/data 文件夹下新建 packageName.data.ts 的文件。
-        </n-tooltip>
+        </question-explanation>
       </base-tabs>
     </div>
   </base-layout>
@@ -69,11 +66,10 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
   margin-bottom: var(--base-margin);
 }
 
-.tabs-design_question {
+:deep(.tabs-design_question) {
   position: absolute;
-  top: calc(var(--base-margin) / 3);
+  top: calc(var(--font-body) / 3);
   right: 0;
-  font-size: var(--font-title-main);
   cursor: pointer;
 }
 </style>

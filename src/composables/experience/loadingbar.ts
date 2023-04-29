@@ -59,8 +59,7 @@ function useRouteAfter() {
     const fromPage = parsePage(from);
     const toPage = parsePage(to);
 
-    if (!toPage)
-      return alert("error");
+    if (!toPage) return alert("error");
 
     const { title, icon } = toPage;
     if (!routes.value.map(route => route[0]).includes(title)) {
@@ -75,6 +74,7 @@ function useRouteAfter() {
     }
 
     if (toPage !== activePage.value) activePage.value = toPage;
+
     if (activeAsideModule.value?.key !== toPage.module) {
       const toModule = activeModules.find(module => module.key === toPage.module);
       activeAsideModule.value = toModule;

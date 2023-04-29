@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider } from "naive-ui";
+import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
 import { storeToRefs } from "pinia";
 import { nextTick } from "vue";
 import AppAside from "./components/app/appAside/appAside";
@@ -8,8 +8,7 @@ import AppHeader from "./components/app/appHeader/AppHeader";
 import { defineAppLayout } from "./components/app/composables/appLayout";
 import GlobalDialog from "./components/dialog/GlobalDialog.vue";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
-import { defineNaiveTheme } from "./composables/naiveTheme";
-import Setting from "./modules/setting/Setting.vue";
+import { defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useGlobalStore } from "@/stores/global.store";
 import { dialogMessage } from "@/composables/components/globalDialog";
 
@@ -25,7 +24,7 @@ nextTick(setDefaultTransitionDuration);
 </script>
 
 <template>
-  <n-config-provider :theme="darkTheme" :theme-overrides="darkThemeOverrides">
+  <n-config-provider :style="{ height: '100%' }" :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="darkThemeOverrides">
     <n-loading-bar-provider>
       <n-message-provider>
         <n-notification-provider>
@@ -48,7 +47,6 @@ nextTick(setDefaultTransitionDuration);
               <app-footer />
             </template>
           </base-layout>
-          <setting />
           <global-dialog v-if="dialogMessage" />
         </n-notification-provider>
       </n-message-provider>

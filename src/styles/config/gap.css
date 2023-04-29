@@ -8,5 +8,5 @@
 }
 
 :root {
-  --base-margin: calc(var(--small));
+  --base-margin: var(--small);
 }

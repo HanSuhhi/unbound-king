@@ -2,7 +2,7 @@
 import { NButton } from "naive-ui";
 import "./button-color.css";
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     color?: "blue" | "red" | "green" | "default"
     plain?: boolean
@@ -14,7 +14,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <n-button class="type-button" :class="[`type-button_${color}`, plain && `type-button_plain`]">
+  <n-button v-paper-ripple class="type-button" :class="[`type-button_${color}`, plain && `type-button_plain`]">
     <slot />
   </n-button>
 </template>
@@ -27,14 +27,13 @@ const props = withDefaults(
 .type-button {
   position: relative;
   top: 0;
-  padding: var(--small) calc(var(--small) * 4);
-  font-size: var(--font-title-small);
+  padding: calc(var(--small) * 0.8) calc(var(--small) * 4 * 0.8);
+  font-size: calc(var(--font-title-small) * 0.8);
   white-space: nowrap;
   background-image: linear-gradient(225deg, var(--bg-color-sub) 0%, var(--bg-color-main) 55%);
   border: var(--border);
   border-radius: var(--border-radius);
   box-shadow: none;
   transition: all var(--transition-prop);
-  zoom: 0.8;
 }
 </style>

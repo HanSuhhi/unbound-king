@@ -7,6 +7,7 @@ const bg2 = "var(--bg-color-bright-2)";
 const main = "var(--main-color)";
 const mainb1 = "var(--main-color-bright-1)";
 const no = "none";
+const padding = "var(--base-margin)";
 
 export function defineNaiveTheme() {
   const darkThemeOverrides: GlobalThemeOverrides = {
@@ -38,7 +39,8 @@ export function defineNaiveTheme() {
       textColor: white
     },
     Popover: {
-      color: bg2
+      color: bg2,
+      padding
     }
   };
 

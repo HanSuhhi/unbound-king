@@ -1,18 +1,39 @@
 <script setup lang='ts'>
-import { NPopover } from "naive-ui";
+import { NGi, NGrid, NPopover } from "naive-ui";
+import { useHeaderPopoverTheme } from "../composables/headerPopoverTheme";
+import { defineQuitEvent } from "../composables/quitEvent";
+import { usePopoverControl } from "../composables/modulePopoverControl";
+import { useQuitPreference } from "../composables/quitPreference";
+import AsideModule from "./AsideModule.vue";
+import UserCard from "./UserCard.vue";
+
+const modules: AppHeaderModule[] = [
+  {
+    translator: ["quit", "退出"],
+    icon: "exit",
+    color: ["var(--red-bright-2)", "var(--red-deep-1)"],
+    event: defineQuitEvent()[0]
+  }
+];
+
+const { popoverThemeOverrides } = useHeaderPopoverTheme();
+const { popoverControl } = usePopoverControl();
+useQuitPreference(popoverControl);
 </script>
 
 <template>
-  <n-popover trigger="click" :delay="300" :show-arrow="false">
+  <n-popover :theme-overrides="popoverThemeOverrides" trigger="click" :delay="300" :show-arrow="false" :show="popoverControl">
     <template #trigger>
-      <section class="aside_modules_module">
+      <section class="aside_modules_module" @click="popoverControl = true">
         <icon name="module" />
       </section>
     </template>
-    <span>
-      Lately did you ever feel the pain In the morning rain as it soaks it to
-      the bone
-    </span>
+    <user-card />
+    <n-grid class="aside-modules_main" x-gap="12" y-gap="8" :cols="5">
+      <n-gi v-for="module of [...modules]" :key="module.translator[0]">
+        <aside-module :module="module" />
+      </n-gi>
+    </n-grid>
   </n-popover>
 </template>
 

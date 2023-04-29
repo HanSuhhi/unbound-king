@@ -3,4 +3,5 @@
 @import "./components/";
 @import "./prism.css";
 @import "./transition/";
-@import "./icon/"
+@import "./icon/";
+@import "./directives/";
