@@ -37,11 +37,14 @@ export function defineAppLayout() {
     const appElement = document.getElementsByClassName("app")[0] as HTMLElement;
     const asideElement = document.getElementsByClassName("app-aside")[0] as HTMLElement;
     const headerElement = document.getElementsByClassName("app-header")[0] as HTMLElement;
-    const footerElement = document.querySelector(".app-footer");
+    // footer part
+    const footer = document.querySelector(".app-footer")!.getBoundingClientRect();
+    const footerHeight = footer.height;
     const workshopElement = document.querySelector(".workshop");
 
-    const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 2px - ${footerElement?.clientHeight || 0}px)`;
+    const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 1px - 2 * ${footerHeight}px)`;
     appElement.style.setProperty("--main-height", mainHeight);
+    appElement.style.setProperty("--footer-height", `${footerHeight}px`);
     appElement.style.setProperty("--modules-width", import.meta.env.ASIDE_MODULES_WIDTH);
     appElement.style.setProperty("--aside-width", `${asideElement.clientWidth}px`);
     appElement.style.setProperty("--workshop-height", `${workshopElement?.getBoundingClientRect().height || 0}px`);

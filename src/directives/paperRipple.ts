@@ -17,7 +17,7 @@ function parseGapFromElement(el: HTMLElement) {
 }
 
 export function usePaperRipple() {
-  const paperRipple: Directive = {
+  const paperRipple: Directive<HTMLElement, boolean> = {
     mounted: (el: HTMLElement) => {
       el.onmousedown = ({ x, y }) => {
         const { x: elX, y: elY } = parseGapFromElement(el);
@@ -27,11 +27,11 @@ export function usePaperRipple() {
         // set wave node style
         child.style.left = `${x - elX - 5}px`;
         child.style.top = `${y - elY - 5}px`;
-        child.style.borderRadius = `${random(40, 70)}% ${random(40, 70)}% ${random(40, 70)}% ${random(40, 70)}%`;
+        child.style.borderRadius = `${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% `;
         child.style.width = `${el.clientWidth * 2.1}px`;
         child.style.marginLeft = `${-el.clientWidth * 1.05}px`;
-        child.style.height = `${el.clientWidth * 2.1}px`;
-        child.style.marginTop = `${-el.clientWidth * 1.05}px`;
+        child.style.height = `${el.clientHeight * 3}px`;
+        child.style.marginTop = `${-el.clientHeight * 1.5}px`;
 
         document.onmouseup = () => {
           child.style.transitionDuration = `${animationDuration}ms`;

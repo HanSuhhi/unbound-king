@@ -1,19 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import FooterEvent from "./app-footer/FooterEvent.vue";
+import FooterSystem from "./app-footer/FooterSystem.vue";
+</script>
 
 <template>
-  <div class="app-footer_box">
-    <p class="p-reset" />
-    <p class="p-reset">系统完成更新于 17: 20</p>
-  </div>
+  <article class="footer">
+    <footer-event />
+    <footer-system />
+  </article>
 </template>
 
 <style scoped>
-.app-footer_box {
-  display: flex;
-  justify-content: space-between;
+.footer {
+  position: relative;
+  box-sizing: border-box;
   width: 100%;
-  margin: 0 var(--base-margin);
-  color: var(--white-deep-2);
-  font-size: var(--font-body-small);
+  font-size: 14px;
+  line-height: 18px;
 }
 </style>

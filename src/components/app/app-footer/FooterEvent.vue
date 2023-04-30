@@ -1,0 +1,19 @@
+<script setup lang='ts'>
+</script>
+
+<template>
+  <section class="footer-event">
+    event
+  </section>
+</template>
+
+<style scoped>
+.footer-event {
+  position: absolute;
+  bottom: var(--footer-height);
+  left: calc(var(--aside-width) + 1px);
+  width: calc(100% - var(--aside-width));
+  background-color: var(--bg-color-bright-2);
+  border-top: var(--border);
+}
+</style>

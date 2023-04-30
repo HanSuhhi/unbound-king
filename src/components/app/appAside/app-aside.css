@@ -6,7 +6,7 @@
 .app-aside {
   position: relative;
   width: var(--aside-width);
-  height: var(--main-height);
+  height: calc(var(--main-height) + var(--footer-height));
   background-color: var(--bg-color-bright-1);
   border-right: var(--border);
 }
@@ -18,7 +18,7 @@
   z-index: 2;
   flex-direction: row !important;
   height: 100%;
-  max-height: calc(var(--main-height) - var(--workshop-height) - 2 *  var(--base-margin) - 1px);
+  max-height: calc(var(--main-height) - var(--workshop-height));
   color: var(--white);
   border-bottom: var(--border);
 }
@@ -26,6 +26,7 @@
 .app-aside_main {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
-  height: var(--main-height);
+  height: 100%;
 }

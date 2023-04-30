@@ -2,7 +2,7 @@ body {
   --moment: 0.45s;
   --ani-time: var(--moment);
   --border-radius: var(--mini);
-  --border-color: var(--gray);
+  --border-color: var(--gray-deep-2);
   --border-height: 1px;
   --border: var(--border-height) solid var(--border-color);
   --main-color: var(--yellow);

@@ -75,16 +75,16 @@ setTimeout(() => {
 <template>
   <ol relative class="router-history ol-reset">
     <div ref="leftBlock" class="router-history_block">
-      <li class="router-history_item router-history_special" @click="routeByDirection(true)">
+      <li v-paper-ripple class="router-history_item router-history_special" @click="routeByDirection(true)">
         <icon name="double-left" />
       </li>
-      <li class="router-history_item router-history_special router-history_home" @click="routeToHome">
+      <li v-paper-ripple class="router-history_item router-history_special router-history_home" @click="routeToHome">
         <icon name="home" />
       </li>
     </div>
     <div v-if="show" class="router-history_mask" :style="{ left: `${leftBlock?.clientWidth}px` }" />
     <transition-group tag="div" name="horizontal-list" flex-1 class="router-history_block router-history_box" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
-      <li v-for="(route, targetIndex) of routes" ref="routeBlocks" :key="route[0]" :class="{ 'router-history_active': activePage?.title === route[0] }" class="router-history_item router-history_route" @click="routeToPageByTitle(route[0])" @mouseover="closeIndex = targetIndex" @mouseout="closeIndex = -1">
+      <li v-for="(route, targetIndex) of routes" ref="routeBlocks" :key="route[0]" v-paper-ripple :class="{ 'router-history_active': activePage?.title === route[0] }" class="router-history_item router-history_route" @click="routeToPageByTitle(route[0])" @mouseover="closeIndex = targetIndex" @mouseout="closeIndex = -1">
         <icon :name="route[1]" />
         <span :data-name="route[0]" class="router-history_text"> {{ route[0] }} </span>
         <div :style="{ opacity: targetIndex === index ? 1 : targetIndex === closeIndex ? 1 : 0 }" class="router-history_close" @click.stop="deleteRouteItem(targetIndex)">
@@ -94,7 +94,7 @@ setTimeout(() => {
     </transition-group>
     <div class="router-history_mask" data-reversed :style="{ right: `${rightBlock?.clientWidth}px` }" />
     <div ref="rightBlock" class="router-history_block">
-      <li class="router-history_item router-history_special" @click="routeByDirection(false)">
+      <li v-paper-ripple class="router-history_item router-history_special" @click="routeByDirection(false)">
         <icon name="double-right" />
       </li>
     </div>

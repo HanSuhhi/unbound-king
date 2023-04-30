@@ -1,26 +1,29 @@
 <script setup lang="ts">
-import { NTag } from "naive-ui";
-
 const emits = defineEmits<{
-  (e: "close"): void;
-  (e: "copy"): void;
+  (e: "close"): void
+  (e: "copy"): void
 }>();
 
-const close = () => emits("close");
-const copy = () => emits("copy");
+function close() {
+  return emits("close");
+}
+function copy() {
+  return emits("copy");
+}
 </script>
 
 <template>
-  <p class="name-tag p-reset" @click="copy">
+  <div v-paper-ripple class="name-tag" @click="copy">
     <slot />
-  <div class="name-tag_close">
-    <icon name="close" @click.stop="close" />
+    <div class="name-tag_close">
+      <icon name="close" @click.stop="close" />
+    </div>
   </div>
-  </p>
 </template>
 
 <style scoped>
 .name-tag {
+  position: relative;
   display: inline-flex;
   align-items: center;
   margin-right: var(--base-margin);

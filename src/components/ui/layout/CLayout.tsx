@@ -1,14 +1,14 @@
 import "./layout.css";
 
-import { defineComponent, reactive, readonly, computed, watch, watchEffect } from "vue";
+import { defineComponent, reactive, readonly } from "vue";
 import { useCssCustomProperty } from "../composables/cssCustomProperty";
 import { useElement } from "../composables/element";
+import { useHtmlPropLint } from "../../../composables/util/htmlPropLint";
 import { useAside } from "./composables/aside";
 import { useFooter } from "./composables/footer";
 import { useHeader } from "./composables/header";
 import { useLayout } from "./composables/layout";
 import { useMain } from "./composables/main";
-import { useHtmlPropLint } from "../../../composables/util/htmlPropLint";
 
 export default defineComponent({
   name: "CLayout",
@@ -23,11 +23,11 @@ export default defineComponent({
 
     const exposeVal: CLayoutApi = reactive({
       read: {
-        size: readonly(size),
+        size: readonly(size)
       },
       state: {
         layoutType,
-        reverse,
+        reverse
       },
       style: {
         headerHeightSize,
@@ -38,10 +38,10 @@ export default defineComponent({
           header: headerClassList,
           aside: asideClassList,
           footer: footerClassList,
-          main: mainClassList,
+          main: mainClassList
         },
-        property,
-      },
+        property
+      }
     });
 
     expose(exposeVal);
@@ -56,5 +56,5 @@ export default defineComponent({
         </article>
       );
     };
-  },
+  }
 });

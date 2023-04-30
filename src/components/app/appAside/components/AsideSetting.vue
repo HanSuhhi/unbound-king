@@ -1,10 +1,12 @@
 <script setup lang='ts'>
+import { ref } from "vue";
 
+const model = ref();
 </script>
 
 <template>
   <section class="aside-setting">
-    <input class="aside-setting_input input-reset" placeholder="请输入搜索模块名...">
+    <input v-model="model" class="aside-setting_input input-reset" placeholder="请输入搜索模块名...">
   </section>
 </template>
 

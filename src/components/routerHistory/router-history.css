@@ -16,6 +16,7 @@
 }
 
 .router-history_item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +51,8 @@
 }
 
 .router-history_special:active,
-.router-history_active {
+.router-history_active,
+.router-history_active:hover {
   background-color: var(--bg-color);
 }
 
