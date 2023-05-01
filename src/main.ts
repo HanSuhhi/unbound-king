@@ -5,20 +5,16 @@ import "./config.css";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { useRouteConfig } from "./composables/router/router";
-import { useIndexDb } from "./services/index";
 import App from "./App.vue";
 import Icon from "./components/Icon.vue";
 import TypeButton from "./components/typeButton/TypeButton.vue";
 import CTabs from "./components/ui/tabs";
 import CLayout from "./components/ui/layout";
 
-// import "./modules/character/character.model";
 import { usePaperRipple } from "./directives/paperRipple";
 
 const pinia = createPinia();
 const { router } = useRouteConfig();
-await useIndexDb();
-
 const { paperRipple } = usePaperRipple();
 
 createApp(App)

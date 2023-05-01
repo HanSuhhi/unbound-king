@@ -4,6 +4,7 @@ import { useHeaderPopoverTheme } from "../composables/headerPopoverTheme";
 import { defineQuitEvent } from "../composables/quitEvent";
 import { usePopoverControl } from "../composables/modulePopoverControl";
 import { useQuitPreference } from "../composables/quitPreference";
+import { loadUser } from "../composables/user";
 import AsideModule from "./AsideModule.vue";
 import UserCard from "./UserCard.vue";
 
@@ -19,12 +20,13 @@ const modules: AppHeaderModule[] = [
 const { popoverThemeOverrides } = useHeaderPopoverTheme();
 const { popoverControl } = usePopoverControl();
 useQuitPreference(popoverControl);
+loadUser();
 </script>
 
 <template>
   <n-popover :theme-overrides="popoverThemeOverrides" trigger="click" :delay="300" :show-arrow="false" :show="popoverControl">
     <template #trigger>
-      <section class="aside_modules_module" @click="popoverControl = true">
+      <section class="base-preference_module" @click="popoverControl = true">
         <icon name="module" />
       </section>
     </template>
@@ -38,7 +40,7 @@ useQuitPreference(popoverControl);
 </template>
 
 <style scoped>
-.aside_modules_module {
+.base-preference_module {
   display: flex;
   align-items: center;
   height: 100%;
@@ -48,11 +50,11 @@ useQuitPreference(popoverControl);
   transition: var(--transition-prop);
 }
 
-.aside_modules_module:hover {
+.base-preference_module:hover {
   filter: brightness(1);
 }
 
-.aside_modules_module > .icon {
+.base-preference_module > .icon {
   font-size: 1.5rem;
 }
 </style>

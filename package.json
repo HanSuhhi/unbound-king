@@ -18,14 +18,14 @@
     "@vueuse/components": "^9.13.0",
     "@vueuse/core": "^9.10.0",
     "dayjs": "^1.11.7",
+    "dexie": "^3.2.3",
     "gsap": "^3.11.4",
-    "jsstore": "^4.5.0",
     "lodash-es": "^4.17.21",
     "lz-string": "^1.5.0",
     "pinia": "^2.0.28",
     "prismjs": "^1.29.0",
     "unocss": "^0.48.0",
-    "vue": "^3.2.45",
+    "vue": "^3.2.47",
     "vue-router": "4"
   },
   "devDependencies": {

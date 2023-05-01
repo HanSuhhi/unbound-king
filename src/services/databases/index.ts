@@ -1,4 +1,3 @@
-import type { ITable } from "jsstore";
-import { map } from "lodash-es";
+import { parseImportModule } from "@/composables/ci/importModule";
 
-export const tables = map(import.meta.glob<Record<"default", ITable>>("./*.db.ts", { eager: true }), db => db.default);
+export const dbData = parseImportModule(import.meta.glob("./**/*.table.ts", { eager: true }), true);

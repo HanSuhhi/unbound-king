@@ -1,31 +1,32 @@
 <script setup lang='ts'>
 import LifeHash from "@hansuhhi-don/lifehash-vue";
-import { useNow } from "@vueuse/core";
+import { inject } from "vue";
+import { UserSymbol } from "../app-header.symbol";
 import QuestionExplanation from "@/components/experience/QuestionExplanation.vue";
 import Explanation from "@/components/experience/Explanation.vue";
+import type { User } from "@/services/databases/user.db";
 
-const defaultImg = useNow().value.getTime().toString();
-const randNum = Math.floor(Math.random() * 1000000);
+const { avator, name, email } = inject<User>(UserSymbol)!;
 </script>
 
 <template>
   <section class="user-card">
     <div class="user-message_avator">
       <span>
-        <life-hash :input="defaultImg" />
+        <life-hash :input="avator" />
       </span>
     </div>
     <div class="user-card_title">
       <p class="p-reset user-card_name">
         <span m_r>
-          用户 {{ randNum }}
+          {{ name }}
         </span>
         <question-explanation>
           用户仅影响打包作者相关，不影响游戏内容
         </question-explanation>
       </p>
       <p class="p-reset user-card_email">
-        asd
+        {{ email }}
       </p>
     </div>
     <explanation>

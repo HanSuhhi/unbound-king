@@ -1,15 +1,9 @@
-import { initJsStore } from "./idbService";
+import Dexie from "dexie";
+import { dbData } from "./databases/index";
 
-export async function useIndexDb() {
-  try {
-    const isDbCreated = await initJsStore();
-    if (isDbCreated)
-      console.log("db created");
-      // prefill database
-    else
-      console.log("db opened");
-  }
-  catch (ex) {
-    console.error("ex: ", ex);
-  }
+const db: Dexie = new Dexie(import.meta.env.PROJECT_NAME);
+db.version(1).stores(dbData);
+
+export function useDb() {
+  return db;
 }
