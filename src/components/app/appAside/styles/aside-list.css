@@ -14,3 +14,7 @@
   border-right: var(--border);
   backdrop-filter: saturate(10%) blur(4px);
 }
+
+.app-aside_listitem {
+  margin-top: calc(var(--base-margin) * 1.2);
+}

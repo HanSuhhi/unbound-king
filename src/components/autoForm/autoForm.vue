@@ -2,6 +2,7 @@
 import { ref, watch } from "vue";
 import type { FormInst } from "naive-ui";
 import { FormRules, NForm, NFormItem, NInput, NInputNumber, NSelect, NSwitch } from "naive-ui";
+import { deep } from "../../composables/plus/watch";
 import FormIcon from "./components/FormIcon.vue";
 import FormTranslator from "./components/FormTranslator.vue";
 import { defineAutoFormModel } from "./composable/model";
@@ -23,9 +24,9 @@ const { rules } = defineAutoFormRules(props);
 const { model } = defineAutoFormModel(props);
 
 if (props.hotUpdate) {
-  watch(model, () => {
-    emits("model", model.value);
-  }, { deep: true });
+  watch(model, (newModel) => {
+    emits("model", newModel);
+  }, deep);
 }
 </script>
 

@@ -3,7 +3,7 @@ import type { SelectOption } from "naive-ui";
 import { NSelect } from "naive-ui";
 import type { VNodeChild } from "vue";
 import { h } from "vue";
-import { autoVModel } from "../composable/formItemDiy";
+import { userAutoVModel } from "../composable/formItemDiy";
 import { transformChaseOptions } from "../composable/chaseOptions";
 import Icon from "@/components/Icon.vue";
 
@@ -12,7 +12,7 @@ const emits = defineEmits<{
   (e: "update:modelValue", chase: string): void
 }>();
 
-const model = autoVModel(emits, props.modelValue);
+const model = userAutoVModel(emits, props.modelValue);
 
 const options = transformChaseOptions();
 

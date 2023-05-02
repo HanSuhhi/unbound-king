@@ -49,18 +49,9 @@
   background-color: var(--gray);
 }
 
-.router-history_special:active,
 .router-history_active,
 .router-history_active:hover {
   background-color: var(--bg-color);
-}
-
-.router-history_block:last-child > .router-history_item {
-  display: flex;
-  padding: var(--small) var(--normal);
-  color: var(--gray-bright-2);
-  transition: all var(--moment);
-  place-items: center;
 }
 
 .router-history_text {

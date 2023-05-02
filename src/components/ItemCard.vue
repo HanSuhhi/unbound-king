@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import SubButton from "./typeButton/SubButton.vue";
 import Icon from "@/components/Icon.vue";
 import NumberMark from "@/components/NumberMark.vue";
-import SubButton from "./SubButton.vue";
 
-type Props = { icon: BaseIconName };
+interface Props { icon: BaseIconName }
 defineProps<Props>();
 
-type Emit = { (e: "triggered"): void };
 const emits = defineEmits<Emit>();
-
-const method = () => emits("triggered");
+interface Emit { (e: "triggered"): void }
+function method() {
+  return emits("triggered");
+}
 </script>
 
 <template>
@@ -18,11 +19,13 @@ const method = () => emits("triggered");
       <p class="item-card_title">
         <icon :name="icon" />
         <slot name="title" />
-        <NumberMark>
+        <number-mark>
           <slot name="number" />
-        </NumberMark>
+        </number-mark>
       </p>
-      <sub-button @click="method">选择</sub-button>
+      <sub-button @click="method">
+        选择
+      </sub-button>
     </header>
     <footer class="item-card_footer">
       <slot name="description" />

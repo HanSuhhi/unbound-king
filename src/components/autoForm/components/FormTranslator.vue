@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { NInput } from "naive-ui";
-import { autoVModel } from "../composable/formItemDiy";
+import { userAutoVModel } from "../composable/formItemDiy";
 
 const props = defineProps<{ modelValue: Translator }>();
 const emits = defineEmits<{
   (e: "update:modelValue", translator: Translator): void
 }>();
 
-const model = autoVModel(emits, props.modelValue);
+const model = userAutoVModel(emits, props.modelValue);
 
 const placeholder: [string, string] = ["请输入唯一 key", "显示名称，默认为 key"];
 </script>

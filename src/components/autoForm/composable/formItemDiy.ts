@@ -1,6 +1,6 @@
 import { ref, watch } from "vue";
 
-export function autoVModel<T>(emits: any, defaultValue: T) {
+export function userAutoVModel<T>(emits: any, defaultValue: T) {
   const model = ref<T | undefined>(defaultValue || undefined);
 
   watch(model, () => {

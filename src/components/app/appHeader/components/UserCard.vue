@@ -1,34 +1,27 @@
 <script setup lang='ts'>
 import type { Ref } from "vue";
-import { inject } from "vue";
-import LifeHash from "@hansuhhi-don/lifehash-vue";
+import { inject, toRefs } from "vue";
 import { UserSymbol } from "../app-header.symbol";
+import UserAvator from "./UserAvator.vue";
 import QuestionExplanation from "@/components/experience/QuestionExplanation.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import type { User } from "@/services/databases/user/user.table";
+import ResetInput from "@/components/inputs/ResetInput.vue";
 
-const { avator, name, email } = inject<Ref<User>>(UserSymbol)!.value;
+const { name, email } = toRefs(inject<Ref<User>>(UserSymbol)!.value);
 </script>
 
 <template>
   <section class="user-card">
-    <div class="user-message_avator">
-      <span>
-        <life-hash :input="avator" />
-      </span>
-    </div>
+    <user-avator />
     <div class="user-card_title">
       <p class="p-reset user-card_name">
-        <span m_r>
-          {{ name }}
-        </span>
         <question-explanation>
           用户仅影响打包作者相关，不影响游戏内容
         </question-explanation>
+        <reset-input v-model="name" :minlength="1" :maxlength="20" class="user-card_input" placeholder="请输入用户名称" m_r />
       </p>
-      <p class="p-reset user-card_email">
-        {{ email }}
-      </p>
+      <reset-input v-model="email" placeholder="emailmetoday@email.com" class="user-card_email" :maxlength="100" />
     </div>
     <explanation>
       <template #trigger>
@@ -75,7 +68,13 @@ const { avator, name, email } = inject<Ref<User>>(UserSymbol)!.value;
   font-size: var(--font-title-small);
 }
 
+.user-card_input {
+  color: var(--white);
+}
+
 .user-card_email {
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  width: -webkit-fill-available;
   color: var(--gray-bright-1);
 }
 

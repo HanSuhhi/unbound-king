@@ -1,4 +1,5 @@
 import { storeToRefs } from "pinia";
+import type { ComputedRef } from "vue";
 import { computed, defineAsyncComponent, defineComponent } from "vue";
 import AppAsideModule from "./components/AppAsideModule";
 import BaseMenu from "./components/baseMenu/BaseMenu.vue";
@@ -14,7 +15,9 @@ export default defineComponent({
     const { COMP } = useAsideLayout();
     const { activeModules } = storeToRefs(useAppAsideStore());
 
-    const lists = computed(() => () => activeModules.value.map(module => <AppAsideModule module={module} />));
+    const lists = computed(() => ({ active }: Dictionary<ComputedRef<number>>) => {
+      return activeModules.value.map((module, index) => <AppAsideModule isActive={index === active.value} module={module} />);
+    });
 
     const panels = computed(() => {
       const _panels: Record<string, () => JSX.Element> = {};

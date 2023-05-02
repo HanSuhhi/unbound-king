@@ -10,6 +10,7 @@ import { smoothScrollTo } from "./composables/jsAnimation";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
 import { useGlobalStore } from "@/stores/global.store";
 import Icon from "@/components/Icon.vue";
+import IconButton from "@/components/typeButton/IconButton.vue";
 import "./router-history.css";
 
 const { activePage } = storeToRefs(useGlobalStore());
@@ -75,12 +76,8 @@ setTimeout(() => {
 <template>
   <ol relative class="router-history ol-reset">
     <div ref="leftBlock" class="router-history_block">
-      <li v-paper-ripple cursor-pointer class="router-history_item router-history_special" @click="routeByDirection(true)">
-        <icon name="double-left" />
-      </li>
-      <li v-paper-ripple cursor-pointer class="router-history_item router-history_special router-history_home" @click="routeToHome">
-        <icon name="home" />
-      </li>
+      <icon-button icon-name="double-left" @click="routeByDirection(true)" />
+      <icon-button icon-name="home" @click="routeToHome" />
     </div>
     <div v-if="show" class="router-history_mask" :style="{ left: `${leftBlock?.clientWidth}px` }" />
     <transition-group tag="div" name="horizontal-list" flex-1 class="router-history_block router-history_box" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
@@ -94,9 +91,13 @@ setTimeout(() => {
     </transition-group>
     <div class="router-history_mask" data-reversed :style="{ right: `${rightBlock?.clientWidth}px` }" />
     <div ref="rightBlock" class="router-history_block">
-      <li v-paper-ripple cursor-pointer class="router-history_item router-history_special" @click="routeByDirection(false)">
-        <icon name="double-right" />
-      </li>
+      <icon-button icon-name="double-right" @click="routeByDirection(false)" />
     </div>
   </ol>
 </template>
+
+<style scoped>
+.icon-button {
+  margin: var(--mini);
+}
+</style>

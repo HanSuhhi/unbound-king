@@ -32,12 +32,14 @@ useCorsor();
     :date-locale="dateZhCN"
     :theme="darkTheme"
     :theme-overrides="darkThemeOverrides"
-    class="app"
   >
     <n-loading-bar-provider>
       <n-message-provider>
         <n-notification-provider>
-          <base-layout ref="Layout">
+          <base-layout
+            ref="Layout"
+            class="app"
+          >
             <div class="router-view-box">
               <router-view v-slot="{ Component }">
                 <transition :name="pageTransition" mode="out-in">

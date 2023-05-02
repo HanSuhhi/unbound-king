@@ -2,6 +2,7 @@
 import { throttle } from "lodash-es";
 import { ref, watch } from "vue";
 import { animationDuration } from "../../composables/constant/env";
+import ResetInput from "./ResetInput.vue";
 
 const props = withDefaults(defineProps<{ watchEvent: (...args: any) => any; placeholder?: string }>(), {
   placeholder: "请输入搜索内容..."
@@ -15,7 +16,7 @@ watch(value, throttle(props.watchEvent, animationDuration));
 <template>
   <div class="search-input" flex_center>
     <icon name="search-eye" />
-    <input v-model="value" class="input-reset search-input_input" :placeholder="placeholder">
+    <reset-input v-model="value" class="search-input_input" :placeholder="placeholder" />
   </div>
 </template>
 

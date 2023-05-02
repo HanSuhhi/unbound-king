@@ -1,13 +1,13 @@
 <script setup lang='ts'>
 import { NColorPicker } from "naive-ui";
-import { autoVModel } from "../composable/formItemDiy";
+import { userAutoVModel } from "../composable/formItemDiy";
 
 const props = defineProps<{ modelValue: Color }>();
 const emits = defineEmits<{
   (e: "update:modelValue", color: Color): void
 }>();
 
-const model = autoVModel(emits, props.modelValue);
+const model = userAutoVModel(emits, props.modelValue);
 </script>
 
 <template>

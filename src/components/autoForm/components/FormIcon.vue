@@ -3,7 +3,7 @@ import type { SelectOption } from "naive-ui";
 import { NSelect } from "naive-ui";
 import type { VNodeChild } from "vue";
 import { h } from "vue";
-import { autoVModel } from "../composable/formItemDiy";
+import { userAutoVModel } from "../composable/formItemDiy";
 import { transformIconToElLabelOptions } from "../composable/GameiconOptions";
 import { DATA } from "@/composables/data";
 import Icon from "@/components/Icon.vue";
@@ -13,7 +13,7 @@ const emits = defineEmits<{
   (e: "update:modelValue", icon: string): void
 }>();
 
-const model = autoVModel(emits, props.modelValue);
+const model = userAutoVModel(emits, props.modelValue);
 
 const options = transformIconToElLabelOptions(DATA.GameIcons);
 

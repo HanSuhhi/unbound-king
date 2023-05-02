@@ -1,10 +1,13 @@
 import type { Ref } from "vue";
-import { onMounted, provide, ref } from "vue";
+import { onMounted, provide, ref, watch } from "vue";
+import { debounce, isUndefined } from "lodash-es";
 import { UserSymbol } from "../app-header.symbol";
 import { useUserService } from "@/services/databases/user/user.service";
 import type { User } from "@/services/databases/user/user.table";
+import { animationDuration } from "@/composables/constant/env";
+import { deep } from "@/composables/plus/watch";
 
-const { registRandomUser, isEmpty, getMainUser } = useUserService();
+const { registRandomUser, isEmpty, getMainUser, updateUser } = useUserService();
 
 async function getDefaultUser(user: Ref<User | undefined>) {
   if (await isEmpty()) {
@@ -23,6 +26,12 @@ export function loadUser() {
 
   onMounted(() => getDefaultUser(user));
   provide(UserSymbol, user);
+
+  watch(user, debounce(async (newUser: User | undefined, oldUser) => {
+    if (!newUser) return;
+    if (isUndefined(oldUser)) return;
+    await updateUser(newUser);
+  }, animationDuration), deep);
 
   return [user];
 }

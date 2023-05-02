@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { NInputNumber } from "naive-ui";
-import { autoVModel } from "../composable/formItemDiy";
+import { userAutoVModel } from "../composable/formItemDiy";
 
 interface Prop {
   modelValue: MinMax
@@ -12,7 +12,7 @@ const emits = defineEmits<{
   (e: "update:modelValue", minMax: MinMax): void
 }>();
 
-const model = autoVModel(emits, props.modelValue);
+const model = userAutoVModel(emits, props.modelValue);
 </script>
 
 <template>

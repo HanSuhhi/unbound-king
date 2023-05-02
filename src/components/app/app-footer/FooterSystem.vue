@@ -6,8 +6,3 @@
     event
   </section>
 </template>
-
-<style scoped>
-.footer-system {
-}
-</style>

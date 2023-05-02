@@ -1,19 +1,20 @@
-import { useNow } from "@vueuse/core";
+import { defineUniqueId } from "../../../composables/ci/uniqueId";
 import type { User } from "./user.table";
 import { Boolean, useServiceModel } from "@/services/serviceModel";
 
 export function useUserService() {
   const serviceModel = useServiceModel<User>("user");
-  const { model, add } = serviceModel;
+  const { model, add, update } = serviceModel;
 
   const registRandomUser = async (main = false) => {
-    const name = `用户${Math.floor(Math.random() * 1000000)}`;
-    const avator = useNow().value.getTime().toString();
+    const id = Number(defineUniqueId());
+    const name = `用户${id.toString().substring(0, 6)}`;
 
     const user = {
+      id,
       name,
-      avator,
-      email: "emailmetoday@email.com",
+      avator: "",
+      email: "",
       main: main ? Boolean.True : Boolean.False
     };
 
@@ -27,9 +28,14 @@ export function useUserService() {
     return users[0];
   };
 
+  const updateUser = async (user: User) => {
+    return await update(user.id, user);
+  };
+
   return {
     ...serviceModel,
     getMainUser,
-    registRandomUser
+    registRandomUser,
+    updateUser
   };
 }

@@ -29,3 +29,11 @@
 [cursor-active="active"] [cursor-all-scroll] {
   cursor: var(--cursor-all-scroll-active);
 }
+
+[cursor-active="default"] [cursor-text] {
+  cursor: var(--cursor-text);
+}
+
+[cursor-active="active"] [cursor-text] {
+  cursor: var(--cursor-text-active);
+}

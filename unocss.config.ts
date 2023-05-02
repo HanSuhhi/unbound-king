@@ -23,5 +23,6 @@ export default defineConfig({
     ["m_r", {"margin-right": "var(--base-margin)"}],
     ["f_b_s", { "font-size": "var(--font-body-small)" }],
     ["c_g_b_2", { "color": "var(--gray-bright-2)" }],
+    ["full", {"width": "100%", "height": "100%" }]
   ]
 });

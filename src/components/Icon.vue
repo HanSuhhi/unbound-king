@@ -27,5 +27,10 @@ const background = computed(() => props.color && `linear-gradient(145deg, ${prop
 <style scoped>
 .icon {
   display: inline-block;
+  transition: transform var(--transition-prop);
+}
+
+.icon:hover {
+  transform: scale(1.1);
 }
 </style>

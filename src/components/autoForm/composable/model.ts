@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { forEach, isUndefined } from "lodash-es";
 import { ref, watch } from "vue";
+import { deep } from "../../../composables/plus/watch";
 
 export function defineAutoFormModel(props: { config: AutoformItem[]; params?: AutoformItem }) {
   function init() {
@@ -8,7 +9,8 @@ export function defineAutoFormModel(props: { config: AutoformItem[]; params?: Au
       if (props.params) {
         return {
           ...values,
-          [key]: (props.params)[key]
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          [key]: (props.params as any)[key]
         };
       }
 
@@ -32,9 +34,10 @@ export function defineAutoFormModel(props: { config: AutoformItem[]; params?: Au
     watch(
       model,
       (v) => {
-        forEach(v, (_, key) => props.params[key] = _);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+        forEach(v, (_, key) => (props.params as any)[key] = _);
       },
-      { deep: true }
+      deep
     );
   }
 
