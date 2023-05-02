@@ -1,0 +1,31 @@
+[cursor-active="default"] {
+  cursor: var(--cursor-auto);
+}
+
+[cursor-active="active"] {
+  cursor: var(--cursor-auto-active);
+}
+
+[cursor-active="default"] [cursor-help] {
+  cursor: var(--cursor-help);
+}
+
+[cursor-active="active"] [cursor-help] {
+  cursor: var(--cursor-help-active);
+}
+
+[cursor-active="default"] [cursor-pointer] {
+  cursor: var(--cursor-pointer);
+}
+
+[cursor-active="active"] [cursor-pointer] {
+  cursor: var(--cursor-pointer-active);
+}
+
+[cursor-active="default"] [cursor-all-scroll] {
+  cursor: var(--cursor-all-scroll);
+}
+
+[cursor-active="active"] [cursor-all-scroll] {
+  cursor: var(--cursor-all-scroll-active);
+}

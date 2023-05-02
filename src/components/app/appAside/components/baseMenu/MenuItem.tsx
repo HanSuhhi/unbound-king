@@ -39,7 +39,7 @@ const MenuItem = defineComponent({
     return () => {
       return (
         <>
-          <section v-paper-ripple class="aside-menu-block" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} data-active={active.value} onClick={children.value ? toggleCollapse : routeToPage}>
+          <section v-paper-ripple cursor-pointer class="aside-menu-block" data-collapse={useHtmlPropLint(Boolean(props.page.collapse))} data-active={active.value} onClick={children.value ? toggleCollapse : routeToPage}>
             {props.page.icon && (
               <div class="aside-menu-icon">
                 <Icon name={props.page.icon} />

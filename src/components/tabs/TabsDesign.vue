@@ -70,6 +70,5 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
   position: absolute;
   top: calc(var(--font-body) / 3);
   right: 0;
-  cursor: pointer;
 }
 </style>

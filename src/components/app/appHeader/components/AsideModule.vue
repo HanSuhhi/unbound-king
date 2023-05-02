@@ -10,7 +10,7 @@ mountKeyCommand(props.module.event);
 </script>
 
 <template>
-  <section class="aside-module" flex_center @click="runKeyEvent(module.event)">
+  <section cursor-pointer class="aside-module" flex_center @click="runKeyEvent(module.event)">
     <icon class="aside-module_icon" :style="{ background: `linear-gradient(145deg, ${module.color[0]}, ${module.color[1]})` }" :name="module.icon" />
   </section>
 </template>
@@ -22,7 +22,6 @@ mountKeyCommand(props.module.event);
   white-space: nowrap;
   background-color: var(--bg-color-bright-2);
   border-radius: var(--border-radius);
-  cursor: pointer;
   aspect-ratio: 1 / 1;
   transition: all var(--transition-prop);
 }

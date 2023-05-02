@@ -25,7 +25,6 @@
   color: var(--gray-bright-2);
   font-weight: bold;
   white-space: nowrap;
-  cursor: pointer;
 }
 
 .router-history_item:hover {
@@ -60,7 +59,6 @@
   display: flex;
   padding: var(--small) var(--normal);
   color: var(--gray-bright-2);
-  cursor: pointer;
   transition: all var(--moment);
   place-items: center;
 }

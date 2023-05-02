@@ -5,7 +5,7 @@ defineProps<{ iconPath: string; translator: Translator; color?: Color }>();
 </script>
 
 <template>
-  <section class="common-block icon-block">
+  <section cursor-pointer class="common-block icon-block">
     <icon class="icon-block_icon" :name="iconPath" :color="color" />
     <component
       :is="color ? NGradientText : 'span'"
@@ -17,7 +17,6 @@ defineProps<{ iconPath: string; translator: Translator; color?: Color }>();
     >
       {{ translator[1] }}
     </component>
-    <!-- <span class="icon-block_title">{{ translator[1] }}</span> -->
   </section>
 </template>
 

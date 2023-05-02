@@ -24,7 +24,8 @@ export default defineComponent({
         <ExplanationVue placement="right">
          {{
            trigger: () => <div
-                v-paper-ripple
+             v-paper-ripple
+              cursor-pointer
                class="app-aside_listitem"
                // eslint-disable-next-line @typescript-eslint/no-misused-promises
                onClick={routeOut}>

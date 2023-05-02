@@ -14,7 +14,7 @@ defineProps<{ data: BaseItem }>();
       </p>
     </template>
     <template #subtitle>
-      <div class="value-item_operator">
+      <div cursor-pointer class="value-item_operator">
         <icon name="more" />
       </div>
     </template>
@@ -45,7 +45,6 @@ defineProps<{ data: BaseItem }>();
   align-items: center;
   justify-content: center;
   padding: var(--mini);
-  cursor: pointer;
 }
 
 .value-item_date {

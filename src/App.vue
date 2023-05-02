@@ -9,6 +9,7 @@ import { defineAppLayout } from "./components/app/composables/appLayout";
 import GlobalDialog from "./components/dialog/GlobalDialog.vue";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import { defineNaiveTheme } from "./composables/theme/naiveTheme";
+import { useCorsor } from "./composables/experience/cursor";
 import { useGlobalStore } from "@/stores/global.store";
 import { dialogMessage } from "@/composables/components/globalDialog";
 
@@ -21,14 +22,22 @@ function setDefaultTransitionDuration() {
   element?.style.setProperty("--transition-duration", `${Number(import.meta.env.ANIMATION_DURATION) / 1000}s`);
 }
 nextTick(setDefaultTransitionDuration);
+
+useCorsor();
 </script>
 
 <template>
-  <n-config-provider :style="{ height: '100%' }" :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="darkThemeOverrides">
+  <n-config-provider
+    :locale="zhCN"
+    :date-locale="dateZhCN"
+    :theme="darkTheme"
+    :theme-overrides="darkThemeOverrides"
+    class="app"
+  >
     <n-loading-bar-provider>
       <n-message-provider>
         <n-notification-provider>
-          <base-layout ref="Layout" class="app">
+          <base-layout ref="Layout">
             <div class="router-view-box">
               <router-view v-slot="{ Component }">
                 <transition :name="pageTransition" mode="out-in">

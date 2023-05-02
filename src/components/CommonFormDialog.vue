@@ -41,7 +41,7 @@ function confirm(data: any, formEl: FormInst) {
         </p>
       </template>
       <template #subtitle>
-        <icon pointer class="form-dialog_close" name="close" @click="modal = false" />
+        <icon cursor-pointer class="form-dialog_close" name="close" @click="modal = false" />
       </template>
       <auto-form :config="currentConfig">
         <template #footer="{ data, form }">
@@ -60,16 +60,18 @@ function confirm(data: any, formEl: FormInst) {
 </template>
 
 <style scoped>
-.form-dialog {
-  cursor: auto;
-}
-
 .form-dialog_close {
-  transform: scale(1.5);
+  font-size: var(--font-title-main);
+  transition: all var(--transition-prop);
 }
 
 .form-dialog_close:hover {
-  filter: brightness(0.8);
+  color: var(--white);
+  transform: rotate(180deg);
+}
+
+.form-dialog_close:active {
+  transform: rotate(360deg);
 }
 
 .form-dialog_title {

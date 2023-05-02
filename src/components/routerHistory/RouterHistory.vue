@@ -75,10 +75,10 @@ setTimeout(() => {
 <template>
   <ol relative class="router-history ol-reset">
     <div ref="leftBlock" class="router-history_block">
-      <li v-paper-ripple class="router-history_item router-history_special" @click="routeByDirection(true)">
+      <li v-paper-ripple cursor-pointer class="router-history_item router-history_special" @click="routeByDirection(true)">
         <icon name="double-left" />
       </li>
-      <li v-paper-ripple class="router-history_item router-history_special router-history_home" @click="routeToHome">
+      <li v-paper-ripple cursor-pointer class="router-history_item router-history_special router-history_home" @click="routeToHome">
         <icon name="home" />
       </li>
     </div>
@@ -94,7 +94,7 @@ setTimeout(() => {
     </transition-group>
     <div class="router-history_mask" data-reversed :style="{ right: `${rightBlock?.clientWidth}px` }" />
     <div ref="rightBlock" class="router-history_block">
-      <li v-paper-ripple class="router-history_item router-history_special" @click="routeByDirection(false)">
+      <li v-paper-ripple cursor-pointer class="router-history_item router-history_special" @click="routeByDirection(false)">
         <icon name="double-right" />
       </li>
     </div>

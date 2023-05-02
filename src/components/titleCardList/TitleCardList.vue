@@ -32,7 +32,7 @@ function watchEvent(input: string) {
     <transition-group class="value-list_main" tag="main" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
       <title-card-list-item v-for="(item, index) of modelValues" :key="item.translator[0]" class="value-list_item" :data="item" :data-index="index" />
     </transition-group>
-    <footer class="value-list_footer">
+    <footer class="value-list_footer" cursor-pointer>
       <slot name="footer" />
     </footer>
   </section>
@@ -51,7 +51,6 @@ function watchEvent(input: string) {
   width: 100%;
   text-decoration: underline;
   border-radius: var(--border-radius);
-  cursor: pointer;
   transition: color var(--transition-prop);
 }
 

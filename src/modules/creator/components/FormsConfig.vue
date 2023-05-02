@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NTooltip } from "naive-ui";
-import { getDataByKey } from "../../../composables/data";
+import { IDATA, getDataByKey } from "../../../composables/data";
 import Alert from "@/components/alert/alert";
 import AutoForm from "@/components/autoForm/autoForm.vue";
 import Icon from "@/components/Icon.vue";
@@ -21,9 +21,9 @@ defineProps<{ formConfig: CreatorPlugin["data"] }>();
           </p>
           <n-tooltip v-if="!(config.description === '')" trigger="hover">
             <template #trigger>
-              <icon class="forms-config_icon" name="question" />
+              <icon class="forms-config_icon" cursor-pointer name="question" />
             </template>
-            <span class="forms-config_description">{{ config.description || getDataByKey<any>(config.translator[0]).description
+            <span class="forms-config_description">{{ config.description || getDataByKey<any>(config.translator[0] as keyof IDATA).description
             }}</span>
           </n-tooltip>
         </div>
@@ -66,7 +66,6 @@ defineProps<{ formConfig: CreatorPlugin["data"] }>();
 .forms-config_icon {
   color: var(--gray);
   font-size: var(--font-title-small);
-  cursor: pointer;
 }
 
 .forms-config_formbox > :deep(.n-form-item:last-child) {

@@ -10,7 +10,6 @@ import Icon from "./components/Icon.vue";
 import TypeButton from "./components/typeButton/TypeButton.vue";
 import CTabs from "./components/ui/tabs";
 import CLayout from "./components/ui/layout";
-
 import { usePaperRipple } from "./directives/paperRipple";
 
 const pinia = createPinia();

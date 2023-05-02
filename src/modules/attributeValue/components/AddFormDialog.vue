@@ -58,26 +58,3 @@ function confirm(data: AttributeValue) {
     </template>
   </common-form-dialog>
 </template>
-
-<style scoped>
-.form-dialog {
-  cursor: auto;
-}
-
-.i-mdi-close-thick {
-  cursor: pointer;
-}
-
-.i-mdi-close-thick:hover {
-  color: var(--main-color);
-}
-
-.form-dialog_title {
-  font-size: var(--font-body);
-}
-
-.form-dialog_confirm {
-  width: 100%;
-  text-align: right;
-}
-</style>

@@ -1,6 +1,12 @@
+import { nextTick, onMounted } from "vue";
 import { useCsssTabs } from "@/components/ui/tabs";
+import { setElementCursorPointer } from "@/composables/experience/cursor";
 
-export const defineFormsTabs = (componentName: string) => {
+function setItemsCursorPointer() {
+  document.querySelectorAll(".creator-forms_item").forEach(setElementCursorPointer);
+}
+
+export function defineFormsTabs(componentName: string) {
   const tabsName = componentName;
   const listName = `${componentName}_list`;
   const listItemName = `${componentName}_item`;
@@ -9,7 +15,7 @@ export const defineFormsTabs = (componentName: string) => {
 
   const Layout = useCsssTabs({
     state: {
-      autoTrigger: false,
+      autoTrigger: false
     },
     style: {
       classList: {
@@ -17,10 +23,12 @@ export const defineFormsTabs = (componentName: string) => {
         list: [listName],
         listItem: [listItemName],
         panel: [listPanelsName],
-        panelItem: [listPanelName],
-      },
-    },
+        panelItem: [listPanelName]
+      }
+    }
   });
 
+  onMounted(nextTick.bind(null, setItemsCursorPointer));
+
   return { ...Layout };
-};
+}

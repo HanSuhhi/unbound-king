@@ -5,13 +5,16 @@ import Icon from "@/components/Icon.vue";
 
 defineProps<{ plugin: CreatorPlugin }>();
 const emits = defineEmits<{
-  (e: "deleteItem"): void;
+  (e: "deleteItem"): void
 }>();
 
-const deletePlugin = () => emits("deleteItem");
+function deletePlugin() {
+  return emits("deleteItem");
+}
 </script>
+
 <template>
-  <article class="step">
+  <article cursor-pointer class="step">
     <section class="step-left">
       <div class="step-left_icon">
         <icon :name="plugin.icon" />
@@ -27,7 +30,9 @@ const deletePlugin = () => emits("deleteItem");
           是否确认删除此插件
         </n-popconfirm>
       </p>
-      <p class="step-message_description p-reset">{{ plugin.description }}</p>
+      <p class="step-message_description p-reset">
+        {{ plugin.description }}
+      </p>
     </section>
     <section class="step-right">
       <slot name="operator" />
@@ -46,7 +51,6 @@ const deletePlugin = () => emits("deleteItem");
   min-width: 280px;
   padding: var(--base-margin) 0;
   border-radius: var(--border-radius);
-  cursor: pointer;
 }
 
 .step-message_delete {
@@ -84,7 +88,6 @@ const deletePlugin = () => emits("deleteItem");
   height: var(--size);
   border: var(--border);
   border-radius: 50%;
-  cursor: pointer;
   filter: brightness(1.5);
   aspect-ratio: 1 / 1;
 }
@@ -96,7 +99,7 @@ const deletePlugin = () => emits("deleteItem");
   width: var(--icon-width);
 }
 
-.step-left_icon>.icon {
+.step-left_icon > .icon {
   zoom: 1.8;
 }
 

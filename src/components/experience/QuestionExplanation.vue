@@ -7,7 +7,12 @@ defineProps<{ iconClass?: string }>();
 <template>
   <explanation>
     <template #trigger>
-      <icon class="question-explanation_question" :class="iconClass" name="question" />
+      <icon
+        cursor-help
+        class="question-explanation_question"
+        :class="iconClass"
+        name="question"
+      />
     </template>
     <slot />
   </explanation>
@@ -16,6 +21,11 @@ defineProps<{ iconClass?: string }>();
 <style scoped>
 .question-explanation_question {
   color: var(--gray-bright-1);
-  cursor: pointer;
+  transition: all var(--transition-prop);
+}
+
+.question-explanation_question:hover {
+  color: var(--white);
+  transform: rotate(360deg);
 }
 </style>

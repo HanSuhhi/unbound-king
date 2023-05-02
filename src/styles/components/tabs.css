@@ -22,7 +22,10 @@
   align-items: center;
   justify-content: center;
   padding: 0 var(--base-margin);
-  cursor: pointer;
+}
+
+.common-tabs-list_item[data-active] {
+  color: var(--main-color);
 }
 
 .common-tabs-list_item:first-child::before {

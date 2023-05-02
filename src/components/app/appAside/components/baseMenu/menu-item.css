@@ -9,7 +9,6 @@
   padding-top: calc(var(--small));
   padding-left: var(--normal);
   color: var(--gray);
-  cursor: pointer;
   transition: var(--transition-prop);
   transition-property: color, background;
 }

@@ -26,7 +26,7 @@ loadUser();
 <template>
   <n-popover :theme-overrides="popoverThemeOverrides" trigger="click" :delay="300" :show-arrow="false" :show="popoverControl">
     <template #trigger>
-      <section class="base-preference_module" @click="popoverControl = true">
+      <section class="base-preference_module" cursor-pointer @click="popoverControl = true">
         <icon name="module" />
       </section>
     </template>
@@ -45,7 +45,6 @@ loadUser();
   align-items: center;
   height: 100%;
   margin-right: var(--base-margin);
-  cursor: pointer;
   filter: brightness(0.7);
   transition: var(--transition-prop);
 }

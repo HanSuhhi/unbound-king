@@ -13,7 +13,7 @@ defineProps<{ attribute: Attribute }>();
       <p class="attribute-block_title p-reset">
         <n-tooltip trigger="hover">
           <template #trigger>
-            <icon class="attribute-block_icon" :name="attribute.icon" />
+            <icon cursor-pointer class="attribute-block_icon" :name="attribute.icon" />
           </template>
           <p class="attribute-block_explanation">
             {{ attribute.description }}
@@ -63,7 +63,6 @@ defineProps<{ attribute: Attribute }>();
 
 .attribute-block_icon {
   margin-right: var(--small);
-  cursor: pointer;
 }
 
 .attribute-block_main {

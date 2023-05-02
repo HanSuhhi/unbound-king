@@ -37,7 +37,7 @@ const { destinyChoosed, showLineageos, activeIndex } = useDestinyFilter();
     </aside>
     <main class="lineageo-list_main">
       <template v-for="lineageo, index of showLineageos" :key="lineageo.id">
-        <base-card :data="lineageo" :data-choosed="useHtmlPropLint(index === activeIndex)" class="lineageo-list_card" @click="activeIndex = index" />
+        <base-card :data="lineageo" :data-choosed="useHtmlPropLint(index === activeIndex)" cursor-pointer class="lineageo-list_card" @click="activeIndex = index" />
       </template>
     </main>
   </title-card>
@@ -87,7 +87,6 @@ const { destinyChoosed, showLineageos, activeIndex } = useDestinyFilter();
   /* stylelint-disable-next-line value-no-vendor-prefix */
   width: -webkit-fill-available;
   border: var(--border);
-  cursor: pointer;
 }
 
 .lineageo-list_card[data-choosed] {

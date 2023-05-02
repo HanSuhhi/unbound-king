@@ -1,12 +1,13 @@
 <script setup lang='ts'>
-import LifeHash from "@hansuhhi-don/lifehash-vue";
+import type { Ref } from "vue";
 import { inject } from "vue";
+import LifeHash from "@hansuhhi-don/lifehash-vue";
 import { UserSymbol } from "../app-header.symbol";
 import QuestionExplanation from "@/components/experience/QuestionExplanation.vue";
 import Explanation from "@/components/experience/Explanation.vue";
-import type { User } from "@/services/databases/user.db";
+import type { User } from "@/services/databases/user/user.table";
 
-const { avator, name, email } = inject<User>(UserSymbol)!;
+const { avator, name, email } = inject<Ref<User>>(UserSymbol)!.value;
 </script>
 
 <template>
@@ -31,7 +32,7 @@ const { avator, name, email } = inject<User>(UserSymbol)!;
     </div>
     <explanation>
       <template #trigger>
-        <div class="user-card_update">
+        <div class="user-card_update" cursor-pointer>
           <icon name="update" />
         </div>
       </template>
@@ -82,10 +83,17 @@ const { avator, name, email } = inject<User>(UserSymbol)!;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: var(--base-margin);
+  margin-left: var(--base-margin);
   color: var(--gray-bright-1);
-  cursor: pointer;
   transition: all var(--transition-prop);
+}
+
+.user-card_update:hover {
+  transform: rotate(90deg);
+}
+
+.user-card_update:active {
+  transform: rotate(180deg);
 }
 
 .user-card_update:hover {

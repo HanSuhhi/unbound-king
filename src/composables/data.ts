@@ -13,7 +13,7 @@ import { DATA_Traits } from "../modules/traitDesign/data/index";
 import { DATA_Chases } from "@/modules/character/enums/character.enum";
 import { getGlobalEnumNameOrNot } from "@/enums/global.enum";
 
-interface IDATA {
+export interface IDATA {
   Genders: typeof import("../modules/character/enums/character.enum").DATA_Genders
   Ages: typeof import("../modules/character/enums/character.enum").DATA_Ages
   Chases: typeof import("../modules/character/enums/character.enum").DATA_Chases

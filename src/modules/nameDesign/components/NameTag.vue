@@ -13,7 +13,7 @@ function copy() {
 </script>
 
 <template>
-  <div v-paper-ripple class="name-tag" @click="copy">
+  <div v-paper-ripple cursor-pointer class="name-tag" @click="copy">
     <slot />
     <div class="name-tag_close">
       <icon name="close" @click.stop="close" />
@@ -31,7 +31,6 @@ function copy() {
   padding: var(--mini) var(--small);
   border: var(--border);
   border-radius: var(--border-radius);
-  cursor: pointer;
 }
 
 .name-tag_close {

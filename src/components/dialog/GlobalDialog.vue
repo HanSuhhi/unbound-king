@@ -31,7 +31,7 @@ const [confirm] = key_confrim();
               {{ dialogMessage?.title }}
             </template>
             <template #subtitle>
-              <icon class="global-dialog_close" name="close" @click="close.fn(false)" />
+              <icon class="global-dialog_close" cursor-pointer name="close" @click="close.fn(false)" />
             </template>
             <template #footer>
               <section class="global-dialog_operator" flex_center>
@@ -78,7 +78,6 @@ const [confirm] = key_confrim();
 
 .global-dialog_close {
   font-size: var(--font-title);
-  cursor: pointer;
   transition: var(--transition-prop);
   transition-property: transform color;
 }

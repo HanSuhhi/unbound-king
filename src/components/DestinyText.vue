@@ -5,7 +5,7 @@ defineProps<{ destiny: Destiny; isChoosed?: boolean }>();
 </script>
 
 <template>
-  <section class="destiny-text">
+  <section cursor-pointer class="destiny-text">
     <icon class="icon" :name="destiny.icon" :color="destiny.color" />
     <component
       :is="isChoosed ? NGradientText : 'span'"
@@ -23,7 +23,6 @@ defineProps<{ destiny: Destiny; isChoosed?: boolean }>();
 .destiny-text {
   display: flex;
   white-space: nowrap;
-  cursor: pointer;
   place-items: center;
 }
 

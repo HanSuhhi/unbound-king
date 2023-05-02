@@ -1,4 +1,5 @@
 import { nextTick, onMounted } from "vue";
+import { setElementCursorPointer } from "../experience/cursor";
 import { useCsssTabs } from "@/components/ui/tabs";
 
 export function defineCommonTabs(componentName: string, common = true) {
@@ -25,6 +26,7 @@ export function defineCommonTabs(componentName: string, common = true) {
     const items = document.querySelectorAll(`.${listItemName}`);
     const listLeft = list?.getBoundingClientRect().left || 0;
     items.forEach((item, index) => {
+      setElementCursorPointer(item);
       const rect = item.getBoundingClientRect();
       const left = rect.left - listLeft;
       const width = rect.width;
@@ -39,7 +41,7 @@ export function defineCommonTabs(componentName: string, common = true) {
     });
   };
 
-  onMounted(nextTick.bind(this, calcListItemWidth));
+  onMounted(nextTick.bind(null, calcListItemWidth));
 
   return { ...Layout };
 }
