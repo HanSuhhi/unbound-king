@@ -44,52 +44,53 @@ const { destinyChoosed, showLineageos, activeIndex } = useDestinyFilter();
 </template>
 
 <style scoped>
-.lineageo-detail {
-  max-width: 340px;
-  height: 100%;
-  margin-right: var(--base-margin);
-}
+@layer component {
+  .lineageo-detail {
+    max-width: 340px;
+    height: 100%;
+    margin-right: var(--base-margin);
+  }
 
-:deep(.title-card_main) {
-  left: 0;
-  display: flex;
-  width: 100%;
-  padding: 0;
-}
+  :deep(.title-card_main) {
+    left: 0;
+    display: flex;
+    width: 100%;
+    padding: 0;
+  }
 
-.lineageo-checkbox {
-  margin-bottom: var(--base-margin);
-}
+  .lineageo-checkbox {
+    margin-bottom: var(--base-margin);
+  }
 
-.lineageo-list_filter {
-  width: 30%;
-  height: 100%;
-  margin-left: var(--base-margin);
-  border-right: var(--border);
-}
+  .lineageo-list_filter {
+    width: 30%;
+    height: 100%;
+    margin-left: var(--base-margin);
+    border-right: var(--border);
+  }
 
-.lineageo-list_title {
-  margin: var(--base-margin);
-  margin-left: 0;
-  color: var(--main-color);
-  font-size: var(--font-title);
-}
+  .lineageo-list_title {
+    margin: var(--base-margin);
+    margin-left: 0;
+    font-size: var(--font-title);
+    color: var(--main-color);
+  }
 
-.lineageo-list_main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-items: flex-start;
-  width: 100%;
-}
+  .lineageo-list_main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
 
-.lineageo-list_card {
-  /* stylelint-disable-next-line value-no-vendor-prefix */
-  width: -webkit-fill-available;
-  border: var(--border);
-}
+  .lineageo-list_card {
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    width: -webkit-fill-available;
+    border: var(--border);
+  }
 
-.lineageo-list_card[data-choosed] {
-  border-color: var(--main-color);
+  .lineageo-list_card[data-choosed] {
+    border-color: var(--main-color);
+  }
 }
 </style>

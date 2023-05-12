@@ -1,11 +1,10 @@
 import type { Position } from "@vueuse/core";
-import { useElementBounding, clamp } from "@vueuse/core";
+import { clamp, useElementBounding } from "@vueuse/core";
 import type { Ref } from "vue";
-import { ref, provide, watchEffect, watch } from 'vue';
-import { dialogMessage } from '../../../composables/components/globalDialog';
-import { debounce } from 'lodash-es';
+import { provide, ref } from "vue";
+import { dialogMessage } from "../../../composables/components/globalDialog";
 
-const calcCenterPosition = (container: Ref, box: Ref): Position => {
+function calcCenterPosition(container: Ref, box: Ref): Position {
   const { width: containerWidth, height: containerHeight } = useElementBounding(container);
   const { width: boxWidth, height: boxHeight } = useElementBounding(box);
 
@@ -13,9 +12,9 @@ const calcCenterPosition = (container: Ref, box: Ref): Position => {
     x: containerWidth.value - boxWidth.value,
     y: containerHeight.value - boxHeight.value
   };
-};
+}
 
-export const useBoundary = (container: Ref, box: Ref) => {
+export function useBoundary(container: Ref, box: Ref) {
   const handle = ref();
   provide("handle", handle);
 
@@ -33,4 +32,4 @@ export const useBoundary = (container: Ref, box: Ref) => {
   provide("boundary", draggableBoundary);
 
   return [restrictedX, restrictedY];
-};
+}

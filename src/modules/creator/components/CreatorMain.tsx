@@ -6,7 +6,7 @@ import Steps from "./Steps.vue";
 
 export default defineComponent({
   name: "CreatorMain",
-  setup: (props) => {
+  setup: () => {
     const { COMP } = defineCommonLayout("creator-main", false);
     const creator = inject<Ref<Creator>>("creator");
 

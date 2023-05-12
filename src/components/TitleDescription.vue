@@ -7,24 +7,23 @@ defineProps<{ title: string; description: string }>();
 
 <template>
   <header class="title-description">
-    <n-gradient-text
-      class="title-description_title"
-      :gradient="useMainGradient"
-    >
+    <n-gradient-text class="title-description_title" :gradient="useMainGradient">
       {{ title }}
     </n-gradient-text>
-    <p className="p-reset title-description_description">
+    <p class="p-reset title-description_description">
       {{ description }}
     </p>
   </header>
 </template>
 
 <style scoped>
-.title-description_title {
-  font-size: var(--font-title-main);
-}
+@layer component {
+  .title-description_title {
+    font-size: var(--font-title-main);
+  }
 
-.title-description_description {
-  color: var(--gray-bright-2);
+  .title-description_description {
+    color: var(--gray-bright-2);
+  }
 }
 </style>

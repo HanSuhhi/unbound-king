@@ -41,46 +41,47 @@ const canUsePlugins = computed(() => DATA_Creator_Plugins.filter(plugin => plugi
 </template>
 
 <style scoped>
-.creator-steps {
-  --controller-height: 80px;
+@layer component {
+  .creator-steps {
+    --controller-height: 80px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
 
-.creator-steps_main {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-}
-
-.creator-steps_footer {
-  display: flex;
-  align-items: flex-end;
-  height: var(--controller-height);
+  .creator-steps_footer {
+    display: flex;
+    align-items: flex-end;
+    height: var(--controller-height);
+  }
 }
 </style>
 
 <style scoped>
-.icon-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-}
+@layer component {
+  .icon-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+  }
 
-.icon {
-  display: flex;
-  margin-right: 1px;
-  font-size: var(--font-title-small);
-  border-radius: var(--border-radius);
-  outline: var(--border);
-  place-items: center;
-}
+  .icon {
+    display: flex;
+    place-items: center;
 
-.icon:hover {
-  color: var(--main-color);
+    margin-right: 1px;
+
+    font-size: var(--font-title-small);
+
+    border-radius: var(--border-radius);
+    outline: var(--border);
+  }
+
+  .icon:hover {
+    color: var(--main-color);
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import KeyEventButton from "../KeyEventButton.vue";
+import KeyEventButton from "../typeButton/KeyEventButton.vue";
 import { useBoundary } from "./composables/boundary";
 import { useFixed } from "./composables/fixed";
 import { key_closeDialog } from "./composables/key/close";
@@ -31,12 +31,12 @@ const [confirm] = key_confrim();
               {{ dialogMessage?.title }}
             </template>
             <template #subtitle>
-              <icon class="global-dialog_close" cursor-pointer name="close" @click="close.fn(false)" />
+              <icon class="global-dialog_close" cursor-pointer name="close" @click="close!.fn(false)" />
             </template>
             <template #footer>
               <section class="global-dialog_operator" flex_center>
-                <key-event-button class="global-dialog_button" plain :key-event="close" />
-                <key-event-button class="global-dialog_button" :key-event="confirm" />
+                <key-event-button class="global-dialog_button" plain :key-event="close!" />
+                <key-event-button class="global-dialog_button" :key-event="confirm!" />
               </section>
             </template>
             {{ dialogMessage?.text }}
@@ -48,50 +48,54 @@ const [confirm] = key_confrim();
 </template>
 
 <style scoped>
-.global-dialog_scrolling {
-  opacity: 0.8;
-}
+@layer component {
+  .global-dialog_scrolling {
+    opacity: 80%;
+  }
 
-.global-dialog_penetrate {
-  background-color: transparent !important;
-  pointer-events: none;
-}
+  .global-dialog_penetrate {
+    pointer-events: none;
+    background-color: transparent;
+  }
 
-.global-dialog {
-  position: absolute;
-  z-index: var(--global-dialog-z-index);
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0 0 0 / 40%);
-  inset: 0;
-}
+  .global-dialog {
+    position: absolute;
+    z-index: var(--global-dialog-z-index);
+    inset: 0;
 
-.global-dialog_main {
-  width: 446px;
-  max-width: calc(100vw - 32px);
-  pointer-events: all;
-}
+    width: 100%;
+    height: 100%;
 
-.global-dialog_main.slide-down-leave-to {
-  transform: translateY(calc(var(--large) * -1));
-}
+    background-color: rgb(0 0 0 / 40%);
+  }
 
-.global-dialog_close {
-  font-size: var(--font-title);
-  transition: var(--transition-prop);
-  transition-property: transform color;
-}
+  .global-dialog_main {
+    pointer-events: all;
+    width: 446px;
+    max-width: calc(100vw - 32px);
+  }
 
-.global-dialog_close:hover {
-  color: var(--white);
-  transform: rotate(180deg);
-}
+  .global-dialog_main.slide-down-leave-to {
+    transform: translateY(calc(var(--large) * -1));
+  }
 
-.global-dialog_operator {
-  justify-content: flex-end;
-}
+  .global-dialog_close {
+    font-size: var(--font-title);
+    transition: var(--transition-prop);
+    transition-property: transform, color;
+  }
 
-.global-dialog_button {
-  margin: 0 var(--base-margin);
+  .global-dialog_close:hover {
+    transform: rotate(180deg);
+    color: var(--white);
+  }
+
+  .global-dialog_operator {
+    justify-content: flex-end;
+  }
+
+  .global-dialog_button {
+    margin: 0 var(--base-margin);
+  }
 }
 </style>

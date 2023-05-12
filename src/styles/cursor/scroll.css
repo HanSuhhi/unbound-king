@@ -1,0 +1,7 @@
+[cursor-active="default"] [cursor-all-scroll] {
+  cursor: var(--cursor-all-scroll);
+}
+
+[cursor-active="active"] [cursor-all-scroll] {
+  cursor: var(--cursor-all-scroll-active);
+}

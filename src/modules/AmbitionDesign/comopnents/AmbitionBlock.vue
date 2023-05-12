@@ -33,18 +33,20 @@ defineProps<{
 </template>
 
 <style scoped>
-.ambition-block {
-  margin: var(--base-margin);
-  margin-top: 0;
-  margin-left: 0;
-}
+@layer component {
+  .ambition-block {
+    margin: var(--base-margin);
+    margin-top: 0;
+    margin-left: 0;
+  }
 
-.ambition-block_title {
-  display: flex;
-  align-items: center;
-}
+  .ambition-block_title {
+    display: flex;
+    align-items: center;
+  }
 
-.ambition-block_title > .icon {
-  margin-right: var(--small);
+  .ambition-block_title > .icon {
+    margin-right: var(--small);
+  }
 }
 </style>

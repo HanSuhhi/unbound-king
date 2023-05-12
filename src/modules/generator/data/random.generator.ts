@@ -9,7 +9,6 @@ function getType(param: any): "Map" | "Object" | "Array" | "error" {
 }
 
 const randomGenerator: GeneratorFunc<any, RandomGeneratorProps> = (_, data) => {
-  console.log("data.range: ", data.range);
   const range = DATA[data.range];
   const type = getType(range);
   const filteredItems = type === "Map"

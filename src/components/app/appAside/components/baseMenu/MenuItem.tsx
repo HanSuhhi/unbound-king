@@ -7,6 +7,7 @@ import { useMenuCollapse } from "../../composables/menuCollapse";
 import { useGlobalStore } from "@/stores/global.store";
 import Icon from "@/components/Icon.vue";
 import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
+import { releaseRoutes } from "@/composables/router/router";
 
 const MenuItem = defineComponent({
   name: "MenuItem",
@@ -28,7 +29,10 @@ const MenuItem = defineComponent({
     const { toggleCollapse } = useMenuCollapse(props);
 
     const active = computed(() => {
-      if (activePage.value?.key.length === 2 && props.page.children) {
+      if (!activePage.value) return;
+      if (releaseRoutes.includes(activePage.value.path)) return;
+
+      if (activePage.value.key.length === 2 && props.page.children) {
         const parentIndex = activePage.value.key[0];
         if (parentIndex === props.page.key[0]) return true;
       }

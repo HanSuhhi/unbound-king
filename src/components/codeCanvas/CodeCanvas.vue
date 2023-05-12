@@ -9,7 +9,6 @@ import Extend from "@/components/Extend.vue";
 import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-json";
-import "./code-canvas.css";
 
 interface Props { code: string; language?: "javascript" | "json" }
 
@@ -52,73 +51,89 @@ function copy() {
 </template>
 
 <style scoped>
-.code-canvas {
-  --position-height: 7%;
+@layer component {
+  .code-canvas {
+    --position-height: 7%;
 
-  position: relative;
-  bottom: var(--base-margin);
-  left: var(--base-margin);
-  box-sizing: border-box;
-  height: calc(100% + var(--base-margin));
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: var(--bg-color-bright-1);
-  border-left: var(--border);
-  transition: all var(--transition-prop);
-}
+    position: relative;
+    bottom: var(--base-margin);
+    left: var(--base-margin);
 
-.code-canvas_position {
-  position: absolute;
-  box-sizing: border-box;
-  width: 100%;
-  height: var(--position-height);
-  max-height: 3.5rem;
-  background-color: var(--bg-color-bright-2);
-}
+    overflow: hidden;
 
-.code-canvas_code {
-  position: absolute;
-  top: calc(var(--position-height));
-  left: 0;
-  width: 100%;
-  height: calc(100% - 2 * var(--position-height));
-  overflow: auto;
-}
+    box-sizing: border-box;
+    height: calc(100% + var(--base-margin));
+    margin: 0;
+    padding: 0;
 
-.code-canvas_footer {
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  border-top: var(--border);
-}
+    background-color: var(--bg-color-bright-1);
+    border-left: var(--border);
 
-.code-canvas_double {
-  justify-content: space-between;
-}
+    transition: all var(--transition-prop);
+  }
 
-.code-canvas_header {
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--normal);
-  text-transform: capitalize;
-  border-bottom: var(--border);
-}
+  .code-canvas_position {
+    position: absolute;
 
-.code-canvas_warning {
-  color: var(--error-color);
-}
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--position-height);
+    max-height: 3.5rem;
 
-.code-canvas_success {
-  color: var(--success-color);
-}
+    background-color: var(--bg-color-bright-2);
+  }
 
-.code-canvas_text {
-  margin-left: var(--base-margin);
+  .code-canvas_code {
+    position: absolute;
+    top: calc(var(--position-height));
+    left: 0;
+
+    overflow: auto;
+
+    width: 100%;
+    height: calc(100% - 2 * var(--position-height));
+  }
+
+  .code-canvas_footer {
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    border-top: var(--border);
+  }
+
+  .code-canvas_double {
+    justify-content: space-between;
+  }
+
+  .code-canvas_header {
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: var(--normal);
+
+    text-transform: capitalize;
+
+    border-bottom: var(--border);
+  }
+
+  .code-canvas_warning {
+    color: var(--error-color);
+  }
+
+  .code-canvas_success {
+    color: var(--success-color);
+  }
+
+  .code-canvas_text {
+    margin-left: var(--base-margin);
+  }
 }
 </style>

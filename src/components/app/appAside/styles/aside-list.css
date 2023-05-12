@@ -1,18 +1,21 @@
 .app-aside_list {
   position: relative;
-  top: calc(var(--header-block-height) * -1);
   z-index: 2;
+  top: calc(var(--header-block-height) * -1);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
   box-sizing: border-box;
   width: var(--modules-width);
   height: calc(100% + var(--header-block-height));
+
   background-image: radial-gradient(transparent 1px, var(--bg-color) 1px);
   background-size: 3px 3px;
-  border-right: var(--border);
   backdrop-filter: saturate(10%) blur(4px);
+  border-right: var(--border);
 }
 
 .app-aside_listitem {

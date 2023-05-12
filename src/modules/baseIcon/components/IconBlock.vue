@@ -23,12 +23,14 @@ const copy = throttle((name: string) => {
 </template>
 
 <style scoped>
-.icon-block_icon {
-  min-width: 2em;
-  min-height: 2em;
-}
+@layer component {
+  .icon-block_icon {
+    min-width: 2em;
+    min-height: 2em;
+  }
 
-.icon-block_title {
-  margin-top: var(--small);
+  .icon-block_title {
+    margin-top: var(--small);
+  }
 }
 </style>

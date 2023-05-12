@@ -14,17 +14,20 @@ defineProps<{
 </template>
 
 <style scoped>
-.tabs-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
+@layer component {
+  .tabs-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
 
-.tabs-body_main {
-  display: inline-flex;
-  flex: 1;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  margin-top: var(--base-margin);
+  .tabs-body_main {
+    display: inline-flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    margin-top: var(--base-margin);
+  }
 }
 </style>

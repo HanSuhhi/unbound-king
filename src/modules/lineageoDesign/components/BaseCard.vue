@@ -22,30 +22,32 @@ defineProps<{ data: Lineageo }>();
 </template>
 
 <style scoped>
-.base-card {
-  margin: var(--base-margin);
-  padding: var(--base-margin);
-  background-color: var(--bg-color-bright-2);
-  border-radius: var(--border-radius);
-}
+@layer component {
+  .base-card {
+    margin: var(--base-margin);
+    padding: var(--base-margin);
+    background-color: var(--bg-color-bright-2);
+    border-radius: var(--border-radius);
+  }
 
-.base-card_text {
-  width: 100%;
-}
+  .base-card_text {
+    width: 100%;
+  }
 
-.base-card_title {
-  display: flex;
-  justify-content: space-between;
-  font-size: var(--font-title-small);
-}
+  .base-card_title {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-title-small);
+  }
 
-.base-card_description {
-  color: var(--gray-bright-1);
-  line-height: 1.2;
-}
+  .base-card_description {
+    line-height: 1.2;
+    color: var(--gray-bright-1);
+  }
 
-.icon {
-  width: 1em;
-  height: 1em;
+  .icon {
+    width: 1em;
+    height: 1em;
+  }
 }
 </style>

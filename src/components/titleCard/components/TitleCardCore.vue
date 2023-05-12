@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "./title-card-core.css";
 import type { Ref } from "vue";
 import { useSlots } from "vue";
 
@@ -31,3 +30,55 @@ function stopMouseEvent() {
     <slot name="footer" />
   </section>
 </template>
+
+<style scoped>
+@layer component {
+  .title-card_header {
+    position: relative;
+
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: var(--small) var(--padding);
+
+    background-color: var(--bg-color-bright-2);
+    border-bottom: 1px solid var(--gray-deep-2);
+    border-top-left-radius: var(--border-radius-card);
+    border-top-right-radius: var(--border-radius-card);
+  }
+
+  .title-card_title {
+    display: flex;
+    font-size: var(--font-title-small);
+    white-space: nowrap;
+  }
+
+  .title-card_subtitle {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-body);
+    color: var(--gray);
+  }
+
+  .title-card_main {
+    position: relative;
+    left: var(--padding);
+
+    overflow: auto;
+    flex: 1;
+
+    width: calc(100% - 2 * var(--padding));
+    height: 100%;
+    min-height: var(--large);
+    padding: var(--padding) 0;
+  }
+
+  .title-card_footer {
+    padding: var(--base-margin);
+    background-color: var(--bg-color);
+    border-top: var(--border);
+  }
+}
+</style>

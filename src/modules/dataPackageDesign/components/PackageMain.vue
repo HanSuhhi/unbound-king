@@ -26,29 +26,33 @@ const value = inject<Ref<Record<string, []>>>("value");
 </template>
 
 <style scoped>
-.package-main {
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  margin-top: var(--base-margin);
-  margin-bottom: var(--base-margin);
-  overflow: auto;
-  border-top: var(--border);
-}
+@layer component {
+  .package-main {
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
 
-.package-main_part {
-  width: calc(50% - var(--base-margin) / 2);
-}
+    height: 100%;
+    margin-top: var(--base-margin);
+    margin-bottom: var(--base-margin);
 
-.package-main_part:nth-child(odd) {
-  margin-right: calc(var(--base-margin) / 2);
-}
+    border-top: var(--border);
+  }
 
-.package-main_part:nth-child(even) {
-  margin-left: calc(var(--base-margin) / 2);
-}
+  .package-main_part {
+    width: calc(50% - var(--base-margin) / 2);
+  }
 
-.package-main_title {
-  font-size: var(--font-title);
+  .package-main_part:nth-child(odd) {
+    margin-right: calc(var(--base-margin) / 2);
+  }
+
+  .package-main_part:nth-child(even) {
+    margin-left: calc(var(--base-margin) / 2);
+  }
+
+  .package-main_title {
+    font-size: var(--font-title);
+  }
 }
 </style>

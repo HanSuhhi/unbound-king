@@ -37,32 +37,34 @@ const data = computed(() => testData!.value[props.pluginKey!]) as any;
 </template>
 
 <style scoped>
-.plugin-test {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
+@layer component {
+  .plugin-test {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
 
-.plugin-test_main {
-  flex: 1;
-  overflow: auto;
-}
+  .plugin-test_main {
+    overflow: auto;
+    flex: 1;
+  }
 
-.plugin-test_data {
-  display: inline-block;
-  margin: var(--base-margin);
-}
+  .plugin-test_data {
+    display: inline-block;
+    margin: var(--base-margin);
+  }
 
-.plugin-test_title {
-  margin: var(--base-margin);
-  margin-bottom: 0;
-  font-size: var(--font-title);
-}
+  .plugin-test_title {
+    margin: var(--base-margin);
+    margin-bottom: 0;
+    font-size: var(--font-title);
+  }
 
-.plugin-test_bottom {
-  width: 100%;
-  padding: var(--base-margin);
-  border-top: var(--border);
+  .plugin-test_bottom {
+    width: 100%;
+    padding: var(--base-margin);
+    border-top: var(--border);
+  }
 }
 </style>

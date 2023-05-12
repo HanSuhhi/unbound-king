@@ -27,52 +27,50 @@ defineProps<{ formConfig: CreatorPlugin["data"] }>();
             }}</span>
           </n-tooltip>
         </div>
-        <auto-form class="forms-config_formbox" :config="config.generatorForm" :params="config.generatorParams" />
+        <auto-form class="forms-config_formbox mb-bm" :config="config.generatorForm" :params="config.generatorParams" />
       </section>
     </template>
   </article>
 </template>
 
 <style scoped>
-.forms-config_alert {
-  margin: var(--base-margin);
-}
+@layer component {
+  .forms-config_alert {
+    margin: var(--base-margin);
+  }
 
-.forms-config_form {
-  padding: 0 var(--base-margin);
-  padding-top: var(--base-margin);
-}
+  .forms-config_form {
+    padding: 0 var(--base-margin);
+    padding-top: var(--base-margin);
+  }
 
-.forms-config_form:not(:last-child) {
-  border-bottom: 4px dashed var(--border-color);
-}
+  .forms-config_form:not(:last-child) {
+    border-bottom: 4px dashed var(--border-color);
+  }
 
-.forms-config_form:hover {
-  background-color: var(--bg-color);
-}
+  .forms-config_form:hover {
+    background-color: var(--bg-color);
+  }
 
-.forms-config_header {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--base-margin);
-}
+  .forms-config_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--base-margin);
+  }
 
-.forms-config_title {
-  margin-right: var(--small);
-  font-size: var(--font-title-small);
-  white-space: nowrap;
-}
+  .forms-config_title {
+    margin-right: var(--small);
+    font-size: var(--font-title-small);
+    white-space: nowrap;
+  }
 
-.forms-config_icon {
-  color: var(--gray);
-  font-size: var(--font-title-small);
-}
+  .forms-config_icon {
+    font-size: var(--font-title-small);
+    color: var(--gray);
+  }
 
-.forms-config_formbox > :deep(.n-form-item:last-child) {
-  display: none;
-}
-
-.forms-config_formbox {
-  margin-bottom: var(--base-margin);
+  .forms-config_formbox > :deep(.n-form-item:last-child) {
+    display: none;
+  }
 }
 </style>

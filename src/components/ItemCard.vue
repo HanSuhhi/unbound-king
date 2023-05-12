@@ -19,7 +19,7 @@ function method() {
       <p class="item-card_title">
         <icon :name="icon" />
         <slot name="title" />
-        <number-mark>
+        <number-mark class="ml-mini">
           <slot name="number" />
         </number-mark>
       </p>
@@ -34,47 +34,49 @@ function method() {
 </template>
 
 <style scoped>
-.item-card {
-  display: inline-flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  min-width: 270px;
-  max-width: 290px;
-  min-height: 60px;
-  margin: var(--base-margin);
-  margin-top: 0;
-  padding: var(--small);
-  background-color: var(--bg-color-bright-2);
-  border: var(--border);
-  border-radius: var(--border-radius);
-}
+@layer component{
+  .item-card {
+    display: inline-flex;
+    flex-direction: column;
 
-.item-card[data-choosed] {
-  border: 1px solid var(--main-color-deep-2);
-}
+    box-sizing: border-box;
+    min-width: 270px;
+    max-width: 290px;
+    min-height: 60px;
+    margin: var(--base-margin);
+    margin-top: 0;
+    padding: var(--small);
 
-.item-card_title {
-  display: flex;
-  align-items: center;
-}
+    background-color: var(--bg-color-bright-2);
+    border: var(--border);
+    border-radius: var(--border-radius);
+  }
 
-.item-card_title > .icon {
-  zoom: 1.2;
-}
+  .item-card[data-choosed] {
+    border: 1px solid var(--main-color-deep-2);
+  }
 
-.item-card_header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 1.6rem;
-  white-space: nowrap;
-}
+  .item-card_title {
+    display: flex;
+    align-items: center;
+  }
 
-.item-card_footer {
-  width: 100%;
-  margin-top: var(--mini);
-  color: var(--gray-deep-1);
-  font-size: var(--font-body-small);
+  .item-card_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 1.6rem;
+
+    white-space: nowrap;
+  }
+
+  .item-card_footer {
+    width: 100%;
+    margin-top: var(--mini);
+    font-size: var(--font-body-small);
+    color: var(--gray-deep-1);
+  }
 }
 </style>

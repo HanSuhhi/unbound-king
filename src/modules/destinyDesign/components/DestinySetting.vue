@@ -64,18 +64,20 @@ const { COMP: Tabs, read } = defineCommonTabs("destiny-setting", false);
 </template>
 
 <style scoped>
-.destiny-setting {
-  position: relative;
-  flex-direction: row;
-  height: 15%;
-}
+@layer component {
+  .destiny-setting {
+    position: relative;
+    flex-direction: row;
+    height: 15%;
+  }
 
-.destiny-setting :deep(.destiny-setting_list) {
-  display: flex;
-  flex-wrap: wrap;
-}
+  .destiny-setting :deep(.destiny-setting_list) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-.destiny-setting :deep(.destiny-setting_item) {
-  width: 50%;
+  .destiny-setting :deep(.destiny-setting_item) {
+    width: 50%;
+  }
 }
 </style>

@@ -55,29 +55,33 @@ provide("modal", modalShow);
 </template>
 
 <style scoped>
-.value-box {
-  width: calc(100%);
-  height: calc(var(--main-height) - var(--base-margin));
-  margin-right: var(--base-margin);
-}
+@layer component {
+  .value-box {
+    width: calc(100%);
+    height: calc(var(--main-height) - var(--base-margin));
+    margin-right: var(--base-margin);
+  }
 
-.value-box_list {
-  position: relative;
-  box-sizing: border-box;
-  width: calc(100% / 3);
-  height: 100%;
-  overflow: hidden auto;
-}
+  .value-box_list {
+    position: relative;
 
-.value-box_alert {
-  box-sizing: border-box;
-  margin-right: var(--base-margin);
-}
+    overflow: hidden auto;
 
-.value-box_main {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: calc(100% - var(--large));
+    box-sizing: border-box;
+    width: calc(100% / 3);
+    height: 100%;
+  }
+
+  .value-box_alert {
+    box-sizing: border-box;
+    margin-right: var(--base-margin);
+  }
+
+  .value-box_main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(100% - var(--large));
+  }
 }
 </style>

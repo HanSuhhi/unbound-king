@@ -1,0 +1,99 @@
+:root {
+  /* white */
+  --white: hsl(0deg 0% 98%);
+  --white-deep-1: hsl(0deg 0% 94%);
+  --white-deep-2: hsl(0deg 0% 92%);
+
+  /* green */
+  --green: hsl(145deg 51% 47%);
+  --green-deep-1: hsl(145deg 58% 42%);
+  --green-deep-2: hsl(145deg 68% 35%);
+  --green-bright-1: hsl(145deg 51% 54%);
+  --green-bright-2: hsl(145deg 60% 62%);
+
+  /* red */
+  --red: hsl(3deg 85% 57%);
+  --red-deep-1: hsl(3deg 73% 51%);
+  --red-deep-2: hsl(3deg 82% 45%);
+  --red-bright-1: hsl(3deg 82% 61%);
+  --red-bright-2: hsl(3deg 85% 69%);
+
+  /* yellow */
+  --yellow: hsl(45deg 86% 58%);
+  --yellow-deep-1: hsl(45deg 73% 51%);
+  --yellow-deep-2: hsl(45deg 83% 45%);
+  --yellow-bright-1: hsl(45deg 80% 64%);
+  --yellow-bright-2: hsl(45deg 79% 74%);
+
+  /* purlple */
+  --purple: hsl(281deg 21% 57%);
+  --purple-deep-1: hsl(281deg 19% 49%);
+  --purple-deep-2: hsl(281deg 31% 36%);
+
+  /* brown */
+  --brown: hsl(40deg 28% 36%);
+  --brown-deep-1: hsl(40deg 36% 30%);
+  --brown-deep-2: hsl(40deg 45% 21%);
+
+  /* blue  */
+  --blue: hsl(196deg 98% 79%);
+  --blue-bright-1: hsl(189deg 87% 82%);
+  --blue-bright-2: hsl(196deg 76% 87%);
+  --blue-deep-1: hsl(199deg 78% 55%);
+  --blue-deep-2: hsl(195deg 52% 50%);
+
+  /* black */
+  --black: rgb(15 15 15);
+  --black-bright-1: rgb(31 31 31);
+  --black-bright-2: rgb(40 39 39);
+
+  /* gray */
+  --gray: hsl(220deg 1% 44%);
+  --gray-deep-1: hsl(220deg 1% 41%);
+  --gray-deep-2: hsl(240deg 1% 34%);
+  --gray-deep-3: rgb(125 125 125);
+  --gray-bright-1: hsl(225deg 3% 47%);
+  --gray-bright-2: hsl(240deg 2% 66%);
+
+  /* orange */
+  --orange: hsl(26deg 95% 59%);
+  --orange-deep-1: hsl(26deg 84% 55%);
+  --orange-deep-2: hsl(26deg 87% 44%);
+}
+/* stylelint-disable-next-line no-duplicate-selectors */
+:root {
+  /* warn */
+  --warning-color: var(--yellow);
+  --warning-color-deep-1: var(--yellow-deep-1);
+  --warning-color-deep-2: var(--yellow-deep-2);
+
+  /* error */
+  --error-color: var(--red);
+  --error-color-deep-1: var(--red-deep-1);
+  --error-color-deep-2: var(--red-deep-2);
+
+  /* success */
+  --success-color: var(--green);
+  --success-color-deep-1: var(--green-deep-1);
+  --success-color-deep-2: var(--green-deep-2);
+
+  /* info */
+  --info-color: var(--gray);
+  --info-color-deep-1: var(--gray-deep-1);
+  --info-color-deep-2: var(--gray-deep-2);
+}
+
+html.dark,
+:root {
+  --main-color: var(--yellow);
+  --main-color-bright-1: var(--yellow-bright-1);
+  --main-color-bright-2: var(--yellow-bright-2);
+  --main-color-deep-1: var(--yellow-deep-1);
+  --main-color-deep-2: var(--yellow-deep-2);
+  --main-color-deep-3: hsl(45deg 64% 39%);
+  --bg-color-deep-1: rgb(37 37 37);
+  --bg-color-deep-2: rgb(30 30 30);
+  --bg-color: rgb(44 44 44);
+  --bg-color-bright-1: rgb(52 52 52);
+  --bg-color-bright-2: rgb(60 60 60);
+}

@@ -1,63 +1,56 @@
 <script setup lang="ts">
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
 import { storeToRefs } from "pinia";
-import { nextTick } from "vue";
-import AppAside from "./components/app/appAside/appAside";
-import AppFooter from "./components/app/AppFooter.vue";
-import AppHeader from "./components/app/appHeader/AppHeader";
 import { defineAppLayout } from "./components/app/composables/appLayout";
 import GlobalDialog from "./components/dialog/GlobalDialog.vue";
-import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import { defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
-import { useGlobalStore } from "@/stores/global.store";
+import { provideTransitionDuration } from "./composables/constant/transitionDuration";
+import AppHeader from "./components/app/appHeader/AppHeader";
+import RouterHistory from "./components/routerHistory/RouterHistory.vue";
+import appAside from "./components/app/appAside/AppAside";
+import AppFooter from "./components/app/AppFooter.vue";
 import { dialogMessage } from "@/composables/components/globalDialog";
+import { useGlobalStore } from "@/stores/global.store";
 
-const { Layout } = defineAppLayout();
+const { Layout, renderLayout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
 const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 
-function setDefaultTransitionDuration() {
-  const element = document.querySelector("body");
-  element?.style.setProperty("--transition-duration", `${Number(import.meta.env.ANIMATION_DURATION) / 1000}s`);
-}
-nextTick(setDefaultTransitionDuration);
-
+provideTransitionDuration();
 useCorsor();
 </script>
 
 <template>
-  <n-config-provider
-    :locale="zhCN"
-    :date-locale="dateZhCN"
-    :theme="darkTheme"
-    :theme-overrides="darkThemeOverrides"
-  >
+  <n-config-provider preflight-style-disabled :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="darkThemeOverrides">
     <n-loading-bar-provider>
       <n-message-provider>
         <n-notification-provider>
-          <base-layout
-            ref="Layout"
-            class="app"
-          >
-            <div class="router-view-box">
+          <suspense @resolve="renderLayout">
+            <base-layout
+              ref="Layout"
+              class="page-transition app"
+            >
               <router-view v-slot="{ Component }">
                 <transition :name="pageTransition" mode="out-in">
                   <component :is="Component" class="page" />
                 </transition>
               </router-view>
-            </div>
-            <template #header>
-              <app-header />
-              <router-history />
+              <template #header>
+                <app-header />
+                <router-history />
+              </template>
+              <template #aside>
+                <appAside />
+              </template>
+              <template #footer>
+                <app-footer />
+              </template>
+            </base-layout>
+            <template #fallback>
+              loading...
             </template>
-            <template #aside>
-              <app-aside />
-            </template>
-            <template #footer>
-              <app-footer />
-            </template>
-          </base-layout>
+          </suspense>
           <global-dialog v-if="dialogMessage" />
         </n-notification-provider>
       </n-message-provider>
@@ -66,18 +59,42 @@ useCorsor();
 </template>
 
 <style>
-.router-view-box {
-  height: 100%;
-}
+@layer page {
+  .page {
+    --grid-template-areas: "header header" "main aside" "footer footer";
 
-.page {
-  box-sizing: border-box;
-  padding-top: var(--base-margin);
-  padding-right: var(--base-margin);
-  padding-left: var(--base-margin);
-}
+    box-sizing: border-box;
+    padding: var(--base-margin);
+    padding-bottom: 0;
+  }
 
-.router-view-dialog {
-  border-radius: var(--border-radius);
+  .app-main {
+    --root-base-margin: calc(var(--normal) * 0.8);
+    --base-margin: calc(var(--normal) * 0.8);
+
+    position: relative;
+    z-index: 1;
+    height: var(--main-height);
+  }
+
+  .app-footer {
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+
+    font-size: var(--font-body);
+
+    background-color: var(--bg-color-bright-2);
+    border-top: var(--border);
+  }
+
+  .csss-layout.slide-left-enter-active,
+  .csss-layout.slide-left-leave-active,
+  .csss-layout.slide-right-enter-active,
+  .csss-layout.slide-right-leave-active {
+    transition: all var(--transition-prop);
+    transition-property: transform, opacity;
+  }
 }
 </style>

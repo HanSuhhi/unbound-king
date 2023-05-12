@@ -33,10 +33,12 @@ const model = userAutoVModel(emits, props.modelValue);
 </template>
 
 <style scoped>
-.min-max {
-  display: flex;
+@layer component {
+  .min-max {
+    display: flex;
+  }
 
-  > div {
+  .min-max > div {
     margin: 0 var(--base-margin);
   }
 }

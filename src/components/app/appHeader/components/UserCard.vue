@@ -35,67 +35,73 @@ const { name, email } = toRefs(inject<Ref<User>>(UserSymbol)!.value);
 </template>
 
 <style scoped>
-.user-card {
-  --avator-size: 0.7;
-  --border-radius: 60% 40% 40% 20% / 70% 50% 30% 25%;
+@layer component {
+  .user-card {
+    --avator-size: 0.7;
+    --border-radius: 60% 40% 40% 20% / 70% 50% 30% 25%;
 
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--base-margin);
-  padding-bottom: var(--base-margin);
-}
+    position: relative;
 
-.user-card::after {
-  position: absolute;
-  bottom: 0;
-  left: calc(-1 * var(--base-margin));
-  width: calc(100% + 2 * var(--base-margin));
-  height: var(--border-height);
-  background-color: var(--border-color);
-  content: "";
-}
+    display: flex;
+    align-items: center;
 
-.user-card_title {
-  flex: 1;
-  margin-left: var(--base-margin);
-}
+    margin-bottom: var(--base-margin);
+    padding-bottom: var(--base-margin);
+  }
 
-.user-card_name {
-  display: flex;
-  align-items: center;
-  color: var(--white);
-  font-size: var(--font-title-small);
-}
+  .user-card::after {
+    content: "";
 
-.user-card_input {
-  color: var(--white);
-}
+    position: absolute;
+    bottom: 0;
+    left: calc(-1 * var(--base-margin));
 
-.user-card_email {
-  /* stylelint-disable-next-line value-no-vendor-prefix */
-  width: -webkit-fill-available;
-  color: var(--gray-bright-1);
-}
+    width: calc(100% + 2 * var(--base-margin));
+    height: var(--border-height);
 
-.user-card_update {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: var(--base-margin);
-  color: var(--gray-bright-1);
-  transition: all var(--transition-prop);
-}
+    background-color: var(--border-color);
+  }
 
-.user-card_update:hover {
-  transform: rotate(90deg);
-}
+  .user-card_title {
+    flex: 1;
+    margin-left: var(--base-margin);
+  }
 
-.user-card_update:active {
-  transform: rotate(180deg);
-}
+  .user-card_name {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-title-small);
+    color: var(--white);
+  }
 
-.user-card_update:hover {
-  color: var(--white);
+  .user-card_input {
+    color: var(--white);
+  }
+
+  .user-card_email {
+    width: -webkit-fill-available;
+    color: var(--gray-bright-1);
+  }
+
+  .user-card_update {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: var(--base-margin);
+
+    color: var(--gray-bright-1);
+
+    transition: all var(--transition-prop);
+  }
+
+  .user-card_update:hover {
+    transform: rotate(90deg);
+    color: var(--white);
+  }
+
+  .user-card_update:active {
+    transform: rotate(180deg);
+  }
 }
 </style>

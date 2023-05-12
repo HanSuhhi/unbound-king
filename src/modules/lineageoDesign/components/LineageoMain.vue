@@ -16,8 +16,10 @@ defineCommonDialog();
 </template>
 
 <style scoped>
-.lineageo-main {
-  display: flex;
-  height: 100%;
+@layer component {
+  .lineageo-main {
+    display: flex;
+    height: 100%;
+  }
 }
 </style>

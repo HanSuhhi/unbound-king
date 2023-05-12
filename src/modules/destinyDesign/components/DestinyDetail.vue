@@ -37,54 +37,50 @@ const textareaTheme = useTextareaTheme();
 </template>
 
 <style scoped>
-.destiny-detail {
-  --aside-width: 35%;
-  --header-height: 65%;
+@layer component {
+  .destiny-detail {
+    --aside-width: 35%;
+    --header-height: 65%;
 
-  position: relative;
-  top: var(--base-margin);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: calc(100% - var(--base-margin));
-}
+    position: relative;
+    top: var(--base-margin);
 
-/* :deep(.n-form-item-feedback-wrapper) {
-  display: none;
-} */
+    display: flex;
+    flex-direction: column;
 
-.destiny-detail_part {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  margin-bottom: var(--base-margin);
-  overflow: auto;
-}
-
-.destiny-detail_part > .title-card {
-  box-sizing: border-box;
-  height: calc(100% - 2px);
-
-  &:first-child {
     width: 100%;
-    margin-right: calc(var(--base-margin) / 2);
+    height: calc(100% - var(--base-margin));
   }
 
-  &:last-child {
-    width: 35%;
-    margin-left: calc(var(--base-margin) / 2);
+  .destiny-detail_part {
+    overflow: auto;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+
+    margin-bottom: var(--base-margin);
   }
-}
 
-.destiny-detail_origin {
-  height: 100%;
-}
+  .destiny-detail_part > .title-card {
+    box-sizing: border-box;
+    height: calc(100% - 2px);
 
-.destiny-detail_origin textarea {
-  white-space: pre-line;
-}
+    &:first-child {
+      width: 100%;
+      margin-right: calc(var(--base-margin) / 2);
+    }
 
-.destiny-detail_form > * {
-  margin-bottom: var(--base-margin);
-}
+    &:last-child {
+      width: 35%;
+      margin-left: calc(var(--base-margin) / 2);
+    }
+  }
+
+  .destiny-detail_origin {
+    height: 100%;
+  }
+
+  .destiny-detail_origin textarea {
+    white-space: pre-line;
+  }}
 </style>

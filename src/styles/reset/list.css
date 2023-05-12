@@ -1,0 +1,9 @@
+.ol-reset,
+.ul-reset {
+  min-height: 100%;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+
+  list-style: none;
+}

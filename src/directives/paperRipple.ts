@@ -1,47 +1,49 @@
-import type { Directive } from "vue";
-import { random } from "lodash-es";
+import type { CSSProperties, Directive } from "vue";
+import { delay, random } from "lodash-es";
 import { animationDuration } from "@/composables/constant/env";
 
-function createWaveNode() {
+function createWaveElement() {
   const child = document.createElement("div");
   child.className = "wave";
   return child;
 }
 
-function parseGapFromElement(el: HTMLElement) {
-  el.style.overflow = "hidden";
-  const rect = el.getBoundingClientRect();
-  const x = rect.left;
-  const y = rect.top;
-  return { x, y };
+function initParentElement(parentElement: HTMLElement) {
+  return (waveElement: HTMLElement) => {
+    const { left: elLeft, top: elTop } = parentElement.getBoundingClientRect();
+
+    parentElement.style.overflow = "hidden";
+    parentElement.appendChild(waveElement);
+    return { elLeft, elTop };
+  };
+}
+
+function onMouseDown({ x: left, y: top }: MouseEvent) {
+  const parentElement = <HTMLElement>window.event!.currentTarget;
+  const waveElement = createWaveElement();
+  const { elLeft, elTop } = initParentElement(parentElement)(waveElement);
+
+  (<Array<[key: keyof CSSProperties, value: string | number]>>[
+    ["--left", left],
+    ["--top", top],
+    ["--el-top", elTop],
+    ["--el-left", elLeft],
+    ["--border-radius", `${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% `],
+    ["--width", parentElement.clientWidth],
+    ["--height", parentElement.clientHeight]
+  ]).forEach(([key, value]) => waveElement.style.setProperty(key, value as string));
+
+  waveElement.classList.add("paper-ripple");
+
+  document.onmouseup = () => {
+    waveElement.classList.add("paper-ripple_end");
+    delay(waveElement.remove.bind(waveElement), animationDuration);
+  };
 }
 
 export function usePaperRipple() {
   const paperRipple: Directive<HTMLElement, boolean> = {
-    mounted: (el: HTMLElement) => {
-      el.onmousedown = ({ x, y }) => {
-        const { x: elX, y: elY } = parseGapFromElement(el);
-        const child = createWaveNode();
-        el.appendChild(child);
-
-        // set wave node style
-        child.style.left = `${x - elX - 5}px`;
-        child.style.top = `${y - elY - 5}px`;
-        child.style.borderRadius = `${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% `;
-        child.style.width = `${el.clientWidth * 2.1}px`;
-        child.style.marginLeft = `${-el.clientWidth * 1.05}px`;
-        child.style.height = `${el.clientHeight * 3}px`;
-        child.style.marginTop = `${-el.clientHeight * 1.5}px`;
-
-        document.onmouseup = () => {
-          child.style.transitionDuration = `${animationDuration}ms`;
-          child.style.opacity = "0";
-          setTimeout(() => {
-            child.remove();
-          }, animationDuration);
-        };
-      };
-    }
+    mounted: (el: HTMLElement) => el.addEventListener("mousedown", onMouseDown)
   };
 
   return { paperRipple };

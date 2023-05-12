@@ -1,10 +1,10 @@
-import "./destiny-design.css";
 import { computed, defineComponent, ref } from "vue";
 import DestinyMain from "./components/DestinyMain.vue";
 import data from "./data/destiny.data";
 import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
 import { applyDataToModule } from "@/composables/experience/codeChanged";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
+import "./destiny-design.css";
 
 export default defineComponent({
   name: "DestinyDesign",

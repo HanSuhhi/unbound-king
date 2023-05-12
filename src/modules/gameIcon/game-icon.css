@@ -1,7 +1,5 @@
-.game-icon_main {
-  margin-right: var(--base-margin);
-}
-
-.game-icon_aside > .code-canvas {
-  border-top: 0;
+@layer page {
+  .game-icon_aside > .code-canvas {
+    border-top: 0;
+  }
 }

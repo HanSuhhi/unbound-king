@@ -1,14 +1,14 @@
 import "./tabs.css";
 
-import { defineComponent, reactive, readonly, Transition } from "vue";
+import { Transition, defineComponent, reactive, readonly } from "vue";
 import { useCssCustomProperty } from "../composables/cssCustomProperty";
 import { useElement } from "../composables/element";
+import { getVnodeIndex, slotFilter } from "../tool/vnode.tool";
+import { useHtmlPropLint } from "../../../composables/util/htmlPropLint";
 import { useTabs } from "./composables/tabs";
 import { useTabsList } from "./composables/tabsList";
 import { useTabsPanel } from "./composables/tabsPanel";
 import { useNeedToggleTransition } from "./composables/transition";
-import { getVnodeIndex, slotFilter } from "../tool/vnode.tool";
-import { useHtmlPropLint } from "../../../composables/util/htmlPropLint";
 
 export default defineComponent({
   name: "CTabs",
@@ -26,11 +26,11 @@ export default defineComponent({
         total: readonly(total),
         panels: readonly(panels),
         tabs: element,
-        tabsList: TabsList,
+        tabsList: TabsList
       },
       state: {
         active,
-        autoTrigger,
+        autoTrigger
       },
       style: {
         panelTransition: transitionName,
@@ -39,10 +39,10 @@ export default defineComponent({
           list: listClassList,
           listItem: listItemClassList,
           panel: panelClassList,
-          panelItem: panelItemClassList,
+          panelItem: panelItemClassList
         },
-        property,
-      },
+        property
+      }
     });
 
     expose(exposeVals);
@@ -52,12 +52,12 @@ export default defineComponent({
         <article ref={element} class={tabsClassList.value}>
           {slots.default?.()}
           <section class={listClassList.value} ref={TabsList}>
-            {slots.list &&
-              slotFilter(
+            {slots.list
+              && slotFilter(
                 slots.list?.({
                   listTotal: readonly(total),
-                  active: readonly(active),
-                }),
+                  active: readonly(active)
+                })
               ).map((el, index, arr) => {
                 const indexBase = getVnodeIndex(index, arr);
                 return el.map((e, i) => (
@@ -78,12 +78,12 @@ export default defineComponent({
           <section class={panelClassList.value}>
             {panels.value.map((panel, index) => {
               return (
-                slots[panel] &&
-                active.value === index && (
+                slots[panel]
+                && active.value === index && (
                   <Transition name={transitionName.value} mode="out-in">
                     <section key={index} class={panelItemClassList.value}>
                       {slots[panel]?.({
-                        active: readonly(active),
+                        active: readonly(active)
                       })}
                     </section>
                   </Transition>
@@ -94,5 +94,5 @@ export default defineComponent({
         </article>
       );
     };
-  },
+  }
 });

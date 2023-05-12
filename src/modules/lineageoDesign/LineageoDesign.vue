@@ -13,18 +13,20 @@ const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: tru
 </template>
 
 <style scoped>
-.lineageo-design {
-  height: 100%;
-}
+@page {
+  .lineageo-design {
+    height: 100%;
+  }
 
-:deep(.lineageo-design_panels),
-:deep(.lineageo-design_panel) {
-  height: 100%;
-}
+  :deep(.lineageo-design_panels),
+  :deep(.lineageo-design_panel) {
+    height: 100%;
+  }
 
-:deep(.lineageo-design_panel) {
-  position: relative;
-  top: var(--base-margin);
-  height: calc(100% - 2 *  var(--base-margin));
+  :deep(.lineageo-design_panel) {
+    position: relative;
+    top: var(--base-margin);
+    height: calc(100% - 2 *  var(--base-margin));
+  }
 }
 </style>

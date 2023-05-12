@@ -25,7 +25,7 @@ interface ImportMetaEnv {
 type KeyEvent = {
   key: string;
   translator: Translator;
-  fn: (isPressed) => void;
+  fn: (isPressed) => void | Promise<void>;
 }
 
 type Translator = [key: string, title: string];

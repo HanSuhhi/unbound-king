@@ -1,10 +1,10 @@
 import { defineComponent, ref } from "vue";
-import "./app-header.css";
 import RouterHistory from "./components/SystemInfo";
 import BasePreference from "./components/BasePreference.vue";
 import { defineRouterChange } from "@/composables/experience/loadingbar";
+import "./app-header.css";
 
-export const routes = ref<[router: string, icon: BaseIconName][]>([]);
+export const routes = ref <[path: string, router: string, icon: BaseIconName][]>([]);
 
 export default defineComponent({
   name: "AppHeader",

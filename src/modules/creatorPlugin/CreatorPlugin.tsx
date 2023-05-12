@@ -1,6 +1,6 @@
-import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineComponent } from "vue";
 import Dashboard from "./components/Dashboard.vue";
+import { defineCommonLayout } from "@/composables/components/commonLayout";
 import "./data/index";
 
 export default defineComponent({
@@ -12,10 +12,10 @@ export default defineComponent({
         <base-layout ref={COMP}>
           {{
             aside: () => <div />,
-            default: () => <Dashboard />,
+            default: () => <Dashboard />
           }}
         </base-layout>
       );
     };
-  },
+  }
 });

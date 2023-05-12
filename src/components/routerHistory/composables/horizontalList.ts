@@ -5,7 +5,7 @@ export function onBeforeEnter(el: any) {
   el.style.transform = "translateX(calc(-1 * var(--large)))";
 }
 
-export function onEnter(el: any, done: any) {
+export function onEnter(el: HTMLElement, done: any) {
   gsap.to(el, {
     opacity: 1,
     x: 0,
@@ -15,7 +15,7 @@ export function onEnter(el: any, done: any) {
   });
 }
 
-export function onLeave(el: any, done: any) {
+export function onLeave(el: HTMLElement, done: any) {
   gsap.to(el, {
     opacity: (_, el) => {
       el.children[1].style.opacity = 0;
@@ -24,7 +24,7 @@ export function onLeave(el: any, done: any) {
     },
     width: 0,
     padding: 0,
-    x: 'var(--large)',
+    x: "var(--large)",
     onComplete: done,
   });
 }

@@ -6,7 +6,9 @@ import type { Ref } from "vue";
 import { inject, onMounted, onUpdated, ref } from "vue";
 
 const CodeRef = ref<HTMLElement>();
-const highlight = () => Prism.highlightAllUnder(CodeRef.value!);
+function highlight() {
+  return Prism.highlightAllUnder(CodeRef.value!);
+}
 onMounted(highlight);
 onUpdated(highlight);
 
@@ -15,6 +17,6 @@ const testData = inject<Ref>("test-data")!;
 
 <template>
   <pre ref="CodeRef" class="creator-preview">
-    <code :class="`creator-preview language-json`">{{ testData }}</code>
+    <code class="creator-preview language-json">{{ testData }}</code>
   </pre>
 </template>

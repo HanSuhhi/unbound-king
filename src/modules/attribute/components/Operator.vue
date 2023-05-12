@@ -36,10 +36,12 @@ const [confirm] = useConfirm();
 </template>
 
 <style scoped>
-.operator {
-  padding: var(--base-margin);
-  background-color: var(--bg-color-bright-2);
-  border: var(--border);
-  border-radius: var(--border-radius);
+@layer component {
+  .operator {
+    padding: var(--base-margin);
+    background-color: var(--bg-color-bright-2);
+    border: var(--border);
+    border-radius: var(--border-radius);
+  }
 }
 </style>

@@ -12,7 +12,7 @@ import { useMain } from "./composables/main";
 
 export default defineComponent({
   name: "CLayout",
-  setup: (props, { slots, expose }) => {
+  setup: (_, { slots, expose }) => {
     const { element, styleSetter } = useElement("csss-layout");
     const { property } = useCssCustomProperty<Partial<CLayoutCssCustomProperties>>(styleSetter);
     const { layoutType, classList: layoutClassList, reverse, size } = useLayout(styleSetter, element, slots);

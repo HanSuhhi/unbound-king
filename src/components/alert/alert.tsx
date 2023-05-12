@@ -1,6 +1,6 @@
-import Icon from "@/components/Icon.vue";
 import type { PropType } from "vue";
 import { defineComponent } from "vue";
+import Icon from "@/components/Icon.vue";
 import "./alert.css";
 
 export default defineComponent({
@@ -9,8 +9,8 @@ export default defineComponent({
     type: {
       type: String as PropType<AlertType>,
       default: "warning",
-      required: false,
-    },
+      required: false
+    }
   },
   setup: (props, { slots }) => {
     return () => {
@@ -21,5 +21,5 @@ export default defineComponent({
         </div>
       );
     };
-  },
+  }
 });

@@ -34,45 +34,50 @@ defineProps<{ attribute: Attribute }>();
 </template>
 
 <style scoped>
-.attribute-block {
-  position: relative;
-  top: var(--base-margin);
-  display: inline-flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  min-width: calc((100% - 4 * var(--base-margin)) / 5);
-  max-width: calc((100% - 4 * var(--base-margin)) / 5);
-  height: calc(100% - 2 * var(--base-margin));
-  border-radius: var(--border-radius);
-  outline: var(--border);
-}
+@layer component {
+  .attribute-block {
+    position: relative;
+    top: var(--base-margin);
 
-.attribute-block:not(:last-child) {
-  margin-right: var(--base-margin);
-}
+    display: inline-flex;
+    flex-direction: column;
 
-.attribute-block_title {
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-}
+    box-sizing: border-box;
+    min-width: calc((100% - 4 * var(--base-margin)) / 5);
+    max-width: calc((100% - 4 * var(--base-margin)) / 5);
+    height: calc(100% - 2 * var(--base-margin));
 
-.attribute-block_explanation {
-  width: 30vw;
-}
+    border-radius: var(--border-radius);
+    outline: var(--border);
+  }
 
-.attribute-block_icon {
-  margin-right: var(--small);
-}
+  .attribute-block:not(:last-child) {
+    margin-right: var(--base-margin);
+  }
 
-.attribute-block_main {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+  .attribute-block_title {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
 
-.attribute-block_description {
-  height: 70px;
-  overflow: auto;
+  .attribute-block_explanation {
+    width: 30vw;
+  }
+
+  .attribute-block_icon {
+    margin-right: var(--small);
+  }
+
+  .attribute-block_main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .attribute-block_description {
+    overflow: auto;
+    height: 70px;
+  }
 }
 </style>

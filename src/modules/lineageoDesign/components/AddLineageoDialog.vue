@@ -1,6 +1,5 @@
 <script setup lang='ts'>
-import type { ComputedRef } from "vue";
-import { computed, inject } from "vue";
+import { computed } from "vue";
 import typeString from "../lineageo-type.d.ts?raw";
 import { useConfirm } from "../composables/confirm";
 import { colorFormConfig, descriptionFormConfig, fromFormConfig } from "../../../composables/form/formConfigs";
@@ -8,8 +7,6 @@ import { destinyFormConfig, iconFormConfig, idFormConfig, translatorFormConfig }
 import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
 import CommonFormDialog from "@/components/CommonFormDialog.vue";
-
-const item = inject<ComputedRef<TabListItem<Lineageo>>>("active-item");
 
 const formConfig = computed(() =>
   withFormDetail<Lineageo>(transformTypeToForm(typeString), {

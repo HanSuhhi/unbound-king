@@ -25,29 +25,31 @@ const { COMP, read, state } = defineTabs();
 </template>
 
 <style scoped>
-.destiny-main {
-  display: flex;
-  flex-direction: column;
-  height: calc(var(--main-height) - var(--base-margin));
-  overflow: hidden;
-}
+@layer component {
+  .destiny-main {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: calc(var(--main-height) - var(--base-margin));
+  }
 
-.destiny-main_tabs {
-  --clip-size: var(--base-margin);
+  .destiny-main_tabs {
+    --clip-size: var(--base-margin);
 
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  overflow: auto;
-}
+    overflow: auto;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
 
-.destiny-main_tab {
-  padding: var(--small)  calc(var(--large) * 0.7);
-  border: var(--border);
-  border-bottom: 0;
-  border-left: 0;
+  .destiny-main_tab {
+    padding: var(--small)  calc(var(--large) * 0.7);
+    border: var(--border);
+    border-bottom: 0;
+    border-left: 0;
+  }
 
-  &:first-child {
+  .destiny-main_tab:first-child {
     border-left: var(--border);
   }
 }

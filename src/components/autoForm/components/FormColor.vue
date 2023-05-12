@@ -18,8 +18,10 @@ const model = userAutoVModel(emits, props.modelValue);
 </template>
 
 <style scoped>
-.form-color {
-  display: flex;
-  width: 100%;
+@layer component {
+  .form-color {
+    display: flex;
+    width: 100%;
+  }
 }
 </style>

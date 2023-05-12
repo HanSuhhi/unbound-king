@@ -1,8 +1,8 @@
-@import "./inline.css";
-@import "./vertical-list.css";
-@import "./horizontal-list.css";
-@import "./slide-left.css";
-@import "./slide-right.css";
-@import "./slide-up.css";
-@import "./slide-down.css";
-@import "fade.css";
+@import url("./inline.css");
+@import url("./vertical-list.css");
+@import url("./horizontal-list.css");
+@import url("./slide-left.css");
+@import url("./slide-right.css");
+@import url("./slide-up.css");
+@import url("./slide-down.css");
+@import url("fade.css");

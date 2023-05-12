@@ -14,7 +14,7 @@ function calcModuleBorderRadius(active: number, total: number): string {
   return "var(--normal)";
 }
 
-export function defineModuleBlock(tabs: ReturnType<typeof useCsssTabs>) {
+export async function defineModuleBlock(tabs: ReturnType<typeof useCsssTabs>) {
   const { activeModules } = storeToRefs(useAppAsideStore());
   const { activeAsideModule } = storeToRefs(useGlobalStore());
 
@@ -29,5 +29,5 @@ export function defineModuleBlock(tabs: ReturnType<typeof useCsssTabs>) {
     listElement.style.setProperty("--clip-border-radius", calcModuleBorderRadius(activeModuleIndex.value, total));
   };
 
-  nextTick(watchEffect.bind(this, updateModuleBlock));
+  await nextTick(watchEffect.bind(null, updateModuleBlock));
 }

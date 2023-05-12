@@ -1,22 +1,27 @@
-@import "./styles/system-info.css";
+@import url("./styles/system-info.css") layer(component);
 
-.app-header {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  background-color: var(--bg-color-bright-1);
-  border-bottom: var(--border);
-}
+@layer page {
+  .app-header {
+    position: relative;
 
-.app-header_box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: var(--header-block-height);
+    display: flex;
+    flex-direction: column;
 
-  /* background-color: var(--main-color-deep-3); */
-  background-color: var(--bg-color);
-  border-bottom: var(--border);
-  box-shadow: rgb(0 0 0 / 45%) 0 25px 20px -20px;
+    width: 100vw;
+
+    background-color: var(--bg-color-bright-1);
+    border-bottom: var(--border);
+  }
+
+  .app-header_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: var(--header-block-height);
+
+    background-color: var(--bg-color);
+    border-bottom: var(--border);
+    box-shadow: rgb(0 0 0 / 45%) 0 25px 20px -20px;
+  }
 }

@@ -1,14 +1,14 @@
-import type { Ref } from 'vue';
-import { ref, computed } from 'vue';
+import type { Ref } from "vue";
+import { computed, ref } from "vue";
 
-type BuffValue = [value: number, desc: string]
+type BuffValue = [value: number, desc: string];
 type BuffValues = Record<string, BuffValue>;
 
 function calcBuffValuesTotal(buffValues: Ref<BuffValues>) {
   return Object.values(buffValues.value).reduce((acc, [value]) => acc + value, 0);
 }
 
-export const useNumberModelValue = (baseValue: number) => {
+export function useNumberModelValue(baseValue: number) {
   const buffValue = ref<BuffValues>({});
   const percentValue = ref<BuffValues>({});
   const finalBuffValue = ref<BuffValues>({});
@@ -34,5 +34,4 @@ export const useNumberModelValue = (baseValue: number) => {
   });
 
   return { value, setBuffValue, setPercentValue, setFinalBuffValue, buffValue };
-};
-
+}

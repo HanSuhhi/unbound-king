@@ -1,3 +1,43 @@
+/* stylelint-disable color-named */
+/* stylelint-disable declaration-block-single-line-max-declarations */
 /* PrismJS 1.29.0
 https://prismjs.com/download.html#themes=prism-tomorrow */
-code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+code[class*="language-"],pre[class*="language-"]{font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;line-height:1.5;hyphens:none;color:hsl(0deg 0% 80%);text-align:left;word-break:normal;
+  word-spacing:normal;word-wrap:normal;tab-size:4;white-space:pre;
+
+  background:0 0}
+
+pre[class*="language-"]{overflow:auto;margin:.5em 0;padding:1em}
+
+:not(pre) > code[class*="language-"],pre[class*="language-"]{background:hsl(0deg 0% 18%)}
+
+:not(pre) > code[class*="language-"]{padding:.1em;
+  white-space:normal;
+  border-radius:.3em}
+
+.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:hsl(0deg 0% 60%)}
+
+.token.punctuation{color:hsl(0deg 0% 80%)}
+
+.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:hsl(358deg 65% 68%)}
+
+.token.function-name{color:hsl(210deg 51% 59%)}
+
+.token.boolean,.token.function,.token.number{color:hsl(24deg 85% 61%)}
+
+.token.class-name,.token.constant,.token.property,.token.symbol{color:hsl(41deg 92% 65%)}
+
+.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:hsl(299deg 34% 70%)}
+
+.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:hsl(143deg 39% 64%)}
+
+.token.entity,.token.operator,.token.url{color:hsl(179deg 50% 60%)}
+
+.token.bold,.token.important{font-weight:700}
+
+.token.italic{font-style:italic}
+
+.token.entity{cursor:help}
+
+.token.inserted{color:green}

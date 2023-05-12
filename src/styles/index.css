@@ -1,8 +1,19 @@
-@import "./reset.css";
-@import "./config";
-@import "./components/";
-@import "./prism.css";
-@import "./transition/";
-@import "./icon/";
-@import "./directives/";
-@import "./cursor.css";
+@layer base, utilities, config, page, component;
+
+@import url("./base/") layer(base);
+@import url("./transition/") layer(base);
+@import url("./icon/") layer(utilities);
+@import url("./reset/") layer(utilities);
+@import url("./cursor/") layer(utilities);
+@import url("./common/") layer(utilities);
+@import url("./directives/") layer(utilities);
+@import url("./utilities/") layer(utilities);
+@import url("./prism.css") layer(utilities);
+@import url("./config.css") layer(config);
+
+/* some lib don't support @layer yet */
+/* so need to override their styles here */
+.n-input.n-input--pair .n-input__input-el,
+.n-input.n-input--pair .n-input__placeholder {
+  text-align: left;
+}

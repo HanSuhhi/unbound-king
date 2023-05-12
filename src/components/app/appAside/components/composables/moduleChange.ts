@@ -22,7 +22,6 @@ export function useModules(props: any) {
 
   async function routeOut() {
     if (props.read) return;
-    console.log("props: ", props);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     await routeToPage(props.module);
     toggleModule();

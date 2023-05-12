@@ -33,12 +33,14 @@ function choosed(key: CreatorKey) {
 </template>
 
 <style scoped>
-.item-cards {
-  display: flex;
-  overflow: auto;
-}
+@layer component {
+  .item-cards {
+    overflow: auto;
+    display: flex;
+  }
 
-.choosed {
-  border: 1px solid var(--main-color);
+  .choosed {
+    border: 1px solid var(--main-color);
+  }
 }
 </style>

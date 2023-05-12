@@ -5,7 +5,6 @@ import CreatorMain from "./components/CreatorMain";
 import { useActiveCreator } from "./composables/activeCreator";
 import { useCode } from "./composables/code";
 import CodeCanvas from "@/components/codeCanvas/CodeCanvas.vue";
-import "./creator.css";
 
 const { COMP } = defineCommonLayout("creator");
 
@@ -26,3 +25,7 @@ useActiveCreator(code);
     </base-layout>
   </base-layout>
 </template>
+
+<style>
+@import url("./creator.css");
+</style>

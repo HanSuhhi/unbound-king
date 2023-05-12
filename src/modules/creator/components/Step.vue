@@ -41,81 +41,88 @@ function deletePlugin() {
 </template>
 
 <style scoped>
-.step {
-  --icon-width: 26%;
-  --line-height: var(--large);
+@layer component {
+  .step {
+    --icon-width: 26%;
+    --line-height: var(--large);
 
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  min-width: 280px;
-  padding: var(--base-margin) 0;
-  border-radius: var(--border-radius);
-}
+    display: flex;
+    justify-content: space-around;
 
-.step-message_delete {
-  margin-left: var(--base-margin);
-  color: var(--red-bright-1);
-  font-size: var(--font-body);
-  text-decoration: underline;
-}
+    width: 100%;
+    min-width: 280px;
+    padding: var(--base-margin) 0;
 
-.step-message_delete:hover {
-  color: var(--red-deep-1);
-}
+    border-radius: var(--border-radius);
+  }
 
-.step[data-active] .step-left_icon {
-  border-color: var(--main-color);
-}
+  .step-message_delete {
+    margin-left: var(--base-margin);
+    font-size: var(--font-body);
+    color: var(--red-bright-1);
+    text-decoration: underline;
+  }
 
-.step[data-active] .step-message_title {
-  color: var(--main-color);
-}
+  .step-message_delete:hover {
+    color: var(--red-deep-1);
+  }
 
-.step:hover .step-message_description,
-.step[data-active] .step-message_description {
-  color: var(--white);
-}
+  .step-left_icon {
+    --size: calc(1.2 * var(--large));
 
-.step-left_icon {
-  --size: calc(1.2 * var(--large));
+    z-index: 1;
 
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--size);
-  height: var(--size);
-  border: var(--border);
-  border-radius: 50%;
-  filter: brightness(1.5);
-  aspect-ratio: 1 / 1;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-.step-left {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: var(--icon-width);
-}
+    aspect-ratio: 1 / 1;
+    width: var(--size);
+    height: var(--size);
 
-.step-left_icon > .icon {
-  zoom: 1.8;
-}
+    filter: brightness(1.5);
+    border: var(--border);
+    border-radius: 50%;
+  }
 
-.step-message_title {
-  display: flex;
-  align-items: flex-end;
-  font-size: var(--font-title-small);
-}
+  .step-message_title {
+    display: flex;
+    align-items: flex-end;
+    font-size: var(--font-title-small);
+  }
 
-.step-message_description {
-  margin-top: var(--mini);
-  color: var(--gray);
-  font-size: var(--font-body-small);
-}
+  .step-message_description {
+    margin-top: var(--mini);
+    font-size: var(--font-body-small);
+    color: var(--gray);
+  }
 
-.step-message {
-  width: calc(100% - var(--icon-width));
+  .step[data-active] .step-left_icon {
+    border-color: var(--main-color);
+  }
+
+  .step[data-active] .step-message_title {
+    color: var(--main-color);
+  }
+
+  .step:hover .step-message_description,
+  .step[data-active] .step-message_description {
+    color: var(--white);
+  }
+
+  .step-left {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: var(--icon-width);
+  }
+
+  .step-left_icon > .icon {
+    zoom: 1.8;
+  }
+
+  .step-message {
+    width: calc(100% - var(--icon-width));
+  }
 }
 </style>

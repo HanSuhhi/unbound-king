@@ -6,5 +6,5 @@ export default defineComponent({
     return () => {
       return <article>11231232</article>;
     };
-  },
+  }
 });

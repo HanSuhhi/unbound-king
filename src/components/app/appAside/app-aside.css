@@ -1,31 +1,40 @@
-@import "./styles/aside-list.css";
-@import "./styles/aside-module.css";
-@import "./styles/aside-panel.css";
+@import url("./styles/aside-list.css") layer(component);
+@import url("./styles/aside-module.css") layer(component);
+@import url("./styles/aside-panel.css") layer(component);
 
-.app-aside {
-  position: relative;
-  width: var(--aside-width);
-  height: calc(var(--main-height) + var(--footer-height));
-  background-color: var(--bg-color-bright-1);
-  border-right: var(--border);
-}
+@layer page {
+  .app-aside {
+    position: relative;
 
-.app-aside_box {
-  --ani-time: 0.3s;
+    width: var(--aside-width);
+    height: calc(var(--main-height) + var(--footer-height));
 
-  position: relative;
-  z-index: 2;
-  flex-direction: row !important;
-  height: 100%;
-  max-height: calc(var(--main-height) - var(--workshop-height));
-  color: var(--white);
-  border-bottom: var(--border);
-}
+    background-color: var(--bg-color-bright-1);
+    border-right: var(--border);
+  }
 
-.app-aside_main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
+  .app-aside_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .app-aside_box {
+    --ani-time: 0.3s;
+
+    position: relative;
+    z-index: 2;
+
+    flex-direction: row;
+
+    height: 100%;
+    max-height: calc(var(--main-height) - var(--workshop-height));
+
+    color: var(--white);
+
+    border-bottom: var(--border);
+  }
 }

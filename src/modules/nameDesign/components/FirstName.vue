@@ -29,20 +29,28 @@ const { addFirstName, removeFirstName } = useFirstName(newName, props.gender, pr
     <template #title>
       名辞
       <slot />
-      <number-mark>{{ showFirstNames?.length }}</number-mark>
+      <number-mark class="ml-mini">
+        {{ showFirstNames?.length }}
+      </number-mark>
     </template>
     <template #subtitle>
       <search-input :watch-event="watchSearchEvent" />
     </template>
     <section class="first-name_names">
-      <name-tag v-for="firstName of showFirstNames" :key="firstName.name" @close="removeFirstName(firstName.name)" @copy="copy(firstName.name)">
+      <name-tag
+        v-for="firstName of showFirstNames" :key="firstName.name" @close="removeFirstName(firstName.name)"
+        @copy="copy(firstName.name)"
+      >
         {{ firstName.name }}
       </name-tag>
     </section>
     <template #footer>
       <section class="first-name_input">
-        <n-input v-model:value="newName" placeholder="请输入新增的名辞..." show-count clearable maxlength="3" @keyup.enter="addFirstName" />
-        <type-button class="first-name_button" @click="addFirstName">
+        <n-input
+          v-model:value="newName" placeholder="请输入新增的名辞..." show-count clearable maxlength="3"
+          @keyup.enter="addFirstName"
+        />
+        <type-button class="first-name_button ml_bm" @click="addFirstName">
           新增
         </type-button>
       </section>
@@ -51,12 +59,10 @@ const { addFirstName, removeFirstName } = useFirstName(newName, props.gender, pr
 </template>
 
 <style scoped>
-.first-name_input {
-  display: flex;
-  align-items: center;
-}
-
-.first-name_button {
-  margin-left: var(--base-margin);
+@layer component {
+  .first-name_input {
+    display: flex;
+    align-items: center;
+  }
 }
 </style>

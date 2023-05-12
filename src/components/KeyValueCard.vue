@@ -14,21 +14,25 @@ defineProps<{ title: string; value: string }>();
 </template>
 
 <style scoped>
-.key-value-card {
-  display: inline-flex;
-  width: fit-content;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  filter: brightness(0.9);
-}
+@layer component {
+  .key-value-card {
+    display: inline-flex;
 
-.key-value-card_key {
-  padding: var(--base-margin);
-  background-color: var(--bg-color);
-}
+    width: fit-content;
 
-.key-value-card_value {
-  padding: var(--base-margin);
-  background-color: var(--bg-color-bright-1);
+    filter: brightness(0.9);
+    border: var(--border);
+    border-radius: var(--border-radius);
+  }
+
+  .key-value-card_key {
+    padding: var(--base-margin);
+    background-color: var(--bg-color);
+  }
+
+  .key-value-card_value {
+    padding: var(--base-margin);
+    background-color: var(--bg-color-bright-1);
+  }
 }
 </style>

@@ -2,16 +2,18 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
   height: var(--header-height);
   margin-left: var(--normal);
-  font-size: var(--font-body-small);
+
   font-family: Pacifico, sans-serif;
+  font-size: var(--font-body-small);
 }
 
 .system-info_title {
   margin-left: var(--mini);
-  letter-spacing: 4px;
   text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
 .system-info_title:not(:last-child)::after {

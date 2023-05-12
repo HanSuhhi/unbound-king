@@ -5,7 +5,6 @@ import { animationDuration } from "../../../composables/constant/env";
 import { useCsssLayout } from "@/components/ui/layout";
 
 function autoAdjust(adjust: () => void) {
-  defer(adjust);
   const { width, height } = useWindowSize();
   defer(() => {
     watch(width, debounce(adjust, animationDuration));
@@ -51,5 +50,5 @@ export function defineAppLayout() {
   };
   autoAdjust(setLayoutProps);
 
-  return { Layout };
+  return { Layout, renderLayout: () => defer(setLayoutProps) };
 }

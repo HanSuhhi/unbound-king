@@ -1,0 +1,7 @@
+[cursor-active="default"] [cursor-help] {
+  cursor: var(--cursor-help);
+}
+
+[cursor-active="active"] [cursor-help] {
+  cursor: var(--cursor-help-active);
+}

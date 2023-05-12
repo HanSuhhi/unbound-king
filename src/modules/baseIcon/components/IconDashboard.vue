@@ -13,14 +13,16 @@ const container = ref<HTMLElement>();
 </template>
 
 <style scoped>
-.icon-dashboard {
-  display: flex;
-  flex-wrap: wrap;
-  border-top: var(--border);
-  border-left: var(--border);
-}
+@layer component {
+  .icon-dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: var(--border);
+    border-left: var(--border);
+  }
 
-.icon-dashboard_block {
-  box-sizing: border-box;
+  .icon-dashboard_block {
+    box-sizing: border-box;
+  }
 }
 </style>

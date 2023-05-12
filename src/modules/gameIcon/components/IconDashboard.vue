@@ -26,7 +26,9 @@ const icons = inject<ComputedRef<GameIcon[]>>("data");
 </template>
 
 <style scoped>
-.icon-dashboard_block {
-  box-sizing: border-box;
+@layer component {
+  .icon-dashboard_block {
+    box-sizing: border-box;
+  }
 }
 </style>

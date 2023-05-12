@@ -1,1 +1,5 @@
-type Package = {};
+type DataPackage = {
+  id: string;
+  translator: Translator;
+  
+}

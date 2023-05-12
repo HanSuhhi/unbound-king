@@ -27,12 +27,14 @@ const { dynamicModel } = definePackageNameModel(packageNames);
 </template>
 
 <style scoped>
-.package-name {
-  height: 100%;
-  transition: all  var(--transition-prop);
-}
+@layer page {
+  .package-name {
+    height: 100%;
+    transition: all  var(--transition-prop);
+  }
 
-.package-name_inputs {
-  margin-top: var(--base-margin);
+  .package-name_inputs {
+    margin-top: var(--base-margin);
+  }
 }
 </style>

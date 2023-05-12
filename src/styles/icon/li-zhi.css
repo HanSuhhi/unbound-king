@@ -1,10 +1,14 @@
 .li-zhi {
   width: 1em;
   height: 1em;
+
   color: inherit;
+
   background-image: url("@/assets/icon/lizhi/64.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+
   mask: var(--un-icon) no-repeat;
+
   mask-size: 100% 100%;
 }

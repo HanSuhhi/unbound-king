@@ -1,6 +1,5 @@
 import "uno.css";
 import "./styles/index.css";
-import "./config.css";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";

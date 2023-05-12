@@ -1,18 +1,20 @@
-@import "./styles/destiny-alert.css";
-@import "./styles/destiny-cards.css";
-@import "./styles/destiny-panel.css";
+@import url("./styles/destiny-alert.css") layer(component);
+@import url("./styles/destiny-cards.css") layer(component);
+@import url("./styles/destiny-panel.css") layer(component);
 
-.destiny-design {
-  --aside-width: 25%;
+@layer page {
+  .destiny-design {
+    --aside-width: 25%;
 
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: grid-template var(--transition-prop);
-}
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: grid-template var(--transition-prop);
+  }
 
-.destiny-design_main {
-  z-index: 0;
-  overflow: hidden;
-  height: 100%;
+  .destiny-design_main {
+    z-index: 0;
+    overflow: hidden;
+    height: 100%;
+  }
 }

@@ -55,20 +55,22 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
 </template>
 
 <style scoped>
-.tabs-design_body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+@layer component {
+  .tabs-design_body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-.tabs-design_alert {
-  width: 100%;
-  margin-bottom: var(--base-margin);
-}
+  .tabs-design_alert {
+    width: 100%;
+    margin-bottom: var(--base-margin);
+  }
 
-:deep(.tabs-design_question) {
-  position: absolute;
-  top: calc(var(--font-body) / 3);
-  right: 0;
+  :deep(.tabs-design_question) {
+    position: absolute;
+    top: calc(var(--font-body) / 3);
+    right: 0;
+  }
 }
 </style>

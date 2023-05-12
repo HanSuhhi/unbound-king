@@ -20,17 +20,19 @@ import Alert from "@/components/alert/alert";
 </template>
 
 <style scoped>
-.attribute-main {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+@layer component {
+  .attribute-main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-.attribute-main_main {
-  flex: 1;
-}
+  .attribute-main_main {
+    flex: 1;
+  }
 
-.attribute-main_operator {
-  margin-bottom: var(--base-margin);
+  .attribute-main_operator {
+    margin-bottom: var(--base-margin);
+  }
 }
 </style>

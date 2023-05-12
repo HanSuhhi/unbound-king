@@ -1,10 +1,10 @@
-.attribute-value_main {
-  width: calc(100% + var(--base-margin));
-  height: calc(var(--main-height) - var(--base-margin));
-}
+@layer component {
+  .attribute-value_main {
+    width: calc(100% + var(--base-margin));
+    height: calc(var(--main-height) - var(--base-margin));
+  }
 
-.attribute-value_aside {
-  .code-canvas {
+  .attribute-value_aside > .code-canvas {
     width: var(--aside-width);
     border-top: 0;
   }

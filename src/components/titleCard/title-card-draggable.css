@@ -1,11 +1,13 @@
-.title-card_draggable {
-  user-select: none;
-}
+@layer component {
+  .title-card_draggable {
+    user-select: none;
+  }
 
-.title-card_draggable > .title-card_header {
-  cursor: var(--cursor-all-scroll);
-}
+  .title-card_draggable > .title-card_header {
+    cursor: var(--cursor-all-scroll);
+  }
 
-[cursor-active="active"] .title-card_draggable > .title-card_header {
-  cursor: var(--cursor-all-scroll-active);
+  [cursor-active="active"] .title-card_draggable > .title-card_header {
+    cursor: var(--cursor-all-scroll-active);
+  }
 }

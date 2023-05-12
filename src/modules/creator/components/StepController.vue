@@ -24,7 +24,7 @@ const addPlugin = throttle(() => {
 <template>
   <article class="step-controller">
     <section class="step-controller_add">
-      <n-select v-model:value="selectedPlugin" style="width: fill-available;" :options="pluginOptions" placeholder="请选择新增插件" />
+      <n-select v-model:value="selectedPlugin" style="width: -webkit-fill-available;" :options="pluginOptions" placeholder="请选择新增插件" />
       <type-button class="step-controller_button" @click="addPlugin">
         新增节点
       </type-button>
@@ -33,21 +33,24 @@ const addPlugin = throttle(() => {
 </template>
 
 <style scoped>
-.step-controller {
-  width: 100%;
-  padding: var(--base-margin);
-  background-color: var(--bg-color-bright-2);
-  border: var(--border);
-  border-radius: var(--border-radius);
-  filter: brightness(1.2);
-}
+@layer component {
+  .step-controller {
+    width: 100%;
+    padding: var(--base-margin);
 
-.step-controller_add {
-  display: flex;
-  align-items: center;
-}
+    background-color: var(--bg-color-bright-2);
+    filter: brightness(1.2);
+    border: var(--border);
+    border-radius: var(--border-radius);
+  }
 
-.step-controller_button {
-  margin-left: var(--base-margin);
+  .step-controller_add {
+    display: flex;
+    align-items: center;
+  }
+
+  .step-controller_button {
+    margin-left: var(--base-margin);
+  }
 }
 </style>

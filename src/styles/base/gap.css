@@ -1,0 +1,10 @@
+:root {
+  --normal: clamp(1rem, 16px, 1.6rem);
+  --particle: calc(var(--normal) * 0.0625);
+  --tiny: calc(var(--normal) * 0.125);
+  --mini: calc(var(--normal) * 0.25);
+  --small: calc(var(--normal) * 0.5);
+  --large: calc(var(--normal) * 2);
+  --base-margin: var(--small);
+}
+

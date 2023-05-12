@@ -1,0 +1,8 @@
+.aside-menu {
+  --title-size: var(--font-body);
+  --title-height: calc(var(--title-size) + 2 * var(--normal) / 1.4);
+}
+
+.base-menu .n-scrollbar-rail {
+  margin-bottom: var(--base-margin);
+}

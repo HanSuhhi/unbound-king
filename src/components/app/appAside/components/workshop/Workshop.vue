@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import Icon from "@/components/Icon.vue";
 import TypeButton from "@/components/typeButton/TypeButton.vue";
-import "./styles/workshop-factory.css";
-import "./styles/workshop-package.css";
 </script>
 
 <template>
@@ -37,11 +35,17 @@ import "./styles/workshop-package.css";
 </template>
 
 <style scoped>
-.workshop {
-  position: relative;
-  z-index: 2;
-  box-sizing: border-box;
-  height: var(--workshop-height);
-  margin: var(--base-margin);
+@import url("./styles/workshop-factory.css");
+@import url("./styles/workshop-package.css");
+
+@layer page {
+  .workshop {
+    position: relative;
+    z-index: 2;
+
+    box-sizing: border-box;
+    height: var(--workshop-height);
+    margin: var(--base-margin);
+  }
 }
 </style>

@@ -11,35 +11,38 @@
 </template>
 
 <style scoped>
-.extend {
-  --width: calc(var(--normal) * 1.2);
+@layer component {
+  .extend {
+    --width: calc(var(--normal) * 1.2);
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  zoom: 0.8;
-}
+    zoom: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.extend-line {
-  width: var(--width);
-  height: 2px;
-  margin: 1.5px;
-  background-color: var(--white);
-  border-radius: 1px;
-}
+  .extend-line {
+    width: var(--width);
+    height: 2px;
+    margin: 1.5px;
 
-.extend-line:nth-child(2),
-.extend-line:nth-child(4) {
-  --line-width: calc(var(--width) / 1.5);
-  --left: 0;
+    background-color: var(--white);
+    border-radius: 1px;
+  }
 
-  position: relative;
-  left: var(--left);
-  width: var(--line-width);
-  transition: all var(--ani-time);
-}
+  .extend-line:nth-child(2),
+  .extend-line:nth-child(4) {
+    --line-width: calc(var(--width) / 1.5);
+    --left: 0;
 
-.extend[data-reverse] .extend-line {
-  --left: calc(var(--width) - var(--line-width));
+    position: relative;
+    left: var(--left);
+    width: var(--line-width);
+    transition: all var(--ani-time);
+  }
+
+  .extend[data-reverse] .extend-line {
+    --left: calc(var(--width) - var(--line-width));
+  }
 }
 </style>

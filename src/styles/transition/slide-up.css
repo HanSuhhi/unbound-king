@@ -5,15 +5,15 @@
 
 .slide-up-enter-from {
   transform: translateY(var(--large));
-  opacity: 0;
+  opacity: 0%;
 }
 
 .slide-up-leave-to {
   transform: translateY(calc(-1 * var(--large)));
-  opacity: 0;
+  opacity: 0%;
 }
 
 .slide-up-enter-to,
 .slide-up-leave-from {
-  opacity: 1;
+  opacity: 100%;
 }

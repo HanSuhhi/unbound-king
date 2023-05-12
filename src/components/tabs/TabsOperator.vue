@@ -15,13 +15,17 @@ defineProps<{
 </template>
 
 <style scoped>
-.operator {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: var(--base-margin);
-  padding: var(--base-margin);
-  background-color: var(--bg-color-bright-2);
-  border: var(--border);
-  border-radius: var(--border-radius);
+@layer component {
+  .operator {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: var(--base-margin);
+    padding: var(--base-margin);
+
+    background-color: var(--bg-color-bright-2);
+    border: var(--border);
+    border-radius: var(--border-radius);
+  }
 }
 </style>

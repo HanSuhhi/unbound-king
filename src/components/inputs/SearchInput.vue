@@ -21,20 +21,25 @@ watch(value, throttle(props.watchEvent, animationDuration));
 </template>
 
 <style scoped>
-.search-input {
-  width: fit-content;
-  border-bottom: var(--border);
-}
+@layer component{
+  .search-input {
+    width: fit-content;
+    border-bottom: var(--border);
+  }
 
-.search-input_input {
-  padding: var(--mini) var(--small);
-  color: var(--white);
-  border: none;
-  border-radius: 0;
-  transition: all var(--transition-prop);
-}
+  .search-input_input {
+    padding: var(--mini) var(--small);
 
-.search-input:active {
-  width: 100%;
+    color: var(--white);
+
+    border: none;
+    border-radius: 0;
+
+    transition: all var(--transition-prop);
+  }
+
+  .search-input:active {
+    width: 100%;
+  }
 }
 </style>

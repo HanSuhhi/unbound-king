@@ -1,3 +1,5 @@
-.special-inline-block > .icon {
-  margin: 0 var(--mini);
+@layer component {
+  .special-inline-block > .icon {
+    margin: 0 var(--mini);
+  }
 }

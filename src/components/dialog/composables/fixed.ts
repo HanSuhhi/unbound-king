@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-export const useFixed = () => {
+export function useFixed() {
   const fixed = ref(false);
   const scrolling = ref(false);
 
@@ -23,4 +23,4 @@ export const useFixed = () => {
   };
 
   return { fixed, changeFixed, scrolling };
-};
+}

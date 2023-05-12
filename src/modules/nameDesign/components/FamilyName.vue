@@ -33,7 +33,9 @@ const initFamilyNames = watch(showFamilyNames, (names) => {
   <title-card class="family-name">
     <template #title>
       姓氏
-      <number-mark>{{ showFamilyNames?.length }}</number-mark>
+      <number-mark class="ml-mini">
+        {{ showFamilyNames?.length }}
+      </number-mark>
     </template>
     <template #subtitle>
       <search-input :watch-event="watchSearchEvent" />
@@ -45,7 +47,10 @@ const initFamilyNames = watch(showFamilyNames, (names) => {
     </section>
     <template #footer>
       <section class="family-name_input">
-        <n-input v-model:value="newName" placeholder="请输入新增的姓氏..." show-count clearable maxlength="3" @keyup.enter="addFamilyName" />
+        <n-input
+          v-model:value="newName" placeholder="请输入新增的姓氏..." show-count clearable maxlength="3"
+          @keyup.enter="addFamilyName"
+        />
         <type-button class="family-name_button" @click="addFamilyName">
           新增
         </type-button>
@@ -55,21 +60,23 @@ const initFamilyNames = watch(showFamilyNames, (names) => {
 </template>
 
 <style scoped>
-.family-name {
-  max-width: 500px;
-  min-height: 100%;
-}
+@layer component {
+  .family-name {
+    max-width: 500px;
+    min-height: 100%;
+  }
 
-.family-name_input {
-  display: flex;
-  align-items: center;
-}
+  .family-name_input {
+    display: flex;
+    align-items: center;
+  }
 
-.family-name_names {
-  min-height: 60vh;
-}
+  .family-name_names {
+    min-height: 60vh;
+  }
 
-.family-name_button {
-  margin-left: var(--base-margin);
+  .family-name_button {
+    margin-left: var(--base-margin);
+  }
 }
 </style>

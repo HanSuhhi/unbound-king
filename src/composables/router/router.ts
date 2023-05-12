@@ -6,7 +6,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}");
 
 export function useRouteConfig() {
-  const routes = map(pages, (component, path) => {
+  const routes = map(pages, (_, path) => {
     const paths = path.split("/");
     const name = kebabCase(paths[paths.length - 2]);
     return {
@@ -21,6 +21,12 @@ export function useRouteConfig() {
     redirect: import.meta.env.DEFAULT_ROUTE_INDEX
   });
 
+  routes.push({
+    path: "/setting",
+    name: "setting",
+    component: () => import("@/modules/setting/BaseSetting.vue")
+  });
+
   const router = createRouter({
     history: createWebHistory(),
     routes
@@ -28,3 +34,5 @@ export function useRouteConfig() {
 
   return { router };
 }
+
+export const releaseRoutes = ["setting"];

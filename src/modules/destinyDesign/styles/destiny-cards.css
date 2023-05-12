@@ -1,7 +1,7 @@
 .destiny-design-main_cards {
   position: relative;
-  display: flex;
   overflow: auto;
+  display: flex;
   border-bottom: var(--border);
 }
 
@@ -9,6 +9,6 @@
   color: var(--main-color);
 }
 
-.destiny-design-main_cards>div:first-child > article{
+.destiny-design-main_cards > div:first-child > article{
   border-left: var(--border);
 }

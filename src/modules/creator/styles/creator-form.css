@@ -37,9 +37,11 @@
 }
 
 .creator-forms_panels {
+  overflow: auto;
+
   width: 100%;
   height: calc(100% - var(--item-list-height));
-  overflow: auto;
+
   background-color: var(--bg-color-bright-1);
   border: 1px solid var(--border-color);
   border-top: 0;

@@ -22,25 +22,32 @@ function copy() {
 </template>
 
 <style scoped>
-.name-tag {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  margin-right: var(--base-margin);
-  margin-bottom: var(--mini);
-  padding: var(--mini) var(--small);
-  border: var(--border);
-  border-radius: var(--border-radius);
-}
+@layer component {
+  .name-tag {
+    position: relative;
 
-.name-tag_close {
-  display: inline-flex;
-  align-items: center;
-  margin-left: var(--small);
-  padding: var(--mini);
-  border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
 
-  &:hover {
+    margin-right: var(--base-margin);
+    margin-bottom: var(--mini);
+    padding: var(--mini) var(--small);
+
+    border: var(--border);
+    border-radius: var(--border-radius);
+  }
+
+  .name-tag_close {
+    display: inline-flex;
+    align-items: center;
+
+    margin-left: var(--small);
+    padding: var(--mini);
+
+    border-radius: 50%;
+  }
+
+  .name-tag_close:hover {
     background-color: var(--bg-color-deep-2);
   }
 }

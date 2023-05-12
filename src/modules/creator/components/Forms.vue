@@ -42,7 +42,9 @@ function toggle(index: number) {
 </template>
 
 <style scoped>
-.p-reset {
-  padding: var(--small) var(--large);
+@layer component {
+  p {
+    padding: var(--small) var(--large);
+  }
 }
 </style>

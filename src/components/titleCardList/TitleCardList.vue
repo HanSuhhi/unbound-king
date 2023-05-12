@@ -23,7 +23,9 @@ function watchEvent(input: string) {
     <header class="value-list_header">
       <div class="value-list_side">
         <slot name="title" />
-        <number-mark>{{ modelValues.length }}</number-mark>
+        <number-mark class="ml-mini">
+          {{ modelValues.length }}
+        </number-mark>
       </div>
       <div class="value-list_side">
         <search-input :watch-event="watchEvent" />
@@ -39,53 +41,62 @@ function watchEvent(input: string) {
 </template>
 
 <style scoped>
-.value-list {
-  display: flex;
-  flex-direction: column;
-  padding: var(--base-margin);
-}
+@layer component {
+  .value-list {
+    display: flex;
+    flex-direction: column;
+    padding: var(--base-margin);
+  }
 
-.value-list_footer {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-decoration: underline;
-  border-radius: var(--border-radius);
-  transition: color var(--transition-prop);
-}
+  .value-list_footer {
+    display: flex;
+    align-items: center;
 
-.value-list_item {
-  min-width: auto;
-  margin-bottom: var(--base-margin);
-}
+    width: 100%;
 
-.value-list_footer:hover {
-  color: var(--main-color);
-}
+    text-decoration: underline;
 
-.value-list_main {
-  flex: 1;
-  box-sizing: border-box;
-  height: 100%;
-  overflow: auto;
-}
+    border-radius: var(--border-radius);
 
-.value-list_header {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: var(--base-margin);
-  color: var(--gray-bright-2);
-  filter: brightness(1.2);
-}
+    transition: color var(--transition-prop);
+  }
 
-.value-list_side {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
+  .value-list_item {
+    min-width: auto;
+    margin-bottom: var(--base-margin);
+  }
 
-.value-list_side:last-child {
-  display: flex;
-  justify-content: flex-end;
+  .value-list_footer:hover {
+    color: var(--main-color);
+  }
+
+  .value-list_main {
+    overflow: auto;
+    flex: 1;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  .value-list_header {
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: var(--base-margin);
+
+    color: var(--gray-bright-2);
+
+    filter: brightness(1.2);
+  }
+
+  .value-list_side {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .value-list_side:last-child {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 </style>

@@ -60,30 +60,36 @@ function confirm(data: any, formEl: FormInst) {
 </template>
 
 <style scoped>
-.form-dialog_close {
-  font-size: var(--font-title-main);
-  transition: all var(--transition-prop);
-}
+@layer component {
+  .router-view-dialog {
+    border-radius: var(--border-radius);
+  }
 
-.form-dialog_close:hover {
-  color: var(--white);
-  transform: rotate(180deg);
-}
+  .form-dialog_close {
+    font-size: var(--font-title-main);
+    transition: all var(--transition-prop);
+  }
 
-.form-dialog_close:active {
-  transform: rotate(360deg);
-}
+  .form-dialog_close:hover {
+    transform: rotate(180deg);
+    color: var(--white);
+  }
 
-.form-dialog_title {
-  font-size: var(--font-body);
-}
+  .form-dialog_close:active {
+    transform: rotate(360deg);
+  }
 
-.form-dialog_confirm {
-  width: 100%;
-  text-align: right;
-}
+  .form-dialog_title {
+    font-size: var(--font-body);
+  }
 
-.form-dialog_confirm :deep(button:first-child) {
-  margin-right: var(--base-margin);
+  .form-dialog_confirm {
+    width: 100%;
+    text-align: right;
+  }
+
+  .form-dialog_confirm :deep(button:first-child) {
+    margin-right: var(--base-margin);
+  }
 }
 </style>

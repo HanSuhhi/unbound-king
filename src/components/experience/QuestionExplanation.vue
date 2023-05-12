@@ -25,7 +25,7 @@ defineProps<{ iconClass?: string }>();
 }
 
 .question-explanation_question:hover {
-  color: var(--white);
   transform: rotate(360deg);
+  color: var(--white);
 }
 </style>

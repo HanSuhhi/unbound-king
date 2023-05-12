@@ -6,7 +6,7 @@ defineProps<{ destiny: Destiny; isChoosed?: boolean }>();
 
 <template>
   <section cursor-pointer class="destiny-text">
-    <icon class="icon" :name="destiny.icon" :color="destiny.color" />
+    <icon class="mr-small" :name="destiny.icon" :color="destiny.color" />
     <component
       :is="isChoosed ? NGradientText : 'span'"
       :gradient="{
@@ -20,13 +20,11 @@ defineProps<{ destiny: Destiny; isChoosed?: boolean }>();
 </template>
 
 <style scoped>
-.destiny-text {
-  display: flex;
-  white-space: nowrap;
-  place-items: center;
-}
-
-.icon {
-  margin-right: var(--small);
+@layer component {
+  .destiny-text {
+    display: flex;
+    place-items: center;
+    white-space: nowrap;
+  }
 }
 </style>

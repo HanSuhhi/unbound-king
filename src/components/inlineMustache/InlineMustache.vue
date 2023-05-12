@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { parseMustacheString, parseMustacheString2 } from "@/composables/text/mustache";
 import { computed } from "vue";
 import SpecialInlineBlock from "./SpecialInlineBlock";
+import { parseMustacheString, parseMustacheString2 } from "@/composables/text/mustache";
 
 const props = defineProps<{ text: string }>();
 const showText = computed(() => parseMustacheString(props.text));
@@ -19,11 +19,13 @@ const showText = computed(() => parseMustacheString(props.text));
 </template>
 
 <style scoped>
-.inline-musache_content {
-  filter: brightness(1.2);
-}
+@layer component {
+  .inline-musache_content {
+    filter: brightness(1.2);
+  }
 
-span.inline-musache_content {
-  color: var(--gray-bright-1);
+  span.inline-musache_content {
+    color: var(--gray-bright-1);
+  }
 }
 </style>

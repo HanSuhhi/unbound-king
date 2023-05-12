@@ -1,0 +1,7 @@
+[cursor-active="default"] {
+  cursor: var(--cursor-auto);
+}
+
+[cursor-active="active"] {
+  cursor: var(--cursor-auto-active);
+}

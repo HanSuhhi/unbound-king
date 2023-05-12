@@ -4,6 +4,3 @@
 <template>
   detail
 </template>
-
-<style scoped>
-</style>

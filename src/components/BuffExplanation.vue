@@ -9,15 +9,9 @@ defineProps<{ buffName: string; buffKey: BuffsName }>();
   <ul class="ol-reset buff-explanation">
     <template v-for="buff of DATA.Buffs[buffKey].get(buffName)" :key="buff">
       <li class="buff-explanation_item">
-        <span class="buff-explanation_index">•</span>
+        <span class="buff-explanation_index mr-bm">•</span>
         <inline-mustache :text="buff.explanation || ''" />
       </li>
     </template>
   </ul>
 </template>
-
-<style scoped>
-.buff-explanation_index {
-  margin-right: var(--base-margin);
-}
-</style>

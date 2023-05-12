@@ -1,5 +1,7 @@
-.data-package-design {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+@layer page {
+  .data-package-design {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 }

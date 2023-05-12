@@ -1,10 +1,42 @@
 .wave {
+  --init-size: 10;
+
+  pointer-events: none;
+
   position: absolute;
-  width: 10px;
-  height: 10px;
+
+  aspect-ratio: 1 / 1;
+  width: calc(var(--init-size) * 1px);
+
+  opacity: 20%;
   background-color: var(--white);
   border-radius: 50%;
-  opacity: 0.2;
+
   transition: all 3s cubic-bezier(0, 0.9, 0.3, 0.75);
-  pointer-events: none;
+}
+
+.paper-ripple {
+  --left: 0;
+  --top: 0;
+  --el-top: 0;
+  --el-left: 0;
+  --border-radius: 0;
+  --width: 0;
+  --height: 0;
+  --deg: atan(var(--height) / var(--width));
+  --wave-size: calc(var(--height) / sin(var(--deg)));
+
+  top: calc(1px * (var(--top) - var(--el-top) - var(--init-size) / 2));
+  left: calc(1px * (var(--left) - var(--el-left) - var(--init-size) / 2));
+
+  width: calc(var(--wave-size) * 2px);
+  margin-top: calc(-1px * var(--wave-size));
+  margin-left: calc(-1px * var(--wave-size));
+
+  border-radius: var(--border-radius);
+}
+
+.paper-ripple_end {
+  opacity: 0%;
+  transition: var(--transition-prop);
 }

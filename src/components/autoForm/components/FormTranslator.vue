@@ -19,9 +19,11 @@ const placeholder: [string, string] = ["请输入唯一 key", "显示名称，�
 </template>
 
 <style scoped>
-.form-translator {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+@layer component {
+  .form-translator {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 </style>

@@ -5,11 +5,15 @@
 </template>
 
 <style scoped>
-.tabs-body_icons {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-bottom: var(--base-margin);
-  border-left: var(--border);
+@layer component {
+  .tabs-body_icons {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 100%;
+    margin-bottom: var(--base-margin);
+
+    border-left: var(--border);
+  }
 }
 </style>
