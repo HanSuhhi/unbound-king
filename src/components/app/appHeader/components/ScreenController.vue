@@ -3,6 +3,8 @@ import { ref } from "vue";
 
 const isFullScreen = ref(false);
 
+document.onfullscreenchange = () => isFullScreen.value = !isFullScreen.value;
+
 function fullScreen() {
   document.querySelector("body")?.requestFullscreen();
 }
@@ -13,11 +15,19 @@ function exitFullScreen() {
 
 <template>
   <section
-    v-if="isFullScreen"
+    v-if="!isFullScreen"
     class="module-icon"
     cursor-pointer
     @click="fullScreen"
   >
     <icon name="fullscreen" />
+  </section>
+  <section
+    v-else
+    class="module-icon"
+    cursor-pointer
+    @click="exitFullScreen"
+  >
+    <icon name="exitfullscreen" />
   </section>
 </template>

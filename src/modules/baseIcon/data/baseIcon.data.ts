@@ -159,5 +159,9 @@ export const DATA_BaseIcons = {
   "fullscreen": {
     translator: ["fullscreen", "全屏"],
     path: "i-ic-baseline-fullscreen"
+  },
+  "exitfullscreen": {
+    translator: ["exitfullscreen", "退出全屏"],
+    path: "i-ic-twotone-fullscreen-exit"
   }
 };
