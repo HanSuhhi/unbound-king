@@ -5,7 +5,7 @@ defineProps<{ iconPath: string; translator: Translator; color?: Color }>();
 </script>
 
 <template>
-  <section v-paper-ripple relative cursor-pointer class="common-block icon-block">
+  <section relative cursor-pointer class="common-block icon-block">
     <icon class="icon-block_icon" :name="iconPath" :color="color" />
     <component
       :is="color ? NGradientText : 'span'"

@@ -31,7 +31,9 @@ function onMouseDown({ x: left, y: top }: MouseEvent) {
     ["--border-radius", `${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% `],
     ["--width", parentElement.clientWidth],
     ["--height", parentElement.clientHeight]
-  ]).forEach(([key, value]) => waveElement.style.setProperty(key, value as string));
+  ]).forEach(([key, value]) => {
+    waveElement.style.setProperty(key, value as string);
+  });
 
   waveElement.classList.add("paper-ripple");
 

@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 @layer base, utilities, config, page, component;
 
 @import url("./base/") layer(base);
