@@ -1,7 +1,7 @@
 import CryptoJS from "crypto-js";
 
-const keyHex = CryptoJS.enc.Utf8.parse(import.meta.env.ENCRYPTED_KEY);
-const ivHex = CryptoJS.enc.Utf8.parse(import.meta.env.IV);
+const keyHex = CryptoJS.enc.Utf8.parse(import.meta.env.BUILD_ENCRYPTED_KEY);
+const ivHex = CryptoJS.enc.Utf8.parse(import.meta.env.BUILD_IV);
 
 const cfg = {
   iv: ivHex,

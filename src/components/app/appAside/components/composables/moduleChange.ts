@@ -17,7 +17,7 @@ export function useModules(props: any) {
     delay(() => {
       AppAside.style.setProperty("--transition-property", "top, opacity");
       AppAside.style.setProperty("--transition-delay", "0s");
-    }, Number(import.meta.env.ANIMATION_DURATION));
+    }, Number(import.meta.env.STYLE_ANIMATION_DURATION));
   };
 
   async function routeOut() {

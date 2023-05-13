@@ -10,16 +10,16 @@ declare module '*.vue' {
 
 
 interface ImportMetaEnv {
-  readonly DEFAULT_ROUTE_INDEX: string;
-  readonly PARAM_SETTING_CHARACTER_WEIGHT_DEFAULT_MAX: string;
+  readonly ROUTER_DEFAULT_PAGE: string;
+  readonly I18N_DEFAULT_LANG: string;
   readonly PROJECT_NAME: string;
-  readonly ASIDE_WIDTH: string;
-  readonly ASIDE_MODULES_WIDTH: string;
-  readonly BOX_COLLAPSE_WIDTH: string;
-  readonly ANIMATION_DURATION: string;
-  readonly BOX_EXTEND_WIDTH: string;
-  readonly ENCRYPTED_KEY: string;
-  readonly IV: string;
+  readonly STYLE_ASIDE_WIDTH: string;
+  readonly STYLE_ASIDE_MODULES_WIDTH: string;
+  readonly STYLE_COLLAPSE_WIDTH: string;
+  readonly STYLE_ANIMATION_DURATION: string;
+  readonly STYLE_EXTEND_WIDTH: string;
+  readonly BUILD_ENCRYPTED_KEY: string;
+  readonly BUILD_IV: string;
 }
 
 type KeyEvent = {

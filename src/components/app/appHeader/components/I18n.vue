@@ -1,0 +1,21 @@
+<script setup lang='ts'>
+import { NPopselect } from "naive-ui";
+import { useLocale } from "../composables/locale";
+
+const { value, options } = useLocale();
+</script>
+
+<template>
+  <n-popselect
+    v-model:value="value"
+    :options="options"
+    trigger="click"
+  >
+    <section
+      class="module-icon"
+      cursor-pointer
+    >
+      <icon name="i18n" />
+    </section>
+  </n-popselect>
+</template>

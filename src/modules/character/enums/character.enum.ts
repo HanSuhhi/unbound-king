@@ -4,23 +4,23 @@ export const DATA_Genders: Dictionary<Translator> = {
 };
 
 export const DATA_Chases = {
-  DaDao: {
-    icon: "da-dao",
-    translator: ["DaDao", "大道"],
+  release: {
+    icon: "release",
+    translator: ["release", "解放"],
     canBeGenerated: true,
-    description: "道可道，非常道；名可名，非常名。天之道，利而不害。圣人之道，为而不争。"
+    description: "牢笼之外，才是我们最终的归宿"
   },
-  HongYuan: {
-    icon: "hong-yuan",
-    translator: ["HongYuan", "宏愿"],
+  immortality: {
+    icon: "immortality",
+    translator: ["immortality", "永生"],
     canBeGenerated: true,
-    description: "放大智光明，照十方世界，地涌金莲华，丈六金身，能变能化，普度众生"
+    description: "\"我们需要永远地寄生在这里\""
   },
-  LiZhi: {
-    icon: "li-zhi",
-    translator: ["LiZhi", "立志"],
+  creation: {
+    icon: "creation",
+    translator: ["creation", "人工智能"],
     canBeGenerated: true,
-    description: "为天地立心，为生民立命，为往圣继绝学，为万世开太平"
+    description: "清谈无用，创造即是生命意义所在"
   }
 };
 

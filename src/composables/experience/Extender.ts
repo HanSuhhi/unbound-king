@@ -1,20 +1,20 @@
 import type { ComputedRef } from "vue";
 import { inject, ref, watch } from "vue";
 
-type Dataset = {
-  SEARCH_RESULT_MAX_WIDTH: string;
-  SEARCH_RESULT_MIN_WIDTH: string;
-};
+interface Dataset {
+  SEARCH_RESULT_MAX_WIDTH: string
+  SEARCH_RESULT_MIN_WIDTH: string
+}
 
 const defaultDataset: Dataset = {
-  SEARCH_RESULT_MAX_WIDTH: import.meta.env.BOX_EXTEND_WIDTH,
-  SEARCH_RESULT_MIN_WIDTH: import.meta.env.BOX_COLLAPSE_WIDTH,
+  SEARCH_RESULT_MAX_WIDTH: import.meta.env.STYLE_EXTEND_WIDTH,
+  SEARCH_RESULT_MIN_WIDTH: import.meta.env.STYLE_COLLAPSE_WIDTH
 };
 
 /**
  * @description remember to provide `layout-style`
  */
-export const defineExtender = (dataset: Dataset = defaultDataset) => {
+export function defineExtender(dataset: Dataset = defaultDataset) {
   const isExtend = ref(true);
   const mainStyle = inject<ComputedRef<UseCsssLayoutProps["style"]>>("layout-style");
 
@@ -23,4 +23,4 @@ export const defineExtender = (dataset: Dataset = defaultDataset) => {
   });
 
   return isExtend;
-};
+}

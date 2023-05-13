@@ -140,20 +140,20 @@ const data = [
   },
   {
     id: "GI9971681306296344",
-    translator: ["hongyuan", "宏愿"],
-    path: "hong-yuan",
+    translator: ["immortality", "永生"],
+    path: "immortality",
     from: "standard"
   },
   {
     id: "GI4891681308172128",
-    translator: ["lizhi", "立志"],
-    path: "li-zhi",
+    translator: ["release", "解放"],
+    path: "release",
     from: "standard"
   },
   {
     id: "GI5701681348944548",
-    translator: ["dadao", "大道"],
-    path: "da-dao",
+    translator: ["creation", "创造"],
+    path: "creation",
     from: "standard"
   },
   {

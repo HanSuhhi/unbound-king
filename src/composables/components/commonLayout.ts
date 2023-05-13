@@ -16,7 +16,7 @@ export function defineCommonLayout(name: string, reverse = true) {
         aside: ["", aside]
       },
       property: {
-        "--aside-width": import.meta.env.BOX_EXTEND_WIDTH
+        "--aside-width": import.meta.env.STYLE_EXTEND_WIDTH
       }
     }
   });

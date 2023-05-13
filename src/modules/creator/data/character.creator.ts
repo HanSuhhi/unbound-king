@@ -55,7 +55,7 @@ export default <Creator>{
           generatorParams: { needInject: ["character-baseinfo-plugin"] },
           pastData: {
             gender: ["MALE", "男"],
-            chase: ["DaDao", "大道"],
+            chase: ["release", "大道"],
             age: ["Prime", "壮年"]
           }
         },
@@ -72,7 +72,7 @@ export default <Creator>{
           },
           pastData: {
             gender: ["MALE", "男"],
-            chase: ["DaDao", "大道"],
+            chase: ["release", "大道"],
             age: ["Prime", "壮年"]
           }
         }

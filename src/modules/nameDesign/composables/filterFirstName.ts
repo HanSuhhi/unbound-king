@@ -12,7 +12,7 @@ export function defineDataKey({ gender, chase }: { gender?: Gender; chase?: Chas
 export function useFilterFirstNames() {
   const firstNames = inject<Ref<FirstName[]>>("first-names");
   const genders = ref<Gender[]>(["FEMALE", "MALE"]);
-  const chases = ref<Chase[]>(["DaDao", "HongYuan", "LiZhi"]);
+  const chases = ref<Chase[]>(["release", "immortality", "AI"]);
 
   const filter = ({ gender, chase }: { gender?: Gender; chase?: Chase }) => {
     if (gender && chase) return firstNames?.value!.filter(firstName => firstName.chase === chase && firstName.gender === gender);
@@ -23,13 +23,6 @@ export function useFilterFirstNames() {
   const filterNames = ref<Record<string, FirstName[]>>({});
 
   const filterAllFirstNames = () => {
-    chases.value.forEach((chase) => {
-      genders.value.forEach((gender) => {
-        const key = defineDataKey({ chase, gender });
-        filterNames.value[key] = filter({ chase, gender }) || [];
-      });
-    });
-
     chases.value.forEach((chase) => {
       const key = defineDataKey({ chase });
       filterNames.value[key] = filter({ chase }) || [];

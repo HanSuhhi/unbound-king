@@ -18,7 +18,7 @@ export function useRouteConfig() {
 
   routes.unshift({
     path: "/",
-    redirect: import.meta.env.DEFAULT_ROUTE_INDEX
+    redirect: import.meta.env.ROUTER_DEFAULT_PAGE
   });
 
   routes.push({

@@ -1,15 +1,14 @@
 <script setup lang='ts'>
-import { NGi, NGrid, NPopover } from "naive-ui";
-import { useHeaderPopoverTheme } from "../composables/headerPopoverTheme";
+import { NGi, NGrid } from "naive-ui";
 import { defineQuitEvent } from "../composables/quitEvent";
-import { usePopoverControl } from "../composables/modulePopoverControl";
 import { useQuitPreference } from "../composables/quitPreference";
 import { loadUser } from "../composables/user";
 import { defineOpenSetting } from "../composables/openSetting";
+import { usePopoverControl } from "../composables/popoverControl";
 import AsideModule from "./AsideModule.vue";
 import UserCard from "./UserCard.vue";
+import BasePopover from "@/components/experience/BasePopover.vue";
 
-const { popoverThemeOverrides } = useHeaderPopoverTheme();
 const { popoverControl } = usePopoverControl();
 
 const modules: AppHeaderModule[] = [
@@ -32,9 +31,9 @@ loadUser();
 </script>
 
 <template>
-  <n-popover :theme-overrides="popoverThemeOverrides" trigger="click" :delay="300" :show-arrow="false" :show="popoverControl">
+  <base-popover :popover-control="popoverControl">
     <template #trigger>
-      <section class="base-preference_module" cursor-pointer @click="popoverControl = true">
+      <section class="module-icon" @click="popoverControl = true">
         <icon name="module" />
       </section>
     </template>
@@ -44,29 +43,5 @@ loadUser();
         <aside-module :module="module" />
       </n-gi>
     </n-grid>
-  </n-popover>
+  </base-popover>
 </template>
-
-<style scoped>
-@layer component{
-  .base-preference_module {
-    display: flex;
-    align-items: center;
-
-    height: 100%;
-    margin-right: var(--base-margin);
-
-    filter: brightness(0.7);
-
-    transition: var(--transition-prop);
-  }
-
-  .base-preference_module:hover {
-    filter: brightness(1);
-  }
-
-  .base-preference_module > .icon {
-    font-size: 1.5rem;
-  }
-}
-</style>

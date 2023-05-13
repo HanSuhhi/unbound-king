@@ -19,7 +19,7 @@ const buttonDynamicClassList = computed(() => [`type-button_${props.color}`]);
 </script>
 
 <template>
-  <n-button v-paper-ripple class="type-button" :plain="isPlain" :class="buttonDynamicClassList">
+  <n-button v-paper-ripple cursor-pointer class="type-button" :plain="isPlain" :class="buttonDynamicClassList">
     <slot />
   </n-button>
 </template>

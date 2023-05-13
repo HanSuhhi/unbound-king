@@ -1,20 +1,23 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import Icon from "@/components/Icon.vue";
 import TypeButton from "@/components/typeButton/TypeButton.vue";
+
+const { t } = useI18n();
 </script>
 
 <template>
   <section class="workshop">
     <div class="workshop-package">
       <header class="workshop-package_title">
-        基础包
+        {{ t("workshop.standard.title") }}
       </header>
       <p class="workshop-package_description">
-        此包为游戏基础包，包含了游戏本体的基本内容及所有相关系统。默认加载，无法卸除。
+        {{ t("workshop.standard.description") }}
       </p>
       <type-button class="workshop-package_button">
         <icon name="coin" style="margin-right: var(--mini);" />
-        了解更多
+        {{ t("workshop.standard.more") }}
       </type-button>
     </div>
     <div class="workshop-factory">
@@ -42,9 +45,7 @@ import TypeButton from "@/components/typeButton/TypeButton.vue";
   .workshop {
     position: relative;
     z-index: 2;
-
     box-sizing: border-box;
-    height: var(--workshop-height);
     margin: var(--base-margin);
   }
 }

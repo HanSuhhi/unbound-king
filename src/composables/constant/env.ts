@@ -1,1 +1,1 @@
-export const animationDuration = Number(import.meta.env.ANIMATION_DURATION);
+export const animationDuration = Number(import.meta.env.STYLE_ANIMATION_DURATION);

@@ -151,5 +151,13 @@ export const DATA_BaseIcons = {
   "update": {
     translator: ["update", "更新"],
     path: "i-mingcute-refresh-2-fill"
+  },
+  "i18n": {
+    translator: ["i18n", "语言"],
+    path: "i-icon-park-outline-translate"
+  },
+  "fullscreen": {
+    translator: ["fullscreen", "全屏"],
+    path: "i-ic-baseline-fullscreen"
   }
 };

@@ -27,7 +27,7 @@ function confirm(data: any, formEl: FormInst) {
     delay(() => {
       currentConfig.value = [];
       defer(() => (currentConfig.value = props.formConfig));
-    }, Number(import.meta.env.ANIMATION_DURATION));
+    }, Number(import.meta.env.STYLE_ANIMATION_DURATION));
   });
 }
 </script>
@@ -88,8 +88,9 @@ function confirm(data: any, formEl: FormInst) {
     text-align: right;
   }
 
-  .form-dialog_confirm :deep(button:first-child) {
-    margin-right: var(--base-margin);
-  }
+}
+
+.form-dialog_confirm :deep(button:first-child) {
+  margin-right: var(--base-margin);
 }
 </style>
