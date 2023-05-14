@@ -1,0 +1,15 @@
+@layer config {
+  html.dark {
+    --main-color: var(--yellow);
+    --main-color-bright-1: var(--yellow-bright-1);
+    --main-color-bright-2: var(--yellow-bright-2);
+    --main-color-deep-1: var(--yellow-deep-1);
+    --main-color-deep-2: var(--yellow-deep-2);
+    --font-color: var(--white);
+    --bg-color-deep-1: rgb(37 37 37);
+    --bg-color-deep-2: rgb(30 30 30);
+    --bg-color: rgb(44 44 44);
+    --bg-color-bright-1: rgb(52 52 52);
+    --bg-color-bright-2: rgb(60 60 60);
+  }
+}

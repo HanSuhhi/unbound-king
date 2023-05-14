@@ -9,31 +9,31 @@ import AsideModule from "./AsideModule.vue";
 import UserCard from "./UserCard.vue";
 import BasePopover from "@/components/experience/BasePopover.vue";
 
-const { popoverControl } = usePopoverControl();
+const popoverControl = usePopoverControl();
 
 const modules: AppHeaderModule[] = [
   {
     translator: ["setting", "设置"],
     icon: "setting",
     color: ["var(--main-color)", "var(--gray-deep-2)"],
-    event: defineOpenSetting(popoverControl)
+    event: defineOpenSetting(popoverControl.popoverControl)
   },
   {
     translator: ["quit", "退出"],
     icon: "exit",
     color: ["var(--red-bright-2)", "var(--red-deep-1)"],
-    event: defineQuitEvent(popoverControl)
+    event: defineQuitEvent(popoverControl.popoverControl)
   }
 ];
 
-useQuitPreference(popoverControl);
+useQuitPreference(popoverControl.popoverControl);
 loadUser();
 </script>
 
 <template>
-  <base-popover :popover-control="popoverControl">
+  <base-popover :popover="popoverControl">
     <template #trigger>
-      <section class="module-icon" @click="popoverControl = true">
+      <section class="module-icon">
         <icon name="module" />
       </section>
     </template>

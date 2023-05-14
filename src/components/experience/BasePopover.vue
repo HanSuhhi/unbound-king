@@ -1,8 +1,11 @@
 <script setup lang='ts'>
 import { NPopover } from "naive-ui";
+import { toRef } from "vue";
+import type { usePopoverControl } from "../app/appHeader/composables/popoverControl";
 import { usePopoverTheme } from "./composables/popoverTheme";
 
-defineProps<{ popoverControl: boolean }>();
+const props = defineProps<{ popover: ReturnType<typeof usePopoverControl> }>();
+const popoverControl = toRef(props.popover, "popoverControl");
 
 const { popoverThemeOverrides } = usePopoverTheme();
 </script>
@@ -16,8 +19,8 @@ const { popoverThemeOverrides } = usePopoverTheme();
     :show="popoverControl"
   >
     <template #trigger>
-      <div cursor-pointer class="base-popover_trigger">
-        <slot :control="popoverControl" name="trigger" />
+      <div cursor-pointer class="base-popover_trigger" @click="popoverControl = true">
+        <slot name="trigger" />
       </div>
     </template>
     <slot />

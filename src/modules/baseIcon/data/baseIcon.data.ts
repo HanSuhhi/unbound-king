@@ -163,5 +163,13 @@ export const DATA_BaseIcons = {
   "exitfullscreen": {
     translator: ["exitfullscreen", "退出全屏"],
     path: "i-ic-twotone-fullscreen-exit"
+  },
+  "day": {
+    translator: ["day", "日"],
+    path: "i-ph-sun"
+  },
+  "night": {
+    translator: ["night", "夜"],
+    path: "i-material-symbols-dark-mode-outline"
   }
 };

@@ -1,0 +1,15 @@
+@layer config {
+  html {
+    --main-color: var(--yellow);
+    --main-color-bright-1: var(--yellow-bright-1);
+    --main-color-bright-2: var(--yellow-bright-2);
+    --main-color-deep-1: var(--yellow-deep-1);
+    --main-color-deep-2: var(--yellow-deep-2);
+    --font-color: var(--black);
+    --bg-color-deep-1: rgb(228 228 228);
+    --bg-color-deep-2: rgb(199 199 199);
+    --bg-color: rgb(253 253 253);
+    --bg-color-bright-1: rgb(214 214 214);
+    --bg-color-bright-2: rgb(242 242 242);
+  }
+}

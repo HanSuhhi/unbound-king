@@ -2,11 +2,13 @@
 import BasePreference from "./BasePreference.vue";
 import I18n from "./I18n.vue";
 import ScreenController from "./ScreenController.vue";
+import ThemeController from "./themeController.vue";
 </script>
 
 <template>
   <section class="header-modules">
     <i18n />
+    <theme-controller />
     <screen-controller />
     <base-preference />
   </section>

@@ -17,6 +17,7 @@ module.exports = {
         ignores: []
       }
     ],
-    "antfu/if-newline": [0]
+    "antfu/if-newline": [0],
+    "vue/valid-template-root": "off"
   }
 };
