@@ -27,5 +27,5 @@ useActiveCreator(code);
 </template>
 
 <style>
-@import url("./creator.css");
+@import url("./creator.css") layer(component);
 </style>

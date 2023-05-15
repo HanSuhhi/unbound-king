@@ -31,17 +31,19 @@ loadUser();
 </script>
 
 <template>
-  <base-popover :popover="popoverControl">
-    <template #trigger>
-      <section class="module-icon">
-        <icon name="module" />
-      </section>
-    </template>
-    <user-card />
-    <n-grid class="aside-modules_main" x-gap="12" y-gap="8" :cols="5">
-      <n-gi v-for="module of modules" :key="module.translator[0]">
-        <aside-module :module="module" />
-      </n-gi>
-    </n-grid>
-  </base-popover>
+  <section class="base-preference">
+    <base-popover :popover="popoverControl">
+      <template #trigger>
+        <section class="module-icon">
+          <icon name="module" />
+        </section>
+      </template>
+      <user-card />
+      <n-grid class="aside-modules_main" x-gap="12" y-gap="8" :cols="5">
+        <n-gi v-for="module of modules" :key="module.translator[0]">
+          <aside-module :module="module" />
+        </n-gi>
+      </n-grid>
+    </base-popover>
+  </section>
 </template>

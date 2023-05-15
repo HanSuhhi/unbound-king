@@ -6,16 +6,18 @@ const { value, options } = useLocale();
 </script>
 
 <template>
-  <n-popselect
-    v-model:value="value"
-    :options="options"
-    trigger="click"
-  >
-    <section
-      class="module-icon"
-      cursor-pointer
+  <section class="i18n">
+    <n-popselect
+      v-model:value="value"
+      :options="options"
+      trigger="click"
     >
-      <icon name="i18n" />
-    </section>
-  </n-popselect>
+      <section
+        class="module-icon"
+        cursor-pointer
+      >
+        <icon name="i18n" />
+      </section>
+    </n-popselect>
+  </section>
 </template>

@@ -46,3 +46,40 @@ export function defineNaiveTheme() {
 
   return { darkTheme, darkThemeOverrides };
 }
+
+/**
+ * Binds a @layer utilities {} preamble to new <style> elements with a cssr-id attribute added under <head>.
+ * This is done using a MutationObserver.
+ */
+export function bindNaiveUILayer() {
+  const layerBefore = "@layer utilities {";
+  const targetNode = document.querySelector("head")!;
+  /**
+   * The MutationObserver instance, observing the targetNode for addedNodes (new child elements)
+   */
+  const observer = new MutationObserver((mutationsList) => {
+    mutationsList.forEach(({ addedNodes }) => {
+      /**
+       * Checks if the new added node is a <style> element with the cssr-id attribute.
+       * @param {Node} addedNodes[0] The new added node under <head>
+       */
+      const style = addedNodes[0] as HTMLStyleElement;
+      if (!style.hasAttribute("cssr-id")) return;
+
+      /**
+       * Checks if the given style element already contains the @layer utilities {} preamble.
+       * @param {string} style.innerText The innerText of the <style> element.
+       * @returns {boolean} True if the preamble is present, false otherwise.
+       */
+      if (style.innerText.includes(layerBefore)) return;
+
+      /**
+       * Prepends the @layer utilities {} preamble to the given style element.
+       * @param {string} style.innerHTML The innerHTML of the <style> element.
+       */
+      style.innerHTML = `${layerBefore}\n\n${style.innerHTML}\n\n}`;
+    });
+  });
+
+  observer.observe(targetNode, { childList: true });
+}

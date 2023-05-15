@@ -1,0 +1,4 @@
+.n-input.n-input--pair .n-input__input-el,
+.n-input.n-input--pair .n-input__placeholder {
+  text-align: left;
+}

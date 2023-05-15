@@ -10,7 +10,7 @@ const browerLocale = navigator.language.toLowerCase() || import.meta.env.I18N_DE
 
 const locale = storageLocale || browerLocale || import.meta.env.I18N_DEFAULT_LANG;
 
-export function useI18n() {
+export function defineI18n() {
   const i18n = createI18n({
     legacy: false,
     locale,
@@ -19,4 +19,8 @@ export function useI18n() {
   });
 
   return i18n;
+}
+
+export function I18N() {
+
 }

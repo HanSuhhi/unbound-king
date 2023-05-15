@@ -38,8 +38,8 @@ const { t } = useI18n();
 </template>
 
 <style scoped>
-@import url("./styles/workshop-factory.css");
-@import url("./styles/workshop-package.css");
+@import url("./styles/workshop-factory.css") layer(component);
+@import url("./styles/workshop-package.css") layer(component);
 
 @layer page {
   .workshop {

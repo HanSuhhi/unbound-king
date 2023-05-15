@@ -3,7 +3,7 @@ import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationPr
 import { storeToRefs } from "pinia";
 import { defineAppLayout } from "./components/app/composables/appLayout";
 import GlobalDialog from "./components/dialog/GlobalDialog.vue";
-import { defineNaiveTheme } from "./composables/theme/naiveTheme";
+import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
 import { provideTransitionDuration } from "./composables/constant/transitionDuration";
 import AppHeader from "./components/app/appHeader/AppHeader";
@@ -19,6 +19,7 @@ const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 
 provideTransitionDuration();
 useCorsor();
+bindNaiveUILayer();
 </script>
 
 <template>
