@@ -31,6 +31,10 @@ function stopMouseEvent() {
   </section>
 </template>
 
+<style>
+@import url("./title-card.css") layer(component);
+</style>
+
 <style scoped>
 @layer component {
   .title-card_header {

@@ -1,6 +1,8 @@
 <script setup lang='ts'>
 import { ref } from "vue";
 
+defineProps<{ enterKeyEvent: KeyEventWithoutFn }>();
+
 const isFullScreen = ref(false);
 
 document.onfullscreenchange = () => isFullScreen.value = !isFullScreen.value;

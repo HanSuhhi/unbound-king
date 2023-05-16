@@ -1,3 +1,16 @@
+<script setup lang='ts'>
+import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
+
+defineProps<{ text: string; reversed?: boolean }>();
+</script>
+
+<template>
+  <kbd class="kbd-icon" :data-reversed="useHtmlPropLint(reversed || false)">
+    {{ text }}
+  </kbd>
+</template>
+
+<style scoped>
 @layer component {
   .kbd-icon {
     --bg-color: var(--gray-deep-2);
@@ -21,3 +34,4 @@
     background-color: var(--white-deep-2);
   }
 }
+</style>

@@ -2,15 +2,14 @@ import { defer } from "lodash-es";
 import { ref, watch } from "vue";
 import { useKeyStore } from "@/stores/key.store";
 
-function useModulesControl() {
+function useModulesControl(enterKeyEvent: KeyEventWithoutFn) {
   const { addKeyCommand } = useKeyStore();
 
   const settingShow = ref(false);
   let inControl = false;
 
   const event: KeyEvent = {
-    key: "_control_m",
-    translator: ["preference", "进入偏好"],
+    ...enterKeyEvent,
     fn: (commands: string) => {
       if (inControl) {
         settingShow.value = !settingShow.value;
@@ -26,8 +25,8 @@ function useModulesControl() {
   return settingShow;
 }
 
-export function usePopoverControl() {
-  const popoverControl = useModulesControl();
+export function usePopoverControl(enterKeyEvent: KeyEventWithoutFn) {
+  const popoverControl = useModulesControl(enterKeyEvent);
 
   const element: HTMLElement = document.querySelector("#app")!;
   watch(popoverControl, (open) => {

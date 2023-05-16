@@ -1,6 +1,8 @@
 <script setup lang='ts'>
 import { useDark, useToggle } from "@vueuse/core";
-import { loadBothCss } from "../../../../composables/theme/globalTheme";
+import { loadBothCss } from "@/composables/theme/globalTheme";
+
+defineProps<{ enterKeyEvent: KeyEventWithoutFn }>();
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);

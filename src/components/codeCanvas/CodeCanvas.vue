@@ -37,12 +37,12 @@ function copy() {
 
 <template>
   <pre ref="CodeRef" class="code-canvas extender" :data-collapse="useHtmlPropLint(!isExtend)">
-    <header v-paper-ripple class="code-canvas_header code-canvas_position">
+    <header class="code-canvas_header code-canvas_position">
       <extend cursor-pointer class="code-canvas_icon" :data-reverse="useHtmlPropLint(isExtend)" @click="isExtend = !isExtend" />
       <span v-show="delayExtend"> language {{ language === 'javascript' ? 'typescript' : language }} </span>
     </header>
     <code v-show="delayExtend" class="code-canvas_code" :class="`language-${language}`">{{ code }}</code>
-    <footer v-paper-ripple class="code-canvas_footer code-canvas_position" :class="{ 'code-canvas_double': status }">
+    <footer class="code-canvas_footer code-canvas_position" :class="{ 'code-canvas_double': status }">
       <span v-if="CodeCanvasStatus.Changed === status" class="code-canvas_text code-canvas_warning">文件已修改，牢记复制保存！</span>
       <span v-if="CodeCanvasStatus.Copied === status" class="code-canvas_text code-canvas_success">已复制</span>
       <operator v-show="delayExtend" @click="copy" />

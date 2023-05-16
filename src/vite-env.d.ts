@@ -22,11 +22,7 @@ interface ImportMetaEnv {
   readonly BUILD_IV: string;
 }
 
-type KeyEvent = {
-  key: string;
-  translator: Translator;
-  fn: (isPressed) => void | Promise<void>;
-}
+
 
 type Translator = [key: string, title: string];
 type Color = [color1: string, color2: string];

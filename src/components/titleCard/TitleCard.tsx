@@ -1,7 +1,6 @@
 import { forEach } from "lodash-es";
 import { defineComponent } from "vue";
 import TitleCardCore from "./components/TitleCardCore.vue";
-import "./title-card.css";
 
 export default defineComponent({
   name: "TitleCard",

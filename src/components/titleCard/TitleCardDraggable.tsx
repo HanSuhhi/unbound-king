@@ -1,9 +1,7 @@
 import { UseDraggable } from "@vueuse/components";
-import type { Position } from '@vueuse/core';
-import type { Ref, StyleValue } from 'vue';
-import { ref } from 'vue';
-import { computed, defineComponent, inject } from 'vue';
-import { useFixed } from "@/components/dialog/composables/fixed";
+import type { Position } from "@vueuse/core";
+import type { Ref, StyleValue } from "vue";
+import { computed, defineComponent, inject } from "vue";
 import TitleCardCore from "./components/TitleCardCore.vue";
 import "./title-card-draggable.css";
 
@@ -12,9 +10,11 @@ export default defineComponent({
   props: {
     x: {
       type: Number,
+      required: true
     },
     y: {
       type: Number,
+      required: true
     },
     changeFixed: {
       type: Function,
@@ -33,7 +33,7 @@ export default defineComponent({
     return () => {
       return (
         <UseDraggable
-          as="article" handle={handle.value} style={style.value} class={`title-card title-card_draggable`}>
+          as="article" handle={handle.value} style={style.value} class={"title-card title-card_draggable"}>
           {{
             default: (position: Position) => {
               draggableBoundary(position);
@@ -42,7 +42,7 @@ export default defineComponent({
                   title: () => <>{slots.title?.()}</>,
                   subtitle: () => <>{slots.subtitle?.()}</>,
                   footer: () => <>{slots.footer?.()}</>,
-                  default: () => <>{slots.default?.()}</>,
+                  default: () => <>{slots.default?.()}</>
                 }}
               </TitleCardCore>;
             }
@@ -50,5 +50,5 @@ export default defineComponent({
         </UseDraggable>
       );
     };
-  },
+  }
 });

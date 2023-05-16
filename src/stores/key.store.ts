@@ -1,5 +1,5 @@
 import { useMagicKeys } from "@vueuse/core";
-import { forEach, toArray } from "lodash-es";
+import { forEach, isArray, toArray } from "lodash-es";
 import { defineStore } from "pinia";
 import type { WatchStopHandle } from "vue";
 import { computed, ref, watch } from "vue";
@@ -30,8 +30,8 @@ const useKeyStore = defineStore("key", () => {
   const KEYS = useMagicKeys();
   const keys = computed(() => Array.from(KEYS.current));
 
-  function defineCommandKey(key: string) {
-    return key[0] === "_" ? keys : KEYS[key];
+  function defineCommandKey(key: string | string[]) {
+    return isArray(key) ? keys : KEYS[key];
   }
 
   const addKeyCommand = (newKeyCommand: KeyEvent): KeyEvent => {

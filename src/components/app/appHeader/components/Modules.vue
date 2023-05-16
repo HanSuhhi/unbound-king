@@ -1,40 +1,36 @@
 <script setup lang='ts'>
 import type { Component } from "vue";
 import { markRaw, ref } from "vue";
-
-import { useI18n } from "vue-i18n";
-import BasePreference from "./BasePreference.vue";
-import I18n from "./I18n.vue";
-import ScreenController from "./ScreenController.vue";
-import ThemeController from "./themeController.vue";
+import I18n from "./mainModules/I18n.vue";
+import ThemeController from "./mainModules/themeController.vue";
+import ScreenController from "./mainModules/ScreenController.vue";
+import BasePreference from "./mainModules/BasePreference.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import { i18nLangModel } from "@/locals/lang.model";
-
-const { t } = useI18n();
+import KbdEvent from "@/components/KeyEvent.vue";
+import { defineKeyEventWithoutFn } from "@/composables/key/keyEvent";
 
 type ModuleBlock = [
-  translator: Translator,
-  component: Component
+  component: Component,
+  keyEventWithoutFn: KeyEventWithoutFn
 ];
 
 const modlues = ref<ModuleBlock[]>([
-  [["i18n", i18nLangModel.modules.theme], markRaw(I18n)],
-  [["theme", i18nLangModel.modules.theme], markRaw(ThemeController)],
-  [["screen", i18nLangModel.modules.screen], markRaw(ScreenController)],
-  [["modules", i18nLangModel.modules.modules], markRaw(BasePreference)]
+  [markRaw(I18n), defineKeyEventWithoutFn(["ctrl", "l"])(["toggle i18n", i18nLangModel.modules.i18n])],
+  [markRaw(ThemeController), defineKeyEventWithoutFn(["ctrl", "t"])(["toggle theme", i18nLangModel.modules.theme])],
+  [markRaw(ScreenController), defineKeyEventWithoutFn("f11")(["fullscreen", i18nLangModel.modules.screen])],
+  [markRaw(BasePreference), defineKeyEventWithoutFn(["ctrl", "m"])(["toggle modules", i18nLangModel.modules.modules])]
 ]);
 </script>
 
 <template>
   <section class="header-modules">
-    <template v-for="[[key, title], component] of modlues" :key="key">
+    <template v-for="[component, keyEventWithoutFn] of modlues" :key="keyEventWithoutFn.translator[0]">
       <explanation>
         <template #trigger>
-          <component :is="component" />
+          <component :is="component" :enter-key-event="keyEventWithoutFn" />
         </template>
-        <p class="p-reset">
-          {{ t(title) }}
-        </p>
+        <kbd-event :key-event="keyEventWithoutFn" />
       </explanation>
     </template>
   </section>

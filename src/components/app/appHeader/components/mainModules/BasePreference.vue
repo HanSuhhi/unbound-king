@@ -1,15 +1,17 @@
 <script setup lang='ts'>
 import { NGi, NGrid } from "naive-ui";
-import { defineQuitEvent } from "../composables/quitEvent";
-import { useQuitPreference } from "../composables/quitPreference";
-import { loadUser } from "../composables/user";
-import { defineOpenSetting } from "../composables/openSetting";
-import { usePopoverControl } from "../composables/popoverControl";
-import AsideModule from "./AsideModule.vue";
-import UserCard from "./UserCard.vue";
+import { defineQuitEvent } from "../../composables/quitEvent";
+import { useQuitPreference } from "../../composables/quitPreference";
+import { loadUser } from "../../composables/user";
+import { defineOpenSetting } from "../../composables/openSetting";
+import { usePopoverControl } from "../../composables/popoverControl";
+import AsideModule from "../AsideModule.vue";
+import UserCard from "../UserCard.vue";
 import BasePopover from "@/components/experience/BasePopover.vue";
 
-const popoverControl = usePopoverControl();
+const props = defineProps<{ enterKeyEvent: KeyEventWithoutFn }>();
+
+const popoverControl = usePopoverControl(props.enterKeyEvent);
 
 const modules: AppHeaderModule[] = [
   {

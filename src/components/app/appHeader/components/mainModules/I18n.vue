@@ -1,6 +1,8 @@
 <script setup lang='ts'>
 import { NPopselect } from "naive-ui";
-import { useLocale } from "../composables/locale";
+import { useLocale } from "../../composables/locale";
+
+defineProps<{ enterKeyEvent: KeyEventWithoutFn }>();
 
 const { value, options } = useLocale();
 </script>

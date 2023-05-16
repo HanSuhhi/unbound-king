@@ -1,30 +1,20 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import KbdIcon from "./kbdIcon/KbdIcon";
+import { useI18n } from "vue-i18n";
+import KbdIcon from "./kbdIcon/KbdIcon.vue";
+import { renderTextKeyEvent } from "@/composables/key/keyEvent";
 
-const props = defineProps<{
-  keyEvent: KeyEvent
-  reversed?: boolean
-}>();
+defineProps<{ keyEvent: KeyEventWithoutFn; reversed?: boolean }>();
 
-const kbds = computed(() => props.keyEvent.key.split("_"));
-function kbdKey(name: string) {
-  switch (name.toLowerCase()) {
-    case "escape":
-      return "esc";
-    default:
-      return name;
-  }
-}
+const { t } = useI18n();
 </script>
 
 <template>
   <div class="keyboard-event">
-    <kbd-icon v-for="(kbd, index) of kbds" :key="index" :reversed="reversed" class="keyboard-event_kbd" :text="kbdKey(kbd)" />
     <span>
-      {{ keyEvent.translator[1] }}
+      {{ t(keyEvent.translator[1]) || keyEvent.translator[1] }}
     </span>
   </div>
+  <kbd-icon :reversed="reversed" class="keyboard-event_kbd ml-mini" :text="renderTextKeyEvent(keyEvent.key)" />
 </template>
 
 <style scoped>
@@ -32,10 +22,6 @@ function kbdKey(name: string) {
   .keyboard-event {
     display: inline-flex;
     place-items: center;
-  }
-
-  .keyboard-event_kbd {
-    margin-right: var(--mini);
   }
 }
 </style>
