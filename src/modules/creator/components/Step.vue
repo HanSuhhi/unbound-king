@@ -5,11 +5,11 @@ import Icon from "@/components/Icon.vue";
 
 defineProps<{ plugin: CreatorPlugin }>();
 const emits = defineEmits<{
-  (e: "deleteItem"): void
+  deleteItema: []
 }>();
 
 function deletePlugin() {
-  return emits("deleteItem");
+  return emits("deleteItema");
 }
 </script>
 

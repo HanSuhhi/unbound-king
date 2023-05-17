@@ -1,4 +1,5 @@
 import { isArray, isString } from "lodash-es";
+import { useHotkeys } from "@/composables/key/hotkey";
 
 export function runKeyEvent(keyEvent?: KeyEvent) {
   if (!keyEvent) return;
@@ -13,7 +14,6 @@ export function defineKeyEventWithoutFn(key: KeyEvent["key"]) {
 }
 
 export function mountFnToKeyEventWithoutFn(keyEventWithoutFn: KeyEventWithoutFn, fn: KeyEvent["fn"]): KeyEvent {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return {
     ...keyEventWithoutFn,
     fn
@@ -21,8 +21,17 @@ export function mountFnToKeyEventWithoutFn(keyEventWithoutFn: KeyEventWithoutFn,
 }
 
 export function renderTextKeyEvent(key: KeyEventWithoutFn | KeyEventWithoutFn["key"]): string {
-  if (isArray(key)) return key.join(" - ");
-  if (isString(key)) return key;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  const { translator } = useHotkeys();
+
+  if (isArray(key)) return key.map(_key => translator(_key)).join(" + ");
+  if (isString(key)) return translator(key)!;
+
   return renderTextKeyEvent(key.key);
+}
+
+export function definePressed(fn: () => void) {
+  return (isPressed: boolean) => {
+    if (isPressed) return;
+    fn();
+  };
 }

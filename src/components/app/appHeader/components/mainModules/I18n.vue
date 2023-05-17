@@ -1,18 +1,26 @@
 <script setup lang='ts'>
 import { NPopselect } from "naive-ui";
 import { useLocale } from "../../composables/locale";
+import { closeModules } from "../../composables/modulesController";
+import { usePopoverControl } from "../../composables/popoverControl";
+import type { ModuleProp } from "./module-type";
 
-defineProps<{ enterKeyEvent: KeyEventWithoutFn }>();
+const { enterKeyEvent } = defineProps<ModuleProp>();
+
+const { popoverControl, toggle } = usePopoverControl(enterKeyEvent);
 
 const { value, options } = useLocale();
+
+closeModules(popoverControl);
 </script>
 
 <template>
-  <section class="i18n">
+  <section class="i18n" @click="toggle">
     <n-popselect
       v-model:value="value"
       :options="options"
-      trigger="click"
+      :show="popoverControl"
+      :on-clickoutside="toggle"
     >
       <section
         class="module-icon"

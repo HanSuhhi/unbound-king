@@ -12,6 +12,7 @@ export default defineLang({
     i18n: "切换语言",
     theme: "日夜模式",
     screen: "切换全屏",
-    modules: "系统模块"
+    modules: "系统模块",
+    close_modules: "关闭打开模块"
   }
 }, "中文");

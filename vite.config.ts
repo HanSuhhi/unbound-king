@@ -7,7 +7,12 @@ import unocss from "unocss/vite";
 
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      script: {
+        propsDestructure: true,
+        defineModel: true
+      }
+    }),
     vueJsx(),
     unocss(),
   ],

@@ -1,17 +1,18 @@
 <script setup lang='ts'>
 import { NGi, NGrid } from "naive-ui";
 import { defineQuitEvent } from "../../composables/quitEvent";
-import { useQuitPreference } from "../../composables/quitPreference";
 import { loadUser } from "../../composables/user";
 import { defineOpenSetting } from "../../composables/openSetting";
 import { usePopoverControl } from "../../composables/popoverControl";
 import AsideModule from "../AsideModule.vue";
 import UserCard from "../UserCard.vue";
+import { closeModules } from "../../composables/modulesController";
+import type { ModuleProp } from "./module-type";
 import BasePopover from "@/components/experience/BasePopover.vue";
 
-const props = defineProps<{ enterKeyEvent: KeyEventWithoutFn }>();
+const { enterKeyEvent } = defineProps<ModuleProp>();
 
-const popoverControl = usePopoverControl(props.enterKeyEvent);
+const popoverControl = usePopoverControl(enterKeyEvent);
 
 const modules: AppHeaderModule[] = [
   {
@@ -28,13 +29,15 @@ const modules: AppHeaderModule[] = [
   }
 ];
 
-useQuitPreference(popoverControl.popoverControl);
+closeModules(popoverControl.popoverControl);
 loadUser();
 </script>
 
 <template>
   <section class="base-preference">
-    <base-popover :popover="popoverControl">
+    <base-popover
+      :popover="popoverControl"
+    >
       <template #trigger>
         <section class="module-icon">
           <icon name="module" />

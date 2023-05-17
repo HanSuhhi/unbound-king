@@ -1,42 +1,27 @@
-import { defer } from "lodash-es";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import { useKeyStore } from "@/stores/key.store";
 
-function useModulesControl(enterKeyEvent: KeyEventWithoutFn) {
+export function usePopoverControl(enterKeyEvent: KeyEventWithoutFn) {
   const { addKeyCommand } = useKeyStore();
 
-  const settingShow = ref(false);
-  let inControl = false;
+  const popoverControl = ref(false);
 
   const event: KeyEvent = {
     ...enterKeyEvent,
-    fn: (commands: string) => {
-      if (inControl) {
-        settingShow.value = !settingShow.value;
-        inControl = false;
-      }
-      const shouldInControl = commands.includes("control") && commands.includes("m") && commands.length === 2;
-      if (shouldInControl) inControl = true;
+    fn: (commands: string[]) => {
+      if (commands.length !== 2) return;
+      const notInControl = commands.reduce((prev, curr) => {
+        if (enterKeyEvent.key.includes(curr)) return prev - 1;
+        return prev;
+      }, 2);
+      if (notInControl) return;
+      popoverControl.value = !popoverControl.value;
     }
   };
 
-  addKeyCommand(event);
+  void addKeyCommand(event);
 
-  return settingShow;
-}
+  const toggle = () => popoverControl.value = !popoverControl.value;
 
-export function usePopoverControl(enterKeyEvent: KeyEventWithoutFn) {
-  const popoverControl = useModulesControl(enterKeyEvent);
-
-  const element: HTMLElement = document.querySelector("#app")!;
-  watch(popoverControl, (open) => {
-    if (open) {
-      defer(() => {
-        element.onclick = () => popoverControl.value = false;
-      });
-    }
-    else { element.onclick = null; }
-  });
-
-  return { popoverControl };
+  return { popoverControl, toggle };
 }

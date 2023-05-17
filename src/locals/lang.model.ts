@@ -15,6 +15,7 @@ export const i18nLangModel: I18N = {
     i18n: "modules.i18n",
     theme: "modules.theme",
     screen: "modules.screen",
-    modules: "modules.modules"
+    modules: "modules.modules",
+    close_modules: "modules.close_modules"
   }
 };

@@ -16,6 +16,10 @@ function clearCommandStore() {
 
 const runningKeyCammands = ref<Dictionary<WatchStopHandle>>({});
 
+function defineKeyName(keyEvent: KeyEventWithoutFn) {
+  return `${keyEvent.key.toString()}_${keyEvent.translator[0]}`;
+}
+
 function stopRunningKeyCommand(key: string) {
   if (!runningKeyCammands.value[key]) return;
   runningKeyCammands.value[key]();
@@ -34,8 +38,12 @@ const useKeyStore = defineStore("key", () => {
     return isArray(key) ? keys : KEYS[key];
   }
 
-  const addKeyCommand = (newKeyCommand: KeyEvent): KeyEvent => {
-    const key = `${newKeyCommand.key}_${newKeyCommand.translator[0]}`;
+  const addKeyCommand = async (newKeyCommand: KeyEvent): Promise<KeyEvent> => {
+    if (newKeyCommand.mount)
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      await newKeyCommand.mount();
+
+    const key = defineKeyName(newKeyCommand);
     commandsStore.value[key] = newKeyCommand;
     runningKeyCammands.value[key] = watch(defineCommandKey(newKeyCommand.key), newKeyCommand.fn.bind(this));
     return newKeyCommand;
@@ -47,7 +55,7 @@ const useKeyStore = defineStore("key", () => {
   };
 
   const uninstallKeyCommand = (key: string | KeyEvent) => {
-    if (typeof key !== "string") key = `${key.key}_${key.translator[0]}`;
+    if (typeof key !== "string") key = defineKeyName(key);
     delete commandsStore.value[key];
     stopRunningKeyCommand(key);
   };
@@ -79,6 +87,10 @@ const useKeyStore = defineStore("key", () => {
     }
   });
 
+  const getKeyEvent = (keyEvent: KeyEvent): KeyEvent | undefined => {
+    return (commandsStore.value[defineKeyName(keyEvent)]);
+  };
+
   return {
     addKeyCommand,
     addKeyCommands,
@@ -87,7 +99,8 @@ const useKeyStore = defineStore("key", () => {
     freeze,
     commandStagingStore,
     commandsStore,
-    runningKeyCammands
+    runningKeyCammands,
+    getKeyEvent
   };
 });
 

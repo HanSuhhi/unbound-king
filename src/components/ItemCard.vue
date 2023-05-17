@@ -8,6 +8,7 @@ defineProps<Props>();
 
 const emits = defineEmits<Emit>();
 interface Emit { (e: "triggered"): void }
+
 function method() {
   return emits("triggered");
 }

@@ -11,5 +11,6 @@ interface I18N {
     theme: string
     screen: string
     modules: string
+    "close_modules": string
   }
 }

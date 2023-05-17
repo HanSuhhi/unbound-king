@@ -16,19 +16,19 @@ type ModuleBlock = [
 ];
 
 const modlues = ref<ModuleBlock[]>([
-  [markRaw(I18n), defineKeyEventWithoutFn(["ctrl", "l"])(["toggle i18n", i18nLangModel.modules.i18n])],
-  [markRaw(ThemeController), defineKeyEventWithoutFn(["ctrl", "t"])(["toggle theme", i18nLangModel.modules.theme])],
+  [markRaw(I18n), defineKeyEventWithoutFn(["control", "i"])(["toggle i18n", i18nLangModel.modules.i18n])],
+  [markRaw(ThemeController), defineKeyEventWithoutFn(["control", "t"])(["toggle theme", i18nLangModel.modules.theme])],
   [markRaw(ScreenController), defineKeyEventWithoutFn("f11")(["fullscreen", i18nLangModel.modules.screen])],
-  [markRaw(BasePreference), defineKeyEventWithoutFn(["ctrl", "m"])(["toggle modules", i18nLangModel.modules.modules])]
+  [markRaw(BasePreference), defineKeyEventWithoutFn(["control", "m"])(["toggle modules", i18nLangModel.modules.modules])]
 ]);
 </script>
 
 <template>
   <section class="header-modules">
-    <template v-for="[component, keyEventWithoutFn] of modlues" :key="keyEventWithoutFn.translator[0]">
+    <template v-for="[component, keyEventWithoutFn], index of modlues" :key="keyEventWithoutFn.translator[0]">
       <explanation>
         <template #trigger>
-          <component :is="component" :enter-key-event="keyEventWithoutFn" />
+          <component :is="component" :enter-key-event="keyEventWithoutFn" :index="index" />
         </template>
         <kbd-event :key-event="keyEventWithoutFn" />
       </explanation>

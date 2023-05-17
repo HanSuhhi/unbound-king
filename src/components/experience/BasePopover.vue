@@ -13,10 +13,11 @@ const { popoverThemeOverrides } = usePopoverTheme();
 <template>
   <n-popover
     :theme-overrides="popoverThemeOverrides"
-    trigger="click"
     :delay="300"
     :show-arrow="false"
     :show="popoverControl"
+    trigger="click"
+    :on-clickoutside="popover.toggle"
   >
     <template #trigger>
       <div cursor-pointer class="base-popover_trigger" @click="popoverControl = true">

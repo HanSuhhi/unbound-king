@@ -12,6 +12,7 @@ export default defineLang({
     i18n: "Language",
     theme: "Theme",
     screen: "Is Full Screen",
-    modules: "System Modules"
+    modules: "System Modules",
+    close_modules: "Close Modules"
   }
 }, "English");
