@@ -1,12 +1,13 @@
 <script setup lang='ts'>
+import { renderTextKeyEvent } from "@/composables/key/keyEvent";
 import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 
-defineProps<{ text: string; reversed?: boolean }>();
+defineProps<{ text: string | string[]; reversed?: boolean }>();
 </script>
 
 <template>
   <kbd class="kbd-icon" :data-reversed="useHtmlPropLint(reversed || false)">
-    {{ text }}
+    {{ renderTextKeyEvent(text) }}
   </kbd>
 </template>
 

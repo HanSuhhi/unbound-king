@@ -11,11 +11,13 @@ import CTabs from "./components/ui/tabs";
 import CLayout from "./components/ui/layout";
 import { usePaperRipple } from "./directives/paperRipple";
 import { defineI18n } from "./locals/index";
+import { disableDefaultKeys } from "./composables/experience/hotkey";
 
 const pinia = createPinia();
 const i18n = defineI18n();
 const { router } = useRouteConfig();
 const { paperRipple } = usePaperRipple();
+disableDefaultKeys();
 
 createApp(App)
   .use(pinia)

@@ -1,17 +1,44 @@
 <script setup lang='ts'>
 import { NPopselect } from "naive-ui";
+import type { VNodeChild } from "vue";
+import { h } from "vue";
+import type { I18nOption } from "../../composables/locale";
 import { useLocale } from "../../composables/locale";
 import { closeModules } from "../../composables/modulesController";
 import { usePopoverControl } from "../../composables/popoverControl";
 import type { ModuleProp } from "./module-type";
+import KbdIcon from "@/components/kbdIcon/KbdIcon.vue";
 
 const { enterKeyEvent } = defineProps<ModuleProp>();
 
 const { popoverControl, toggle } = usePopoverControl(enterKeyEvent);
 
-const { value, options } = useLocale();
+const { value, options } = useLocale(toggle);
 
 closeModules(popoverControl);
+function renderLabel({ hotkey, label }: I18nOption): VNodeChild {
+  return [
+    h(
+      "p",
+      {
+        class: "p-reset",
+        style: {
+          "display": "flex",
+          "align-items": "center"
+        }
+      },
+      {
+        default: () => [
+          label,
+          h(KbdIcon, {
+            text: hotkey,
+            class: "ml-bm"
+          })
+        ]
+      }
+    )
+  ];
+}
 </script>
 
 <template>
@@ -19,6 +46,7 @@ closeModules(popoverControl);
     <n-popselect
       v-model:value="value"
       :options="options"
+      :render-label="renderLabel"
       :show="popoverControl"
       :on-clickoutside="toggle"
     >

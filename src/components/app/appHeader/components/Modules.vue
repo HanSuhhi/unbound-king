@@ -16,10 +16,10 @@ type ModuleBlock = [
 ];
 
 const modlues = ref<ModuleBlock[]>([
-  [markRaw(I18n), defineKeyEventWithoutFn(["control", "i"])(["toggle i18n", i18nLangModel.modules.i18n])],
-  [markRaw(ThemeController), defineKeyEventWithoutFn(["control", "t"])(["toggle theme", i18nLangModel.modules.theme])],
-  [markRaw(ScreenController), defineKeyEventWithoutFn("f11")(["fullscreen", i18nLangModel.modules.screen])],
-  [markRaw(BasePreference), defineKeyEventWithoutFn(["control", "m"])(["toggle modules", i18nLangModel.modules.modules])]
+  [markRaw(I18n), defineKeyEventWithoutFn(["control", "l"])(["toggle i18n", i18nLangModel.modules.i18n])],
+  [markRaw(ThemeController), defineKeyEventWithoutFn(["control", "t"])(["toggle theme", i18nLangModel.modules.theme.title])],
+  [markRaw(ScreenController), defineKeyEventWithoutFn("f11")(["fullscreen", i18nLangModel.modules.screen.title])],
+  [markRaw(BasePreference), defineKeyEventWithoutFn(["control", "m"])(["toggle modules", i18nLangModel.modules.modules.title])]
 ]);
 </script>
 

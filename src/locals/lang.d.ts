@@ -1,4 +1,5 @@
 interface I18N {
+  hotkey: string
   workshop: Dictionary<string> | {
     standard: {
       title: string
@@ -8,9 +9,17 @@ interface I18N {
   }
   modules: {
     i18n: string
-    theme: string
-    screen: string
-    modules: string
-    "close_modules": string
+    theme: {
+      title: string
+      toggle: stirng
+    }
+    screen: {
+      title: string
+      toggle: string
+    }
+    modules: {
+      title: string,
+      close: stirng
+    }
   }
 }

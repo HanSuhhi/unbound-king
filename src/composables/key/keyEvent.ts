@@ -35,3 +35,17 @@ export function definePressed(fn: () => void) {
     fn();
   };
 }
+
+export function defineMultiplePressed(keys: string[]) {
+  return (fn: () => void) => {
+    return (userCommands: string[]) => {
+      if (userCommands.length !== keys.length) return;
+      const notInControl = userCommands.reduce((prev, curr) => {
+        if (keys.includes(curr)) return prev - 1;
+        return prev;
+      }, keys.length);
+      if (notInControl) return;
+      fn();
+    };
+  };
+}

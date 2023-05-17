@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import KbdIcon from "./kbdIcon/KbdIcon.vue";
-import { renderTextKeyEvent } from "@/composables/key/keyEvent";
 
 defineProps<{ keyEvent: KeyEventWithoutFn; reversed?: boolean }>();
 
@@ -14,7 +13,7 @@ const { t } = useI18n();
       {{ t(keyEvent.translator[1]) || keyEvent.translator[1] }}
     </span>
   </div>
-  <kbd-icon :reversed="reversed" class="keyboard-event_kbd ml-mini" :text="renderTextKeyEvent(keyEvent.key)" />
+  <kbd-icon :reversed="reversed" class="keyboard-event_kbd ml-mini" :text="keyEvent.key" />
 </template>
 
 <style scoped>

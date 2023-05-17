@@ -3,7 +3,7 @@ export function defineLang(message: I18N, title: string) {
   return message;
 }
 
-export const i18nLangModel: I18N = {
+export const i18nLangModel: Omit<I18N, "hotkey"> = {
   workshop: {
     standard: {
       title: "workshop.standard.title",
@@ -13,9 +13,17 @@ export const i18nLangModel: I18N = {
   },
   modules: {
     i18n: "modules.i18n",
-    theme: "modules.theme",
-    screen: "modules.screen",
-    modules: "modules.modules",
-    close_modules: "modules.close_modules"
+    theme: {
+      title: "modules.theme.title",
+      toggle: "modules.theme.toggle"
+    },
+    screen: {
+      title: "modules.screen.title",
+      toggle: "modules.screen.toggle"
+    },
+    modules: {
+      title: "modules.modules.title",
+      close: "modules.modules.close"
+    }
   }
 };

@@ -1,27 +1,22 @@
-import { ref } from "vue";
+import { defineMultiplePressed } from "../../../../composables/key/keyEvent";
 import { useKeyStore } from "@/stores/key.store";
+import { debouncedRef } from "@/composables/plus/ref";
 
 export function usePopoverControl(enterKeyEvent: KeyEventWithoutFn) {
   const { addKeyCommand } = useKeyStore();
 
-  const popoverControl = ref(false);
+  const popoverControl = debouncedRef(false, 0);
+  const toggle = () => popoverControl.value = !popoverControl.value;
 
   const event: KeyEvent = {
     ...enterKeyEvent,
-    fn: (commands: string[]) => {
-      if (commands.length !== 2) return;
-      const notInControl = commands.reduce((prev, curr) => {
-        if (enterKeyEvent.key.includes(curr)) return prev - 1;
-        return prev;
-      }, 2);
-      if (notInControl) return;
-      popoverControl.value = !popoverControl.value;
-    }
+    fn: defineMultiplePressed(enterKeyEvent.key as string[])(toggle)
   };
 
   void addKeyCommand(event);
 
-  const toggle = () => popoverControl.value = !popoverControl.value;
-
-  return { popoverControl, toggle };
+  return {
+    popoverControl,
+    toggle
+  };
 }

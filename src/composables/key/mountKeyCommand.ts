@@ -17,7 +17,7 @@ export function autoMountByRef(ref: Ref<boolean>, event: KeyEvent) {
 
   watch(ref, (showing) => {
     if (!showing) uninstallKeyCommand(event);
-    else addKeyCommand(event);
+    else void addKeyCommand(event);
   });
 
   return event;

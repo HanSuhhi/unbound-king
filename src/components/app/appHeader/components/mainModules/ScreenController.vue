@@ -1,35 +1,22 @@
 <script setup lang='ts'>
-import { ref } from "vue";
+import { isFullScreen } from "../../../../../composables/experience/system";
+import { useFullScreen } from "../../composables/fullScreen";
+import { toggleFullScreen } from "@/composables/experience/system";
 
 defineProps<{ enterKeyEvent: KeyEventWithoutFn }>();
-
-const isFullScreen = ref(false);
-
-document.onfullscreenchange = () => isFullScreen.value = !isFullScreen.value;
-
-function fullScreen() {
-  document.querySelector("body")?.requestFullscreen();
-}
-function exitFullScreen() {
-  document.exitFullscreen();
-}
+useFullScreen();
 </script>
 
 <template>
   <section
-    v-if="!isFullScreen"
     class="module-icon"
     cursor-pointer
-    @click="fullScreen"
+    @click="toggleFullScreen"
   >
-    <icon name="fullscreen" />
-  </section>
-  <section
-    v-else
-    class="module-icon"
-    cursor-pointer
-    @click="exitFullScreen"
-  >
-    <icon name="exitfullscreen" />
+    <icon
+      v-if="!isFullScreen()"
+      name="fullscreen"
+    />
+    <icon v-else name="exitfullscreen" />
   </section>
 </template>

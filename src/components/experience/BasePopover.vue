@@ -20,7 +20,7 @@ const { popoverThemeOverrides } = usePopoverTheme();
     :on-clickoutside="popover.toggle"
   >
     <template #trigger>
-      <div cursor-pointer class="base-popover_trigger" @click="popoverControl = true">
+      <div cursor-pointer class="base-popover_trigger" @click.prevent="popover.toggle">
         <slot name="trigger" />
       </div>
     </template>

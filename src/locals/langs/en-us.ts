@@ -1,6 +1,7 @@
 import { defineLang } from "../lang.model";
 
 export default defineLang({
+  hotkey: "e",
   workshop: {
     standard: {
       title: "Standard Package",
@@ -10,9 +11,17 @@ export default defineLang({
   },
   modules: {
     i18n: "Language",
-    theme: "Theme",
-    screen: "Is Full Screen",
-    modules: "System Modules",
-    close_modules: "Close Modules"
+    theme: {
+      title: "Theme",
+      toggle: "toggle theme"
+    },
+    screen: {
+      title: "Is Full Screen",
+      toggle: "toggle full screen"
+    },
+    modules: {
+      title: "System Modules",
+      close: "Close Modules"
+    }
   }
 }, "English");

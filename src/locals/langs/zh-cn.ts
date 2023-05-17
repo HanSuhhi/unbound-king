@@ -1,6 +1,7 @@
 import { defineLang } from "../lang.model";
 
 export default defineLang({
+  hotkey: "c",
   workshop: {
     standard: {
       title: "基础包",
@@ -10,9 +11,17 @@ export default defineLang({
   },
   modules: {
     i18n: "切换语言",
-    theme: "日夜模式",
-    screen: "切换全屏",
-    modules: "系统模块",
-    close_modules: "关闭打开模块"
+    theme: {
+      title: "日夜模式",
+      toggle: "切换日夜模式"
+    },
+    screen: {
+      title: "切换全屏",
+      toggle: "切换全屏模式"
+    },
+    modules: {
+      title: "系统模块",
+      close: "关闭系统模块"
+    }
   }
 }, "中文");
