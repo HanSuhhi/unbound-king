@@ -23,5 +23,11 @@ export default defineLang({
       title: "System Modules",
       close: "Close Modules"
     }
+  },
+  dialog: {
+    global: {
+      close: "close dialog",
+      confirm: "confirm"
+    }
   }
 }, "English");

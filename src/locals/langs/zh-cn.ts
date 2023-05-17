@@ -23,5 +23,11 @@ export default defineLang({
       title: "系统模块",
       close: "关闭系统模块"
     }
+  },
+  dialog: {
+    global: {
+      close: "弹窗关闭",
+      confirm: "弹窗确定"
+    }
   }
 }, "中文");

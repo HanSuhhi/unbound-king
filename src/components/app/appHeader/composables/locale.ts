@@ -4,7 +4,6 @@ import { delay, map } from "lodash-es";
 import { useI18n } from "vue-i18n";
 import type { SelectOption } from "naive-ui";
 import { animationDuration } from "../../../../composables/constant/env";
-import { immediate } from "@/composables/plus/watch";
 import { definePressed } from "@/composables/key/keyEvent";
 import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
 
@@ -30,7 +29,7 @@ export function useLocale(toggle: () => boolean) {
   watch(locale, (newLocale) => {
     localStorage.setItem("locale", newLocale);
     delay(toggle, animationDuration / 8);
-  }, immediate);
+  });
 
   // selecter options
   const value = ref(locale);

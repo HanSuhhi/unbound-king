@@ -25,5 +25,11 @@ export const i18nLangModel: Omit<I18N, "hotkey"> = {
       title: "modules.modules.title",
       close: "modules.modules.close"
     }
+  },
+  dialog: {
+    global: {
+      close: "dialog.global.close",
+      confirm: "dialog.global.confirm"
+    }
   }
 };

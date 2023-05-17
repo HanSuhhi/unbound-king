@@ -4,6 +4,7 @@ import type { Ref } from "vue";
 import { nextTick } from "vue";
 import { dialogMessage } from "../../../../composables/components/globalDialog";
 import { animationDuration } from "../../../../composables/constant/env";
+import { i18nLangModel } from "../../../../locals/lang.model";
 import { useKeyStore } from "@/stores/key.store";
 import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
 
@@ -12,7 +13,7 @@ export function key_closeDialog(dialogShow: Ref, delayShow: Ref) {
 
   const close: KeyEvent = {
     key: "escape",
-    translator: ["close-global-dialog", "关闭弹窗"],
+    translator: ["close-global-dialog", i18nLangModel.dialog.global.close],
     fn: throttle(async (isPressed) => {
       if (isPressed) return;
       dialogShow.value = false;

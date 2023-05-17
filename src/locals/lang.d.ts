@@ -22,4 +22,10 @@ interface I18N {
       close: stirng
     }
   }
+  dialog: {
+    global: {
+      close: string
+      confirm: string
+    }
+  }
 }
