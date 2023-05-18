@@ -4,6 +4,7 @@
 
 @import url("./base/") layer(base);
 @import url("./transition/") layer(base);
+@import url("./themes/") layer(base);
 @import url("./icon/") layer(utilities);
 @import url("./reset/") layer(utilities);
 

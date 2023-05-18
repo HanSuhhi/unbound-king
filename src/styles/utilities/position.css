@@ -5,3 +5,7 @@
 .absolute {
   position: absolute;
 }
+
+.fixed {
+  position: fixed;
+}

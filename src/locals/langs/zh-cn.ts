@@ -12,17 +12,15 @@ export default defineLang({
   modules: {
     i18n: "切换语言",
     theme: {
-      title: "日夜模式",
-      toggle: "切换日夜模式"
+      title: "日夜模式"
     },
     screen: {
-      title: "切换全屏",
-      toggle: "切换全屏模式"
+      title: "切换全屏"
     },
     modules: {
-      title: "系统模块",
-      close: "关闭系统模块"
-    }
+      title: "系统模块"
+    },
+    close: "关闭顶部模块"
   },
   dialog: {
     global: {

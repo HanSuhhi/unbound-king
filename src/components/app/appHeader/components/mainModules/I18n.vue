@@ -9,13 +9,13 @@ import { usePopoverControl } from "../../composables/popoverControl";
 import type { ModuleProp } from "./module-type";
 import KbdIcon from "@/components/kbdIcon/KbdIcon.vue";
 
-const { enterKeyEvent } = defineProps<ModuleProp>();
+const { enterKeyEvent, index } = defineProps<ModuleProp>();
 
 const { popoverControl, toggle } = usePopoverControl(enterKeyEvent);
 
-const { value, options } = useLocale(toggle);
+const { value, options } = useLocale(toggle, popoverControl);
 
-closeModules(popoverControl);
+closeModules(popoverControl, index);
 function renderLabel({ hotkey, label }: I18nOption): VNodeChild {
   return [
     h(
@@ -49,6 +49,7 @@ function renderLabel({ hotkey, label }: I18nOption): VNodeChild {
       :render-label="renderLabel"
       :show="popoverControl"
       :on-clickoutside="toggle"
+      :show-checkmark="false"
     >
       <section
         class="module-icon"

@@ -5,24 +5,22 @@ import { useI18n } from "vue-i18n";
 import type { SelectOption } from "naive-ui";
 import { animationDuration } from "../../../../composables/constant/env";
 import { definePressed } from "@/composables/key/keyEvent";
-import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
+import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
 
 export type I18nOption = SelectOption & { hotkey: string };
 
-function bindOptionHotkey(options: ComputedRef<any[]>, locale: Ref) {
+function bindOptionHotkey(options: ComputedRef<any[]>, locale: Ref, control: Ref<boolean>) {
   options.value.forEach((option: I18nOption) => {
     const { hotkey, label, value: optionValue } = option;
-    const keyEvent: KeyEvent = {
+    createAutoMountEvent(control)({
       key: hotkey,
       translator: [label as string, optionValue as string],
       fn: definePressed(() => locale.value = optionValue as string)
-    };
-
-    mountKeyCommand(keyEvent);
+    });
   });
 }
 
-export function useLocale(toggle: () => boolean) {
+export function useLocale(toggle: () => boolean, control: Ref<boolean>) {
   const { messages, locale } = useI18n();
 
   // auto set locale to storage
@@ -39,7 +37,8 @@ export function useLocale(toggle: () => boolean) {
     hotkey: message.hotkey
   })));
 
-  bindOptionHotkey(options, value);
+  // bind hotkey
+  bindOptionHotkey(options, value, control);
 
   return { value, options };
 }

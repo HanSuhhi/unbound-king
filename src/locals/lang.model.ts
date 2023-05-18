@@ -14,17 +14,15 @@ export const i18nLangModel: Omit<I18N, "hotkey"> = {
   modules: {
     i18n: "modules.i18n",
     theme: {
-      title: "modules.theme.title",
-      toggle: "modules.theme.toggle"
+      title: "modules.theme.title"
     },
     screen: {
-      title: "modules.screen.title",
-      toggle: "modules.screen.toggle"
+      title: "modules.screen.title"
     },
     modules: {
-      title: "modules.modules.title",
-      close: "modules.modules.close"
-    }
+      title: "modules.modules.title"
+    },
+    close: "modules.close"
   },
   dialog: {
     global: {

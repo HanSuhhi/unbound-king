@@ -1,6 +1,8 @@
 <script setup lang='ts'>
 import type { Component } from "vue";
-import { markRaw, ref } from "vue";
+import { computed, markRaw, provide, shallowRef } from "vue";
+
+import { TopModulesLengthSymbol } from "../app-header.symbol";
 import I18n from "./mainModules/I18n.vue";
 import ThemeController from "./mainModules/themeController.vue";
 import ScreenController from "./mainModules/ScreenController.vue";
@@ -15,17 +17,20 @@ type ModuleBlock = [
   keyEventWithoutFn: KeyEventWithoutFn
 ];
 
-const modlues = ref<ModuleBlock[]>([
+const modules = shallowRef<ModuleBlock[]>([
   [markRaw(I18n), defineKeyEventWithoutFn(["control", "l"])(["toggle i18n", i18nLangModel.modules.i18n])],
-  [markRaw(ThemeController), defineKeyEventWithoutFn(["control", "t"])(["toggle theme", i18nLangModel.modules.theme.title])],
+  [markRaw(ThemeController), defineKeyEventWithoutFn(["control", "d"])(["toggle theme", i18nLangModel.modules.theme.title])],
   [markRaw(ScreenController), defineKeyEventWithoutFn("f11")(["fullscreen", i18nLangModel.modules.screen.title])],
   [markRaw(BasePreference), defineKeyEventWithoutFn(["control", "m"])(["toggle modules", i18nLangModel.modules.modules.title])]
 ]);
+
+const modulesLength = computed(() => modules.value.length);
+provide(TopModulesLengthSymbol, modulesLength);
 </script>
 
 <template>
   <section class="header-modules">
-    <template v-for="[component, keyEventWithoutFn], index of modlues" :key="keyEventWithoutFn.translator[0]">
+    <template v-for="[component, keyEventWithoutFn], index of modules" :key="keyEventWithoutFn.translator[0]">
       <explanation>
         <template #trigger>
           <component :is="component" :enter-key-event="keyEventWithoutFn" :index="index" />

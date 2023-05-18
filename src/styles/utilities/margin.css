@@ -57,3 +57,33 @@
 .ml-bm {
   margin-left: var(--base-margin);
 }
+
+.mx-mini {
+  margin-right: var(--mini);
+  margin-left: var(--mini);
+}
+
+.mx-small {
+  margin-right: var(--small);
+  margin-left: var(--small);
+}
+
+.mx-bm {
+  margin-right: var(--base-margin);
+  margin-left: var(--base-margin);
+}
+
+.my-mini {
+  margin-top: var(--mini);
+  margin-bottom: var(--mini);
+}
+
+.my-small {
+  margin-top: var(--small);
+  margin-bottom: var(--small);
+}
+
+.my-bm {
+  margin-top: var(--base-margin);
+  margin-bottom: var(--base-margin);
+}

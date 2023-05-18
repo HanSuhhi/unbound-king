@@ -12,17 +12,15 @@ export default defineLang({
   modules: {
     i18n: "Language",
     theme: {
-      title: "Theme",
-      toggle: "toggle theme"
+      title: "Theme"
     },
     screen: {
-      title: "Is Full Screen",
-      toggle: "toggle full screen"
+      title: "Is Full Screen"
     },
     modules: {
-      title: "System Modules",
-      close: "Close Modules"
-    }
+      title: "System Modules"
+    },
+    close: "Close Modules"
   },
   dialog: {
     global: {

@@ -20,7 +20,3 @@ export function defineI18n() {
 
   return i18n;
 }
-
-export function I18N() {
-
-}

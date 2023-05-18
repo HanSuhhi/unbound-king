@@ -5,7 +5,6 @@ export default defineConfig({
   extractors: [extractorSplit],
   rules: [
     [/^z-(\d+)$/, ([, d]) => ({ "z-index": d })],
-    [/^flex-(\d+)$/, ([, d]) => ({ flex: d })],
     [
       "dialog_reset",
       {

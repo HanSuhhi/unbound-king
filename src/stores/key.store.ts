@@ -16,8 +16,8 @@ function clearCommandStore() {
 
 const runningKeyCammands = ref<Dictionary<WatchStopHandle>>({});
 
-function defineKeyName(keyEvent: KeyEventWithoutFn) {
-  return `${keyEvent.key.toString()}_${keyEvent.translator[0]}`;
+function defineCommandName({ key, translator }: KeyEventWithoutFn) {
+  return `${key.toString()}_${translator[0]}`;
 }
 
 function stopRunningKeyCommand(key: string) {
@@ -39,11 +39,9 @@ const useKeyStore = defineStore("key", () => {
   }
 
   const addKeyCommand = async (newKeyCommand: KeyEvent): Promise<KeyEvent> => {
-    if (newKeyCommand.mount)
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-      await newKeyCommand.mount();
+    if (newKeyCommand.mount) await newKeyCommand.mount();
 
-    const key = defineKeyName(newKeyCommand);
+    const key = defineCommandName(newKeyCommand);
     commandsStore.value[key] = newKeyCommand;
     runningKeyCammands.value[key] = watch(defineCommandKey(newKeyCommand.key), newKeyCommand.fn.bind(this));
     return newKeyCommand;
@@ -55,7 +53,7 @@ const useKeyStore = defineStore("key", () => {
   };
 
   const uninstallKeyCommand = (key: string | KeyEvent) => {
-    if (typeof key !== "string") key = defineKeyName(key);
+    if (typeof key !== "string") key = defineCommandName(key);
     delete commandsStore.value[key];
     stopRunningKeyCommand(key);
   };
@@ -87,8 +85,15 @@ const useKeyStore = defineStore("key", () => {
     }
   });
 
-  const getKeyEvent = (keyEvent: KeyEvent): KeyEvent | undefined => {
-    return (commandsStore.value[defineKeyName(keyEvent)]);
+  const getKeyEventByEvent = (keyEvent: KeyEventWithoutFn): KeyEvent | undefined => {
+    return (commandsStore.value[defineCommandName(keyEvent)]);
+  };
+
+  const getKeyEventByMessage = (key: string | string[], translatorMain: Translator[0]): KeyEvent | undefined => {
+    return getKeyEventByEvent({
+      key,
+      translator: [translatorMain, ""]
+    });
   };
 
   return {
@@ -100,7 +105,8 @@ const useKeyStore = defineStore("key", () => {
     commandStagingStore,
     commandsStore,
     runningKeyCammands,
-    getKeyEvent
+    getKeyEventByEvent,
+    getKeyEventByMessage
   };
 });
 

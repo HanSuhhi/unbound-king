@@ -1,1 +1,4 @@
-export interface ModuleProp { enterKeyEvent: KeyEventWithoutFn }
+export interface ModuleProp {
+  enterKeyEvent: KeyEventWithoutFn
+  index: number
+}

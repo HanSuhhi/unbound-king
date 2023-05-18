@@ -11,16 +11,14 @@ interface I18N {
     i18n: string
     theme: {
       title: string
-      toggle: stirng
     }
     screen: {
       title: string
-      toggle: string
     }
     modules: {
       title: string,
-      close: stirng
     }
+    close: stirng
   }
   dialog: {
     global: {

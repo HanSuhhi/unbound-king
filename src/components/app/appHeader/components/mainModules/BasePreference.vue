@@ -10,7 +10,7 @@ import { closeModules } from "../../composables/modulesController";
 import type { ModuleProp } from "./module-type";
 import BasePopover from "@/components/experience/BasePopover.vue";
 
-const { enterKeyEvent } = defineProps<ModuleProp>();
+const { enterKeyEvent, index } = defineProps<ModuleProp>();
 
 const popoverControl = usePopoverControl(enterKeyEvent);
 
@@ -29,7 +29,7 @@ const modules: AppHeaderModule[] = [
   }
 ];
 
-closeModules(popoverControl.popoverControl);
+closeModules(popoverControl.popoverControl, index);
 loadUser();
 </script>
 

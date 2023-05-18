@@ -1,12 +1,11 @@
 import { mountKeyCommand } from "../../../../composables/key/mountKeyCommand";
+import type { ModuleProp } from "../components/mainModules/module-type";
 import { definePressed } from "@/composables/key/keyEvent";
-import { i18nLangModel } from "@/locals/lang.model";
 import { toggleFullScreen } from "@/composables/experience/system";
 
-export function useFullScreen() {
+export function useFullScreen(enterKeyEvent: ModuleProp["enterKeyEvent"]) {
   const keyEvent: KeyEvent = {
-    key: "F11",
-    translator: ["toggle full screen", i18nLangModel.modules.screen.toggle],
+    ...enterKeyEvent,
     fn: definePressed(() => {
       void toggleFullScreen();
     })

@@ -49,3 +49,10 @@ export function defineMultiplePressed(keys: string[]) {
     };
   };
 }
+
+export function defineKeyEvent({ key }: KeyEventWithoutFn) {
+  return (fn: () => void) => {
+    if (isString(key)) return definePressed(fn);
+    return defineMultiplePressed(key)(fn);
+  };
+}

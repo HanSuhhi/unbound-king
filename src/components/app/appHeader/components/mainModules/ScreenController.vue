@@ -1,10 +1,11 @@
 <script setup lang='ts'>
 import { isFullScreen } from "../../../../../composables/experience/system";
 import { useFullScreen } from "../../composables/fullScreen";
+import type { ModuleProp } from "./module-type";
 import { toggleFullScreen } from "@/composables/experience/system";
 
-defineProps<{ enterKeyEvent: KeyEventWithoutFn }>();
-useFullScreen();
+const { enterKeyEvent } = defineProps<ModuleProp>();
+useFullScreen(enterKeyEvent);
 </script>
 
 <template>
