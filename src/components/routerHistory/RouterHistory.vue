@@ -23,10 +23,10 @@ const index = computed(() =>
 );
 
 router.afterEach(() => {
-  const currentWidth = routeBlocks.value[index.value]?.clientWidth || 0;
+  const currentWidth = routeBlocks.value[index.value]?.getBoundingClientRect().width || 0;
   const beforeTotalWidth = routeBlocks.value.slice(0, index.value).reduce((acc, element) => acc + element.offsetWidth, 0) + currentWidth;
   const routeBox = document.querySelector(".router-history_box")!;
-  const routeBlockWidth = routeBox.clientWidth;
+  const routeBlockWidth = routeBox.getBoundingClientRect().width;
 
   if (beforeTotalWidth > routeBlockWidth) smoothScrollTo(beforeTotalWidth - routeBlockWidth, animationDuration);
   if (beforeTotalWidth > routeBox.scrollLeft) smoothScrollTo(beforeTotalWidth - currentWidth, animationDuration);

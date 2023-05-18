@@ -23,7 +23,7 @@ bindNaiveUILayer();
 </script>
 
 <template>
-  <n-config-provider preflight-style-disabled :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="darkThemeOverrides">
+  <n-config-provider class="h" preflight-style-disabled :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="darkThemeOverrides">
     <n-loading-bar-provider>
       <n-message-provider>
         <n-notification-provider>
@@ -81,10 +81,14 @@ bindNaiveUILayer();
   .app-footer {
     z-index: 1;
 
-    display: flex;
+    display: table;
     align-items: center;
 
+    box-sizing: border-box;
+    height: var(--footer-height);
+
     font-size: var(--font-body);
+    line-height: normal;
 
     background-color: var(--bg-color-bright-2);
     border-top: var(--border);

@@ -8,7 +8,7 @@
   aspect-ratio: 1 / 1;
   width: calc(var(--init-size) * 1px);
 
-  opacity: 20%;
+  opacity: 15%;
   background-color: var(--white);
   border-radius: 50%;
 
@@ -33,6 +33,7 @@
   margin-top: calc(-1px * var(--wave-size));
   margin-left: calc(-1px * var(--wave-size));
 
+  opacity: 35%;
   border-radius: var(--border-radius);
 }
 

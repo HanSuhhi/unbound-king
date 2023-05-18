@@ -45,7 +45,6 @@ const { t } = useI18n();
   .workshop {
     position: relative;
     z-index: 2;
-    box-sizing: border-box;
     margin: var(--base-margin);
   }
 }

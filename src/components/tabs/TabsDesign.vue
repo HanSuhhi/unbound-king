@@ -1,6 +1,5 @@
 <script setup lang='ts'>
 import { computed, useSlots } from "vue";
-import TabsListItem from "./TabsListItem.vue";
 import { defineCommonLayout } from "@/composables/components/commonLayout";
 import { defineCommonTabs } from "@/composables/components/commonTabs";
 import { applyDataToModule } from "@/composables/experience/codeChanged";
@@ -41,7 +40,10 @@ const { code } = applyDataToModule(activeItemData, codeTemplate);
       </div>
       <base-tabs ref="COMP">
         <template #list>
-          <tabs-list-item v-for="(item, key) in list" :key="key" :message="item" />
+          <!-- <tabs-list-item v-for="(item, key) in list" :key="key" :message="item" /> -->
+          <div v-for="(item, key) in list" :key="key">
+            11
+          </div>
         </template>
         <template v-for="panel in read?.panels" :key="panel" #[panel]>
           <slot />

@@ -29,8 +29,8 @@ function onMouseDown({ x: left, y: top }: MouseEvent) {
     ["--el-top", elTop],
     ["--el-left", elLeft],
     ["--border-radius", `${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% ${random(20, 70)}% `],
-    ["--width", parentElement.clientWidth],
-    ["--height", parentElement.clientHeight]
+    ["--width", parentElement.getBoundingClientRect().width],
+    ["--height", parentElement.getBoundingClientRect().height]
   ]).forEach(([key, value]) => {
     waveElement.style.setProperty(key, value as string);
   });

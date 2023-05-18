@@ -3,6 +3,6 @@
 
 <template>
   <section class="footer-system">
-    event
+    <span>123</span>
   </section>
 </template>

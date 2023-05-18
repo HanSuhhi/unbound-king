@@ -52,11 +52,11 @@ export function defineAppLayout() {
     const footerHeight = footer.height;
     const workshopElement = document.querySelector(".workshop");
 
-    const mainHeight = `calc(${window.innerHeight}px -  ${headerElement.clientHeight}px - 1px - 2 * ${footerHeight}px)`;
+    const mainHeight = `calc(${document.body.getBoundingClientRect().height}px -  ${headerElement.getBoundingClientRect().height}px  - 2 * ${footerHeight}px)`;
     appElement.style.setProperty("--main-height", mainHeight);
     appElement.style.setProperty("--footer-height", `${footerHeight}px`);
     appElement.style.setProperty("--modules-width", import.meta.env.STYLE_ASIDE_MODULES_WIDTH);
-    appElement.style.setProperty("--aside-width", `${asideElement.clientWidth}px`);
+    appElement.style.setProperty("--aside-width", `${asideElement.getBoundingClientRect().width}px`);
     appElement.style.setProperty("--workshop-height", `${workshopElement?.getBoundingClientRect().height || 0}px`);
   };
   autoAdjust(setLayoutProps);

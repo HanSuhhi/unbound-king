@@ -1,11 +1,10 @@
-import { useComponent } from '../../composables/Comp';
+import { useComponent } from "../../composables/Comp";
 
 /**
  * @description use csss tabs composable
  */
-export const useCsssTabs = (props?: UseCsssTabsProps) => {
-
+export function useCsssTabs(props?: UseCsssTabsProps) {
   return {
     ...useComponent<CTabsApi, UseCsssTabsProps>(props)
   };
-};
+}

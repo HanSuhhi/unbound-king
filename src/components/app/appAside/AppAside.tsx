@@ -1,6 +1,6 @@
 import { storeToRefs } from "pinia";
 import type { ComputedRef } from "vue";
-import { computed, defineAsyncComponent, defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import AppAsideModule from "./components/AppAsideModule";
 import BaseMenu from "./components/baseMenu/BaseMenu.vue";
 import Workshop from "./components/workshop/Workshop.vue";
@@ -11,8 +11,8 @@ import "./app-aside.css";
 
 export default defineComponent({
   name: "AppAside",
-  setup: () => {
-    const { COMP } = useAsideLayout();
+  setup: async () => {
+    const { COMP } = await useAsideLayout();
     const { activeModules } = storeToRefs(useAppAsideStore());
 
     const lists = computed(() => ({ active }: Dictionary<ComputedRef<number>>) => {
@@ -32,19 +32,15 @@ export default defineComponent({
       return _panels;
     });
 
-    const Tabs = defineAsyncComponent(() =>
-      import("@/components/ui/tabs")
-    );
-
     return () => {
       return (
         <div class="app-aside_main">
-          <Tabs ref={COMP}>
+          <base-tabs ref={COMP}>
             {{
               list: lists.value,
               ...panels.value
             }}
-          </Tabs>
+          </base-tabs>
           <Workshop />
           <AsideSetting />
         </div>

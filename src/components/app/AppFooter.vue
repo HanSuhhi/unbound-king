@@ -9,17 +9,3 @@ import FooterSystem from "./app-footer/FooterSystem.vue";
     <footer-system />
   </article>
 </template>
-
-<style scoped>
-@layer page {
-  .footer {
-    position: relative;
-
-    box-sizing: border-box;
-    width: 100%;
-
-    font-size: 14px;
-    line-height: 18px;
-  }
-}
-</style>

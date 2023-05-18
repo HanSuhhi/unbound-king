@@ -35,7 +35,7 @@ export function useAsideLayout() {
     tabs.state.value.active = findIndex(activeModules.value, activeAsideModule.value);
   });
 
-  defineModuleBlock(tabs);
+  void defineModuleBlock(tabs);
 
   return tabs;
 }

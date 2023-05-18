@@ -12,8 +12,9 @@
   .footer-event {
     position: absolute;
     bottom: var(--footer-height);
-    left: calc(var(--aside-width) + 1px);
+    left: var(--aside-width);
 
+    box-sizing: border-box;
     width: calc(100% - var(--aside-width));
     height: var(--footer-height);
 
