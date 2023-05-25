@@ -37,7 +37,7 @@
 
   position: absolute;
   bottom: calc(-1 * var(--small) - var(--border-height));
-  left: var(--rect-left);
+  left: calc(var(--rect-left) - var(--base-margin));
 
   width: var(--rect-width);
   height: var(--border-height);

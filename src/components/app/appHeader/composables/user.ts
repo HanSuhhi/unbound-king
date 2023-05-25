@@ -4,7 +4,7 @@ import { debounce, isUndefined } from "lodash-es";
 import { UserSymbol } from "../app-header.symbol";
 import { useUserService } from "@/services/databases/user/user.service";
 import type { User } from "@/services/databases/user/user.table";
-import { animationDuration } from "@/composables/constant/env";
+import { TRANSITION_DURATION } from "@/composables/constant/env";
 import { deep } from "@/composables/plus/watch";
 
 const { registRandomUser, isEmpty, getMainUser, updateUser } = useUserService();
@@ -31,7 +31,7 @@ export function loadUser() {
     if (!newUser) return;
     if (isUndefined(oldUser)) return;
     await updateUser(newUser);
-  }, animationDuration), deep);
+  }, TRANSITION_DURATION), deep);
 
   return [user];
 }

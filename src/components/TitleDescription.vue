@@ -1,15 +1,14 @@
 <script setup lang='ts'>
-import { NGradientText } from "naive-ui";
-import { useMainGradient } from "@/composables/constant/naiveStyle";
+import MainGradient from "@/components/text/MainGradient.vue";
 
 defineProps<{ title: string; description: string }>();
 </script>
 
 <template>
   <header class="title-description">
-    <n-gradient-text class="title-description_title" :gradient="useMainGradient">
+    <main-gradient class="title-description_title">
       {{ title }}
-    </n-gradient-text>
+    </main-gradient>
     <p class="p-reset title-description_description">
       {{ description }}
     </p>

@@ -6,7 +6,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}");
 
 export function useRouteConfig() {
-  const routes = map(pages, (_, path) => {
+  const routes: RouteRecordRaw[] = map(pages, (_, path) => {
     const paths = path.split("/");
     const name = kebabCase(paths[paths.length - 2]);
     return {
@@ -14,7 +14,7 @@ export function useRouteConfig() {
       component: () => import(/* @vite-ignore */ path),
       name
     };
-  }) as unknown as RouteRecordRaw[];
+  });
 
   routes.unshift({
     path: "/",

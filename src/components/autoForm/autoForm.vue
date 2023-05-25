@@ -2,7 +2,7 @@
 import { ref, watch } from "vue";
 import type { FormInst } from "naive-ui";
 import { FormRules, NForm, NFormItem, NInput, NInputNumber, NSelect, NSwitch } from "naive-ui";
-import { deep } from "../../composables/plus/watch";
+import { deepImmediate } from "../../composables/plus/watch";
 import FormIcon from "./components/FormIcon.vue";
 import FormTranslator from "./components/FormTranslator.vue";
 import { defineAutoFormModel } from "./composable/model";
@@ -13,10 +13,12 @@ import FormMinMax from "./components/FormMinMax.vue";
 import { DATA_PackageNames } from "@/modules/packageName/data/packageName.data";
 
 interface Prop { config: AutoformItem[]; params?: any; hotUpdate?: boolean }
-interface Emit { (e: "model", model: any): void}
+// interface Emit
 
 const props = defineProps<Prop>();
-const emits = defineEmits<Emit>();
+const emits = defineEmits<{
+  "updateData": [model: any, form: FormInst]
+}>();
 
 const FormRef = ref<FormInst>();
 
@@ -25,8 +27,8 @@ const { model } = defineAutoFormModel(props);
 
 if (props.hotUpdate) {
   watch(model, (newModel) => {
-    emits("model", newModel);
-  }, deep);
+    emits("updateData", newModel, FormRef.value!);
+  }, deepImmediate);
 }
 </script>
 

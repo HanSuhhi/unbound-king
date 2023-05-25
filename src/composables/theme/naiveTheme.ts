@@ -25,6 +25,9 @@ export function defineNaiveTheme() {
     Switch: {
       railColorActive: main
     },
+    Checkbox: {
+      checkMarkColor: white
+    },
     Drawer: {
       color: bg2
     },

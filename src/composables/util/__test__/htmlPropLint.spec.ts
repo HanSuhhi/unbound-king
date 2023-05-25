@@ -11,6 +11,4 @@ describe("htmlPropLint.ts", () => {
     const result = useHtmlPropLint(true);
     expect(result).toBe("");
   });
-
 });
-

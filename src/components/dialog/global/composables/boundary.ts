@@ -2,7 +2,7 @@ import type { Position } from "@vueuse/core";
 import { clamp, useElementBounding } from "@vueuse/core";
 import type { Ref } from "vue";
 import { provide, ref } from "vue";
-import { dialogMessage } from "../../../composables/components/globalDialog";
+import { dialogMessage } from "@/composables/components/globalDialog";
 
 function calcCenterPosition(container: Ref, box: Ref): Position {
   const { width: containerWidth, height: containerHeight } = useElementBounding(container);

@@ -2,10 +2,10 @@
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
 import { storeToRefs } from "pinia";
 import { defineAppLayout } from "./components/app/composables/appLayout";
-import GlobalDialog from "./components/dialog/GlobalDialog.vue";
+import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
 import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
-import { provideTransitionDuration } from "./composables/constant/transitionDuration";
+import { provideStaticStyleVariables } from "./composables/constant/transitionDuration";
 import AppHeader from "./components/app/appHeader/AppHeader";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import appAside from "./components/app/appAside/AppAside";
@@ -17,7 +17,7 @@ const { Layout, renderLayout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
 const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 
-provideTransitionDuration();
+provideStaticStyleVariables();
 useCorsor();
 bindNaiveUILayer();
 </script>

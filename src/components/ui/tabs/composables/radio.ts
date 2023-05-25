@@ -1,18 +1,18 @@
-import { useTemplateClassList } from "../../composables/templateClassList";
-import { haveAttribute } from "../../tool/elementAttribute.tool";
 import { forEach, isUndefined } from "lodash-es";
 import type { Ref } from "vue";
-import { unref, ref, watchEffect, computed } from "vue";
+import { computed, ref, unref, watchEffect } from "vue";
+import { haveAttribute } from "../../tool/elementAttribute.tool";
+import { useTemplateClassList } from "../../composables/templateClassList";
 
 /**
    check if the child element has the `data-disabled` attribute.
  */
-const checkListChildren = (el: HTMLElement): CheckListChildrenResult => {
+function checkListChildren(el: HTMLElement): CheckListChildrenResult {
   const listChildren = Array.from(unref(el)?.children) as HTMLElement[];
   return listChildren.map((el) => {
     return [!haveAttribute(el, "data-disabled")[0] ? "normal" : "disabled", el];
   });
-};
+}
 
 export function useRadio(htmlEl?: Ref<HTMLElement | undefined>, needClass?: boolean) {
   /**
@@ -51,7 +51,7 @@ export function useRadio(htmlEl?: Ref<HTMLElement | undefined>, needClass?: bool
         if (index === _index) el.setAttribute("data-active", "");
         else el.removeAttribute("data-active");
       });
-    },
+    }
   });
   const isActive = (index: number) => {
     return index === active.value;
@@ -79,6 +79,6 @@ export function useRadio(htmlEl?: Ref<HTMLElement | undefined>, needClass?: bool
     active,
     isActive,
     children,
-    ...(needClass ? useTemplateClassList(["csss-radio"]) : null),
+    ...(needClass ? useTemplateClassList(["csss-radio"]) : null)
   };
 }

@@ -2,7 +2,7 @@ import { includes, throttle } from "lodash-es";
 import { useMessage } from "naive-ui";
 import type { Ref } from "vue";
 import { inject } from "vue";
-import { animationDuration } from "@/composables/constant/env";
+import { TRANSITION_DURATION } from "@/composables/constant/env";
 
 export function useFamilyNames(nameModel: Ref<string>) {
   const familyNames = inject<Ref<FamilyName[]>>("family-names");
@@ -14,7 +14,7 @@ export function useFamilyNames(nameModel: Ref<string>) {
     if (!value) return;
     if (includes(familyNames?.value, value)) return message.info("已有相同姓氏");
     familyNames?.value.push(value);
-  }, animationDuration);
+  }, TRANSITION_DURATION);
 
   const removeFamilyName = (index: number) => {
     familyNames?.value.splice(index, 1);

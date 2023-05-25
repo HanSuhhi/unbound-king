@@ -14,10 +14,6 @@ const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: tru
 
 <style scoped>
 @page {
-  .lineageo-design {
-    height: 100%;
-  }
-
   :deep(.lineageo-design_panels),
   :deep(.lineageo-design_panel) {
     height: 100%;
@@ -28,5 +24,10 @@ const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: tru
     top: var(--base-margin);
     height: calc(100% - 2 *  var(--base-margin));
   }
+
+  .lineageo-design {
+    height: 100%;
+  }
+
 }
 </style>

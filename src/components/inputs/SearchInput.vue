@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { throttle } from "lodash-es";
 import { ref, watch } from "vue";
-import { animationDuration } from "../../composables/constant/env";
+import { TRANSITION_DURATION } from "../../composables/constant/env";
 import ResetInput from "./ResetInput.vue";
 
 const props = withDefaults(defineProps<{ watchEvent: (...args: any) => any; placeholder?: string }>(), {
@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<{ watchEvent: (...args: any) => any; plac
 
 const value = ref("");
 
-watch(value, throttle(props.watchEvent, animationDuration));
+watch(value, throttle(props.watchEvent, TRANSITION_DURATION));
 </script>
 
 <template>

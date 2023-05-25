@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import typeString from "../attribute-type.d.ts?raw";
 import { useConfirm } from "../composables/operator";
-import CommonFormDialog from "@/components/CommonFormDialog.vue";
+import CommonFormDialog from "@/components/dialog/CommonFormDialog.vue";
 import typeButton from "@/components/typeButton/TypeButton.vue";
 import { defineCommonDialog } from "@/composables/components/commonDialog";
 import { iconFormConfig, idFormConfig, translatorFormConfig } from "@/composables/form/formConfigs";

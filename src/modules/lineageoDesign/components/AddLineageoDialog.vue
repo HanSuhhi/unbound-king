@@ -6,7 +6,7 @@ import { colorFormConfig, descriptionFormConfig, fromFormConfig } from "../../..
 import { destinyFormConfig, iconFormConfig, idFormConfig, translatorFormConfig } from "@/composables/form/formConfigs";
 import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
-import CommonFormDialog from "@/components/CommonFormDialog.vue";
+import CommonFormDialog from "@/components/dialog/CommonFormDialog.vue";
 
 const formConfig = computed(() =>
   withFormDetail<Lineageo>(transformTypeToForm(typeString), {

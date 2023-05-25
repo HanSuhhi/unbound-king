@@ -1,36 +1,18 @@
 <script setup lang='ts'>
-import type { Ref } from "vue";
-import { inject } from "vue";
-import { useMessage } from "naive-ui";
-import { forEach, isEmpty, throttle } from "lodash-es";
-import { compressToBase64 } from "lz-string";
-import { animationDuration } from "../../../composables/constant/env";
-import { cryptoData } from "../composables/cryptoData";
-import { encryp } from "../composables/crypto";
+import { NCheckbox } from "naive-ui";
+import { useBuild } from "../composables/build";
+import { useOperatorCheckboxes } from "../composables/operator";
 
-const value = inject<Ref<Record<string, []>>>("value");
-const message = useMessage();
-
-const build = throttle(() => {
-  if (isEmpty(value?.value)) return message.warning("请选择至少一个数据集！");
-  const DATA: Dictionary<any> = {};
-  forEach(value!.value, (packageNames: string[], datasetName: string) => {
-    DATA[datasetName] = [...cryptoData[datasetName].data.values()].filter((datasetItem) => {
-      if (packageNames.includes(datasetItem.from)) return true;
-      return false;
-    });
-  });
-
-  const data = encryp(DATA);
-  const compressed = compressToBase64(data);
-
-  return encryp(DATA);
-}, animationDuration);
+const { buildDataPackage } = useBuild();
+const { all: [allChecked, allIndeterminated] } = useOperatorCheckboxes();
 </script>
 
 <template>
   <section class="operator">
-    <type-button @click="build">
+    <n-checkbox v-model:checked="allChecked" :indeterminate="allIndeterminated">
+      全部选中
+    </n-checkbox>
+    <type-button @click="buildDataPackage">
       打包
     </type-button>
   </section>
@@ -40,6 +22,7 @@ const build = throttle(() => {
 @layer component {
   .operator {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     margin-bottom: var(--base-margin);

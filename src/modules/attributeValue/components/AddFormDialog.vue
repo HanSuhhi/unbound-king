@@ -5,7 +5,7 @@ import { iconFormConfig, translatorFormConfig } from "../../../composables/form/
 import typeString from "../attribute-value-type.d.ts?raw";
 import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";
-import CommonFormDialog from "@/components/CommonFormDialog.vue";
+import CommonFormDialog from "@/components/dialog/CommonFormDialog.vue";
 
 const type = inject<Ref<AttributeValue["type"]>>("type");
 const attributeValues = inject<Ref<Array<AttributeValue>>>("data");

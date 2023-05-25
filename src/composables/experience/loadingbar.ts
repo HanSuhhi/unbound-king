@@ -3,7 +3,7 @@ import { useLoadingBar } from "naive-ui";
 import { storeToRefs } from "pinia";
 import type { RouteLocationNormalized } from "vue-router";
 import { useRouter } from "vue-router";
-import { animationDuration } from "../constant/env";
+import { TRANSITION_DURATION } from "../constant/env";
 import { releaseRoutes } from "../router/router";
 import { usePlayerStore } from "@/stores/player.store";
 import { useGlobalStore } from "@/stores/global.store";
@@ -97,7 +97,7 @@ function useRouteAfter() {
 
     setTimeout(() => {
       loadingBar.finish();
-    }, animationDuration);
+    }, TRANSITION_DURATION);
   });
 }
 export function defineRouterChange() {

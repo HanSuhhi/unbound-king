@@ -1,7 +1,7 @@
 import { customRef } from "vue";
-import { animationDuration } from "../constant/env";
+import { TRANSITION_DURATION } from "../constant/env";
 
-export function debouncedRef<T>(value: T, delay = animationDuration) {
+export function debouncedRef<T>(value: T, delay = TRANSITION_DURATION) {
   let timeout: NodeJS.Timeout;
   return customRef((track, trigger) => {
     return {

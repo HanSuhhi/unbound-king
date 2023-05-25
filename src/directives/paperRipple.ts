@@ -1,6 +1,6 @@
 import type { CSSProperties, Directive } from "vue";
 import { delay, random } from "lodash-es";
-import { animationDuration } from "@/composables/constant/env";
+import { TRANSITION_DURATION } from "@/composables/constant/env";
 
 function createWaveElement() {
   const child = document.createElement("div");
@@ -39,7 +39,7 @@ function onMouseDown({ x: left, y: top }: MouseEvent) {
 
   document.onmouseup = () => {
     waveElement.classList.add("paper-ripple_end");
-    delay(waveElement.remove.bind(waveElement), animationDuration);
+    delay(waveElement.remove.bind(waveElement), TRANSITION_DURATION);
   };
 }
 

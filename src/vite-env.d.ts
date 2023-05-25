@@ -3,7 +3,6 @@
 
 declare module '*.vue' {
   import type { DefineComponent } from 'vue';
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
@@ -20,11 +19,12 @@ interface ImportMetaEnv {
   readonly STYLE_EXTEND_WIDTH: string;
   readonly BUILD_ENCRYPTED_KEY: string;
   readonly BUILD_IV: string;
+  readonly STYLE_BASE_FONT_SIZE: string;
 }
 
 
 
-type Translator = [key: string, title: string];
+type Translator = [key: string, title: string | I18N];
 type Color = [color1: string, color2: string];
 type MinMax = [min: number, max: number];
 type From = string;

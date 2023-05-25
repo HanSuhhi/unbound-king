@@ -1,24 +1,24 @@
 <script setup lang='ts'>
-import { NGradientText, NTransfer } from "naive-ui";
+import { NTransfer } from "naive-ui";
 import type { Ref } from "vue";
 import { inject } from "vue";
 import { cryptoData } from "../composables/cryptoData";
 import { getFromArrFromData } from "../composables/fromArr";
-import { useMainGradient } from "@/composables/constant/naiveStyle";
+import { choosedPackageSymbol } from "../data-package.symbol";
+import MainGradient from "@/components/text/MainGradient.vue";
 
-const value = inject<Ref<Record<string, []>>>("value");
+const value = inject<Ref<Dictionary<From[]>>>(choosedPackageSymbol);
 </script>
 
 <template>
   <section class="package-main">
     <template v-for="data, key of cryptoData" :key="key">
       <div class="package-main_part">
-        <n-gradient-text
+        <main-gradient
           class="package-main_title"
-          :gradient="useMainGradient"
         >
           {{ data.translator[1] }}
-        </n-gradient-text>
+        </main-gradient>
         <n-transfer v-model:value="value![key]" :options="getFromArrFromData(data.data)" />
       </div>
     </template>
@@ -35,6 +35,7 @@ const value = inject<Ref<Record<string, []>>>("value");
     height: 100%;
     margin-top: var(--base-margin);
     margin-bottom: var(--base-margin);
+    padding-top: var(--base-margin);
 
     border-top: var(--border);
   }

@@ -1,6 +1,6 @@
 import { storeToRefs } from "pinia";
-import { dialogMessage } from "../../../../composables/components/globalDialog";
-import { i18nLangModel } from "../../../../locals/lang.model";
+import { dialogMessage } from "@/composables/components/globalDialog";
+import { i18nLangModel } from "@/locals/lang.model";
 import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
 import { useKeyStore } from "@/stores/key.store";
 

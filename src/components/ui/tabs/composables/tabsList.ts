@@ -1,8 +1,8 @@
-import { useTemplateClassList } from "../../composables/templateClassList";
 import { ref } from "vue";
+import { useTemplateClassList } from "../../composables/templateClassList";
 import { useRadio } from "./radio";
 
-export const useTabsList = () => {
+export function useTabsList() {
   /**
    * @description TabsList
    */
@@ -20,6 +20,6 @@ export const useTabsList = () => {
     TabsList,
     isActive,
     listItemClassList,
-    ...useTemplateClassList(["csss-tabs__list"]),
+    ...useTemplateClassList(["csss-tabs__list"])
   };
-};
+}

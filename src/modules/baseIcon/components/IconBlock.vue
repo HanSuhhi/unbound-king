@@ -2,7 +2,7 @@
 import { throttle } from "lodash-es";
 import { useMessage } from "naive-ui";
 import Icon from "@/components/Icon.vue";
-import { animationDuration } from "@/composables/constant/env";
+import { TRANSITION_DURATION } from "@/composables/constant/env";
 
 const props = defineProps<{ icon: BaseIcon; notCopy?: boolean }>();
 
@@ -12,7 +12,7 @@ const copy = throttle((name: string) => {
   if (props.notCopy) return;
   navigator.clipboard.writeText(name);
   message.info("图标 key 复制成功");
-}, animationDuration);
+}, TRANSITION_DURATION);
 </script>
 
 <template>

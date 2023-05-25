@@ -2,7 +2,7 @@
 import { storeToRefs } from "pinia";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
-import { animationDuration } from "../../composables/constant/env";
+import { TRANSITION_DURATION } from "../../composables/constant/env";
 import { routes } from "../app/appHeader/AppHeader";
 import { smoothScrollTo } from "./composables/jsAnimation";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
@@ -10,6 +10,7 @@ import { useGlobalStore } from "@/stores/global.store";
 import Icon from "@/components/Icon.vue";
 import IconButton from "@/components/typeButton/IconButton.vue";
 // import "./router-history.css";
+import MainGradient from "@/components/text/MainGradient.vue";
 
 const { activePage } = storeToRefs(useGlobalStore());
 const router = useRouter();
@@ -28,8 +29,8 @@ router.afterEach(() => {
   const routeBox = document.querySelector(".router-history_box")!;
   const routeBlockWidth = routeBox.getBoundingClientRect().width;
 
-  if (beforeTotalWidth > routeBlockWidth) smoothScrollTo(beforeTotalWidth - routeBlockWidth, animationDuration);
-  if (beforeTotalWidth > routeBox.scrollLeft) smoothScrollTo(beforeTotalWidth - currentWidth, animationDuration);
+  if (beforeTotalWidth > routeBlockWidth) smoothScrollTo(beforeTotalWidth - routeBlockWidth, TRANSITION_DURATION);
+  if (beforeTotalWidth > routeBox.scrollLeft) smoothScrollTo(beforeTotalWidth - currentWidth, TRANSITION_DURATION);
 });
 
 function routeToPage(path: string) {
@@ -74,7 +75,9 @@ const closeIndex = ref(1);
         <li ref="routeBlocks" v-paper-ripple cursor-pointer :class="{ 'router-history_active': activePage?.title === route[1] }" class="h-reset router-history_item router-history_route" @click="routeToPage(route[0])" @mouseover="closeIndex = targetIndex" @mouseout="closeIndex = -1">
           <icon :name="route[2]" />
           <h2 :data-name="route[1]" class="h-reset router-history_text">
-            {{ route[1] }}
+            <component :is="activePage?.title === route[1] ? MainGradient : 'span'">
+              {{ route[1] }}
+            </component>
           </h2>
           <div :style="{ opacity: targetIndex === index ? 1 : targetIndex === closeIndex ? 1 : 0 }" class="router-history_close" @click.stop="deleteRouteItem(targetIndex)">
             <icon name="close" />
@@ -152,6 +155,10 @@ const closeIndex = ref(1);
     background-color: var(--bg-color);
   }
 
+  .router-history_active h2 span{
+    font-weight: bold;
+  }
+
   .router-history_text {
     position: relative;
 
@@ -163,23 +170,6 @@ const closeIndex = ref(1);
     transition: var(--transition-prop);
   }
 
-  .router-history_active > .router-history_text::before {
-    --clip-begin: 15;
-    --clip-width: 40;
-
-    content: attr(data-name);
-
-    position: absolute;
-
-    width: 100%;
-
-    color: var(--main-color);
-    white-space: nowrap;
-
-    clip-path: polygon(45% 0, 100% 0, 100% 100%, 10% 100%);
-
-    animation: router-history-active 0.8s;
-  }
 }
 @layer base {
   @keyframes router-history-active {

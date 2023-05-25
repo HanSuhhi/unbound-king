@@ -15,12 +15,12 @@ export function getVnodeIndex(index: number, arr: Array<VNodeNormalizedChildren[
 /**
  * @description components slot filter
  */
-export const slotFilter = (slot: any): VNodeNormalizedChildren[][] => {
+export function slotFilter(slot: any): VNodeNormalizedChildren[][] {
   const eles = slot
     // filter comment vnode
-    .filter((el: VNode) => el.type.toString() !== "Symbol(Comment)")
+    .filter((el: VNode) => el.type.toString() !== "Symbol(v-cmt)")
     .map((el: VNode) => {
-      return el.type.toString() === "Symbol(Fragment)" || el.type.toString() === "Symbol()" ? (el.children as any)!.map((el: any) => el) : [el];
+      return el.type.toString() === "Symbol(v-fgt)" || el.type.toString() === "Symbol()" ? (el.children as any)!.map((el: any) => el) : [el];
     }) as VNodeNormalizedChildren[][];
   return eles;
-};
+}

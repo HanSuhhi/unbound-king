@@ -2,11 +2,11 @@ import { throttle } from "lodash-es";
 import { storeToRefs } from "pinia";
 import type { Ref } from "vue";
 import { nextTick } from "vue";
-import { dialogMessage } from "../../../../composables/components/globalDialog";
-import { animationDuration } from "../../../../composables/constant/env";
-import { i18nLangModel } from "../../../../locals/lang.model";
 import { useKeyStore } from "@/stores/key.store";
 import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
+import { i18nLangModel } from "@/locals/lang.model";
+import { dialogMessage } from "@/composables/components/globalDialog";
+import { TRANSITION_DURATION } from "@/composables/constant/env";
 
 export function key_closeDialog(dialogShow: Ref, delayShow: Ref) {
   const { freeze } = storeToRefs(useKeyStore());
@@ -20,9 +20,9 @@ export function key_closeDialog(dialogShow: Ref, delayShow: Ref) {
       setTimeout(() => {
         dialogMessage.value?._cancel();
         if (freeze) freeze.value = false;
-      }, animationDuration);
+      }, TRANSITION_DURATION);
       await nextTick(() => delayShow.value = false);
-    }, animationDuration)
+    }, TRANSITION_DURATION)
   };
   return [mountKeyCommand(close)];
 }

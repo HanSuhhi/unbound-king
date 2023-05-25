@@ -13,8 +13,6 @@
   },
   "dependencies": {
     "@hansuhhi-don/lifehash-vue": "^0.1.6",
-    "@types/lodash-es": "^4.17.6",
-    "@types/node": "^18.11.18",
     "@vueuse/components": "^9.13.0",
     "@vueuse/core": "^9.10.0",
     "dayjs": "^1.11.7",
@@ -39,6 +37,8 @@
     "@types/crypto-js": "^4.1.1",
     "@types/prettier": "^2.7.2",
     "@types/prismjs": "^1.26.0",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "^18.11.18",
     "@unocss/preset-icons": "^0.48.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.0",

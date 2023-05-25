@@ -2,7 +2,7 @@ import { includes, throttle } from "lodash-es";
 import { useMessage } from "naive-ui";
 import type { Ref } from "vue";
 import { inject } from "vue";
-import { animationDuration } from "@/composables/constant/env";
+import { TRANSITION_DURATION } from "@/composables/constant/env";
 
 export function useFirstName(nameModel: Ref, gender?: Gender, chase?: Chase) {
   const firstNames = inject<Ref<FirstName[]>>("first-names");
@@ -18,7 +18,7 @@ export function useFirstName(nameModel: Ref, gender?: Gender, chase?: Chase) {
     );
     if (haveSameName) return message.info("已有相同名辞");
     firstNames?.value.push({ chase, gender, name: value });
-  }, animationDuration);
+  }, TRANSITION_DURATION);
 
   const removeFirstName = (name: string) => {
     const index = firstNames?.value.findIndex((firstName) => {

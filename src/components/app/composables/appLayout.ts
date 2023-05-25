@@ -2,7 +2,7 @@ import { useWindowSize } from "@vueuse/core";
 import { debounce, defer, delay } from "lodash-es";
 import { watch } from "vue";
 import { useI18n } from "vue-i18n";
-import { animationDuration } from "../../../composables/constant/env";
+import { TRANSITION_DURATION } from "../../../composables/constant/env";
 import { useCsssLayout } from "@/components/ui/layout";
 
 function autoAdjust(adjust: () => void) {
@@ -10,8 +10,8 @@ function autoAdjust(adjust: () => void) {
   const { locale } = useI18n();
 
   defer(() => {
-    watch(width, debounce(adjust, animationDuration));
-    watch(height, debounce(adjust, animationDuration));
+    watch(width, debounce(adjust, TRANSITION_DURATION));
+    watch(height, debounce(adjust, TRANSITION_DURATION));
     watch(locale, () => {
       delay(() => {
         const workshopElement = document.querySelector(".workshop");

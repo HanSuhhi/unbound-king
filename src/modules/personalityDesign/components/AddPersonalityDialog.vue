@@ -3,7 +3,7 @@ import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
 import { descriptionFormConfig, fromFormConfig, iconFormConfig, translatorFormConfig } from "../../../composables/form/formConfigs";
 import typeString from "../personality-type.d.ts?raw";
-import CommonFormDialog from "@/components/CommonFormDialog.vue";
+import CommonFormDialog from "@/components/dialog/CommonFormDialog.vue";
 import { idFormConfig } from "@/composables/form/formConfigs";
 import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";

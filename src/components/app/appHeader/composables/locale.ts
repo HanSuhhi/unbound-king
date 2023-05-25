@@ -3,7 +3,7 @@ import { computed, ref, watch } from "vue";
 import { delay, map } from "lodash-es";
 import { useI18n } from "vue-i18n";
 import type { SelectOption } from "naive-ui";
-import { animationDuration } from "../../../../composables/constant/env";
+import { TRANSITION_DURATION } from "../../../../composables/constant/env";
 import { definePressed } from "@/composables/key/keyEvent";
 import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
 
@@ -26,7 +26,7 @@ export function useLocale(toggle: () => boolean, control: Ref<boolean>) {
   // auto set locale to storage
   watch(locale, (newLocale) => {
     localStorage.setItem("locale", newLocale);
-    delay(toggle, animationDuration / 8);
+    delay(toggle, TRANSITION_DURATION / 8);
   });
 
   // selecter options

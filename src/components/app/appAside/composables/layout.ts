@@ -6,7 +6,7 @@ import { defineModuleBlock } from "./moduleBlock";
 import { useGlobalStore } from "@/stores/global.store";
 import { useCsssTabs } from "@/components/ui/tabs";
 
-export function useAsideLayout() {
+export async function useAsideLayout() {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
   const { activeModules } = storeToRefs(useAppAsideStore());
 
@@ -35,7 +35,7 @@ export function useAsideLayout() {
     tabs.state.value.active = findIndex(activeModules.value, activeAsideModule.value);
   });
 
-  void defineModuleBlock(tabs);
+  await defineModuleBlock(tabs);
 
   return tabs;
 }

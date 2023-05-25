@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { useConfirm } from "../composables/operator";
 import typeString from "../ambition-type.d.ts?raw";
 import { fromFormConfig } from "../../../composables/form/formConfigs";
-import CommonFormDialog from "@/components/CommonFormDialog.vue";
+import CommonFormDialog from "@/components/dialog/CommonFormDialog.vue";
 import { idFormConfig, translatorFormConfig } from "@/composables/form/formConfigs";
 import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";

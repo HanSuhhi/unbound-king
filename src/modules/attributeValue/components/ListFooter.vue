@@ -1,11 +1,11 @@
 <script setup lang="ts">
-// import type { useCsssDialog } from "@/components/ui/dialog";
 import type { Ref } from "vue";
 import { inject } from "vue";
+import { getCommonDialog } from "../../../composables/components/commonDialog";
 
 const props = defineProps<{ type: AttributeValue["type"] }>();
 
-const modal = inject<Ref<boolean>>("modal")!;
+const { modal } = getCommonDialog();
 const type = inject<Ref<AttributeValue["type"]>>("type");
 
 function openDialog() {

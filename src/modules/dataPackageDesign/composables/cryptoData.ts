@@ -4,9 +4,13 @@ import { DATA_Personalities } from "@/modules/personalityDesign/data";
 import { DATA_Ambitions } from "@/modules/ambitionDesign/data";
 import { DATA_Lineageo } from "@/modules/lineageoDesign/data";
 
-interface CryptoData {
+interface CryptoDataDetail {
+  from: From
+}
+
+export interface CryptoData {
   translator: Translator
-  data: Map<string, any>
+  data: Map<string, CryptoDataDetail>
 }
 
 export const cryptoData: Dictionary<CryptoData> = {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import KeyEventButton from "../typeButton/KeyEventButton.vue";
+import KeyEventButton from "../../typeButton/KeyEventButton.vue";
 import { useBoundary } from "./composables/boundary";
 import { useFixed } from "./composables/fixed";
 import { key_closeDialog } from "./composables/key/close";

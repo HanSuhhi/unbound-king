@@ -3,7 +3,7 @@ import type { ComputedRef } from "vue";
 import { computed, inject } from "vue";
 import { fromFormConfig, translatorFormConfig } from "../../../composables/form/formConfigs";
 import typeString from "../game-icon-type.d.ts?raw";
-import CommonFormDialog from "@/components/CommonFormDialog.vue";
+import CommonFormDialog from "@/components/dialog/CommonFormDialog.vue";
 import { idFormConfig } from "@/composables/form/formConfigs";
 import { withFormDetail } from "@/composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";

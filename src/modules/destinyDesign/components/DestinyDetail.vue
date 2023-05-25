@@ -23,7 +23,7 @@ const textareaTheme = useTextareaTheme();
         <template #title>
           种族基础信息
         </template>
-        <auto-form :config="destinyFormconfig" hot-update @model="getNewModel" />
+        <auto-form :config="destinyFormconfig" hot-update @update-data="getNewModel" />
       </title-card>
       <title-card class="destiny-detail_main">
         <template #title>

@@ -28,6 +28,7 @@ export default defineConfig({
     "STYLE_COLLAPSE_WIDTH",
     "STYLE_ANIMATION_DURATION",
     "STYLE_EXTEND_WIDTH",
+    "STYLE_BASE_FONT_SIZE",
     "BUILD_ENCRYPTED_KEY",
     "BUILD_IV",
   ],
