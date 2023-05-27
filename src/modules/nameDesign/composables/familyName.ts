@@ -1,4 +1,4 @@
-import { includes, throttle } from "lodash-es";
+import { includes, throttle } from "lodash";
 import { useMessage } from "naive-ui";
 import type { Ref } from "vue";
 import { inject } from "vue";

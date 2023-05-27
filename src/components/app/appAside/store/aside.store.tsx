@@ -1,4 +1,4 @@
-import { flatMap } from "lodash-es";
+import { flatMap } from "lodash";
 import { defineStore, storeToRefs } from "pinia";
 import { computed, ref } from "vue";
 import { defineModules } from "../data/modules";

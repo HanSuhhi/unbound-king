@@ -1,4 +1,4 @@
-import { delay } from "lodash-es";
+import { delay } from "lodash";
 import { useRouter } from "vue-router";
 
 export function useModules(props: any) {
@@ -10,6 +10,7 @@ export function useModules(props: any) {
   };
 
   const toggleModule = () => {
+    if (import.meta.env.SSR) return;
     const AppAside = document.getElementsByClassName("app-aside")[0] as HTMLElement;
     AppAside.style.setProperty("--transition-delay", ".45s");
     AppAside.style.setProperty("--transition-property", "top");

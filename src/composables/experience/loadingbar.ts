@@ -1,4 +1,4 @@
-import { find, findIndex, isEmpty } from "lodash-es";
+import { find, findIndex, isEmpty } from "lodash";
 import { useLoadingBar } from "naive-ui";
 import { storeToRefs } from "pinia";
 import type { RouteLocationNormalized } from "vue-router";

@@ -1,4 +1,4 @@
-import { isUndefined } from "lodash-es";
+import { isUndefined } from "lodash";
 import { computed, provide, ref, watch } from "vue";
 import { DATA } from "../../../composables/data";
 import { formatCodeString } from "@/composables/ci/codeString";

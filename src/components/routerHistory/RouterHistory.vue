@@ -24,6 +24,7 @@ const index = computed(() =>
 );
 
 router.afterEach(() => {
+  if (import.meta.env.SSR) return;
   const currentWidth = routeBlocks.value[index.value]?.getBoundingClientRect().width || 0;
   const beforeTotalWidth = routeBlocks.value.slice(0, index.value).reduce((acc, element) => acc + element.offsetWidth, 0) + currentWidth;
   const routeBox = document.querySelector(".router-history_box")!;

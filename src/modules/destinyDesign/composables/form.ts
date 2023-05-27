@@ -12,13 +12,14 @@ export function useForm(destiny: Destiny) {
       ...iconFormConfig,
       ...colorFormConfig,
       description: { title: "说明", type: "textarea" },
-      main: hideFormConfig,
-      origin: hideFormConfig
+      origin: hideFormConfig,
+      canBeGenerated: hideFormConfig
     });
   }
   );
 
   formConfig.value.forEach((config) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     config.defaultValue = destiny[config.key as keyof Destiny];
   });
 

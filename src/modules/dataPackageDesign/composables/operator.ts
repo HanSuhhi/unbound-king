@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
 import { inject, ref, watch } from "vue";
-import { forEach, keys } from "lodash-es";
+import { forEach, keys } from "lodash";
 import { choosedPackageSymbol } from "../data-package.symbol";
 import { deep } from "../../../composables/plus/watch";
 import { ternaryIsFalse, ternaryIsIndeterminate } from "../../../composables/util/ternary";

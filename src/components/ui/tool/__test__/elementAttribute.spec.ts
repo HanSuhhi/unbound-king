@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { haveAttribute, lintAttribute, checkAttribute } from "../elementAttribute.tool";
+import { checkAttribute, haveAttribute, lintAttribute } from "../elementAttribute.tool";
 
 describe("elementAttribute.tool.ts", () => {
   it("return [false, null]", () => {

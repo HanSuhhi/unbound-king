@@ -1,4 +1,4 @@
-import { merge } from "lodash-es";
+import { merge } from "lodash";
 
 function selecterDefault(configItem: AutoformItem): AutoformItem {
   const isSelect = configItem.type === "selecter";

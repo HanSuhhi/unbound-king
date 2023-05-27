@@ -1,4 +1,4 @@
-import { mapKeys } from "lodash-es";
+import { mapKeys } from "lodash";
 import { getKeyFromPath } from "./keyFromPath";
 
 export function parseImportModule(data: Record<string, any>, returnDefault = false) {

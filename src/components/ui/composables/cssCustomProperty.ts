@@ -1,10 +1,10 @@
-import { forEach } from "lodash-es";
+import { forEach } from "lodash";
 import type { Ref } from "vue";
 import { unref, watchEffect } from "vue";
 import type { StyleSetter } from "../tool/styleSetter.tool";
 import { useGenerator } from "./generator";
 
-export const useCssCustomProperty = <T extends Record<string, string>>(styleSetter: Ref<StyleSetter | undefined>) => {
+export function useCssCustomProperty<T extends Record<string, string>>(styleSetter: Ref<StyleSetter | undefined>) {
   const { generator } = useGenerator<T>({} as T);
 
   watchEffect(() => {
@@ -14,4 +14,4 @@ export const useCssCustomProperty = <T extends Record<string, string>>(styleSett
   });
 
   return { property: generator };
-};
+}

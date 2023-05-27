@@ -1,4 +1,4 @@
-import { isEqual } from "lodash-es";
+import { isEqual } from "lodash";
 import { storeToRefs } from "pinia";
 import type { PropType } from "vue";
 import { computed, defineComponent } from "vue";

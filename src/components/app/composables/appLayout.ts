@@ -1,5 +1,5 @@
 import { useWindowSize } from "@vueuse/core";
-import { debounce, defer, delay } from "lodash-es";
+import { debounce, defer, delay } from "lodash";
 import { watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { TRANSITION_DURATION } from "../../../composables/constant/env";
@@ -14,6 +14,7 @@ function autoAdjust(adjust: () => void) {
     watch(height, debounce(adjust, TRANSITION_DURATION));
     watch(locale, () => {
       delay(() => {
+        if (import.meta.env.SSR) return;
         const workshopElement = document.querySelector(".workshop");
         const appElement = document.getElementsByClassName("app")[0] as HTMLElement;
         const { height } = workshopElement!.getBoundingClientRect();
@@ -44,6 +45,7 @@ export function defineAppLayout() {
   });
 
   const setLayoutProps = () => {
+    if (import.meta.env.SSR) return;
     const appElement = document.getElementsByClassName("app")[0] as HTMLElement;
     const asideElement = document.getElementsByClassName("app-aside")[0] as HTMLElement;
     const headerElement = document.getElementsByClassName("app-header")[0] as HTMLElement;

@@ -2,6 +2,7 @@
  * Enter full screen mode
  */
 async function fullScreen() {
+  if (import.meta.env.SSR) return;
   await document.querySelector("body")?.requestFullscreen();
 }
 
@@ -9,6 +10,7 @@ async function fullScreen() {
  * Exit full screen mode
  */
 async function exitFullScreen() {
+  if (import.meta.env.SSR) return;
   await document.exitFullscreen();
 }
 
@@ -16,6 +18,7 @@ async function exitFullScreen() {
  * Is full screen mode?
  */
 export function isFullScreen() {
+  if (import.meta.env.SSR) return;
   return document.fullscreenElement !== null;
 }
 

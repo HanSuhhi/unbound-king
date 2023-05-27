@@ -22,6 +22,7 @@ export function defineCommonTabs(componentName: string, common = true) {
   });
 
   const calcListItemWidth = () => {
+    if (import.meta.env.SSR) return;
     const list = document.querySelector(`.${listName}`);
     const items = document.querySelectorAll(`.${listItemName}`);
     const listLeft = list?.getBoundingClientRect().left || 0;

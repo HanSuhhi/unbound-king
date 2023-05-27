@@ -1,4 +1,4 @@
-import { forEach, isUndefined } from "lodash-es";
+import { forEach, isUndefined } from "lodash";
 import type { Ref } from "vue";
 import { computed, ref, unref, watchEffect } from "vue";
 import { haveAttribute } from "../../tool/elementAttribute.tool";

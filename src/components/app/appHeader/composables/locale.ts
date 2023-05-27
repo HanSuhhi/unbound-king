@@ -1,6 +1,6 @@
 import type { ComputedRef, Ref } from "vue";
 import { computed, ref, watch } from "vue";
-import { delay, map } from "lodash-es";
+import { delay, map } from "lodash";
 import { useI18n } from "vue-i18n";
 import type { SelectOption } from "naive-ui";
 import { TRANSITION_DURATION } from "../../../../composables/constant/env";

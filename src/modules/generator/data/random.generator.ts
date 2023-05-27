@@ -1,4 +1,4 @@
-import { filter, isArray, isMap, isObject, map, sample } from "lodash-es";
+import { filter, isArray, isMap, isObject, map, sample } from "lodash";
 import { DATA } from "@/composables/data";
 
 function getType(param: any): "Map" | "Object" | "Array" | "error" {

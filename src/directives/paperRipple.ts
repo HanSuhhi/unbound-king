@@ -1,5 +1,5 @@
 import type { CSSProperties, Directive } from "vue";
-import { delay, random } from "lodash-es";
+import { delay, random } from "lodash";
 import { TRANSITION_DURATION } from "@/composables/constant/env";
 
 function createWaveElement() {

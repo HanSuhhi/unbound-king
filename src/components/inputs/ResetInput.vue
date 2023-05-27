@@ -1,7 +1,7 @@
 import { userAutoVModel } from '../autoForm/composable/formItemDiy';
 <script setup lang='ts'>
 import { watch } from "vue";
-import { debounce } from "lodash-es";
+import { debounce } from "lodash";
 import { userAutoVModel } from "../autoForm/composable/formItemDiy";
 
 const props = defineProps<{ modelValue: string; minlength?: number }>();

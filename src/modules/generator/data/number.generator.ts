@@ -1,4 +1,4 @@
-import { random } from "lodash-es";
+import { random } from "lodash";
 import type from "../types/number.generator.d.ts?raw";
 import { withFormDetail } from "../../../composables/form/formDetail";
 import { transformTypeToForm } from "@/composables/form/typeToForm";

@@ -1,8 +1,6 @@
 import { nextTick } from "vue";
 import { HTML_FONT_SIZE, TRANSITION_DURATION } from "./env";
 
-const element = document.querySelector("body");
-
 /**
  * Set default transition duration
  * @function setDefaultTransitionDuration
@@ -10,7 +8,8 @@ const element = document.querySelector("body");
  */
 function setDefaultTransitionDuration() {
   const animationNumber = TRANSITION_DURATION / 1000 || 0;
-  element?.style.setProperty("--transition-duration", `${animationNumber}s`);
+  if (!import.meta.env.SSR)
+    document.querySelector("body")?.style.setProperty("--transition-duration", `${animationNumber}s`);
 }
 
 /**
@@ -20,7 +19,8 @@ function setDefaultTransitionDuration() {
  */
 function setDefaultHtmlFontSize() {
   const fontsize = HTML_FONT_SIZE || "16px";
-  document.documentElement.style.fontSize = fontsize;
+  if (!import.meta.env.SSR)
+    document.documentElement.style.fontSize = fontsize;
   return fontsize;
 }
 

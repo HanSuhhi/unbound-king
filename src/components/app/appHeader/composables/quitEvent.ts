@@ -1,6 +1,6 @@
 import { storeToRefs } from "pinia";
 import type { Ref } from "vue";
-import { defer } from "lodash-es";
+import { defer } from "lodash";
 import { useGlobalDialog } from "../../../../composables/components/globalDialog";
 import { useKeyStore } from "@/stores/key.store";
 import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
@@ -13,6 +13,7 @@ export function defineQuitEvent(popoverControl: Ref<boolean>) {
     key: "q",
     translator: ["quit-game-alive", "退出游戏"],
     fn: (isPressed: boolean) => {
+      if (import.meta.env.SSR) return;
       if (document.activeElement?.tagName !== "BODY") return;
 
       if (!isPressed) {

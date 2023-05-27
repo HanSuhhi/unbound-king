@@ -55,6 +55,7 @@ export function defineNaiveTheme() {
  * This is done using a MutationObserver.
  */
 export function bindNaiveUILayer() {
+  if (import.meta.env.SSR) return;
   const layerBefore = "@layer utilities {";
   const targetNode = document.querySelector("head")!;
   /**

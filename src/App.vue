@@ -10,6 +10,7 @@ import AppHeader from "./components/app/appHeader/AppHeader";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import appAside from "./components/app/appAside/AppAside";
 import AppFooter from "./components/app/AppFooter.vue";
+import { disableDefaultKeys } from "./composables/experience/hotkey";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import { useGlobalStore } from "@/stores/global.store";
 
@@ -20,6 +21,7 @@ const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 provideStaticStyleVariables();
 useCorsor();
 bindNaiveUILayer();
+disableDefaultKeys();
 </script>
 
 <template>

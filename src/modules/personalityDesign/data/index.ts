@@ -1,4 +1,4 @@
-import { forEach, map } from "lodash-es";
+import { forEach, map } from "lodash";
 
 export const DATA_Personalities = new Map<string, Personality>();
 

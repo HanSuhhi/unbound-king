@@ -1,9 +1,9 @@
-import type { StyleSetter } from "../../tool/styleSetter.tool";
-import { defer, isNumber } from "lodash-es";
+import { defer } from "lodash";
 import type { Ref, Slot } from "vue";
 import { unref, watchEffect } from "vue";
-import { useSize } from '../../composables/size';
-import { useTemplateClassList } from '../../composables/templateClassList';
+import type { StyleSetter } from "../../tool/styleSetter.tool";
+import { useSize } from "../../composables/size";
+import { useTemplateClassList } from "../../composables/templateClassList";
 
 export function useAside(styleSetter: Ref<StyleSetter | undefined>, aside?: Slot) {
   const key = "aside-width";
@@ -16,6 +16,6 @@ export function useAside(styleSetter: Ref<StyleSetter | undefined>, aside?: Slot
 
   return {
     asideWidthSize,
-    ...useTemplateClassList(['csss-layout__aside'])
+    ...useTemplateClassList(["csss-layout__aside"])
   };
 }

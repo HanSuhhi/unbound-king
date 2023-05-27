@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
 import { computed, inject, provide, ref } from "vue";
-import { filter } from "lodash-es";
+import { filter } from "lodash";
 import addFormDialog from "./AddFormDialog.vue";
 import ListFooter from "./ListFooter.vue";
 import TitleCardList from "@/components/titleCardList/TitleCardList.vue";

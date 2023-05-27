@@ -1,6 +1,6 @@
 import type { ComputedRef, Ref } from "vue";
 import { inject } from "vue";
-import { range } from "lodash-es";
+import { range } from "lodash";
 import { createAutoMountEvent } from "../../../../composables/key/mountKeyCommand";
 import { i18nLangModel } from "../../../../locals/lang.model";
 import { definePressed, runKeyEvent } from "../../../../composables/key/keyEvent";

@@ -1,4 +1,4 @@
-import { throttle } from "lodash-es";
+import { throttle } from "lodash";
 import { storeToRefs } from "pinia";
 import type { Ref } from "vue";
 import { nextTick } from "vue";

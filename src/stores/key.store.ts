@@ -1,5 +1,5 @@
 import { useMagicKeys } from "@vueuse/core";
-import { forEach, isArray, toArray } from "lodash-es";
+import { forEach, isArray, toArray } from "lodash";
 import { defineStore } from "pinia";
 import type { WatchStopHandle } from "vue";
 import { computed, ref, watch } from "vue";

@@ -1,4 +1,4 @@
-import { clone, merge } from "lodash-es";
+import { clone, merge } from "lodash";
 import { DATA_Generator_Params } from "../../generator/data/index";
 import { DATA_Generator_Forms } from "@/modules/generator/data";
 

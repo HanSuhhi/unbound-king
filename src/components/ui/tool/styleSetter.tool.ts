@@ -1,9 +1,9 @@
-import { isNumber, isString, isUndefined } from "lodash-es";
+import { isNumber, isString, isUndefined } from "lodash";
 
-export const VAR = (key: string) => {
+export function VAR(key: string) {
   if (key.substring(0, 2) !== "--") return `--${key}`;
   return key;
-};
+}
 
 /**
  * @description Style setter
@@ -19,17 +19,20 @@ export class StyleSetter {
    * @description 数字检验
    */
   public setRemNumber(value: number, key: string): void | null {
-    if (isNumber(value)) {
+    if (isNumber(value))
       this.ele.style.setProperty(VAR(key), `${value}rem`);
-    } else return console.warn(`${key}: 不是一个数值 `);
+
+    else return console.warn(`${key}: 不是一个数值 `);
   }
+
   /**
    * @description 字符串检验
    */
   public setString(value: string, key: string): void | null {
-    if (isString(value)) {
+    if (isString(value))
       this.ele?.style.setProperty(VAR(key), value);
-    } else return console.warn(`${key}: 不是可信字符串 `);
+
+    else return console.warn(`${key}: 不是可信字符串 `);
   }
 
   /**
@@ -39,6 +42,7 @@ export class StyleSetter {
     if (isUndefined(size)) return console.warn(`${key}: 请检查参数，获取为非法值`);
     this.ele.classList.add(`${this.componentName}-${key}-${size}`);
   }
+
   /**
    * @description 增加 class
    */

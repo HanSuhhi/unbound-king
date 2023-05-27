@@ -1,8 +1,8 @@
 import type { Ref, Slot } from "vue";
-import { ref, unref, watchEffect } from "vue";
-import { defer } from "lodash-es";
+import { unref, watchEffect } from "vue";
+import { defer } from "lodash";
 import type { StyleSetter } from "../../tool/styleSetter.tool";
-import { useSize } from '../../composables/size';
+import { useSize } from "../../composables/size";
 import { useTemplateClassList } from "../../composables/templateClassList";
 
 export function useFooter(styleSetter: Ref<StyleSetter | undefined>, footer?: Slot) {
@@ -16,6 +16,6 @@ export function useFooter(styleSetter: Ref<StyleSetter | undefined>, footer?: Sl
 
   return {
     footerHeightSize,
-    ...useTemplateClassList(['csss-layout__footer'])
+    ...useTemplateClassList(["csss-layout__footer"])
   };
 }

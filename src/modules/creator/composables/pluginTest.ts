@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { forEach } from "lodash-es";
+import { forEach } from "lodash";
 import { ref, watch } from "vue";
 import { DATA_Generators } from "@/modules/generator/data";
 

@@ -27,7 +27,8 @@ interface NUploadOptions {
  * @param {HTMLImageElement} img The original image to thumbnail
  * @returns {string} The base64-encoded thumbnail data
  */
-function drawThumbnailBase64(img: HTMLImageElement): string {
+function drawThumbnailBase64(img: HTMLImageElement): string | undefined {
+  if (import.meta.env.SSR) return;
   const canvas = document.createElement("canvas");
   canvas.width = img.width / 2;
   canvas.height = img.height / 2;
@@ -57,7 +58,7 @@ async function readFileAsDataURL(file: File): Promise<string> {
  */
 async function readImageAsBase64(img: HTMLImageElement): Promise<string> {
   return new Promise((resolve) => {
-    img.onload = () => resolve(drawThumbnailBase64(img));
+    img.onload = () => resolve(drawThumbnailBase64(img)!);
   });
 }
 

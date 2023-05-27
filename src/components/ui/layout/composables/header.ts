@@ -1,7 +1,7 @@
-import type { StyleSetter } from "../../tool/styleSetter.tool";
-import { defer } from "lodash-es";
+import { defer } from "lodash";
 import type { Ref, Slot } from "vue";
-import { unref, watchEffect } from 'vue';
+import { unref, watchEffect } from "vue";
+import type { StyleSetter } from "../../tool/styleSetter.tool";
 import { useTemplateClassList } from "../../composables/templateClassList";
 import { useSize } from "../../composables/size";
 
@@ -16,6 +16,6 @@ export function useHeader(styleSetter: Ref<StyleSetter | undefined>, header?: Sl
 
   return {
     headerHeightSize,
-    ...useTemplateClassList(['csss-layout__header'])
+    ...useTemplateClassList(["csss-layout__header"])
   };
 }

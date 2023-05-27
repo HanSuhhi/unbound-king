@@ -1,4 +1,4 @@
-import { map } from "lodash-es";
+import { map } from "lodash";
 import { setData } from "../../composables/setData";
 
 export const ambitionBuffs = new Map<string, BuffStruct[]>();

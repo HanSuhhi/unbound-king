@@ -1,4 +1,4 @@
-import { map } from "lodash-es";
+import { map } from "lodash";
 import type { SelectOption } from "naive-ui";
 import { DATA } from "../../../composables/data";
 

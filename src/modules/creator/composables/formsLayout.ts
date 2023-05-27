@@ -3,6 +3,7 @@ import { useCsssTabs } from "@/components/ui/tabs";
 import { setElementCursorPointer } from "@/composables/experience/cursor";
 
 function setItemsCursorPointer() {
+  if (import.meta.env.SSR) return;
   document.querySelectorAll(".creator-forms_item").forEach(setElementCursorPointer);
 }
 

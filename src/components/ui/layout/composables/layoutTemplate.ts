@@ -1,14 +1,14 @@
-import type { StyleSetter } from "../../tool/styleSetter.tool";
-import { findIndex, keys } from "lodash-es";
+import { findIndex, keys } from "lodash";
 import type { Ref } from "vue";
-import { ref, watchEffect, nextTick } from "vue";
+import { nextTick, ref, watchEffect } from "vue";
+import type { StyleSetter } from "../../tool/styleSetter.tool";
 
-export const useLayoutTemplate = (slots: any, styleSetter: Ref<StyleSetter | undefined>) => {
+export function useLayoutTemplate(slots: any, styleSetter: Ref<StyleSetter | undefined>) {
   const reverse = ref(false);
   const defaultTemplate = ref("");
 
   const createSlotTemplate = (slotNames: string[]): string => {
-    if (slotNames.length === 1) return `"main main" "main main" "main main"`;
+    if (slotNames.length === 1) return "\"main main\" \"main main\" \"main main\"";
     slotNames.splice(findIndex(slotNames, "default"), 1);
     if (slotNames.length === 1) {
       const slot = slotNames[0];
@@ -38,4 +38,4 @@ export const useLayoutTemplate = (slots: any, styleSetter: Ref<StyleSetter | und
   });
 
   return { reverse, defaultTemplate };
-};
+}

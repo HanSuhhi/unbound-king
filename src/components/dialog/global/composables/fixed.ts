@@ -8,6 +8,7 @@ export function useFixed() {
     let moveX: number, moveY: number;
     const mouseXStart = ev.clientX;
     const mouseYStart = ev.clientY;
+    if (import.meta.env.SSR) return;
     document.onmousemove = (e) => {
       scrolling.value = true;
       const mouseXEnd = e.clientX;

@@ -1,4 +1,4 @@
-import { forEach, map } from "lodash-es";
+import { forEach, map } from "lodash";
 
 export const DATA_GameIcons = new Map<string, GameIcon>();
 

@@ -1,4 +1,4 @@
-import { map } from "lodash-es";
+import { map } from "lodash";
 
 export const DATA_Creator_Plugins: CreatorPlugin[] = [];
 

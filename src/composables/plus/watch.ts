@@ -1,4 +1,4 @@
-import { merge } from "lodash-es";
+import { merge } from "lodash";
 
 export const deep = { deep: true };
 export const immediate = { immediate: true };

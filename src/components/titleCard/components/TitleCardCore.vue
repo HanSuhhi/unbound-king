@@ -10,6 +10,7 @@ defineProps<{
 const slots = useSlots();
 
 function stopMouseEvent() {
+  if (import.meta.env.SSR) return;
   document.onmousemove = null;
 }
 </script>

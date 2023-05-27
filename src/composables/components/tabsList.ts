@@ -1,4 +1,4 @@
-import { find } from "lodash-es";
+import { find } from "lodash";
 import type { Ref } from "vue";
 import { computed, provide, ref } from "vue";
 
@@ -12,8 +12,9 @@ function useTabsStruct<T = any >(data: Dictionary<T>) {
       icon: "package",
       index: 0,
       key: "standard",
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      injectData: data.standard.default,
+      // TODO
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      injectData: (data.standard as any).default,
       name: DATA_PackageNames.standard
     }
   };
@@ -33,8 +34,9 @@ function useTabsStruct<T = any >(data: Dictionary<T>) {
       index: -1
     };
     returnRecord[key].index = index + 1;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    returnRecord[key].injectData = data[key]?.default || [];
+    // TODO
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    returnRecord[key].injectData = (data[key] as any)?.default || [];
   });
 
   return returnRecord;
@@ -43,6 +45,8 @@ function useTabsStruct<T = any >(data: Dictionary<T>) {
 export function defineTabsData(data: Dictionary<any>, state: Ref<UseCsssTabsProps["state"]>) {
   const list = ref(useTabsStruct(data));
   const activeItem = computed(() => find(list.value, listItem => listItem.index === state?.value?.active));
+  // TODO
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   const activeItemData = computed(() => activeItem.value?.injectData || []);
 
   provide("active-item", activeItem);

@@ -1,4 +1,4 @@
-import { invert } from "lodash-es";
+import { invert } from "lodash";
 
 const GlobalEnum: Record<string, string> = {
   ATV: "AttributeValue"

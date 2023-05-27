@@ -1,9 +1,9 @@
-import { union } from "lodash-es";
+import { union } from "lodash";
 import { computed, ref } from "vue";
 
 type Classes = string[];
 
-export const useTemplateClassList = (defaultClasses?: Classes, fixed?: Classes) => {
+export function useTemplateClassList(defaultClasses?: Classes, fixed?: Classes) {
   // private
   const fixedClasses = ref<Classes>(fixed || []);
   const baseClasses = ref<Classes>(defaultClasses || []);
@@ -20,14 +20,15 @@ export const useTemplateClassList = (defaultClasses?: Classes, fixed?: Classes) 
         if (_extraClasses.length === 0) console.warn("it should not give an empty class list");
         baseClasses.value = defaultClasses || [];
         extraClasses.value = _extraClasses.splice(_extraClasses.length - 1);
-      } else {
+      }
+      else {
         baseClasses.value = [];
         // if extra class name is "_", means don't add plus name
         if (firstName === "_" && _extraClasses.length === 1) extraClasses.value = [];
         else extraClasses.value = _extraClasses;
       }
-    },
+    }
   });
 
   return { classList };
-};
+}

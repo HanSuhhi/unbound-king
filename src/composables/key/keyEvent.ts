@@ -1,4 +1,4 @@
-import { isArray, isString } from "lodash-es";
+import { isArray, isString } from "lodash";
 import { useHotkeys } from "@/composables/key/hotkey";
 
 export function runKeyEvent(keyEvent?: KeyEvent) {

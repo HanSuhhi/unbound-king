@@ -1,7 +1,7 @@
-import { kebabCase, map } from "lodash-es";
+import { kebabCase, map } from "lodash";
 import type { Component } from "vue";
 import type { RouteRecordRaw } from "vue-router";
-import { createRouter, createWebHistory } from "vue-router";
+import { createMemoryHistory, createRouter, createWebHistory } from "vue-router";
 
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}");
 
@@ -11,7 +11,8 @@ export function useRouteConfig() {
     const name = kebabCase(paths[paths.length - 2]);
     return {
       path: `/${name}`,
-      component: () => import(/* @vite-ignore */ path),
+      // component: () => import(/* @vite-ignore */ path),
+      component: pages[path],
       name
     };
   });
@@ -27,8 +28,10 @@ export function useRouteConfig() {
     component: () => import("@/modules/setting/BaseSetting.vue")
   });
 
+  const prefix = `/${import.meta.env.PROJECT_NAME}/`;
+
   const router = createRouter({
-    history: createWebHistory(),
+    history: import.meta.env.SSR ? createMemoryHistory(prefix) : createWebHistory(prefix),
     routes
   });
 

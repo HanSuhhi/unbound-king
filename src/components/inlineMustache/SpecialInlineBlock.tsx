@@ -1,4 +1,4 @@
-import { isMap } from "lodash-es";
+import { isMap } from "lodash";
 import { defineComponent } from "vue";
 import { DATA } from "../../composables/data";
 import "./special-inline-block.css";

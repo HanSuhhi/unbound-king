@@ -1,4 +1,4 @@
-import { fromPairs, map } from "lodash-es";
+import { fromPairs, map } from "lodash";
 import { useNumberModelValue } from "../modelValue/number";
 
 export function convertObjToNumberBoxValue(data: ReturnStruct[]) {

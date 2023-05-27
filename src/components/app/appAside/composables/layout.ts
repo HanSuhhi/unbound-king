@@ -1,4 +1,4 @@
-import { findIndex } from "lodash-es";
+import { findIndex } from "lodash";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";
 import { useAppAsideStore } from "../store/aside.store";

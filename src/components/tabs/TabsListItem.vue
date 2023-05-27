@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { size } from "lodash-es";
+import { size } from "lodash";
 import NumberMark from "../NumberMark.vue";
 
 defineProps<{ message: TabListItem }>();

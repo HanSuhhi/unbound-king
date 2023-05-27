@@ -1,13 +1,13 @@
-import { useGenerator } from './generator';
-import type { Ref } from 'vue';
-import { watchEffect, unref } from 'vue';
-import { isNumber } from 'lodash-es';
-import type { StyleSetter } from '../tool/styleSetter.tool';
+import type { Ref } from "vue";
+import { unref, watchEffect } from "vue";
+import { isNumber } from "lodash";
+import type { StyleSetter } from "../tool/styleSetter.tool";
+import { useGenerator } from "./generator";
 
 /**
  * @description generate a size for component style detail
  */
-export const useSize = <T>(styleSetter: Ref<StyleSetter | undefined>, key: string, defaultValue: T = "normal" as T) => {
+export function useSize<T>(styleSetter: Ref<StyleSetter | undefined>, key: string, defaultValue: T = "normal" as T) {
   const { generator: size } = useGenerator<T>(defaultValue);
 
   watchEffect(() => {
@@ -16,4 +16,4 @@ export const useSize = <T>(styleSetter: Ref<StyleSetter | undefined>, key: strin
   });
 
   return { size };
-};
+}

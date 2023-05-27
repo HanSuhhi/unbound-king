@@ -1,4 +1,4 @@
-import { kebabCase } from "lodash-es";
+import { kebabCase } from "lodash";
 import type { Identifier, LiteralTypeNode, TypeLiteralNode, TypeNode, TypeReferenceNode, UnionTypeNode } from "typescript";
 import { ScriptTarget, SyntaxKind, createSourceFile, forEachChild, isPropertySignature, isTypeAliasDeclaration, isTypeLiteralNode } from "typescript";
 

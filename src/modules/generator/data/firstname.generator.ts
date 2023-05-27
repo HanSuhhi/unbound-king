@@ -1,4 +1,4 @@
-import { random, sample } from "lodash-es";
+import { random, sample } from "lodash";
 import { compareIgnoreCase } from "../../../composables/util/string";
 import { DATA } from "@/composables/data";
 

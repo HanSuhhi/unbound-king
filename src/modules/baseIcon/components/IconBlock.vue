@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { throttle } from "lodash-es";
+import { throttle } from "lodash";
 import { useMessage } from "naive-ui";
 import Icon from "@/components/Icon.vue";
 import { TRANSITION_DURATION } from "@/composables/constant/env";

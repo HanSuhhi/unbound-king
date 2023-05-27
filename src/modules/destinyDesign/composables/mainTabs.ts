@@ -16,13 +16,15 @@ export function defineTabs() {
   });
 
   const setPanelTotalHeight = () => {
+    if (import.meta.env.SSR) return;
     const Tabs = document.getElementsByClassName("destiny-design-main_cards")[0];
     const Panels = document.getElementsByClassName("destiny-design-main_panels")[0] as HTMLElement;
     Panels.style.height = `calc(100% - ${Tabs.getBoundingClientRect().height}px`;
   };
-  nextTick(setPanelTotalHeight);
+  void nextTick(setPanelTotalHeight);
 
   const watchTabsWheel = () => {
+    if (import.meta.env.SSR) return;
     const box = document.getElementsByClassName("destiny-design-main_cards")[0];
 
     box.addEventListener("wheel", (event: any) => {
@@ -30,7 +32,7 @@ export function defineTabs() {
       box.scrollLeft += event.deltaY;
     });
   };
-  nextTick(watchTabsWheel);
+  void nextTick(watchTabsWheel);
 
   return { ...tabs };
 }

@@ -1,4 +1,4 @@
-import { every, isEmpty } from "lodash-es";
+import { every, isEmpty } from "lodash";
 import { stringArrayEqual } from "./array";
 import { TernaryResult } from "./ternary";
 

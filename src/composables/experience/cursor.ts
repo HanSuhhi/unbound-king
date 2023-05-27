@@ -6,16 +6,18 @@ export function useCorsor() {
   const cursorState = ref<CursorStatus>("default");
 
   watch(cursorState, (state) => {
-    document.body.setAttribute("cursor-active", state);
+    if (!import.meta.env.SSR)
+      document.body.setAttribute("cursor-active", state);
   }, { immediate: true });
 
-  window.onmousedown = () => {
-    cursorState.value = "active";
-  };
-  window.onmouseup = () => {
-    cursorState.value = "default";
-  };
-
+  if (!import.meta.env.SSR) {
+    window.onmousedown = () => {
+      cursorState.value = "active";
+    };
+    window.onmouseup = () => {
+      cursorState.value = "default";
+    };
+  }
   return { cursorState };
 }
 

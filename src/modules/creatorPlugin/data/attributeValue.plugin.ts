@@ -1,4 +1,4 @@
-import { clone, map } from "lodash-es";
+import { clone, map } from "lodash";
 import { DATA } from "../../../composables/data";
 import { DATA_Generator_Params } from "../../generator/data/index";
 import { DATA_Generator_Forms } from "@/modules/generator/data";

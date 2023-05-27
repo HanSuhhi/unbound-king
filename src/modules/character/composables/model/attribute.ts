@@ -1,4 +1,4 @@
-import { forEach } from "lodash-es";
+import { forEach } from "lodash";
 import type { Ref } from "vue";
 import { convertObjToNumberBoxValue } from "../numberModelValue";
 import type { AttributeName } from "@/modules/attribute/data";

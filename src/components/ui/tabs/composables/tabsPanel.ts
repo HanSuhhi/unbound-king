@@ -1,4 +1,4 @@
-import { range } from "lodash-es";
+import { range } from "lodash";
 import type { Ref } from "vue";
 import { computed } from "vue";
 import { useTemplateClassList } from "../../composables/templateClassList";

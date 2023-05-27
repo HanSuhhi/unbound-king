@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { find, throttle } from "lodash-es";
+import { find, throttle } from "lodash";
 import { NSelect, useMessage } from "naive-ui";
 import type { Ref } from "vue";
 import { computed, inject, ref } from "vue";

@@ -1,4 +1,4 @@
-import { map } from "lodash-es";
+import { map } from "lodash";
 
 export const DATA_Ambitions = new Map<string, Ambition>();
 

@@ -1,4 +1,4 @@
-import { random } from "lodash-es";
+import { random } from "lodash";
 import { DATA } from "@/composables/data";
 
 const habitusGenerator: GeneratorFunc<any, HabitusGeneratorProps> = (data, { type }) => {

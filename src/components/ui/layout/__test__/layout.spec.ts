@@ -1,5 +1,5 @@
-import { mount, shallowMount } from "@vue/test-utils";
-import { defer } from "lodash-es";
+import { shallowMount } from "@vue/test-utils";
+import { defer } from "lodash";
 import { describe, expect, it } from "vitest";
 import CLayout from "../CLayout";
 
@@ -12,32 +12,32 @@ describe("CLayout.tsx", () => {
     const wrapper = shallowMount(CLayout, {
       slots: {
         header: "header",
-        default: "<p>hello world</p>",
-      },
+        default: "<p>hello world</p>"
+      }
     });
     expect(wrapper.find(".csss-layout__main").find("p").exists()).toBeTruthy();
   });
   it("render aside", () => {
     const wrapper = shallowMount(CLayout, {
       slots: {
-        aside: "<p>hello world</p>",
-      },
+        aside: "<p>hello world</p>"
+      }
     });
     expect(wrapper.find(".csss-layout__aside").exists()).toBeTruthy();
   });
   it("render header", () => {
     const wrapper = shallowMount(CLayout, {
       slots: {
-        header: "<p>hello world</p>",
-      },
+        header: "<p>hello world</p>"
+      }
     });
     expect(wrapper.find(".csss-layout__header").exists()).toBeTruthy();
   });
   it("render footer", () => {
     const wrapper = shallowMount(CLayout, {
       slots: {
-        footer: "<p>hello world</p>",
-      },
+        footer: "<p>hello world</p>"
+      }
     });
     expect(wrapper.find(".csss-layout__footer").exists()).toBeTruthy();
   });
@@ -45,8 +45,8 @@ describe("CLayout.tsx", () => {
     const wrapper = shallowMount(CLayout, {
       slots: {
         header: "header",
-        default: "main",
-      },
+        default: "main"
+      }
     });
     (wrapper.vm as unknown as CLayoutApi).style.headerHeightSize = "large";
     defer(() => {
@@ -57,8 +57,8 @@ describe("CLayout.tsx", () => {
     const wrapper = shallowMount(CLayout, {
       slots: {
         default: "main",
-        aside: "aside",
-      },
+        aside: "aside"
+      }
     });
     (wrapper.vm as unknown as CLayoutApi).style.asideWidthSize = "small";
     defer(() => {
@@ -69,8 +69,8 @@ describe("CLayout.tsx", () => {
     const wrapper = shallowMount(CLayout, {
       slots: {
         default: "main",
-        footer: "footer",
-      },
+        footer: "footer"
+      }
     });
     (wrapper.vm as unknown as CLayoutApi).style.footerHeightSize = "normal";
     defer(() => {
@@ -83,8 +83,8 @@ describe("CLayout.tsx", () => {
         header: "header",
         default: "main",
         aside: "aside",
-        footer: "footer",
-      },
+        footer: "footer"
+      }
     });
     (wrapper.vm as unknown as CLayoutApi).state.layoutType = "footer-aside";
     defer(() => {
@@ -97,8 +97,8 @@ describe("CLayout.tsx", () => {
         header: "header",
         default: "main",
         aside: "aside",
-        footer: "footer",
-      },
+        footer: "footer"
+      }
     });
     (wrapper.vm as unknown as CLayoutApi).style.asideWidthSize = 4;
     (wrapper.vm as unknown as CLayoutApi).style.footerHeightSize = 3;

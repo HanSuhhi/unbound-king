@@ -1,8 +1,8 @@
-import type { PopoverProps } from "naive-ui";
-
 export function usePopoverTheme() {
-  type PopoverThemeOverrides = NonNullable<PopoverProps["themeOverrides"]>;
-  const popoverThemeOverrides: PopoverThemeOverrides = {
+  // TODO
+  // type PopoverThemeOverrides = NonNullable<PopoverProps["themeOverrides"]>;
+  // const popoverThemeOverrides: PopoverThemeOverrides = {
+  const popoverThemeOverrides: any = {
     color: "var(--bg-color)"
   };
 

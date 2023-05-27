@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { throttle } from "lodash-es";
+import { throttle } from "lodash";
 import { ref, watch } from "vue";
 import { TRANSITION_DURATION } from "../../composables/constant/env";
 import ResetInput from "./ResetInput.vue";

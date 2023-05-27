@@ -28,12 +28,14 @@ function defineCssPath(path: string, dark = false) {
  * @returns {HTMLElement|undefined} The <link> element for the CSS file if found, undefined otherwise.
  */
 function isCssFileRegist(filename: string): HTMLLinkElement | undefined {
+  if (import.meta.env.SSR) return;
   const allsuspects = document.head.getElementsByTagName("link");
   return Array.from(allsuspects)
     .find(item => item.href.includes(filename));
 }
 
 export function loadCss(path: string, options?: LoadCssOptions) {
+  if (import.meta.env.SSR) return;
   const link = createCssElement();
   link.href = defineCssPath(path, options?.dark);
   document.head.appendChild(link);

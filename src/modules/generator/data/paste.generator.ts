@@ -1,4 +1,4 @@
-import { find } from "lodash-es";
+import { find } from "lodash";
 import { withFormDetail } from "../../../composables/form/formDetail";
 import type from "../types/paste.generator.d.ts?raw";
 import { transformTypeToForm } from "@/composables/form/typeToForm";

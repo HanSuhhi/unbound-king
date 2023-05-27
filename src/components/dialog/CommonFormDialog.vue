@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FormInst } from "naive-ui";
-import { cloneDeep, defer, delay } from "lodash-es";
+import { cloneDeep, defer, delay } from "lodash";
 
 import type { Ref } from "vue";
 import { inject, ref } from "vue";

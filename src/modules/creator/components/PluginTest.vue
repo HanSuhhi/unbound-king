@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
 import { computed, inject } from "vue";
-import { isObject } from "lodash-es";
+import { isObject } from "lodash";
 import type { usePluginTest } from "../composables/pluginTest";
 import typeButton from "@/components/typeButton/TypeButton.vue";
 import KeyValueCard from "@/components/KeyValueCard.vue";

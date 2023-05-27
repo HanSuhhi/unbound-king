@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
 import { provide, ref, watchEffect } from "vue";
-import { isUndefined } from "lodash-es";
+import { isUndefined } from "lodash";
 
 interface Product {
   key: string

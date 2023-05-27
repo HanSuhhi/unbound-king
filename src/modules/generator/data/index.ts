@@ -1,4 +1,4 @@
-import { clone, map, merge } from "lodash-es";
+import { clone, map, merge } from "lodash";
 
 export const DATA_Generators: Dictionary<GeneratorFunc<any, any>> = {};
 export const DATA_Generator_Forms: Dictionary<Autoform> = {};

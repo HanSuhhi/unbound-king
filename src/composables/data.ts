@@ -1,4 +1,4 @@
-import { isMap, isObject } from "lodash-es";
+import { isMap, isObject } from "lodash";
 import { DATA_Ages, DATA_Genders } from "../modules/character/enums/character.enum";
 import { DATA_Ambitions } from "../modules/ambitionDesign/data/index";
 import { DATA_Attributes } from "../modules/attribute/data/index";
@@ -58,12 +58,14 @@ export function getDataById<T>(id: string): T {
   let key = getKeyFromId(id);
   key = getGlobalEnumNameOrNot(key);
   key = getDataKey(key) as unknown as keyof typeof DATA;
-  return DATA[key][id];
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+  return (DATA as any)[key][id];
 }
 
 export function getDataByKey<T>(key: keyof IDATA) {
   for (const _key in DATA) {
-    const dataRange = (DATA)[_key];
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    const dataRange = (DATA as any)[_key];
     if (!isObject(dataRange)) return;
     let value: T;
     if (isMap(dataRange)) value = (dataRange as Map<string, T>).get(key)!;

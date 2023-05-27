@@ -1,4 +1,4 @@
-import { forEach } from "lodash-es";
+import { forEach } from "lodash";
 import { defineComponent } from "vue";
 import TitleCardCore from "./components/TitleCardCore.vue";
 

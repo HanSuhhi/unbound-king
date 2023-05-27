@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { forEach, isUndefined } from "lodash-es";
+import { forEach, isUndefined } from "lodash";
 import { ref, watch } from "vue";
 import { deep } from "../../../composables/plus/watch";
 

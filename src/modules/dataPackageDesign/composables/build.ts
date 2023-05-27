@@ -1,4 +1,4 @@
-import { forEach, isEmpty, throttle } from "lodash-es";
+import { forEach, isEmpty, throttle } from "lodash";
 import { compressToBase64 } from "lz-string";
 import type { Ref } from "vue";
 import { inject } from "vue";

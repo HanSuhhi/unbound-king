@@ -6,6 +6,7 @@ export function smoothScrollTo(targetPosition: number, duration: number) {
   const startTime = performance.now();
 
   function step(currentTime: number) {
+    if (import.meta.env.SSR) return;
     const elapsedTime = currentTime - startTime;
     const progress = Math.min(elapsedTime / duration, 1);
     const newPosition = startPosition + distance * progress;

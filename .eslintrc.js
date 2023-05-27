@@ -1,5 +1,3 @@
-process.env.ESLINT_TSCONFIG = "tsconfig.json";
-
 module.exports = {
   extends: "@antfu",
   rules: {
@@ -18,6 +16,13 @@ module.exports = {
       }
     ],
     "antfu/if-newline": [0],
-    "vue/valid-template-root": "off"
+    "vue/valid-template -root": "off"
+  },
+  parserOptions: {
+    project: [
+      "./tsconfig.client.json",
+      "./tsconfig.server.json",
+      "./tsconfig.node.json"
+    ],
   }
 };

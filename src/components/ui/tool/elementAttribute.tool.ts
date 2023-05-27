@@ -1,4 +1,4 @@
-import { isNull, isUndefined } from "lodash-es";
+import { isNull, isUndefined } from "lodash";
 
 export function haveAttribute(ele: Element, name: string): HavaAttribute {
   if (!ele) return [false, null];
