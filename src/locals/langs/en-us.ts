@@ -15,7 +15,7 @@ export default defineLang({
       title: "Theme"
     },
     screen: {
-      title: "Is Full Screen"
+      title: "Full Screen"
     },
     modules: {
       title: "System Modules"

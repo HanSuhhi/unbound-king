@@ -7,9 +7,7 @@ import unocss from "unocss/vite";
 
 export default defineConfig(({ mode }) => {
   const { PROJECT_NAME } = loadEnv(mode, process.cwd(), "PROJECT_NAME");
-
   return {
-    base: `/${PROJECT_NAME}/`,
     plugins: [
       vue({
         script: {

@@ -41,7 +41,7 @@ export class AppService {
   private async getRender(): Promise<Function> {
     const { ssrLoadModule } = await getViteServer();
     const { render } = IS_PRODUCTION
-      ? (await import(resolveDistPath("server", "entry-server.js")))
+      ? (await import(resolveDistPath("middleware", "entry-server.js")))
       : (await ssrLoadModule(resolveClientPath("entry-server.ts")));
 
     return render;

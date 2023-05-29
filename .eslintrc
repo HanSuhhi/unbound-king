@@ -1,6 +1,6 @@
-module.exports = {
-  extends: "@antfu",
-  rules: {
+{
+  "extends": "@antfu",
+  "rules": {
     "semi": [2, "always"],
     "@typescript-eslint/semi": [2, "always"],
     "comma-dangle": [2, "never"],
@@ -11,18 +11,19 @@ module.exports = {
       "error",
       "kebab-case",
       {
-        registeredComponentsOnly: true,
-        ignores: []
+        "registeredComponentsOnly": true,
+        "ignores": []
       }
     ],
     "antfu/if-newline": [0],
     "vue/valid-template -root": "off"
   },
-  parserOptions: {
-    project: [
+  "parserOptions": {
+    "extraFileExtensions": [".vue"],
+    "project": [
       "./tsconfig.client.json",
       "./tsconfig.server.json",
       "./tsconfig.node.json"
-    ],
+    ]
   }
-};
+}

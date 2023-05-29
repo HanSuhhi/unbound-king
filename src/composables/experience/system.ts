@@ -15,7 +15,7 @@ async function exitFullScreen() {
 }
 
 /**
- * Is full screen mode?
+ * full screen mode?
  */
 export function isFullScreen() {
   if (import.meta.env.SSR) return;

@@ -4,7 +4,11 @@
   "sourceRoot": "server",
   "compilerOptions": {
     "tsConfigPath": "tsconfig.server.json",
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "assets": [
+      "**/*.pem"
+    ],
+    "watchAssets": true
   },
   "generateOptions": {
     "flat": true

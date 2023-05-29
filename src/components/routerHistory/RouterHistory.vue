@@ -71,7 +71,7 @@ const closeIndex = ref(1);
       <icon-button class="s-9 my-mini" icon-name="double-right" @click="routeByDirection(false)" />
       <icon-button class="s-9 m-mini" icon-name="home" @click="routeToHome" />
     </nav>
-    <transition-group tag="div" name="horizontal-list" class="router-history_block router-history_box flex-1" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+    <transition-group tag="div" name="horizontal-list" class="router-history_block router-history_box" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
       <template v-for="(route, targetIndex) of routes" :key="route[0]">
         <li ref="routeBlocks" v-paper-ripple cursor-pointer :class="{ 'router-history_active': activePage?.title === route[1] }" class="h-reset router-history_item router-history_route" @click="routeToPage(route[0])" @mouseover="closeIndex = targetIndex" @mouseout="closeIndex = -1">
           <icon :name="route[2]" />
@@ -88,6 +88,15 @@ const closeIndex = ref(1);
     </transition-group>
   </ol>
 </template>
+
+<style>
+@layer component {
+  .router-history_box {
+    display: flex;
+    flex: 1;
+  }
+}
+</style>
 
 <style scoped>
 @layer component {
@@ -170,7 +179,6 @@ const closeIndex = ref(1);
 
     transition: var(--transition-prop);
   }
-
 }
 @layer base {
   @keyframes router-history-active {

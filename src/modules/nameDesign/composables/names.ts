@@ -1,7 +1,6 @@
 import { isUndefined } from "lodash";
 import { computed, provide, ref, watch } from "vue";
 import { DATA } from "../../../composables/data";
-import { formatCodeString } from "@/composables/ci/codeString";
 
 export function useNames() {
   const familyNames = ref<FamilyName[]>(DATA.FamilyNames);
@@ -20,7 +19,7 @@ export function useNames() {
    export const DATA_FirstNames: FirstName[] = ${JSON.stringify(firstNames.value)}`;
   };
 
-  const code = computed(() => formatCodeString(_code.value));
+  const code = computed(() => (_code.value));
 
   watch(() => familyNames.value.length, defineCode);
   watch(() => firstNames.value.length, defineCode, { immediate: true });
