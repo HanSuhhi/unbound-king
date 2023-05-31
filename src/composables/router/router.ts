@@ -19,6 +19,10 @@ export function useRouteConfig() {
   });
 
   routes.unshift({
+    path: "/:catchAll(.*)",
+    redirect: import.meta.env.ROUTER_DEFAULT_PAGE
+  });
+  routes.unshift({
     path: "/",
     redirect: import.meta.env.ROUTER_DEFAULT_PAGE
   });

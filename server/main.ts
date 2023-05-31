@@ -7,6 +7,7 @@ import { getViteServer } from "./composables/vite-server";
 import { resolveDistPath } from "./composables/path/path";
 import { inNotTest } from "./composables/dev/test";
 import { inNotProduction, inProduction } from "./composables/dev/production";
+import { NotFoundExceptionFilter } from "./exception-filters/not-found-exception.filter";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -22,6 +23,8 @@ async function bootstrap() {
     const { middlewares } = await getViteServer();
     app.use(middlewares);
   });
+
+  app.useGlobalFilters(new NotFoundExceptionFilter());
 
   return app;
 }

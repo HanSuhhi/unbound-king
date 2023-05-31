@@ -41,6 +41,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     test: {
+      root: "src",
       globals: true,
       environment: "jsdom",
       transformMode: {

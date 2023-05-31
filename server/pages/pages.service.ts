@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { IS_PRODUCTION } from "server/composables/constants/dev";
-import { readFileSyncUTF8 } from "server/composables/fs/readFile";
-import { resolveClientPath, resolveDistPath, resolveRootPath } from "server/composables/path/path";
-import { getViteServer } from "server/composables/vite-server";
 import type { Manifest } from "vite";
+import { IS_PRODUCTION } from "@/composables/constants/dev";
+import { readFileSyncUTF8 } from "@/composables/fs/readFile";
+import { resolveClientPath, resolveDistPath, resolveRootPath } from "@/composables/path/path";
+import { getViteServer } from "@/composables/vite-server";
 
 @Injectable()
 export class PagesService {

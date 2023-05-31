@@ -1,8 +1,8 @@
 import { Controller, Get, Header, Req } from "@nestjs/common";
 import { Request } from "express";
-import { URL_PREFIX } from "composables/constant/url";
 import { useClientRoutes } from "../composables/path/clientPath";
 import { PagesService } from "./pages.service";
+import { URL_PREFIX } from "#/composables/constant/url";
 
 const ROUTES_PATH = useClientRoutes();
 
