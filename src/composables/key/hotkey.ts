@@ -10,7 +10,6 @@ const hotKeys: Record<string, HotKey> = {
    * control
    */
   control: {
-    [OS.MacOS]: "⌘",
     default: "ctrl"
   }
 };
