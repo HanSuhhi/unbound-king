@@ -7,12 +7,12 @@ import type { User } from "@/services/databases/user/user.table";
 import { TRANSITION_DURATION } from "@/composables/constant/env";
 import { deep } from "@/composables/plus/watch";
 
-const { registRandomUser, isEmpty, getMainUser, updateUser } = useUserService();
+const { registTourist, isEmpty, getMainUser, updateUser } = useUserService();
 
 async function getDefaultUser(user: Ref<User | undefined>) {
   if (await isEmpty()) {
     console.warn("系统未查询到相关用户信息...");
-    user.value = await registRandomUser(true);
+    user.value = await registTourist(true);
     console.warn("默认用户已生成...");
   }
   else {

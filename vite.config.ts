@@ -36,11 +36,12 @@ export default defineConfig(({ mode }) => {
     ],
     resolve: {
       alias: {
-        "@": resolve(__dirname, "src")
+        "@": resolve(__dirname, "src"),
+        "#": resolve(__dirname)
       }
     },
     test: {
-      globals: true,
+      root: "src",
       environment: "jsdom",
       transformMode: {
         web: [/.[tj]sx$/]

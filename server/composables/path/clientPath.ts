@@ -9,7 +9,7 @@ export function useClientRoutes() {
       const name = path
         .match(/(.*)(\.vue|\.tsx)$/)[1]
         .match(/^.*?\/([^/]+)$/)[1];
-      return kebabCase(name);
+      return `${kebabCase(name)}`;
     });
 
   return [...ROUTES, "/"];

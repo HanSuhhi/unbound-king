@@ -1,5 +1,6 @@
 <script setup lang='ts'>
-import { NGi, NGrid } from "naive-ui";
+import { NBadge, NGi, NGrid } from "naive-ui";
+import { storeToRefs } from "pinia";
 import { defineQuitEvent } from "../../composables/quitEvent";
 import { loadUser } from "../../composables/user";
 import { defineOpenSetting } from "../../composables/openSetting";
@@ -9,8 +10,10 @@ import UserCard from "../UserCard.vue";
 import { closeModules } from "../../composables/modulesController";
 import type { ModuleProp } from "./module-type";
 import BasePopover from "@/components/experience/BasePopover.vue";
+import { useAuthStore } from "@/stores/auth.store";
 
 const { enterKeyEvent, index } = defineProps<ModuleProp>();
+const { isSighIn } = storeToRefs(useAuthStore());
 
 const popoverControl = usePopoverControl(enterKeyEvent);
 
@@ -40,7 +43,9 @@ loadUser();
     >
       <template #trigger>
         <section class="module-icon">
-          <icon name="module" />
+          <n-badge :show="!isSighIn" dot>
+            <icon name="module" />
+          </n-badge>
         </section>
       </template>
       <user-card />
@@ -52,3 +57,9 @@ loadUser();
     </base-popover>
   </section>
 </template>
+
+<style scoped>
+:deep(.n-badge > .icon) {
+  color: var(--white);
+}
+</style>
