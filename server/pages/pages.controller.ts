@@ -1,12 +1,14 @@
 import { Controller, Get, Header, Req } from "@nestjs/common";
 import { Request } from "express";
+import { ApiOperation, ApiTags } from "@nestjs/swagger";
 import { useClientRoutes } from "../composables/path/clientPath";
 import { PagesService } from "./pages.service";
-import { URL_PREFIX } from "#/composables/constant/url";
+import { Prefix } from "#/composables/constant/url";
 
 const ROUTES_PATH = useClientRoutes();
 
-@Controller(URL_PREFIX)
+@ApiTags("Pages")
+@Controller(Prefix.Client)
 export class PagesController {
   constructor(
     private readonly pagesService: PagesService
@@ -14,8 +16,9 @@ export class PagesController {
 
   @Get(ROUTES_PATH)
   @Header("Content-Type", "text/html")
+  @ApiOperation({ summary: "📚 SSR Pages", description: "The frontend page is rendered by SSR. See /src for the details." })
   async renderApp(@Req() request: Request): Promise<string> {
-    const url = request.originalUrl.replace(`/${URL_PREFIX}/`, "");
+    const url = request.originalUrl.replace(`/${Prefix.Client}/`, "");
     const { html, render, manifest } = await this.pagesService.renderApp(url);
     const { appHtml, cssHtml, preloadLinks } = await render(url, manifest);
 

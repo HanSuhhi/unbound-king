@@ -20,7 +20,8 @@
     "paths": {
       "@/*": ["server/*"],
       "#/*": ["./*"]
-    }
+    },
+    "types": ["vitest/globals"]
   },
   "include": [
     "server/*.ts",

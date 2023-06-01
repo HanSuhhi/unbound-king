@@ -8,6 +8,7 @@ import { resolveDistPath } from "./composables/path/path";
 import { inNotTest } from "./composables/dev/test";
 import { inNotProduction, inProduction } from "./composables/dev/production";
 import { NotFoundExceptionFilter } from "./exception-filters/not-found-exception.filter";
+import { bindSwageerModule } from "./composables/libs/swagger";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -24,9 +25,8 @@ async function bootstrap() {
     app.use(middlewares);
   });
 
-  app.useGlobalFilters(new NotFoundExceptionFilter());
-
-  return app;
+  return bindSwageerModule(app)
+    .useGlobalFilters(new NotFoundExceptionFilter());
 }
 
 inNotTest(async () => {

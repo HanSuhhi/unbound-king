@@ -4,9 +4,9 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { resolveDistPath } from "./composables/path/path";
-import { CatsModule } from "./cats/cats.module";
-import { DogsModule } from "./dogs/dogs.module";
 import { PagesModule } from "./pages/pages.module";
+import { PackagesModule } from "./modules/packages/packages.module";
+import { UserModule } from './modules/users/user.module';
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
 const PEM = resolveDistPath("certs", KEY_NAME);
@@ -22,9 +22,9 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
       sslCert: PEM,
       authMechanism: "MONGODB-X509"
     }),
-    CatsModule,
-    DogsModule,
-    PagesModule
+    PagesModule,
+    PackagesModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService]

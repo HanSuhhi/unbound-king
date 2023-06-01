@@ -1,6 +1,6 @@
 import type { ArgumentsHost, ExceptionFilter } from "@nestjs/common";
 import { Catch, NotFoundException } from "@nestjs/common";
-import { URL_PREFIX } from "#/composables/constant/url";
+import { Prefix } from "#/composables/constant/url";
 
 /**
  * NotFoundException Filter
@@ -13,20 +13,22 @@ export class NotFoundExceptionFilter implements ExceptionFilter {
    * @param host ArgumentsHost host
    */
   catch(_exception: NotFoundException, host: ArgumentsHost) {
-    const { getRequest, getResponse } = host.switchToHttp();
-    const { originalUrl } = getRequest();
-    const { redirect } = getResponse();
+    const ctx = host.switchToHttp();
+    const request = ctx.getRequest();
+    const response = ctx.getResponse();
 
-    const [_, key] = originalUrl.split("/");
+    const [_, key] = request.originalUrl.split("/");
 
     /**
      * Redirect to different routes based on request key
      */
     switch (key) {
-      case URL_PREFIX:
-      case "":
+      case Prefix.Api:
+        response.redirect(`/${Prefix.Api}`);
+        break;
+      case Prefix.Client:
       default:
-        redirect(`/${URL_PREFIX}`);
+        response.redirect(`/${Prefix.Client}`);
         break;
     }
   }

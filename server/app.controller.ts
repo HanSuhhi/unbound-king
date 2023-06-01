@@ -1,11 +1,12 @@
-import { Controller, Redirect } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 import { AppService } from "./app.service";
-import { URL_PREFIX } from "#/composables/constant/url";
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Redirect(URL_PREFIX)
-  public redirect() { }
+  @Get()
+  public hello() {
+    return "👋 hello, my friends";
+  }
 }

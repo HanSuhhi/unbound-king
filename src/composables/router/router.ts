@@ -2,7 +2,7 @@ import { kebabCase, map } from "lodash";
 import type { Component } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 import { createMemoryHistory, createRouter, createWebHistory } from "vue-router";
-import { URL_PREFIX } from "#/composables/constant/url";
+import { Prefix } from "#/composables/constant/url";
 
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}");
 
@@ -27,7 +27,7 @@ export function useRouteConfig() {
     redirect: import.meta.env.ROUTER_DEFAULT_PAGE
   });
   routes.unshift({
-    path: `/${URL_PREFIX}`,
+    path: `/${Prefix.Client}`,
     redirect: import.meta.env.ROUTER_DEFAULT_PAGE
   });
 
@@ -38,7 +38,7 @@ export function useRouteConfig() {
   });
 
   const router = createRouter({
-    history: import.meta.env.SSR ? createMemoryHistory(URL_PREFIX) : createWebHistory(URL_PREFIX),
+    history: import.meta.env.SSR ? createMemoryHistory(Prefix.Client) : createWebHistory(Prefix.Client),
     routes
   });
 
