@@ -6,7 +6,8 @@ import { AppService } from "./app.service";
 import { resolveDistPath } from "./composables/path/path";
 import { PagesModule } from "./pages/pages.module";
 import { PackagesModule } from "./modules/packages/packages.module";
-import { UserModule } from './modules/users/user.module';
+import { AuthModule } from "./modules/auth/auth.module";
+import { UsersModule } from "./modules/users/users.module";
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
 const PEM = resolveDistPath("certs", KEY_NAME);
@@ -24,7 +25,8 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     }),
     PagesModule,
     PackagesModule,
-    UserModule
+    AuthModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService]

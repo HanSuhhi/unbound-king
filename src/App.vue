@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
 import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 import { defineAppLayout } from "./components/app/composables/appLayout";
 import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
 import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
@@ -11,6 +12,7 @@ import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import appAside from "./components/app/appAside/AppAside";
 import AppFooter from "./components/app/AppFooter.vue";
 import { disableDefaultKeys } from "./composables/experience/hotkey";
+import { useAuthStore } from "./stores/auth.store";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import { useGlobalStore } from "@/stores/global.store";
 
@@ -22,6 +24,11 @@ provideStaticStyleVariables();
 useCorsor();
 bindNaiveUILayer();
 disableDefaultKeys();
+
+const { isSighIn } = storeToRefs(useAuthStore());
+onMounted(() => {
+  console.log("isSighIn: ", isSighIn.value);
+});
 </script>
 
 <template>

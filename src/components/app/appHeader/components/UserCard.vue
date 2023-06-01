@@ -3,7 +3,6 @@ import type { Ref } from "vue";
 import { inject, toRefs } from "vue";
 import { UserSymbol } from "../app-header.symbol";
 import UserAvator from "./UserAvator.vue";
-import QuestionExplanation from "@/components/experience/QuestionExplanation.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import type { User } from "@/services/databases/user/user.table";
 import ResetInput from "@/components/inputs/ResetInput.vue";
@@ -16,9 +15,6 @@ const { name, email } = toRefs(inject<Ref<User>>(UserSymbol)!.value);
     <user-avator />
     <div class="user-card_title">
       <p class="p-reset user-card_name">
-        <question-explanation>
-          用户仅影响打包作者相关，不影响游戏内容
-        </question-explanation>
         <reset-input v-model="name" :minlength="1" :maxlength="20" class="user-card_input" placeholder="请输入用户名称" m_r />
       </p>
       <reset-input v-model="email" placeholder="emailmetoday@email.com" class="user-card_email" :maxlength="100" />

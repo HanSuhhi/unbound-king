@@ -6,9 +6,9 @@ export function useUserService() {
   const serviceModel = useServiceModel<User>("user");
   const { model, add, update } = serviceModel;
 
-  const registRandomUser = async (main = false) => {
+  const registTourist = async (main = false) => {
     const id = Number(defineUniqueId());
-    const name = `用户${id.toString().substring(0, 6)}`;
+    const name = `Tourist ${id.toString().substring(0, 6)}`;
 
     const user = {
       id,
@@ -35,7 +35,7 @@ export function useUserService() {
   return {
     ...serviceModel,
     getMainUser,
-    registRandomUser,
+    registTourist,
     updateUser
   };
 }
