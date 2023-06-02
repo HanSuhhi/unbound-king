@@ -1,7 +1,8 @@
-import { Controller, Post } from "@nestjs/common";
+import { Body, Controller, Post } from "@nestjs/common";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
-import { MailOptions } from "nodemailer/lib/json-transport";
 import { MailsService } from "./mails.service";
+import { SendCodeDto } from "./dto/send-code.dto";
+import { Mail } from "./enums/mail.enum";
 
 @ApiTags("Mails")
 @Controller("malls")
@@ -11,14 +12,25 @@ export class MallsController {
   ) {}
 
   @ApiOperation({
-    summary: "✉️ send mail by Don live in Conch Village."
+    summary: "✉️ send verification code."
   })
-  @Post()
-  public async sendDonConchVillageMail(options?: MailOptions) {
-    this.mailsService.sendDonConchVillageMail({
-      subject: "Hello",
-      text: "Hello world",
-      html: "<b>Hello world</b><img src=\"cid:01\" style=\"width:200px;height:auto\">"
-    });
+  @Post("send-verification-code")
+  public async sendVerificationCode(@Body() sendCodeDto: SendCodeDto) {
+    return this.mailsService.sendDonConchVillageMail({
+      ...sendCodeDto
+    }, Mail.VerificationCode);
   }
+
+  // @ApiOperation({
+  //   summary: "✉️ send mail by Don live in Conch Village."
+  // })
+  // @Post()
+  // public async sendDonConchVillageMail(@Body() options?: MailOptions) {
+  //   return this.mailsService.sendDonConchVillageMail(options);
+  //   // this.mailsService.sendDonConchVillageMail({
+  //   // subject: "一封冒险者的特快专递信",
+  //   // text: "有人嘱托我寄出这封信，如果他在三天内没有从那该死的矿坑里回来的话。"
+  //   // html: "<b>Hello world</b>"
+  //   // });
+  // }
 }
