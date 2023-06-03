@@ -7,7 +7,7 @@ import { TRANSITION_DURATION } from "../constant/env";
 import { releaseRoutes } from "../router/router";
 import { usePlayerStore } from "@/stores/player.store";
 import { useGlobalStore } from "@/stores/global.store";
-import { routes } from "@/components/app/appHeader/AppHeader";
+import { routes } from "@/components/app/global-header/GlobalHeader";
 import { useAppAsideStore } from "@/components/app/appAside/store/aside.store";
 
 function useRouterBefore() {

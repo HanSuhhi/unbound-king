@@ -12,7 +12,7 @@
   width: var(--modules-width);
   height: calc(100% + var(--header-block-height));
 
-  background-image: radial-gradient(transparent 1px, var(--bg-color) 1px);
+  background-image: radial-gradient(transparent 1px, var(--bg-color-bright-1) 1px);
   background-size: 3px 3px;
   backdrop-filter: saturate(10%) blur(4px);
   border-right: var(--border);

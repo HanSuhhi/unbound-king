@@ -4,7 +4,7 @@ import { range } from "lodash";
 import { createAutoMountEvent } from "../../../../composables/key/mountKeyCommand";
 import { i18nLangModel } from "../../../../locals/lang.model";
 import { definePressed, runKeyEvent } from "../../../../composables/key/keyEvent";
-import { TopModulesLengthSymbol } from "../app-header.symbol";
+import { TopModulesLengthSymbol } from "../global-header.symbol";
 import { useKeyStore } from "@/stores/key.store";
 
 export function closeModules(settingShow: Ref<boolean>, index: number) {

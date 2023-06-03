@@ -5,10 +5,10 @@ import { defineQuitEvent } from "../../composables/quitEvent";
 import { loadUser } from "../../composables/user";
 import { defineOpenSetting } from "../../composables/openSetting";
 import { usePopoverControl } from "../../composables/popoverControl";
-import AsideModule from "../AsideModule.vue";
 import UserCard from "../UserCard.vue";
 import { closeModules } from "../../composables/modulesController";
 import type { ModuleProp } from "./module-type";
+import AsideModule from "./AsideModule.vue";
 import BasePopover from "@/components/experience/BasePopover.vue";
 import { useAuthStore } from "@/stores/auth.store";
 

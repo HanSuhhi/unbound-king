@@ -1,7 +1,7 @@
 import type { Ref } from "vue";
 import { onMounted, provide, ref, watch } from "vue";
 import { debounce, isUndefined } from "lodash";
-import { UserSymbol } from "../app-header.symbol";
+import { UserSymbol } from "../global-header.symbol";
 import { useUserService } from "@/services/databases/user/user.service";
 import type { User } from "@/services/databases/user/user.table";
 import { TRANSITION_DURATION } from "@/composables/constant/env";

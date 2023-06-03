@@ -3,7 +3,7 @@ import type { Ref } from "vue";
 import { computed, inject, toRefs } from "vue";
 import type { UploadFileInfo } from "naive-ui";
 import { useMessage } from "naive-ui";
-import { UserSymbol } from "../app-header.symbol";
+import { UserSymbol } from "../global-header.symbol";
 import type { User } from "@/services/databases/user/user.table";
 
 export function useAvator() {

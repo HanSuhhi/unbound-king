@@ -3,7 +3,7 @@ import { storeToRefs } from "pinia";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { TRANSITION_DURATION } from "../../composables/constant/env";
-import { routes } from "../app/appHeader/AppHeader";
+import { routes } from "../app/global-header/GlobalHeader";
 import { smoothScrollTo } from "./composables/jsAnimation";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
 import { useGlobalStore } from "@/stores/global.store";
@@ -90,6 +90,19 @@ const closeIndex = ref(1);
 </template>
 
 <style>
+@layer page {
+  .app-header {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+
+    background-color: var(--bg-color-bright-1);
+    border-bottom: var(--border);
+  }
+}
 @layer component {
   .router-history_box {
     display: flex;

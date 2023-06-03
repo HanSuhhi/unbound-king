@@ -38,6 +38,7 @@ body {
 }
 
 #app::before {
+  pointer-events: none;
   content: "";
 
   position: absolute;

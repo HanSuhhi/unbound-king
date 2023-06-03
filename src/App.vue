@@ -6,11 +6,10 @@ import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
 import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
 import { provideStaticStyleVariables } from "./composables/constant/transitionDuration";
-import AppHeader from "./components/app/appHeader/AppHeader";
+import GlobalHeader from "./components/app/global-header/GlobalHeader";
 import RouterHistory from "./components/routerHistory/RouterHistory.vue";
 import appAside from "./components/app/appAside/AppAside";
 import AppFooter from "./components/app/AppFooter.vue";
-import { disableDefaultKeys } from "./composables/experience/hotkey";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import { useGlobalStore } from "@/stores/global.store";
 import Noise from "@/components/effects/BackgroundNoise.vue";
@@ -22,15 +21,16 @@ const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 provideStaticStyleVariables();
 useCorsor();
 bindNaiveUILayer();
-disableDefaultKeys();
+// disableDefaultKeys();
 </script>
 
 <template>
   <noise />
-  <n-config-provider class="h" preflight-style-disabled :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="darkThemeOverrides">
+  <n-config-provider preflight-style-disabled :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="darkThemeOverrides">
     <n-loading-bar-provider>
       <n-message-provider>
         <n-notification-provider>
+          <global-header />
           <suspense @resolve="renderLayout">
             <base-layout
               ref="Layout"
@@ -42,7 +42,6 @@ disableDefaultKeys();
                 </transition>
               </router-view>
               <template #header>
-                <app-header />
                 <router-history />
               </template>
               <template #aside>
@@ -71,6 +70,10 @@ disableDefaultKeys();
     box-sizing: border-box;
     padding: var(--base-margin);
     padding-bottom: 0;
+  }
+
+  .app {
+    height: calc(100vh - var(--global-header-height));
   }
 
   .app-main {

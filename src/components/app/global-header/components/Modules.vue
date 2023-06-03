@@ -2,7 +2,7 @@
 import type { Component } from "vue";
 import { computed, markRaw, provide, shallowRef } from "vue";
 
-import { TopModulesLengthSymbol } from "../app-header.symbol";
+import { TopModulesLengthSymbol } from "../global-header.symbol";
 import I18n from "./mainModules/I18n.vue";
 import ThemeController from "./mainModules/themeController.vue";
 import ScreenController from "./mainModules/ScreenController.vue";

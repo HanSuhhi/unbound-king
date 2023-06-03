@@ -12,6 +12,7 @@ interface ImportMetaEnv {
   readonly ROUTER_DEFAULT_PAGE: string;
   readonly I18N_DEFAULT_LANG: string;
   readonly PROJECT_NAME: string;
+  readonly STYLE_HEADER_HEIGHT: string;
   readonly STYLE_ASIDE_WIDTH: string;
   readonly STYLE_ASIDE_MODULES_WIDTH: string;
   readonly STYLE_COLLAPSE_WIDTH: string;

@@ -1,8 +1,8 @@
 <script setup lang='ts'>
 import type { Ref } from "vue";
 import { inject, toRefs } from "vue";
-import { UserSymbol } from "../../global-header/global-header.symbol";
-import UserAvator from "../../global-header/components/UserAvator.vue";
+import { UserSymbol } from "../global-header.symbol";
+import UserAvator from "./UserAvator.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import type { User } from "@/services/databases/user/user.table";
 import ResetInput from "@/components/inputs/ResetInput.vue";

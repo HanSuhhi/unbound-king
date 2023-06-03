@@ -39,7 +39,8 @@ export function defineAppLayout() {
       },
       property: {
         "--aside-width": import.meta.env.STYLE_ASIDE_WIDTH,
-        "--footer-height": "1rem"
+        "--footer-height": "1rem",
+        "--header-height": "var(--header-block-height)"
       }
     }
   });
@@ -50,11 +51,11 @@ export function defineAppLayout() {
     const asideElement = document.getElementsByClassName("app-aside")[0] as HTMLElement;
     const headerElement = document.getElementsByClassName("app-header")[0] as HTMLElement;
     // footer part
-    const footer = document.querySelector(".app-footer")!.getBoundingClientRect();
-    const footerHeight = footer.height;
+    const footer = document.querySelector(".app-footer")?.getBoundingClientRect();
+    const footerHeight = footer?.height || 0;
     const workshopElement = document.querySelector(".workshop");
 
-    const mainHeight = `calc(${document.body.getBoundingClientRect().height}px -  ${headerElement.getBoundingClientRect().height}px  - 2 * ${footerHeight}px)`;
+    const mainHeight = `calc(${document.body.getBoundingClientRect().height}px - var(--global-header-height) -  ${headerElement.getBoundingClientRect().height}px  - 2 * ${footerHeight}px)`;
     appElement.style.setProperty("--main-height", mainHeight);
     appElement.style.setProperty("--footer-height", `${footerHeight}px`);
     appElement.style.setProperty("--modules-width", import.meta.env.STYLE_ASIDE_MODULES_WIDTH);

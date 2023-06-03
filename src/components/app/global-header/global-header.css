@@ -1,25 +1,13 @@
 @import url("./styles/system-info.css") layer(component);
 
 @layer page {
-  .app-header {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    width: 100vw;
-
-    background-color: var(--bg-color-bright-1);
-    border-bottom: var(--border);
-  }
-
-  .app-header_box {
+  .global-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     box-sizing: border-box;
-    height: var(--header-block-height);
+    height: var(--global-header-height);
 
     background-color: var(--bg-color);
     border-bottom: var(--border);

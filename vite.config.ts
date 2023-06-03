@@ -32,7 +32,8 @@ export default defineConfig(({ mode }) => {
       "STYLE_EXTEND_WIDTH",
       "STYLE_BASE_FONT_SIZE",
       "BUILD_ENCRYPTED_KEY",
-      "BUILD_IV"
+      "BUILD_IV",
+      "STYLE_HEADER_HEIGHT"
     ],
     resolve: {
       alias: {
