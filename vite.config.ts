@@ -8,6 +8,11 @@ import unocss from "unocss/vite";
 export default defineConfig(({ mode }) => {
   const { PROJECT_NAME } = loadEnv(mode, process.cwd(), "PROJECT_NAME");
   return {
+    define: {
+      __VUE_I18N_FULL_INSTALL__: true,
+      __VUE_I18N_LEGACY_API__: false,
+      __INTLIFY_PROD_DEVTOOLS__: false
+    },
     plugins: [
       vue({
         script: {

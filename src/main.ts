@@ -1,7 +1,6 @@
-import { createSSRApp } from "vue";
+import type { App as VueApp } from "vue";
 import { createPinia } from "pinia";
 import { useRouteConfig } from "./composables/router/router";
-import App from "./App.vue";
 import Icon from "./components/Icon.vue";
 import TypeButton from "./components/typeButton/TypeButton.vue";
 import CTabs from "./components/ui/tabs";
@@ -12,8 +11,7 @@ import { defineI18n } from "./locals/index";
 import "uno.css";
 import "./styles/index.css";
 
-export function createApp() {
-  const app = createSSRApp(App);
+export function createApp(app: VueApp<Element>) {
   const pinia = createPinia();
   const i18n = defineI18n();
   const { router } = useRouteConfig();
@@ -28,5 +26,5 @@ export function createApp() {
     .component("type-button", TypeButton)
     .directive("paperRipple", paperRipple);
 
-  return { app, router };
+  return { router };
 }

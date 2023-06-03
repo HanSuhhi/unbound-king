@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import { useRouter } from "vue-router";
+import LoginCard from "./components/LoginCard.vue";
 
 const router = useRouter();
 function login() {
@@ -8,10 +9,5 @@ function login() {
 </script>
 
 <template>
-  <type-button @click="login">
-    login
-  </type-button>
+  <login-card />
 </template>
-
-<style scoped>
-</style>

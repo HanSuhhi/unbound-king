@@ -3,10 +3,14 @@ import { renderToString } from "vue/server-renderer";
 import type { RouteLocationRaw } from "vue-router";
 import { setup } from "@css-render/vue3-ssr";
 import type { Manifest } from "vite";
+import { createSSRApp } from "vue";
 import { createApp } from "./main";
+import App from "./App.vue";
 
 export async function render(url: RouteLocationRaw, manifest: Manifest) {
-  const { app, router } = createApp();
+  const app = createSSRApp(App);
+
+  const { router } = createApp(app);
 
   await router.push(url);
   await router.isReady();
