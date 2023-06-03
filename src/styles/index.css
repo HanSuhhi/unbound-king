@@ -4,12 +4,10 @@
 
 @import url("./base/") layer(base);
 @import url("./transition/") layer(base);
+@import url("./animations/") layer(base);
 @import url("./themes/") layer(base);
 @import url("./icon/") layer(utilities);
 @import url("./reset/") layer(utilities);
-
-/* TODO */
-
 @import url("./cursor/") layer(utilities);
 @import url("./common/") layer(utilities);
 @import url("./directives/") layer(utilities);
