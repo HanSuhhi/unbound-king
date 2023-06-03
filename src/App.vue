@@ -1,21 +1,14 @@
 <script setup lang="ts">
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
-import { storeToRefs } from "pinia";
-import { defineAppLayout } from "./components/app/composables/appLayout";
 import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
 import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
 import { provideStaticStyleVariables } from "./composables/constant/transitionDuration";
 import GlobalHeader from "./components/app/global-header/GlobalHeader";
-import RouterHistory from "./components/routerHistory/RouterHistory.vue";
-import appAside from "./components/app/appAside/AppAside";
-import AppFooter from "./components/app/AppFooter.vue";
+
 import { dialogMessage } from "@/composables/components/globalDialog";
-import { useGlobalStore } from "@/stores/global.store";
 import Noise from "@/components/effects/BackgroundNoise.vue";
 
-const { Layout, renderLayout } = defineAppLayout();
-const { pageTransition } = storeToRefs(useGlobalStore());
 const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 
 provideStaticStyleVariables();
@@ -31,26 +24,8 @@ bindNaiveUILayer();
       <n-message-provider>
         <n-notification-provider>
           <global-header />
-          <suspense @resolve="renderLayout">
-            <base-layout
-              ref="Layout"
-              class="page-transition app"
-            >
-              <router-view v-slot="{ Component }">
-                <transition :name="pageTransition" mode="out-in">
-                  <component :is="Component" class="page" />
-                </transition>
-              </router-view>
-              <template #header>
-                <router-history />
-              </template>
-              <template #aside>
-                <appAside />
-              </template>
-              <template #footer>
-                <app-footer />
-              </template>
-            </base-layout>
+          <suspense>
+            <router-view />
             <template #fallback>
               loading...
             </template>
