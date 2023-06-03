@@ -1,3 +1,5 @@
+> Check it out, here’s the readme for the devs. If you’re a player, be sure to drop by todo.com!
+
 # 👋 Code: FarmLand
 
 <samp>This is an attempt at a full stack project.</smap>
@@ -5,8 +7,6 @@
 <samp>This is also a web game attempt without using Canvas.</smap>
 
 <samp>I sincerely hope that you can participate in it, players feel the fun of the game, and developers participate in open source development. </smap>
-
-> Check it out, here’s the readme for the devs. If you’re a player, be sure to drop by todo.com!
 
 ## The project is still under development, the first demo version will appear in the near future
 

@@ -8,7 +8,7 @@ import ThemeController from "./mainModules/themeController.vue";
 import ScreenController from "./mainModules/ScreenController.vue";
 import BasePreference from "./mainModules/BasePreference.vue";
 import Explanation from "@/components/experience/Explanation.vue";
-import { i18nLangModel } from "@/locals/lang.model";
+import { i18nLangModel } from "@/locals/index";
 import KbdEvent from "@/components/KeyEvent.vue";
 import { defineKeyEventWithoutFn } from "@/composables/key/keyEvent";
 
@@ -53,7 +53,7 @@ provide(TopModulesLengthSymbol, modulesLength);
 
     margin-right: var(--base-margin);
 
-    font-size: var(--font-title-main);
+    font-size: calc( 1.1 * var(--font-title-main));
 
     filter: brightness(0.7);
 

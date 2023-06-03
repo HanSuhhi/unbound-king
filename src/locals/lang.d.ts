@@ -26,4 +26,8 @@ interface I18N {
       confirm: string
     }
   }
+  auth: {
+    title: string
+    emailPlaceholder: string
+  }
 }

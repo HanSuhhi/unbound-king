@@ -10,8 +10,6 @@ import { useGlobalStore } from "@/stores/global.store";
 const { Layout, renderLayout } = defineAppLayout();
 const { pageTransition } = storeToRefs(useGlobalStore());
 
-console.log(1);
-
 onMounted(renderLayout);
 </script>
 

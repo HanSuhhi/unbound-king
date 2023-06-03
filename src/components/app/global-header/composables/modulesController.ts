@@ -1,10 +1,10 @@
 import type { ComputedRef, Ref } from "vue";
 import { inject } from "vue";
 import { range } from "lodash";
-import { createAutoMountEvent } from "../../../../composables/key/mountKeyCommand";
-import { i18nLangModel } from "../../../../locals/lang.model";
-import { definePressed, runKeyEvent } from "../../../../composables/key/keyEvent";
 import { TopModulesLengthSymbol } from "../global-header.symbol";
+import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
+import { definePressed, runKeyEvent } from "@/composables/key/keyEvent";
+import { i18nLangModel } from "@/locals/index";
 import { useKeyStore } from "@/stores/key.store";
 
 export function closeModules(settingShow: Ref<boolean>, index: number) {

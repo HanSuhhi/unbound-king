@@ -27,5 +27,9 @@ export default defineLang({
       close: "弹窗关闭",
       confirm: "弹窗确定"
     }
+  },
+  auth: {
+    title: "正在登录...",
+    emailPlaceholder: "请输入邮箱地址..."
   }
 }, "中文");

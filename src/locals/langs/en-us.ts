@@ -27,5 +27,9 @@ export default defineLang({
       close: "close dialog",
       confirm: "confirm"
     }
+  },
+  auth: {
+    title: "Login Now",
+    emailPlaceholder: "Email Address"
   }
 }, "English");
