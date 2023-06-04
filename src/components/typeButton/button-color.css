@@ -11,6 +11,6 @@
 
   .type-button_default {
     --bg-color-main: var(--main-color-deep-2);
-    --bg-color-sub: var(--main-color);
+    --bg-color-sub: rgb(16 121 100);
   }
 }

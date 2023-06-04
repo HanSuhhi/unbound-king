@@ -19,6 +19,7 @@ const buttonDynamicClassList = computed(() => [`type-button_${props.color}`]);
 </script>
 
 <template>
+  <!-- <n-button  cursor-pointer class="type-button" :plain="isPlain" :class="buttonDynamicClassList"> -->
   <n-button v-paper-ripple cursor-pointer class="type-button" :plain="isPlain" :class="buttonDynamicClassList">
     <slot />
   </n-button>
@@ -27,6 +28,8 @@ const buttonDynamicClassList = computed(() => [`type-button_${props.color}`]);
 <style scoped>
 @layer component {
   .type-button {
+    --linear-gradient: linear-gradient(225deg, var(--bg-color-sub) 0%, var(--bg-color-main) 55%);
+
     position: relative;
     top: 0;
 
@@ -35,7 +38,7 @@ const buttonDynamicClassList = computed(() => [`type-button_${props.color}`]);
     font-size: calc(var(--font-title-small) * 0.8);
     white-space: nowrap;
 
-    background-image: linear-gradient(225deg, var(--bg-color-sub) 0%, var(--bg-color-main) 55%);
+    background-image: var(--linear-gradient);
     border: var(--border);
     border-radius: var(--border-radius);
     box-shadow: none;

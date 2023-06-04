@@ -12,7 +12,6 @@ function initParentElement(parentElement: HTMLElement) {
   return (waveElement: HTMLElement) => {
     const { left: elLeft, top: elTop } = parentElement.getBoundingClientRect();
 
-    parentElement.style.overflow = "hidden";
     parentElement.appendChild(waveElement);
     return { elLeft, elTop };
   };
@@ -20,8 +19,12 @@ function initParentElement(parentElement: HTMLElement) {
 
 function onMouseDown({ x: left, y: top }: MouseEvent) {
   const parentElement = <HTMLElement>window.event!.currentTarget;
+
+  const container = document.createElement("div");
+  container.classList.add("paper-ripple_container");
+  parentElement.appendChild(container);
   const waveElement = createWaveElement();
-  const { elLeft, elTop } = initParentElement(parentElement)(waveElement);
+  const { elLeft, elTop } = initParentElement(container)(waveElement);
 
   (<Array<[key: keyof CSSProperties, value: string | number]>>[
     ["--left", left],
@@ -40,6 +43,7 @@ function onMouseDown({ x: left, y: top }: MouseEvent) {
   document.onmouseup = () => {
     waveElement.classList.add("paper-ripple_end");
     delay(waveElement.remove.bind(waveElement), TRANSITION_DURATION);
+    delay(container.remove.bind(container), TRANSITION_DURATION);
   };
 }
 

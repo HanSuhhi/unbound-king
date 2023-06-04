@@ -2,6 +2,7 @@
 import { useI18n } from "vue-i18n";
 import Icon from "@/components/Icon.vue";
 import TypeButton from "@/components/typeButton/TypeButton.vue";
+import TitleButton from "@/components/typeButton/TitleButton.vue";
 
 const { t } = useI18n();
 </script>
@@ -15,10 +16,10 @@ const { t } = useI18n();
       <p class="workshop-package_description">
         {{ t("workshop.standard.description") }}
       </p>
-      <type-button class="workshop-package_button">
+      <title-button class="workshop-package_button">
         <icon name="coin" style="margin-right: var(--mini);" />
         {{ t("workshop.standard.more") }}
-      </type-button>
+      </title-button>
     </div>
     <div class="workshop-factory">
       <type-button plain>
