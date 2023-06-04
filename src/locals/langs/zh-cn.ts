@@ -30,6 +30,9 @@ export default defineLang({
   },
   auth: {
     title: "正在登录...",
-    emailPlaceholder: "请输入邮箱地址..."
+    emailPlaceholder: "邮箱地址...",
+    verifyCodePlaceholder: "邮箱验证码...",
+    getVerifyCode: "获取验证码",
+    loginTitle: "登录"
   }
 }, "中文");

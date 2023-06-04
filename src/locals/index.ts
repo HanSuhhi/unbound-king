@@ -1,5 +1,6 @@
 import { createI18n, useI18n } from "vue-i18n";
 import { useLocalStorage, useNavigatorLanguage } from "@vueuse/core";
+import type { I18N } from "./langs/en-us";
 import enUs from "./langs/en-us";
 import { parseImportModule } from "@/composables/ci/importModule";
 

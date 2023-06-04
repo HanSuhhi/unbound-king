@@ -1,6 +1,6 @@
 import { defineLang } from "../lang.model";
 
-export default defineLang({
+const enUsModel = {
   hotkey: "e",
   workshop: {
     standard: {
@@ -30,6 +30,13 @@ export default defineLang({
   },
   auth: {
     title: "Login Now",
-    emailPlaceholder: "Email Address"
+    emailPlaceholder: "Email Address",
+    verifyCodePlaceholder: "Email Code",
+    getVerifyCode: "Get Email Code",
+    loginTitle: "Login"
   }
-}, "English");
+};
+
+export default defineLang(enUsModel, "English");
+
+export type I18N = typeof enUsModel;
