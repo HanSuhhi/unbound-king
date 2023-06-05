@@ -21,6 +21,7 @@ interface ImportMetaEnv {
   readonly BUILD_ENCRYPTED_KEY: string;
   readonly BUILD_IV: string;
   readonly STYLE_BASE_FONT_SIZE: string;
+  readonly EMAIL: string;
 }
 
 

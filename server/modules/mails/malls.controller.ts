@@ -20,17 +20,4 @@ export class MallsController {
       ...sendCodeDto
     }, Mail.VerificationCode);
   }
-
-  // @ApiOperation({
-  //   summary: "✉️ send mail by Don live in Conch Village."
-  // })
-  // @Post()
-  // public async sendDonConchVillageMail(@Body() options?: MailOptions) {
-  //   return this.mailsService.sendDonConchVillageMail(options);
-  //   // this.mailsService.sendDonConchVillageMail({
-  //   // subject: "一封冒险者的特快专递信",
-  //   // text: "有人嘱托我寄出这封信，如果他在三天内没有从那该死的矿坑里回来的话。"
-  //   // html: "<b>Hello world</b>"
-  //   // });
-  // }
 }

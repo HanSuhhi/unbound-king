@@ -9,8 +9,14 @@
     --bg-color-sub: var(--yellow-bright-1);
   }
 
+  .type-button_title {
+    --bg-color-main: var(--main-color-deep-2);
+    --bg-color-sub: hsl(168deg 92% 33%);
+  }
+
   .type-button_default {
     --bg-color-main: var(--main-color-deep-2);
-    --bg-color-sub: rgb(16 121 100);
+    --bg-color-sub: var(--main-color-bright-1);
+
   }
 }

@@ -1,29 +1,29 @@
 <script setup lang="ts">
 import { NButton } from "naive-ui";
 import { computed } from "vue";
+import type { ButtonProp } from "./button.type";
 import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 import "./button-color.css";
 
-const props = withDefaults(
-  defineProps<{
-    color?: "blue" | "red" | "green" | "default"
-    plain?: boolean
-  }>(),
-  {
-    color: "default"
-  }
-);
+const { color = "default", plain } = defineProps<ButtonProp>();
 
-const isPlain = computed(() => useHtmlPropLint(props.plain || false));
-const buttonDynamicClassList = computed(() => [`type-button_${props.color}`]);
+const isPlain = computed(() => useHtmlPropLint(plain || false));
+const buttonDynamicClassList = computed(() => [`type-button_${color}`]);
 </script>
 
 <template>
-  <!-- <n-button  cursor-pointer class="type-button" :plain="isPlain" :class="buttonDynamicClassList"> -->
   <n-button v-paper-ripple cursor-pointer class="type-button" :plain="isPlain" :class="buttonDynamicClassList">
     <slot />
   </n-button>
 </template>
+
+<style>
+@layer component {
+  .type-button[plain] .n-button__border {
+    border-image: var(--linear-gradient) 1;
+  }
+}
+</style>
 
 <style scoped>
 @layer component {
@@ -48,6 +48,9 @@ const buttonDynamicClassList = computed(() => [`type-button_${props.color}`]);
 
   .type-button[plain] {
     background-image: none;
+    border: none;
+
   }
+
 }
 </style>

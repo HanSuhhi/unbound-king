@@ -33,7 +33,8 @@ const enUsModel = {
     emailPlaceholder: "Email Address",
     verifyCodePlaceholder: "Email Code",
     getVerifyCode: "Get Email Code",
-    loginTitle: "Login"
+    loginTitle: "Login",
+    loginTitleSuffix: "nothing taboo"
   }
 };
 

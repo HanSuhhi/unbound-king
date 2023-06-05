@@ -42,8 +42,8 @@ function onMouseDown({ x: left, y: top }: MouseEvent) {
 
   document.onmouseup = () => {
     waveElement.classList.add("paper-ripple_end");
-    delay(waveElement.remove.bind(waveElement), TRANSITION_DURATION);
     delay(container.remove.bind(container), TRANSITION_DURATION);
+    delay(waveElement.remove.bind(waveElement), TRANSITION_DURATION);
   };
 }
 

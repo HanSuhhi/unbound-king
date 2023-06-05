@@ -1,0 +1,53 @@
+
+.login-operation_login {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+  justify-items: flex-start;
+
+  min-height: 3.5rem;
+  margin: var(--base-margin);
+  margin-right: 0;
+
+  border: var(--border);
+
+}
+
+.login-operation_login::before,
+.login-operation_login::after {
+  content: "";
+  position: absolute;
+  background-color: var(--border-color);
+  transition: var(--transition-prop);
+}
+
+.login-operation_login::before {
+  --height: 50%;
+
+  left: calc(-1 * var(--base-margin));
+  width: calc(1.5 * var(--border-height));
+  height: var(--height);
+  transition-property: height;
+
+}
+
+.login-operation_login:hover::before {
+  --height: 70%;
+}
+
+.login-operation_login::after {
+  --width: 30%;
+
+  top: var(--base-margin);
+  right: var(--base-margin);
+
+  width: var(--width);
+  height: calc(1.5 * var(--border-height));
+
+  transition-property: width;
+}
+
+.login-operation_login:hover::after {
+  --width: 40%;
+}

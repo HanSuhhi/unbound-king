@@ -171,5 +171,9 @@ export const DATA_BaseIcons = {
   "night": {
     translator: ["night", "夜"],
     path: "i-material-symbols-dark-mode-outline"
+  },
+  "github": {
+    translator: ["github", "Github"],
+    path: "i-tabler-brand-github"
   }
 };

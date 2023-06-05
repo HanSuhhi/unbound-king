@@ -1,5 +1,11 @@
+<script setup lang="ts">
+import type { ButtonProp } from "./button.type";
+
+const { plain = false } = defineProps<ButtonProp>();
+</script>
+
 <template>
-  <type-button class="title-button">
+  <type-button :plain="plain" color="title" class="title-button">
     <slot />
   </type-button>
 </template>

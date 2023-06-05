@@ -10,8 +10,11 @@
   align-items: center;
   justify-content: center;
 
+  aspect-ratio: 1 / 1;
   margin: var(--mini);
   padding: var(--small);
+
+  font-size: var(--font-title);
 
   background-color: var(--bg-color-bright-2);
   border-radius: var(--border-radius);

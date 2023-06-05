@@ -1,13 +1,23 @@
 <script setup lang='ts'>
-import { useRouter } from "vue-router";
+import BgModel from "./components/BgModel.vue";
+import Description from "./components/Description.vue";
 import LoginCard from "./components/LoginCard.vue";
-
-const router = useRouter();
-function login() {
-  router.replace({ name: "game-icon" });
-}
 </script>
 
 <template>
-  <login-card />
+  <div class="login">
+    <bg-model />
+    <login-card />
+    <description />
+  </div>
 </template>
+
+<style scoped>
+@layer page {
+  .login {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - var(--global-header-height));
+  }
+}
+</style>

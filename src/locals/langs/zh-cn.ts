@@ -33,6 +33,7 @@ export default defineLang({
     emailPlaceholder: "邮箱地址...",
     verifyCodePlaceholder: "邮箱验证码...",
     getVerifyCode: "获取验证码",
-    loginTitle: "登录"
+    loginTitle: "登录",
+    loginTitleSuffix: "百无禁忌"
   }
 }, "中文");

@@ -1,4 +1,4 @@
-import { createI18n, useI18n } from "vue-i18n";
+import { createI18n } from "vue-i18n";
 import { useLocalStorage, useNavigatorLanguage } from "@vueuse/core";
 import type { I18N } from "./langs/en-us";
 import enUs from "./langs/en-us";
@@ -22,13 +22,6 @@ export function defineI18n() {
   });
 
   return i18n;
-}
-
-export function useBaseI18n() {
-  const { t } = useI18n();
-  const tt = (key: string) => t(key);
-
-  return tt;
 }
 
 function createI18nLangModel(obj: I18N) {

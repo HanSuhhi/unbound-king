@@ -38,7 +38,8 @@ export default defineConfig(({ mode }) => {
       "STYLE_BASE_FONT_SIZE",
       "BUILD_ENCRYPTED_KEY",
       "BUILD_IV",
-      "STYLE_HEADER_HEIGHT"
+      "STYLE_HEADER_HEIGHT",
+      "EMAIL"
     ],
     resolve: {
       alias: {

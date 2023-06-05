@@ -1,0 +1,30 @@
+
+.login-input_title::before {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 40%;
+  height: 2px;
+
+  background-color: var(--border-color);
+}
+
+.login-input_title::after {
+  content: attr(data-suffix);
+
+  position: absolute;
+  top: 50%;
+  right: 0;
+  zoom: .5;
+  transform: translateY(-50%);
+
+
+  writing-mode:vertical-rl;
+  font-size: 8px;
+  font-weight: bold;
+  line-height: 1.4rem;
+  text-align: right;
+}
