@@ -3,6 +3,7 @@ import * as nodemailer from "nodemailer";
 import type Mail from "nodemailer/lib/mailer";
 import { ConfigService } from "@nestjs/config";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
+import { AuthService } from "../auth/auth.service";
 import { Conch_Village } from "./mail-hosts/conch_village/don";
 import { Mail as MailType } from "./enums/mail.enum";
 
@@ -23,7 +24,10 @@ export class MailsService {
    */
   private logger = new Logger();
 
-  constructor(private configService: ConfigService) { }
+  constructor(
+    private configService: ConfigService,
+    private authService: AuthService
+  ) { }
 
   /**
    * Sends an email using the given transporter and email options.
@@ -31,7 +35,7 @@ export class MailsService {
    * @param options The options for the email.
    * @returns The sent message info.
    */
-  private async sendMail(transport: typeof this.Conch_Village_Transporter, options: Mail.Options): Promise<SMTPTransport.SentMessageInfo> {
+  private async sendMail(transport: typeof this.Conch_Village_Transporter, options: Mail.Options): Promise<SMTPTransport.SentMessageInfo["messageId"]> {
     let result: SMTPTransport.SentMessageInfo;
 
     try {
@@ -42,13 +46,14 @@ export class MailsService {
       this.logger.warn(`Failed: failed to send mail: ${error}`);
     }
 
-    return result;
+    return result.messageId;
   }
 
-  private async sendVerificationCodeMail(transport: typeof this.Conch_Village_Transporter, options: Mail.Options) {
+  private async sendVerificationCodeMail(transport: typeof this.Conch_Village_Transporter, options: Mail.Options): Promise<string> {
+    const code = this.authService.createEmailAuthCode();
     options.subject = "Verification Code";
-    options.text = `Your verification code is: ${options.text}`;
-    options.html = `<p>Your verification code is: ${options.text}</p>`;
+    options.text = `Your verification code is: ${code}`;
+    options.html = `<p>Your verification code is: ${code}</p>`;
 
     return this.sendMail(transport, options);
   }
@@ -57,9 +62,9 @@ export class MailsService {
    * Sends an email through the Conch Village transporter.
    * @param options The email options.
    * @param mailType The email tpyes.
-   * @returns The sent message info.
+   * @returns {Promise<string>} email messageId.
    */
-  public async sendDonConchVillageMail(options: Mail.Options, mailType: MailType): Promise<SMTPTransport.SentMessageInfo> {
+  public async sendDonConchVillageMail(options: Mail.Options, mailType: MailType): Promise<string> {
     const mailOptions: Mail.Options = {
       from: `Don<${Conch_Village(this.configService).auth.user}>`,
       ...createMailOption(),
