@@ -6,7 +6,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import unocss from "unocss/vite";
 
 export default defineConfig(({ mode }) => {
-  const { PROJECT_NAME } = loadEnv(mode, process.cwd(), "PROJECT_NAME");
+  const { SERVER_RUNNING_PORT } = loadEnv(mode, process.cwd(), "SERVER_RUNNING_PORT");
   return {
     define: {
       __VUE_I18N_FULL_INSTALL__: true,
@@ -24,7 +24,14 @@ export default defineConfig(({ mode }) => {
       unocss()
     ],
     server: {
-      port: 20018
+      port: 20018,
+      proxy: {
+        "/request": {
+          target: `http://localhost:${SERVER_RUNNING_PORT}`,
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/request/, "")
+        }
+      }
     },
     envPrefix: [
       "PROJECT_NAME",

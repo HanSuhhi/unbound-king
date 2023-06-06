@@ -1,6 +1,6 @@
 export enum Prefix {
   Client = "unbound-king",
-  Api = "api",
+  Api = "swagger-doc",
   Server_1 = "v1"
 }
 

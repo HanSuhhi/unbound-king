@@ -5,8 +5,8 @@ import { SendCodeDto } from "./dto/send-code.dto";
 import { Mail } from "./enums/mail.enum";
 
 @ApiTags("Mails")
-@Controller("malls")
-export class MallsController {
+@Controller("mails")
+export class MailsController {
   constructor(
     private readonly mailsService: MailsService
   ) {}

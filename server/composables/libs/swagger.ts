@@ -1,5 +1,6 @@
 import type { NestExpressApplication } from "@nestjs/platform-express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { Prefix } from "#/composables/constant/url";
 
 /**
  * Creates the Swagger configuration.
@@ -10,7 +11,6 @@ function createSwaggerConfig() {
     .setTitle(process.env.PROJECT_NAME)
     .setDescription(`Here's the info about ${process.env.PROJECT_NAME}'s API.`)
     .setVersion("1.0")
-    .addTag("api")
     .build();
 
   return config;
@@ -21,8 +21,8 @@ function createSwaggerConfig() {
  * @param {NestExpressApplication} app The Nest Express application.
  * @returns {NestExpressApplication} The Nest Express application.
  */
-export function bindSwageerModule(app: NestExpressApplication) {
+export function bindSwageerModule(app: NestExpressApplication): NestExpressApplication {
   const document = SwaggerModule.createDocument(app, createSwaggerConfig());
-  SwaggerModule.setup("api", app, document);
+  SwaggerModule.setup(Prefix.Api, app, document);
   return app;
 }

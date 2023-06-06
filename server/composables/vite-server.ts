@@ -14,10 +14,14 @@ export async function getViteServer() {
         watch: {
           usePolling: true,
           interval: 100
-        },
-        hmr: {
-          port: 3050
         }
+        // proxy: {
+        //   "/api": {
+        //     target: `http://localhost:${process.env.SERVER_RUNNING_PORT}`,
+        //     changeOrigin: true,
+        //     rewrite: path => path.replace(/^\/api/, "")
+        //   }
+        // }
       },
       appType: "custom"
     });

@@ -5,7 +5,7 @@ import { useThreeModel } from "../composables/threeModel";
 
 const threeRef = ref<HTMLElement>();
 
-useThreeModel(threeRef as Ref);
+!import.meta.env.SSR && useThreeModel(threeRef as Ref);
 </script>
 
 <template>
