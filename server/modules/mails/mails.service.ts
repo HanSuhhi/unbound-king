@@ -50,7 +50,7 @@ export class MailsService {
   }
 
   private async sendVerificationCodeMail(transport: typeof this.Conch_Village_Transporter, options: Mail.Options): Promise<string> {
-    const code = this.authService.createEmailAuthCode();
+    const code = this.authService.createEmailAuthCode(options.to as string);
     options.subject = "Verification Code";
     options.text = `Your verification code is: ${code}`;
     options.html = `<p>Your verification code is: ${code}</p>`;

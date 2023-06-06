@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
+import { CacheModule } from "@nestjs/cache-manager";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { resolveDistPath } from "./composables/path/path";
@@ -18,6 +19,9 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
   imports: [
     ConfigModule.forRoot({
       envFilePath: [".env", ".env.server"],
+      isGlobal: true
+    }),
+    CacheModule.register({
       isGlobal: true
     }),
     MongooseModule.forRoot(MONGO_CLOUD_URL, {

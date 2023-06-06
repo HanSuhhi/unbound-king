@@ -1,6 +1,7 @@
 import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
 import { ConfigService } from "@nestjs/config";
+import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import { AuthService } from "../auth/auth.service";
 import { MailsController } from "./mails.controller";
 import { MailsService } from "./mails.service";
@@ -10,7 +11,10 @@ describe("MailsController", () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ConfigService, AuthService, MailsService],
+      providers: [ConfigService, AuthService, MailsService, {
+        provide: CACHE_MANAGER,
+        useValue: {}
+      }],
       controllers: [MailsController]
     }).compile();
 
