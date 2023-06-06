@@ -29,12 +29,13 @@ const enUsModel = {
     }
   },
   auth: {
-    title: "Login Now",
+    title: "Login to your Account",
     emailPlaceholder: "Email Address",
     verifyCodePlaceholder: "Email Code",
     getVerifyCode: "Get Email Code",
     loginTitle: "Login",
-    loginTitleSuffix: "nothing taboo"
+    loginTitleSuffix: "nothing taboo",
+    subtitle: "Your peeps are hanging on you coming back."
   }
 };
 

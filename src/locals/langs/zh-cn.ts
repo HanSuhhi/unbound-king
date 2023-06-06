@@ -34,6 +34,7 @@ export default defineLang({
     verifyCodePlaceholder: "邮箱验证码...",
     getVerifyCode: "获取验证码",
     loginTitle: "登录",
-    loginTitleSuffix: "百无禁忌"
+    loginTitleSuffix: "百无禁忌",
+    subtitle: "伙伴们都在等待你的回来！"
   }
 }, "中文");

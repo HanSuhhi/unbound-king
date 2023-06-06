@@ -28,10 +28,11 @@ const { t } = useI18n();
 <style scoped>
 @layer copmonent {
   .verify-code {
-    --input-width: 55%;
+    --input-width: 75%;
     --gap: 5%;
 
     display: flex;
+    align-items: center;
   }
 
   .verify-code_code {

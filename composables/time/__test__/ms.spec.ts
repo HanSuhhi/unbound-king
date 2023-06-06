@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { useSecond } from "../ms";
+import { useMinute, useSecond } from "../ms";
 
 describe("Time utilities", () => {
   it("useSecond should convert seconds to ms", () => {
@@ -7,6 +7,6 @@ describe("Time utilities", () => {
   });
 
   it("useMinute should convert minutes to ms", () => {
-    expect(useSecond(1)).toEqual(60000);
+    expect(useMinute(1)).toEqual(60000);
   });
 });

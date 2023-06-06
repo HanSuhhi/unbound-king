@@ -24,7 +24,7 @@ const { t } = useI18n();
     justify-content: flex-end;
 
     width: 45%;
-    height: calc(100% - var(--base-margin));
+    height: 100%;
 
     font-size: var(--font-title-main);
   }
@@ -48,6 +48,7 @@ const { t } = useI18n();
 
   .login-operation_button {
     width: 100%;
+    min-height: 3.5rem;
     border-image: linear-gradient(to right, var(--bg-color-sub) , var(--bg-color-main)) 1;
   }
 }

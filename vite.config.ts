@@ -55,7 +55,8 @@ export default defineConfig(({ mode }) => {
       }
     },
     test: {
-      root: "src",
+      root: "",
+      include: ["composables/**/*.spec.ts", "src/**/*.spec.ts"],
       environment: "jsdom",
       transformMode: {
         web: [/.[tj]sx$/]

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
-import { useQuery } from "vue-query";
 import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
 import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
@@ -15,12 +14,6 @@ const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 provideStaticStyleVariables();
 useCorsor();
 bindNaiveUILayer();
-
-function useTodosQuery() {
-  return useQuery("todos", () => fetch("http://localhost:13429/mail/send-verification-code"));
-}
-
-const { isLoading, isError, data, error } = useTodosQuery();
 </script>
 
 <template>
@@ -30,7 +23,6 @@ const { isLoading, isError, data, error } = useTodosQuery();
       <n-message-provider>
         <n-notification-provider>
           <global-header />
-          data: {{ data }}
           <suspense>
             <router-view />
             <template #fallback>

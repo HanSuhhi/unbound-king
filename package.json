@@ -6,7 +6,7 @@
   "scripts": {
     "lint:style": "stylelint **/*.{vue,css}",
     "ci:cz": "git-cz",
-    "test": "pnpm test:server",
+    "test": "pnpm test:server & pnpm test:client",
     "test:client": "vitest -c vite.config.ts",
     "test:server": "vitest -c vitest.config.ts",
     "test:coverage": "vitest run --coverage",

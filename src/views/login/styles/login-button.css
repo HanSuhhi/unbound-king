@@ -1,5 +1,7 @@
 
 .login-operation_login {
+  --base-margin: var(--normal);
+
   position: relative;
 
   display: flex;

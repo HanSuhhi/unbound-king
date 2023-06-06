@@ -1,22 +1,24 @@
 <script setup lang='ts'>
-import { NInput } from "naive-ui";
+import { NCheckbox, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
+import { ref } from "vue";
 import { EMAIL_INPUT_PROPS, useEmailInput } from "../composables/emailInput";
 import VerifyCode from "./VerifyCode.vue";
 import { i18nLangModel } from "@/locals";
 
 const { email, checkEmailIsRight } = useEmailInput();
 const { t } = useI18n();
+
+const rememberMe = ref(false);
+const policy = ref(false);
 </script>
 
 <template>
   <section class="login-input">
-    <h2 class="h-reset login-input_title" :data-suffix="t(i18nLangModel.auth.loginTitleSuffix)">
-      {{ t(i18nLangModel.auth.title) }}
-    </h2>
     <div class="login-input_email">
       <n-input
         v-model:value="email"
+        size="large"
         :input-props="EMAIL_INPUT_PROPS"
         clearable
         :placeholder="t(i18nLangModel.auth.emailPlaceholder)"
@@ -24,7 +26,12 @@ const { t } = useI18n();
         @blur="checkEmailIsRight"
       />
       <verify-code />
-      一些协议
+      <n-checkbox v-model:checked="rememberMe" class="login-input_remember">
+        Remember me
+      </n-checkbox>
+      <n-checkbox v-model:checked="policy" class="login-input_policy">
+        I have read and will comply with the applicable rules and regulations.
+      </n-checkbox>
     </div>
     <button v-paper-ripple cursor-pointer class="button-reset login-operation_login">
       {{ t(i18nLangModel.auth.loginTitle) }}
@@ -37,19 +44,7 @@ const { t } = useI18n();
   .login-input {
     display: flex;
     flex-direction: column;
-    width: 45%;
     height: 100%;
-  }
-
-  .login-input_title {
-    position: relative;
-
-    margin-bottom: var(--base-margin);
-    padding-bottom: var(--small);
-
-    font-size: var(--font-title-main);
-
-    border-bottom: var(--border);
   }
 
   .login-input_email {
@@ -63,10 +58,16 @@ const { t } = useI18n();
     margin-bottom: var(--base-margin);
   }
 
+  .login-input_remember {
+    margin-top: var(--base-margin);
+  }
+
+  .login-input_policy {
+    margin-top: var(--base-margin);
+  }
 }
 </style>
 
 <style scoped>
-@import url("../styles/login-input-title.css") layer(component);
 @import url("../styles/login-button.css") layer(component);
 </style>
