@@ -28,6 +28,17 @@ The server-side currently consists of NestJS and MongoDB.
 
 2. I find it tricky to keep the name in package.json and PROJECT_NAME in .env in sync. So whenever you change one, make sure to update the other two. Of course, I'm thinking of using a script to get this done.
 
+3. some variables need to be set:
+
+  - .env.server
+
+  |     name      |     description     |      example      |
+  | :-----------: | :-----------------: | :---------------: |
+  |   SMTP_HOST   |   email smtp host   | smtpdm.aliyun.com |
+  |   SMTP_PORT   |   email smtp port   |        25         |
+  |   SMTP_USER   | email smtp username |    xxx@xxx.com    |
+  | SMTP_PASSWORD | email smtp password |       xxxx        |
+
 ## client
 
 The server-side currently consists of Vue and Vite.
