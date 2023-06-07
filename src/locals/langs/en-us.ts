@@ -33,7 +33,7 @@ const enUsModel = {
     emailPlaceholder: "Email Address",
     verifyCodePlaceholder: "Email Code",
     getVerifyCode: "Get Email Code",
-    loginTitle: "Login",
+    loginTitle: "Login to Your Account",
     loginTitleSuffix: "nothing taboo",
     subtitle: "Your peeps are hanging on you coming back."
   }

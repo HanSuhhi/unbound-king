@@ -44,7 +44,7 @@ body {
   position: absolute;
   inset: 0;
 
-  background: radial-gradient(var(--bg-color-bright-2), transparent 40%);
+  /* background: radial-gradient(var(--bg-color-bright-2), transparent 40%); */
   background-size: 4px 4px;
 }
 

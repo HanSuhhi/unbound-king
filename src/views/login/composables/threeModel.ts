@@ -16,9 +16,9 @@ export function useThreeModel(ref: Ref<HTMLElement>) {
   const box = new Mesh(boxgeometry, boxMaterial);
 
   function initThree() {
-    camera.position.set(0, 0, 40);// 设置相机位置
+    camera.position.set(0, 0, 40);
 
-    renderer.setSize(400, 400);
+    renderer.setSize(650, 650);
     renderer.setClearAlpha(0);
 
     ref.value.appendChild(renderer.domElement);

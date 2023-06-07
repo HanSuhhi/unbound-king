@@ -12,6 +12,7 @@ const { t } = useI18n();
   <div class="verify-code">
     <n-input
       v-model:value="code"
+      size="large"
       clearable
       :placeholder="t(i18nLangModel.auth.verifyCodePlaceholder)"
       :maxlength="6"

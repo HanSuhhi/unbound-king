@@ -1,23 +1,10 @@
 
-.login-input_title::before {
-  content: "";
-
-  position: absolute;
-  right: 0;
-  bottom: 0;
-
-  width: 40%;
-  height: 2px;
-
-  background-color: var(--border-color);
-}
-
-.login-input_title::after {
+.login_title::after {
   content: attr(data-suffix);
 
   position: absolute;
   top: 50%;
-  right: 0;
+  right: .5rem;
   zoom: .7;
   transform: translateY(-50%);
 

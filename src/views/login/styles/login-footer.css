@@ -1,0 +1,33 @@
+.login-footer::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  right: calc(-1 * var(--login-right));
+
+  width: 160%;
+  height: 1px;
+
+  background: linear-gradient(to right,var(--border-color),var(--border-color) 50%,transparent 0,transparent);
+  background-size: var(--mini) 1px;
+
+  -webkit-mask:
+    linear-gradient(to left,var(--black-bright-2) 80%,transparent),
+    linear-gradient(hsl(0deg 0% 0%),hsl(0deg 0% 0%));
+
+  -webkit-mask-composite: destination-in;
+  mask-composite: exclude;
+}
+
+.login-footer::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: calc(-1 * var(--padding-left));
+
+  width: 43%;
+  height: 2px;
+
+  background-color: var(--gray-deep-2);
+}

@@ -15,6 +15,9 @@ const policy = ref(false);
 
 <template>
   <section class="login-input">
+    <p class="p-reset login-input_title">
+      Login With Email
+    </p>
     <div class="login-input_email">
       <n-input
         v-model:value="email"
@@ -26,16 +29,22 @@ const policy = ref(false);
         @blur="checkEmailIsRight"
       />
       <verify-code />
-      <n-checkbox v-model:checked="rememberMe" class="login-input_remember">
-        Remember me
-      </n-checkbox>
+      <div class="login-input-choosen">
+        <n-checkbox v-model:checked="rememberMe" class="login-input_remember">
+          Remember email
+        </n-checkbox>
+        <n-checkbox v-model:checked="rememberMe" class="login-input_remember ">
+          Free login for the next week
+        </n-checkbox>
+        <a href="" class="login-input_more">Historical account</a>
+      </div>
       <n-checkbox v-model:checked="policy" class="login-input_policy">
-        I have read and will comply with the applicable rules and regulations.
+        I have read and will comply with the applicable rules and regulations
       </n-checkbox>
+      <type-button v-paper-ripple cursor-pointer class="button-reset login-operation_login">
+        {{ t(i18nLangModel.auth.loginTitle) }}
+      </type-button>
     </div>
-    <button v-paper-ripple cursor-pointer class="button-reset login-operation_login">
-      {{ t(i18nLangModel.auth.loginTitle) }}
-    </button>
   </section>
 </template>
 
@@ -44,30 +53,48 @@ const policy = ref(false);
   .login-input {
     display: flex;
     flex-direction: column;
-    height: 100%;
   }
 
   .login-input_email {
     display: flex;
-    flex: 1;
     flex-direction: column;
     justify-content: center;
   }
 
-  .login-input_input {
-    margin-bottom: var(--base-margin);
-  }
-
-  .login-input_remember {
+  .login-input-choosen {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-top: var(--base-margin);
   }
 
   .login-input_policy {
     margin-top: var(--base-margin);
   }
+
+  .login-input_input {
+    margin-bottom: var(--normal);
+  }
+
+  .login-input_more {
+    text-align: right;
+  }
+
+  .login-input_title {
+    margin-bottom: var(--base-margin);
+    font-size: var(--font-title-main);
+  }
 }
 </style>
 
 <style scoped>
-@import url("../styles/login-button.css") layer(component);
+@layer {
+  .login-operation_login {
+    --linear-gradient: linear-gradient(55deg, var(--main-color-deep-2) 0%, hsl(288deg 66% 51%) 120%);
+
+    height: 3.5rem;
+    margin-top: var(--base-margin);
+    font-size: var(--font-title-main);
+  }
+}
 </style>

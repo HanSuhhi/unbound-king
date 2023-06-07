@@ -11,15 +11,3 @@ const threeRef = ref<HTMLElement>();
 <template>
   <section ref="threeRef" class="login-model" />
 </template>
-
-<style scoped>
-@layer component {
-  .login-model {
-    position: fixed;
-    top: 33%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-
-  }
-}
-</style>
