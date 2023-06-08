@@ -1,14 +1,16 @@
-import type { Ref } from "vue";
 import { inject } from "vue";
+import type { ProvideProps } from "../plus/provide";
 import { useProvide } from "../plus/provide";
 
-export function defineCommonDialog() {
-  const modalShow = useProvide("modal", false);
+const ModalSymbol = Symbol("modal");
 
-  return { modalShow };
+export function defineCommonDialog() {
+  const modalShow = useProvide(ModalSymbol, false);
+
+  return { ...modalShow };
 }
 
 export function getCommonDialog() {
-  const modal = inject<Ref<boolean>>("modal")!;
-  return { modal };
+  const modal = inject<ProvideProps<boolean>>(ModalSymbol)!;
+  return { modal: modal.value, updateModal: modal.update };
 }

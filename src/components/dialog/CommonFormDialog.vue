@@ -14,7 +14,7 @@ const props = defineProps<{
   confirm?: Function
 }>();
 
-const { modal } = getCommonDialog();
+const { updateModal } = getCommonDialog();
 
 const currentConfig = ref(props.formConfig);
 const changed = inject<Ref<boolean>>("changed")!;
@@ -25,7 +25,7 @@ function confirm() {
   validateForm(Form.value, () => {
     props.confirm?.(cloneDeep(model.value));
     changed.value = true;
-    modal.value = false;
+    updateModal(false);
     delay(() => {
       currentConfig.value = [];
       defer(() => (currentConfig.value = props.formConfig));
@@ -49,7 +49,7 @@ function getUpdateData(_model: any, _Form: FormInst) {
     <auto-form :config="currentConfig" hot-update @update-data="getUpdateData" />
     <template #footer>
       <section class="form-dialog_confirm">
-        <type-button @click.prevent="modal = false">
+        <type-button @click.prevent="updateModal(false)">
           取消
         </type-button>
         <type-button @click.prevent="confirm">

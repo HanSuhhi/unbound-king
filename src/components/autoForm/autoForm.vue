@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import type { FormInst } from "naive-ui";
 import { FormRules, NForm, NFormItem, NInput, NInputNumber, NSelect, NSwitch } from "naive-ui";
 import { deepImmediate } from "../../composables/plus/watch";
@@ -25,11 +25,13 @@ const FormRef = ref<FormInst>();
 const { rules } = defineAutoFormRules(props);
 const { model } = defineAutoFormModel(props);
 
-if (props.hotUpdate) {
-  watch(model, (newModel) => {
-    emits("updateData", newModel, FormRef.value!);
-  }, deepImmediate);
-}
+onMounted(() => {
+  if (props.hotUpdate) {
+    watch(model, (newModel) => {
+      emits("updateData", newModel, FormRef.value!);
+    }, deepImmediate);
+  }
+});
 </script>
 
 <template>

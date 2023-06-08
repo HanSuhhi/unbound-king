@@ -5,11 +5,11 @@ import { getCommonDialog } from "../../../composables/components/commonDialog";
 
 const props = defineProps<{ type: AttributeValue["type"] }>();
 
-const { modal } = getCommonDialog();
+const { updateModal } = getCommonDialog();
 const type = inject<Ref<AttributeValue["type"]>>("type");
 
 function openDialog() {
-  modal.value = true;
+  updateModal(true);
   type!.value = props.type;
 }
 </script>

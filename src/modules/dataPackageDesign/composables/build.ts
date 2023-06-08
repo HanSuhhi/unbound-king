@@ -11,7 +11,7 @@ import { getCommonDialog } from "@/composables/components/commonDialog";
 
 export function useBuild() {
   const choosedPackages = inject<Ref<Dictionary<From[]>>>(choosedPackageSymbol)!;
-  const { modal } = getCommonDialog();
+  const { updateModal } = getCommonDialog();
   const message = useMessage();
 
   const buildDataPackage = throttle(() => {
@@ -23,7 +23,7 @@ export function useBuild() {
         return false;
       });
     });
-    modal.value = true;
+    updateModal(true);
 
     const data = encryp(DATA);
 

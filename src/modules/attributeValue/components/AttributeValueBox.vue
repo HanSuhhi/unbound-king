@@ -6,6 +6,7 @@ import addFormDialog from "./AddFormDialog.vue";
 import ListFooter from "./ListFooter.vue";
 import TitleCardList from "@/components/titleCardList/TitleCardList.vue";
 import alert from "@/components/alert/alert";
+import { defineCommonDialog } from "@/composables/components/commonDialog";
 
 const attributeValues = inject<Ref<AttributeValue[]>>("data");
 
@@ -14,9 +15,8 @@ const advancedAttributes = computed(() => filter(attributeValues?.value, attribu
 const specialAttributes = computed(() => filter(attributeValues?.value, attributeValue => attributeValue.type === "special"));
 
 const dialogType = ref<AttributeValue["type"]>("base");
-const modalShow = ref(false);
 provide("type", dialogType);
-provide("modal", modalShow);
+defineCommonDialog();
 </script>
 
 <template>

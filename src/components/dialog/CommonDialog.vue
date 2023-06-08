@@ -4,7 +4,7 @@ import TitleCard from "@/components/titleCard/TitleCard";
 import { getCommonDialog } from "@/composables/components/commonDialog";
 
 const slots = defineSlots();
-const { modal } = getCommonDialog();
+const { modal, updateModal } = getCommonDialog();
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const { modal } = getCommonDialog();
         <slot name="title" />
       </template>
       <template #subtitle>
-        <icon cursor-pointer class="form-dialog_close" name="close" @click="modal = false" />
+        <icon cursor-pointer class="form-dialog_close" name="close" @click="updateModal(false)" />
       </template>
       <template v-if="slots.footer" #footer>
         <slot name="footer" />

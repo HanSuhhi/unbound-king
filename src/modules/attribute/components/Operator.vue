@@ -18,7 +18,7 @@ const formConfig = computed(() =>
     explanation: { title: "阐述", type: "textarea" }
   })
 );
-const { modalShow } = defineCommonDialog();
+const { update } = defineCommonDialog();
 const [confirm] = useConfirm();
 </script>
 
@@ -29,7 +29,7 @@ const [confirm] = useConfirm();
     </template>
   </common-form-dialog>
   <div class="operator">
-    <type-button @click="modalShow = true">
+    <type-button @click="update(true)">
       新增
     </type-button>
   </div>

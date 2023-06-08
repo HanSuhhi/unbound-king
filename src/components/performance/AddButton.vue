@@ -2,11 +2,11 @@
 import TypeButton from "../typeButton/TypeButton.vue";
 import { getCommonDialog } from "@/composables/components/commonDialog";
 
-const { modal } = getCommonDialog();
+const { updateModal } = getCommonDialog();
 </script>
 
 <template>
-  <type-button @click="modal = true">
+  <type-button @click="updateModal(true)">
     新建
   </type-button>
 </template>
