@@ -18,7 +18,7 @@ export function useThreeModel(ref: Ref<HTMLElement>) {
   function initThree() {
     camera.position.set(0, 0, 40);
 
-    renderer.setSize(650, 650);
+    renderer.setSize(450, 450);
     renderer.setClearAlpha(0);
 
     ref.value.appendChild(renderer.domElement);

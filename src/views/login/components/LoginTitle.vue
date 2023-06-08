@@ -9,7 +9,7 @@ const { t } = useI18n();
   <h2 class="h-reset login_title" :data-suffix="t(i18nLangModel.auth.loginTitleSuffix)">
     {{ t(i18nLangModel.auth.title) }}
   </h2>
-  <p class="p-reset login_subtitle">
+  <p class="p-reset pseudo login_subtitle line_x_before_all">
     {{ t(i18nLangModel.auth.subtitle) }}
   </p>
 </template>

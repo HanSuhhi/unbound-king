@@ -5,22 +5,13 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div class="login-footer">
+  <div class="login-footer pseudo line_x_before_right">
     <p class="p-reset login-footer_word">
       "Of all the things that torture men, beyond question hope is the worst."
     </p>
     <p class="p-reset login-footer_word">
-      "The greatest achievement a man can make is to prove his own worth through his own efforts."
-    </p>
-    <p class="p-reset login-footer_word">
       "Rights are never granted; they are fought for."
     </p>
-    <div class="login-footer_options">
-      <a href="">blog</a>
-      <a href="">contributor</a>
-      <a href="">help</a>
-      <a href="">FAQ</a>
-    </div>
   </div>
 </template>
 
@@ -54,36 +45,6 @@ const { t } = useI18n();
     -webkit-line-clamp: 2;
   }
 
-  .login-footer_options {
-    position: absolute;
-    bottom: var(--base-margin);
-
-    display: flex;
-    justify-content: space-around;
-
-    width: 100%;
-  }
-
-  .login-footer_options::before {
-    content: "";
-
-    position: absolute;
-    top: calc(-1 * var(--base-margin));
-    right: calc(-1 * var(--login-right));
-
-    width: 140%;
-    height: 1px;
-
-    background: linear-gradient(to right,var(--border-color),var(--border-color) 50%,transparent 0,transparent);
-    background-size: var(--mini) 1px;
-
-    -webkit-mask:
-      linear-gradient(to left,var(--black-bright-2) 80%,transparent),
-      linear-gradient(hsl(0deg 0% 0%),hsl(0deg 0% 0%));
-
-    -webkit-mask-composite: destination-in;
-    mask-composite: exclude;
-  }
 }
 </style>
 

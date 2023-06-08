@@ -1,27 +1,10 @@
 .login_subtitle::before {
-  content: "";
-
-  position: absolute;
   right: calc(-1 * var(--login-right));
   bottom: 0;
-
-  width: 90%;
-  height: 1px;
-
-  background: linear-gradient(to right,var(--border-color),var(--border-color) 50%,transparent 0,transparent);
-  background-size: var(--mini) 1px;
-
-  -webkit-mask: linear-gradient(to left,var(--black-bright-2) 80%,transparent),
-    linear-gradient(hsl(0deg 0% 0%),hsl(0deg 0% 0%));
-
-  -webkit-mask-composite: destination-in;
-  mask-composite: exclude;
+  width: 100%;
 }
 
 .login_subtitle::after {
-  content: "";
-
-  position: absolute;
   right: 0;
   bottom: 0;
 

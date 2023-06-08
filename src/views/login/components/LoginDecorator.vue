@@ -2,18 +2,20 @@
 </script>
 
 <template>
-  <articlwe class="login-decorator">
-    <header class="login-decorator_header">
-      <div class="login-decorator_title1">
-        Lorem ipsum dolor sit amet.
+  <articlwe class="input-decorator">
+    <header class="input-decorator_header">
+      <div class="input-decorator_title1">
+        <span>
+          Lorem ipsum dolor sit amet.
+        </span>
       </div>
-      <div class="login-decorator_title2">
+      <div class="input-decorator_title2">
         Test
       </div>
     </header>
-    <footer class="login-decorator_footer">
-      <div class="login-decorator_block" />
-      <div class="login-decorator_title3">
+    <footer class="input-decorator_footer">
+      <div class="input-decorator_block" />
+      <div class="input-decorator_title3">
         Lorem ipsum dolor sit, amet.Lorem  dolor sit, amet. Lorem ipsum dolor sit, amet.Lorem ipsum dolor sit, amet.
       </div>
     </footer>
@@ -22,32 +24,37 @@
 
 <style scoped>
 @layer component {
-  .login-decorator {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: scale(.5);
-
-    width: 10vw;
-
+  .input-decorator {
+    zoom: .5;
+    width: var(--decorator-width);
     font-size: var(--font-body-small);
     color: var(--white);
   }
 
-  .login-decorator_header {
+  .input-decorator_header {
     display: flex;
     margin-bottom: var(--small);
   }
 
-  .login-decorator_title2 {
+  .input-decorator_title1 {
+    text-align: right;
+  }
+
+  .input-decorator_title1 > span{
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+  }
+
+  .input-decorator_title2 {
     position: relative;
-    left: 10%;
+    left: 5%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 100%;
+    width: 40%;
 
     text-align: right;
 
@@ -55,18 +62,18 @@
     border-width: 3px;
   }
 
-  .login-decorator_footer {
+  .input-decorator_footer {
     display: flex;
   }
 
-  .login-decorator_block {
+  .input-decorator_block {
     width: 20%;
   }
 
-  .login-decorator_title3 {
+  .input-decorator_title3 {
     position: relative;
-    left: 55%;
-    width: 80%;
+    left: 20%;
+    width: 30%;
   }
 }
 </style>
