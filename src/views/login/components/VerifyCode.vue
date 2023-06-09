@@ -1,11 +1,17 @@
 <script setup lang='ts'>
-import { ref } from "vue";
-import { NInput } from "naive-ui";
+import { h, ref } from "vue";
+import type { CountdownTimeInfo } from "naive-ui";
+import { NCountdown, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
+import { useVertificationCode } from "../composables/vertificationCode";
 import { i18nLangModel } from "@/locals";
 
 const code = ref();
 const { t } = useI18n();
+const { sendVertificationCode, toggleFreeze, isFreeze } = useVertificationCode();
+function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
+  return h("span", {}, `${seconds}:${milliseconds.toString().slice(0, 1)}`);
+}
 </script>
 
 <template>
@@ -20,8 +26,19 @@ const { t } = useI18n();
     />
     <type-button
       class="verify-code_button"
+      :disabled="isFreeze"
+      @click="sendVertificationCode"
     >
       {{ t(i18nLangModel.auth.getVerifyCode) }}
+      <n-countdown
+        v-if="isFreeze"
+        class="ml-mini"
+        :duration="60 * 1000"
+        :active="isFreeze"
+        :render="countdownRender"
+        :precision="1"
+        :on-finish="toggleFreeze.bind(null, false)"
+      />
     </type-button>
   </div>
 </template>

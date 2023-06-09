@@ -1,15 +1,13 @@
-import type { UnwrapRef } from "vue";
-import { provide, readonly, ref } from "vue";
+import { provide, readonly } from "vue";
+import { refUpdate } from "./ref";
 
-export function useProvide<T>(key: string | Symbol, value?: T) {
-  const _value = ref(value);
-
-  const update = (data: UnwrapRef<T>) => {
-    _value.value = data;
-  };
+export function useProvide<T>(key: string | Symbol, value?: T, options = {
+  readonly: true
+}) {
+  const { value: _value, update } = refUpdate(value);
 
   const provideValue = {
-    value: readonly(_value),
+    value: options.readonly ? readonly(_value) : _value,
     update
   };
 

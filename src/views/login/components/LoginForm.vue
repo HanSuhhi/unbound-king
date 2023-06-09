@@ -6,7 +6,7 @@ import { EMAIL_INPUT_PROPS, useEmailInput } from "../composables/emailInput";
 import VerifyCode from "./VerifyCode.vue";
 import { i18nLangModel } from "@/locals";
 
-const { email, checkEmailIsRight } = useEmailInput();
+const { email, checkEmailIsRight, emailStatus } = useEmailInput();
 const { t } = useI18n();
 
 const rememberMe = ref(false);
@@ -22,9 +22,10 @@ const policy = ref(false);
       <n-input
         v-model:value="email"
         size="large"
-        :input-props="EMAIL_INPUT_PROPS"
         clearable
+        :input-props="EMAIL_INPUT_PROPS"
         :placeholder="t(i18nLangModel.auth.emailPlaceholder)"
+        :status="emailStatus"
         class="login-input_input"
         @blur="checkEmailIsRight"
       />

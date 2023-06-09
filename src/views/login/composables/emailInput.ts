@@ -1,5 +1,7 @@
 import type { InputProps } from "naive-ui";
-import { ref } from "vue";
+import { EmailInputStatusSymbol, EmailInputSymbol } from "../login.symbol";
+import { verifyEmail } from "#/composables/tools/vertivication";
+import { useProvide } from "@/composables/plus/provide";
 
 export const EMAIL_INPUT_PROPS: InputProps["inputProps"] = {
   type: "email",
@@ -7,11 +9,10 @@ export const EMAIL_INPUT_PROPS: InputProps["inputProps"] = {
 };
 
 export function useEmailInput() {
-  const email = ref("");
+  const { value: email } = useProvide(EmailInputSymbol, "", { readonly: false });
+  const { value: emailStatus, update: updateEmailStatus } = useProvide<InputProps["status"]>(EmailInputStatusSymbol);
 
-  const checkEmailIsRight = () => {
-    const re = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}$/;
-    return re.test(email.value);
-  };
-  return { email, checkEmailIsRight };
+  const checkEmailIsRight = updateEmailStatus.bind(null, verifyEmail(email.value!) ? "success" : "error");
+
+  return { email, checkEmailIsRight, emailStatus };
 }

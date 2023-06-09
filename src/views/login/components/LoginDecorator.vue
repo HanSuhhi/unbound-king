@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <articlwe class="input-decorator">
+  <article class="input-decorator">
     <header class="input-decorator_header">
       <div class="input-decorator_title1">
         <span>
@@ -19,7 +19,7 @@
         Lorem ipsum dolor sit, amet.Lorem  dolor sit, amet. Lorem ipsum dolor sit, amet.Lorem ipsum dolor sit, amet.
       </div>
     </footer>
-  </articlwe>
+  </article>
 </template>
 
 <style scoped>

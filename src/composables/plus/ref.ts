@@ -1,4 +1,5 @@
-import { customRef } from "vue";
+import type { UnwrapRef } from "vue";
+import { customRef, readonly, ref } from "vue";
 import { TRANSITION_DURATION } from "../constant/env";
 
 export function debouncedRef<T>(value: T, delay = TRANSITION_DURATION) {
@@ -18,4 +19,19 @@ export function debouncedRef<T>(value: T, delay = TRANSITION_DURATION) {
       }
     };
   });
+}
+
+export function refUpdate<T>(value: T, options = {
+  readonly: false
+}) {
+  const _value = ref(value);
+
+  const update = (data: UnwrapRef<T>) => {
+    _value.value = data;
+  };
+
+  return {
+    value: options.readonly ? readonly(_value) : _value,
+    update
+  };
 }
