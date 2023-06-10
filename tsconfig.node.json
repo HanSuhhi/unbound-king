@@ -3,11 +3,16 @@
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "#/*": ["./*"]
+    }
   },
   "include": [
     "vite.config.ts",
     "vitest.config.ts",
-    "unocss.config.ts"
+    "unocss.config.ts",
+    "composables/constant/*.ts"
   ]
 }

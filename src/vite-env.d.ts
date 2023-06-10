@@ -22,6 +22,7 @@ interface ImportMetaEnv {
   readonly BUILD_IV: string;
   readonly STYLE_BASE_FONT_SIZE: string;
   readonly EMAIL: string;
+  readonly SERVER_RUNNING_PORT: string;
 }
 
 

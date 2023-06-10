@@ -16,20 +16,23 @@ export class NotFoundExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const request = ctx.getRequest();
     const response = ctx.getResponse();
-
     const [_, key] = request.originalUrl.split("/");
 
     /**
      * Redirect to different routes based on request key
      */
     switch (key) {
+      case "":
+        response.redirect("/");
+        break;
       case Prefix.Api:
         response.redirect(`/${Prefix.Api}`);
         break;
       case Prefix.Client:
-      default:
         response.redirect(`/${Prefix.Client}`);
         break;
+      default:
+        response.redirect(`/${Prefix.Server}`);
     }
   }
 }

@@ -7,7 +7,7 @@
     "lint:style": "stylelint **/*.{vue,css}",
     "ci:cz": "git-cz",
     "esno": "esno",
-    "create:api": "pnpm esno -- scripts/api.ts",
+    "esno:api": "pnpm esno -- scripts/api.ts",
     "test": "pnpm test:server & pnpm test:client",
     "test:client": "vitest -c vite.config.ts",
     "test:server": "vitest -c vitest.config.ts",

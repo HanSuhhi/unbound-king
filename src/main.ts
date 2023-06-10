@@ -1,6 +1,5 @@
 import type { App as VueApp } from "vue";
 import { createPinia } from "pinia";
-import { VueQueryPlugin } from "vue-query";
 import { useRouteConfig } from "./composables/router/router";
 import Icon from "./components/Icon.vue";
 import TypeButton from "./components/typeButton/TypeButton.vue";
@@ -27,7 +26,6 @@ export function createApp(app: VueApp<Element>) {
   app.use(pinia)
     .use(router)
     .use(i18n)
-    .use(VueQueryPlugin)
     .component("base-layout", CLayout)
     .component("base-tabs", CTabs)
     .component("icon", Icon)

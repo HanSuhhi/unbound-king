@@ -4,6 +4,7 @@ import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import unocss from "unocss/vite";
+import { Prefix } from "./composables/constant/url";
 
 export default defineConfig(({ mode }) => {
   const { SERVER_RUNNING_PORT } = loadEnv(mode, process.cwd(), "SERVER_RUNNING_PORT");
@@ -27,7 +28,7 @@ export default defineConfig(({ mode }) => {
       port: 20018,
       proxy: {
         "/request": {
-          target: `http://localhost:${SERVER_RUNNING_PORT}`,
+          target: `http://localhost:${SERVER_RUNNING_PORT}/${Prefix.Server}`,
           changeOrigin: true,
           rewrite: path => path.replace(/^\/request/, "")
         }
@@ -46,6 +47,7 @@ export default defineConfig(({ mode }) => {
       "BUILD_ENCRYPTED_KEY",
       "BUILD_IV",
       "STYLE_HEADER_HEIGHT",
+      "SERVER_RUNNING_PORT",
       "EMAIL"
     ],
     resolve: {
