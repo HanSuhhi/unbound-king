@@ -34,7 +34,6 @@ inNotTest(async () => {
   const logger = new Logger("main.ts");
   const port = process.env.SERVER_RUNNING_PORT;
 
-  app.listen(port, () => {
-    logger.log(`server is running in: http://localhost:${port}`);
-  });
+  app.listen(port)
+    .then(logger.log.bind(this, `server is running in: http://localhost:${port}`));
 });

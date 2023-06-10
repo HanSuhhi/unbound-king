@@ -7,7 +7,7 @@ export const UPPER_DIRECTORY = "..";
  * @param  {...string[]} paths A sequence of paths or path segments.
  * @returns  {string} dist path
  */
-export function resolveDistPath(...paths: string[]) {
+export function resolveDistPath(...paths: string[]): string {
   return resolve(__dirname,
     UPPER_DIRECTORY,
     UPPER_DIRECTORY,
@@ -19,7 +19,7 @@ export function resolveDistPath(...paths: string[]) {
  * @param  {...string[]} paths A sequence of paths or path segments.
  * @returns  {string} root path
  */
-export function resolveRootPath(...paths: string[]) {
+export function resolveRootPath(...paths: string[]): string {
   return resolveDistPath(UPPER_DIRECTORY, ...paths);
 }
 
