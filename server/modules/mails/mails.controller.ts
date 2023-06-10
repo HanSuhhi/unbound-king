@@ -1,7 +1,6 @@
-import { Body, Controller, Post } from "@nestjs/common";
-import { ApiOperation, ApiTags } from "@nestjs/swagger";
+import { Controller, Get, Param } from "@nestjs/common";
+import { ApiDefaultResponse, ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
 import { MailsService } from "./mails.service";
-import { SendCodeDto } from "./dto/send-code.dto";
 import { Mail } from "./enums/mail.enum";
 
 @ApiTags("Mails")
@@ -11,13 +10,23 @@ export class MailsController {
     private readonly mailsService: MailsService
   ) {}
 
+  @Get("verification-code?to=:to")
   @ApiOperation({
     summary: "✉️ send verification code."
   })
-  @Post("send-verification-code")
-  public async sendVerificationCode(@Body() sendCodeDto: SendCodeDto) {
+  @ApiParam({
+    name: "to",
+    required: true,
+    description: "👦 the verification code receiver",
+    example: "l_98b@outlook.com"
+  })
+  @ApiDefaultResponse({
+    status: 200,
+    type: String
+  })
+  public async verificationCode(@Param("to") to: string) {
     return this.mailsService.sendDonConchVillageMail({
-      ...sendCodeDto
+      to
     }, Mail.VerificationCode);
   }
 }
