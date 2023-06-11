@@ -46,7 +46,7 @@ export class MailsService {
       this.logger.warn(`Failed: failed to send mail: ${error}`);
     }
 
-    return result.messageId;
+    return result?.messageId;
   }
 
   private async sendVerificationCodeMail(transport: typeof this.Conch_Village_Transporter, options: Mail.Options): Promise<string> {

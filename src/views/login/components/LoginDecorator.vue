@@ -26,7 +26,10 @@
 @layer component {
   .input-decorator {
     zoom: .5;
+
     width: var(--decorator-width);
+    min-width: 40rem;
+
     font-size: var(--font-body-small);
     color: var(--white);
   }
@@ -72,7 +75,7 @@
 
   .input-decorator_title3 {
     position: relative;
-    left: 20%;
+    left: 25%;
     width: 30%;
   }
 }

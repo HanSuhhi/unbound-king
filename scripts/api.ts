@@ -1,68 +1,36 @@
-import { writeFile } from "node:fs";
-import { resolve } from "node:path";
 import fetch from "node-fetch";
-import { isEmpty } from "lodash";
 import { capitalize } from "../composables/js/string";
 import { Prefix } from "../composables/constant/url";
-
-function filterQueryPath(url: string): string {
-  const queryIndex = url.indexOf("?");
-  if (queryIndex === -1) return url;
-
-  return url.slice(0, queryIndex);
-}
+import { defineParams, defineServiceFiles, filterQueryPath, writeServices } from "./composables/api";
 
 export async function createClientApiTemplate() {
   const { paths } = await (await fetch("http://localhost:13429/api-doc-json")).json() as any;
-  let result = `import type { AlovaMethodCreateConfig } from "alova";
-import { useRequest } from "alova";
-import type { FetchRequestInit } from "alova/GlobalFetch";
-import { alovaInst } from "../alova";
-
-`;
+  const files: Dictionary<string[]> = {};
 
   for (let path in paths) {
     // exclude ssr pages
     if (!path.includes(`/${Prefix.Server}`)) continue;
 
     const pathItem = paths[path];
+    let result = "";
+
     path = filterQueryPath(path);
     for (const method in pathItem) {
-      const { operationId, summary, responses, requestBody, parameters } = pathItem[method];
+      const { operationId, responses, parameters, tags } = pathItem[method];
       const returnType = responses.default?.content["application/json"].schema.type;
+      const params = defineParams(parameters);
 
-      result += `export function ${method}${capitalize(operationId.split("Controller_")[1])}(`;
-
-      if (requestBody) {
-        const properties = requestBody.content["application/json"].schema.properties;
-        for (const param in properties) {
-          const prop = properties[param];
-          result += `${param}: ${prop.type}, `;
-        }
-      }
-
-      let params = "";
-      if (!isEmpty(parameters)) {
-        params += "{";
-        const length = Object.keys(parameters).length;
-        for (const param in parameters) {
-          const { name, schema, required } = parameters[param];
-          params += `\n  ${name}${required ? "" : "?"}: ${schema.type}${Number(param) + 1 === length ? "" : ","}`;
-        }
-        params += "\n}";
-      }
-
-      result += `${params ? `params: ${params}, ` : ""}config: AlovaMethodCreateConfig<${returnType}, unknown, FetchRequestInit, Headers> = {}) {${params ? "\n  config.params = params;" : ""}
-  return useRequest(alovaInst.${capitalize(method.toLowerCase())}<${returnType}>("${path}", config));
-}\n`;
+      result += `
+export function ${method}${capitalize(operationId.split("Controller_")[1])}(${params}config: Config<${returnType}> = {${params && " params "}}) {
+  ${params ? "config.params = params;" : ""}
+  return alovaInst.${capitalize(method.toLowerCase())}<${returnType}>("${path}", config);
+}
+`;
+      defineServiceFiles(files, tags, result);
     }
   }
 
-  const filePath = resolve("src", "api", "services", "test.ts");
-  writeFile(filePath, result, (err) => {
-    if (err) throw err;
-    console.log("Saved!");
-  });
+  writeServices(files);
 }
 
 createClientApiTemplate();

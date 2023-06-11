@@ -5,7 +5,6 @@ import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveThe
 import { useCorsor } from "./composables/experience/cursor";
 import { provideStaticStyleVariables } from "./composables/constant/transitionDuration";
 import GlobalHeader from "./components/app/global-header/GlobalHeader";
-import { getVerificationCode } from "./api/services/test";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import Noise from "@/components/effects/BackgroundNoise.vue";
 // disableDefaultKeys();
@@ -15,10 +14,6 @@ const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 provideStaticStyleVariables();
 useCorsor();
 bindNaiveUILayer();
-
-getVerificationCode({
-  to: "l_98b@outlook.com"
-});
 </script>
 
 <template>

@@ -60,7 +60,9 @@ import LoginOptions from "./components/LoginOptions.vue";
 
   .login-box {
     display: flex;
+    flex: 1;
     justify-content: space-between;
+
     width: 100%;
     height: 100%;
   }

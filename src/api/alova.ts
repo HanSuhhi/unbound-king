@@ -1,7 +1,5 @@
-import type { AlovaMethodCreateConfig } from "alova";
-import { createAlova, useRequest } from "alova";
+import { createAlova } from "alova";
 import VueHook from "alova/vue";
-import type { FetchRequestInit } from "alova/GlobalFetch";
 import GlobalFetch from "alova/GlobalFetch";
 import { SERVER_RUNNING_PORT } from "@/composables/constant/env";
 
@@ -23,7 +21,3 @@ export const alovaInst = createAlova({
     }
   }
 });
-
-function getHello(config?: AlovaMethodCreateConfig<string, unknown, FetchRequestInit, Headers>) {
-  return useRequest(alovaInst.Get<string>("/", config));
-}

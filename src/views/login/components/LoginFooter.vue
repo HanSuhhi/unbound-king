@@ -8,9 +8,11 @@ const { t } = useI18n();
   <div class="login-footer pseudo line_x_before_right">
     <p class="p-reset login-footer_word">
       "Of all the things that torture men, beyond question hope is the worst."
-    </p>
-    <p class="p-reset login-footer_word">
-      "Rights are never granted; they are fought for."
+      <br><br>"Rights are never granted; they are fought for."
+      <br><br>"Rights are never granted; they are fought for."
+      <br><br>"Rights are never granted; they are fought for."
+      <br><br>"Rights are never granted; they are fought for."
+      <br><br>"Rights are never granted; they are fought for."
     </p>
   </div>
 </template>
@@ -21,13 +23,11 @@ const { t } = useI18n();
     position: relative;
 
     display: flex;
-    flex: 1;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 
     width: 100%;
-    height: 100%;
     margin-top: var(--large);
     padding-top: calc(var(--normal) * 1.4);
   }
@@ -42,7 +42,7 @@ const { t } = useI18n();
     color: var(--gray-deep-1);
 
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 7;
   }
 
 }
