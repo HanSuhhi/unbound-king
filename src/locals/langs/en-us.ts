@@ -35,7 +35,13 @@ const enUsModel = {
     getVerifyCode: "Get Email Code",
     loginTitle: "Login to Your Account",
     loginTitleSuffix: "nothing taboo",
-    subtitle: "Your peeps are hanging on you coming back."
+    subtitle: "Your peeps are hanging on you coming back.",
+    rememberEmail: "Remember Email",
+    keepMeSignedIn: "Keep me signed in (one week)",
+    agreePolicy: "I have read and agree to the",
+    policy: "Privacy Policy.",
+    historicalAccount: "Historical Account",
+    emailLoginTitle: "Login With Email"
   }
 };
 

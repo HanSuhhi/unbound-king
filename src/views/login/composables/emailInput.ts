@@ -12,7 +12,7 @@ export function useEmailInput() {
   const { value: email } = useProvide(EmailInputSymbol, "", { readonly: false });
   const { value: emailStatus, update: updateEmailStatus } = useProvide<InputProps["status"]>(EmailInputStatusSymbol);
 
-  const checkEmailIsRight = updateEmailStatus.bind(null, verifyEmail(email.value!) ? "success" : "error");
+  const checkEmailIsRight = () => updateEmailStatus(verifyEmail(email.value!) ? "success" : "error");
 
   return { email, checkEmailIsRight, emailStatus };
 }

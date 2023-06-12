@@ -74,6 +74,7 @@ import LoginOptions from "./components/LoginOptions.vue";
     flex-direction: column;
 
     width: var(--right-width);
+    min-width: 40rem;
     margin-top: var(--large);
     padding-left: var(--padding-left);
   }

@@ -35,6 +35,12 @@ export default defineLang({
     getVerifyCode: "获取验证码",
     loginTitle: "登录",
     loginTitleSuffix: "百无禁忌",
-    subtitle: "伙伴们都在等待你的回来！"
+    subtitle: "伙伴们都在等待你的回来！",
+    rememberEmail: "记住邮箱",
+    keepMeSignedIn: "保持登录状态（一周）",
+    agreePolicy: "我已经阅读并同意",
+    policy: "隐私政策",
+    historicalAccount: "历史登录账户",
+    emailLoginTitle: "邮箱登录"
   }
 }, "中文");

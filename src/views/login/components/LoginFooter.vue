@@ -42,7 +42,7 @@ const { t } = useI18n();
     color: var(--gray-deep-1);
 
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 7;
+    -webkit-line-clamp: 3;
   }
 
 }
