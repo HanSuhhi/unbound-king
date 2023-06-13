@@ -1,7 +1,7 @@
 import { NestFactory } from "@nestjs/core";
 import type { NestExpressApplication } from "@nestjs/platform-express";
 import * as compression from "compression";
-import { Logger } from "@nestjs/common";
+import { Logger, ValidationPipe } from "@nestjs/common";
 import { AppModule } from "./app.module";
 import { getViteServer } from "./composables/vite-server";
 import { resolveDistPath } from "./composables/path/path";
@@ -26,6 +26,7 @@ async function bootstrap() {
   });
 
   return bindSwageerModule(app)
+    .useGlobalPipes(new ValidationPipe())
     .useGlobalFilters(new NotFoundExceptionFilter());
 }
 
