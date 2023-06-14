@@ -26,7 +26,9 @@ async function bootstrap() {
   });
 
   return bindSwageerModule(app)
-    .useGlobalPipes(new ValidationPipe())
+    .useGlobalPipes(new ValidationPipe({
+      transform: true
+    }))
     .useGlobalFilters(new NotFoundExceptionFilter());
 }
 

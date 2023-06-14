@@ -5,7 +5,7 @@ import { Mail } from "./enums/mail.enum";
 import { EmailQueryPipe } from "./pipes/to.pipe";
 import { ThrottlerInterceptor } from "@/interceptors/throttler.interceptor";
 
-@ApiTags("Mails")
+@ApiTags("✉️ Mails")
 @Controller("mails")
 export class MailsController {
   constructor(
@@ -13,7 +13,7 @@ export class MailsController {
   ) {}
 
   @Get("verification-code")
-  @ApiOperation({ summary: "✉️ send verification code." })
+  @ApiOperation({ summary: "send verification code." })
   @ApiQuery({
     name: "to",
     required: true,

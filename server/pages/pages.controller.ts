@@ -7,7 +7,7 @@ import { Prefix } from "#/composables/constant/url";
 
 const ROUTES_PATH = useClientRoutes();
 
-@ApiTags("Pages")
+@ApiTags("📚 Pages")
 @Controller(Prefix.Client)
 export class PagesController {
   constructor(
@@ -16,7 +16,7 @@ export class PagesController {
 
   @Get(ROUTES_PATH)
   @Header("Content-Type", "text/html")
-  @ApiOperation({ summary: "📚 SSR Pages", description: "The frontend page is rendered by SSR. See /src for the details." })
+  @ApiOperation({ summary: "SSR Pages", description: "The frontend page is rendered by SSR. See /src for the details." })
   async renderApp(@Req() request: Request): Promise<string> {
     const url = request.originalUrl.replace(`/${Prefix.Client}/`, "");
     const { html, render, manifest } = await this.pagesService.renderApp(url);

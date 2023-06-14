@@ -8,7 +8,14 @@ import { useMinute } from "#/composables/time/ms";
 export class AuthService {
   constructor(
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache
+    // @InjectModel(User.name) private readonly userModel: Model<User>
   ) {}
+
+  // public async isAccountRegistered(email: string): Promise<boolean> {
+  // const user = await this.userModel.findOne({ email }).exec();
+  // console.log("user: ", user);
+  // return !!user;
+  // }
 
   /**
    * Generates a random 6-digit email authentication code.
@@ -20,4 +27,6 @@ export class AuthService {
 
     return code;
   }
+
+  public login;
 }

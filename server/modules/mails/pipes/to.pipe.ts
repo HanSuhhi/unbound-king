@@ -7,7 +7,7 @@ import { verifyEmail } from "#/composables/tools/vertivication";
 export class EmailQueryPipe implements PipeTransform {
   transform(value: any, metadata: ArgumentMetadata) {
     const isEmail = verifyEmail(value);
-    if (!isEmail) throw new BadRequestException("Please check whether the mailbox is entered correctly.", "Invalid email");
+    if (!isEmail) throw new BadRequestException("Invalid email", "Please check whether the email is entered correctly.");
 
     return isEmail ? value : null;
   }
