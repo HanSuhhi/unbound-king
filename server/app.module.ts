@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { CacheModule } from "@nestjs/cache-manager";
 import { RouterModule } from "@nestjs/core";
+import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { PagesModule } from "./pages/pages.module";
@@ -10,7 +11,11 @@ import { UsersModule } from "./modules/users/users.module";
 import { MailsModule } from "./modules/mails/mails.module";
 import { PackagesModule } from "./modules/packages/packages.module";
 import { defineRouterModulePaths } from "./composables/path/routerModules";
-import { SupabaseModule } from "./modules/supabase/supabase.module";
+import { resolveDistPath } from "@/composables/path/path";
+
+const KEY_NAME = "X509-cert-4832011663019173027.pem";
+const PEM = resolveDistPath("certs", KEY_NAME);
+const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority";
 
 @Module({
   imports: [
@@ -21,7 +26,13 @@ import { SupabaseModule } from "./modules/supabase/supabase.module";
     CacheModule.register({
       isGlobal: true
     }),
-    SupabaseModule,
+    MongooseModule.forRoot(MONGO_CLOUD_URL, {
+      ssl: true,
+      sslValidate: true,
+      sslKey: PEM,
+      sslCert: PEM,
+      authMechanism: "MONGODB-X509"
+    }),
     PagesModule,
     PackagesModule,
     AuthModule,

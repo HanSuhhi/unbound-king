@@ -1,13 +1,14 @@
 import { Injectable } from "@nestjs/common";
-import type { Package } from "./schemas/package.schema";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { ModelService } from "../../composables/classes/model.service";
+import { Package } from "./schemas/packages.schema";
 
 @Injectable()
-export class PackagesService {
+export class PackagesService extends ModelService<Package> {
   constructor(
-    // @InjectModel(Package.name) private readonly packagesModel: Model<Package>
-  ) { }
-
-  public addone(packages: Package) {
-    // return this.packagesModel.create(packages);
+    @InjectModel(Package.name) private readonly PackageModel: Model<Package>
+  ) {
+    super(PackageModel);
   }
 }
