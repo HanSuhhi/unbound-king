@@ -2,27 +2,41 @@ import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
 import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import type { Cache } from "cache-manager";
+import { getModelToken } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { User } from "../users/schemas/user.schemas";
+import { UsersService } from "../users/users.service";
 import { AuthService } from "./auth.service";
 
 describe("AuthService", () => {
-  const TEST_EMAIL = "test@test.test";
+  const TEST_EMAIL = "test@example.com";
+  let userModel: Model<User>;
   let service: AuthService;
   let cacheConfig: Cache;
 
   beforeEach(async () => {
     vi.useFakeTimers();
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AuthService, {
-        provide: CACHE_MANAGER,
-        useValue: {
-          get: () => "",
-          set: vi.fn()
+      providers: [
+        AuthService,
+        UsersService,
+        {
+          provide: CACHE_MANAGER,
+          useValue: {
+            get: () => "",
+            set: vi.fn()
+          }
+        },
+        {
+          provide: getModelToken(User.name),
+          useValue: Model
         }
-      }]
+      ]
     }).compile();
 
     service = module.get<AuthService>(AuthService);
     cacheConfig = module.get<Cache>(CACHE_MANAGER);
+    userModel = module.get<Model<User>>(getModelToken(User.name));
   });
 
   it("should be defined", () => {
@@ -51,4 +65,8 @@ describe("AuthService", () => {
       assert.notStrictEqual(code1, code2);
     });
   });
+
+  // describe("register", () => {
+
+  // });
 });

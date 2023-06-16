@@ -1,9 +1,11 @@
-import { BadRequestException, Body, Controller, Post } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Post, UseInterceptors } from "@nestjs/common";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
-import { isUndefined } from "lodash";
 import { AuthService } from "./auth.service";
-import { loginDto } from "./dtos/login.dto";
+import { LoginDto } from "./dtos/login.dto";
+import { ThrottlerInterceptor } from "@/interceptors/throttler.interceptor";
+import { LoginRegistration } from "#/composables/constant/request";
 import { invalid } from "@/composables/exceptions/Invalid";
+import { useApiOperationDescriptionEnum } from "@/composables/api/description";
 
 @ApiTags("🔒 Auth")
 @Controller("auth")
@@ -13,23 +15,20 @@ export class AuthController {
   ) {}
 
   @Post("login-email")
-  @ApiOperation({ summary: "User Registration / Login" })
-  async loginWithEmail(@Body() loginFormDto: loginDto) {
-    const { autoRegisterConsent, email } = loginFormDto;
-    if (isUndefined(autoRegisterConsent)) {
-      // const result = await this.authService.isAccountRegistered(email);
-      // console.log("result: ", result);
-      // check if user is already registered
-
-      // true: login
-      // false: return enum that the user needs to register
-    }
-    else if (autoRegisterConsent === true) {
-    // register
-
-    }
-    else {
-      throw new BadRequestException(invalid());
+  @ApiOperation({
+    summary: "User Registration / Login",
+    description: useApiOperationDescriptionEnum("loginType", LoginRegistration)
+  })
+  @UseInterceptors(ThrottlerInterceptor)
+  async loginWithEmail(@Body() loginFormDto: LoginDto) {
+    const { loginType, email, code } = loginFormDto;
+    switch (loginType) {
+      case LoginRegistration.LOGIN:
+        return "";
+      case LoginRegistration.REGISTRATION:
+        return await this.authService.register(loginFormDto);
+      default:
+        throw new BadRequestException(invalid("loginType"));
     }
   }
 }

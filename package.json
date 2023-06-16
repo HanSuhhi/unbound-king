@@ -15,7 +15,7 @@
     "test:coverage": "vitest run --coverage",
     "dev": "pnpm client:dev",
     "preview": "pnpm ssr:preview",
-    "ssr:dev": " nest start -w",
+    "ssr:dev": "nest start -w",
     "client:dev": "nest start ",
     "csr:dev": "vite",
     "ssr:preview": "NODE_ENV=production node dist/server/main.js",

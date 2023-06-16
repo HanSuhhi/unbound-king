@@ -1,7 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsBoolean, IsEmail, IsNumber } from "class-validator";
+import { IsEmail, IsEnum, IsNumber, IsString } from "class-validator";
+import { LoginRegistration } from "../../../../composables/constant/request";
+import { invalid } from "../../../composables/exceptions/Invalid";
 
-export class loginDto {
+export class LoginDto {
   @IsEmail()
   @ApiProperty({
     required: true,
@@ -18,11 +20,17 @@ export class loginDto {
   })
   readonly code: number;
 
-  @IsBoolean()
+  @IsString()
+  @IsEnum(LoginRegistration, {
+    message() {
+      return invalid("login type");
+    }
+  })
   @ApiProperty({
     required: false,
-    default: false,
-    type: Boolean
+    default: LoginRegistration.LOGIN,
+    enum: LoginRegistration,
+    type: String
   })
-  readonly autoRegisterConsent?: boolean;
+  readonly loginType: LoginRegistration;
 }

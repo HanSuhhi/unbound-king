@@ -17,7 +17,8 @@ describe("PackagesController", () => {
         {
           provide: getModelToken(Package.name),
           useValue: Model
-        }]
+        }
+      ]
     }).compile();
 
     controller = module.get<PackagesController>(PackagesController);

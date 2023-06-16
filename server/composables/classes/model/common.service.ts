@@ -1,13 +1,10 @@
 import type { Model } from "mongoose";
+import type { IModelService } from "./model.interface";
 
-abstract class A<T> {
-  public create?: (createDto: T) => Promise<T>;
-}
-
-export class ModelService<T = any> extends A<T> {
-  constructor(private readonly model: Model<T>) {
-    super();
-  }
+export class CommonModelService<T = any> implements IModelService<T> {
+  constructor(
+    private readonly model: Model<T>
+  ) { }
 
   public create = async (createDto: T): Promise<T> => {
     const createdPackage = await this.model.create(createDto);
