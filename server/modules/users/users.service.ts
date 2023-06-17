@@ -1,8 +1,12 @@
-import { Injectable } from "@nestjs/common";
+import { ForbiddenException, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { CommonModelService } from "../../composables/classes/model/common.service";
 import { User } from "./schemas/user.schemas";
+import { CommonModelService } from "@/classes/model/common.service";
+
+interface ValidateUserOptions {
+  throwIfExists?: boolean
+}
 
 @Injectable()
 export class UsersService extends CommonModelService<User> {
@@ -12,7 +16,14 @@ export class UsersService extends CommonModelService<User> {
     super(userModel);
   }
 
-  public findOneByEmail(email: string): Promise<User> {
-    return this.userModel.findOne({ email }).exec();
+  public async validateUserByEmail(email: string, options?: ValidateUserOptions): Promise<boolean> {
+    const haveUser = !!(await this.userModel.findOne({ email }).exec());
+    if (haveUser && options.throwIfExists) throw new ForbiddenException("User already exists");
+    return haveUser;
+  }
+
+  public async findOneByEmail(email: string): Promise<User> {
+    const user = await this.userModel.findOne({ email }).exec();
+    return user;
   }
 }

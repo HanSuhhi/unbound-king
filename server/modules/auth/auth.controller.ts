@@ -21,10 +21,9 @@ export class AuthController {
   })
   @UseInterceptors(ThrottlerInterceptor)
   async loginWithEmail(@Body() loginFormDto: LoginDto) {
-    const { loginType, email, code } = loginFormDto;
-    switch (loginType) {
+    switch (loginFormDto.loginType) {
       case LoginRegistration.LOGIN:
-        return "";
+        return await this.authService.login(loginFormDto);
       case LoginRegistration.REGISTRATION:
         return await this.authService.register(loginFormDto);
       default:

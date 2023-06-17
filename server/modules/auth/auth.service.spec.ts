@@ -132,7 +132,7 @@ describe("AuthService", () => {
 
     it("should create a new user", async () => {
       vi.spyOn(userModel, "findOne").mockReturnValue({
-        exec: vi.fn().mockResolvedValueOnce(null)
+        exec: vi.fn().mockResolvedValue(null)
       } as any);
       const create = vi.spyOn(userModel, "create").mockResolvedValueOnce(TEST_EMAIL as any);
 
