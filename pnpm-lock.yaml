@@ -22,6 +22,7 @@ specifiers:
   '@nestjs/schematics': ^9.0.0
   '@nestjs/swagger': ^6.3.0
   '@nestjs/testing': ^9.0.0
+  '@nestjs/throttler': ^4.1.0
   '@supabase/supabase-js': ^2.25.0
   '@swc/core': ^1.3.61
   '@types/crypto-js': ^4.1.1
@@ -102,6 +103,7 @@ dependencies:
   '@nestjs/core': 9.4.2_skhriuyyoxexd36rdrkxabmpfa
   '@nestjs/mapped-types': 1.2.2_4lwostu6p3ujshdfej2sr5icpe
   '@nestjs/platform-express': 9.4.2_esprltrbpiguxawrkfzeze6eae
+  '@nestjs/throttler': 4.1.0_m4rfsou2biq6cx2f4sztxeoucm
   '@supabase/supabase-js': 2.25.0
   '@types/lodash': 4.14.195
   '@vueuse/components': 9.13.0_vue@3.3.2
@@ -1700,6 +1702,19 @@ packages:
       '@nestjs/platform-express': 9.4.2_esprltrbpiguxawrkfzeze6eae
       tslib: 2.5.2
     dev: true
+
+  /@nestjs/throttler/4.1.0_m4rfsou2biq6cx2f4sztxeoucm:
+    resolution: {integrity: sha512-W6F+ckalmJuJKOGdWkOynvXg8UJnpjWSdeTV0usvvma0W6ZYHbC2mLXAbUsNau5oRo8EnvXFTHtyyzMQVf56eQ==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
+      '@nestjs/core': ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
+      reflect-metadata: ^0.1.13
+    dependencies:
+      '@nestjs/common': 9.4.2_ur7vftevrws5tecnxiwd5xpne4
+      '@nestjs/core': 9.4.2_skhriuyyoxexd36rdrkxabmpfa
+      md5: 2.3.0
+      reflect-metadata: 0.1.13
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -3812,7 +3827,6 @@ packages:
 
   /charenc/0.0.2:
     resolution: {integrity: sha512-yrLQ/yVUFXkzg7EDQsPieE/53+0RlaWTs+wBrvW36cyilJ2SaDWfl4Yj7MtLTXleV9uEKefbAGUPv2/iWSooRA==}
-    dev: true
 
   /check-error/1.0.2:
     resolution: {integrity: sha512-BrgHpW9NURQgzoNyjfq0Wu6VFO6D7IZEmJNdtgNqpzGG8RuNFHt2jQxWlAs4HMe119chBnv+34syEZtc6IhLtA==}
@@ -4299,7 +4313,6 @@ packages:
 
   /crypt/0.0.2:
     resolution: {integrity: sha512-mCxBlsHFYh9C+HVpiEacem8FEBnMXgU9gy4zmNC+SXAZNB/1idgp/aulFJ4FgCi7GPEVbfyng092GqL2k2rmow==}
-    dev: true
 
   /crypto-js/4.1.1:
     resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
@@ -7613,7 +7626,6 @@ packages:
       charenc: 0.0.2
       crypt: 0.0.2
       is-buffer: 1.1.6
-    dev: true
 
   /mdast-util-compact/1.0.4:
     resolution: {integrity: sha512-3YDMQHI5vRiS2uygEFYaqckibpJtKq5Sj2c8JioeOQBU6INpKbdWzfyLqFFnDwEcEnRFIdMsguzs5pC1Jp4Isg==}

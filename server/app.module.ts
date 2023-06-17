@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 import { CacheModule } from "@nestjs/cache-manager";
 import { APP_GUARD, RouterModule } from "@nestjs/core";
 import { MongooseModule } from "@nestjs/mongoose";
+import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { PagesModule } from "./pages/pages.module";
@@ -34,6 +35,10 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
       sslCert: PEM,
       authMechanism: "MONGODB-X509"
     }),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 5
+    }),
     PagesModule,
     PackagesModule,
     AuthModule,
@@ -47,7 +52,12 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     {
       provide: APP_GUARD,
       useClass: AuthGuard
+    },
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard
     }
+
   ]
 })
 export class AppModule {}
