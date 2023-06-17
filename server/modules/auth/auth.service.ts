@@ -7,6 +7,7 @@ import { invalid } from "../../composables/exceptions/Invalid";
 import type { User } from "../users/schemas/user.schemas";
 import type { LoginDto } from "./dtos/login.dto";
 import { useMinute } from "#/composables/time/ms";
+import { createAlert } from "@/composables/interceptors/response";
 
 @Injectable()
 export class AuthService {
@@ -40,7 +41,13 @@ export class AuthService {
   }
 
   public async login(loginDto: LoginDto) {
+    // await this.validateCode(loginDto.email)(loginDto.code);
 
+    const haveUser = await this.userService.validateUserByEmail(loginDto.email);
+    if (haveUser)
+      return true;
+
+    else return createAlert("user not found");
   }
 
   /**

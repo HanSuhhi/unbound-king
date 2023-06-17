@@ -9,6 +9,7 @@ import { inNotTest } from "./composables/dev/test";
 import { inNotProduction, inProduction } from "./composables/dev/production";
 import { NotFoundExceptionFilter } from "./exception-filters/not-found-exception.filter";
 import { bindSwageerModule } from "./composables/libs/swagger";
+import { AlertInterceptor } from "./interceptors/alert.interceptor";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -29,6 +30,7 @@ async function bootstrap() {
     .useGlobalPipes(new ValidationPipe({
       transform: true
     }))
+    .useGlobalInterceptors(new AlertInterceptor())
     .useGlobalFilters(new NotFoundExceptionFilter());
 }
 

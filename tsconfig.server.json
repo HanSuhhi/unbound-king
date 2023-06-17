@@ -26,5 +26,5 @@
   "include": [
     "server/*.ts",
     "server/**/*.ts"
-  ]
+, "composables/constant/interceptor.ts"  ]
 }
