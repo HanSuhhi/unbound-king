@@ -11,7 +11,7 @@ import { defineI18n } from "./locals/index";
 import "uno.css";
 import "./styles/index.css";
 
-if (import.meta.env.SSR && !global.fetch) {
+if (import.meta.env.SSR && import.meta.env.DEV && !global.fetch) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   global.fetch = (await import("node-fetch")).default;

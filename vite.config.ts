@@ -65,7 +65,13 @@ export default defineConfig(({ mode }) => {
       }
     },
     ssr: {
+      external: ["node-fetch"],
       format: "cjs"
+    },
+    build: {
+      rollupOptions: {
+        external: ["node-fetch"]
+      }
     }
   };
 });

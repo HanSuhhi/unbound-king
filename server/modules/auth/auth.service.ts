@@ -1,19 +1,24 @@
-import { ForbiddenException, Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, UnauthorizedException } from "@nestjs/common";
 import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import { faker } from "@faker-js/faker";
 import { Cache } from "cache-manager";
+import { JwtService } from "@nestjs/jwt";
+import { ConfigService } from "@nestjs/config";
 import { UsersService } from "../users/users.service";
-import { invalid } from "../../composables/exceptions/Invalid";
 import type { User } from "../users/schemas/user.schemas";
 import type { LoginDto } from "./dtos/login.dto";
-import { useMinute } from "#/composables/time/ms";
+import { invalid } from "@/composables/exceptions/Invalid";
 import { createAlert } from "@/composables/interceptors/response";
+import { useMinute } from "#/composables/time/ms";
+import { Authority } from "#/composables/constant/response";
 
 @Injectable()
 export class AuthService {
   constructor(
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
-    private readonly userService: UsersService
+    private readonly userService: UsersService,
+    private readonly configService: ConfigService,
+    private readonly jwtService: JwtService
   ) {}
 
   /**
@@ -41,13 +46,17 @@ export class AuthService {
   }
 
   public async login(loginDto: LoginDto) {
-    // await this.validateCode(loginDto.email)(loginDto.code);
+    await this.validateCode(loginDto.email)(loginDto.code);
 
-    const haveUser = await this.userService.validateUserByEmail(loginDto.email);
-    if (haveUser)
-      return true;
+    const user = await this.userService.findOneByEmail(loginDto.email);
+    if (user) {
+      const payload = { sub: user._id, email: user.email };
+      return {
+        [Authority.TOKEN]: await this.jwtService.signAsync(payload)
+      };
+    }
 
-    else return createAlert("user not found");
+    else { return createAlert("user not found"); }
   }
 
   /**
@@ -66,7 +75,7 @@ export class AuthService {
     return async (code: number): Promise<void> => {
       const cachedCode = await this.cacheManager.get<number>(email);
       this.cacheManager.del(email);
-      if (cachedCode !== code) throw new ForbiddenException(invalid("authentication code"));
+      if (cachedCode !== code) throw new UnauthorizedException(invalid("authentication code"));
     };
   }
 }

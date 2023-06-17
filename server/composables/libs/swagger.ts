@@ -11,6 +11,9 @@ function createSwaggerConfig() {
     .setTitle(process.env.PROJECT_NAME)
     .setDescription(`Here's the info about ${process.env.PROJECT_NAME}'s API.`)
     .setVersion("1.0")
+    .addBearerAuth(
+      { type: "http", scheme: "bearer", bearerFormat: "JWT" }
+    )
     .build();
 
   return config;

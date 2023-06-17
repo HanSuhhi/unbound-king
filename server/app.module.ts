@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { CacheModule } from "@nestjs/cache-manager";
-import { RouterModule } from "@nestjs/core";
+import { APP_GUARD, RouterModule } from "@nestjs/core";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
@@ -11,6 +11,7 @@ import { UsersModule } from "./modules/users/users.module";
 import { MailsModule } from "./modules/mails/mails.module";
 import { PackagesModule } from "./modules/packages/packages.module";
 import { defineRouterModulePaths } from "./composables/path/routerModules";
+import { AuthGuard } from "./modules/auth/guards/auth.guard";
 import { resolveDistPath } from "@/composables/path/path";
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
@@ -41,6 +42,12 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     RouterModule.register(defineRouterModulePaths())
   ],
   controllers: [AppController],
-  providers: [AppService]
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard
+    }
+  ]
 })
 export class AppModule {}

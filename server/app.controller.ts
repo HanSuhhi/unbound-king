@@ -1,5 +1,5 @@
 import { Controller, Get, UseInterceptors } from "@nestjs/common";
-import { ApiBadGatewayResponse, ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ApiBadGatewayResponse, ApiBearerAuth, ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { AppService } from "./app.service";
 import { ThrottlerInterceptor } from "./interceptors/throttler.interceptor";
 
@@ -7,6 +7,7 @@ import { ThrottlerInterceptor } from "./interceptors/throttler.interceptor";
 @Controller()
 @UseInterceptors(ThrottlerInterceptor)
 @ApiBadGatewayResponse({ description: "Rate limit exceeded" })
+@ApiBearerAuth()
 export class AppController {
   constructor(private readonly appService: AppService) { }
 

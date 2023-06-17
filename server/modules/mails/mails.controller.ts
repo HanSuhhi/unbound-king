@@ -1,5 +1,6 @@
 import { Controller, Get, Query, UseInterceptors } from "@nestjs/common";
 import { ApiBadRequestResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from "@nestjs/swagger";
+import { Public } from "../auth/decorators/auth.decorator";
 import { MailsService } from "./mails.service";
 import { Mail } from "./enums/mail.enum";
 import { EmailQueryPipe } from "./pipes/to.pipe";
@@ -26,6 +27,7 @@ export class MailsController {
   })
   @ApiBadRequestResponse({ description: "Invalid email" })
   @UseInterceptors(ThrottlerInterceptor)
+  @Public()
   public async verificationCode(@Query("to", EmailQueryPipe) to: string) {
     return this.mailsService.sendDonConchVillageMail({
       to

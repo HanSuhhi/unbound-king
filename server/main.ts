@@ -30,6 +30,7 @@ async function bootstrap() {
     .useGlobalPipes(new ValidationPipe({
       transform: true
     }))
+    .useGlobalGuards()
     .useGlobalInterceptors(new AlertInterceptor())
     .useGlobalFilters(new NotFoundExceptionFilter());
 }

@@ -1,6 +1,7 @@
 import { ForbiddenException, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
+import type { UserDocument } from "./schemas/user.schemas";
 import { User } from "./schemas/user.schemas";
 import { CommonModelService } from "@/classes/model/common.service";
 
@@ -33,7 +34,7 @@ export class UsersService extends CommonModelService<User> {
    * @param {ValidateUserOption} options - An optional object containing an options parameter. If the throwIfExists property is set to true, a ForbiddenException will be thrown when a user already exists.
    * @returns {Promise<boolean>} - A Promise that resolves to true if the user already exists. Otherwise, false.
    */
-  public async findOneByEmail(email: string): Promise<User> {
+  public async findOneByEmail(email: string): Promise<UserDocument> {
     const user = await this.userModel.findOne({ email }).exec();
     return user;
   }

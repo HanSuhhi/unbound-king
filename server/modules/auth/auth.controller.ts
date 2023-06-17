@@ -2,6 +2,7 @@ import { BadRequestException, Body, Controller, Post, UseInterceptors } from "@n
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 import { AuthService } from "./auth.service";
 import { LoginDto } from "./dtos/login.dto";
+import { Public } from "./decorators/auth.decorator";
 import { ThrottlerInterceptor } from "@/interceptors/throttler.interceptor";
 import { LoginRegistration } from "#/composables/constant/request";
 import { invalid } from "@/composables/exceptions/Invalid";
@@ -20,6 +21,7 @@ export class AuthController {
     description: useApiOperationDescriptionEnum("loginType", LoginRegistration)
   })
   @UseInterceptors(ThrottlerInterceptor)
+  @Public()
   async loginWithEmail(@Body() loginFormDto: LoginDto) {
     switch (loginFormDto.loginType) {
       case LoginRegistration.LOGIN:

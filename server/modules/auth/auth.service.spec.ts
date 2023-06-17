@@ -5,6 +5,8 @@ import type { Cache } from "cache-manager";
 import { getModelToken } from "@nestjs/mongoose";
 import type { Model } from "mongoose";
 import { it } from "vitest";
+import { ConfigService } from "@nestjs/config";
+import { JwtService } from "@nestjs/jwt";
 import { User } from "../users/schemas/user.schemas";
 import { UsersService } from "../users/users.service";
 import { AuthService } from "./auth.service";
@@ -31,6 +33,8 @@ describe("AuthService", () => {
       providers: [
         AuthService,
         UsersService,
+        ConfigService,
+        JwtService,
         {
           provide: CACHE_MANAGER,
           useValue: {

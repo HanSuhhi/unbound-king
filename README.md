@@ -35,6 +35,7 @@
   |   SMTP_PORT   |   email smtp port   |        25         |
   |   SMTP_USER   | email smtp username |    xxx@xxx.com    |
   | SMTP_PASSWORD | email smtp password |       xxxx        |
+  |  JWT_SECRET   |     jwt secret      |     a string      |
 
 ## client
 
