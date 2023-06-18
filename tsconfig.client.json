@@ -27,6 +27,6 @@
     "*/entry-server.ts",
     "entry-server.ts",
     "composables/**/*.ts",
-    "scripts/**/*.ts"
+    "scripts"
   ]
 }

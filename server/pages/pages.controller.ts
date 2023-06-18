@@ -7,7 +7,7 @@ import { Prefix } from "#/composables/constant/url";
 
 const ROUTES_PATH = useClientRoutes();
 
-@ApiTags("📚 Pages")
+@ApiTags("Pages")
 @Controller(Prefix.Client)
 export class PagesController {
   constructor(

@@ -5,7 +5,7 @@ import { MailsService } from "./mails.service";
 import { Mail } from "./enums/mail.enum";
 import { EmailQueryPipe } from "./pipes/to.pipe";
 
-@ApiTags("✉️ Mails")
+@ApiTags("Mails")
 @Controller("mails")
 export class MailsController {
   constructor(

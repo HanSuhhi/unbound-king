@@ -1,14 +1,13 @@
-import { Inject, Injectable, UnauthorizedException } from "@nestjs/common";
+import { HttpException, HttpStatus, Inject, Injectable, UnauthorizedException } from "@nestjs/common";
 import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import { faker } from "@faker-js/faker";
 import { Cache } from "cache-manager";
 import { JwtService } from "@nestjs/jwt";
-import { ConfigService } from "@nestjs/config";
 import { UsersService } from "../users/users.service";
-import type { User } from "../users/schemas/user.schemas";
+import type { UserDocument } from "../users/schemas/user.schemas";
 import type { LoginDto } from "./dtos/login.dto";
+import type { LoginResponseDto } from "./dtos/login-response.dto";
 import { invalid } from "@/composables/exceptions/Invalid";
-import { createAlert } from "@/composables/interceptors/response";
 import { useMinute } from "#/composables/time/ms";
 import { Authority } from "#/composables/constant/response";
 
@@ -17,7 +16,6 @@ export class AuthService {
   constructor(
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
     private readonly userService: UsersService,
-    private readonly configService: ConfigService,
     private readonly jwtService: JwtService
   ) {}
 
@@ -34,29 +32,50 @@ export class AuthService {
   /**
    * Registers a new user.
    * @param {LoginDto} registerDto The registration info of user.
-   * @returns {User} The created user.
+   * @throws {UnauthorizedException} If the provided code is not right.
+   * @returns {LoginResponseDto} The created user.
    */
-  public async register(registerDto: LoginDto): Promise<User> {
+  public async register(registerDto: LoginDto): Promise<LoginResponseDto> {
     await this.validateCode(registerDto.email)(registerDto.code);
-    await this.userService.validateUserByEmail(registerDto.email, { throwIfExists: true });
+    let user = await this.userService.findOneByEmail(registerDto.email);
 
-    return this.userService.create({
-      email: registerDto.email
-    });
+    if (!user) {
+      user = await this.userService.create({
+        email: registerDto.email
+      }) as UserDocument;
+    }
+
+    return this.coreLogin(user);
   }
 
-  public async login(loginDto: LoginDto) {
+  /**
+   * Validate the login information and generate a JWT token.
+   * @async
+   * @param {LoginDto} loginDto - The DTO containing the login information (email and code).
+   * @throws {UnauthorizedException} If the provided code is not right.
+   * @throws {HttpException} If the provided email is not registered.
+   * @returns {LoginResponseDto} An object containing the generated JWT token.
+   */
+  public async login(loginDto: LoginDto): Promise<LoginResponseDto> {
     await this.validateCode(loginDto.email)(loginDto.code);
 
     const user = await this.userService.findOneByEmail(loginDto.email);
-    if (user) {
-      const payload = { sub: user._id, email: user.email };
-      return {
-        [Authority.TOKEN]: await this.jwtService.signAsync(payload)
-      };
-    }
+    if (!user) throw new HttpException("user not found", HttpStatus.ACCEPTED);
 
-    else { return createAlert("user not found"); }
+    return this.coreLogin(user);
+  }
+
+  /**
+   * Asynchronous method to authenticate user via email
+   * @async
+   * @param {UserDocument} user - registed user
+   * @returns {LoginResponseDto} An object containing the authentication token
+   */
+  private async coreLogin(user: UserDocument): Promise<LoginResponseDto> {
+    const payload = { sub: user._id, email: user.email };
+    return {
+      [Authority.TOKEN]: await this.jwtService.signAsync(payload)
+    };
   }
 
   /**

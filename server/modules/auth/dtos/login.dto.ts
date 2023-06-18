@@ -27,7 +27,6 @@ export class LoginDto {
     }
   })
   @ApiProperty({
-    required: false,
     default: LoginRegistration.LOGIN,
     enum: LoginRegistration,
     type: String

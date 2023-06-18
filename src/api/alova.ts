@@ -7,6 +7,9 @@ export const alovaInst = createAlova({
   baseURL: `http://localhost:${SERVER_RUNNING_PORT}`,
   statesHook: VueHook,
   requestAdapter: GlobalFetch(),
+  beforeRequest({ config }) {
+    config.headers["Content-Type"] = "application/json";
+  },
   responded: (response: Response) => {
     const contentType = response.headers.get("Content-Type");
     if (!contentType) return;

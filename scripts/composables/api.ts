@@ -43,6 +43,11 @@ export function defineParams(parameters: any): string {
   return params ? `params: ${params}, ` : "";
 }
 
+export function defineBody(requestBody: any, components: any) {
+  if (isEmpty(requestBody)) return "";
+  return parseSchemaRef(requestBody.content["application/json"].schema.$ref, components, "RequestBody");
+}
+
 /**
  * Adds a function definition to the correct service file based on its tags.
  *
@@ -76,10 +81,32 @@ export function writeServices(files: Dictionary<string[]>) {
   console.log("Saved!");
 }
 
-// if (requestBody) {
-//   const properties = requestBody.content["application/json"].schema.properties;
-//   for (const param in properties) {
-//     const prop = properties[param];
-//     result += `${param}: ${prop.type}, `;
-//   }
-// }
+function generatePropertyDescription(dto: any, typename: string) {
+  const descriptions = Object.entries(dto.properties).map(([key, value]: any) => {
+    const { type, description } = value;
+    const _description = description
+      ? `/**
+   * ${description}
+   */\n`
+      : "";
+    return `${_description}${key}${dto?.required?.includes(key) ? "" : "?"}: ${value.enum
+? value
+      .enum
+        .map((enumItem: string) => `"${enumItem}"`)
+        .join(" | ")
+: type};`;
+  });
+  const typefile = `interface ${typename} {
+    ${descriptions.join("\n")}
+  };`;
+  return typefile;
+}
+
+export function parseSchemaRef($ref: string, components: any, typename: "ResponseType" | "RequestBody" = "ResponseType") {
+  const schemasPath = "#/components/schemas/";
+  if (!$ref.startsWith(schemasPath)) return `type ${typename} = ${$ref};`;
+  $ref = $ref.replace(schemasPath, "").replace(/\//g, ".");
+  const dto = components.schemas[$ref];
+  const type = generatePropertyDescription(dto, typename);
+  return type;
+}

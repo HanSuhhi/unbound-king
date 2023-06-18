@@ -10,6 +10,7 @@ import { inNotProduction, inProduction } from "./composables/dev/production";
 import { NotFoundExceptionFilter } from "./exception-filters/not-found-exception.filter";
 import { bindSwageerModule } from "./composables/libs/swagger";
 import { AlertInterceptor } from "./interceptors/alert.interceptor";
+import { Prefix } from "#/composables/constant/url";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -41,5 +42,5 @@ inNotTest(async () => {
   const port = process.env.SERVER_RUNNING_PORT;
 
   app.listen(port)
-    .then(() => logger.log(`server is running in: http://localhost:${port}`));
+    .then(() => logger.log(`server is running in: http://localhost:${port}/${Prefix.Api}`));
 });
