@@ -2,6 +2,7 @@ import { Controller, Get, Header, Req } from "@nestjs/common";
 import { Request } from "express";
 import { ApiOperation, ApiTags } from "@nestjs/swagger";
 import { useClientRoutes } from "../composables/path/clientPath";
+import { Public } from "../modules/auth/decorators/auth.decorator";
 import { PagesService } from "./pages.service";
 import { Prefix } from "#/composables/constant/url";
 
@@ -15,6 +16,7 @@ export class PagesController {
   ) { }
 
   @Get(ROUTES_PATH)
+  @Public()
   @Header("Content-Type", "text/html")
   @ApiOperation({ summary: "SSR Pages", description: "The frontend page is rendered by SSR. See /src for the details." })
   async renderApp(@Req() request: Request): Promise<string> {

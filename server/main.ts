@@ -9,7 +9,7 @@ import { inNotTest } from "./composables/dev/test";
 import { inNotProduction, inProduction } from "./composables/dev/production";
 import { NotFoundExceptionFilter } from "./exception-filters/not-found-exception.filter";
 import { bindSwageerModule } from "./composables/libs/swagger";
-import { AlertInterceptor } from "./interceptors/alert.interceptor";
+import { ResponseDataInterceptor } from "./interceptors/response-data.interceptor";
 import { Prefix } from "#/composables/constant/url";
 
 async function bootstrap() {
@@ -32,7 +32,7 @@ async function bootstrap() {
       transform: true
     }))
     .useGlobalGuards()
-    .useGlobalInterceptors(new AlertInterceptor())
+    .useGlobalInterceptors(new ResponseDataInterceptor())
     .useGlobalFilters(new NotFoundExceptionFilter());
 }
 

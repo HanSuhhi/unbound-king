@@ -1,13 +1,13 @@
 import type { CallHandler, ExecutionContext } from "@nestjs/common";
 import { of } from "rxjs";
-import { AlertInterceptor } from "./alert.interceptor";
+import { ResponseDataInterceptor } from "./response-data.interceptor";
 import { ResponseInterceptorKeys } from "#/composables/constant/interceptor";
 
-describe("AlertInterceptor", () => {
-  let interceptor: AlertInterceptor;
+describe("ResponseDataInterceptor", () => {
+  let interceptor: ResponseDataInterceptor;
 
   beforeEach(async () => {
-    interceptor = new AlertInterceptor();
+    interceptor = new ResponseDataInterceptor();
   });
 
   it("should intercept and add an alert value to the response if it exists", () => {
