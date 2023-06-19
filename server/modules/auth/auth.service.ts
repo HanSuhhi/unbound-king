@@ -39,11 +39,7 @@ export class AuthService {
     await this.validateCode(registerDto.email)(registerDto.code);
     let user = await this.userService.findOneByEmail(registerDto.email);
 
-    if (!user) {
-      user = await this.userService.create({
-        email: registerDto.email
-      }) as UserDocument;
-    }
+    if (!user) user = await this.userService.createDefaultUserByEmail(registerDto.email);
 
     return this.coreLogin(user);
   }
@@ -71,8 +67,8 @@ export class AuthService {
    * @param {UserDocument} user - registed user
    * @returns {LoginResponseDto} An object containing the authentication token
    */
-  private async coreLogin(user: UserDocument): Promise<LoginResponseDto> {
-    const payload = { sub: user._id, email: user.email };
+  private async coreLogin({ _id, email, roles }: UserDocument): Promise<LoginResponseDto> {
+    const payload = { sub: _id, email, roles };
     return {
       [Authority.TOKEN]: await this.jwtService.signAsync(payload)
     };

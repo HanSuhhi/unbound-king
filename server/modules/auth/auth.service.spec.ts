@@ -148,7 +148,8 @@ describe("AuthService", () => {
       });
       expect(create).toHaveBeenCalledTimes(1);
       expect(create.mock.calls[0][0]).toEqual({
-        email
+        email,
+        roles: UsersService.DEFAULT_USER_ROLES
       });
       expect(result[Authority.TOKEN]).toEqual(token);
     });
