@@ -26,6 +26,7 @@
     "build:server": "vite build --outDir dist/middleware --ssr src/entry-server.ts"
   },
   "dependencies": {
+    "@casl/ability": "^6.5.0",
     "@hansuhhi-don/lifehash-vue": "^0.1.6",
     "@nestjs/cache-manager": "^1.0.0",
     "@nestjs/common": "^9.0.0",
