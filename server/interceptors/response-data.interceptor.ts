@@ -4,13 +4,18 @@ import type { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { isString } from "lodash";
 import { ResponseInterceptorKeys } from "../../composables/constant/interceptor";
+import type { ResponseOriginData } from "#/composables/types/api";
 
 @Injectable()
 export class ResponseDataInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(map((data) => {
       if (isString(data) && data.startsWith("<!DOCTYPE html>")) return data;
-      const returnValue = { data };
+      const { statusCode } = context.switchToHttp().getResponse();
+      const returnValue: ResponseOriginData = {
+        statusCode,
+        data
+      };
 
       const alertValue = data[ResponseInterceptorKeys.RESPONESE_ALERT];
       if (alertValue) {
