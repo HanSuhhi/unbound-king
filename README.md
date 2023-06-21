@@ -1,6 +1,8 @@
-> The project is still under development, the first demo version will appear in the near future
+<i>Check it out, here’s the readme for the devs. If you’re a player, be sure to drop by todo.com!</i>
 
-# 👋 Code: FarmLand
+<b>The project is still under development, the first demo version will appear in the near future</b>
+
+# 👋 Unbound-King
 
 <samp>This is an attempt at a full stack project.</smap>
 
@@ -8,12 +10,14 @@
 
 <samp>I sincerely hope that you can participate in it, players feel the fun of the game, and developers participate in open source development. </smap>
 
-> Check it out, here’s the readme for the devs. If you’re a player, be sure to drop by todo.com!
-
 
 ## Database
 
+Using MongoDb Altas for database support
 
+<p align="center">
+  <a href="https://www.mongodb.com/atlas/database" target="blank"><img src="https://webimages.mongodb.com/_com_assets/cms/kuyjf3vea2hg34taa-horizontal_default_slate_blue.svg?auto=format%252Ccompress" width="320" alt="MongoDB Logo" /></a>
+</p>
 
 ## Server
 
@@ -37,6 +41,47 @@
   | SMTP_PASSWORD | email smtp password |       xxxx        |
   |  JWT_SECRET   |     jwt secret      |     a string      |
 
-## client
+### Modules
 
-The server-side currently consists of Vue and Vite.
+- #### casl
+
+Design user permissions using CASL.
+
+## Client
+
+The client includes two important routes: one for game-related content and the other for backend management.
+
+- ### Game-related
+
+- ### Backend Management
+
+It also includes some common pages.
+
+- ### Login
+
+Inspired by [nextjs](https://nextjs.org/) and [nuxt.js](https://nuxt.com/)
+
+Only allow login through email code authentication or third-party login (try to adapt to as many third-party platforms as possible).
+
+- ### Setting
+
+- ### Header
+
+This is a component, but shared globally.
+
+## Features
+
+- ### Testing
+
+Use [Vitest](https://vitest.dev/) to test all content.
+
+- ### composables
+
+Have a globally shared code snippet (composables)
+
+## Contribution
+
+## License
+
+[MIT](./LICENSE) License &copy; 2023 [Don](https://github.com/HanSuhhi)
+

@@ -16,7 +16,7 @@ export function useVertificationCode() {
     else updateEmailStatus("success");
     if (isFreeze.value) return;
     const result = await getVerificationCode({
-      to: "l_98b@outlook.com"
+      to: email.value!
     }).send();
     message.success("Sent successfully");
     toggleFreeze(true);

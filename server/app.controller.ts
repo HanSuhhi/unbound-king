@@ -1,7 +1,6 @@
 import { Controller, Get, UseGuards } from "@nestjs/common";
 import { ApiBadGatewayResponse, ApiBearerAuth, ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { AppService } from "./app.service";
-import { CaslAbilityFactory } from "./modules/casl/casl-ability.factory";
 import { CheckPolicies } from "./modules/casl/decorators/casl.decorator";
 import { PoliciesGuard } from "./modules/casl/guards/policies.guard";
 import { Action } from "./modules/casl/enums/casl.enum";
@@ -9,16 +8,13 @@ import { Action } from "./modules/casl/enums/casl.enum";
 @ApiTags()
 @Controller()
 @ApiBadGatewayResponse({ description: "Rate limit exceeded" })
-// @Roles(Role.Player)
 @ApiBearerAuth()
 export class AppController {
   constructor(
-    private readonly appService: AppService,
-    private caslAbilityFactory: CaslAbilityFactory
+    private readonly appService: AppService
   ) { }
 
   @Get(["", "v1"])
-  // @Public()
   @ApiOperation({
     summary: "🔧 A get test interface",
     description: "hello world"

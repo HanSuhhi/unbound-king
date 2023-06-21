@@ -1,10 +1,22 @@
 <script setup lang='ts'>
-import { h, ref } from "vue";
+import { h, onErrorCaptured, onMounted, ref } from "vue";
 import type { CountdownTimeInfo } from "naive-ui";
 import { NCountdown, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
+import { useRequest } from "alova";
 import { useVertificationCode } from "../composables/vertificationCode";
 import { i18nLangModel } from "@/locals";
+import { getVerificationCode } from "@/api/services/mails";
+
+const { send } = useRequest(getVerificationCode, {
+  immediate: false
+});
+
+onErrorCaptured(() => {
+  console.log(1213);
+});
+
+onMounted(send);
 
 const code = ref();
 const { t } = useI18n();

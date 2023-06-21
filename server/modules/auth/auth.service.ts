@@ -53,7 +53,7 @@ export class AuthService {
    * @returns {LoginResponseDto} An object containing the generated JWT token.
    */
   public async login(loginDto: LoginDto): Promise<LoginResponseDto> {
-    // await this.validateCode(loginDto.email)(loginDto.code);
+    await this.validateCode(loginDto.email)(loginDto.code);
 
     const user = await this.userService.findOneByEmail(loginDto.email);
     if (!user) throw new HttpException("user not found", HttpStatus.ACCEPTED);

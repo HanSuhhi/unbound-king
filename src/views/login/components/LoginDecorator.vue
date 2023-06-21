@@ -76,7 +76,17 @@
   .input-decorator_title3 {
     position: relative;
     left: 25%;
+
+    overflow: hidden;
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    display: -webkit-box;
+
     width: 30%;
+
+    text-overflow: ellipsis;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
   }
 }
 </style>

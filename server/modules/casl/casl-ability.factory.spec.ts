@@ -1,6 +1,6 @@
 import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
-import type { UserDocument } from "../../../dist/server/modules/users/schemas/user.schemas";
+import type { UserDocument } from "../users/schemas/user.schemas";
 import { CaslAbilityFactory } from "./casl-ability.factory";
 
 describe("CaslAbilityFactory", () => {

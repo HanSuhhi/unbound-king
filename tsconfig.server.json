@@ -24,7 +24,8 @@
     "types": ["vitest/globals"]
   },
   "include": [
-    "server",
+    "server/*.ts",
+    "server/**/*.ts",
     "composables/constant/interceptor.ts"
   ]
 }
