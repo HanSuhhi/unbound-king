@@ -1,4 +1,5 @@
-export interface ResponseOriginData {
+export interface ResponseOriginData<T = any> {
   statusCode: number
-  data: any
+  data: T
+  alert?: string
 }

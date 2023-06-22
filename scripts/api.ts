@@ -11,7 +11,6 @@ export async function createClientApiTemplate() {
   const files: Dictionary<string[]> = {};
 
   for (let path in paths) {
-    // exclude ssr pages
     if (!path.includes(`/${Prefix.Server}`)) continue;
 
     const pathItem = paths[path];
@@ -31,9 +30,9 @@ export async function createClientApiTemplate() {
       const params = defineParams(parameters);
 
       result += `
-export function ${method}${capitalize(operationId.split("Controller_")[1])}(${requestType && "request: RequestBody,"}${params}config: Config<ResponseType> = {${params && " params "}}) {
+export function ${method}${capitalize(operationId.split("Controller_")[1])}(${requestType && "request: RequestBody,"}${params}config: Config<ResponseOriginData<ResponseType>> = {${params && " params "}}) {
   ${params ? "config.params = params;" : ""}
-  return alovaInst.${capitalize(method.toLowerCase())}<ResponseType>("${path}",${method === "post" ? "request," : ""} config);
+  return alovaInst.${capitalize(method.toLowerCase())}<ResponseOriginData<ResponseType>>("${path}",${method === "post" ? "request," : ""} config);
 }
 `;
       defineServiceFiles(files, tags, result);
