@@ -38,7 +38,7 @@ function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
       <n-countdown
         v-if="isFreeze"
         class="ml-mini"
-        :duration="useSecond(2)"
+        :duration="useSecond(60)"
         :active="isFreeze"
         :render="countdownRender"
         :precision="1"

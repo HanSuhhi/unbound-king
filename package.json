@@ -35,6 +35,8 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/throttler": "^4.1.0",
     "@supabase/supabase-js": "^2.25.0",
+    "@trpc/client": "^10.32.0",
+    "@trpc/server": "^10.32.0",
     "@types/lodash": "^4.14.195",
     "@vueuse/components": "^9.13.0",
     "@vueuse/core": "^9.10.0",

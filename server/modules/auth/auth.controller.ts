@@ -34,7 +34,7 @@ export class AuthController {
     type: LoginVo
   })
   @Public()
-  async loginWithEmail(@Body() loginFormDto: LoginDto) {
+  async loginWithEmail(@Body() loginFormDto: LoginDto): Promise<LoginVo> {
     switch (loginFormDto.loginType) {
       case LoginRegistration.LOGIN:
         return await this.authService.login(loginFormDto);

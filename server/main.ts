@@ -10,10 +10,12 @@ import { inNotProduction, inProduction } from "./composables/dev/production";
 import { NotFoundExceptionFilter } from "./exception-filters/not-found-exception.filter";
 import { bindSwageerModule } from "./composables/libs/swagger";
 import { ResponseDataInterceptor } from "./interceptors/response-data.interceptor";
+import { TrpcRouter } from "./trpc/trpc.router";
 import { Prefix } from "#/composables/constant/url";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.get(TrpcRouter).applyMiddleware(app);
 
   await inProduction(async () => {
     app.use(compression());
