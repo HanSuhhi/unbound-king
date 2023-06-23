@@ -3,17 +3,18 @@ import { Test } from "@nestjs/testing";
 import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import type { Cache } from "cache-manager";
 import { getModelToken } from "@nestjs/mongoose";
-import type { Model } from "mongoose";
 import { it } from "vitest";
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { HttpException, UnauthorizedException } from "@nestjs/common";
 import { User } from "../users/schemas/user.schemas";
-import { UsersService } from "../users/users.service";
 import { Authority } from "../../../composables/constant/response";
 import { AuthService } from "./auth.service";
 import type { LoginDto } from "./dtos/login.dto";
 import { LoginRegistration } from "#/composables/constant/request";
+import { TrpcRouter } from "@/trpc/trpc.router";
+import { TrpcService } from "@/trpc/trpc.service";
+import { UserRoute } from "@/trpc/routes/user.route";
 
 describe("AuthService", () => {
   const TEST_EMAIL = "test@example.com";
@@ -26,18 +27,17 @@ describe("AuthService", () => {
   const token = "generated_token";
   const email = "hello@test.com";
 
-  let userModel: Model<User>;
-  let userService: UsersService;
+  let trpcRouter: TrpcRouter;
   let jwtService: JwtService;
   let service: AuthService;
   let cacheConfig: Cache;
 
   beforeEach(async () => {
     vi.useFakeTimers();
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthService,
-        UsersService,
         ConfigService,
         {
           provide: JwtService,
@@ -63,16 +63,28 @@ describe("AuthService", () => {
             findOne: vi.fn(),
             create: vi.fn()
           }
+        },
+        TrpcService,
+        UserRoute,
+        {
+          provide: TrpcRouter,
+          useValue: {
+            caller: {
+              user: {
+                create: vi.fn(),
+                createDefaultUserByEmail: vi.fn(),
+                findOneByEmail: vi.fn()
+              }
+            }
+          }
         }
       ]
     }).compile();
 
     service = module.get<AuthService>(AuthService);
     cacheConfig = module.get<Cache>(CACHE_MANAGER);
-    userModel = module.get<Model<User>>(getModelToken(User.name));
-    userService = module.get<UsersService>(UsersService);
+    trpcRouter = module.get<TrpcRouter>(TrpcRouter);
     jwtService = module.get<JwtService>(JwtService);
-
     vi.spyOn(jwtService, "signAsync").mockResolvedValueOnce(token);
   });
 
@@ -104,12 +116,6 @@ describe("AuthService", () => {
   });
 
   describe("register", () => {
-    beforeEach(() => {
-      vi.spyOn(userModel, "findOne").mockReturnValue({
-        exec: vi.fn().mockResolvedValueOnce(TEST_USER)
-      } as any);
-    });
-
     it("should throw error if code does not match", async () => {
       expect(service.register({
         email: TEST_EMAIL,
@@ -128,7 +134,11 @@ describe("AuthService", () => {
     });
 
     it("should try to login if user already exists", async () => {
-      const create = vi.spyOn(userService, "create").mockResolvedValueOnce(email as any);
+      vi.spyOn(trpcRouter.caller.user, "findOneByEmail").mockResolvedValueOnce({
+        ...TEST_USER,
+        _id: 111
+      } as any);
+      const create = vi.spyOn(trpcRouter.caller.user, "createDefaultUserByEmail");
       expect(create).toHaveBeenCalledTimes(0);
 
       const result = await service.register(TEST_USER);
@@ -136,10 +146,10 @@ describe("AuthService", () => {
     });
 
     it("should create a user and then try to login", async () => {
-      vi.spyOn(userModel, "findOne").mockReturnValue({
-        exec: vi.fn().mockResolvedValue(null)
+      const create = vi.spyOn(trpcRouter.caller.user, "createDefaultUserByEmail").mockResolvedValueOnce({
+        ...TEST_USER,
+        _id: 111
       } as any);
-      const create = vi.spyOn(userService, "create").mockResolvedValueOnce(TEST_EMAIL as any);
 
       const result = await service.register({
         email,
@@ -147,19 +157,13 @@ describe("AuthService", () => {
         loginType: LoginRegistration.REGISTRATION
       });
       expect(create).toHaveBeenCalledTimes(1);
-      expect(create.mock.calls[0][0]).toEqual({
-        email,
-        roles: UsersService.DEFAULT_USER_ROLES
-      });
       expect(result[Authority.TOKEN]).toEqual(token);
     });
   });
 
   describe("login", () => {
     beforeEach(() => {
-      vi.spyOn(userModel, "findOne").mockReturnValue({
-        exec: vi.fn().mockResolvedValueOnce(TEST_USER)
-      } as any);
+      vi.spyOn(trpcRouter.caller.user, "findOneByEmail").mockReturnValue(TEST_USER as any);
     });
 
     it("should throw an exception if the provided code is incorrect", async () => {
@@ -170,7 +174,7 @@ describe("AuthService", () => {
 
     it("should throw an exception if the email is not registered", async () => {
       vi
-        .spyOn(userService, "findOneByEmail")
+        .spyOn(trpcRouter.caller.user, "findOneByEmail")
         .mockResolvedValueOnce(undefined);
 
       await expect(service.login(TEST_USER)).rejects.toThrow(HttpException);

@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
-import { onMounted } from "vue";
 import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
 import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
 import { provideStaticStyleVariables } from "./composables/constant/transitionDuration";
 import GlobalHeader from "./components/app/global-header/GlobalHeader";
-import { trpc } from "./composables/trpc/trpc";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import Noise from "@/components/effects/BackgroundNoise.vue";
 // disableDefaultKeys();
@@ -16,14 +14,6 @@ const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 provideStaticStyleVariables();
 useCorsor();
 bindNaiveUILayer();
-
-onMounted(async () => {
-  const aa = await trpc.hello.query({
-    name: "asd"
-  });
-
-  const a = await trpc.test.query();
-});
 </script>
 
 <template>

@@ -3,20 +3,22 @@ import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import { faker } from "@faker-js/faker";
 import { Cache } from "cache-manager";
 import { JwtService } from "@nestjs/jwt";
-import { UsersService } from "../users/users.service";
 import type { UserDocument } from "../users/schemas/user.schemas";
 import type { LoginDto } from "./dtos/login.dto";
 import type { LoginVo } from "./vos/login.vo";
 import { useMinute } from "#/composables/time/ms";
 import { Authority } from "#/composables/constant/response";
 import { invalid } from "#/composables/i18n/composable";
+import { TrpcRouter } from "@/trpc/trpc.router";
 
 @Injectable()
 export class AuthService {
   constructor(
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
-    private readonly userService: UsersService,
+    // private readonly userService: UsersService,
+    private readonly trpcRouter: TrpcRouter,
     private readonly jwtService: JwtService
+
   ) {}
 
   /**
@@ -37,9 +39,9 @@ export class AuthService {
    */
   public async register(registerDto: LoginDto): Promise<LoginVo> {
     await this.validateCode(registerDto.email)(registerDto.code);
-    let user = await this.userService.findOneByEmail(registerDto.email);
+    let user = await this.trpcRouter.caller.user.findOneByEmail(registerDto.email);
 
-    if (!user) user = await this.userService.createDefaultUserByEmail(registerDto.email);
+    if (!user) user = await this.trpcRouter.caller.user.createDefaultUserByEmail(registerDto.email);
 
     return this.coreLogin(user);
   }
@@ -55,7 +57,7 @@ export class AuthService {
   public async login(loginDto: LoginDto): Promise<LoginVo> {
     const code = await this.validateCode(loginDto.email)(loginDto.code);
 
-    const user = await this.userService.findOneByEmail(loginDto.email);
+    const user = await this.trpcRouter.caller.user.findOneByEmail(loginDto.email);
     if (!user) {
       this.cacheManager.set(loginDto.email, code, useMinute(5));
       throw new HttpException("user not found", HttpStatus.ACCEPTED);

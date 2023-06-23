@@ -1,14 +1,13 @@
 import { Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { UsersModule } from "../users/users.module";
 import { useMinute } from "../../../composables/time/ms";
 import { AuthService } from "./auth.service";
 import { AuthController } from "./auth.controller";
+import { TrpcModule } from "@/trpc/trpc.module";
 
 @Module({
   imports: [
-    UsersModule,
     JwtModule.registerAsync({
       global: true,
       imports: [ConfigModule],
@@ -19,7 +18,8 @@ import { AuthController } from "./auth.controller";
           expiresIn: useMinute(1)
         }
       })
-    })
+    }),
+    TrpcModule
   ],
   providers: [AuthService],
   controllers: [AuthController],

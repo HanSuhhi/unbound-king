@@ -10,6 +10,9 @@ import { User } from "../users/schemas/user.schemas";
 import { UsersService } from "../users/users.service";
 import { MailsController } from "./mails.controller";
 import { MailsService } from "./mails.service";
+import { UserRoute } from "@/trpc/routes/user.route";
+import { TrpcRouter } from "@/trpc/trpc.router";
+import { TrpcService } from "@/trpc/trpc.service";
 
 describe("MailsController", () => {
   let controller: MailsController;
@@ -29,7 +32,22 @@ describe("MailsController", () => {
         {
           provide: getModelToken(User.name),
           useValue: Model
+        },
+        TrpcService,
+        UserRoute,
+        {
+          provide: TrpcRouter,
+          useValue: {
+            caller: {
+              user: {
+                create: vi.fn(),
+                createDefaultUserByEmail: vi.fn(),
+                findOneByEmail: vi.fn()
+              }
+            }
+          }
         }
+
       ],
       controllers: [MailsController]
     }).compile();

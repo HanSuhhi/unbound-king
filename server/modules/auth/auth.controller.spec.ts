@@ -11,6 +11,9 @@ import { AuthService } from "./auth.service";
 import { AuthController } from "./auth.controller";
 import type { LoginDto } from "./dtos/login.dto";
 import type { LoginRegistration } from "#/composables/constant/request";
+import { UserRoute } from "@/trpc/routes/user.route";
+import { TrpcRouter } from "@/trpc/trpc.router";
+import { TrpcService } from "@/trpc/trpc.service";
 
 describe("AuthController", () => {
   let service: AuthService;
@@ -34,7 +37,22 @@ describe("AuthController", () => {
         {
           provide: getModelToken(User.name),
           useValue: Model
+        },
+        TrpcService,
+        UserRoute,
+        {
+          provide: TrpcRouter,
+          useValue: {
+            caller: {
+              user: {
+                create: vi.fn(),
+                createDefaultUserByEmail: vi.fn(),
+                findOneByEmail: vi.fn()
+              }
+            }
+          }
         }
+
       ]
     }).compile();
 

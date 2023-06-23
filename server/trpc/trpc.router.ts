@@ -2,20 +2,17 @@ import type { INestApplication } from "@nestjs/common";
 import { Injectable } from "@nestjs/common";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import { TrpcService } from "./trpc.service";
+import { UserRoute } from "./routes/user.route";
 
 @Injectable()
 export class TrpcRouter {
   constructor(
-    private readonly trpc: TrpcService
+    private readonly trpc: TrpcService,
+    private readonly userRoute: UserRoute
   ) { }
 
   public appRouter = this.trpc.router({
-    test: this.trpc.procedure
-      .query(() => {
-        return {
-          greeting: "Hello Bilbo"
-        };
-      })
+    user: this.userRoute.route
   });
 
   public caller = this.appRouter.createCaller({});

@@ -40,7 +40,7 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     }),
     ThrottlerModule.forRoot({
       ttl: 60,
-      limit: 5
+      limit: 20
     }),
     PagesModule,
     PackagesModule,
