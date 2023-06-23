@@ -1,8 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEnum, IsNumber, IsString } from "class-validator";
 import { LoginRegistration } from "../../../../composables/constant/request";
-import { invalid } from "../../../composables/exceptions/Invalid";
 import { EmailValidate } from "@/decorators/validate/email.decorator";
+import { NumberValidate } from "@/decorators/validate/number.decorator";
+import { StringValidate } from "@/decorators/validate/string.decorator";
+import { EnumValidate } from "@/decorators/validate/enum.decorator";
 
 export class LoginDto {
   @EmailValidate()
@@ -13,7 +14,7 @@ export class LoginDto {
   })
   readonly email: string;
 
-  @IsNumber()
+  @NumberValidate()
   @ApiProperty({
     required: true,
     default: 111_111,
@@ -21,12 +22,8 @@ export class LoginDto {
   })
   readonly code: number;
 
-  @IsString()
-  @IsEnum(LoginRegistration, {
-    message() {
-      return invalid("login type");
-    }
-  })
+  @StringValidate()
+  @EnumValidate(LoginRegistration)
   @ApiProperty({
     default: LoginRegistration.LOGIN,
     enum: LoginRegistration,

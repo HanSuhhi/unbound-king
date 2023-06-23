@@ -4,12 +4,14 @@ import type { CountdownTimeInfo } from "naive-ui";
 import { NCountdown, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
 import { useVertificationCode } from "../composables/vertificationCode";
+import { getCodeStatus } from "../composables/getters";
 import { i18nLangModel } from "#/composables/i18n/index";
 import { useSecond } from "#/composables/time/ms";
 
 const code = defineModel<string>();
 const { t } = useI18n();
 const { sendVertificationCode, toggleFreeze, isFreeze } = useVertificationCode();
+const { codeStatus } = getCodeStatus();
 
 function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
   return h("span", {}, `${seconds}:${milliseconds.toString().slice(0, 1)}`);
@@ -24,6 +26,7 @@ function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
       clearable
       :placeholder="t(i18nLangModel.auth.verifyCodePlaceholder)"
       :maxlength="6"
+      :status="codeStatus"
       class="verify-code_code"
     />
     <type-button

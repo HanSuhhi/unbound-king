@@ -1,7 +1,12 @@
+import { invalidCn } from "../composable";
 import { defineLang } from "../lang.model";
 
 export default defineLang({
   hotkey: "c",
+  validate: {
+    props: invalidCn("参数"),
+    email: invalidCn("邮箱")
+  },
   workshop: {
     standard: {
       title: "基础包",

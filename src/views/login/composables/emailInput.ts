@@ -14,5 +14,5 @@ export function useEmailInput() {
 
   const checkEmailIsRight = () => updateEmailStatus(verifyEmail(email.value!) ? "success" : "error");
 
-  return { email, checkEmailIsRight, emailStatus };
+  return { email, checkEmailIsRight, emailStatus, updateEmailStatus };
 }

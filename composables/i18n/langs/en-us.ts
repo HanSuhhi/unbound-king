@@ -1,7 +1,12 @@
+import { invalid } from "../composable";
 import { defineLang } from "../lang.model";
 
 const enUsModel = {
   hotkey: "e",
+  validate: {
+    props: invalid("props"),
+    email: invalid("email")
+  },
   workshop: {
     standard: {
       title: "Standard Package",

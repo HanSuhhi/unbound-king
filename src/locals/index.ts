@@ -11,13 +11,10 @@ const storageLocale = useLocalStorage("locale", browerLocale);
 
 const locale = storageLocale.value || browerLocale || import.meta.env.I18N_DEFAULT_LANG;
 
-export function defineI18n() {
-  const i18n = createI18n({
-    legacy: false,
-    locale,
-    fallbackLocale: "en-us",
-    messages
-  });
-
-  return i18n;
-}
+export const i18n = createI18n({
+  legacy: false,
+  locale,
+  fallbackLocale: "en-us",
+  messages,
+  globalInjection: true
+});

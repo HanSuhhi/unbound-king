@@ -6,10 +6,10 @@ import TypeButton from "./components/typeButton/TypeButton.vue";
 import CTabs from "./components/ui/tabs";
 import CLayout from "./components/ui/layout";
 import { usePaperRipple } from "./directives/paperRipple";
-import { defineI18n } from "./locals/index";
 
 import "uno.css";
 import "./styles/index.css";
+import { i18n } from "./locals";
 
 if (import.meta.env.SSR && import.meta.env.DEV && !global.fetch) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -19,7 +19,6 @@ if (import.meta.env.SSR && import.meta.env.DEV && !global.fetch) {
 
 export function createApp(app: VueApp<Element>) {
   const pinia = createPinia();
-  const i18n = defineI18n();
   const { router } = useRouteConfig();
   const { paperRipple } = usePaperRipple();
 

@@ -7,9 +7,9 @@ import { UsersService } from "../users/users.service";
 import type { UserDocument } from "../users/schemas/user.schemas";
 import type { LoginDto } from "./dtos/login.dto";
 import type { LoginVo } from "./vos/login.vo";
-import { invalid } from "@/composables/exceptions/Invalid";
 import { useMinute } from "#/composables/time/ms";
 import { Authority } from "#/composables/constant/response";
+import { invalid } from "#/composables/i18n/composable";
 
 @Injectable()
 export class AuthService {

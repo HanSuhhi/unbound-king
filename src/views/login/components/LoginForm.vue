@@ -3,13 +3,18 @@ import { NCheckbox, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
 import { ref } from "vue";
 import { HttpStatus } from "@nestjs/common";
+import type { FormValidationStatus } from "naive-ui/es/form/src/interface";
 import { EMAIL_INPUT_PROPS, useEmailInput } from "../composables/emailInput";
+import { EmailCodeStatusSymbol } from "../login.symbol";
 import VerifyCode from "./VerifyCode.vue";
 import { i18nLangModel } from "#/composables/i18n/index";
 import { postLoginWithEmail } from "@/api/services/auth";
 import { useGlobalDialog } from "@/composables/components/globalDialog";
+import { verifyEmail } from "#/composables/tools/vertivication";
+import { useProvide } from "@/composables/plus/provide";
 
-const { email, checkEmailIsRight, emailStatus } = useEmailInput();
+const { email, checkEmailIsRight, emailStatus, updateEmailStatus } = useEmailInput();
+const { value: codeStatus, update: updateCodeStatus } = useProvide<FormValidationStatus>(EmailCodeStatusSymbol, "success");
 const code = ref("");
 
 const { t } = useI18n();
@@ -29,9 +34,17 @@ async function registration() {
 }
 
 async function handleLogin() {
+  // validate email
+  if (!verifyEmail(email.value!)) return updateEmailStatus("error");
+  else updateEmailStatus("success");
+  // validate code
+  const validateCode = Number(code.value);
+  if (!validateCode || code.value.length !== 6) return updateCodeStatus("error");
+  else updateCodeStatus("success");
+
   const { statusCode, data } = await postLoginWithEmail({
     email: email.value!,
-    code: Number(code.value),
+    code: validateCode,
     loginType: "9anqHyzvl83l"
   }).send();
   if (statusCode) {

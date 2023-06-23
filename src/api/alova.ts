@@ -10,6 +10,7 @@ import { computed } from "vue";
 import { useDark } from "@vueuse/core";
 import { SERVER_RUNNING_PORT } from "@/composables/constant/env";
 import type { ResponseOriginData } from "#/composables/types/api";
+import { i18n } from "@/locals";
 
 export const alovaInst = createAlova({
   baseURL: `http://localhost:${SERVER_RUNNING_PORT}`,
@@ -43,6 +44,7 @@ async function defineResponse(response: Response) {
 
   const responseData = (await response.json()) as ResponseOriginData & HttpException;
   const { alert, statusCode, data, message } = responseData;
+
   if (alert) messageController.warning(alert);
   if (!statusCode) return;
   switch (statusCode) {
@@ -53,7 +55,7 @@ async function defineResponse(response: Response) {
       return responseData;
     case HttpStatus.BAD_REQUEST:
     default:
-      messageController.error(isArray(message) ? message[0] : message);
+      messageController.error(i18n.global.t(isArray(message) ? message[0] : message));
       return responseData;
   }
 }

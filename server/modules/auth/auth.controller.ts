@@ -5,8 +5,8 @@ import { LoginDto } from "./dtos/login.dto";
 import { Public } from "./decorators/auth.decorator";
 import { LoginVo } from "./vos/login.vo";
 import { LoginRegistration } from "#/composables/constant/request";
-import { invalid } from "@/composables/exceptions/Invalid";
 import { useApiOperationDescriptionEnum } from "@/composables/api/description";
+import { invalid } from "#/composables/i18n/composable";
 
 @ApiTags("Auth")
 @Controller("auth")
