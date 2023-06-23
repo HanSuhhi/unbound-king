@@ -22,9 +22,7 @@ export function defineQuitEvent(popoverControl: Ref<boolean>) {
           warning({
             title: "退出游戏",
             text: "是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。",
-            confirm() {
-              window.close();
-            },
+            confirm: window.close,
             cancel() {
             },
             init() {

@@ -2,15 +2,51 @@
 import { NCheckbox, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
 import { ref } from "vue";
+import { HttpStatus } from "@nestjs/common";
 import { EMAIL_INPUT_PROPS, useEmailInput } from "../composables/emailInput";
 import VerifyCode from "./VerifyCode.vue";
 import { i18nLangModel } from "@/locals";
+import { postLoginWithEmail } from "@/api/services/auth";
+import { useGlobalDialog } from "@/composables/components/globalDialog";
 
 const { email, checkEmailIsRight, emailStatus } = useEmailInput();
+const code = ref("");
+
 const { t } = useI18n();
 
 const rememberMe = ref(false);
 const policy = ref(false);
+
+async function registration() {
+  const { statusCode, data } = await postLoginWithEmail({
+    email: email.value!,
+    code: Number(code.value),
+    loginType: "JHuWYPd9be4E"
+  }).send();
+  if (statusCode) return;
+
+  console.log(data.access_token);
+}
+
+async function handleLogin() {
+  const { statusCode, data } = await postLoginWithEmail({
+    email: email.value!,
+    code: Number(code.value),
+    loginType: "9anqHyzvl83l"
+  }).send();
+  if (statusCode) {
+    const { warning } = useGlobalDialog();
+    switch (statusCode) {
+      case HttpStatus.ACCEPTED:
+        return warning({
+          title: "注册用户",
+          text: "当前邮箱未注册用户，是否自动注册？",
+          confirm: registration
+        });
+      default: break;
+    }
+  }
+}
 </script>
 
 <template>
@@ -29,7 +65,7 @@ const policy = ref(false);
         class="login-input_input"
         @blur="checkEmailIsRight"
       />
-      <verify-code />
+      <verify-code v-model="code" />
       <div class="login-input-choosen">
         <n-checkbox v-model:checked="rememberMe" class="login-input_remember">
           {{ t(i18nLangModel.auth.rememberEmail) }}
@@ -45,7 +81,7 @@ const policy = ref(false);
           {{ t(i18nLangModel.auth.policy) }}
         </a>
       </n-checkbox>
-      <type-button v-paper-ripple cursor-pointer class="button-reset login-operation_login">
+      <type-button v-paper-ripple cursor-pointer class="button-reset login-operation_login" @click="handleLogin">
         {{ t(i18nLangModel.auth.loginTitle) }}
       </type-button>
     </div>

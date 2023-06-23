@@ -1,26 +1,16 @@
 <script setup lang='ts'>
-import { h, onErrorCaptured, onMounted, ref } from "vue";
+import { h } from "vue";
 import type { CountdownTimeInfo } from "naive-ui";
 import { NCountdown, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
-import { useRequest } from "alova";
 import { useVertificationCode } from "../composables/vertificationCode";
 import { i18nLangModel } from "@/locals";
-import { getVerificationCode } from "@/api/services/mails";
+import { useSecond } from "#/composables/time/ms";
 
-const { send } = useRequest(getVerificationCode, {
-  immediate: false
-});
-
-onErrorCaptured(() => {
-  console.log(1213);
-});
-
-onMounted(send);
-
-const code = ref();
+const code = defineModel<string>();
 const { t } = useI18n();
 const { sendVertificationCode, toggleFreeze, isFreeze } = useVertificationCode();
+
 function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
   return h("span", {}, `${seconds}:${milliseconds.toString().slice(0, 1)}`);
 }
@@ -45,7 +35,7 @@ function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
       <n-countdown
         v-if="isFreeze"
         class="ml-mini"
-        :duration="60 * 1000"
+        :duration="useSecond(2)"
         :active="isFreeze"
         :render="countdownRender"
         :precision="1"

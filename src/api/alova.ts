@@ -1,7 +1,13 @@
 import { createAlova } from "alova";
 import VueHook from "alova/vue";
 import GlobalFetch from "alova/GlobalFetch";
-import { useMessage } from "naive-ui";
+import type { ConfigProviderProps } from "naive-ui";
+import { createDiscreteApi, darkTheme, lightTheme } from "naive-ui";
+import type { HttpException } from "@nestjs/common";
+import { HttpStatus } from "@nestjs/common";
+import { isArray } from "lodash";
+import { computed } from "vue";
+import { useDark } from "@vueuse/core";
 import { SERVER_RUNNING_PORT } from "@/composables/constant/env";
 import type { ResponseOriginData } from "#/composables/types/api";
 
@@ -25,17 +31,29 @@ export const alovaInst = createAlova({
 });
 
 async function defineResponse(response: Response) {
-  const message = useMessage();
-  const responseData = (await response.json()) as ResponseOriginData;
-  const { alert, statusCode, data } = responseData;
-  if (alert) message.warning(alert);
+  const configProviderPropsRef = computed<ConfigProviderProps>(() => ({
+    theme: useDark().value ? darkTheme : lightTheme
+  }));
+  const { message: messageController } = createDiscreteApi(
+    ["message"],
+    {
+      configProviderProps: configProviderPropsRef
+    }
+  );
+
+  const responseData = (await response.json()) as ResponseOriginData & HttpException;
+  const { alert, statusCode, data, message } = responseData;
+  if (alert) messageController.warning(alert);
   if (!statusCode) return;
   switch (statusCode) {
-    case 200:
-    case 201:
+    case HttpStatus.OK:
+    case HttpStatus.CREATED:
       return { data };
+    case HttpStatus.ACCEPTED:
+      return responseData;
+    case HttpStatus.BAD_REQUEST:
     default:
-      // @todo
+      messageController.error(isArray(message) ? message[0] : message);
       return responseData;
   }
 }

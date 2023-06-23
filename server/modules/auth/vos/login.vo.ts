@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Authority } from "../../../../composables/constant/response";
+import { Authority } from "#/composables/constant/response";
 
-export class LoginResponseDto {
+export class LoginVo {
   @ApiProperty({
     type: String,
     required: false,

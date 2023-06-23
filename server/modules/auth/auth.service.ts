@@ -6,7 +6,7 @@ import { JwtService } from "@nestjs/jwt";
 import { UsersService } from "../users/users.service";
 import type { UserDocument } from "../users/schemas/user.schemas";
 import type { LoginDto } from "./dtos/login.dto";
-import type { LoginResponseDto } from "./dtos/login-response.dto";
+import type { LoginVo } from "./vos/login.vo";
 import { invalid } from "@/composables/exceptions/Invalid";
 import { useMinute } from "#/composables/time/ms";
 import { Authority } from "#/composables/constant/response";
@@ -33,9 +33,9 @@ export class AuthService {
    * Registers a new user.
    * @param {LoginDto} registerDto The registration info of user.
    * @throws {UnauthorizedException} If the provided code is not right.
-   * @returns {LoginResponseDto} The created user.
+   * @returns {LoginVo} The created user.
    */
-  public async register(registerDto: LoginDto): Promise<LoginResponseDto> {
+  public async register(registerDto: LoginDto): Promise<LoginVo> {
     await this.validateCode(registerDto.email)(registerDto.code);
     let user = await this.userService.findOneByEmail(registerDto.email);
 
@@ -50,13 +50,16 @@ export class AuthService {
    * @param {LoginDto} loginDto - The DTO containing the login information (email and code).
    * @throws {UnauthorizedException} If the provided code is not right.
    * @throws {HttpException} If the provided email is not registered.
-   * @returns {LoginResponseDto} An object containing the generated JWT token.
+   * @returns {LoginVo} An object containing the generated JWT token.
    */
-  public async login(loginDto: LoginDto): Promise<LoginResponseDto> {
-    await this.validateCode(loginDto.email)(loginDto.code);
+  public async login(loginDto: LoginDto): Promise<LoginVo> {
+    const code = await this.validateCode(loginDto.email)(loginDto.code);
 
     const user = await this.userService.findOneByEmail(loginDto.email);
-    if (!user) throw new HttpException("user not found", HttpStatus.ACCEPTED);
+    if (!user) {
+      this.cacheManager.set(loginDto.email, code, useMinute(5));
+      throw new HttpException("user not found", HttpStatus.ACCEPTED);
+    }
 
     return this.coreLogin(user);
   }
@@ -65,9 +68,9 @@ export class AuthService {
    * Asynchronous method to authenticate user via email
    * @async
    * @param {UserDocument} user - registed user
-   * @returns {LoginResponseDto} An object containing the authentication token
+   * @returns {LoginVo} An object containing the authentication token
    */
-  private async coreLogin({ _id, email, roles }: UserDocument): Promise<LoginResponseDto> {
+  private async coreLogin({ _id, email, roles }: UserDocument): Promise<LoginVo> {
     const payload = { sub: _id, email, roles };
     return {
       [Authority.TOKEN]: await this.jwtService.signAsync(payload)
@@ -85,12 +88,13 @@ export class AuthService {
      * A closure function that takes in a code and validates it against the cached code for the email.
      *
      * @param {number} code - The input code to validate against the cached code.
-     * @returns {Promise<boolean>} - A promise resolving to a boolean indicating if the input code is valid or not.
+     * @returns {Promise<number>} - A promise resolving to a number indicating the cached code.
      */
-    return async (code: number): Promise<void> => {
+    return async (code: number): Promise<number> => {
       const cachedCode = await this.cacheManager.get<number>(email);
       this.cacheManager.del(email);
       if (cachedCode !== code) throw new UnauthorizedException(invalid("authentication code"));
+      return cachedCode;
     };
   }
 }

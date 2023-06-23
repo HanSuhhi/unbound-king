@@ -3,7 +3,7 @@ import { ApiAcceptedResponse, ApiBadRequestResponse, ApiCreatedResponse, ApiOper
 import { AuthService } from "./auth.service";
 import { LoginDto } from "./dtos/login.dto";
 import { Public } from "./decorators/auth.decorator";
-import { LoginResponseDto } from "./dtos/login-response.dto";
+import { LoginVo } from "./vos/login.vo";
 import { LoginRegistration } from "#/composables/constant/request";
 import { invalid } from "@/composables/exceptions/Invalid";
 import { useApiOperationDescriptionEnum } from "@/composables/api/description";
@@ -21,7 +21,7 @@ export class AuthController {
     description: useApiOperationDescriptionEnum("loginType", LoginRegistration)
   })
   @ApiBadRequestResponse({
-    description: invalid("login type")
+    description: invalid("props")
   })
   @ApiUnauthorizedResponse({
     description: invalid("authentication code")
@@ -31,7 +31,7 @@ export class AuthController {
   })
   @ApiCreatedResponse({
     description: "User registration / login success",
-    type: LoginResponseDto
+    type: LoginVo
   })
   @Public()
   async loginWithEmail(@Body() loginFormDto: LoginDto) {

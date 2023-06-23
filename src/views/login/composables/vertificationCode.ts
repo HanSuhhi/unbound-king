@@ -15,9 +15,10 @@ export function useVertificationCode() {
     if (!verifyEmail(email.value!)) return updateEmailStatus("error");
     else updateEmailStatus("success");
     if (isFreeze.value) return;
-    const result = await getVerificationCode({
+    const { statusCode } = await getVerificationCode({
       to: email.value!
-    }).send();
+    }).send(true);
+    if (statusCode) return message.error("request error");
     message.success("Sent successfully");
     toggleFreeze(true);
   };
