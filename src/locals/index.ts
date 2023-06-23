@@ -1,11 +1,9 @@
 import { createI18n } from "vue-i18n";
 import { useLocalStorage, useNavigatorLanguage } from "@vueuse/core";
-import type { I18N } from "./langs/en-us";
-import enUs from "./langs/en-us";
 import { parseImportModule } from "@/composables/ci/importModule";
 
 // do not forget to export title in langs
-const langs = import.meta.glob("./langs/*.ts", { eager: true });
+const langs = import.meta.glob("#/composables/i18n/langs/*.ts", { eager: true });
 const messages = parseImportModule(langs, true);
 
 const browerLocale = useNavigatorLanguage().language.value || import.meta.env.I18N_DEFAULT_LANG;
@@ -23,23 +21,3 @@ export function defineI18n() {
 
   return i18n;
 }
-
-function createI18nLangModel(obj: I18N) {
-  const result = {};
-  function traverse(currentObj: I18N, path: string, resultObj: Dictionary<{}>) {
-    for (const key in currentObj) {
-      const value = (currentObj as unknown as Dictionary<string>)[key];
-      if (typeof value === "object") {
-        resultObj[key] = {};
-        traverse(value, `${path}${key}.`, resultObj[key]);
-      }
-      else {
-        resultObj[`${key}`] = `${path}${key}`;
-      }
-    }
-  }
-
-  traverse(obj, "", result);
-  return result;
-}
-export const i18nLangModel = createI18nLangModel(enUs) as I18N;

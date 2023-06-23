@@ -1,10 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsEnum, IsNumber, IsString } from "class-validator";
+import { IsEnum, IsNumber, IsString } from "class-validator";
 import { LoginRegistration } from "../../../../composables/constant/request";
 import { invalid } from "../../../composables/exceptions/Invalid";
+import { EmailValidate } from "@/decorators/validate/email.decorator";
 
 export class LoginDto {
-  @IsEmail()
+  @EmailValidate()
   @ApiProperty({
     required: true,
     default: "l_98b@outlook.com",

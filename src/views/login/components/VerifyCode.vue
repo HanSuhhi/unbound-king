@@ -4,7 +4,7 @@ import type { CountdownTimeInfo } from "naive-ui";
 import { NCountdown, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
 import { useVertificationCode } from "../composables/vertificationCode";
-import { i18nLangModel } from "@/locals";
+import { i18nLangModel } from "#/composables/i18n/index";
 import { useSecond } from "#/composables/time/ms";
 
 const code = defineModel<string>();

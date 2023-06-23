@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
-import { i18nLangModel } from "../../../locals/index";
+import { i18nLangModel } from "#/composables/i18n/index";
 
 const { t } = useI18n();
 </script>

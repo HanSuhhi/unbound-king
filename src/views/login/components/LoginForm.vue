@@ -5,7 +5,7 @@ import { ref } from "vue";
 import { HttpStatus } from "@nestjs/common";
 import { EMAIL_INPUT_PROPS, useEmailInput } from "../composables/emailInput";
 import VerifyCode from "./VerifyCode.vue";
-import { i18nLangModel } from "@/locals";
+import { i18nLangModel } from "#/composables/i18n/index";
 import { postLoginWithEmail } from "@/api/services/auth";
 import { useGlobalDialog } from "@/composables/components/globalDialog";
 

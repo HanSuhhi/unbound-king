@@ -8,9 +8,9 @@ import ThemeController from "./mainModules/themeController.vue";
 import ScreenController from "./mainModules/ScreenController.vue";
 import BasePreference from "./mainModules/BasePreference.vue";
 import Explanation from "@/components/experience/Explanation.vue";
-import { i18nLangModel } from "@/locals/index";
 import KbdEvent from "@/components/KeyEvent.vue";
 import { defineKeyEventWithoutFn } from "@/composables/key/keyEvent";
+import { i18nLangModel } from "#/composables/i18n/index";
 
 type ModuleBlock = [
   component: Component,
