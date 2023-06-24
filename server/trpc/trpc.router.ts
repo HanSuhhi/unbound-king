@@ -7,11 +7,11 @@ import { UserRoute } from "./routes/user.route";
 @Injectable()
 export class TrpcRouter {
   constructor(
-    private readonly trpc: TrpcService,
+    private readonly trpcService: TrpcService,
     private readonly userRoute: UserRoute
   ) { }
 
-  public appRouter = this.trpc.router({
+  public appRouter = this.trpcService.router({
     user: this.userRoute.route
   });
 

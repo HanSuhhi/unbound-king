@@ -5,7 +5,13 @@ export default defineLang({
   hotkey: "c",
   validate: {
     props: invalidCn("参数"),
-    email: invalidCn("邮箱")
+    email: invalidCn("邮箱"),
+    authenticationCode: invalidCn("验证码")
+  },
+  registration: {
+    title: "注册用户",
+    text: "该账号尚未注册，是否确认注册？"
+
   },
   workshop: {
     standard: {

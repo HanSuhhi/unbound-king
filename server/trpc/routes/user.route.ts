@@ -18,18 +18,12 @@ export class UserRoute {
   public route = this.trpc.router({
     findOneByEmail: this.trpc.procedure
       .input(this.emailValidate)
-      .query(async ({ input: email }) => {
-        const user = await this.userModel.findOne({ email }).exec();
-        return user;
-      }),
+      .query(async ({ input: email }) => await this.userModel.findOne({ email }).exec()),
     createDefaultUserByEmail: this.trpc.procedure
       .input(this.emailValidate)
-      .mutation(async ({ input: email }) => {
-        const user = await this.userModel.create({
-          email,
-          roles: UsersService.DEFAULT_USER_ROLES
-        });
-        return user;
-      })
+      .mutation(async ({ input: email }) => await this.userModel.create({
+        email,
+        roles: UsersService.DEFAULT_USER_ROLES
+      }))
   });
 }

@@ -1,27 +1,26 @@
 import { useMessage } from "naive-ui";
 import { refUpdate } from "../../../composables/plus/ref";
-import { getEmailInput, getEmailStatus } from "./getters";
+import { getLoginForm, getLoginFormInst } from "./getters";
 import { getVerificationCode } from "@/api/services/mails";
-import { verifyEmail } from "#/composables/tools/vertivication";
 
-export function useVertificationCode() {
-  const { email } = getEmailInput();
-  const { updateEmailStatus } = getEmailStatus();
+export function handleVertificationCode() {
+  const message = useMessage();
+  const loginForm = getLoginForm();
+  const loginFormInst = getLoginFormInst();
   const { value: isFreeze, update: toggleFreeze } = refUpdate(false, { readonly: true });
 
-  const message = useMessage();
-
   const sendVertificationCode = async () => {
-    if (!verifyEmail(email.value!)) return updateEmailStatus("error");
-    else updateEmailStatus("success");
     if (isFreeze.value) return;
+    await loginFormInst.value?.validate(undefined, rule => rule.key === "email");
+
     const { statusCode } = await getVerificationCode({
-      to: email.value!
+      to: loginForm.value.email
     }).send(true);
     if (statusCode) return message.error("request error");
     message.success("Sent successfully");
     toggleFreeze(true);
   };
+
   return {
     sendVertificationCode,
     isFreeze,

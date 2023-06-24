@@ -59,3 +59,5 @@ async function defineResponse(response: Response) {
       return responseData;
   }
 }
+
+export type RequestBodyParamType<F> = F extends (request: infer P, config?: any) => any ? P : never;

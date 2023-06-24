@@ -8,17 +8,15 @@ import type { LoginDto } from "./dtos/login.dto";
 import type { LoginVo } from "./vos/login.vo";
 import { useMinute } from "#/composables/time/ms";
 import { Authority } from "#/composables/constant/response";
-import { invalid } from "#/composables/i18n/composable";
 import { TrpcRouter } from "@/trpc/trpc.router";
+import { i18nLangModel } from "#/composables/i18n";
 
 @Injectable()
 export class AuthService {
   constructor(
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
-    // private readonly userService: UsersService,
     private readonly trpcRouter: TrpcRouter,
     private readonly jwtService: JwtService
-
   ) {}
 
   /**
@@ -95,7 +93,7 @@ export class AuthService {
     return async (code: number): Promise<number> => {
       const cachedCode = await this.cacheManager.get<number>(email);
       this.cacheManager.del(email);
-      if (cachedCode !== code) throw new UnauthorizedException(invalid("authentication code"));
+      if (cachedCode !== code) throw new UnauthorizedException(i18nLangModel.validate.authenticationCode);
       return cachedCode;
     };
   }

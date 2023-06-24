@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Transform } from "class-transformer";
 import { LoginRegistration } from "../../../../composables/constant/request";
 import { EmailValidate } from "@/decorators/validate/email.decorator";
 import { NumberValidate } from "@/decorators/validate/number.decorator";
@@ -12,6 +13,7 @@ export class LoginDto {
     default: "l_98b@outlook.com",
     type: String
   })
+  @Transform(({ value }) => value.toLowerCase().trim())
   readonly email: string;
 
   @NumberValidate()

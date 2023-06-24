@@ -1,17 +1,16 @@
 <script setup lang='ts'>
 import { h } from "vue";
 import type { CountdownTimeInfo } from "naive-ui";
-import { NCountdown, NInput } from "naive-ui";
+import { NCountdown, NFormItem, NInputNumber } from "naive-ui";
 import { useI18n } from "vue-i18n";
-import { useVertificationCode } from "../composables/vertificationCode";
-import { getCodeStatus } from "../composables/getters";
+import { handleVertificationCode } from "../composables/vertificationCode";
 import { i18nLangModel } from "#/composables/i18n/index";
 import { useSecond } from "#/composables/time/ms";
 
-const code = defineModel<string>();
+const code = defineModel<number>();
+
 const { t } = useI18n();
-const { sendVertificationCode, toggleFreeze, isFreeze } = useVertificationCode();
-const { codeStatus } = getCodeStatus();
+const { sendVertificationCode, toggleFreeze, isFreeze } = handleVertificationCode();
 
 function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
   return h("span", {}, `${seconds}:${milliseconds.toString().slice(0, 1)}`);
@@ -19,14 +18,15 @@ function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
 </script>
 
 <template>
-  <div class="verify-code">
-    <n-input
+  <n-form-item class="verify-code">
+    <n-input-number
       v-model:value="code"
       size="large"
       clearable
       :placeholder="t(i18nLangModel.auth.verifyCodePlaceholder)"
-      :maxlength="6"
-      :status="codeStatus"
+      max="999999"
+      min="0"
+      :show-button="false"
       class="verify-code_code"
     />
     <type-button
@@ -45,7 +45,7 @@ function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
         :on-finish="toggleFreeze.bind(null, false)"
       />
     </type-button>
-  </div>
+  </n-form-item>
 </template>
 
 <style scoped>
@@ -58,8 +58,12 @@ function countdownRender({ seconds, milliseconds }: CountdownTimeInfo) {
     align-items: center;
   }
 
+  .verify-code > :deep(.n-form-item-blank) {
+    width: 100%;
+  }
+
   .verify-code_code {
-    width: var(--input-width);
+    flex: 1;
   }
 
   .verify-code_button {

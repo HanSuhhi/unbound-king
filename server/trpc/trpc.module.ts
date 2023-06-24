@@ -6,7 +6,18 @@ import { UserRoute } from "./routes/user.route";
 import { User, UserSchema } from "@/modules/users/schemas/user.schemas";
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])],
-  providers: [TrpcService, TrpcRouter, UserRoute]
+  imports: [
+    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])
+  ],
+  providers: [
+    TrpcRouter,
+    TrpcService,
+    UserRoute
+  ],
+  exports: [
+    TrpcRouter,
+    TrpcService,
+    UserRoute
+  ]
 })
 export class TrpcModule {}

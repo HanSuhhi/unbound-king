@@ -5,7 +5,12 @@ const enUsModel = {
   hotkey: "e",
   validate: {
     props: invalid("props"),
-    email: invalid("email")
+    email: invalid("email"),
+    authenticationCode: invalid("authentication code")
+  },
+  registration: {
+    title: "Register",
+    text: "This account has not been registered yet. Are you sure to register?"
   },
   workshop: {
     standard: {

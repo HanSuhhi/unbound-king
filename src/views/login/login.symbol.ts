@@ -1,3 +1,2 @@
-export const EmailInputStatusSymbol = Symbol("EmailInputStatus");
-export const EmailInputSymbol = Symbol("EmailInput");
-export const EmailCodeStatusSymbol = Symbol("EmailCodeStatus");
+export const LoginFormSymbol = Symbol("LoginForm");
+export const LoginFormInstSymbol = Symbol("LoginFormInstSymbol");
