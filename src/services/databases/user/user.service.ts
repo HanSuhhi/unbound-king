@@ -28,8 +28,13 @@ export function useUserService() {
     return user;
   };
 
+  const getAllUsers = async () => {
+    return await model.toArray();
+  };
+
   return {
     registUserMessage,
-    getDefaultMainUser
+    getDefaultMainUser,
+    getAllUsers
   };
 }

@@ -1,15 +1,19 @@
 <script setup lang='ts'>
 import LifeHash from "@hansuhhi-don/lifehash-vue";
+
+defineProps<{
+  email: string
+}>();
 </script>
 
 <template>
   <section cursor-pointer class="login-user">
     <div class="login-user_head">
-      <life-hash class="login-user_avator" input="avator" />
+      <life-hash class="login-user_avator" :input="email" />
     </div>
     <div class="login-user_message">
       <p class="p-reset login-user_email">
-        l_98b@outlook.com
+        {{ email }}
       </p>
     </div>
     <div class="login-user_status">
@@ -31,6 +35,12 @@ import LifeHash from "@hansuhhi-don/lifehash-vue";
 
     background-color: var(--gray-deep-2);
     border-radius: var(--border-radius);
+
+    transition: var(--transition-prop);
+  }
+
+  .login-user:hover {
+    filter:sepia(.8);
   }
 
   .login-user_avator {

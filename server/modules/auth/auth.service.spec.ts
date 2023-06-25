@@ -166,10 +166,11 @@ describe("AuthService", () => {
       vi.spyOn(trpcRouter.caller.user, "findOneByEmail").mockReturnValue(TEST_USER as any);
     });
 
-    it("should throw an exception if the provided code is incorrect", async () => {
+    it("should throw an exception if the provided code is incorrect and keep code", async () => {
       await expect(
         service.login({ email: TEST_EMAIL, code: 999999, loginType: LoginRegistration.LOGIN })
       ).rejects.toThrow(UnauthorizedException);
+      expect(cacheConfig.get(TEST_EMAIL)).toEqual(TEST_CODE);
     });
 
     it("should throw an exception if the email is not registered", async () => {

@@ -92,10 +92,8 @@ export class AuthService {
      */
     return async (code: number): Promise<number> => {
       const cachedCode = await this.cacheManager.get<number>(email);
-      if (cachedCode !== code) {
-        this.cacheManager.del(email);
-        throw new UnauthorizedException(i18nLangModel.validate.authenticationCode);
-      }
+      if (cachedCode !== code) throw new UnauthorizedException(i18nLangModel.validate.authenticationCode);
+      this.cacheManager.del(email);
       return cachedCode;
     };
   }
