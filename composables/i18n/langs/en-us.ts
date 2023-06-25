@@ -51,7 +51,11 @@ const enUsModel = {
     agreePolicy: "I have read and agree to the",
     policy: "Privacy Policy.",
     historicalAccount: "Historical Account",
-    emailLoginTitle: "Login With Email"
+    emailLoginTitle: "Login With Email",
+    policyForm: "Follow it please 🙌"
+  },
+  userDrawer: {
+    title: "User List"
   }
 };
 

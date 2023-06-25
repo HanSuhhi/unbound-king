@@ -3,39 +3,33 @@ import type { User } from "./user.table";
 import { Boolean, useServiceModel } from "@/services/serviceModel";
 
 export function useUserService() {
-  const serviceModel = useServiceModel<User>("user");
-  const { model, add, update } = serviceModel;
+  const { add, update, model } = useServiceModel<User>("user");
 
-  const registTourist = async (main = false) => {
+  const isEmailRegist = async (email: string) => {
+    return (await model.where("email").equals(email).first());
+  };
+
+  const registUserMessage = async (email: string) => {
+    email = email.toLowerCase();
+    (await model.where("main").equals(Boolean.True).toArray()).forEach((user) => {
+      update(user.id, { main: Boolean.False });
+    });
+    const registUser = await isEmailRegist(email);
+    if (registUser) return await update(registUser.id, { main: Boolean.True });
+
     const id = Number(defineUniqueId());
-    const name = `Tourist ${id.toString().substring(0, 6)}`;
-
-    const user = {
-      id,
-      name,
-      avator: "",
-      email: "",
-      main: main ? Boolean.True : Boolean.False
-    };
+    const user: User = { id, email, main: Boolean.True };
 
     return await add(user);
   };
 
-  const getMainUser = async () => {
-    const users = await model.where("main").equals(Boolean.True).toArray();
-    if (users.length !== 1) throw new Error("主用户数量不为 1 异常");
-    console.warn("系统获取用户成功...");
-    return users[0];
-  };
-
-  const updateUser = async (user: User) => {
-    return await update(user.id, user);
+  const getDefaultMainUser = async () => {
+    const user = await model.where("main").equals(Boolean.True).first();
+    return user;
   };
 
   return {
-    ...serviceModel,
-    getMainUser,
-    registTourist,
-    updateUser
+    registUserMessage,
+    getDefaultMainUser
   };
 }

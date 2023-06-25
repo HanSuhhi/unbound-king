@@ -1,0 +1,5 @@
+.drawer-right {
+  opacity: 97%;
+  border-left: 1px solid var(--gray);
+  border-radius: var(--normal) 0 0 var(--normal);
+}

@@ -14,7 +14,7 @@ export function handleVertificationCode() {
     await loginFormInst.value?.validate(undefined, rule => rule.key === "email");
 
     const { statusCode } = await getVerificationCode({
-      to: loginForm.value.email
+      to: loginForm.value.form.email
     }).send(true);
     if (statusCode) return message.error("request error");
     message.success("Sent successfully");

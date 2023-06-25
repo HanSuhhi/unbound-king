@@ -75,7 +75,6 @@ import LoginOptions from "./components/LoginOptions.vue";
 
     width: var(--right-width);
     min-width: 40rem;
-    margin-top: var(--large);
     padding-left: var(--padding-left);
   }
 

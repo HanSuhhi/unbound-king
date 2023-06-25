@@ -1,23 +1,31 @@
 <script setup lang='ts'>
 import { NCheckbox, NForm, NFormItem, NInput } from "naive-ui";
 import { useI18n } from "vue-i18n";
-import { ref } from "vue";
+import { watch } from "vue";
 import { EMAIL_INPUT_PROPS } from "../composables/emailInput";
 import { useLoginForm } from "../composables/form";
 import { useLoginAuth } from "../composables/loginAuth";
+import { initLoginData } from "../composables/init";
+import { useUserHistory } from "../composables/history";
 import VerifyCode from "./VerifyCode.vue";
+import UserHistory from "./UserHistory.vue";
 import { i18nLangModel } from "#/composables/i18n/index";
 
 const { t } = useI18n();
 
 const { FormInst, loginForm, loginFormRules } = useLoginForm();
-const { handleLogin } = useLoginAuth(loginForm, FormInst);
+const { handleLogin, rememberMe, keepLogin } = useLoginAuth(loginForm, FormInst);
+const { fromHistory } = initLoginData(loginForm);
+const { historyDrawer } = useUserHistory();
 
-const rememberMe = ref(false);
-const policy = ref(false);
+watch(fromHistory, (isFromHistory) => {
+  if (isFromHistory) rememberMe.value = true;
+  else rememberMe.value = false;
+});
 </script>
 
 <template>
+  <user-history v-model="historyDrawer" />
   <section class="login-input">
     <p class="p-reset login-input_title">
       {{ t(i18nLangModel.auth.emailLoginTitle) }}
@@ -29,9 +37,9 @@ const policy = ref(false);
       :model="loginForm"
       :rules="loginFormRules"
     >
-      <n-form-item path="email">
+      <n-form-item path="form.email">
         <n-input
-          v-model:value="loginForm.email"
+          v-model:value="loginForm.form.email"
           size="large"
           clearable
           :input-props="EMAIL_INPUT_PROPS"
@@ -39,22 +47,26 @@ const policy = ref(false);
           class="login-input_input"
         />
       </n-form-item>
-      <verify-code v-model="loginForm.code" path="code" />
+      <verify-code v-model="loginForm.form.code" path="form.code" />
+      <n-form-item path="policy" style="display: flex; align-items: baseline; height: 3rem;">
+        <n-checkbox v-model:checked="loginForm.policy" class="login-input_policy">
+          {{ t(i18nLangModel.auth.agreePolicy) }}
+          <a href="">
+            {{ t(i18nLangModel.auth.policy) }}
+          </a>
+        </n-checkbox>
+      </n-form-item>
       <div class="login-input-choosen">
         <n-checkbox v-model:checked="rememberMe" class="login-input_remember">
           {{ t(i18nLangModel.auth.rememberEmail) }}
         </n-checkbox>
-        <n-checkbox v-model:checked="rememberMe" class="login-input_remember ">
+        <n-checkbox v-model:checked="keepLogin" class="login-input_remember ">
           {{ t(i18nLangModel.auth.keepMeSignedIn) }}
         </n-checkbox>
-        <a href="" class="login-input_more">{{ t(i18nLangModel.auth.historicalAccount) }}</a>
+        <type-button plain cursor-pointer class="login-input_more" @click="historyDrawer = true">
+          {{ t(i18nLangModel.auth.historicalAccount) }}
+        </type-button>
       </div>
-      <n-checkbox v-model:checked="policy" class="login-input_policy">
-        {{ t(i18nLangModel.auth.agreePolicy) }}
-        <a href="">
-          {{ t(i18nLangModel.auth.policy) }}
-        </a>
-      </n-checkbox>
       <type-button v-paper-ripple cursor-pointer class="button-reset login-operation_login" @click="handleLogin">
         {{ t(i18nLangModel.auth.loginTitle) }}
       </type-button>
@@ -90,12 +102,8 @@ const policy = ref(false);
     margin-bottom: var(--normal);
   }
 
-  .login-input_more {
-    text-align: right;
-  }
-
   .login-input_title {
-    margin-bottom: var(--base-margin);
+    margin: var(--base-margin) 0;
     font-size: var(--font-title-main);
   }
 }
@@ -109,6 +117,12 @@ const policy = ref(false);
     height: 3.5rem;
     margin-top: var(--base-margin);
     font-size: var(--font-title-main);
+  }
+
+  .login-input_more {
+    --linear-gradient: 0;
+
+    text-align: right;
   }
 }
 </style>

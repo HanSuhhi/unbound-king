@@ -52,6 +52,10 @@ export default defineLang({
     agreePolicy: "我已经阅读并同意",
     policy: "隐私政策",
     historicalAccount: "历史登录账户",
-    emailLoginTitle: "邮箱登录"
+    emailLoginTitle: "邮箱登录",
+    policyForm: "请关注这里 🙌"
+  },
+  userDrawer: {
+    title: "用户列表"
   }
 }, "中文");

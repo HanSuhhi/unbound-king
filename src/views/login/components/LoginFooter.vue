@@ -37,8 +37,6 @@ const { t } = useI18n();
     /* stylelint-disable-next-line value-no-vendor-prefix */
     display: -webkit-box;
 
-    margin-top: var(--base-margin);
-
     color: var(--gray-deep-1);
 
     -webkit-box-orient: vertical;

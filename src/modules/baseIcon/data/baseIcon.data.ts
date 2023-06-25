@@ -175,5 +175,10 @@ export const DATA_BaseIcons = {
   "github": {
     translator: ["github", "Github"],
     path: "i-tabler-brand-github"
+  },
+  "check": {
+    translator: ["check", "审核"],
+    path: "i-bi-check-all"
   }
+
 };
