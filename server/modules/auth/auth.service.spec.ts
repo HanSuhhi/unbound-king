@@ -8,7 +8,6 @@ import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { HttpException, UnauthorizedException } from "@nestjs/common";
 import { User } from "../users/schemas/user.schemas";
-import { Authority } from "../../../composables/constant/response";
 import { AuthService } from "./auth.service";
 import type { LoginDto } from "./dtos/login.dto";
 import { LoginRegistration } from "#/composables/constant/request";
@@ -142,7 +141,7 @@ describe("AuthService", () => {
       expect(create).toHaveBeenCalledTimes(0);
 
       const result = await service.register(TEST_USER);
-      expect(result[Authority.TOKEN]).toEqual(token);
+      expect(result.access_token).toEqual(token);
     });
 
     it("should create a user and then try to login", async () => {
@@ -157,7 +156,7 @@ describe("AuthService", () => {
         loginType: LoginRegistration.REGISTRATION
       });
       expect(create).toHaveBeenCalledTimes(1);
-      expect(result[Authority.TOKEN]).toEqual(token);
+      expect(result.access_token).toEqual(token);
     });
   });
 
@@ -181,10 +180,11 @@ describe("AuthService", () => {
       await expect(service.login(TEST_USER)).rejects.toThrow(HttpException);
     });
 
-    it("should return a JWT token if the login info is correct", async () => {
-      const result = await service.login(TEST_USER);
+    it("should return a JWT token and user roles if the login info is correct", async () => {
+      const { access_token, roles } = await service.login(TEST_USER);
 
-      expect(result[Authority.TOKEN]).toEqual(token);
+      expect(access_token).toEqual(token);
+      expect(roles).toEqual(undefined);
     });
   });
 });

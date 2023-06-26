@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Role } from "../roles/enum/role.enum";
+import { Role } from "#/composables/enum/role.enum";
 
 @Injectable()
 export class UsersService {

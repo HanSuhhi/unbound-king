@@ -3,8 +3,8 @@ import { Test } from "@nestjs/testing";
 import { Reflector } from "@nestjs/core";
 import type { ExecutionContext } from "@nestjs/common";
 import { CaslAbilityFactory } from "../casl-ability.factory";
-import { Role } from "../../roles/enum/role.enum";
 import { PoliciesGuard } from "./policies.guard";
+import { Role } from "#/composables/enum/role.enum";
 
 describe("PoliciesGuard", () => {
   let policiesGuard: PoliciesGuard;

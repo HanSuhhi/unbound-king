@@ -7,7 +7,6 @@ import type { UserDocument } from "../users/schemas/user.schemas";
 import type { LoginDto } from "./dtos/login.dto";
 import type { LoginVo } from "./vos/login.vo";
 import { useMinute } from "#/composables/time/ms";
-import { Authority } from "#/composables/constant/response";
 import { TrpcRouter } from "@/trpc/trpc.router";
 import { i18nLangModel } from "#/composables/i18n";
 
@@ -73,7 +72,8 @@ export class AuthService {
   private async coreLogin({ _id, email, roles }: UserDocument): Promise<LoginVo> {
     const payload = { sub: _id, email, roles };
     return {
-      [Authority.TOKEN]: await this.jwtService.signAsync(payload)
+      access_token: await this.jwtService.signAsync(payload),
+      roles
     };
   }
 
