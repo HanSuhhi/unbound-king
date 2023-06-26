@@ -1,15 +1,14 @@
 import { defineStore } from "pinia";
-import { computed } from "vue";
-import { useStringCookie } from "@/composables/store/cookie";
-import { Cookie } from "@/composables/store/enums/cookie.enum";
+import { computed, ref } from "vue";
 
 const useAuthStore = defineStore("auth", () => {
-  const tokenCookie = useStringCookie(Cookie.Token);
+  const token = ref("");
 
-  const isSighIn = computed(() => !!tokenCookie.value);
+  const isSighIn = computed(() => !!token.value);
 
   return {
-    isSighIn
+    isSighIn,
+    token
   };
 });
 

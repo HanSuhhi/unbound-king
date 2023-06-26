@@ -34,6 +34,3 @@ onMounted(renderLayout);
     </template>
   </base-layout>
 </template>
-
-<style scoped>
-</style>

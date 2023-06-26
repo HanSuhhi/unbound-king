@@ -4,7 +4,13 @@ import { CLIENT_SECOND_PREFIX } from "../../../composables/constant/url";
 
 export function useClientRoutes() {
   const path = "src/modules/*/*.{tsx,vue}";
-  const extraPaths = ["/", "/auth", "/content"];
+  const extraPaths = fg.sync("src/views/*/*.{tsx,vue}")
+    .map((path) => {
+      const name = path
+        .match(/(.*)(\.vue|\.tsx)$/)[1]
+        .match(/^.*?\/([^/]+)$/)[1];
+      return `/${kebabCase(name)}`;
+    });
   const ROUTES = fg.sync([path])
     .filter(path => /^.+(\.vue|\.tsx)$/.test(path))
     .map((path) => {
@@ -14,5 +20,5 @@ export function useClientRoutes() {
       return `/${CLIENT_SECOND_PREFIX}/${kebabCase(name)}`;
     });
 
-  return [...ROUTES, ...extraPaths];
+  return ["/", ...ROUTES, ...extraPaths];
 }

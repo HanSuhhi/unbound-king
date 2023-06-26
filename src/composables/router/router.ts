@@ -2,9 +2,11 @@ import { kebabCase, map } from "lodash";
 import type { Component } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 import { createMemoryHistory, createRouter, createWebHistory } from "vue-router";
+import { ROUTER_DEFAULT_PAGE } from "../constant/env";
 import { Prefix } from "#/composables/constant/url";
 import Auth from "@/views/login/Login.vue";
-import Layout from "@/views/layout/Layout.vue";
+import Garden from "@/views/garden/Garden.vue";
+import Arcade from "@/views/arcade/Arcade.vue";
 
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}");
 
@@ -21,7 +23,7 @@ export function useRouteConfig() {
 
   _routes.push({
     path: "",
-    redirect: import.meta.env.ROUTER_DEFAULT_PAGE
+    redirect: ROUTER_DEFAULT_PAGE
   });
   _routes.push({
     path: "setting",
@@ -31,24 +33,28 @@ export function useRouteConfig() {
 
   const routes: RouteRecordRaw[] = [
     {
+      path: "/",
+      redirect: ROUTER_DEFAULT_PAGE
+    },
+    {
       path: "/auth",
       component: Auth
     },
     {
-      path: "/",
-      redirect: import.meta.env.ROUTER_DEFAULT_PAGE
+      path: "/arcade",
+      component: Arcade
     },
     {
       path: `/${Prefix.Client}`,
-      redirect: import.meta.env.ROUTER_DEFAULT_PAGE
+      redirect: ROUTER_DEFAULT_PAGE
     },
     {
       path: "/:pathMatch(.*)*",
-      redirect: import.meta.env.ROUTER_DEFAULT_PAGE
+      redirect: ROUTER_DEFAULT_PAGE
     },
     {
-      path: "/content",
-      component: Layout,
+      path: "/garden",
+      component: Garden,
       children: _routes
     }
   ];
