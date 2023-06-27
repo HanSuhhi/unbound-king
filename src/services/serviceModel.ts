@@ -1,8 +1,12 @@
-import type { Table } from "dexie";
-import { useDb } from "./index";
+import { Dexie, type Table } from "dexie";
+import { dbData } from "./databases/index";
+
+const db: Dexie = new Dexie(import.meta.env.PROJECT_NAME);
+const dbVersion = 1;
+const stores = db.version(dbVersion).stores(dbData);
 
 export function useServiceModel<T>(table: string) {
-  const model = (useDb() as any)[table] as Table<T>;
+  const model = (db as any)[table] as Table<T>;
 
   /**
    * Add a new record async.
@@ -49,7 +53,7 @@ export function useServiceModel<T>(table: string) {
     return await model.update(index, data);
   };
 
-  return { isEmpty, add, count, update, model };
+  return { isEmpty, add, count, update, model, stores };
 }
 
 export function defineServiceExportFunction<T>(fn: T) {
@@ -60,8 +64,4 @@ export function defineServiceExportFunction<T>(fn: T) {
 export enum Boolean {
   False,
   True
-}
-
-export interface ITable {
-  id: number
 }
