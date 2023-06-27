@@ -21,7 +21,6 @@ export function defineModules() {
         type: "default-menu",
         pages: data.project
       }
-
     ];
   });
 

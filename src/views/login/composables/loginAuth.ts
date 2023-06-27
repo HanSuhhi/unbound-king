@@ -23,10 +23,16 @@ export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>
       ...loginForm.value.form,
       loginType: "JHuWYPd9be4E"
     }).send();
-    if (statusCode) return;
+    const [ifSuccess, ifFail] = useIf(!statusCode);
 
-    if (rememberMe.value) await registUserMessage(loginForm.value.form.email);
-    return access_token;
+    ifFail(() => {
+
+    });
+
+    ifSuccess(async () => {
+      if (rememberMe.value) await registUserMessage(loginForm.value.form.email);
+      token.value = access_token!;
+    });
   }
 
   async function handleLogin() {

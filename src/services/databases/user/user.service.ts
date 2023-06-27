@@ -1,6 +1,6 @@
-import { defineUniqueId } from "../../../composables/ci/uniqueId";
 import type { User } from "./user.table";
-import { Boolean, useServiceModel } from "@/services/serviceModel";
+import { defineUniqueId } from "@/composables/ci/uniqueId";
+import { Boolean, defineServiceExportFunction, useServiceModel } from "@/services/serviceModel";
 
 export function useUserService() {
   const { add, update, model } = useServiceModel<User>("user");
@@ -9,7 +9,8 @@ export function useUserService() {
     return (await model.where("email").equals(email).first());
   };
 
-  const registUserMessage = async (email: string) => {
+  const registUserMessage = defineServiceExportFunction(async (email: string) => {
+    if (import.meta.env.SSR) return null;
     email = email.toLowerCase();
     (await model.where("main").equals(Boolean.True).toArray()).forEach((user) => {
       update(user.id, { main: Boolean.False });
@@ -21,16 +22,17 @@ export function useUserService() {
     const user: User = { id, email, main: Boolean.True };
 
     return await add(user);
-  };
+  });
 
-  const getDefaultMainUser = async () => {
+  const getDefaultMainUser = defineServiceExportFunction(async () => {
     const user = await model.where("main").equals(Boolean.True).first();
     return user;
-  };
+  });
 
-  const getAllUsers = async () => {
+  const getAllUsers = defineServiceExportFunction(async () => {
+    if (import.meta.env.SSR) return null;
     return await model.toArray();
-  };
+  });
 
   return {
     registUserMessage,

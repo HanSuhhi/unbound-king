@@ -12,7 +12,7 @@ const active = defineModel<boolean>();
 const { t } = useI18n();
 const { getAllUsers } = useUserService();
 
-const users = ref(await getAllUsers());
+const users = ref(import.meta.env.SSR ? [] : await getAllUsers());
 const loginForm = getLoginForm();
 function toggleEmail(email: string) {
   loginForm.value.form.email = email;

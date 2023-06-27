@@ -2,7 +2,6 @@ import type { Table } from "dexie";
 import { useDb } from "./index";
 
 export function useServiceModel<T>(table: string) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const model = (useDb() as any)[table] as Table<T>;
 
   /**
@@ -51,6 +50,11 @@ export function useServiceModel<T>(table: string) {
   };
 
   return { isEmpty, add, count, update, model };
+}
+
+export function defineServiceExportFunction<T>(fn: T) {
+  if (import.meta.env.SSR) return () => {};
+  return fn;
 }
 
 export enum Boolean {

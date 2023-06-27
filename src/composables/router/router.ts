@@ -7,6 +7,7 @@ import { Prefix } from "#/composables/constant/url";
 import Auth from "@/views/login/Login.vue";
 import Garden from "@/views/garden/Garden.vue";
 import Arcade from "@/views/arcade/Arcade.vue";
+import { Role } from "#/composables/enum/role.enum";
 
 const pages = import.meta.glob<Record<"default", Component>>("@/modules/*/*.{tsx,vue}");
 
@@ -17,17 +18,27 @@ export function useRouteConfig() {
     return {
       path: `${name}`,
       component: pages[path],
+      meta: {
+        role: Role.Developer
+      },
       name
     };
   });
 
   _routes.push({
     path: "",
+    meta: {
+      role: Role.Developer
+    },
+
     redirect: ROUTER_DEFAULT_PAGE
   });
   _routes.push({
     path: "setting",
     name: "setting",
+    meta: {
+      role: Role.Developer
+    },
     component: () => import("@/modules/setting/BaseSetting.vue")
   });
 
@@ -41,21 +52,28 @@ export function useRouteConfig() {
       component: Auth
     },
     {
-      path: "/arcade",
-      component: Arcade
-    },
-    {
       path: `/${Prefix.Client}`,
       redirect: ROUTER_DEFAULT_PAGE
     },
     {
+      // @TODO turn to 404
       path: "/:pathMatch(.*)*",
       redirect: ROUTER_DEFAULT_PAGE
     },
     {
+      path: "/arcade",
+      component: Arcade,
+      meta: {
+        role: Role.Player
+      }
+    },
+    {
       path: "/garden",
       component: Garden,
-      children: _routes
+      children: _routes,
+      meta: {
+        role: Role.Developer
+      }
     }
   ];
 

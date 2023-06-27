@@ -2,22 +2,38 @@ import { find, findIndex, isEmpty } from "lodash";
 import { useLoadingBar } from "naive-ui";
 import { storeToRefs } from "pinia";
 import type { RouteLocationNormalized } from "vue-router";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { TRANSITION_DURATION } from "../constant/env";
 import { releaseRoutes } from "../router/router";
-import { usePlayerStore } from "@/stores/player.store";
 import { useGlobalStore } from "@/stores/global.store";
 import { routes } from "@/components/app/global-header/GlobalHeader";
 import { useAppAsideStore } from "@/components/app/appAside/store/aside.store";
 
 function useRouterBefore() {
   const loadingBar = useLoadingBar();
+  // const { }  = storeToRefs(useAuthStore());
   const router = useRouter();
+  const { meta: { role } } = useRoute();
+
+  if (role) {
+  }
+
+  // return router.push({ path: ROUTER_DEFAULT_PAGE });
+
+  const isRoleRight = (to: RouteLocationNormalized) => {
+  };
 
   router.beforeEach((to) => {
     const { pages, activeMenuIndex } = storeToRefs(useAppAsideStore());
-    const { states } = storeToRefs(usePlayerStore());
     loadingBar.start();
+
+    try {
+      isRoleRight(to);
+    }
+    catch (error) {
+      loadingBar.finish();
+    }
+
     if (releaseRoutes.includes(to.name as string)) {
       activeMenuIndex.value = "";
       return true;
@@ -30,18 +46,6 @@ function useRouterBefore() {
       loadingBar.error();
       return false;
     }
-    const auths = Array.from(toPage.auth);
-
-    try {
-      auths.forEach((auth) => {
-        const pass = states.value[auth as keyof typeof states.value];
-        if (!pass) throw new Error("no permission");
-      });
-    }
-    catch (error) {
-      console.error(error);
-      return false;
-    }
 
     activeMenuIndex.value = toPage.key.join("-");
   });
@@ -50,6 +54,7 @@ function useRouterBefore() {
 function useRouteAfter() {
   const loadingBar = useLoadingBar();
   const router = useRouter();
+
   const { activePage, activeAsideModule } = storeToRefs(useGlobalStore());
   const { pageTransition } = storeToRefs(useGlobalStore());
   const { pages, activeModules } = useAppAsideStore();
