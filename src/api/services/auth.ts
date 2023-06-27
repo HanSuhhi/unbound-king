@@ -4,18 +4,21 @@ import { alovaInst } from "../alova";
 import type { ResponseOriginData } from "#/composables/types/api";
 
 type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
-interface ResponseType {
+export interface ResponseType_PostLoginWithEmail {
   /**
-   * access token
-   */
-  access_token?: string
+    * access token
+    */
+  access_token: string
+  /**
+    * user roles
+    */
+  roles: Array<"KQ8eB1eVCnIs" | "ZU3rj2Ru2rIT" | "ReBvrITKJYLo">
 }
-interface RequestBody {
+export interface RequestBody_PostLoginWithEmail {
   email: string
   code: number
   loginType: "JHuWYPd9be4E" | "9anqHyzvl83l"
 }
-
-export function postLoginWithEmail(request: RequestBody, config: Config<ResponseOriginData<ResponseType>> = {}) {
-  return alovaInst.Post<ResponseOriginData<ResponseType>>("/v1/auth/login-email", request, config);
+export function postLoginWithEmail(request: RequestBody_PostLoginWithEmail, config: Config<ResponseOriginData<ResponseType_PostLoginWithEmail>> = {}) {
+  return alovaInst.Post<ResponseOriginData<ResponseType_PostLoginWithEmail>>("/v1/auth/login-email", request, config);
 }

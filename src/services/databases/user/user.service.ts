@@ -5,7 +5,7 @@ import { Boolean, defineServiceExportFunction, useServiceModel } from "@/service
 export function useUserService() {
   const { add, update, model } = useServiceModel<User>("user");
 
-  const isEmailRegist = async (email: string) => {
+  const isEmailRegist = async (email: string): Promise<User | undefined> => {
     return (await model.where("email").equals(email).first());
   };
 
@@ -34,9 +34,16 @@ export function useUserService() {
     return await model.toArray();
   });
 
+  const deleteUserMessage = defineServiceExportFunction(async (email: string) => {
+    email = email.toLowerCase();
+    const user = await isEmailRegist(email);
+    if (user) return await model.delete(user.id);
+  });
+
   return {
     registUserMessage,
     getDefaultMainUser,
-    getAllUsers
+    getAllUsers,
+    deleteUserMessage
   };
 }

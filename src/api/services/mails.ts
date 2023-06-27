@@ -8,7 +8,7 @@ type ResponseType = string;
 
 export function getVerificationCode(params: {
   to: string
-}, config: Config<ResponseOriginData<ResponseType>> = { params }) {
+}, config: Config<ResponseOriginData<ResponseType_GetVerificationCode>> = { params }) {
   config.params = params;
-  return alovaInst.Get<ResponseOriginData<ResponseType>>("/v1/mails/verification-code", config);
+  return alovaInst.Get<ResponseOriginData<ResponseType_GetVerificationCode>>("/v1/mails/verification-code", config);
 }

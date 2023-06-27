@@ -1,17 +1,19 @@
 import { ApiProperty } from "@nestjs/swagger";
-import type { Role } from "#/composables/enum/role.enum";
+import { Role } from "#/composables/enum/role.enum";
 
 export class LoginVo {
   @ApiProperty({
     type: String,
-    required: false,
+    required: true,
     description: "access token"
   })
   access_token: string;
 
   @ApiProperty({
-    type: Object,
+    type: Array,
+    enum: Role,
     required: true,
+    isArray: true,
     description: "user roles"
   })
   roles: Role[];

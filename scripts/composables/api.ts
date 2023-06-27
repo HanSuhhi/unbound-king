@@ -2,6 +2,7 @@ import { spawn } from "node:child_process";
 import { resolve } from "node:path";
 import { writeFile } from "node:fs";
 import { forEach, isEmpty, lowerCase } from "lodash";
+import { capitalize } from "../../composables/js/string";
 
 export const IMPORT_PACKAGES_TEMPLATE = `import type { AlovaMethodCreateConfig } from "alova";
 import type { FetchRequestInit } from "alova/GlobalFetch";
@@ -44,9 +45,9 @@ export function defineParams(parameters: any): string {
   return params ? `params: ${params}, ` : "";
 }
 
-export function defineBody(requestBody: any, components: any) {
+export function defineBody(requestBody: any, components: any, methodTitle: string) {
   if (isEmpty(requestBody)) return "";
-  return parseSchemaRef(requestBody.content["application/json"].schema.$ref, components, "RequestBody");
+  return parseSchemaRef(requestBody.content["application/json"].schema.$ref, components, methodTitle, "RequestBody");
 }
 
 /**
@@ -82,32 +83,49 @@ export function writeServices(files: Dictionary<string[]>) {
   console.log("Saved!");
 }
 
-function generatePropertyDescription(dto: any, typename: string) {
+function parseSchemasTypeDetail({ type, enum: typeEnum, items }: any) {
+  const parseEnum = <T>(_enum: Array<T>) => {
+    return _enum.map((enumItem: T) => `"${enumItem}"`).join(" | ");
+  };
+  switch (type) {
+    case "string":
+      if (typeEnum) return parseEnum(typeEnum);
+      return type;
+    case "array":
+      if (items) {
+        const enumTypeString = parseEnum(items.enum);
+        return `Array<${enumTypeString}>`;
+      }
+      return type;
+    default:
+      return type;
+  }
+}
+
+function generatePropertyDescription(dto: any, typename: string, methodTitle: string) {
   const descriptions = Object.entries(dto.properties).map(([key, value]: any) => {
-    const { type, description } = value;
-    const _description = description
+    const _description = value.description
       ? `/**
-   * ${description}
-   */\n`
+    * ${value.description}
+    */\n`
       : "";
-    return `${_description}${key}${dto?.required?.includes(key) ? "" : "?"}: ${value.enum
-? value
-      .enum
-        .map((enumItem: string) => `"${enumItem}"`)
-        .join(" | ")
-: type};`;
+    return `${_description}${key}${dto?.required?.includes(key) ? "" : "?"}: ${parseSchemasTypeDetail(value)};`;
   });
-  const typefile = `interface ${typename} {
+  const typefile = `export interface ${defineTypeName(typename, methodTitle)} {
     ${descriptions.join("\n")}
   };`;
   return typefile;
 }
 
-export function parseSchemaRef($ref: string, components: any, typename: "ResponseType" | "RequestBody" = "ResponseType") {
+export function defineTypeName(typename: string, methodTitle: string) {
+  return `${typename}_${capitalize(methodTitle)}`;
+}
+
+export function parseSchemaRef($ref: string, components: any, methodTitle: string, typename: "ResponseType" | "RequestBody" = "ResponseType") {
   const schemasPath = "#/components/schemas/";
   if (!$ref.startsWith(schemasPath)) return `type ${typename} = ${$ref};`;
   $ref = $ref.replace(schemasPath, "").replace(/\//g, ".");
   const dto = components.schemas[$ref];
-  const type = generatePropertyDescription(dto, typename);
+  const type = generatePropertyDescription(dto, typename, methodTitle);
   return type;
 }

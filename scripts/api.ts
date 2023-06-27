@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import { HttpStatus } from "@nestjs/common";
 import { capitalize } from "../composables/js/string";
 import { Prefix } from "../composables/constant/url";
-import { defineBody, defineParams, defineServiceFiles, filterQueryPath, parseSchemaRef, writeServices } from "./composables/api";
+import { defineBody, defineParams, defineServiceFiles, defineTypeName, filterQueryPath, parseSchemaRef, writeServices } from "./composables/api";
 import { clearFolder } from "./composables/fs";
 
 export async function createClientApiTemplate() {
@@ -19,22 +19,20 @@ export async function createClientApiTemplate() {
     path = filterQueryPath(path);
     for (const method in pathItem) {
       const { operationId, responses, parameters, requestBody, tags } = pathItem[method];
-      const returnType
-        = parseSchemaRef(
-          responses[HttpStatus.OK]?.content["application/json"].schema.type || responses[HttpStatus.CREATED]?.content["application/json"].schema.$ref,
-          components
-        );
-      const requestType = defineBody(requestBody, components);
+      const methodTitle = `${method}${capitalize(operationId.split("Controller_")[1])}`;
+      const returnType = parseSchemaRef(responses[HttpStatus.OK]?.content["application/json"].schema.type || responses[HttpStatus.CREATED]?.content["application/json"].schema.$ref, components, methodTitle);
+      const requestType = defineBody(requestBody, components, methodTitle);
+      const params = defineParams(parameters);
+      const requestBodyType = defineTypeName("RequestBody", methodTitle);
+      const responseBodyType = defineTypeName("ResponseType", methodTitle);
+
       result += `${returnType}\n`;
       result += `${requestType}\n`;
-      const params = defineParams(parameters);
+      result += `export function ${methodTitle}(${requestType && `request: ${requestBodyType},`}${params}config: Config<ResponseOriginData<${responseBodyType}>> = {${params && " params "}}) {
+        ${params ? "config.params = params;" : ""}
+        return alovaInst.${capitalize(method.toLowerCase())}<ResponseOriginData<${responseBodyType}>>("${path}",${method === "post" ? "request," : ""} config);
+      }`;
 
-      result += `
-export function ${method}${capitalize(operationId.split("Controller_")[1])}(${requestType && "request: RequestBody,"}${params}config: Config<ResponseOriginData<ResponseType>> = {${params && " params "}}) {
-  ${params ? "config.params = params;" : ""}
-  return alovaInst.${capitalize(method.toLowerCase())}<ResponseOriginData<ResponseType>>("${path}",${method === "post" ? "request," : ""} config);
-}
-`;
       defineServiceFiles(files, tags, result);
     }
   }
