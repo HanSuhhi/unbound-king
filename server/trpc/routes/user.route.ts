@@ -20,9 +20,13 @@ export class UserRoute {
       .input(this.emailValidate)
       .query(async ({ input: email }) => await this.userModel.findOne({ email }).exec()),
     createDefaultUserByEmail: this.trpc.procedure
-      .input(this.emailValidate)
-      .mutation(async ({ input: email }) => await this.userModel.create({
+      .input(z.object({
+        email: this.emailValidate,
+        name: z.string()
+      }))
+      .mutation(async ({ input: { email, name } }) => await this.userModel.create({
         email,
+        name,
         roles: UsersService.DEFAULT_USER_ROLES
       }))
   });

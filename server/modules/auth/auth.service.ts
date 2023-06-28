@@ -9,6 +9,7 @@ import type { LoginVo } from "./vos/login.vo";
 import { useMinute } from "#/composables/time/ms";
 import { TrpcRouter } from "@/trpc/trpc.router";
 import { i18nLangModel } from "#/composables/i18n";
+import { convertEmailToPrefix } from "@/composables/string/email";
 
 @Injectable()
 export class AuthService {
@@ -34,11 +35,17 @@ export class AuthService {
    * @throws {UnauthorizedException} If the provided code is not right.
    * @returns {LoginVo} The created user.
    */
-  public async register(registerDto: LoginDto): Promise<LoginVo> {
-    await this.validateCode(registerDto.email)(registerDto.code);
-    let user = await this.trpcRouter.caller.user.findOneByEmail(registerDto.email);
+  public async register({ email, code }: LoginDto): Promise<LoginVo> {
+    await this.validateCode(email)(code);
+    let user = await this.trpcRouter.caller.user.findOneByEmail(email);
 
-    if (!user) user = await this.trpcRouter.caller.user.createDefaultUserByEmail(registerDto.email);
+    if (!user) {
+      const name = convertEmailToPrefix(email);
+      user = await this.trpcRouter.caller.user.createDefaultUserByEmail({
+        email,
+        name
+      });
+    }
 
     return this.coreLogin(user);
   }
@@ -51,12 +58,12 @@ export class AuthService {
    * @throws {HttpException} If the provided email is not registered.
    * @returns {LoginVo} An object containing the generated JWT token.
    */
-  public async login(loginDto: LoginDto): Promise<LoginVo> {
-    const code = await this.validateCode(loginDto.email)(loginDto.code);
+  public async login({ email, code }: LoginDto): Promise<LoginVo> {
+    await this.validateCode(email)(code);
 
-    const user = await this.trpcRouter.caller.user.findOneByEmail(loginDto.email);
+    const user = await this.trpcRouter.caller.user.findOneByEmail(email);
     if (!user) {
-      this.cacheManager.set(loginDto.email, code, useMinute(5));
+      this.cacheManager.set(email, code, useMinute(5));
       throw new HttpException("user not found", HttpStatus.ACCEPTED);
     }
 
@@ -69,10 +76,11 @@ export class AuthService {
    * @param {UserDocument} user - registed user
    * @returns {LoginVo} An object containing the authentication token
    */
-  private async coreLogin({ _id, email, roles }: UserDocument): Promise<LoginVo> {
+  private async coreLogin({ _id, email, roles, name }: UserDocument): Promise<LoginVo> {
     const payload = { sub: _id, email, roles };
     return {
       access_token: await this.jwtService.signAsync(payload),
+      name,
       roles
     };
   }

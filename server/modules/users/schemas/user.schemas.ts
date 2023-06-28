@@ -15,6 +15,13 @@ export class User {
 
   @Prop({
     required: true,
+    type: String,
+    trim: true
+  })
+  name: string;
+
+  @Prop({
+    required: true,
     type: Array<Role>,
     default: [Role.Player]
   })

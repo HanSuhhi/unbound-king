@@ -17,4 +17,11 @@ export class LoginVo {
     description: "user roles"
   })
   roles: Role[];
+
+  @ApiProperty({
+    type: String,
+    required: true,
+    description: "user name"
+  })
+  name: string;
 }
