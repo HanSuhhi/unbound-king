@@ -65,7 +65,7 @@ import LoginOptions from "./components/LoginOptions.vue";
     justify-content: space-between;
 
     width: 100%;
-    height: 100%;
+    height: 0%;
   }
 
   .login-right {

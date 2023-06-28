@@ -17,11 +17,12 @@ import { useAuthStore } from "@/stores/auth.store";
 import type { Role } from "#/composables/enum/role.enum";
 import { CLIENT_GAME_PREFIX } from "#/composables/constant/url";
 
-export function loginSuccess(userToken: string, userRoles: Role[], router: Router) {
-  const { token, roles } = storeToRefs(useAuthStore());
+export function loginSuccess(userEmail: string, userToken: string, userRoles: Role[], router: Router) {
+  const { token, roles, email } = storeToRefs(useAuthStore());
 
   token.value = userToken!;
   roles.value = userRoles!;
+  email.value = userEmail!;
   router.push({ name: CLIENT_GAME_PREFIX });
 }
 
@@ -47,7 +48,7 @@ export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>
     if (keepSigned.value) await storeUserToken(email.value, access_token, userRoles as Role[]);
     else await deleteUserToken(email.value);
 
-    loginSuccess(access_token, userRoles as Role[], router);
+    loginSuccess(email.value, access_token, userRoles as Role[], router);
   }
 
   async function registration() {

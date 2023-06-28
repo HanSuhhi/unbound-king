@@ -1,24 +1,26 @@
 <script setup lang='ts'>
 import LifeHash from "@hansuhhi-don/lifehash-vue";
-import { NUpload } from "naive-ui";
-import { useAvator, useUploadAvator } from "../composables/avator";
+import { useAvator } from "../composables/avator";
 
-const { avator, isDefault } = useAvator();
-const { updateAvator } = useUploadAvator();
+const { email } = useAvator();
 </script>
 
 <template>
-  <n-upload
+  <div class="user-avator" cursor-pointer>
+    <span>
+      <life-hash :input="email" />
+    </span>
+  </div>
+  <!-- <n-upload
     :show-file-list="false"
     :on-before-upload="updateAvator"
   >
     <div class="user-avator" cursor-pointer>
       <span>
-        <life-hash v-if="isDefault" :input="avator" />
-        <img v-else :src="avator">
+        <life-hash :input="email" />
       </span>
     </div>
-  </n-upload>
+  </n-upload> -->
 </template>
 
 <style scoped>

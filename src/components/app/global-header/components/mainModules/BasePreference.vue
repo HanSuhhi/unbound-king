@@ -2,7 +2,6 @@
 import { NBadge, NGi, NGrid } from "naive-ui";
 import { storeToRefs } from "pinia";
 import { defineQuitEvent } from "../../composables/quitEvent";
-import { loadUser } from "../../composables/user";
 import { defineOpenSetting } from "../../composables/openSetting";
 import { usePopoverControl } from "../../composables/popoverControl";
 import UserCard from "../UserCard.vue";
@@ -33,7 +32,6 @@ const modules: AppHeaderModule[] = [
 ];
 
 closeModules(popoverControl.popoverControl, index);
-loadUser();
 </script>
 
 <template>

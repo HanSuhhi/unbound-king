@@ -24,7 +24,7 @@ const loginForm = getLoginForm();
 function toggleEmail({ email, token: userToken, roles: userRoles }: User) {
   const [ifHaveToken, ifDontHaveToken] = useIf(userToken);
 
-  ifHaveToken(loginSuccess.bind(null, userToken!, userRoles!, router));
+  ifHaveToken(loginSuccess.bind(null, email, userToken!, userRoles!, router));
 
   ifDontHaveToken(() => {
     loginForm.value.form.email = email;
