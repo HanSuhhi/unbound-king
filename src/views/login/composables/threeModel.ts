@@ -7,7 +7,7 @@ import { WindowEnum } from "@/enums/window.enum";
 function adjustModelSize(renderer: WebGLRenderer) {
   if (innerWidth <= WindowEnum.Divide) renderer.setSize(0, 0);
   else if (innerWidth <= WindowEnum.SlightlyBigger)renderer.setSize(innerWidth / 3.5, innerWidth / 3.5);
-  else renderer.setSize(innerWidth / 3, innerWidth / 3);
+  else renderer.setSize(innerWidth / 4, innerWidth / 4);
 }
 
 export function useThreeModel(ref: Ref<HTMLElement>) {

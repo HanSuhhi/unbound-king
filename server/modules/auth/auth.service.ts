@@ -40,10 +40,10 @@ export class AuthService {
     let user = await this.trpcRouter.caller.user.findOneByEmail(email);
 
     if (!user) {
-      const name = convertEmailToPrefix(email);
+      const nickname = convertEmailToPrefix(email);
       user = await this.trpcRouter.caller.user.createDefaultUserByEmail({
         email,
-        name
+        nickname
       });
     }
 
@@ -59,11 +59,11 @@ export class AuthService {
    * @returns {LoginVo} An object containing the generated JWT token.
    */
   public async login({ email, code }: LoginDto): Promise<LoginVo> {
-    await this.validateCode(email)(code);
+    const originCode = await this.validateCode(email)(code);
 
     const user = await this.trpcRouter.caller.user.findOneByEmail(email);
     if (!user) {
-      this.cacheManager.set(email, code, useMinute(5));
+      this.cacheManager.set(email, originCode, useMinute(5));
       throw new HttpException("user not found", HttpStatus.ACCEPTED);
     }
 
@@ -76,11 +76,11 @@ export class AuthService {
    * @param {UserDocument} user - registed user
    * @returns {LoginVo} An object containing the authentication token
    */
-  private async coreLogin({ _id, email, roles, name }: UserDocument): Promise<LoginVo> {
+  private async coreLogin({ _id, email, roles, nickname }: UserDocument): Promise<LoginVo> {
     const payload = { sub: _id, email, roles };
     return {
       access_token: await this.jwtService.signAsync(payload),
-      name,
+      nickname,
       roles
     };
   }

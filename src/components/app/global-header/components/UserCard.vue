@@ -5,7 +5,7 @@ import Explanation from "@/components/experience/Explanation.vue";
 import { useAuthStore } from "@/stores/auth.store";
 import ResetInput from "@/components/inputs/ResetInput.vue";
 
-const { email, name } = storeToRefs(useAuthStore());
+const { email, nickname } = storeToRefs(useAuthStore());
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const { email, name } = storeToRefs(useAuthStore());
     <user-avator />
     <div class="user-card_title">
       <p class="p-reset user-card_name">
-        <reset-input v-model="name" :minlength="1" :maxlength="20" class="user-card_input" placeholder="请输入用户名称" />
+        <reset-input v-model="nickname" :minlength="1" :maxlength="20" class="user-card_input" placeholder="请输入用户名称" />
       </p>
       <p class="p-reset user-card_email">
         {{ email || "emailmetoday@email.com" }}

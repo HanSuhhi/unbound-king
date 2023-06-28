@@ -18,7 +18,7 @@ export class User {
     type: String,
     trim: true
   })
-  name: string;
+  nickname: string;
 
   @Prop({
     required: true,

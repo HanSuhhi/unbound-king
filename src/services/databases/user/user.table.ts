@@ -6,7 +6,8 @@ export interface User extends ITable {
   email: string
   token?: string
   roles?: Role[]
+  nickname?: string
   main: Boolean
 }
 
-export default "id, email,string, main";
+export default "id, email, token, roles, nickname, main";

@@ -22,11 +22,11 @@ export class UserRoute {
     createDefaultUserByEmail: this.trpc.procedure
       .input(z.object({
         email: this.emailValidate,
-        name: z.string()
+        nickname: z.string()
       }))
-      .mutation(async ({ input: { email, name } }) => await this.userModel.create({
+      .mutation(async ({ input: { email, nickname } }) => await this.userModel.create({
         email,
-        name,
+        nickname,
         roles: UsersService.DEFAULT_USER_ROLES
       }))
   });

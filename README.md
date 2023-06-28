@@ -49,6 +49,8 @@ Design user permissions using CASL.
 
 ## Client
 
+> Before we begin, please generate the interface API by running the command `pnpm esno:api` after starting the server.
+
 The client includes two important routes: one for game-related content and the other for backend management.
 
 - ### Game-related

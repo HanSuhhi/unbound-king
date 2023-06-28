@@ -21,10 +21,14 @@ const { getAllUsers } = useUserService();
 
 const users = ref(import.meta.env.SSR ? [] : await getAllUsers());
 const loginForm = getLoginForm();
-function toggleEmail({ email, token: userToken, roles: userRoles }: User) {
-  const [ifHaveToken, ifDontHaveToken] = useIf(userToken);
+function toggleEmail({ token, email, nickname, roles }: User) {
+  const [ifHaveToken, ifDontHaveToken] = useIf(token);
 
-  ifHaveToken(loginSuccess.bind(null, email, userToken!, userRoles!, router));
+  ifHaveToken(loginSuccess.bind(null, email, {
+    access_token: token!,
+    nickname: nickname!,
+    roles: roles!
+  }, router));
 
   ifDontHaveToken(() => {
     loginForm.value.form.email = email;

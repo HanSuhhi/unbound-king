@@ -21,7 +21,7 @@ export class LoginVo {
   @ApiProperty({
     type: String,
     required: true,
-    description: "user name"
+    description: "user nickname"
   })
-  name: string;
+  nickname: string;
 }

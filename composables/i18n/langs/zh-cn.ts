@@ -39,6 +39,12 @@ export default defineLang({
       confirm: "弹窗确定"
     }
   },
+  error: {
+    findUserHistoryIndexDB: "01: 无法在 indexDB 中查找到用户，请联系管理员。"
+  },
+  usercard: {
+    nameInputPlaceholder: "请输入昵称"
+  },
   auth: {
     title: "正在登录...",
     emailPlaceholder: "邮箱地址...",

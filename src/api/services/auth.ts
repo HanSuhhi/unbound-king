@@ -13,6 +13,10 @@ export interface ResponseType_PostLoginWithEmail {
     * user roles
     */
   roles: Array<"KQ8eB1eVCnIs" | "ZU3rj2Ru2rIT" | "ReBvrITKJYLo">
+  /**
+    * user nickname
+    */
+  nickname: string
 }
 export interface RequestBody_PostLoginWithEmail {
   email: string

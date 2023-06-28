@@ -19,6 +19,9 @@ const enUsModel = {
       more: "Learn more..."
     }
   },
+  usercard: {
+    nameInputPlaceholder: "please input your nickname"
+  },
   modules: {
     i18n: "Language",
     theme: {
@@ -37,6 +40,9 @@ const enUsModel = {
       close: "close dialog",
       confirm: "confirm"
     }
+  },
+  error: {
+    findUserHistoryIndexDB: "01: Unable to find user in index db, please contact administrator"
   },
   auth: {
     title: "Login to your Account",

@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 
 const useAuthStore = defineStore("auth", () => {
-  const name = ref("hello world");
+  const nickname = ref("");
   const email = ref("");
   const token = ref("");
   const roles = ref<ResponseType_PostLoginWithEmail["roles"]>([]);
@@ -15,7 +15,7 @@ const useAuthStore = defineStore("auth", () => {
     token,
     roles,
     email,
-    name
+    nickname
   };
 });
 
