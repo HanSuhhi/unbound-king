@@ -11,3 +11,12 @@ const threeRef = ref<HTMLElement>();
 <template>
   <section ref="threeRef" class="login-model" />
 </template>
+
+<style scoped>
+@layer component {
+  .login-model {
+    position: relative;
+    left: -5rem;
+  }
+}
+</style>

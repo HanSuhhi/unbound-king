@@ -46,6 +46,7 @@ import LoginOptions from "./components/LoginOptions.vue";
     --right-width: 30%;
     --decorator-scale: .5;
     --decorator-width: 10vw;
+    --left-offset: 6rem;
 
     position: relative;
     right: var(--login-right);
@@ -90,33 +91,40 @@ import LoginOptions from "./components/LoginOptions.vue";
 
     position: absolute;
     bottom: 0;
-    left: 6rem;
+    left: var(--left-offset, 6rem);
 
     height: 100%;
   }
 
   .login-left {
     position: relative;
+    left: var(--left-offset, 6rem);
 
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 
-    width: 70%;
+    width: calc(70% - var(--left-offset));
     height: 100%;
   }
 
   .login-left::after {
     content: "";
+
     position: absolute;
-    left: 6rem;
+    top: 0;
+    left: 0;
+
     height: calc(100% - var(--base-margin));
   }
 
   .login-left::before {
     content: "";
+
     position: absolute;
-    right: 0;
+    top: 0;
+    right: var(--left-offset, 6rem);
+
     height: calc(100% + 2 * var(--base-margin));
   }
 
@@ -145,6 +153,19 @@ import LoginOptions from "./components/LoginOptions.vue";
     position: absolute;
     bottom: 0;
     left: 0;
+  }
+
+  @media (width <= 755px) {
+    .login-left::after,
+    .login-header::before {
+      display: none;
+    }
+  }
+  @media (width <= 954px) {
+    .login-left::before,
+    .login-third-party::before {
+      display: none;
+    }
   }
 
 }

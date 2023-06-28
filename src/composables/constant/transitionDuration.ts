@@ -1,5 +1,7 @@
 import { nextTick } from "vue";
+import { forEach, kebabCase } from "lodash";
 import { HEADER_HEIGHT, HTML_FONT_SIZE, TRANSITION_DURATION } from "./env";
+import { WindowEnum } from "@/enums/window.enum";
 
 /**
  * Set default transition duration
@@ -8,8 +10,7 @@ import { HEADER_HEIGHT, HTML_FONT_SIZE, TRANSITION_DURATION } from "./env";
  */
 function setDefaultTransitionDuration(): number {
   const animationNumber = TRANSITION_DURATION / 1000 || 0;
-  if (!import.meta.env.SSR)
-    document.querySelector("body")?.style.setProperty("--transition-duration", `${animationNumber}s`);
+  document.querySelector("body")?.style.setProperty("--transition-duration", `${animationNumber}s`);
   return animationNumber;
 }
 
@@ -20,8 +21,7 @@ function setDefaultTransitionDuration(): number {
  */
 function setDefaultHtmlFontSize(): string {
   const fontsize = HTML_FONT_SIZE || "16px";
-  if (!import.meta.env.SSR)
-    document.documentElement.style.fontSize = fontsize;
+  document.documentElement.style.fontSize = fontsize;
   return fontsize;
 }
 
@@ -32,13 +32,20 @@ function setDefaultHtmlFontSize(): string {
  */
 function setDefaultHeaderHeight(): string {
   const headerHeight = HEADER_HEIGHT || " 4.5rem";
-  if (!import.meta.env.SSR)
-    document.querySelector("body")?.style.setProperty("--global-header-height", `${headerHeight}`);
+  document.querySelector("body")?.style.setProperty("--global-header-height", `${headerHeight}`);
   return headerHeight;
 }
 
+function setWindowSize() {
+  forEach(WindowEnum, (value, key) => {
+    document.querySelector("body")?.style.setProperty(`--${kebabCase(key)}`, value.toString());
+  });
+}
+
 export async function provideStaticStyleVariables() {
+  if (import.meta.env.SSR) return;
   await nextTick(setDefaultTransitionDuration);
   await nextTick(setDefaultHtmlFontSize);
   await nextTick(setDefaultHeaderHeight);
+  await nextTick(setWindowSize);
 }

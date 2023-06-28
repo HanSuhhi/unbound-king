@@ -2,6 +2,13 @@ import { BoxGeometry, Mesh, MeshBasicMaterial, PerspectiveCamera, Scene, WebGLRe
 import type { Ref } from "vue";
 import { onMounted } from "vue";
 import Stats from "three/examples/jsm/libs/stats.module";
+import { WindowEnum } from "@/enums/window.enum";
+
+function adjustModelSize(renderer: WebGLRenderer) {
+  if (innerWidth <= WindowEnum.Divide) renderer.setSize(0, 0);
+  else if (innerWidth <= WindowEnum.SlightlyBigger)renderer.setSize(innerWidth / 3.5, innerWidth / 3.5);
+  else renderer.setSize(innerWidth / 3, innerWidth / 3);
+}
 
 export function useThreeModel(ref: Ref<HTMLElement>) {
   const scene = new Scene();
@@ -18,7 +25,8 @@ export function useThreeModel(ref: Ref<HTMLElement>) {
   function initThree() {
     camera.position.set(0, 0, 40);
 
-    renderer.setSize(450, 450);
+    adjustModelSize(renderer);
+
     renderer.setClearAlpha(0);
 
     ref.value.appendChild(renderer.domElement);
@@ -29,15 +37,10 @@ export function useThreeModel(ref: Ref<HTMLElement>) {
       stats.update();
       requestAnimationFrame(animate);
 
-      box.rotation.x += 0.01;
-      box.rotation.y += 0.01;
+      box.rotation.x += 0.005;
+      box.rotation.y += 0.005;
       renderer.render(scene, camera);
-      const { width, height } = ref.value.getBoundingClientRect();
-      window.onresize = function () {
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-        renderer.setSize(width, height);
-      };
+      window.onresize = adjustModelSize.bind(null, renderer);
     }
     animate();
   }

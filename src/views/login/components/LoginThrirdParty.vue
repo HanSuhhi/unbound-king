@@ -22,6 +22,14 @@ function loginWithGithub() {
   </section>
 </template>
 
+<style>
+@container (max-width: 600px) {
+  .login-header {
+    color: red !important;
+  }
+}
+</style>
+
 <style scoped>
 @layer component {
   .login-third-party {
