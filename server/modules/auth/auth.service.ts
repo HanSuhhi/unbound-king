@@ -81,9 +81,9 @@ export class AuthService {
    * Validates the input code against the cached code using the provided email.
    *
    * @param {string} email - The email of the user to validate the code for.
-   * @returns {Promise<(code: number) => Promise<boolean>>} - A function that takes in a code and returns a promise resolving to a boolean indicating if the input code is valid or not.
+   * @returns {(code: number) => Promise<number>} - A function that takes in a code and returns a promise resolving to a number indicating if the input code is valid or not.
    */
-  private validateCode(email: string) {
+  private validateCode(email: string): (code: number) => Promise<number> {
     /**
      * A closure function that takes in a code and validates it against the cached code for the email.
      *

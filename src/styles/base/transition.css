@@ -1,3 +1,4 @@
 body {
-  --transition-prop: var(--transition-duration) cubic-bezier(0.55, 0, 0.1, 1);
+  --transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  --transition-prop: var(--transition-duration) var(--transition-timing-function)
 }

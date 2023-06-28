@@ -5,4 +5,5 @@ export enum Prefix {
   Server = Prefix.Server_1
 }
 
-export const CLIENT_SECOND_PREFIX = "content";
+export const CLIENT_SECOND_PREFIX = "gargen";
+export const CLIENT_GAME_PREFIX = "arcade";

@@ -48,12 +48,13 @@ export default defineLang({
     loginTitleSuffix: "百无禁忌",
     subtitle: "伙伴们都在等待你的回来！",
     rememberEmail: "记住邮箱",
-    keepMeSignedIn: "保持登录状态（一周）",
+    keepMeSignedIn: "保持登录状态（10 天）",
     agreePolicy: "我已经阅读并同意",
     policy: "隐私政策",
     historicalAccount: "历史登录账户",
     emailLoginTitle: "邮箱登录",
-    policyForm: "请关注这里 🙌"
+    policyForm: "请关注这里 🙌",
+    userHistoryEmpty: "暂无用户登录信息"
   },
   userDrawer: {
     title: "用户列表"

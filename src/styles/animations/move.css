@@ -1,0 +1,13 @@
+@keyframes move-up-down {
+  0%   {
+    top: 0;
+  }
+
+  50%  {
+    top: var(--small);
+  }
+
+  100% {
+    top: 0;
+  }
+}

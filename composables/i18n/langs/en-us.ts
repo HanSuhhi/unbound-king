@@ -47,12 +47,13 @@ const enUsModel = {
     loginTitleSuffix: "nothing taboo",
     subtitle: "Your peeps are hanging on you coming back.",
     rememberEmail: "Remember Email",
-    keepMeSignedIn: "Keep me signed in (one week)",
+    keepMeSignedIn: "Keep me signed in (10 days)",
     agreePolicy: "I have read and agree to the",
     policy: "Privacy Policy.",
     historicalAccount: "Historical Account",
     emailLoginTitle: "Login With Email",
-    policyForm: "Follow it please 🙌"
+    policyForm: "Follow it please 🙌",
+    userHistoryEmpty: "No Saved Users"
   },
   userDrawer: {
     title: "User List"

@@ -14,13 +14,13 @@ import { i18nLangModel } from "#/composables/i18n/index";
 const { t } = useI18n();
 
 const { FormInst, loginForm, loginFormRules } = useLoginForm();
-const { handleLogin, rememberMe, keepLogin } = useLoginAuth(loginForm, FormInst);
+const { handleLogin, rememberEmail, keepSigned } = useLoginAuth(loginForm, FormInst);
 const { fromHistory } = initLoginData(loginForm);
 const { historyDrawer } = useUserHistory();
 
 watch(fromHistory, (isFromHistory) => {
-  if (isFromHistory) rememberMe.value = true;
-  else rememberMe.value = false;
+  if (isFromHistory) rememberEmail.value = true;
+  else rememberEmail.value = false;
 });
 </script>
 
@@ -57,10 +57,10 @@ watch(fromHistory, (isFromHistory) => {
         </n-checkbox>
       </n-form-item>
       <div class="login-input-choosen">
-        <n-checkbox v-model:checked="rememberMe" class="login-input_remember">
+        <n-checkbox v-model:checked="rememberEmail" class="login-input_remember">
           {{ t(i18nLangModel.auth.rememberEmail) }}
         </n-checkbox>
-        <n-checkbox v-model:checked="keepLogin" class="login-input_remember ">
+        <n-checkbox v-model:checked="keepSigned" class="login-input_remember ">
           {{ t(i18nLangModel.auth.keepMeSignedIn) }}
         </n-checkbox>
         <type-button plain cursor-pointer class="login-input_more" @click="historyDrawer = true">

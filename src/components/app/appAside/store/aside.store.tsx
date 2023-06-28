@@ -26,7 +26,6 @@ const useAppAsideStore = defineStore("app-aside", () => {
   // @TODO
   const activeModules = computed<AsideModule[]>(() => {
     return modules.value;
-    // console.log("modules.value: ", modules.value);
     // return modules.value.filter((module) => {
     //   return states.value;
     // });

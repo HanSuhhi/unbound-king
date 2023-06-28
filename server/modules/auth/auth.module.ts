@@ -1,7 +1,6 @@
 import { Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { useMinute } from "../../../composables/time/ms";
 import { AuthService } from "./auth.service";
 import { AuthController } from "./auth.controller";
 import { TrpcModule } from "@/trpc/trpc.module";
@@ -15,7 +14,7 @@ import { TrpcModule } from "@/trpc/trpc.module";
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>("JWT_SECRET"),
         signOptions: {
-          expiresIn: useMinute(1)
+          expiresIn: "10 days"
         }
       })
     }),

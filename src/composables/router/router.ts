@@ -3,7 +3,7 @@ import type { Component } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 import { createMemoryHistory, createRouter, createWebHistory } from "vue-router";
 import { ROUTER_DEFAULT_PAGE } from "../constant/env";
-import { Prefix } from "#/composables/constant/url";
+import { CLIENT_GAME_PREFIX, CLIENT_SECOND_PREFIX, Prefix } from "#/composables/constant/url";
 import Auth from "@/views/login/Login.vue";
 import Garden from "@/views/garden/Garden.vue";
 import Arcade from "@/views/arcade/Arcade.vue";
@@ -31,7 +31,7 @@ export function useRouteConfig() {
       role: Role.Developer
     },
 
-    redirect: ROUTER_DEFAULT_PAGE
+    redirect: { name: ROUTER_DEFAULT_PAGE }
   });
   _routes.push({
     path: "setting",
@@ -45,35 +45,35 @@ export function useRouteConfig() {
   const routes: RouteRecordRaw[] = [
     {
       path: "/",
-      redirect: ROUTER_DEFAULT_PAGE
+      redirect: { name: ROUTER_DEFAULT_PAGE }
     },
     {
       path: "/auth",
+      name: "auth",
       component: Auth
     },
     {
       path: `/${Prefix.Client}`,
-      redirect: ROUTER_DEFAULT_PAGE
+      redirect: { name: ROUTER_DEFAULT_PAGE }
     },
+    // {
+    //   // @TODO turn to 404
+    //   path: "/:pathMatch(.*)*",
+    //   redirect: { name: ROUTER_DEFAULT_PAGE }
+    // },
     {
-      // @TODO turn to 404
-      path: "/:pathMatch(.*)*",
-      redirect: ROUTER_DEFAULT_PAGE
-    },
-    {
-      path: "/arcade",
+      path: `/${CLIENT_GAME_PREFIX}`,
+      name: `${CLIENT_GAME_PREFIX}`,
       component: Arcade,
       meta: {
         role: Role.Player
       }
     },
     {
-      path: "/garden",
+      path: `/${CLIENT_SECOND_PREFIX}`,
       component: Garden,
       children: _routes,
-      meta: {
-        role: Role.Developer
-      }
+      redirect: { name: ROUTER_DEFAULT_PAGE }
     }
   ];
 

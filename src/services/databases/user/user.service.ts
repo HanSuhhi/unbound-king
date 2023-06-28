@@ -1,6 +1,7 @@
 import type { User } from "./user.table";
 import { defineUniqueId } from "@/composables/ci/uniqueId";
 import { Boolean, defineServiceExportFunction, useServiceModel } from "@/services/serviceModel";
+import type { Role } from "#/composables/enum/role.enum";
 
 function useVersion1() {
   const { add, update, model } = useServiceModel<User>("user");
@@ -9,7 +10,7 @@ function useVersion1() {
     return (await model.where("email").equals(email).first());
   };
 
-  const registUserMessage = defineServiceExportFunction(async (email: string, token?: string) => {
+  const registUserMessage = defineServiceExportFunction(async (email: string, token?: string, roles?: Role[]) => {
     email = email.toLowerCase();
     (await model.where("main").equals(Boolean.True).toArray()).forEach((user) => {
       update(user.id, { main: Boolean.False });
@@ -18,7 +19,7 @@ function useVersion1() {
     if (registUser) return await update(registUser.id, { main: Boolean.True });
 
     const id = Number(defineUniqueId());
-    const user: User = { id, email, main: Boolean.True, token };
+    const user: User = { id, email, main: Boolean.True, token, roles };
 
     return await add(user);
   });
@@ -33,18 +34,18 @@ function useVersion1() {
     if (user) return await model.delete(user.id);
   });
 
-  const updateUserToken = defineServiceExportFunction(async (email: string, token: string) => {
+  const storeUserToken = defineServiceExportFunction(async (email: string, token: string, roles: Role[]) => {
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
     if (user) return await update(user.id, { token });
-    else return await registUserMessage(email, token);
+    else return await registUserMessage(email, token, roles);
   });
 
   const deleteUserToken = defineServiceExportFunction(async (email: string) => {
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
     if (!user) return;
-    await update(user.id, { token: "" });
+    await update(user.id, { token: "", roles: [] });
   });
 
   return {
@@ -52,7 +53,7 @@ function useVersion1() {
     getDefaultMainUser,
     getAllUsers,
     deleteUserMessage,
-    updateUserToken,
+    storeUserToken,
     deleteUserToken
   };
 }

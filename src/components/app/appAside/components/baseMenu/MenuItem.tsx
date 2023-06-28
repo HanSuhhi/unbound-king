@@ -32,7 +32,7 @@ const MenuItem = defineComponent({
       if (!activePage.value) return;
       if (releaseRoutes.includes(activePage.value.path)) return;
 
-      if (activePage.value.key.length === 2 && props.page.children) {
+      if (activePage.value.key?.length === 2 && props.page.children) {
         const parentIndex = activePage.value.key[0];
         if (parentIndex === props.page.key[0]) return true;
       }

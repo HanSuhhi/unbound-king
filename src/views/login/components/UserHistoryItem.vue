@@ -3,6 +3,7 @@ import LifeHash from "@hansuhhi-don/lifehash-vue";
 
 defineProps<{
   email: string
+  token: boolean
 }>();
 </script>
 
@@ -17,7 +18,7 @@ defineProps<{
       </p>
     </div>
     <div class="login-user_status">
-      <div class="login-user_ready">
+      <div v-if="token" class="login-user_ready">
         <icon name="check" />
       </div>
       <icon class="login-user_right" name="single-right" />
