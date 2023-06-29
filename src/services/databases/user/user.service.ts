@@ -1,3 +1,4 @@
+import type { ResponseType_PatchUserNicknameByEmail } from "../../../api/services/users";
 import type { User } from "./user.table";
 import { defineUniqueId } from "@/composables/ci/uniqueId";
 import { Boolean, defineServiceExportFunction, useServiceModel } from "@/services/serviceModel";
@@ -9,9 +10,19 @@ import { i18nLangModel } from "#/composables/i18n";
 function useVersion1() {
   const { add, update, model } = useServiceModel<User>("user");
 
-  const isEmailRegist = async (email: string): Promise<User | undefined> => {
+  async function isEmailRegist(email: string): Promise<User | undefined> {
     return (await model.where("email").equals(email).first());
-  };
+  }
+
+  const getDefaultMainUser = defineServiceExportFunction(async () => await model.where("main").equals(Boolean.True).first());
+
+  const getAllUsers = defineServiceExportFunction(async () => await model.toArray());
+
+  const deleteUserMessage = defineServiceExportFunction(async (email: string) => {
+    email = email.toLowerCase();
+    const user = await isEmailRegist(email);
+    if (user) return await model.delete(user.id);
+  });
 
   const registUserEmail = defineServiceExportFunction(async (email: string) => {
     email = email.toLowerCase();
@@ -26,16 +37,6 @@ function useVersion1() {
     const user: User = { id, email, main: Boolean.True };
 
     return await add(user);
-  });
-
-  const getDefaultMainUser = defineServiceExportFunction(async () => await model.where("main").equals(Boolean.True).first());
-
-  const getAllUsers = defineServiceExportFunction(async () => await model.toArray());
-
-  const deleteUserMessage = defineServiceExportFunction(async (email: string) => {
-    email = email.toLowerCase();
-    const user = await isEmailRegist(email);
-    if (user) return await model.delete(user.id);
   });
 
   const storeUserToken = defineServiceExportFunction(async (email: string, loginSuccessResponse: ResponseType_PostLoginWithEmail) => {
@@ -53,8 +54,17 @@ function useVersion1() {
   const deleteUserToken = defineServiceExportFunction(async (email: string) => {
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
-    if (!user) return;
+    if (!user) return findError(i18nLangModel.error.findUserHistoryIndexDB);
     await update(user.id, { token: "", roles: [], nickname: "" });
+  });
+
+  const updateUserNickname = defineServiceExportFunction(async (email: string, { nickname }: ResponseType_PatchUserNicknameByEmail) => {
+    email = email.toLowerCase();
+    const user = await isEmailRegist(email);
+    if (!user) return findError(i18nLangModel.error.findUserHistoryIndexDB);
+    await update(user.id, {
+      nickname
+    });
   });
 
   return {
@@ -63,7 +73,8 @@ function useVersion1() {
     getAllUsers,
     deleteUserMessage,
     storeUserToken,
-    deleteUserToken
+    deleteUserToken,
+    updateUserNickname
   };
 }
 

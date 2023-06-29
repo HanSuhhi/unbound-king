@@ -2,6 +2,7 @@
 import { storeToRefs } from "pinia";
 import { useWatcher } from "alova";
 import { useI18n } from "vue-i18n";
+import { useUserService } from "../../../../services/databases/user/user.service";
 import UserAvator from "./UserAvator.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import { useAuthStore } from "@/stores/auth.store";
@@ -12,14 +13,15 @@ import LoadingIcon from "@/components/LoadingIcon.vue";
 
 const { email, nickname } = storeToRefs(useAuthStore());
 const { t } = useI18n();
+const { updateUserNickname } = useUserService();
 
-const { onSuccess, data } = useWatcher(() => patchUserNicknameByEmail({
-  nickname: nickname.value
-}, {
+const { onSuccess, loading } = useWatcher(() => patchUserNicknameByEmail({ nickname: nickname.value }, {
   to: email.value
 }), [nickname], {
   debounce: 2000
 });
+
+onSuccess(async ({ data: { data } }) => await updateUserNickname(email.value, data));
 </script>
 
 <template>
@@ -28,7 +30,7 @@ const { onSuccess, data } = useWatcher(() => patchUserNicknameByEmail({
     <div class="user-card_title">
       <p class="p-reset user-card_name">
         <reset-input v-model="nickname" :disabled="!email" :minlength="1" :maxlength="20" class="user-card_input" :placeholder="t(i18nLangModel.usercard.nameInputPlaceholder)" />
-        <loading-icon />
+        <loading-icon v-show="loading" />
       </p>
       <p class="p-reset user-card_email">
         {{ email || "emailmetoday@email.com" }}

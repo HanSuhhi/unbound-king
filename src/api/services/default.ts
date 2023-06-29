@@ -7,5 +7,6 @@ type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
 type ResponseType_GetHi = string;
 
 export function getHi(config: Config<ResponseOriginData<ResponseType_GetHi>> = {}) {
-  return alovaInst.Get<ResponseOriginData<ResponseType_GetHi>>("/v1", config);
+  const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetHi>>("/v1", config);
+  return methodInstance;
 }

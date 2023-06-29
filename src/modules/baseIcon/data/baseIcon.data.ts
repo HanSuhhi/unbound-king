@@ -180,5 +180,4 @@ export const DATA_BaseIcons = {
     translator: ["check", "审核"],
     path: "i-bi-check-all"
   }
-
 };

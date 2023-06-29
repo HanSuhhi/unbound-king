@@ -24,7 +24,7 @@ export class UserController {
     status: 200,
     type: UpdateUserNicknameByEmailVo
   })
-  async updateUserNickname(
+  async userNicknameByEmail(
     @Query("to", EmailQueryPipe) to: string,
     @Body() updateUserNicknameDto: UpdateUserNicknameByEmailDto
   ): Promise<UpdateUserNicknameByEmailVo> {

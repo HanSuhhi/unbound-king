@@ -10,5 +10,6 @@ export function getVerificationCode(params: {
   to: string
 }, config: Config<ResponseOriginData<ResponseType_GetVerificationCode>> = { params }) {
   config.params = params;
-  return alovaInst.Get<ResponseOriginData<ResponseType_GetVerificationCode>>("/v1/mails/verification-code", config);
+  const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetVerificationCode>>("/v1/mails/verification-code", config);
+  return methodInstance;
 }

@@ -30,12 +30,13 @@ describe("UsersService", () => {
       const update = { nickname: "John" };
       const findOneByEmailAndUpdateSpy = vi.spyOn(trpcRouter.caller.user, "findOneByEmailAndUpdate");
 
-      await service.updateUserNicknameByEmail(email, update);
+      const { nickname } = await service.updateUserNicknameByEmail(email, update);
 
       expect(findOneByEmailAndUpdateSpy).toHaveBeenCalledWith({
         email,
         update
       });
+      expect(nickname).toBeTypeOf("string");
     });
   });
 });

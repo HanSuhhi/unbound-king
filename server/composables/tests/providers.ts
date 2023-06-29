@@ -9,7 +9,9 @@ export function useUserModelTestProviders(): Provider[] {
         caller: {
           user: {
             findOneByEmail: vi.fn(),
-            findOneByEmailAndUpdate: vi.fn(),
+            findOneByEmailAndUpdate: vi.fn().mockResolvedValue({
+              nickname: "test"
+            }),
             createDefaultUserByEmail: vi.fn()
           }
         }

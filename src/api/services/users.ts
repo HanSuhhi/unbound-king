@@ -4,18 +4,19 @@ import { alovaInst } from "../alova";
 import type { ResponseOriginData } from "#/composables/types/api";
 
 type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
-export interface ResponseType_PatchUpdateUserNickname {
+export interface ResponseType_PatchUserNicknameByEmail {
   /**
     * The user's modified nickname
     */
   nickname: string
 }
-export interface RequestBody_PatchUpdateUserNickname {
+export interface RequestBody_PatchUserNicknameByEmail {
   nickname: string
 }
-export function patchUpdateUserNickname(request: RequestBody_PatchUpdateUserNickname, params: {
+export function patchUserNicknameByEmail(request: RequestBody_PatchUserNicknameByEmail, params: {
   to: string
-}, config: Config<ResponseOriginData<ResponseType_PatchUpdateUserNickname>> = { params }) {
+}, config: Config<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>> = { params }) {
   config.params = params;
-  return alovaInst.Patch<ResponseOriginData<ResponseType_PatchUpdateUserNickname>>("/v1/user/update-nickname-by-email", request, config);
+  const methodInstance = alovaInst.Patch<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>>("/v1/user/update-nickname-by-email", request, config);
+  return methodInstance;
 }

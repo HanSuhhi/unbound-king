@@ -30,7 +30,8 @@ export async function createClientApiTemplate() {
       result += `${requestType}\n`;
       result += `export function ${methodTitle}(${requestType && `request: ${requestBodyType},`}${params}config: Config<ResponseOriginData<${responseBodyType}>> = {${params && " params "}}) {
         ${params ? "config.params = params;" : ""}
-        return alovaInst.${capitalize(method.toLowerCase())}<ResponseOriginData<${responseBodyType}>>("${path}",${["post", "patch"].includes(method) ? "request," : ""} config);
+        const methodInstance = alovaInst.${capitalize(method.toLowerCase())}<ResponseOriginData<${responseBodyType}>>("${path}",${["post", "patch"].includes(method) ? "request," : ""} config);
+        return methodInstance;
       }`;
 
       defineServiceFiles(files, tags, result);

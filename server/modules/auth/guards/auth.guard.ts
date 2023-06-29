@@ -4,6 +4,7 @@ import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
 import { Reflector } from "@nestjs/core";
 import { IS_PUBLIC_KEY } from "../decorators/auth.decorator";
+import { i18nLangModel } from "#/composables/i18n";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -22,7 +23,7 @@ export class AuthGuard implements CanActivate {
 
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
-    if (!token) throw new UnauthorizedException();
+    if (!token) throw new UnauthorizedException(i18nLangModel.error.unauthorizedRequest);
 
     try {
       const payload = await this.jwtService.verifyAsync(
