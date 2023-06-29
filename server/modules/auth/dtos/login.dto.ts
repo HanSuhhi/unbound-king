@@ -1,13 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Transform } from "class-transformer";
 import { LoginRegistration } from "../../../../composables/constant/request";
-import { EmailValidate } from "@/decorators/validate/email.decorator";
-import { NumberValidate } from "@/decorators/validate/number.decorator";
-import { StringValidate } from "@/decorators/validate/string.decorator";
-import { EnumValidate } from "@/decorators/validate/enum.decorator";
+import { EmailValidator } from "@/decorators/validate/email.validator";
+import { NumberValidator } from "@/decorators/validate/number.validator";
+import { StringValidator } from "@/decorators/validate/string.validator";
+import { EnumValidator } from "@/decorators/validate/enum.validator";
 
 export class LoginDto {
-  @EmailValidate()
+  @EmailValidator()
   @ApiProperty({
     required: true,
     default: "l_98b@outlook.com",
@@ -16,7 +16,7 @@ export class LoginDto {
   @Transform(({ value }) => value.toLowerCase().trim())
   readonly email: string;
 
-  @NumberValidate()
+  @NumberValidator()
   @ApiProperty({
     required: true,
     default: 111_111,
@@ -24,8 +24,8 @@ export class LoginDto {
   })
   readonly code: number;
 
-  @StringValidate()
-  @EnumValidate(LoginRegistration)
+  @StringValidator()
+  @EnumValidator(LoginRegistration)
   @ApiProperty({
     default: LoginRegistration.LOGIN,
     enum: LoginRegistration,

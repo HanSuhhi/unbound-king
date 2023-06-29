@@ -1,8 +1,8 @@
-import { IsEnum } from "class-validator";
+import { IsNumber } from "class-validator";
 import { i18nLangModel } from "#/composables/i18n/index";
 
-export function EnumValidate(obj: object): PropertyDecorator {
-  return IsEnum(obj, {
+export function NumberValidator(): PropertyDecorator {
+  return IsNumber({}, {
     message() {
       return i18nLangModel.validate.props;
     }

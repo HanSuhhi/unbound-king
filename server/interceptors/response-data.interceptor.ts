@@ -17,7 +17,7 @@ export class ResponseDataInterceptor implements NestInterceptor {
         data
       };
 
-      const alertValue = data[ResponseInterceptorKeys.RESPONESE_ALERT];
+      const alertValue = data?.[ResponseInterceptorKeys.RESPONESE_ALERT];
       if (alertValue) {
         delete data[ResponseInterceptorKeys.RESPONESE_ALERT];
         returnValue[ResponseInterceptorKeys.RESPONESE_ALERT] = alertValue;

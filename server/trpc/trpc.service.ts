@@ -3,9 +3,7 @@ import { initTRPC } from "@trpc/server";
 
 @Injectable()
 export class TrpcService {
-  constructor() {
-
-  }
+  constructor() { }
 
   public trpc = initTRPC.create();
   public procedure = this.trpc.procedure;

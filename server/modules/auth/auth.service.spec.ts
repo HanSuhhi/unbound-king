@@ -2,18 +2,15 @@ import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
 import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import type { Cache } from "cache-manager";
-import { getModelToken } from "@nestjs/mongoose";
 import { it } from "vitest";
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { HttpException, UnauthorizedException } from "@nestjs/common";
-import { User } from "../users/schemas/user.schemas";
 import { AuthService } from "./auth.service";
 import type { LoginDto } from "./dtos/login.dto";
 import { LoginRegistration } from "#/composables/constant/request";
 import { TrpcRouter } from "@/trpc/trpc.router";
-import { TrpcService } from "@/trpc/trpc.service";
-import { UserRoute } from "@/trpc/routes/user.route";
+import { useUserModelTestProviders } from "@/composables/tests/providers";
 
 describe("AuthService", () => {
   const TEST_EMAIL = "test@example.com";
@@ -56,27 +53,7 @@ describe("AuthService", () => {
             del: vi.fn()
           }
         },
-        {
-          provide: getModelToken(User.name),
-          useValue: {
-            findOne: vi.fn(),
-            create: vi.fn()
-          }
-        },
-        TrpcService,
-        UserRoute,
-        {
-          provide: TrpcRouter,
-          useValue: {
-            caller: {
-              user: {
-                create: vi.fn(),
-                createDefaultUserByEmail: vi.fn(),
-                findOneByEmail: vi.fn()
-              }
-            }
-          }
-        }
+        ...useUserModelTestProviders()
       ]
     }).compile();
 

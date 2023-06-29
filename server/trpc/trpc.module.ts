@@ -15,9 +15,7 @@ import { User, UserSchema } from "@/modules/users/schemas/user.schemas";
     UserRoute
   ],
   exports: [
-    TrpcRouter,
-    TrpcService,
-    UserRoute
+    TrpcRouter
   ]
 })
 export class TrpcModule {}

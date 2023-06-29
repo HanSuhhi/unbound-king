@@ -46,7 +46,7 @@ function useVersion1() {
     return await update(user.id, {
       token: loginSuccessResponse.access_token,
       roles: loginSuccessResponse.roles as Role[],
-      name: loginSuccessResponse.name
+      nickname: loginSuccessResponse.nickname
     });
   });
 
@@ -54,7 +54,7 @@ function useVersion1() {
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
     if (!user) return;
-    await update(user.id, { token: "", roles: [], name: "" });
+    await update(user.id, { token: "", roles: [], nickname: "" });
   });
 
   return {

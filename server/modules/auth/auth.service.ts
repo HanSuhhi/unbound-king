@@ -64,7 +64,7 @@ export class AuthService {
     const user = await this.trpcRouter.caller.user.findOneByEmail(email);
     if (!user) {
       this.cacheManager.set(email, originCode, useMinute(5));
-      throw new HttpException("user not found", HttpStatus.ACCEPTED);
+      throw new HttpException("User Not Found", HttpStatus.ACCEPTED);
     }
 
     return this.coreLogin(user);

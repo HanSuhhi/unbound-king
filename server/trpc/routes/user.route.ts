@@ -4,10 +4,12 @@ import { Model } from "mongoose";
 import { z } from "zod";
 import { TrpcService } from "../trpc.service";
 import { User } from "@/modules/users/schemas/user.schemas";
-import { UsersService } from "@/modules/users/users.service";
+import { Role } from "#/composables/enum/role.enum";
 
 @Injectable()
 export class UserRoute {
+  static DEFAULT_USER_ROLES = [Role.Player];
+
   constructor(
     private readonly trpc: TrpcService,
     @InjectModel(User.name) private readonly userModel: Model<User>
@@ -19,6 +21,16 @@ export class UserRoute {
     findOneByEmail: this.trpc.procedure
       .input(this.emailValidate)
       .query(async ({ input: email }) => await this.userModel.findOne({ email }).exec()),
+    findOneByEmailAndUpdate: this.trpc.procedure
+      .input(z.object({
+        email: this.emailValidate,
+        update: z.object({
+          nickname: z.string().optional()
+        })
+      }))
+      .mutation(async ({ input: { email, update } }) => await this.userModel.findOneAndUpdate({ email }, {
+        $set: update
+      }, { new: true })),
     createDefaultUserByEmail: this.trpc.procedure
       .input(z.object({
         email: this.emailValidate,
@@ -27,7 +39,7 @@ export class UserRoute {
       .mutation(async ({ input: { email, nickname } }) => await this.userModel.create({
         email,
         nickname,
-        roles: UsersService.DEFAULT_USER_ROLES
+        roles: UserRoute.DEFAULT_USER_ROLES
       }))
   });
 }

@@ -1,8 +1,8 @@
-import { IsString } from "class-validator";
+import { IsEnum } from "class-validator";
 import { i18nLangModel } from "#/composables/i18n/index";
 
-export function StringValidate(): PropertyDecorator {
-  return IsString({
+export function EnumValidator(obj: object): PropertyDecorator {
+  return IsEnum(obj, {
     message() {
       return i18nLangModel.validate.props;
     }

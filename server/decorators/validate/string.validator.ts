@@ -1,8 +1,8 @@
-import { IsNumber } from "class-validator";
+import { IsString } from "class-validator";
 import { i18nLangModel } from "#/composables/i18n/index";
 
-export function NumberValidate(): PropertyDecorator {
-  return IsNumber({}, {
+export function StringValidator(): PropertyDecorator {
+  return IsString({
     message() {
       return i18nLangModel.validate.props;
     }

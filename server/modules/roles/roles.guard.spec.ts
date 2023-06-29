@@ -2,8 +2,8 @@ import { Reflector } from "@nestjs/core";
 import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
 import type { ExecutionContext } from "@nestjs/common";
-import { UsersService } from "../users/users.service";
 import { RolesGuard } from "./roles.guard";
+import { UserRoute } from "@/trpc/routes/user.route";
 
 describe("RolesGuard", () => {
   let guard: RolesGuard;
@@ -13,7 +13,7 @@ describe("RolesGuard", () => {
     getClass: vi.fn(),
     switchToHttp: vi.fn().mockReturnThis(),
     getRequest: vi.fn().mockReturnValue({
-      user: { roles: UsersService.DEFAULT_USER_ROLES }
+      user: { roles: UserRoute.DEFAULT_USER_ROLES }
     })
   } as unknown as ExecutionContext;
 
@@ -44,7 +44,7 @@ describe("RolesGuard", () => {
   });
 
   it("should return true if user has at least one required role", () => {
-    vi.spyOn(reflector, "getAllAndOverride").mockReturnValueOnce(UsersService.DEFAULT_USER_ROLES);
+    vi.spyOn(reflector, "getAllAndOverride").mockReturnValueOnce(UserRoute.DEFAULT_USER_ROLES);
     expect(guard.canActivate(context)).toEqual(true);
   });
 
