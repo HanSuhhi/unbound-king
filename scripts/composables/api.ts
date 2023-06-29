@@ -123,7 +123,7 @@ export function defineTypeName(typename: string, methodTitle: string) {
 
 export function parseSchemaRef($ref: string, components: any, methodTitle: string, typename: "ResponseType" | "RequestBody" = "ResponseType") {
   const schemasPath = "#/components/schemas/";
-  if (!$ref.startsWith(schemasPath)) return `type ${typename} = ${$ref};`;
+  if (!$ref.startsWith(schemasPath)) return `type ${defineTypeName(typename, methodTitle)} = ${$ref};`;
   $ref = $ref.replace(schemasPath, "").replace(/\//g, ".");
   const dto = components.schemas[$ref];
   const type = generatePropertyDescription(dto, typename, methodTitle);

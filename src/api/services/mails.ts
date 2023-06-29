@@ -4,7 +4,7 @@ import { alovaInst } from "../alova";
 import type { ResponseOriginData } from "#/composables/types/api";
 
 type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
-type ResponseType = string;
+type ResponseType_GetVerificationCode = string;
 
 export function getVerificationCode(params: {
   to: string

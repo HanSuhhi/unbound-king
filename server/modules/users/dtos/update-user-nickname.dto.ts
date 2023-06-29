@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { NicknameValidator } from "../validates/nickname.validator";
 
-export class UpdateUserNicknameDto {
+export class UpdateUserNicknameByEmailDto {
   @NicknameValidator()
   @ApiProperty({
     required: true,
