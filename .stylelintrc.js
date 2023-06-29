@@ -100,7 +100,8 @@ const stylelintDefaultRules = {
   "selector-anb-no-unmatchable": true,
   "declaration-property-value-no-unknown": [true, {
     ignoreProperties: {
-      "width": ["-webkit-fill-available"],
+      "width": ["-webkit-fill-available","/^v-bind\\(.+\\)$/"],
+      "/.+/":  ["/^v-bind\\(.+\\)$/"]
     }
   }],
   "media-feature-name-no-unknown": true,

@@ -20,7 +20,8 @@ const enUsModel = {
     }
   },
   usercard: {
-    nameInputPlaceholder: "please input your nickname"
+    nameInputPlaceholder: "please input your nickname",
+    toggle: "toggle user"
   },
   modules: {
     i18n: "Language",
@@ -45,6 +46,7 @@ const enUsModel = {
     findUserHistoryIndexDB: "01: Unable to find user in index db, please contact administrator"
   },
   auth: {
+    unauthorizedRequest: "Unauthorized request",
     title: "Login to your Account",
     emailPlaceholder: "Email Address",
     verifyCodePlaceholder: "Email Code",

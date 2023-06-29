@@ -1,11 +1,25 @@
 <script setup lang='ts'>
 import { storeToRefs } from "pinia";
+import { useWatcher } from "alova";
+import { useI18n } from "vue-i18n";
 import UserAvator from "./UserAvator.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import { useAuthStore } from "@/stores/auth.store";
 import ResetInput from "@/components/inputs/ResetInput.vue";
+import { patchUserNicknameByEmail } from "@/api/services/users";
+import { i18nLangModel } from "#/composables/i18n";
+import LoadingIcon from "@/components/LoadingIcon.vue";
 
 const { email, nickname } = storeToRefs(useAuthStore());
+const { t } = useI18n();
+
+const { onSuccess, data } = useWatcher(() => patchUserNicknameByEmail({
+  nickname: nickname.value
+}, {
+  to: email.value
+}), [nickname], {
+  debounce: 2000
+});
 </script>
 
 <template>
@@ -13,7 +27,8 @@ const { email, nickname } = storeToRefs(useAuthStore());
     <user-avator />
     <div class="user-card_title">
       <p class="p-reset user-card_name">
-        <reset-input v-model="nickname" :minlength="1" :maxlength="20" class="user-card_input" placeholder="请输入用户名称" />
+        <reset-input v-model="nickname" :disabled="!email" :minlength="1" :maxlength="20" class="user-card_input" :placeholder="t(i18nLangModel.usercard.nameInputPlaceholder)" />
+        <loading-icon />
       </p>
       <p class="p-reset user-card_email">
         {{ email || "emailmetoday@email.com" }}
@@ -25,7 +40,7 @@ const { email, nickname } = storeToRefs(useAuthStore());
           <icon name="update" />
         </div>
       </template>
-      切换用户
+      {{ t(i18nLangModel.usercard.toggle) }}
     </explanation>
   </section>
 </template>

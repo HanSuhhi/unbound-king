@@ -41,11 +41,14 @@ export default defineLang({
   },
   error: {
     findUserHistoryIndexDB: "01: 无法在 indexDB 中查找到用户，请联系管理员。"
+
   },
   usercard: {
-    nameInputPlaceholder: "请输入昵称"
+    nameInputPlaceholder: "请输入昵称",
+    toggle: "切换用户"
   },
   auth: {
+    unauthorizedRequest: "未认证请求，请重新登录",
     title: "正在登录...",
     emailPlaceholder: "邮箱地址...",
     verifyCodePlaceholder: "邮箱验证码...",
