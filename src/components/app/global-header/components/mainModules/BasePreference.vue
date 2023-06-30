@@ -26,17 +26,17 @@ const modules: AppHeaderModule[] = [
     show: isDeveloper
   },
   {
-    translator: ["quit", "退出"],
-    icon: "exit",
-    color: ["var(--red-bright-2)", "var(--red-deep-1)"],
-    event: defineQuitEvent(popoverControl.popoverControl)
-  },
-  {
     translator: ["auth", "权限"],
     icon: "auth",
     color: ["var(--main-color-deep-2)", "hsl(288deg 66% 51%) "],
     event: defineLogoutEvent(popoverControl.popoverControl),
     show: isSighIn
+  },
+  {
+    translator: ["quit", "退出"],
+    icon: "exit",
+    color: ["var(--red-bright-2)", "var(--red-deep-1)"],
+    event: defineQuitEvent(popoverControl.popoverControl)
   }
 ];
 

@@ -8,7 +8,7 @@ export function patchUserNickname() {
   const { updateUserNickname } = useUserService();
   const { email, nickname } = storeToRefs(useAuthStore());
 
-  const { onSuccess, loading } = useWatcher(patchUserNicknameByEmail.bind(null, { nickname }, {
+  const { onSuccess, loading } = useWatcher(() => patchUserNicknameByEmail({ nickname: nickname.value }, {
     to: email.value
   }), [nickname], {
     debounce: 2000

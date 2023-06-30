@@ -1,0 +1,7 @@
+[cursor-active="default"] [cursor-disabled] {
+  cursor: var(--cursor-disabled);
+}
+
+[cursor-active="active"] [cursor-disabled] {
+  cursor: var(--cursor-disabled-active);
+}

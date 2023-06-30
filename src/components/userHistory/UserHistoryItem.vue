@@ -1,14 +1,26 @@
 <script setup lang='ts'>
 import LifeHash from "@hansuhhi-don/lifehash-vue";
+import { storeToRefs } from "pinia";
+import { computed } from "vue";
+import { useAuthStore } from "@/stores/auth.store";
+import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 
-defineProps<{
+const { email } = defineProps<{
   email: string
   token: boolean
 }>();
+
+const { email: userEmail } = storeToRefs(useAuthStore());
+const isCurrentUser = computed(() => email === userEmail.value);
 </script>
 
 <template>
-  <section cursor-pointer class="login-user">
+  <section
+    cursor-pointer
+    :cursor-disabled="useHtmlPropLint(isCurrentUser)"
+    class="login-user"
+    :class="{ 'is-login': isCurrentUser }"
+  >
     <div class="login-user_head">
       <life-hash class="login-user_avator" :input="email" />
     </div>
@@ -84,6 +96,17 @@ defineProps<{
     margin-left: var(--base-margin);
     color: var(--white-deep-2);
   }
+}
+</style>
+
+<style scoped>
+@layer component {
+  .is-login,
+  .is-login:hover  {
+    cursor:not-allowed;
+    filter: opacity(0.5);
+  }
+
 }
 </style>
 

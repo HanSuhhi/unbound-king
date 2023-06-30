@@ -50,6 +50,7 @@ export default defineLang({
   auth: {
     unauthorizedRequest: "未认证请求，请重新登录",
     title: "正在登录...",
+    loginSuccess: "欢迎回来",
     emailPlaceholder: "邮箱地址...",
     verifyCodePlaceholder: "邮箱验证码...",
     getVerifyCode: "获取验证码",

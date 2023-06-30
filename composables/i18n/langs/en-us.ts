@@ -38,7 +38,7 @@ const enUsModel = {
   },
   dialog: {
     global: {
-      close: "Close Dialog",
+      close: "Cancelfrrrrrrrrr`t  c ",
       confirm: "Confirm"
     }
   },
@@ -63,7 +63,8 @@ const enUsModel = {
     emailLoginTitle: "Login With Email",
     policyForm: "Follow it please 🙌",
     userHistoryEmpty: "No Saved Users",
-    sendMail: "Send Mail Successfully"
+    sendMail: "Send Mail Successfully",
+    loginSuccess: "Login Successfully"
   },
   userDrawer: {
     title: "User List"

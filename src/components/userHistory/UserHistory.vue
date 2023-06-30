@@ -1,8 +1,9 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
-import { NDrawer, NDrawerContent } from "naive-ui";
+import { NDrawer, NDrawerContent, useMessage } from "naive-ui";
 import { onMounted, ref } from "vue";
+import { storeToRefs } from "pinia";
 import UserHistoryItem from "./UserHistoryItem.vue";
 import { useUserService } from "@/services/databases/user/user.service";
 import { useIf } from "#/composables/run/if";
@@ -10,12 +11,13 @@ import type { User } from "@/services/databases/user/user.table";
 import { getLoginForm, getRememberEmail } from "@/views/login/composables/getters";
 import { loginSuccess } from "@/views/login/composables/loginAuth";
 import { i18nLangModel } from "#/composables/i18n";
+import { useAuthStore } from "@/stores/auth.store";
 
 const active = defineModel<boolean>();
 const router = useRouter();
-
+const { info } = useMessage();
 const { t } = useI18n();
-
+const { email: userEmail } = storeToRefs(useAuthStore());
 const { getAllUsers } = useUserService();
 
 const users = ref<User[]>([]);
@@ -24,11 +26,17 @@ onMounted(async () => users.value = await getAllUsers() || []);
 function toggleEmail({ token, email, nickname, roles }: User) {
   const [ifHaveToken, ifDontHaveToken] = useIf(token);
 
-  ifHaveToken(loginSuccess.bind(null, email, {
-    access_token: token!,
-    nickname: nickname!,
-    roles: roles!
-  }, router));
+  ifHaveToken(() => {
+    if (userEmail.value === email) return;
+
+    info(t(i18nLangModel.auth.loginSuccess));
+    loginSuccess(email, {
+      access_token: token!,
+      nickname: nickname!,
+      roles: roles!
+    }, router);
+    active.value = false;
+  });
 
   ifDontHaveToken(() => {
     const rememberEmail = getRememberEmail();

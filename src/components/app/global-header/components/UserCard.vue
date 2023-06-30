@@ -1,29 +1,24 @@
 <script setup lang='ts'>
 import { storeToRefs } from "pinia";
 import { useI18n } from "vue-i18n";
+import { inject } from "vue";
 import { patchUserNickname } from "../composables/userNickname";
+import { OpenUserHistorySymbol } from "../global-header.symbol";
 import UserAvator from "./UserAvator.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import { useAuthStore } from "@/stores/auth.store";
 import ResetInput from "@/components/inputs/ResetInput.vue";
 import { i18nLangModel } from "#/composables/i18n";
 import LoadingIcon from "@/components/LoadingIcon.vue";
-import { useUserHistory } from "@/components/userHistory/history";
-import UserHistory from "@/components/userHistory/UserHistory.vue";
 
-const { email, nickname } = storeToRefs(useAuthStore());
+const { email, nickname, isSighIn } = storeToRefs(useAuthStore());
 const { t } = useI18n();
-const { historyDrawer } = useUserHistory();
 const { loading } = patchUserNickname();
-
-function toggleUser() {
-  historyDrawer.value = true;
-}
+const openUserHistory = inject<() => void>(OpenUserHistorySymbol);
 </script>
 
 <template>
   <section class="user-card">
-    <user-history v-model="historyDrawer" />
     <user-avator />
     <div class="user-card_title">
       <p class="p-reset user-card_name">
@@ -34,9 +29,9 @@ function toggleUser() {
         {{ email || "emailmetoday@email.com" }}
       </p>
     </div>
-    <explanation>
+    <explanation v-if="isSighIn">
       <template #trigger>
-        <div class="user-card_update" cursor-pointer @click="toggleUser">
+        <div class="user-card_update" cursor-pointer @click="openUserHistory">
           <icon name="update" />
         </div>
       </template>

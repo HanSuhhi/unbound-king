@@ -1,8 +1,7 @@
 <script setup lang='ts'>
 import type { Component } from "vue";
 import { computed, markRaw, provide, shallowRef } from "vue";
-
-import { TopModulesLengthSymbol } from "../global-header.symbol";
+import { OpenUserHistorySymbol, TopModulesLengthSymbol } from "../global-header.symbol";
 import I18n from "./mainModules/I18n.vue";
 import ThemeController from "./mainModules/themeController.vue";
 import ScreenController from "./mainModules/ScreenController.vue";
@@ -11,6 +10,8 @@ import Explanation from "@/components/experience/Explanation.vue";
 import KbdEvent from "@/components/KeyEvent.vue";
 import { defineKeyEventWithoutFn } from "@/composables/key/keyEvent";
 import { i18nLangModel } from "#/composables/i18n/index";
+import UserHistory from "@/components/userHistory/UserHistory.vue";
+import { useUserHistory } from "@/components/userHistory/history";
 
 type ModuleBlock = [
   component: Component,
@@ -25,10 +26,15 @@ const modules = shallowRef<ModuleBlock[]>([
 ]);
 
 const modulesLength = computed(() => modules.value.length);
+
+const { historyDrawer } = useUserHistory();
+provide(OpenUserHistorySymbol, () => historyDrawer.value = true);
+
 provide(TopModulesLengthSymbol, modulesLength);
 </script>
 
 <template>
+  <user-history v-model="historyDrawer" />
   <section class="header-modules">
     <template v-for="[component, keyEventWithoutFn], index of modules" :key="keyEventWithoutFn.translator[0]">
       <explanation>
