@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
+import { Role } from "#/composables/enum/role.enum";
 
 const useAuthStore = defineStore("auth", () => {
   const nickname = ref("");
@@ -9,9 +10,11 @@ const useAuthStore = defineStore("auth", () => {
   const roles = ref<ResponseType_PostLoginWithEmail["roles"]>([]);
 
   const isSighIn = computed(() => !!token.value);
+  const isDeveloper = computed(() => roles.value.includes(Role.Developer));
 
   return {
     isSighIn,
+    isDeveloper,
     token,
     roles,
     email,

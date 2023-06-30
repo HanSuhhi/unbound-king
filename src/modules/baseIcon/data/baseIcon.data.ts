@@ -179,5 +179,10 @@ export const DATA_BaseIcons = {
   "check": {
     translator: ["check", "审核"],
     path: "i-bi-check-all"
+  },
+  "auth": {
+    translator: ["auth", "权限"],
+    path: "i-material-symbols-key-outline-rounded"
   }
+
 };

@@ -6,13 +6,14 @@ import { defineOpenSetting } from "../../composables/openSetting";
 import { usePopoverControl } from "../../composables/popoverControl";
 import UserCard from "../UserCard.vue";
 import { closeModules } from "../../composables/modulesController";
+import { defineLogoutEvent } from "../../composables/logoutAuth";
 import type { ModuleProp } from "./module-type";
 import AsideModule from "./AsideModule.vue";
 import BasePopover from "@/components/experience/BasePopover.vue";
 import { useAuthStore } from "@/stores/auth.store";
 
 const { enterKeyEvent, index } = defineProps<ModuleProp>();
-const { isSighIn } = storeToRefs(useAuthStore());
+const { isSighIn, isDeveloper } = storeToRefs(useAuthStore());
 
 const popoverControl = usePopoverControl(enterKeyEvent);
 
@@ -21,13 +22,20 @@ const modules: AppHeaderModule[] = [
     translator: ["setting", "设置"],
     icon: "setting",
     color: ["var(--main-color)", "var(--gray-deep-2)"],
-    event: defineOpenSetting(popoverControl.popoverControl)
+    event: defineOpenSetting(popoverControl.popoverControl),
+    show: isDeveloper
   },
   {
     translator: ["quit", "退出"],
     icon: "exit",
     color: ["var(--red-bright-2)", "var(--red-deep-1)"],
-    event: defineQuitEvent(popoverControl.popoverControl),
+    event: defineQuitEvent(popoverControl.popoverControl)
+  },
+  {
+    translator: ["auth", "权限"],
+    icon: "auth",
+    color: ["var(--main-color-deep-2)", "hsl(288deg 66% 51%) "],
+    event: defineLogoutEvent(popoverControl.popoverControl),
     show: isSighIn
   }
 ];

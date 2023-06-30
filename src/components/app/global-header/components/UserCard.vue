@@ -1,34 +1,23 @@
 <script setup lang='ts'>
 import { storeToRefs } from "pinia";
-import { useWatcher } from "alova";
 import { useI18n } from "vue-i18n";
-import { ref } from "vue";
-import { useUserService } from "../../../../services/databases/user/user.service";
+import { patchUserNickname } from "../composables/userNickname";
 import UserAvator from "./UserAvator.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import { useAuthStore } from "@/stores/auth.store";
 import ResetInput from "@/components/inputs/ResetInput.vue";
-import { patchUserNicknameByEmail } from "@/api/services/users";
 import { i18nLangModel } from "#/composables/i18n";
 import LoadingIcon from "@/components/LoadingIcon.vue";
-import UserHistory from "@/views/login/components/UserHistory.vue";
+import { useUserHistory } from "@/components/userHistory/history";
+import UserHistory from "@/components/userHistory/UserHistory.vue";
 
 const { email, nickname } = storeToRefs(useAuthStore());
 const { t } = useI18n();
-const { updateUserNickname } = useUserService();
-const historyDrawer = ref(false);
-
-const { onSuccess, loading } = useWatcher(() => patchUserNicknameByEmail({ nickname: nickname.value }, {
-  to: email.value
-}), [nickname], {
-  debounce: 2000
-});
-
-onSuccess(async ({ data: { data } }) => await updateUserNickname(email.value, data));
+const { historyDrawer } = useUserHistory();
+const { loading } = patchUserNickname();
 
 function toggleUser() {
   historyDrawer.value = true;
-  console.log("🚀 ~ file: UserCard.vue:31 ~ toggleUser ~ historyDrawer.value:", historyDrawer.value);
 }
 </script>
 

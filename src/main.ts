@@ -9,7 +9,7 @@ import { usePaperRipple } from "./directives/paperRipple";
 
 import "uno.css";
 import "./styles/index.css";
-import { i18n } from "./locals";
+import { i18n } from "@/locals";
 
 if (import.meta.env.SSR && import.meta.env.DEV && !global.fetch) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

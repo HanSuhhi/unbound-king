@@ -1,18 +1,15 @@
 import { createAlova } from "alova";
 import VueHook from "alova/vue";
 import GlobalFetch from "alova/GlobalFetch";
-import type { ConfigProviderProps } from "naive-ui";
-import { createDiscreteApi, darkTheme, lightTheme } from "naive-ui";
 import type { HttpException } from "@nestjs/common";
 import { HttpStatus } from "@nestjs/common";
 import { isArray } from "lodash";
-import { computed } from "vue";
-import { useDark } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { SERVER_RUNNING_PORT } from "@/composables/constant/env";
 import type { ResponseOriginData } from "#/composables/types/api";
 import { i18n } from "@/locals";
 import { useAuthStore } from "@/stores/auth.store";
+import { useDiscreteFeedback } from "@/composables/components/DiscreteFeedback";
 
 export const alovaInst = createAlova({
   baseURL: `http://localhost:${SERVER_RUNNING_PORT}`,
@@ -34,13 +31,7 @@ export const alovaInst = createAlova({
 });
 
 async function defineResponse(response: Response) {
-  const configProviderPropsRef = computed<ConfigProviderProps>(() => ({
-    theme: useDark().value ? darkTheme : lightTheme
-  }));
-  const { message: messageController } = createDiscreteApi(
-    ["message"],
-    { configProviderProps: configProviderPropsRef }
-  );
+  const { message: messageController } = useDiscreteFeedback(["message"]);
 
   const responseData = (await response.json()) as ResponseOriginData & HttpException;
   const { alert, statusCode, data, message } = responseData;

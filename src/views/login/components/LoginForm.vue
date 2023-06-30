@@ -6,10 +6,10 @@ import { EMAIL_INPUT_PROPS } from "../composables/emailInput";
 import { useLoginForm } from "../composables/form";
 import { useLoginAuth } from "../composables/loginAuth";
 import { initLoginData } from "../composables/init";
-import { useUserHistory } from "../composables/history";
 import VerifyCode from "./VerifyCode.vue";
-import UserHistory from "./UserHistory.vue";
+import { useUserHistory } from "@/components/userHistory/history";
 import { i18nLangModel } from "#/composables/i18n/index";
+import UserHistory from "@/components/userHistory/UserHistory.vue";
 
 const { t } = useI18n();
 
@@ -126,3 +126,4 @@ watch(fromHistory, (isFromHistory) => {
   }
 }
 </style>
+../../../components/userHistory/history

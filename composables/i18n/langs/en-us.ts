@@ -20,7 +20,7 @@ const enUsModel = {
     }
   },
   usercard: {
-    nameInputPlaceholder: "please input your nickname",
+    nameInputPlaceholder: "Not Logged In",
     toggle: "Toggle User"
   },
   modules: {
@@ -38,12 +38,13 @@ const enUsModel = {
   },
   dialog: {
     global: {
-      close: "close dialog",
-      confirm: "confirm"
+      close: "Close Dialog",
+      confirm: "Confirm"
     }
   },
-  error: {
-    findUserHistoryIndexDB: "01: Unable to find user in index db, please contact administrator"
+  exception: {
+    findUserHistoryIndexDB: "01: Unable to find user in index db, please contact administrator",
+    visitUnauthorizedPage: "02: Unauthorized address is being accessed."
   },
   auth: {
     unauthorizedRequest: "Unauthorized request",

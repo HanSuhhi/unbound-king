@@ -5,10 +5,12 @@ import { useRoute, useRouter } from "vue-router";
 import { onMounted } from "vue";
 import { delay } from "lodash";
 import { ROUTER_DEFAULT_PAGE, TRANSITION_DURATION } from "../constant/env";
+import { findError } from "./error";
 import { useGlobalStore } from "@/stores/global.store";
 import { useAppAsideStore } from "@/components/app/appAside/store/aside.store";
 import type { Role } from "#/composables/enum/role.enum";
 import { useAuthStore } from "@/stores/auth.store";
+import { i18nLangModel } from "#/composables/i18n";
 
 function useRouterBefore() {
   const loadingBar = useLoadingBar();
@@ -17,7 +19,7 @@ function useRouterBefore() {
 
   const isRoleRight = (to: RouteLocationNormalized) => {
     const { meta: { role } } = to;
-    if (role && !roles.value.includes(role as Role)) throw new Error("no right");
+    if (role && !roles.value.includes(role as Role)) throw new Error("No Right");
   };
 
   onMounted(() => {
@@ -35,7 +37,8 @@ function useRouterBefore() {
       isRoleRight(to);
     }
     catch (error) {
-      loadingBar.finish();
+      findError(i18nLangModel.exception.visitUnauthorizedPage);
+      return false;
     }
   });
 }

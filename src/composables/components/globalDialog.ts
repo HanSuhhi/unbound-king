@@ -36,7 +36,7 @@ export function useGlobalDialog(): Record<GlobalDialog["type"], (message: Messag
         dialogMessage.value = undefined;
       },
       _confirm() {
-        message?.confirm?.();
+        message?.confirm?.call(window);
         dialogMessage.value = undefined;
       }
     };

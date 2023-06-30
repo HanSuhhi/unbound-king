@@ -39,12 +39,12 @@ export default defineLang({
       confirm: "弹窗确定"
     }
   },
-  error: {
-    findUserHistoryIndexDB: "01: 无法在 indexDB 中查找到用户，请联系管理员。"
-
+  exception: {
+    findUserHistoryIndexDB: "01: 无法在 indexDB 中查找到用户，请联系管理员。",
+    visitUnauthorizedPage: "02: 正在访问未授权地址。"
   },
   usercard: {
-    nameInputPlaceholder: "请输入昵称",
+    nameInputPlaceholder: "尚未登录",
     toggle: "切换用户"
   },
   auth: {

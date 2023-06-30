@@ -4,6 +4,7 @@ import { defer } from "lodash";
 import { useGlobalDialog } from "../../../../composables/components/globalDialog";
 import { useKeyStore } from "@/stores/key.store";
 import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
+import { isFocusBody } from "@/composables/element/textFocus";
 
 export function defineQuitEvent(popoverControl: Ref<boolean>) {
   const { warning } = useGlobalDialog();
@@ -14,7 +15,7 @@ export function defineQuitEvent(popoverControl: Ref<boolean>) {
     translator: ["quit-game-alive", "退出游戏"],
     fn: (isPressed: boolean) => {
       if (import.meta.env.SSR) return;
-      if (document.activeElement?.tagName !== "BODY") return;
+      if (isFocusBody()) return;
 
       if (!isPressed) {
         popoverControl.value = false;

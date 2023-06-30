@@ -1,24 +1,26 @@
 <script setup lang='ts'>
-import { NDrawer, NDrawerContent, NEmpty } from "naive-ui";
 import { useI18n } from "vue-i18n";
-import { ref } from "vue";
-import { isEmpty } from "lodash";
 import { useRouter } from "vue-router";
-import { getLoginForm, getRememberEmail } from "../composables/getters";
-import { useIf } from "../../../../composables/run/if";
-import { loginSuccess } from "../composables/loginAuth";
+import { NDrawer, NDrawerContent } from "naive-ui";
+import { onMounted, ref } from "vue";
 import UserHistoryItem from "./UserHistoryItem.vue";
-import type { User } from "@/services/databases/user/user.table";
-import { i18nLangModel } from "#/composables/i18n";
 import { useUserService } from "@/services/databases/user/user.service";
+import { useIf } from "#/composables/run/if";
+import type { User } from "@/services/databases/user/user.table";
+import { getLoginForm, getRememberEmail } from "@/views/login/composables/getters";
+import { loginSuccess } from "@/views/login/composables/loginAuth";
+import { i18nLangModel } from "#/composables/i18n";
 
 const active = defineModel<boolean>();
 const router = useRouter();
 
 const { t } = useI18n();
+
 const { getAllUsers } = useUserService();
 
-const users = ref(await getAllUsers());
+const users = ref<User[]>([]);
+onMounted(async () => users.value = await getAllUsers() || []);
+
 function toggleEmail({ token, email, nickname, roles }: User) {
   const [ifHaveToken, ifDontHaveToken] = useIf(token);
 
@@ -48,7 +50,7 @@ function toggleEmail({ token, email, nickname, roles }: User) {
       :closable="true"
       :title="t(i18nLangModel.userDrawer.title)"
     >
-      <template v-if="isEmpty(users)">
+      <template v-if="!users.length">
         <div class="user-history_empty">
           <n-empty :description="t(i18nLangModel.auth.userHistoryEmpty)">
             <template #icon>

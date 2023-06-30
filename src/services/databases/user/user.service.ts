@@ -42,7 +42,7 @@ function useVersion1() {
   const storeUserToken = defineServiceExportFunction(async (email: string, loginSuccessResponse: ResponseType_PostLoginWithEmail) => {
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
-    if (!user) return findError(i18nLangModel.error.findUserHistoryIndexDB);
+    if (!user) return findError(i18nLangModel.exception.findUserHistoryIndexDB);
 
     return await update(user.id, {
       token: loginSuccessResponse.access_token,
@@ -54,14 +54,14 @@ function useVersion1() {
   const deleteUserToken = defineServiceExportFunction(async (email: string) => {
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
-    if (!user) return findError(i18nLangModel.error.findUserHistoryIndexDB);
+    if (!user) return findError(i18nLangModel.exception.findUserHistoryIndexDB);
     await update(user.id, { token: "", roles: [], nickname: "" });
   });
 
   const updateUserNickname = defineServiceExportFunction(async (email: string, { nickname }: ResponseType_PatchUserNicknameByEmail) => {
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
-    if (!user) return findError(i18nLangModel.error.findUserHistoryIndexDB);
+    if (!user) return findError(i18nLangModel.exception.findUserHistoryIndexDB);
     await update(user.id, {
       nickname
     });
