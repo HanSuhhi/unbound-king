@@ -1,4 +1,4 @@
-import { every, isEmpty } from "lodash";
+import { every, forEach, isEmpty, isObject } from "lodash";
 import { stringArrayEqual } from "./array";
 import { TernaryResult } from "./ternary";
 
@@ -34,4 +34,20 @@ export function parseObjectToEmptyArrays<T = any>(obj: Dictionary<T>) {
     result[key] = [];
 
   return result;
+}
+
+/**
+ * Counts the number of keys in an object
+ * @param {Record<string, unknown>} obj - The object to count the keys of
+ * @returns {number} The total number of keys in the object
+ */
+export function countKeys(obj: Dictionary<any>): number {
+  let count = 0;
+
+  forEach(obj, (value, key) => {
+    if (isObject(value)) count += countKeys(obj[key]);
+    else count++;
+  });
+
+  return count;
 }
