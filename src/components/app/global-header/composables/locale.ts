@@ -14,7 +14,7 @@ function bindOptionHotkey(options: ComputedRef<any[]>, locale: Ref, control: Ref
     const { hotkey, label, value: optionValue } = option;
     createAutoMountEvent(control)({
       key: hotkey,
-      translator: [label as string, optionValue as string],
+      translator: label as string,
       fn: definePressed(() => locale.value = optionValue as string)
     });
   });
