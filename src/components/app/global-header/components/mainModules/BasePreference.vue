@@ -27,7 +27,8 @@ const modules: AppHeaderModule[] = [
     translator: ["quit", "退出"],
     icon: "exit",
     color: ["var(--red-bright-2)", "var(--red-deep-1)"],
-    event: defineQuitEvent(popoverControl.popoverControl)
+    event: defineQuitEvent(popoverControl.popoverControl),
+    show: isSighIn
   }
 ];
 
@@ -38,6 +39,7 @@ closeModules(popoverControl.popoverControl, index);
   <section class="base-preference">
     <base-popover
       :popover="popoverControl"
+      style="transform: translateX(calc(-1 * var(--small)));"
     >
       <template #trigger>
         <section class="module-icon">
@@ -48,9 +50,11 @@ closeModules(popoverControl.popoverControl, index);
       </template>
       <user-card />
       <n-grid class="aside-modules_main" x-gap="12" y-gap="8" :cols="5">
-        <n-gi v-for="module of modules" :key="module.translator[0]">
-          <aside-module :module="module" />
-        </n-gi>
+        <template v-for="module of modules" :key="module.translator[0]">
+          <n-gi v-if="module.show ? module.show.value : true">
+            <aside-module :module="module" />
+          </n-gi>
+        </template>
       </n-grid>
     </base-popover>
   </section>

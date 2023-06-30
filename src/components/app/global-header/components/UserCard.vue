@@ -2,6 +2,7 @@
 import { storeToRefs } from "pinia";
 import { useWatcher } from "alova";
 import { useI18n } from "vue-i18n";
+import { ref } from "vue";
 import { useUserService } from "../../../../services/databases/user/user.service";
 import UserAvator from "./UserAvator.vue";
 import Explanation from "@/components/experience/Explanation.vue";
@@ -10,10 +11,12 @@ import ResetInput from "@/components/inputs/ResetInput.vue";
 import { patchUserNicknameByEmail } from "@/api/services/users";
 import { i18nLangModel } from "#/composables/i18n";
 import LoadingIcon from "@/components/LoadingIcon.vue";
+import UserHistory from "@/views/login/components/UserHistory.vue";
 
 const { email, nickname } = storeToRefs(useAuthStore());
 const { t } = useI18n();
 const { updateUserNickname } = useUserService();
+const historyDrawer = ref(false);
 
 const { onSuccess, loading } = useWatcher(() => patchUserNicknameByEmail({ nickname: nickname.value }, {
   to: email.value
@@ -22,10 +25,16 @@ const { onSuccess, loading } = useWatcher(() => patchUserNicknameByEmail({ nickn
 });
 
 onSuccess(async ({ data: { data } }) => await updateUserNickname(email.value, data));
+
+function toggleUser() {
+  historyDrawer.value = true;
+  console.log("🚀 ~ file: UserCard.vue:31 ~ toggleUser ~ historyDrawer.value:", historyDrawer.value);
+}
 </script>
 
 <template>
   <section class="user-card">
+    <user-history v-model="historyDrawer" />
     <user-avator />
     <div class="user-card_title">
       <p class="p-reset user-card_name">
@@ -38,7 +47,7 @@ onSuccess(async ({ data: { data } }) => await updateUserNickname(email.value, da
     </div>
     <explanation>
       <template #trigger>
-        <div class="user-card_update" cursor-pointer>
+        <div class="user-card_update" cursor-pointer @click="toggleUser">
           <icon name="update" />
         </div>
       </template>

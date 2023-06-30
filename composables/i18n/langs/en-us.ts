@@ -21,7 +21,7 @@ const enUsModel = {
   },
   usercard: {
     nameInputPlaceholder: "please input your nickname",
-    toggle: "toggle user"
+    toggle: "Toggle User"
   },
   modules: {
     i18n: "Language",
@@ -61,7 +61,8 @@ const enUsModel = {
     historicalAccount: "Historical Account",
     emailLoginTitle: "Login With Email",
     policyForm: "Follow it please 🙌",
-    userHistoryEmpty: "No Saved Users"
+    userHistoryEmpty: "No Saved Users",
+    sendMail: "Send Mail Successfully"
   },
   userDrawer: {
     title: "User List"

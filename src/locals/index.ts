@@ -1,20 +1,20 @@
 import { createI18n } from "vue-i18n";
-import { useLocalStorage, useNavigatorLanguage } from "@vueuse/core";
+import { useNavigatorLanguage } from "@vueuse/core";
 import { parseImportModule } from "@/composables/ci/importModule";
+import { I18N_DEFAULT_LANG, IS_SSR } from "@/composables/constant/env";
 
 // do not forget to export title in langs
-const langs = import.meta.glob("#/composables/i18n/langs/*.ts", { eager: true });
-const messages = parseImportModule(langs, true);
+const messages = parseImportModule(import.meta.glob("#/composables/i18n/langs/*.ts", { eager: true }), true);
 
-const browerLocale = useNavigatorLanguage().language.value || import.meta.env.I18N_DEFAULT_LANG;
-const storageLocale = useLocalStorage("locale", browerLocale);
+const browerLocale = useNavigatorLanguage().language.value;
+const storageLocale = IS_SSR ? "" : (localStorage.getItem("locale") || "");
 
-const locale = storageLocale.value || browerLocale || import.meta.env.I18N_DEFAULT_LANG;
+const locale = storageLocale || browerLocale?.toLowerCase() || I18N_DEFAULT_LANG;
 
 export const i18n = createI18n({
-  legacy: false,
+  globalInjection: true,
   locale,
+  legacy: false,
   fallbackLocale: "en-us",
-  messages,
-  globalInjection: true
+  messages
 });

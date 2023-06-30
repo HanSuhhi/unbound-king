@@ -63,7 +63,8 @@ export default defineLang({
     historicalAccount: "历史登录账户",
     emailLoginTitle: "邮箱登录",
     policyForm: "请关注这里 🙌",
-    userHistoryEmpty: "暂无用户登录信息"
+    userHistoryEmpty: "暂无用户登录信息",
+    sendMail: "发送邮件验证码成功"
   },
   userDrawer: {
     title: "用户列表"

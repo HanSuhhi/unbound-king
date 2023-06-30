@@ -16,11 +16,9 @@ const active = defineModel<boolean>();
 const router = useRouter();
 
 const { t } = useI18n();
-const rememberEmail = getRememberEmail();
 const { getAllUsers } = useUserService();
 
-const users = ref(import.meta.env.SSR ? [] : await getAllUsers());
-const loginForm = getLoginForm();
+const users = ref(await getAllUsers());
 function toggleEmail({ token, email, nickname, roles }: User) {
   const [ifHaveToken, ifDontHaveToken] = useIf(token);
 
@@ -31,6 +29,9 @@ function toggleEmail({ token, email, nickname, roles }: User) {
   }, router));
 
   ifDontHaveToken(() => {
+    const rememberEmail = getRememberEmail();
+    const loginForm = getLoginForm();
+
     loginForm.value.form.email = email;
     active.value = false;
     rememberEmail.value = true;

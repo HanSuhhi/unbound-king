@@ -25,7 +25,7 @@ export function useLocale(toggle: () => boolean, control: Ref<boolean>) {
 
   // auto set locale to storage
   watch(locale, (newLocale) => {
-    localStorage.setItem("locale", newLocale);
+    localStorage.setItem("locale", newLocale.toLowerCase());
     delay(toggle, TRANSITION_DURATION / 8);
   });
 

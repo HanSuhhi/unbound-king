@@ -2,5 +2,6 @@ type AppHeaderModule = {
   translator: Translator;
   icon: BaseIconName;
   color: Color;
-  event?: KeyEvent
+  event?: KeyEvent;
+  show?: import("vue").Ref<boolean>;
 }
