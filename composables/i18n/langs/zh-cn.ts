@@ -35,8 +35,11 @@ export default defineLang({
   },
   dialog: {
     global: {
-      close: "弹窗关闭",
-      confirm: "弹窗确定"
+      close: "取消",
+      confirm: "确认"
+    },
+    quitGame: {
+      description: "是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。"
     }
   },
   exception: {
@@ -47,6 +50,14 @@ export default defineLang({
     nameInputPlaceholder: "尚未登录",
     toggle: "切换用户"
   },
+  header: {
+    perference: {
+      backLogin: "返回登录界面",
+      openSetting: "系统设置",
+      quitGame: "退出游戏"
+    }
+  },
+
   auth: {
     unauthorizedRequest: "未认证请求，请重新登录",
     title: "正在登录...",

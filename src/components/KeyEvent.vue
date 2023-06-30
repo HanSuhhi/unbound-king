@@ -10,7 +10,7 @@ const { t } = useI18n();
 <template>
   <div class="keyboard-event">
     <span>
-      {{ t(keyEvent.translator[1]) }}
+      {{ t(keyEvent.translator) }}
     </span>
   </div>
   <kbd-icon :reversed="reversed" class="keyboard-event_kbd ml-mini" :text="keyEvent.key" />

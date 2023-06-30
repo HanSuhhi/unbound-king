@@ -8,6 +8,13 @@ const enUsModel = {
     email: invalid("email"),
     authenticationCode: invalid("authentication code")
   },
+  header: {
+    perference: {
+      backLogin: "Back to Login",
+      openSetting: "System Setting",
+      quitGame: "Quit Game"
+    }
+  },
   registration: {
     title: "Register",
     text: "This account has not been registered yet. Are you sure to register?"
@@ -38,8 +45,11 @@ const enUsModel = {
   },
   dialog: {
     global: {
-      close: "Cancelfrrrrrrrrr`t  c ",
+      close: "Cancel",
       confirm: "Confirm"
+    },
+    quitGame: {
+      description: "Are you sure you want to exit and close the page? Any unsaved gameplay data may not be saved."
     }
   },
   exception: {

@@ -27,7 +27,10 @@ interface ImportMetaEnv {
 
 
 
-type Translator = [key: string, title: string ];
+/**
+ * @todo transform to string only and support i18n
+ */
+type Translator = [key: string, title: string ] | string;
 type Color = [color1: string, color2: string];
 type MinMax = [min: number, max: number];
 type From = string;

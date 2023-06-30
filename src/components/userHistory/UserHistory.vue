@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
-import { NDrawer, NDrawerContent, useMessage } from "naive-ui";
+import { NDrawer, NDrawerContent, NEmpty, useMessage } from "naive-ui";
 import { onMounted, ref } from "vue";
 import { storeToRefs } from "pinia";
 import UserHistoryItem from "./UserHistoryItem.vue";

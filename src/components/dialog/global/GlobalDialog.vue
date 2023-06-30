@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 import KeyEventButton from "../../typeButton/KeyEventButton.vue";
 import { useBoundary } from "./composables/boundary";
 import { useFixed } from "./composables/fixed";
@@ -16,6 +17,7 @@ const container = ref();
 const box = ref();
 const [x, y] = useBoundary(container, box);
 const { fixed, changeFixed, scrolling } = useFixed();
+const { t } = useI18n();
 
 const [close] = key_closeDialog(dialogDelayShow, delayshow);
 const [confirm] = key_confrim();
@@ -28,7 +30,7 @@ const [confirm] = key_confrim();
         <transition name="slide-down">
           <title-card-draggable v-if="dialogDelayShow" ref="box" class="global-dialog_main" :class="[`${fixed && 'fixed'}`]" :x="x" :y="y" :change-fixed="changeFixed">
             <template #title>
-              {{ dialogMessage?.title }}
+              {{ t(dialogMessage?.title || "") }}
             </template>
             <template #subtitle>
               <icon class="global-dialog_close" cursor-pointer name="close" @click="close!.fn(false)" />
@@ -39,7 +41,7 @@ const [confirm] = key_confrim();
                 <key-event-button class="global-dialog_button" :key-event="confirm!" />
               </section>
             </template>
-            {{ dialogMessage?.text }}
+            {{ t(dialogMessage?.text || "") }}
           </title-card-draggable>
         </transition>
       </div>

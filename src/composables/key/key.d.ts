@@ -1,12 +1,12 @@
 type KeyEvent = {
   key: string | string[];
-  translator: Translator;
+  translator: string;
   fn: (isPressed) => void | Promise<void>;
   mount?: () => any;
 }
 
 type KeyEventWithoutFn = {
   key: string | string[];
-  translator: Translator;
+  translator: string;
   mount?: () => any;
 }

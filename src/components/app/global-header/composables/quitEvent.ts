@@ -5,6 +5,7 @@ import { useGlobalDialog } from "../../../../composables/components/globalDialog
 import { useKeyStore } from "@/stores/key.store";
 import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
 import { isFocusBody } from "@/composables/element/textFocus";
+import { i18nLangModel } from "#/composables/i18n";
 
 export function defineQuitEvent(popoverControl: Ref<boolean>) {
   const { warning } = useGlobalDialog();
@@ -12,7 +13,7 @@ export function defineQuitEvent(popoverControl: Ref<boolean>) {
 
   return createAutoMountEvent(popoverControl)({
     key: "q",
-    translator: ["quit-game-alive", "退出游戏"],
+    translator: i18nLangModel.header.perference.quitGame,
     fn: (isPressed: boolean) => {
       if (import.meta.env.SSR) return;
       if (isFocusBody()) return;
@@ -21,8 +22,8 @@ export function defineQuitEvent(popoverControl: Ref<boolean>) {
         popoverControl.value = false;
         defer(() => {
           warning({
-            title: "退出游戏",
-            text: "是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。",
+            title: i18nLangModel.header.perference.quitGame,
+            text: i18nLangModel.dialog.quitGame.description,
             confirm: window.close,
             cancel() {
             },

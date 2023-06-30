@@ -9,7 +9,7 @@ export function key_confrim() {
 
   const close: KeyEvent = {
     key: "enter",
-    translator: ["confirm-dialog", i18nLangModel.dialog.global.confirm],
+    translator: i18nLangModel.dialog.global.confirm,
     fn(isPressed) {
       if (!isPressed) {
         dialogMessage.value?._confirm();

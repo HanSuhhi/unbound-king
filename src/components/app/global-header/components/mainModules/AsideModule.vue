@@ -1,5 +1,7 @@
 <script setup lang='ts'>
 import { runKeyEvent } from "@/composables/key/keyEvent";
+import Explanation from "@/components/experience/Explanation.vue";
+import KbdEvent from "@/components/KeyEvent.vue";
 
 defineProps<{
   module: AppHeaderModule
@@ -7,9 +9,14 @@ defineProps<{
 </script>
 
 <template>
-  <section v-paper-ripple cursor-pointer class="aside-module" flex_center @click="runKeyEvent(module.event)">
-    <icon class="aside-module_icon" :style="{ background: `linear-gradient(145deg, ${module.color[0]}, ${module.color[1]})` }" :name="module.icon" />
-  </section>
+  <explanation>
+    <template #trigger>
+      <section v-paper-ripple cursor-pointer class="aside-module" flex_center @click="runKeyEvent(module.event)">
+        <icon class="aside-module_icon" :style="{ background: `linear-gradient(145deg, ${module.color[0]}, ${module.color[1]})` }" :name="module.icon" />
+      </section>
+    </template>
+    <kbd-event :key-event="module.event!" />
+  </explanation>
 </template>
 
 <style scoped>

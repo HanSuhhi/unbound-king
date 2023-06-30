@@ -5,6 +5,7 @@ import { useRouter } from "vue-router";
 import { useGlobalDialog } from "@/composables/components/globalDialog";
 import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
 import { useKeyStore } from "@/stores/key.store";
+import { i18nLangModel } from "#/composables/i18n";
 
 export function defineLogoutEvent(popoverControl: Ref<boolean>) {
   const { warning } = useGlobalDialog();
@@ -13,7 +14,7 @@ export function defineLogoutEvent(popoverControl: Ref<boolean>) {
 
   return createAutoMountEvent(popoverControl)({
     key: "a",
-    translator: ["logout-auth", "退出到登录界面"],
+    translator: i18nLangModel.header.perference.backLogin,
     fn: (isPressed: boolean) => {
       if (import.meta.env.SSR) return;
       if (document.activeElement?.tagName !== "BODY") return;

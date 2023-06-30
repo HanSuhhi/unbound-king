@@ -13,7 +13,7 @@ export function key_closeDialog(dialogShow: Ref, delayShow: Ref) {
 
   const close: KeyEvent = {
     key: "escape",
-    translator: ["close-global-dialog", i18nLangModel.dialog.global.close],
+    translator: i18nLangModel.dialog.global.close,
     fn: throttle(async (isPressed) => {
       if (isPressed) return;
       dialogShow.value = false;

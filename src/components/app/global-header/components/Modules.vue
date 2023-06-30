@@ -19,10 +19,10 @@ type ModuleBlock = [
 ];
 
 const modules = shallowRef<ModuleBlock[]>([
-  [markRaw(I18n), defineKeyEventWithoutFn(["control", "l"])(["toggle i18n", i18nLangModel.modules.i18n])],
-  [markRaw(ThemeController), defineKeyEventWithoutFn(["control", "d"])(["toggle theme", i18nLangModel.modules.theme.title])],
-  [markRaw(ScreenController), defineKeyEventWithoutFn("f11")(["fullscreen", i18nLangModel.modules.screen.title])],
-  [markRaw(BasePreference), defineKeyEventWithoutFn(["control", "m"])(["toggle modules", i18nLangModel.modules.modules.title])]
+  [markRaw(I18n), defineKeyEventWithoutFn(["control", "l"])(i18nLangModel.modules.i18n)],
+  [markRaw(ThemeController), defineKeyEventWithoutFn(["control", "d"])(i18nLangModel.modules.theme.title)],
+  [markRaw(ScreenController), defineKeyEventWithoutFn("f11")(i18nLangModel.modules.screen.title)],
+  [markRaw(BasePreference), defineKeyEventWithoutFn(["control", "m"])(i18nLangModel.modules.modules.title)]
 ]);
 
 const modulesLength = computed(() => modules.value.length);
