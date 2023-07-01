@@ -12,7 +12,8 @@ const enUsModel = {
     perference: {
       backLogin: "Back to Login",
       openSetting: "System Setting",
-      quitGame: "Quit Game"
+      quitGame: "Quit Game",
+      replaceDeveloperPage: "Developer Page"
     }
   },
   registration: {
@@ -50,6 +51,11 @@ const enUsModel = {
     },
     quitGame: {
       description: "Are you sure you want to exit and close the page? Any unsaved gameplay data may not be saved."
+    },
+    logout: {
+      title: "Return to the auth page",
+      description: "Confirm to return to the auth page? Saved user information will be retained.",
+      success: "Logout Successfully"
     }
   },
   exception: {

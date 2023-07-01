@@ -1,7 +1,7 @@
 import { storeToRefs } from "pinia";
 import type { Ref } from "vue";
 import { defer } from "lodash";
-import { useGlobalDialog } from "../../../../composables/components/globalDialog";
+import { useGlobalDialog } from "../../../../../composables/components/globalDialog";
 import { useKeyStore } from "@/stores/key.store";
 import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
 import { isFocusBody } from "@/composables/element/textFocus";

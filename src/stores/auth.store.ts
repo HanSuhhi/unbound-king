@@ -11,14 +11,24 @@ const useAuthStore = defineStore("auth", () => {
 
   const isSighIn = computed(() => !!token.value);
   const isDeveloper = computed(() => roles.value.includes(Role.Developer));
+  const isSuperAdmin = computed(() => roles.value.includes(Role.SuperAdmin));
+
+  function resetUser() {
+    nickname.value = "";
+    email.value = "";
+    token.value = "";
+    roles.value = [];
+  }
 
   return {
     isSighIn,
     isDeveloper,
+    isSuperAdmin,
     token,
     roles,
     email,
-    nickname
+    nickname,
+    resetUser
   };
 });
 

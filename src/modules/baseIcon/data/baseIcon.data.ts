@@ -183,6 +183,9 @@ export const DATA_BaseIcons = {
   "auth": {
     translator: ["auth", "权限"],
     path: "i-material-symbols-key-outline-rounded"
+  },
+  "code": {
+    translator: ["code", "代码"],
+    path: "i-ph-codepen-logo"
   }
-
 };

@@ -14,7 +14,7 @@ import { i18n } from "@/locals";
 import { useIf } from "#/composables/run/if";
 import { useUserService } from "@/services/databases/user/user.service";
 import { useAuthStore } from "@/stores/auth.store";
-import { CLIENT_GAME_PREFIX } from "#/composables/constant/url";
+import { Prefix } from "#/composables/constant/url";
 
 export function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, router: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
@@ -23,7 +23,7 @@ export function loginSuccess(userEmail: string, { access_token: userToken, roles
   roles.value = userRoles!;
   email.value = userEmail!;
   nickname.value = userNickname!;
-  router.replace({ name: CLIENT_GAME_PREFIX });
+  router.replace({ name: Prefix.Client_Game });
 }
 
 export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>) {

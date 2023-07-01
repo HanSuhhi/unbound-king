@@ -1,8 +1,8 @@
 import { computed, defineComponent, ref } from "vue";
 import { useRoute } from "vue-router";
-import { CLIENT_SECOND_PREFIX } from "../../../../composables/constant/url";
 import SystemInfo from "./components/SystemInfo";
 import Modules from "./components/Modules.vue";
+import { Prefix } from "#/composables/constant/url";
 import { defineRouterChange } from "@/composables/experience/loadingbar";
 
 import "./global-header.css";
@@ -15,7 +15,7 @@ export default defineComponent({
     defineRouterChange();
 
     const route = useRoute();
-    const isContent = computed(() => route.fullPath.includes(CLIENT_SECOND_PREFIX));
+    const isContent = computed(() => route.fullPath.includes(Prefix.Client_Dev));
     return () => {
       return (
         <div class={{ "global-header": true, "global-header_is-content": isContent.value }}>

@@ -2,12 +2,12 @@
 import { NBadge, NGi, NGrid } from "naive-ui";
 import { storeToRefs } from "pinia";
 import { useI18n } from "vue-i18n";
-import { defineQuitEvent } from "../../composables/quitEvent";
+import { defineQuitEvent } from "../../composables/events/quitEvent";
 import { defineOpenSetting } from "../../composables/openSetting";
 import { usePopoverControl } from "../../composables/popoverControl";
 import UserCard from "../UserCard.vue";
 import { closeModules } from "../../composables/modulesController";
-import { defineLogoutEvent } from "../../composables/logoutAuth";
+import { defineLogoutEvent, defineReplaceDeveloperPageEvent } from "../../composables/events/auth";
 import type { ModuleProp } from "./module-type";
 import AsideModule from "./AsideModule.vue";
 import BasePopover from "@/components/experience/BasePopover.vue";
@@ -36,6 +36,11 @@ const modules: AppHeaderModule[] = [
     icon: "exit",
     color: ["var(--red-bright-2)", "var(--red-deep-1)"],
     event: defineQuitEvent(popoverControl.popoverControl)
+  },
+  {
+    icon: "code",
+    color: ["var(--gray-bright-2)", "var(--white-deep-1)"],
+    event: defineReplaceDeveloperPageEvent(popoverControl.popoverControl)
   }
 ];
 
@@ -72,3 +77,5 @@ closeModules(popoverControl.popoverControl, index);
   color: var(--white);
 }
 </style>
+../../composables/events/quitEvent../../composables/events/logoutAuth
+../../composables/events/auth

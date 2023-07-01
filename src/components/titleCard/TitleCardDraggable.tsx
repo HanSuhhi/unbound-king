@@ -33,7 +33,10 @@ export default defineComponent({
     return () => {
       return (
         <UseDraggable
-          as="article" handle={handle.value} style={style.value} class={"title-card title-card_draggable"}>
+          as="article"
+          handle={handle.value}
+          style={style.value}
+          class={"title-card title-card_draggable"}>
           {{
             default: (position: Position) => {
               draggableBoundary(position);

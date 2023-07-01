@@ -40,6 +40,11 @@ export default defineLang({
     },
     quitGame: {
       description: "是否确认退出并关闭页面？未保存的游玩数据可能不会被保存。"
+    },
+    logout: {
+      title: "返回到登录界面",
+      description: "是否确认并返回到登录界面？已保存的用户信息不会被清空。",
+      success: "返回成功"
     }
   },
   exception: {
@@ -54,7 +59,8 @@ export default defineLang({
     perference: {
       backLogin: "返回登录界面",
       openSetting: "系统设置",
-      quitGame: "退出游戏"
+      quitGame: "退出游戏",
+      replaceDeveloperPage: "开发者界面"
     }
   },
 

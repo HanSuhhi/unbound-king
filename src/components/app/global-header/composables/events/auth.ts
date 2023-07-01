@@ -1,0 +1,66 @@
+import { defer } from "lodash";
+import { storeToRefs } from "pinia";
+import type { Ref } from "vue";
+import { useRouter } from "vue-router";
+import { useMessage } from "naive-ui";
+import { useI18n } from "vue-i18n";
+import { useGlobalDialog } from "@/composables/components/globalDialog";
+import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
+import { useKeyStore } from "@/stores/key.store";
+import { i18nLangModel } from "#/composables/i18n";
+import { useAuthStore } from "@/stores/auth.store";
+
+export function defineLogoutEvent(popoverControl: Ref<boolean>) {
+  const { warning } = useGlobalDialog();
+  const { resetUser } = useAuthStore();
+  const { info } = useMessage();
+  const { t } = useI18n();
+  const { freeze } = storeToRefs(useKeyStore());
+  const { replace } = useRouter();
+
+  return createAutoMountEvent(popoverControl)({
+    key: "a",
+    translator: i18nLangModel.header.perference.backLogin,
+    fn: (isPressed: boolean) => {
+      if (import.meta.env.SSR) return;
+      if (document.activeElement?.tagName !== "BODY") return;
+
+      if (!isPressed) {
+        popoverControl.value = false;
+        defer(() => {
+          warning({
+            title: i18nLangModel.dialog.logout.title,
+            text: i18nLangModel.dialog.logout.description,
+            confirm() {
+              resetUser();
+              info(t(i18nLangModel.dialog.logout.success));
+              replace({ name: "auth" });
+            },
+            cancel() { },
+            init: () => freeze.value = true
+          });
+        });
+      }
+    }
+  });
+}
+
+export function defineReplaceDeveloperPageEvent(popoverControl: Ref<boolean>) {
+  const { replace } = useRouter();
+
+  return createAutoMountEvent(popoverControl)({
+    key: "m",
+    translator: i18nLangModel.header.perference.replaceDeveloperPage,
+    fn: (isPressed: boolean) => {
+      if (import.meta.env.SSR) return;
+      if (document.activeElement?.tagName !== "BODY") return;
+
+      if (!isPressed) {
+        popoverControl.value = false;
+        defer(() => {
+          replace({ name: "game-icon" });
+        });
+      }
+    }
+  });
+}

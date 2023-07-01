@@ -3,7 +3,7 @@ import type { Component } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 import { createMemoryHistory, createRouter, createWebHistory } from "vue-router";
 import { ROUTER_DEFAULT_PAGE } from "../constant/env";
-import { CLIENT_GAME_PREFIX, CLIENT_SECOND_PREFIX, Prefix } from "#/composables/constant/url";
+import { Prefix } from "#/composables/constant/url";
 import Auth from "@/views/login/Login.vue";
 import Garden from "@/views/garden/Garden.vue";
 import Arcade from "@/views/arcade/Arcade.vue";
@@ -25,22 +25,24 @@ export function useRouteConfig() {
     };
   });
 
-  _routes.push({
-    path: "",
-    meta: {
-      role: Role.Developer
-    },
+  _routes.push(...[
+    {
+      path: "",
+      meta: {
+        role: Role.Developer
+      },
 
-    redirect: { name: ROUTER_DEFAULT_PAGE }
-  });
-  _routes.push({
-    path: "setting",
-    name: "setting",
-    meta: {
-      role: Role.Developer
+      redirect: { name: ROUTER_DEFAULT_PAGE }
     },
-    component: () => import("@/modules/setting/BaseSetting.vue")
-  });
+    {
+      path: "setting",
+      name: "setting",
+      meta: {
+        role: Role.Developer
+      },
+      component: () => import("@/modules/setting/BaseSetting.vue")
+    }
+  ]);
 
   const routes: RouteRecordRaw[] = [
     {
@@ -62,18 +64,18 @@ export function useRouteConfig() {
     //   redirect: { name: ROUTER_DEFAULT_PAGE }
     // },
     {
-      path: `/${CLIENT_GAME_PREFIX}`,
-      name: `${CLIENT_GAME_PREFIX}`,
+      path: `/${Prefix.Client_Game}`,
+      name: `${Prefix.Client_Game}`,
       component: Arcade,
       meta: {
         role: Role.Player
       }
     },
     {
-      path: `/${CLIENT_SECOND_PREFIX}`,
+      path: `/${Prefix.Client_Dev}`,
       component: Garden,
       children: _routes,
-      redirect: { name: ROUTER_DEFAULT_PAGE }
+      redirect: { name: "game-icon" }
     }
   ];
 
