@@ -40,7 +40,8 @@ const modules: AppHeaderModule[] = [
   {
     icon: "code",
     color: ["var(--gray-bright-2)", "var(--white-deep-1)"],
-    event: defineReplaceDeveloperPageEvent(popoverControl.popoverControl)
+    event: defineReplaceDeveloperPageEvent(popoverControl.popoverControl),
+    show: isDeveloper
   }
 ];
 

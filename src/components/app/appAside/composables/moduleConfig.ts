@@ -1,16 +1,16 @@
 type Page = Omit<ModulePage, "auth" | "module" | "children" | "key"> & {
-  auth?: ModulePage["auth"];
-  module?: string;
-  children?: Page[];
-  key?: number[];
+  auth?: ModulePage["auth"]
+  module?: string
+  children?: Page[]
+  key?: number[]
 };
 type Pages = Array<Page>;
 
-const setPageAuthAndModule = (page: Page): void => {
+function setPageAuthAndModule(page: Page): void {
   if (!page.auth) page.auth = new Set();
-};
+}
 
-export const defineModuleConfig = (pages: Pages): ModulePage[] => {
+export function defineModuleConfig(pages: Pages): ModulePage[] {
   return pages.map((page, index) => {
     setPageAuthAndModule(page);
     page.key = [index];
@@ -23,4 +23,4 @@ export const defineModuleConfig = (pages: Pages): ModulePage[] => {
     }
     return page;
   }) as ModulePage[];
-};
+}

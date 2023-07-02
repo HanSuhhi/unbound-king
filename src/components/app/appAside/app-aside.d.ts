@@ -4,7 +4,7 @@ type AsideModule = {
   icon: BaseIconName;
   type: "default-menu" | "exter-module";
   comp?: Component;
-  pages?: ModulePage[];
+  pages?: import("naive-ui").MenuOption[];
 };
 
 type ModulePage = {

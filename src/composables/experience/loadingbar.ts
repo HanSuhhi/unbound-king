@@ -6,8 +6,6 @@ import { onMounted } from "vue";
 import { delay } from "lodash";
 import { ROUTER_DEFAULT_PAGE, TRANSITION_DURATION } from "../constant/env";
 import { findError } from "./error";
-import { useGlobalStore } from "@/stores/global.store";
-import { useAppAsideStore } from "@/components/app/appAside/store/aside.store";
 import type { Role } from "#/composables/enum/role.enum";
 import { useAuthStore } from "@/stores/auth.store";
 import { i18nLangModel } from "#/composables/i18n";
@@ -46,9 +44,6 @@ function useRouterBefore() {
 function useRouteAfter() {
   const loadingBar = useLoadingBar();
   const router = useRouter();
-
-  const { activePage, activeAsideModule } = storeToRefs(useGlobalStore());
-  const { pages, activeModules } = useAppAsideStore();
 
   router.afterEach(async (to, from) => {
     delay(() => {

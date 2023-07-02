@@ -1,9 +1,11 @@
 import { ref, watchEffect } from "vue";
+import type { MenuOption } from "naive-ui";
 import { parseImportModule } from "@/composables/ci/importModule";
 
 const data = parseImportModule(import.meta.glob("./*.module.ts", { eager: true }), true);
+
 export function defineModules() {
-  const modules = ref<AsideModule[]>([]);
+  const modules = ref<MenuOption[]>([]);
 
   watchEffect(() => {
     modules.value = [
