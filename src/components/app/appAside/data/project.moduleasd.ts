@@ -1,6 +1,4 @@
-import { defineModuleConfig } from "../composables/moduleConfig";
-
-export default defineModuleConfig([
+export default [
   {
     path: "base-icon",
     title: "基础图标",
@@ -47,4 +45,4 @@ export default defineModuleConfig([
       }
     ]
   }
-]);
+];

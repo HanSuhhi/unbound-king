@@ -2,13 +2,12 @@ import { findIndex } from "lodash";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";
 import { useAppAsideStore } from "../store/aside.store";
-import { defineModuleBlock } from "./moduleBlock";
 import { useGlobalStore } from "@/stores/global.store";
 import { useCsssTabs } from "@/components/ui/tabs";
 
 export async function useAsideLayout() {
   const { activeAsideModule } = storeToRefs(useGlobalStore());
-  const { activeModules } = storeToRefs(useAppAsideStore());
+  const { modules } = storeToRefs(useAppAsideStore());
 
   const tabs = useCsssTabs({
     style: {
@@ -26,16 +25,14 @@ export async function useAsideLayout() {
   watch(
     () => tabs.state.value?.active,
     (active) => {
-      activeAsideModule.value = activeModules.value[active];
+      activeAsideModule.value = modules.value[active];
     }
   );
 
   watch(activeAsideModule, () => {
     if (!tabs?.state?.value) return;
-    tabs.state.value.active = findIndex(activeModules.value, activeAsideModule.value);
+    tabs.state.value.active = findIndex(modules.value, activeAsideModule.value);
   });
-
-  await defineModuleBlock(tabs);
 
   return tabs;
 }

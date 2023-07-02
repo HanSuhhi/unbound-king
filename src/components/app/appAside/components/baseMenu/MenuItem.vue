@@ -1,17 +1,20 @@
 <script setup lang='ts'>
+import { RouterLink } from "vue-router";
+
 defineProps<{
   title: string
   description: string
+  path?: string
 }>();
 </script>
 
 <template>
-  <section class="aside-menu-block">
+  <component :is="path ? RouterLink : 'section'" :to="{ name: path }">
     <div class="aside-menu-main">
       <span class="aside-menu-block_title">{{ title }}</span>
       <span class="aside-menu-block_description">{{ description }}</span>
     </div>
-  </section>
+  </component>
 </template>
 
 <style scoped>

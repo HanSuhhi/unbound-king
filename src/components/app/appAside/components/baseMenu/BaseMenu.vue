@@ -2,11 +2,10 @@
 import { storeToRefs } from "pinia";
 import { NMenu, NScrollbar } from "naive-ui";
 import { onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { useGlobalStore } from "@/stores/global.store";
 
 const { activeAsideModule } = storeToRefs(useGlobalStore());
-const { push } = useRouter();
 const { name } = useRoute();
 
 onMounted(() => {
@@ -22,7 +21,7 @@ onMounted(() => {
       <n-menu
         :options="activeAsideModule?.pages"
         :default-value="name as string"
-        @update:value="push"
+        :default-expand-all="true"
       />
     </article>
   </n-scrollbar>
@@ -42,12 +41,12 @@ onMounted(() => {
     padding-right: var(--base-margin);
   }
 
-  .aside-menu .n-menu .n-menu-item-content::before {
-    inset: 0;
+  .aside-menu .n-submenu-children .n-menu-item:first-child {
+    margin-top: 0;
   }
 
-  .aside-menu .n-submenu-children:first-child {
-    margin-top: 0;
+  .aside-menu .n-submenu-children .n-menu-item:last-child {
+    margin-bottom: var(--small);
   }
 }
 </style>

@@ -4,6 +4,7 @@ import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { TRANSITION_DURATION } from "../../composables/constant/env";
 import { routes } from "../app/global-header/GlobalHeader";
+import { Prefix } from "../../../composables/constant/url";
 import { smoothScrollTo } from "./composables/jsAnimation";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
 import { useGlobalStore } from "@/stores/global.store";
@@ -39,7 +40,7 @@ function routeToPage(path: string) {
 }
 
 function routeToHome() {
-  router.push({ path: "/" });
+  router.push({ name: Prefix.Client_Dev_Default });
 }
 
 function routeByDirection(before?: boolean) {

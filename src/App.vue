@@ -56,7 +56,6 @@ bindNaiveUILayer();
 
     position: relative;
     z-index: 1;
-    height: var(--main-height);
   }
 
   .app-footer {

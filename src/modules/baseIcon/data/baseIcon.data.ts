@@ -187,5 +187,9 @@ export const DATA_BaseIcons = {
   "code": {
     translator: ["code", "代码"],
     path: "i-ph-codepen-logo"
+  },
+  "asset": {
+    translator: ["asset", "资源"],
+    path: "i-material-symbols-reset-image"
   }
 };

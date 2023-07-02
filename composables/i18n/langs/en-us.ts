@@ -3,6 +3,12 @@ import { defineLang } from "../lang.model";
 
 const enUsModel = {
   hotkey: "e",
+  aside: {
+    modules: {
+      assets: "Assets",
+      dev: "Developer Module"
+    }
+  },
   validate: {
     props: invalid("props"),
     email: invalid("email"),

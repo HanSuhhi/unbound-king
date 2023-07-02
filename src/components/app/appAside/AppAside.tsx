@@ -13,15 +13,15 @@ export default defineComponent({
   name: "AppAside",
   setup: async () => {
     const { COMP } = await useAsideLayout();
-    const { activeModules } = storeToRefs(useAppAsideStore());
+    const { modules } = storeToRefs(useAppAsideStore());
 
     const lists = computed(() => ({ active }: Dictionary<ComputedRef<number>>) => {
-      return activeModules.value.map((module, index) => <AppAsideModule isActive={index === active.value} module={module} />);
+      return modules.value.map((module, index) => <AppAsideModule isActive={index === active.value} module={module} />);
     });
 
     const panels = computed(() => {
       const _panels: Record<string, () => JSX.Element> = {};
-      activeModules.value.forEach((module, index) => {
+      modules.value.forEach((module, index) => {
         switch (module.type) {
           case "default-menu":
           default:

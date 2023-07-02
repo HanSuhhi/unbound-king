@@ -3,6 +3,12 @@ import { defineLang } from "../lang.model";
 
 export default defineLang({
   hotkey: "c",
+  aside: {
+    modules: {
+      assets: "资源管理",
+      dev: "开发者模块"
+    }
+  },
   validate: {
     props: invalidCn("参数"),
     email: invalidCn("邮箱"),
@@ -63,7 +69,6 @@ export default defineLang({
       replaceDeveloperPage: "开发者界面"
     }
   },
-
   auth: {
     unauthorizedRequest: "未认证请求，请重新登录",
     title: "正在登录...",
