@@ -5,15 +5,15 @@ import AppAsideModule from "./components/AppAsideModule";
 import BaseMenu from "./components/baseMenu/BaseMenu.vue";
 import Workshop from "./components/workshop/Workshop.vue";
 import { useAsideLayout } from "./composables/layout";
-import { useAppAsideStore } from "./store/aside.store";
 import AsideSetting from "./components/AsideSetting.vue";
+import { useDevStore } from "@/stores/dev.store";
 import "./app-aside.css";
 
 export default defineComponent({
   name: "AppAside",
   setup: async () => {
     const { COMP } = await useAsideLayout();
-    const { modules } = storeToRefs(useAppAsideStore());
+    const { modules } = storeToRefs(useDevStore());
 
     const lists = computed(() => ({ active }: Dictionary<ComputedRef<number>>) => {
       return modules.value.map((module, index) => <AppAsideModule isActive={index === active.value} module={module} />);
@@ -21,14 +21,7 @@ export default defineComponent({
 
     const panels = computed(() => {
       const _panels: Record<string, () => JSX.Element> = {};
-      modules.value.forEach((module, index) => {
-        switch (module.type) {
-          case "default-menu":
-          default:
-            _panels[`panel-${index}`] = () => <BaseMenu />;
-            break;
-        }
-      });
+      modules.value.forEach((_, index) => _panels[`panel-${index}`] = () => <BaseMenu />);
       return _panels;
     });
 

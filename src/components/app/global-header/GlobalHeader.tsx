@@ -1,4 +1,4 @@
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent } from "vue";
 import { useRoute } from "vue-router";
 import SystemInfo from "./components/SystemInfo";
 import Modules from "./components/Modules.vue";
@@ -6,8 +6,6 @@ import { Prefix } from "#/composables/constant/url";
 import { defineRouterChange } from "@/composables/experience/loadingbar";
 
 import "./global-header.css";
-
-export const routes = ref<[path: string, router: string, icon: BaseIconName][]>([]);
 
 export default defineComponent({
   name: "GlobalHeader",

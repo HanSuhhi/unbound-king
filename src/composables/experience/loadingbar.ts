@@ -1,3 +1,4 @@
+import type { MenuOption } from "naive-ui";
 import { useLoadingBar } from "naive-ui";
 import { storeToRefs } from "pinia";
 import type { RouteLocationNormalized } from "vue-router";
@@ -9,15 +10,29 @@ import { findError } from "./error";
 import type { Role } from "#/composables/enum/role.enum";
 import { useAuthStore } from "@/stores/auth.store";
 import { i18nLangModel } from "#/composables/i18n";
+import { useDevStore } from "@/stores/dev.store";
 
 function useRouterBefore() {
   const loadingBar = useLoadingBar();
   const router = useRouter();
   const { roles } = storeToRefs(useAuthStore());
+  const { activePage, activeAsideModule } = storeToRefs(useDevStore());
 
   const isRoleRight = (to: RouteLocationNormalized) => {
     const { meta: { role } } = to;
     if (role && !roles.value.includes(role as Role)) throw new Error("No Right");
+  };
+
+  const toggleActivePage = (items: MenuOption[], key: string): null | MenuOption => {
+    for (const item of items) {
+      if (item.key === key) return item;
+
+      if (item.children) {
+        const foundItem = toggleActivePage(item.children, key);
+        if (foundItem) return foundItem;
+      }
+    }
+    return null;
   };
 
   onMounted(() => {
@@ -29,7 +44,7 @@ function useRouterBefore() {
     }
   });
 
-  router.beforeEach((to) => {
+  router.beforeEach((to, from) => {
     loadingBar.start();
     try {
       isRoleRight(to);
@@ -38,14 +53,33 @@ function useRouterBefore() {
       findError(i18nLangModel.exception.visitUnauthorizedPage);
       return false;
     }
+
+    if (activeAsideModule.value?.pages) {
+      const toPage = toggleActivePage(activeAsideModule.value.pages, to.name as string);
+      if (toPage)
+        activePage.value = toPage ?? activePage.value;
+    }
+    return true;
   });
 }
 
 function useRouteAfter() {
   const loadingBar = useLoadingBar();
   const router = useRouter();
+  const { routes, modules, activePage } = storeToRefs(useDevStore());
 
   router.afterEach(async (to, from) => {
+    if (activePage.value) {
+      if (to.name === from.name) return false;
+
+      const { props: { title, path } } = activePage.value.label() as any;
+      const { props: { icon } } = activePage.value.icon() as any;
+      routes.value.push([
+        path,
+        title,
+        icon
+      ]);
+    }
     delay(() => {
       loadingBar.finish();
     }, TRANSITION_DURATION);

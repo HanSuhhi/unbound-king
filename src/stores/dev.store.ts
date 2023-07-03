@@ -1,11 +1,17 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import type { MenuOption } from "naive-ui";
 import { i18nLangModel } from "#/composables/i18n";
 import { parseImportModule } from "@/composables/ci/importModule";
 
-const data = parseImportModule(import.meta.glob("../data/*.module.ts", { eager: true }), true);
+type HistoryItem = [routeName: string, title: string, icon: BaseIconName];
+const data = parseImportModule(import.meta.glob("@/components/app/appAside/data/*.module.ts", { eager: true }), true);
 
-const useAppAsideStore = defineStore("app-aside", () => {
+const useDevStore = defineStore("dev-store", () => {
+  const routes = ref<HistoryItem[]>([]);
+  const activeAsideModule = ref<AsideModule>();
+  const activePage = ref<MenuOption>();
+
   const modules = ref<AsideModule[]>([
     {
       key: "assets",
@@ -28,7 +34,6 @@ const useAppAsideStore = defineStore("app-aside", () => {
     // }
   ]);
 
-  return { modules };
+  return { routes, modules, activeAsideModule, activePage };
 });
-
-export { useAppAsideStore };
+export { useDevStore };

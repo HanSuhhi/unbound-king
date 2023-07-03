@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 import packageJson from "/package.json";
 
 export default defineComponent({
-  name: "RouterHistory",
+  name: "SystemInfo",
   setup: () => {
     return () => {
       return (

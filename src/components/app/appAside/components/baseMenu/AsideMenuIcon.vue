@@ -1,7 +1,10 @@
 <script setup lang='ts'>
-defineProps<{
+const { icon } = defineProps<{
   icon: BaseIconName
 }>();
+defineExpose({
+  icon
+});
 </script>
 
 <template>

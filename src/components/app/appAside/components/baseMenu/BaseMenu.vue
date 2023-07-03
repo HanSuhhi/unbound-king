@@ -3,9 +3,9 @@ import { storeToRefs } from "pinia";
 import { NMenu, NScrollbar } from "naive-ui";
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
-import { useGlobalStore } from "@/stores/global.store";
+import { useDevStore } from "@/stores/dev.store";
 
-const { activeAsideModule } = storeToRefs(useGlobalStore());
+const { activeAsideModule } = storeToRefs(useDevStore());
 const { name } = useRoute();
 
 onMounted(() => {

@@ -1,13 +1,11 @@
 import { findIndex } from "lodash";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";
-import { useAppAsideStore } from "../store/aside.store";
-import { useGlobalStore } from "@/stores/global.store";
 import { useCsssTabs } from "@/components/ui/tabs";
+import { useDevStore } from "@/stores/dev.store";
 
 export async function useAsideLayout() {
-  const { activeAsideModule } = storeToRefs(useGlobalStore());
-  const { modules } = storeToRefs(useAppAsideStore());
+  const { modules, activeAsideModule } = storeToRefs(useDevStore());
 
   const tabs = useCsssTabs({
     style: {
@@ -24,9 +22,7 @@ export async function useAsideLayout() {
 
   watch(
     () => tabs.state.value?.active,
-    (active) => {
-      activeAsideModule.value = modules.value[active];
-    }
+    active => activeAsideModule.value = modules.value[active]
   );
 
   watch(activeAsideModule, () => {

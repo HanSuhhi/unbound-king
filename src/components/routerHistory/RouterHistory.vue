@@ -3,20 +3,18 @@ import { storeToRefs } from "pinia";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { TRANSITION_DURATION } from "../../composables/constant/env";
-import { routes } from "../app/global-header/GlobalHeader";
 import { Prefix } from "../../../composables/constant/url";
 import { smoothScrollTo } from "./composables/jsAnimation";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
-import { useGlobalStore } from "@/stores/global.store";
 import Icon from "@/components/Icon.vue";
 import IconButton from "@/components/typeButton/IconButton.vue";
-// import "./router-history.css";
 import MainGradient from "@/components/text/MainGradient.vue";
+import { useDevStore } from "@/stores/dev.store";
 
-const { activePage } = storeToRefs(useGlobalStore());
 const router = useRouter();
 
 const routeBlocks = ref<HTMLElement[]>([]);
+const { routes, activePage } = storeToRefs(useDevStore());
 
 const index = computed(() =>
   routes.value.findIndex((route) => {
@@ -74,7 +72,16 @@ const closeIndex = ref(1);
     </nav>
     <transition-group tag="div" name="horizontal-list" class="router-history_block router-history_box" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
       <template v-for="(route, targetIndex) of routes" :key="route[0]">
-        <li ref="routeBlocks" v-paper-ripple cursor-pointer :class="{ 'router-history_active': activePage?.title === route[1] }" class="h-reset router-history_item router-history_route" @click="routeToPage(route[0])" @mouseover="closeIndex = targetIndex" @mouseout="closeIndex = -1">
+        <li
+          ref="routeBlocks"
+          v-paper-ripple
+          cursor-pointer
+          :class="{ 'router-history_active': activePage?.title === route[1] }"
+          class="h-reset router-history_item router-history_route"
+          @click="routeToPage(route[0])"
+          @mouseover="closeIndex = targetIndex"
+          @mouseout="closeIndex = -1"
+        >
           <icon :name="route[2]" />
           <h2 :data-name="route[1]" class="h-reset router-history_text">
             <component :is="activePage?.title === route[1] ? MainGradient : 'span'">
