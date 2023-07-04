@@ -15,14 +15,18 @@ import { useIf } from "#/composables/run/if";
 import { useUserService } from "@/services/databases/user/user.service";
 import { useAuthStore } from "@/stores/auth.store";
 import { Prefix } from "#/composables/constant/url";
+import { useStateStore } from "@/stores/state.store";
+import { State } from "@/enums/state.enum";
 
 export function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, router: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
+  const { STATE } = storeToRefs(useStateStore());
 
   token.value = userToken!;
   roles.value = userRoles!;
   email.value = userEmail!;
   nickname.value = userNickname!;
+  STATE.value = State.Game;
   router.replace({ name: Prefix.Client_Game });
 }
 

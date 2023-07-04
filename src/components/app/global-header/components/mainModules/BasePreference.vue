@@ -1,7 +1,6 @@
 <script setup lang='ts'>
 import { NBadge, NGi, NGrid } from "naive-ui";
 import { storeToRefs } from "pinia";
-import { useI18n } from "vue-i18n";
 import { defineQuitEvent } from "../../composables/events/quitEvent";
 import { defineOpenSetting } from "../../composables/openSetting";
 import { usePopoverControl } from "../../composables/popoverControl";
@@ -15,7 +14,6 @@ import { useAuthStore } from "@/stores/auth.store";
 
 const { enterKeyEvent, index } = defineProps<ModuleProp>();
 const { isSighIn, isDeveloper } = storeToRefs(useAuthStore());
-const { t } = useI18n();
 
 const popoverControl = usePopoverControl(enterKeyEvent);
 

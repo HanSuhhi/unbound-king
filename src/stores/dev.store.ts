@@ -7,8 +7,26 @@ import { parseImportModule } from "@/composables/ci/importModule";
 type HistoryItem = [routeName: string, title: string, icon: BaseIconName];
 const data = parseImportModule(import.meta.glob("@/components/app/appAside/data/*.module.ts", { eager: true }), true);
 
+function selectAllModuleKeys(items: MenuOption[]): string[] {
+  let answer: string[] = [];
+  for (const item of items) {
+    answer.push(item.key as string);
+    if (item.children)
+      answer = answer.concat(selectAllModuleKeys(item.children));
+  }
+
+  return answer;
+}
+
 const useDevStore = defineStore("dev-store", () => {
   const routes = ref<HistoryItem[]>([]);
+
+  const pushRoute = (route: HistoryItem) => {
+    const haveRoute = routes.value.map(originRoute => originRoute[0]).includes(route[0]);
+    if (haveRoute) return;
+    routes.value.push(route);
+  };
+
   const activeAsideModule = ref<AsideModule>();
   const activePage = ref<MenuOption>();
 
@@ -17,13 +35,15 @@ const useDevStore = defineStore("dev-store", () => {
       key: "assets",
       title: i18nLangModel.aside.modules.assets,
       icon: "asset",
-      pages: data.assets
+      pages: data.assets,
+      keys: selectAllModuleKeys(data.assets)
     },
     {
       key: "dev",
       title: i18nLangModel.aside.modules.dev,
       icon: "development",
-      pages: data.dev
+      pages: data.dev,
+      keys: selectAllModuleKeys(data.dev)
     }
     // {
     //   key: "project",
@@ -34,6 +54,12 @@ const useDevStore = defineStore("dev-store", () => {
     // }
   ]);
 
-  return { routes, modules, activeAsideModule, activePage };
+  return {
+    routes,
+    pushRoute,
+    modules,
+    activeAsideModule,
+    activePage
+  };
 });
 export { useDevStore };

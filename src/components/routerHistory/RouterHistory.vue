@@ -1,44 +1,28 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { computed, ref } from "vue";
-import { useRouter } from "vue-router";
-import { TRANSITION_DURATION } from "../../composables/constant/env";
+import { useRoute, useRouter } from "vue-router";
 import { Prefix } from "../../../composables/constant/url";
-import { smoothScrollTo } from "./composables/jsAnimation";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
 import Icon from "@/components/Icon.vue";
 import IconButton from "@/components/typeButton/IconButton.vue";
 import MainGradient from "@/components/text/MainGradient.vue";
 import { useDevStore } from "@/stores/dev.store";
 
-const router = useRouter();
+const { push } = useRouter();
+const route = useRoute();
 
 const routeBlocks = ref<HTMLElement[]>([]);
 const { routes, activePage } = storeToRefs(useDevStore());
 
 const index = computed(() =>
   routes.value.findIndex((route) => {
-    return route[0] === activePage.value?.path;
+    return route[0] === activePage.value?.key;
   })
 );
 
-router.afterEach(() => {
-  if (import.meta.env.SSR) return;
-  const currentWidth = routeBlocks.value[index.value]?.getBoundingClientRect().width || 0;
-  const beforeTotalWidth = routeBlocks.value.slice(0, index.value).reduce((acc, element) => acc + element.offsetWidth, 0) + currentWidth;
-  const routeBox = document.querySelector(".router-history_box")!;
-  const routeBlockWidth = routeBox.getBoundingClientRect().width;
-
-  if (beforeTotalWidth > routeBlockWidth) smoothScrollTo(beforeTotalWidth - routeBlockWidth, TRANSITION_DURATION);
-  if (beforeTotalWidth > routeBox.scrollLeft) smoothScrollTo(beforeTotalWidth - currentWidth, TRANSITION_DURATION);
-});
-
-function routeToPage(path: string) {
-  router.push({ path });
-}
-
 function routeToHome() {
-  router.push({ name: Prefix.Client_Dev_Default });
+  push({ name: Prefix.Client_Dev_Default });
 }
 
 function routeByDirection(before?: boolean) {
@@ -47,15 +31,22 @@ function routeByDirection(before?: boolean) {
   else pageIndex = index.value === routes.value.length - 1 ? index.value : index.value + 1;
 
   const [path] = routes.value[pageIndex];
-  routeToPage(path);
+  push({ name: path });
 }
 
 function deleteRouteItem(targetIndex: number) {
   const originIndex = index.value;
   if (targetIndex !== originIndex) return routes.value.splice(targetIndex, 1);
-  if (targetIndex) routeByDirection(true);
-  else if (routes.value.length > 1) routeByDirection();
-  else routeToHome();
+  if (targetIndex) {
+    routeByDirection(true);
+  }
+  else if (routes.value.length > 1) {
+    routeByDirection();
+  }
+  else {
+    if (route.name === Prefix.Client_Dev_Default) return;
+    routeToHome();
+  }
 
   routes.value.splice(targetIndex, 1);
 }
@@ -76,19 +67,23 @@ const closeIndex = ref(1);
           ref="routeBlocks"
           v-paper-ripple
           cursor-pointer
-          :class="{ 'router-history_active': activePage?.title === route[1] }"
+          :class="{ 'router-history_active': activePage?.key === route[0] }"
           class="h-reset router-history_item router-history_route"
-          @click="routeToPage(route[0])"
+          @click="push(route[0])"
           @mouseover="closeIndex = targetIndex"
           @mouseout="closeIndex = -1"
         >
           <icon :name="route[2]" />
           <h2 :data-name="route[1]" class="h-reset router-history_text">
-            <component :is="activePage?.title === route[1] ? MainGradient : 'span'">
+            <component :is="activePage?.key === route[0] ? MainGradient : 'span'">
               {{ route[1] }}
             </component>
           </h2>
-          <div :style="{ opacity: targetIndex === index ? 1 : targetIndex === closeIndex ? 1 : 0 }" class="router-history_close" @click.stop="deleteRouteItem(targetIndex)">
+          <div
+            :style="{ opacity: targetIndex === index ? 1 : targetIndex === closeIndex ? 1 : 0 }"
+            class="router-history_close"
+            @click.stop="deleteRouteItem(targetIndex)"
+          >
             <icon name="close" />
           </div>
         </li>

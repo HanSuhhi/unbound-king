@@ -9,6 +9,8 @@ import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
 import { useKeyStore } from "@/stores/key.store";
 import { i18nLangModel } from "#/composables/i18n";
 import { useAuthStore } from "@/stores/auth.store";
+import { useStateStore } from "@/stores/state.store";
+import { State } from "@/enums/state.enum";
 
 export function defineLogoutEvent(popoverControl: Ref<boolean>) {
   const { warning } = useGlobalDialog();
@@ -16,6 +18,7 @@ export function defineLogoutEvent(popoverControl: Ref<boolean>) {
   const { info } = useMessage();
   const { t } = useI18n();
   const { freeze } = storeToRefs(useKeyStore());
+  const { STATE } = storeToRefs(useStateStore());
   const { replace } = useRouter();
 
   return createAutoMountEvent(popoverControl)({
@@ -33,6 +36,7 @@ export function defineLogoutEvent(popoverControl: Ref<boolean>) {
             text: i18nLangModel.dialog.logout.description,
             confirm() {
               resetUser();
+              STATE.value = State.Auth;
               info(t(i18nLangModel.dialog.logout.success));
               replace({ name: "auth" });
             },
@@ -47,6 +51,7 @@ export function defineLogoutEvent(popoverControl: Ref<boolean>) {
 
 export function defineReplaceDeveloperPageEvent(popoverControl: Ref<boolean>) {
   const { replace } = useRouter();
+  const { STATE } = storeToRefs(useStateStore());
 
   return createAutoMountEvent(popoverControl)({
     key: "m",
@@ -58,6 +63,8 @@ export function defineReplaceDeveloperPageEvent(popoverControl: Ref<boolean>) {
       if (!isPressed) {
         popoverControl.value = false;
         defer(() => {
+          STATE.value = State.Dev;
+
           replace({ name: "game-icon" });
         });
       }
