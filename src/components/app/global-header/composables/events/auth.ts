@@ -11,6 +11,7 @@ import { i18nLangModel } from "#/composables/i18n";
 import { useAuthStore } from "@/stores/auth.store";
 import { useStateStore } from "@/stores/state.store";
 import { State } from "@/enums/state.enum";
+import { Prefix } from "#/composables/constant/url";
 
 export function defineLogoutEvent(popoverControl: Ref<boolean>) {
   const { warning } = useGlobalDialog();
@@ -65,7 +66,7 @@ export function defineReplaceDeveloperPageEvent(popoverControl: Ref<boolean>) {
         defer(() => {
           STATE.value = State.Dev;
 
-          replace({ name: "game-icon" });
+          replace({ name: Prefix.Client_Dev_Default });
         });
       }
     }

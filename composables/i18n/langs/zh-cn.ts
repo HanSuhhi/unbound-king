@@ -91,5 +91,59 @@ export default defineLang({
   },
   userDrawer: {
     title: "用户列表"
+  },
+  asideModules: {
+    "base-icon": {
+      title: "基础图标",
+      desc: "项目框架所使用图标"
+    },
+    "game-icon": {
+      title: "游戏图标",
+      desc: "游戏中用到的图标"
+    },
+    "character-design": {
+      title: "角色设计",
+      desc: "角色的各项设计"
+    },
+    "name-design": {
+      title: "姓名设计",
+      desc: "设计角色姓名"
+    },
+    "attribute-value": {
+      title: "属性值",
+      desc: "角色数值属性及含义"
+    },
+    "attribute": {
+      title: "属性",
+      desc: "角色属性及属性效果"
+    },
+    "personality-design": {
+      title: "个性设计",
+      desc: "每个角色都有脾气！"
+    },
+    "trait-design": {
+      title: "特征设计",
+      desc: "角色是灰的。"
+    },
+    "ambition-design": {
+      title: "抱负设计",
+      desc: "角色抱负相关设计"
+    },
+    "ethnicity-design": {
+      title: "族裔设计",
+      desc: "包含种族、血统"
+    },
+    "destiny-design": {
+      title: "种族设计",
+      desc: "查看所有种族参数"
+    },
+    "lineageo-design": {
+      title: "血统设计",
+      desc: "查看、控制血统参数"
+    },
+    "skill-design": {
+      title: "技能设计",
+      desc: "技能参数设置"
+    }
   }
 }, "中文");

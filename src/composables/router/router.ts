@@ -75,7 +75,7 @@ export function useRouteConfig() {
       path: `/${Prefix.Client_Dev}`,
       component: Garden,
       children: _routes,
-      redirect: { name: "game-icon" }
+      redirect: { name: Prefix.Client_Dev_Default }
     }
   ];
 

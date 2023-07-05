@@ -5,7 +5,6 @@ import { i18nLangModel } from "#/composables/i18n";
 import { parseImportModule } from "@/composables/ci/importModule";
 
 type HistoryItem = [routeName: string, title: string, icon: BaseIconName];
-const data = parseImportModule(import.meta.glob("@/components/app/appAside/data/*.module.ts", { eager: true }), true);
 
 function selectAllModuleKeys(items: MenuOption[]): string[] {
   let answer: string[] = [];
@@ -19,6 +18,8 @@ function selectAllModuleKeys(items: MenuOption[]): string[] {
 }
 
 const useDevStore = defineStore("dev-store", () => {
+  // TODO import async
+  const data = parseImportModule(import.meta.glob("@/components/app/appAside/data/*.module.ts", { eager: true }), true);
   const routes = ref<HistoryItem[]>([]);
 
   const pushRoute = (route: HistoryItem) => {

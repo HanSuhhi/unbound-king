@@ -1,20 +1,18 @@
-import { h } from "vue";
-import type { MenuOption } from "naive-ui";
-import MenuItem from "../components/baseMenu/MenuItem.vue";
-import AppMenuIcon from "../components/baseMenu/AsideMenuIcon.vue";
+import { defineMenuOptions } from "../composables/menuOption";
 
-const routes: MenuOption[] = [
+const routes = defineMenuOptions([
+  {
+    key: "base-icon",
+    // head: i18nLangModel.asideModules["base-icon"].title,
+    // description: "项目框架所使用图标",
+    tip: "icons"
+  },
   {
     key: "game-icon",
-    label: () => h(MenuItem, {
-      title: "游戏图标",
-      path: "game-icon",
-      description: "游玩中用到的图标"
-    }),
-    icon: () => h(AppMenuIcon, {
-      icon: "icons"
-    })
+    // head: i18nLangModel.asideModules["game-icon"].title,
+    // description: i18nLangModel.asideModules["game-icon"].desc,
+    tip: "icons"
   }
-];
+]);
 
 export default routes;

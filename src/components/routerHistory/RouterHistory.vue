@@ -2,6 +2,7 @@
 import { storeToRefs } from "pinia";
 import { computed, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 import { Prefix } from "../../../composables/constant/url";
 import { onBeforeEnter, onEnter, onLeave } from "./composables/horizontalList";
 import Icon from "@/components/Icon.vue";
@@ -11,6 +12,7 @@ import { useDevStore } from "@/stores/dev.store";
 
 const { push } = useRouter();
 const route = useRoute();
+const { t } = useI18n();
 
 const routeBlocks = ref<HTMLElement[]>([]);
 const { routes, activePage } = storeToRefs(useDevStore());
@@ -35,8 +37,7 @@ function routeByDirection(before?: boolean) {
 }
 
 function deleteRouteItem(targetIndex: number) {
-  const originIndex = index.value;
-  if (targetIndex !== originIndex) return routes.value.splice(targetIndex, 1);
+  if (targetIndex !== index.value) return routes.value.splice(targetIndex, 1);
   if (targetIndex) {
     routeByDirection(true);
   }
@@ -58,10 +59,18 @@ const closeIndex = ref(1);
   <ol relative class="router-history ol-reset">
     <nav class="router-history_block">
       <icon-button class="s-9 m-mini" icon-name="double-left" @click="routeByDirection(true)" />
-      <icon-button class="s-9 my-mini" icon-name="double-right" @click="routeByDirection(false)" />
+      <icon-button class="s-9 my-mini" icon-name="double-right" @click="routeByDirection()" />
       <icon-button class="s-9 m-mini" icon-name="home" @click="routeToHome" />
     </nav>
-    <transition-group tag="div" name="horizontal-list" class="router-history_block router-history_box" :css="false" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+    <transition-group
+      tag="div"
+      name="horizontal-list"
+      class="router-history_block router-history_box"
+      :css="false"
+      @before-enter="onBeforeEnter"
+      @enter="onEnter"
+      @leave="onLeave"
+    >
       <template v-for="(route, targetIndex) of routes" :key="route[0]">
         <li
           ref="routeBlocks"
@@ -76,7 +85,7 @@ const closeIndex = ref(1);
           <icon :name="route[2]" />
           <h2 :data-name="route[1]" class="h-reset router-history_text">
             <component :is="activePage?.key === route[0] ? MainGradient : 'span'">
-              {{ route[1] }}
+              {{ t(route[1]) }}
             </component>
           </h2>
           <div

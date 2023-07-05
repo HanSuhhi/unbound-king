@@ -53,11 +53,13 @@ Design user permissions using CASL.
 
 The client includes two important routes: one for game-related content and the other for backend management.
 
-- ### Game-related
+- ### i18n
 
-- ### Backend Management
+Since English is not my native language, there might be errors in the English i18n translations. Feel free to point them out and submit a pull request (PR) to correct them.
 
-It also includes some common pages.
+- ### Header
+
+This is a component, but shared globally.
 
 - ### Login
 
@@ -65,11 +67,11 @@ Inspired by [nextjs](https://nextjs.org/) and [nuxt.js](https://nuxt.com/)
 
 Only allow login through email code authentication or third-party login (try to adapt to as many third-party platforms as possible).
 
-- ### Setting
+- ### Game-related
 
-- ### Header
+- ### Backend Management
 
-This is a component, but shared globally.
+It also includes some common pages.
 
 ## Features
 

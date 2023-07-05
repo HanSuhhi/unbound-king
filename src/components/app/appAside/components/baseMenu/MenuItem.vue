@@ -1,18 +1,21 @@
 <script setup lang='ts'>
 import { RouterLink } from "vue-router";
+import { useI18n } from "vue-i18n";
 
 defineProps<{
   title: string
   description: string
   path?: string
 }>();
+
+const { t } = useI18n();
 </script>
 
 <template>
   <component :is="path ? RouterLink : 'section'" :to="{ name: path }">
     <div class="aside-menu-main">
-      <span class="aside-menu-block_title">{{ title }}</span>
-      <span class="aside-menu-block_description">{{ description }}</span>
+      <span class="aside-menu-block_title">{{ t(title) }}</span>
+      <span class="aside-menu-block_description">{{ t(description) }}</span>
     </div>
   </component>
 </template>

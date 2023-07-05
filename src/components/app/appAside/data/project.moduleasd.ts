@@ -1,11 +1,5 @@
 export default [
   {
-    path: "base-icon",
-    title: "基础图标",
-    description: "项目框架所使用图标",
-    icon: "icons"
-  },
-  {
     path: "package-design",
     title: "包设计",
     description: "来设计自己的包！",

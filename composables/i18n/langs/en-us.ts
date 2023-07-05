@@ -90,6 +90,60 @@ const enUsModel = {
   },
   userDrawer: {
     title: "User List"
+  },
+  asideModules: {
+    "base-icon": {
+      title: "Base Icon",
+      desc: "Icons used in the system"
+    },
+    "game-icon": {
+      title: "Game Icon",
+      desc: "Icons used in the game"
+    },
+    "character-design": {
+      title: "Character Design",
+      desc: "Every character has a personality"
+    },
+    "name-design": {
+      title: "Name Design",
+      desc: "Design character Name"
+    },
+    "attribute-value": {
+      title: "Attribute Value",
+      desc: "ATK, DEF, HP ..."
+    },
+    "attribute": {
+      title: "Attribute",
+      desc: "Character attributes"
+    },
+    "personality-design": {
+      title: "Personality Design",
+      desc: "character's temperament!"
+    },
+    "trait-design": {
+      title: "Trait Design",
+      desc: "Some special traits."
+    },
+    "ambition-design": {
+      title: "Ambition Design",
+      desc: "character ambitions"
+    },
+    "ethnicity-design": {
+      title: "Ethnicity Design",
+      desc: "Includes race and lineage"
+    },
+    "destiny-design": {
+      title: "Race Design",
+      desc: "View all race parameters"
+    },
+    "lineageo-design": {
+      title: "Lineage Design",
+      desc: "control lineage parameters"
+    },
+    "skill-design": {
+      title: "Skill Design",
+      desc: "Parameter settings for skills"
+    }
   }
 };
 

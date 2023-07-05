@@ -18,7 +18,6 @@ function useRouterBefore() {
   const loadingBar = useLoadingBar();
   const router = useRouter();
   const { roles } = storeToRefs(useAuthStore());
-  const { modules, activePage, activeAsideModule } = storeToRefs(useDevStore());
   const { STATE } = storeToRefs(useStateStore());
 
   const isRoleRight = (to: RouteLocationNormalized) => {
@@ -47,7 +46,7 @@ function useRouterBefore() {
     }
   });
 
-  router.beforeEach((to, from) => {
+  router.beforeEach((to) => {
     loadingBar.start();
     try {
       isRoleRight(to);
@@ -57,10 +56,17 @@ function useRouterBefore() {
       return false;
     }
 
-    if (STATE.value === State.Dev) {
-      activeAsideModule.value = modules.value.find((item: AsideModule) => item.keys.includes(to.name)) ?? activeAsideModule.value;
-      const toPage = toggleActivePage(activeAsideModule.value.pages, to.name);
-      if (toPage) activePage.value = toPage ?? activePage.value;
+    switch (STATE.value) {
+      case State.Dev: {
+        const { modules, activePage, activeAsideModule } = storeToRefs(useDevStore());
+
+        activeAsideModule.value = modules.value.find((item: AsideModule) => item.keys.includes(to.name)) ?? activeAsideModule.value;
+        const toPage = toggleActivePage(activeAsideModule.value?.pages, to.name);
+        if (toPage) activePage.value = toPage ?? activePage.value;
+        break;
+      }
+      default:
+        break;
     }
     return true;
   });
@@ -69,25 +75,31 @@ function useRouterBefore() {
 function useRouteAfter() {
   const loadingBar = useLoadingBar();
   const router = useRouter();
-  const { activePage } = storeToRefs(useDevStore());
-  const { pushRoute } = useDevStore();
+
+  const { STATE } = storeToRefs(useStateStore());
 
   router.afterEach(async (to, from) => {
-    if (activePage.value) {
-      if (to.name === from.name) return false;
+    switch (STATE.value) {
+      case State.Dev: {
+        const { activePage } = storeToRefs(useDevStore());
+        const { pushRoute } = useDevStore();
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      const { props: { title, path } } = activePage.value.label() as any;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      const { props: { icon } } = activePage.value.icon() as any;
+        if (activePage.value) {
+          if (to.name === from.name) return false;
 
-      pushRoute([
-        path,
-        title,
-        icon
-      ]);
+          const { props: { title, path } } = activePage.value.label() as any;
+          const { props: { icon } } = activePage.value.icon() as any;
+
+          pushRoute([
+            path,
+            title,
+            icon
+          ]);
+        }
+        break;
+      }
+      default:
+        break;
     }
     delay(() => {
       loadingBar.finish();
