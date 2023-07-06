@@ -1,1 +1,0 @@
-type AlertType = "warning" | "info";

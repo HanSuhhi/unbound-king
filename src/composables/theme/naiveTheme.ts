@@ -17,6 +17,10 @@ export function defineNaiveTheme() {
       primaryColorHover: mainb1,
       primaryColorPressed: mainb1
     },
+    Alert: {
+      colorWarning: "hsla(45deg, 83%, 45%, 0.25)",
+      borderWarning: "1px solid hsl(45deg 73% 51%)"
+    },
     Button: {
       textColorHover: "var(--white-bright-2)",
       textColorPressed: "var(--white-bright-2)",

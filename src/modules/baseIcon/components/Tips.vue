@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Alert from "@/components/alert/alert";
+import alert from "@/components/Alert.vue";
 </script>
 
 <template>

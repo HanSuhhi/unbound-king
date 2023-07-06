@@ -22,7 +22,9 @@ export async function useAsideLayout() {
 
   watch(
     () => tabs.state.value?.active,
-    active => activeAsideModule.value = modules.value[active]
+    (active) => {
+      activeAsideModule.value = modules.value[active];
+    }
   );
 
   watch(activeAsideModule, () => {

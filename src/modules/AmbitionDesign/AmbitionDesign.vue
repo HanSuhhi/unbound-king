@@ -2,7 +2,7 @@
 import AmbitionMain from "./comopnents/AmbitionMain.vue";
 import { parseImportModule } from "@/composables/ci/importModule";
 import TabsDesign from "@/components/tabs/TabsDesign.vue";
-import alert from "@/components/alert/alert";
+import alert from "@/components/Alert.vue";
 
 const data = parseImportModule(import.meta.glob("./data/*.ambition.ts", { eager: true }));
 </script>

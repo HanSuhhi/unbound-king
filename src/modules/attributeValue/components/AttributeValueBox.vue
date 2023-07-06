@@ -5,7 +5,7 @@ import { filter } from "lodash";
 import addFormDialog from "./AddFormDialog.vue";
 import ListFooter from "./ListFooter.vue";
 import TitleCardList from "@/components/titleCardList/TitleCardList.vue";
-import alert from "@/components/alert/alert";
+import Alert from "@/components/Alert.vue";
 import { defineCommonDialog } from "@/composables/components/commonDialog";
 
 const attributeValues = inject<Ref<AttributeValue[]>>("data");

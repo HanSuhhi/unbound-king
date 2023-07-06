@@ -2,7 +2,7 @@
 import { DATA } from "../../../composables/data";
 import Operator from "./Operator.vue";
 import AttributeBlock from "./AttributeBlock.vue";
-import Alert from "@/components/alert/alert";
+import Alert from "@/components/Alert.vue";
 </script>
 
 <template>

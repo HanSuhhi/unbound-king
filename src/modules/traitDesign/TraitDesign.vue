@@ -2,7 +2,7 @@
 import { parseImportModule } from "../../composables/ci/importModule";
 import TraitDashboard from "./components/TraitDashboard.vue";
 import TabsDesign from "@/components/tabs/TabsDesign.vue";
-import Alert from "@/components/alert/alert";
+import Alert from "@/components/Alert.vue";
 
 const data = parseImportModule(import.meta.glob("./data/*.data.ts", { eager: true }));
 </script>

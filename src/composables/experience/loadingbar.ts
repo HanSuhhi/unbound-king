@@ -27,12 +27,12 @@ function useRouterBefore() {
 
   const toggleActivePage = (items: MenuOption[], key: string): null | MenuOption => {
     for (const item of items) {
-      if (item.key === key) return item;
-
       if (item.children) {
         const foundItem = toggleActivePage(item.children, key);
         if (foundItem) return foundItem;
       }
+
+      if (item.key === key) return item;
     }
     return null;
   };
@@ -60,15 +60,16 @@ function useRouterBefore() {
       case State.Dev: {
         const { modules, activePage, activeAsideModule } = storeToRefs(useDevStore());
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         activeAsideModule.value = modules.value.find((item: AsideModule) => item.keys.includes(to.name)) ?? activeAsideModule.value;
-        const toPage = toggleActivePage(activeAsideModule.value?.pages, to.name);
+        const toPage = toggleActivePage(activeAsideModule.value!.pages, to.name as string);
         if (toPage) activePage.value = toPage ?? activePage.value;
-        break;
+        return true;
       }
       default:
-        break;
+        return true;
     }
-    return true;
   });
 }
 
@@ -87,13 +88,10 @@ function useRouteAfter() {
         if (activePage.value) {
           if (to.name === from.name) return false;
 
-          const { props: { title, path } } = activePage.value.label() as any;
-          const { props: { icon } } = activePage.value.icon() as any;
-
           pushRoute([
-            path,
-            title,
-            icon
+            activePage.value.key as string,
+            activePage.value.head as string,
+            activePage.value.tip as BaseIconName
           ]);
         }
         break;

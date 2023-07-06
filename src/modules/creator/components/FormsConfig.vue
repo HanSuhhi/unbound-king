@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NTooltip } from "naive-ui";
 import { IDATA, getDataByKey } from "../../../composables/data";
-import Alert from "@/components/alert/alert";
+import Alert from "@/components/Alert.vue";
 import AutoForm from "@/components/autoForm/autoForm.vue";
 import Icon from "@/components/Icon.vue";
 
