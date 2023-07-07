@@ -10,14 +10,12 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <n-alert title="Default 类型" :type="type" closable>
+  <n-alert :type="type" closable>
     <template #icon>
       <n-icon>
         <ios-airplane />
       </n-icon>
     </template>
+    <slot />
   </n-alert>
 </template>
-
-<style scoped>
-</style>

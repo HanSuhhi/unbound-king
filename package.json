@@ -41,6 +41,7 @@
     "@vueuse/components": "^9.13.0",
     "@vueuse/core": "^9.10.0",
     "@vueuse/integrations": "^10.1.2",
+    "ali-oss": "^6.17.1",
     "alova": "^2.6.0",
     "cache-manager": "^5.2.2",
     "dexie": "^3.2.3",

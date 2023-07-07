@@ -2,8 +2,8 @@ import { resolve } from "node:path";
 import * as fg from "fast-glob";
 import { capitalize } from "lodash";
 import type { Routes } from "@nestjs/core";
-import { Prefix } from "../../../composables/constant/url";
 import { UPPER_DIRECTORY } from "./path";
+import { Prefix } from "#/composables/constant/url";
 import { getFilenameFromPath } from "#/composables/path/filenamePath";
 
 export function defineRouterModulePaths(): Routes {
