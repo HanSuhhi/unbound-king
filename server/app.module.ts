@@ -16,6 +16,7 @@ import { AuthGuard } from "./modules/auth/guards/auth.guard";
 import { RolesGuard } from "./modules/roles/roles.guard";
 import { CaslModule } from "./modules/casl/casl.module";
 import { TrpcModule } from "./trpc/trpc.module";
+import { AssetsModule } from "./modules/assets/assets.module";
 import { resolveDistPath } from "@/composables/path/path";
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
@@ -49,7 +50,8 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     MailsModule,
     RouterModule.register(defineRouterModulePaths()),
     CaslModule,
-    TrpcModule
+    TrpcModule,
+    AssetsModule
   ],
   controllers: [AppController],
   providers: [
@@ -69,4 +71,4 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
 
   ]
 })
-export class AppModule {}
+export class AppModule { }

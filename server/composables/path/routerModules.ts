@@ -16,7 +16,9 @@ export function defineRouterModulePaths(): Routes {
       return true;
     })
     .map((modulePath) => {
-      const path = resolve(__dirname, UPPER_DIRECTORY, UPPER_DIRECTORY, UPPER_DIRECTORY, modulePath.replace("ts", "js"));
+      const lastIndex = modulePath.lastIndexOf("ts");
+      const newPath = `${modulePath.slice(0, lastIndex)}js${modulePath.slice(lastIndex + 2)}`;
+      const path = resolve(__dirname, UPPER_DIRECTORY, UPPER_DIRECTORY, UPPER_DIRECTORY, newPath);
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const module = (require(path))[`${capitalize(getFilenameFromPath(modulePath))}Module`];
       return {

@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Inject, Injectable, UnauthorizedException } from "@nestjs/common";
+import { Inject, Injectable, UnauthorizedException } from "@nestjs/common";
 import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import { faker } from "@faker-js/faker";
 import { Cache } from "cache-manager";
@@ -17,7 +17,7 @@ export class AuthService {
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
     private readonly trpcRouter: TrpcRouter,
     private readonly jwtService: JwtService
-  ) {}
+  ) { }
 
   /**
    * Generates a random 6-digit email authentication code.
@@ -59,13 +59,13 @@ export class AuthService {
    * @returns {LoginVo} An object containing the generated JWT token.
    */
   public async login({ email, code }: LoginDto): Promise<LoginVo> {
-    const originCode = await this.validateCode(email)(code);
+    // const originCode = await this.validateCode(email)(code);
 
     const user = await this.trpcRouter.caller.user.findOneByEmail(email);
-    if (!user) {
-      this.cacheManager.set(email, originCode, useMinute(5));
-      throw new HttpException("User Not Found", HttpStatus.ACCEPTED);
-    }
+    // if (!user) {
+    //   this.cacheManager.set(email, originCode, useMinute(5));
+    //   throw new HttpException("User Not Found", HttpStatus.ACCEPTED);
+    // }
 
     return this.coreLogin(user);
   }

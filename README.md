@@ -35,18 +35,21 @@ Using MongoDb Altas for database support
 
   - .env.server
 
-  |     name      |     description     |                               example                                |
-  | :-----------: | :-----------------: | :------------------------------------------------------------------: |
-  |   SMTP_HOST   |   email smtp host   |                          smtpdm.aliyun.com                           |
-  |   SMTP_PORT   |   email smtp port   |                                  25                                  |
-  |   SMTP_USER   | email smtp username |                             xxx@xxx.com                              |
-  | SMTP_PASSWORD | email smtp password |                                 xxxx                                 |
-  |  JWT_SECRET   |     jwt secret      |                               a string                               |
+  |     name      |     description     |      example      |
+  | :-----------: | :-----------------: | :---------------: |
+  |   SMTP_HOST   |   email smtp host   | smtpdm.aliyun.com |
+  |   SMTP_PORT   |   email smtp port   |        25         |
+  |   SMTP_USER   | email smtp username |    xxx@xxx.com    |
+  | SMTP_PASSWORD | email smtp password |       xxxx        |
+  |  JWT_SECRET   |     jwt secret      |     a string      |
+  <!--
   |  OSS_REGION   |   ali oss region    |   [ali-oss region](https://github.com/ali-sdk/ali-oss#node-usage)    |
   |    OSS_KEY    |   ali oss key id    |  [ali-oss user key](https://github.com/ali-sdk/ali-oss#node-usage)   |
   |  OSS_SECRET   |   ali oss secret    | [ali-oss user secret](https://github.com/ali-sdk/ali-oss#node-usage) |
   |  OSS_BUCKET   | ali oss bucket name |   [ali-oss bucket](https://github.com/ali-sdk/ali-oss#node-usage)    |
+  -->
 
+3. To save Git space, I have hidden most of the image resources. If you need access to these resources, please contact me at l_98b@outlook.com.
 ### Modules
 
 - #### casl

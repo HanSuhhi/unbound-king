@@ -6,7 +6,8 @@
     "tsConfigPath": "tsconfig.server.json",
     "deleteOutDir": true,
     "assets": [
-      "**/*.pem"
+      "**/*.pem",
+      "**/*.png"
     ],
     "watchAssets": true
   },
