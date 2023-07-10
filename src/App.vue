@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
-import { onMounted } from "vue";
 import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
 import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
 import { provideStaticStyleVariables } from "./composables/constant/transitionDuration";
 import GlobalHeader from "./components/app/global-header/GlobalHeader";
-import { alovaInst } from "./api/alova";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import Noise from "@/components/effects/BackgroundNoise.vue";
 
@@ -16,14 +14,6 @@ provideStaticStyleVariables();
 useCorsor();
 // disableDefaultKeys();
 bindNaiveUILayer();
-
-onMounted(async () => {
-  await alovaInst.Post("/v1/assets/image").send().then((res) => {
-    console.log("🚀 ~ file: App.vue:22 ~ methodInstance ~ res:", res);
-  });
-  // const token = await trpc.oss.createStsBasePlayer.query();
-  // console.log("🚀 ~ file: App.vue:23 ~ onMounted ~ token:", token);
-});
 </script>
 
 <template>
@@ -93,4 +83,3 @@ onMounted(async () => {
   }
 }
 </style>
-@/components/userHistory/history

@@ -1,19 +1,27 @@
-import { readFileSync } from "node:fs";
 import { Controller, Post } from "@nestjs/common";
-import { Public } from "../auth/decorators/auth.decorator";
-import { resolveDistPath } from "@/composables/path/path";
+import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { UpdateUserNicknameByEmailVo } from "../users/vos/update-user-nickname-by-email.vo";
+import { IconVo } from "./vos/icon.vo";
+import { AssetsService } from "./assets.service";
 
+@ApiTags("Assets")
 @Controller("assets")
+@ApiBearerAuth()
 export class AssetsController {
-  @Post("image")
-  @Public()
-  getImage() {
-    const path = "assets/standard/blood.png";
+  constructor(
+    private readonly assetService: AssetsService
+  ) { }
 
-    const file = readFileSync(resolveDistPath(path));
-    return {
-      file
-    };
-    // return base64str;
+  @Post("standard-icons")
+  @ApiOperation({
+    summary: "Get Stardard Game Icons",
+    description: "Almost every player can request this interface, but non-login players and punished players cannot."
+  })
+  @ApiOkResponse({
+    status: 200,
+    type: UpdateUserNicknameByEmailVo
+  })
+  standardIcons(): IconVo {
+    return this.assetService.getStandardIcons();
   }
 }

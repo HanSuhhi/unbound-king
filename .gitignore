@@ -27,4 +27,4 @@ coverage
 .env.*
 .env
 .mocks/
-server/modules/assets/lib/*
+server/assets/*
