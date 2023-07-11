@@ -83,7 +83,7 @@ export function writeServices(files: Dictionary<string[]>) {
   console.log("Saved!");
 }
 
-function parseSchemasTypeDetail({ type, enum: typeEnum, items }: any) {
+function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
   const parseEnum = <T>(_enum: Array<T>) => {
     return _enum.map((enumItem: T) => `"${enumItem}"`).join(" | ");
   };
@@ -92,12 +92,23 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items }: any) {
       if (typeEnum) return parseEnum(typeEnum);
       return type;
     case "array":
-      if (items) {
-        const enumTypeString = parseEnum(items.enum);
-        return `Array<${enumTypeString}>`;
-      }
-      return type;
     default:
+      if (items) {
+        if (items.type === "string") {
+          const enumTypeString = parseEnum(items.enum);
+          return `Array<${enumTypeString}>`;
+        }
+        if (items.type === "array") {
+          if (oneOf) {
+            let tupleType = "[";
+            oneOf.forEach(({ type, items }: any) => {
+              if (type === "array") tupleType += `Array<${items.type}>,`;
+              else tupleType += `${capitalize(type)},`;
+            });
+            return `Array<${tupleType}]>`;
+          }
+        }
+      }
       return type;
   }
 }

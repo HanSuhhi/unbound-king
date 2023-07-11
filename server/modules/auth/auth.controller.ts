@@ -13,9 +13,10 @@ import { invalid } from "#/composables/i18n/composable";
 export class AuthController {
   constructor(
     private readonly authService: AuthService
-  ) {}
+  ) { }
 
   @Post("login-email")
+  @Public()
   @ApiOperation({
     summary: "User Registration / Login",
     description: useApiOperationDescriptionEnum("loginType", LoginRegistration)
@@ -33,7 +34,6 @@ export class AuthController {
     description: "User registration / login success",
     type: LoginVo
   })
-  @Public()
   async loginWithEmail(@Body() loginFormDto: LoginDto): Promise<LoginVo> {
     switch (loginFormDto.loginType) {
       case LoginRegistration.LOGIN:

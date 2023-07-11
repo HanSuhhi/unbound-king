@@ -12,7 +12,7 @@ import { ApiEmailQuery } from "@/decorators/query/email.query";
 export class UserController {
   constructor(
     private readonly userService: UsersService
-  ) {}
+  ) { }
 
   @Patch("update-nickname-by-email")
   @ApiEmailQuery()

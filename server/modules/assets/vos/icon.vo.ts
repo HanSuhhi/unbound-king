@@ -5,7 +5,17 @@ export type IconResponse = [iconName: string, iconBuffer: Buffer];
 
 export class IconVo {
   @ApiProperty({
+    oneOf: [
+      { type: "string" },
+      {
+        type: "array",
+        items: {
+          type: "number"
+        }
+      }
+    ],
     type: Array,
+    isArray: true,
     required: true,
     description: "icons"
   })

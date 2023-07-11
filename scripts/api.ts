@@ -12,7 +12,6 @@ export async function createClientApiTemplate() {
 
   for (let path in paths) {
     if (!path.includes(`/${Prefix.Server}`)) continue;
-    console.log("🚀 ~ file: api.ts:17 ~ createClientApiTemplate ~ pathItem:", path);
 
     const pathItem = paths[path];
     let result = "";
