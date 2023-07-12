@@ -8,6 +8,7 @@
     "ci:cz": "git-cz",
     "esno": "esno",
     "esno:api": "pnpm esno -- scripts/api.ts",
+    "esno:assets": "pnpm esno -- scripts/static-assets.ts",
     "test": "pnpm test:server-run & pnpm test:client-run",
     "test:client": "vitest -c vite.config.ts",
     "test:client-run": "vitest run -c vite.config.ts",

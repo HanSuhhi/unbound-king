@@ -1,5 +1,7 @@
-import { readdir, unlink } from "node:fs/promises";
+import { spawn } from "node:child_process";
+import { readdir, unlink, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { isArray } from "lodash";
 
 export async function clearFolder(folderPath: string): Promise<void> {
   const directory = await readdir(folderPath, { withFileTypes: true });
@@ -11,4 +13,16 @@ export async function clearFolder(folderPath: string): Promise<void> {
         await unlink(filePath);
     })
   );
+}
+
+export function writeFileToProject(path: string) {
+  return (file: string | string[]) => {
+    writeFile(path, (isArray(file) ? file.join("\n") : file), (err) => {
+      if (err) throw err;
+    });
+    spawn(process.platform.startsWith("win") ? "eslint.cmd" : "eslint", [path, "--fix"]).on("error", (err) => {
+      throw err;
+    });
+    console.log("finished");
+  };
 }
