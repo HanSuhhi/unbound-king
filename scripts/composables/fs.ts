@@ -17,7 +17,9 @@ export async function clearFolder(folderPath: string): Promise<void> {
 
 export function writeFileToProject(path: string) {
   return (file: string | string[]) => {
-    writeFile(path, (isArray(file) ? file.join("\n") : file), (err) => {
+    const injectString = `/** SCRIPT */\n${isArray(file) ? file.join("\n") : file}`;
+
+    writeFile(path, injectString, (err) => {
       if (err) throw err;
     });
     spawn(process.platform.startsWith("win") ? "eslint.cmd" : "eslint", [path, "--fix"]).on("error", (err) => {

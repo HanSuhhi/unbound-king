@@ -18,6 +18,7 @@ import { CaslModule } from "./modules/casl/casl.module";
 import { TrpcModule } from "./trpc/trpc.module";
 import { AssetsModule } from "./modules/assets/assets.module";
 import { resolveDistPath } from "@/composables/path/path";
+import { VersionsModule } from './modules/versions/versions.module';
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
 const PEM = resolveDistPath("certs", KEY_NAME);
@@ -51,7 +52,8 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     RouterModule.register(defineRouterModulePaths()),
     CaslModule,
     TrpcModule,
-    AssetsModule
+    AssetsModule,
+    VersionsModule
   ],
   controllers: [AppController],
   providers: [

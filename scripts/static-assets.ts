@@ -10,7 +10,7 @@ function createStandardIconTypeString() {
 }
 
 function writeStandardIconType() {
-  const filePath = resolve("server", "type.ts");
+  const filePath = resolve("server", "modules", "assets", "asset-type.ts");
   const file = [createStandardIconTypeString()];
 
   writeFileToProject(filePath)(file);

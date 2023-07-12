@@ -103,7 +103,7 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
             let tupleType = "[";
             oneOf.forEach(({ type, items }: any) => {
               if (type === "array") tupleType += `Array<${items.type}>,`;
-              else tupleType += `${capitalize(type)},`;
+              else tupleType += `${type},`;
             });
             return `Array<${tupleType}]>`;
           }

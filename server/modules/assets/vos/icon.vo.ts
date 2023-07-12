@@ -20,4 +20,25 @@ export class IconVo {
     description: "icons"
   })
   icons: IconResponse[];
+
+  @ApiProperty({
+    type: Number,
+    required: true,
+    description: "The version number of the resource, the client decides whether to update the local cache resource according to the version number"
+  })
+  version: number;
+
+  @ApiProperty({
+    type: String,
+    required: true,
+    description: "The name of the version, used to store in indexDB"
+  })
+  versionName: string;
+
+  @ApiProperty({
+    type: String,
+    required: false,
+    description: "The nickname of the version, used in some places that may need to be displayed"
+  })
+  versionNickname?: string;
 }

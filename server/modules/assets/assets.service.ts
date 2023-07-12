@@ -6,12 +6,18 @@ import { resolveDistPath } from "@/composables/path/path";
 
 @Injectable()
 export class AssetsService {
+  static readonly STANDARD_ICON_VERSION: Version = ["BEyA1XPyO4vf", 1];
+
   public getStandardIcons(): IconVo {
     const icons: Array<IconResponse> = [];
     const dirPath = "assets/standard/icons";
     const iconNames = readdirSync(resolveDistPath(dirPath));
     iconNames.forEach(iconName => icons.push([getNameFromFile(iconName), readFileSync(resolveDistPath(`${dirPath}/${iconName}`))]));
 
-    return { icons };
+    return {
+      version: AssetsService.STANDARD_ICON_VERSION[1],
+      versionName: AssetsService.STANDARD_ICON_VERSION[0],
+      icons
+    };
   }
 }
