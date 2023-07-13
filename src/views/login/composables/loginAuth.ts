@@ -5,6 +5,7 @@ import { computed, provide, ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import type { Router } from "vue-router";
 import { useRouter } from "vue-router";
+import { useRequest } from "alova";
 import { RememberEmailSymbol } from "../login.symbol";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 import { postLoginWithEmail } from "@/api/services/auth";
@@ -17,6 +18,7 @@ import { useAuthStore } from "@/stores/auth.store";
 import { Prefix } from "#/composables/constant/url";
 import { useStateStore } from "@/stores/state.store";
 import { State } from "@/enums/state.enum";
+import { getVersions } from "@/api/services/versions";
 
 export function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, router: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
@@ -27,6 +29,14 @@ export function loginSuccess(userEmail: string, { access_token: userToken, roles
   email.value = userEmail!;
   nickname.value = userNickname!;
   STATE.value = State.Game;
+
+  const { send } = useRequest(getVersions, { immediate: false });
+
+  setTimeout(async () => {
+    const a = await send();
+    console.log("🚀 ~ file: loginAuth.ts:36 ~ loginSuccess ~ a:", a);
+  }, 1000);
+
   router.replace({ name: Prefix.Client_Game });
 }
 

@@ -17,8 +17,8 @@ import { RolesGuard } from "./modules/roles/roles.guard";
 import { CaslModule } from "./modules/casl/casl.module";
 import { TrpcModule } from "./trpc/trpc.module";
 import { AssetsModule } from "./modules/assets/assets.module";
+import { VersionsModule } from "./modules/versions/versions.module";
 import { resolveDistPath } from "@/composables/path/path";
-import { VersionsModule } from './modules/versions/versions.module';
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
 const PEM = resolveDistPath("certs", KEY_NAME);

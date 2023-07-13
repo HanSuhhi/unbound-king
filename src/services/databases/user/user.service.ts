@@ -19,12 +19,14 @@ function useVersion1() {
   const getAllUsers = defineServiceExportFunction(async () => await model.toArray());
 
   const deleteUserMessage = defineServiceExportFunction(async (email: string) => {
+    if (!email) return;
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
     if (user) return await model.delete(user.id);
   });
 
   const registUserEmail = defineServiceExportFunction(async (email: string) => {
+    if (!email) return;
     email = email.toLowerCase();
     (await model.where("main").equals(Boolean.True).toArray()).forEach((user) => {
       update(user.id, { main: Boolean.False });
@@ -40,6 +42,7 @@ function useVersion1() {
   });
 
   const storeUserToken = defineServiceExportFunction(async (email: string, loginSuccessResponse: ResponseType_PostLoginWithEmail) => {
+    if (!email) return;
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
     if (!user) return findError(i18nLangModel.exception.findUserHistoryIndexDB);
@@ -52,6 +55,7 @@ function useVersion1() {
   });
 
   const deleteUserToken = defineServiceExportFunction(async (email: string) => {
+    if (!email) return;
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
     if (!user) return findError(i18nLangModel.exception.findUserHistoryIndexDB);
@@ -59,6 +63,7 @@ function useVersion1() {
   });
 
   const updateUserNickname = defineServiceExportFunction(async (email: string, { nickname }: ResponseType_PatchUserNicknameByEmail) => {
+    if (!email) return;
     email = email.toLowerCase();
     const user = await isEmailRegist(email);
     if (!user) return findError(i18nLangModel.exception.findUserHistoryIndexDB);

@@ -23,6 +23,9 @@ const { getAllUsers } = useUserService();
 const users = ref<User[]>([]);
 onMounted(async () => users.value = await getAllUsers() || []);
 
+const loginForm = getLoginForm();
+const rememberEmail = getRememberEmail();
+
 function toggleEmail({ token, email, nickname, roles }: User) {
   const [ifHaveToken, ifDontHaveToken] = useIf(token);
 
@@ -39,9 +42,6 @@ function toggleEmail({ token, email, nickname, roles }: User) {
   });
 
   ifDontHaveToken(() => {
-    const rememberEmail = getRememberEmail();
-    const loginForm = getLoginForm();
-
     loginForm.value.form.email = email;
     active.value = false;
     rememberEmail.value = true;
@@ -52,7 +52,9 @@ function toggleEmail({ token, email, nickname, roles }: User) {
 <template>
   <n-drawer
     v-model:show="active"
-    class="drawer-right user-history" :width="502" placement="right"
+    class="drawer-right user-history"
+    :width="502"
+    placement="right"
   >
     <n-drawer-content
       :closable="true"

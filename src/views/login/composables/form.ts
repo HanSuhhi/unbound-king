@@ -20,7 +20,7 @@ export function useLoginForm() {
   provide(LoginFormSymbol, loginForm);
 
   const loginFormRules = {
-    form: <Dictionary<FormItemRule> >{
+    form: <Dictionary<FormItemRule>>{
       email: {
         required: true,
         trigger: "blur",
