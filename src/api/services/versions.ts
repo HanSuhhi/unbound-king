@@ -5,7 +5,7 @@ import type { ResponseOriginData } from "#/composables/types/api";
 
 type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
 export interface ResponseType_GetVersions {
-  asset: Array<[string, number, string]>
+  asset: [string, number, string]
 }
 
 export function getVersions(config: Config<ResponseOriginData<ResponseType_GetVersions>> = {}) {

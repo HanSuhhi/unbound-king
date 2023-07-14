@@ -6,6 +6,7 @@ import { storeToRefs } from "pinia";
 import type { Router } from "vue-router";
 import { useRouter } from "vue-router";
 import { useRequest } from "alova";
+import { forEach } from "lodash";
 import { RememberEmailSymbol } from "../login.symbol";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 import { postLoginWithEmail } from "@/api/services/auth";
@@ -19,10 +20,14 @@ import { Prefix } from "#/composables/constant/url";
 import { useStateStore } from "@/stores/state.store";
 import { State } from "@/enums/state.enum";
 import { getVersions } from "@/api/services/versions";
+import type { Version } from "@/server/modules/versions/version-type";
+import { useVersionService } from "@/services/databases/edition/edition.service";
 
-export function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, router: Router) {
+export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
+  const { send } = useRequest(getVersions, { immediate: false });
   const { STATE } = storeToRefs(useStateStore());
+  const { checkIfVersionIsRight } = useVersionService();
 
   token.value = userToken!;
   roles.value = userRoles!;
@@ -30,14 +35,13 @@ export function loginSuccess(userEmail: string, { access_token: userToken, roles
   nickname.value = userNickname!;
   STATE.value = State.Game;
 
-  const { send } = useRequest(getVersions, { immediate: false });
+  const { data: versions } = await send();
+  forEach(versions, async ([name, version]: Version) => {
+    const ifCurrent = await checkIfVersionIsRight(name, version);
+    console.log("🚀 ~ file: loginAuth.ts:41 ~ forEach ~ ifCurrent:", ifCurrent);
+  });
 
-  setTimeout(async () => {
-    const a = await send();
-    console.log("🚀 ~ file: loginAuth.ts:36 ~ loginSuccess ~ a:", a);
-  }, 1000);
-
-  router.replace({ name: Prefix.Client_Game });
+  replace({ name: Prefix.Client_Game });
 }
 
 export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>) {

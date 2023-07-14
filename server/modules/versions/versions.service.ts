@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { AssetsService } from "../assets/assets.service";
 import type { VersionVo } from "./vos/version.vo";
+import type { Version } from "./version-type";
 
 @Injectable()
 export class VersionsService {

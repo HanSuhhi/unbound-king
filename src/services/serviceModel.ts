@@ -57,7 +57,7 @@ export function useServiceModel<T>(table: string) {
 }
 
 export function defineServiceExportFunction<T>(fn: T) {
-  if (import.meta.env.SSR) return () => {};
+  if (import.meta.env.SSR) return () => { };
   return fn;
 }
 

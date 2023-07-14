@@ -27,7 +27,6 @@ export function refUpdate<T>(value: T, options = {
   const _value = ref(value);
 
   const update = (data: UnwrapRef<T>) => {
-    console.log("🚀 ~ file: ref.ts:31 ~ update ~ _value.value:", _value.value);
     _value.value = data;
   };
 
