@@ -1,15 +1,15 @@
 import { Injectable } from "@nestjs/common";
 import { AssetsService } from "../assets/assets.service";
-import type { VersionVo } from "./vos/version.vo";
-import type { Version } from "./version-type";
+import type { EditionVo } from "./vos/edition.vo";
+import type { Edition } from "./edition-type";
 
 @Injectable()
-export class VersionsService {
-  private getAssetVersions(): Version {
+export class EditionsService {
+  private getAssetVersions(): Edition {
     return AssetsService.STANDARD_ICON_VERSION;
   }
 
-  public getVersions(): VersionVo {
+  public getEditions(): EditionVo {
     return {
       asset: this.getAssetVersions()
     };

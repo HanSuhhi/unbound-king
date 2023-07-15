@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-export function ApiVersionProperty(): PropertyDecorator {
+export function ApiEditionProperty(): PropertyDecorator {
   return ApiProperty({
     oneOf: [
       { type: "string" },

@@ -17,7 +17,7 @@ import { RolesGuard } from "./modules/roles/roles.guard";
 import { CaslModule } from "./modules/casl/casl.module";
 import { TrpcModule } from "./trpc/trpc.module";
 import { AssetsModule } from "./modules/assets/assets.module";
-import { VersionsModule } from "./modules/versions/versions.module";
+import { EditionsModule } from "./modules/editions/editions.module";
 import { resolveDistPath } from "@/composables/path/path";
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
@@ -53,7 +53,7 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     CaslModule,
     TrpcModule,
     AssetsModule,
-    VersionsModule
+    EditionsModule
   ],
   controllers: [AppController],
   providers: [
