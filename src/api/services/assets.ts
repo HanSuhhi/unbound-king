@@ -12,15 +12,15 @@ export interface ResponseType_GetStandardIcons {
   /**
     * The version number of the resource, the client decides whether to update the local cache resource according to the version number
     */
-  version: number
+  edition: number
   /**
     * The name of the version, used to store in indexDB
     */
-  versionName: string
+  editionName: string
   /**
     * The nickname of the version, used in some places that may need to be displayed
     */
-  versionNickname?: string
+  editionNickname?: string
 }
 
 export function getStandardIcons(config: Config<ResponseOriginData<ResponseType_GetStandardIcons>> = {}) {

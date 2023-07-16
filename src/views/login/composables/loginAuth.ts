@@ -19,13 +19,12 @@ import { useAuthStore } from "@/stores/auth.store";
 import { Prefix } from "#/composables/constant/url";
 import { useStateStore } from "@/stores/state.store";
 import { State } from "@/enums/state.enum";
-import { getVersions } from "@/api/services/versions";
-import type { Version } from "@/server/modules/versions/version-type";
 import { useVersionService } from "@/services/databases/edition/edition.service";
+import { getEditions } from "@/api/services/editions";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
-  const { send } = useRequest(getVersions, { immediate: false });
+  const { send } = useRequest(getEditions, { immediate: false });
   const { STATE } = storeToRefs(useStateStore());
   const { checkIfVersionIsRight } = useVersionService();
 
@@ -36,9 +35,8 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   STATE.value = State.Game;
 
   const { data: versions } = await send();
-  forEach(versions, async ([name, version]: Version) => {
-    const ifCurrent = await checkIfVersionIsRight(name, version);
-    console.log("🚀 ~ file: loginAuth.ts:41 ~ forEach ~ ifCurrent:", ifCurrent);
+  forEach(versions, async ([name, edition]) => {
+    const ifCurrent = await checkIfVersionIsRight(name, edition);
   });
 
   replace({ name: Prefix.Client_Game });

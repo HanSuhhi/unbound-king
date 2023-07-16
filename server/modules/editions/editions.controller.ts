@@ -19,6 +19,6 @@ export class EditionsController {
     type: EditionVo
   })
   public editions() {
-    return this.edtionsService.getVersions();
+    return this.edtionsService.getEditions();
   }
 }

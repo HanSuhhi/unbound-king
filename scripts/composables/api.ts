@@ -87,6 +87,14 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
   const parseEnum = <T>(_enum: Array<T>) => {
     return _enum.map((enumItem: T) => `"${enumItem}"`).join(" | ");
   };
+  const parseTuple = (oneOf: any) => {
+    let tupleType = "[";
+    oneOf.forEach(({ type, items }: any) => {
+      if (type === "array") tupleType += `Array<${items.type}>,`;
+      else tupleType += `${type},`;
+    });
+    return `${tupleType}]`;
+  };
   switch (type) {
     case "string":
       if (typeEnum) return parseEnum(typeEnum);
@@ -95,19 +103,14 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
     default:
       if (items) {
         if (items.type === "string") {
-          const enumTypeString = parseEnum(items.enum);
-          return `Array<${enumTypeString}>`;
-        }
-        if (items.type === "array") {
-          if (oneOf) {
-            let tupleType = "[";
-            oneOf.forEach(({ type, items }: any) => {
-              if (type === "array") tupleType += `Array<${items.type}>,`;
-              else tupleType += `${type},`;
-            });
-            return `Array<${tupleType}]>`;
+          if (items.enum) {
+            const enumTypeString = parseEnum(items.enum);
+            return `Array<${enumTypeString}>`;
           }
+          if (oneOf) return parseTuple(oneOf);
         }
+        if (items.type === "array")
+          if (oneOf) return `Array<${parseTuple(oneOf)}>`;
       }
       return type;
   }
