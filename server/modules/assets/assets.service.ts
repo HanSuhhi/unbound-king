@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { Injectable } from "@nestjs/common";
 import type { Edition } from "../editions/edition-type";
-import type { IconResponse, IconVo } from "./vos/icon.vo";
+import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { AssetType } from "./enums/asset-type.enum";
 import { getNameFromFile } from "#/composables/tools/file";
 import { resolveDistPath } from "@/composables/path/path";
@@ -10,8 +10,8 @@ import { resolveDistPath } from "@/composables/path/path";
 export class AssetsService {
   static readonly STANDARD_ICON_VERSION: Edition<AssetType> = [AssetType.StandardIcon, 1];
 
-  private getStandardIcons(): IconVo {
-    const icons: Array<IconResponse> = [];
+  private getStandardIcons(): ResourseVo {
+    const icons: Array<ResourseResponse> = [];
     const dirPath = "assets/standard/icons";
     const iconNames = readdirSync(resolveDistPath(dirPath));
     iconNames.forEach(iconName => icons.push([getNameFromFile(iconName), readFileSync(resolveDistPath(`${dirPath}/${iconName}`))]));
@@ -19,11 +19,11 @@ export class AssetsService {
     return {
       edition: AssetsService.STANDARD_ICON_VERSION[1],
       editionName: AssetsService.STANDARD_ICON_VERSION[0],
-      icons
+      resourse: icons
     };
   }
 
-  public supplement(subType: AssetType) {
+  public supplement(subType: AssetType): ResourseVo {
     switch (subType) {
       case AssetType.StandardIcon:
       default:

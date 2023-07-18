@@ -35,8 +35,12 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   STATE.value = State.Game;
 
   const { data: versions } = await send();
-  forEach(versions, async ([name, edition]) => {
-    const ifCurrent = await checkIfVersionIsRight(name, edition);
+  forEach(versions, async ([name, edition], typeName) => {
+    console.log("🚀 ~ file: loginAuth.ts:39 ~ forEach ~ typeName:", typeName);
+    const [_, ifEditionNotCurrent] = useIf(await checkIfVersionIsRight(name, edition));
+    ifEditionNotCurrent(() => {
+      console.log("🚀 ~ file: loginAuth.ts:44 ~ ifEditionNotCurrent ~ name:", name);
+    });
   });
 
   replace({ name: Prefix.Client_Game });
