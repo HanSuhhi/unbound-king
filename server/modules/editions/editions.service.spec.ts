@@ -1,5 +1,6 @@
 import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
+import { AssetsModule } from "../assets/assets.module";
 import { EditionsService } from "./editions.service";
 
 describe("VersionsService", () => {
@@ -7,6 +8,7 @@ describe("VersionsService", () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [AssetsModule],
       providers: [EditionsService]
     }).compile();
 

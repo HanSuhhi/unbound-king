@@ -7,7 +7,7 @@ type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
 type ResponseType_GetVerificationCode = string;
 
 export function getVerificationCode(params: {
-  to: string
+  "to": string
 }, config: Config<ResponseOriginData<ResponseType_GetVerificationCode>> = { params }) {
   config.params = params;
   const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetVerificationCode>>("/v1/mails/verification-code", config);

@@ -37,7 +37,7 @@ export function defineParams(parameters: any): string {
     const length = Object.keys(parameters).length;
     for (const param in parameters) {
       const { name, schema, required } = parameters[param];
-      params += `\n  ${name}${required ? "" : "?"}: ${schema.type}${Number(param) + 1 === length ? "" : ","}`;
+      params += `\n  "${name}"${required ? "" : "?"}: ${schema.type}${Number(param) + 1 === length ? "" : ","}`;
     }
     params += "\n}";
   }
@@ -87,11 +87,21 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
   const parseEnum = <T>(_enum: Array<T>) => {
     return _enum.map((enumItem: T) => `"${enumItem}"`).join(" | ");
   };
+  const parseType = (type: string): string => {
+    console.log("🚀 ~ file: api.ts:91 ~ parseType ~ type:", type);
+    switch (type) {
+      case "buffer":
+        return "import(\"buffer\").Buffer";
+      default:
+        return type;
+    }
+  };
   const parseTuple = (oneOf: any) => {
+    console.log("🚀 ~ file: api.ts:100 ~ parseTuple ~ oneOf:", oneOf);
     let tupleType = "[";
     oneOf.forEach(({ type, items }: any) => {
-      if (type === "array") tupleType += `Array<${items.type}>,`;
-      else tupleType += `${type},`;
+      if (type === "array") tupleType += `Array<${parseType(items.type)}>,`;
+      else tupleType += `${parseType(type)},`;
     });
     return `${tupleType}]`;
   };

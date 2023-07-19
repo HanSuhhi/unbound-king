@@ -14,7 +14,7 @@ export interface RequestBody_PatchUserNicknameByEmail {
   nickname: string
 }
 export function patchUserNicknameByEmail(request: RequestBody_PatchUserNicknameByEmail, params: {
-  to: string
+  "to": string
 }, config: Config<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>> = { params }) {
   config.params = params;
   const methodInstance = alovaInst.Patch<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>>("/v1/user/update-nickname-by-email", request, config);

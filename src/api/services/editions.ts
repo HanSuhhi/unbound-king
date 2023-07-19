@@ -12,3 +12,30 @@ export function getEditions(config: Config<ResponseOriginData<ResponseType_GetEd
   const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetEditions>>("/v1/editions/editions", config);
   return methodInstance;
 }
+export interface ResponseType_GetSupplement {
+  /**
+    * resourse list
+    */
+  resourse: Array<[string, import("buffer").Buffer]>
+  /**
+    * The edition number of the resource, the client decides whether to update the local cache resource according to the edition number
+    */
+  edition: number
+  /**
+    * The name of the edition, used to store in indexDB
+    */
+  editionName: string
+  /**
+    * The nickname of the edition, used in some places that may need to be displayed
+    */
+  editionNickname?: string
+}
+
+export function getSupplement(params: {
+  "edition-sub-type": string
+  "edition-type": undefined
+}, config: Config<ResponseOriginData<ResponseType_GetSupplement>> = { params }) {
+  config.params = params;
+  const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetSupplement>>("/v1/editions/supplement", config);
+  return methodInstance;
+}
