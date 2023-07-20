@@ -1,24 +1,35 @@
-import type { Version } from "./edition.table";
+import type { Edition } from "./edition.table";
+import { defineUniqueId } from "@/composables/ci/uniqueId";
 import { defineServiceExportFunction, useServiceModel } from "@/services/serviceModel";
 
 function useVersion1() {
-  const { add, update, model } = useServiceModel<Version>("edition");
+  const { add, update, model } = useServiceModel<Edition>("edition");
 
-  async function isVersionRegist(name: string): Promise<Version | undefined> {
+  async function isEditionRegist(name: string): Promise<Edition | undefined> {
     return (await model.where("name").equals(name).first());
   }
 
-  const checkIfVersionIsRight = defineServiceExportFunction(async (name: string, version: number): Promise<boolean> => {
-    const versionVo = await isVersionRegist(name);
+  const checkIfEditionIsRight = defineServiceExportFunction(async (name: string, edition: number): Promise<boolean> => {
+    const versionVo = await isEditionRegist(name);
     if (!versionVo) return false;
-    return versionVo.version === version;
+    return versionVo.edition === edition;
+  });
+
+  const addEdition = defineServiceExportFunction(async (name: string, edition: number) => {
+    const id = Number(defineUniqueId());
+    return await add({
+      id,
+      name,
+      edition
+    });
   });
 
   return {
-    checkIfVersionIsRight
+    checkIfEditionIsRight,
+    addEdition
   };
 }
 
-export function useVersionService() {
+export function useEditionService() {
   return useVersion1();
 }

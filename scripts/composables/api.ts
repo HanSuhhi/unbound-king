@@ -34,10 +34,9 @@ export function defineParams(parameters: any): string {
   let params = "";
   if (!isEmpty(parameters)) {
     params += "{";
-    const length = Object.keys(parameters).length;
     for (const param in parameters) {
-      const { name, schema, required } = parameters[param];
-      params += `\n  "${name}"${required ? "" : "?"}: ${schema.type}${Number(param) + 1 === length ? "" : ","}`;
+      const { name, schema: { enum: schemaEnum, type }, required } = parameters[param];
+      params += `\n  "${name}"${required ? "" : "?"}: ${schemaEnum ? schemaEnum.map((e: string) => `"${e}"`).join(" | ") : type},`;
     }
     params += "\n}";
   }
@@ -88,7 +87,6 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
     return _enum.map((enumItem: T) => `"${enumItem}"`).join(" | ");
   };
   const parseType = (type: string): string => {
-    console.log("🚀 ~ file: api.ts:91 ~ parseType ~ type:", type);
     switch (type) {
       case "buffer":
         return "import(\"buffer\").Buffer";
@@ -97,7 +95,6 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
     }
   };
   const parseTuple = (oneOf: any) => {
-    console.log("🚀 ~ file: api.ts:100 ~ parseTuple ~ oneOf:", oneOf);
     let tupleType = "[";
     oneOf.forEach(({ type, items }: any) => {
       if (type === "array") tupleType += `Array<${parseType(items.type)}>,`;
@@ -112,15 +109,21 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
     case "array":
     default:
       if (items) {
-        if (items.type === "string") {
-          if (items.enum) {
-            const enumTypeString = parseEnum(items.enum);
-            return `Array<${enumTypeString}>`;
+        switch (items.type) {
+          case "string": {
+            if (items.enum) {
+              const enumTypeString = parseEnum(items.enum);
+              return `Array<${enumTypeString}>`;
+            }
+            if (oneOf) return parseTuple(oneOf);
+            return "";
           }
-          if (oneOf) return parseTuple(oneOf);
+          case "array":
+          default: {
+            if (oneOf) return `Array<${parseTuple(oneOf)}>`;
+            return "";
+          }
         }
-        if (items.type === "array")
-          if (oneOf) return `Array<${parseTuple(oneOf)}>`;
       }
       return type;
   }

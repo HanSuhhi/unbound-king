@@ -19,14 +19,14 @@ import { useAuthStore } from "@/stores/auth.store";
 import { Prefix } from "#/composables/constant/url";
 import { useStateStore } from "@/stores/state.store";
 import { State } from "@/enums/state.enum";
-import { useVersionService } from "@/services/databases/edition/edition.service";
-import { getEditions } from "@/api/services/editions";
+import { useEditionService } from "@/services/databases/edition/edition.service";
+import { getEditions, getSupplement } from "@/api/services/editions";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
   const { send } = useRequest(getEditions, { immediate: false });
   const { STATE } = storeToRefs(useStateStore());
-  const { checkIfVersionIsRight } = useVersionService();
+  const { checkIfEditionIsRight: checkIfVersionIsRight, addEdition } = useEditionService();
 
   token.value = userToken!;
   roles.value = userRoles!;
@@ -35,11 +35,13 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   STATE.value = State.Game;
 
   const { data: versions } = await send();
-  forEach(versions, async ([name, edition], typeName) => {
-    console.log("🚀 ~ file: loginAuth.ts:39 ~ forEach ~ typeName:", typeName);
-    const [_, ifEditionNotCurrent] = useIf(await checkIfVersionIsRight(name, edition));
-    ifEditionNotCurrent(() => {
-      console.log("🚀 ~ file: loginAuth.ts:44 ~ ifEditionNotCurrent ~ name:", name);
+  forEach(versions, async ([editionSubType, edition], editionType) => {
+    const [_, ifEditionNotCurrent] = useIf(await checkIfVersionIsRight(editionSubType, edition));
+    ifEditionNotCurrent(async () => {
+      const { data } = await getSupplement({
+        "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
+      }).send();
+      console.log("🚀 ~ file: loginAuth.ts:44 ~ ifEditionNotCurrent ~ editionType :", data);
     });
   });
 

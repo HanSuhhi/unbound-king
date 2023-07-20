@@ -5,7 +5,7 @@ import type { ResponseOriginData } from "#/composables/types/api";
 
 type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
 export interface ResponseType_GetEditions {
-  asset: [string, number, string]
+  BEyA1XPyO4vf: [string, number, string]
 }
 
 export function getEditions(config: Config<ResponseOriginData<ResponseType_GetEditions>> = {}) {
@@ -32,8 +32,7 @@ export interface ResponseType_GetSupplement {
 }
 
 export function getSupplement(params: {
-  "edition-sub-type": string
-  "edition-type": undefined
+  "edition-type": "BEyA1XPyO4vf"
 }, config: Config<ResponseOriginData<ResponseType_GetSupplement>> = { params }) {
   config.params = params;
   const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetSupplement>>("/v1/editions/supplement", config);

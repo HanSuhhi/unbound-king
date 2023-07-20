@@ -1,8 +1,8 @@
-export interface Version extends ITable {
+export interface Edition extends ITable {
   id: number
   name: string
-  version: number
+  edition: number
   nickname?: string
 }
 
-export default "id, name, version, nickname";
+export default "id, name, edition, nickname";

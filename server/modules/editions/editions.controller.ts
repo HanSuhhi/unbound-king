@@ -5,7 +5,6 @@ import { AssetType } from "../assets/enums/asset-type.enum";
 import { EditionsService } from "./editions.service";
 import { EditionVo } from "./vos/edition.vo";
 import { ApiEditionTypeQuery } from "./queries/edition-type.query";
-import { ApiEditionSubTypeQuery } from "./queries/edition-sub-type.query";
 import { ResourseVo } from "./vos/resourse.vo";
 import { useApiOperationDescriptionEnum } from "@/composables/api/description";
 
@@ -31,19 +30,16 @@ export class EditionsController {
   @Get("supplement")
   @Public()
   @ApiEditionTypeQuery()
-  @ApiEditionSubTypeQuery()
   @ApiOperation({
     summary: "Get the resource content of the differential edition",
-    description: `edition-type: asset\n
-    ${useApiOperationDescriptionEnum("asset-sub-type", AssetType)}`
+    description: `${useApiOperationDescriptionEnum("asset-sub-type", AssetType)}`
   })
   @ApiOkResponse({
     type: ResourseVo
   })
   public supplement(
-    @Query("edition-type") editionType: keyof EditionVo,
-    @Query("edition-sub-type") editionSubType: string
+    @Query("edition-type") editionType: keyof EditionVo
   ) {
-    return this.edtionsService.supplement(editionType)(editionSubType);
+    return this.edtionsService.supplement(editionType);
   }
 }

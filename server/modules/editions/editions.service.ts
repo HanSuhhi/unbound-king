@@ -1,9 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { AssetsService } from "../assets/assets.service";
-import type { AssetType } from "../assets/enums/asset-type.enum";
+import { AssetType } from "../assets/enums/asset-type.enum";
 import type { EditionVo } from "./vos/edition.vo";
 import type { Edition, EditionType } from "./edition-type";
-import type { ResourseVo } from "./vos/resourse.vo";
 
 @Injectable()
 export class EditionsService {
@@ -17,17 +16,15 @@ export class EditionsService {
 
   public getEditions(): EditionVo {
     return {
-      asset: this.getAssetVersions()
+      [AssetType.StandardIcon]: this.getAssetVersions()
     };
   }
 
   public supplement(editionType: EditionType) {
-    return (editionSubType: string): ResourseVo => {
-      switch (editionType) {
-        case "asset":
-        default:
-          return this.assetsService.supplement(editionSubType as AssetType);
-      }
-    };
+    switch (editionType) {
+      case AssetType.StandardIcon:
+      default:
+        return this.assetsService.supplement(editionType);
+    }
   }
 }
