@@ -5,8 +5,7 @@ import { computed, provide, ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import type { Router } from "vue-router";
 import { useRouter } from "vue-router";
-import { useRequest } from "alova";
-import { forEach } from "lodash";
+import { delay, forEach } from "lodash";
 import { RememberEmailSymbol } from "../login.symbol";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 import { postLoginWithEmail } from "@/api/services/auth";
@@ -16,7 +15,6 @@ import { i18n } from "@/locals";
 import { useIf } from "#/composables/run/if";
 import { useUserService } from "@/services/databases/user/user.service";
 import { useAuthStore } from "@/stores/auth.store";
-import { Prefix } from "#/composables/constant/url";
 import { useStateStore } from "@/stores/state.store";
 import { State } from "@/enums/state.enum";
 import { useEditionService } from "@/services/databases/edition/edition.service";
@@ -24,7 +22,6 @@ import { getEditions, getSupplement } from "@/api/services/editions";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
-  const { send } = useRequest(getEditions, { immediate: false });
   const { STATE } = storeToRefs(useStateStore());
   const { checkIfEditionIsRight: checkIfVersionIsRight, addEdition } = useEditionService();
 
@@ -34,18 +31,20 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   nickname.value = userNickname!;
   STATE.value = State.Game;
 
-  const { data: versions } = await send();
+  const { data: versions } = await getEditions().send();
   forEach(versions, async ([editionSubType, edition], editionType) => {
     const [_, ifEditionNotCurrent] = useIf(await checkIfVersionIsRight(editionSubType, edition));
     ifEditionNotCurrent(async () => {
-      const { data } = await getSupplement({
-        "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
-      }).send();
-      console.log("🚀 ~ file: loginAuth.ts:44 ~ ifEditionNotCurrent ~ editionType :", data);
+      // i dont know why I can not get current response if I dont set timeout
+      // maybe one day i will fix it.
+      delay(async () => {
+        const { data: { edition, editionName, resourse } } = await getSupplement({
+          "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
+        }).send();
+        addEdition(editionName, edition);
+      }, 100);
     });
   });
-
-  replace({ name: Prefix.Client_Game });
 }
 
 export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>) {
