@@ -14,7 +14,7 @@ export class AssetsService {
     const icons: Array<ResourseResponse> = [];
     const dirPath = "assets/standard/icons";
     const iconNames = readdirSync(resolveDistPath(dirPath));
-    iconNames.forEach(iconName => icons.push([getNameFromFile(iconName), readFileSync(resolveDistPath(`${dirPath}/${iconName}`))]));
+    iconNames.forEach(iconName => icons.push([getNameFromFile(iconName), readFileSync(resolveDistPath(`${dirPath}/${iconName}`)), "image"]));
 
     return {
       edition: AssetsService.STANDARD_ICON_VERSION[1],

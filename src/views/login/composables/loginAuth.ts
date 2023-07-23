@@ -41,6 +41,7 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
         const { data: { edition, editionName, resourse } } = await getSupplement({
           "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
         }).send();
+        console.log("🚀 ~ file: loginAuth.ts:44 ~ delay ~ resourse:", resourse);
         addEdition(editionName, edition);
       }, 100);
     });

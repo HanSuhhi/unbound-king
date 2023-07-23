@@ -1,13 +1,16 @@
 import type { Buffer } from "node:buffer";
 import { ApiProperty } from "@nestjs/swagger";
+import { arrToTypeString } from "#/composables/js/array";
 
-export type ResourseResponse = [resourseName: string, resourseBuffer: Buffer];
+const resourseType = ["image"] as const;
+export type ResourseResponse = [name: string, buffer: Buffer, type: typeof resourseType[number]];
 
 export class ResourseVo {
   @ApiProperty({
     oneOf: [
       { type: "string" },
-      { type: "buffer" }
+      { type: "buffer" },
+      { type: arrToTypeString(resourseType) }
     ],
     type: Array,
     isArray: true,
