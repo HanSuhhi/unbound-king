@@ -27,6 +27,7 @@ const loginForm = getLoginForm();
 const rememberEmail = getRememberEmail();
 
 function toggleEmail({ token, email, nickname, roles }: User) {
+  console.log("🚀 ~ file: UserHistory.vue:30 ~ toggleEmail ~ token:", token);
   const [ifHaveToken, ifDontHaveToken] = useIf(token);
 
   ifHaveToken(() => {

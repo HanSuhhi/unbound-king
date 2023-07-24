@@ -18,12 +18,16 @@ import { useAuthStore } from "@/stores/auth.store";
 import { useStateStore } from "@/stores/state.store";
 import { State } from "@/enums/state.enum";
 import { useEditionService } from "@/services/databases/edition/edition.service";
+import type { ResponseType_GetSupplement } from "@/api/services/editions";
 import { getEditions, getSupplement } from "@/api/services/editions";
+import { useResourseService } from "@/services/databases/resourse/resourse.service";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
   const { STATE } = storeToRefs(useStateStore());
   const { checkIfEditionIsRight: checkIfVersionIsRight, addEdition } = useEditionService();
+
+  console.log(1);
 
   token.value = userToken!;
   roles.value = userRoles!;
@@ -32,6 +36,13 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   STATE.value = State.Game;
 
   const { data: versions } = await getEditions().send();
+  const parseResourses = (resourses: ResponseType_GetSupplement["resourse"]) => {
+    const { storeResourse } = useResourseService();
+    resourses.forEach((resourse) => {
+      storeResourse(resourse);
+    });
+  };
+
   forEach(versions, async ([editionSubType, edition], editionType) => {
     const [_, ifEditionNotCurrent] = useIf(await checkIfVersionIsRight(editionSubType, edition));
     ifEditionNotCurrent(async () => {
@@ -41,8 +52,8 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
         const { data: { edition, editionName, resourse } } = await getSupplement({
           "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
         }).send();
-        console.log("🚀 ~ file: loginAuth.ts:44 ~ delay ~ resourse:", resourse);
         addEdition(editionName, edition);
+        parseResourses(resourse);
       }, 100);
     });
   });
@@ -64,6 +75,7 @@ export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>
   provide(RememberEmailSymbol, rememberEmail);
 
   async function loginSuccessCallback(loginSuccessResponse: ResponseType_PostLoginWithEmail) {
+    console.log("🚀 ~ file: loginAuth.ts:76 ~ loginSuccessCallback ~ loginSuccessResponse:", loginSuccessResponse);
     if (rememberEmail.value) await registUserEmail(email.value);
     else await deleteUserMessage(email.value);
 

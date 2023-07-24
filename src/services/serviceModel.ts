@@ -1,5 +1,6 @@
 import { Dexie, type Table } from "dexie";
 import { dbData } from "./databases/index";
+import { defineUniqueId } from "@/composables/ci/uniqueId";
 
 const db: Dexie = new Dexie(import.meta.env.PROJECT_NAME);
 const dbVersion = 1;
@@ -18,6 +19,16 @@ export function useServiceModel<T>(table: string) {
   const add = async (data: T): Promise<T> => {
     await model.add(data);
     return data;
+  };
+
+  const addWithId = async (data: Omit<T, "id">): Promise<T> => {
+    const id = Number(defineUniqueId());
+    const modelData = {
+      id,
+      ...data
+    } as T;
+    await model.add(modelData);
+    return modelData;
   };
 
   /**
@@ -53,7 +64,15 @@ export function useServiceModel<T>(table: string) {
     return await model.update(index, data);
   };
 
-  return { isEmpty, add, count, update, model, stores };
+  return {
+    isEmpty,
+    add,
+    count,
+    update,
+    model,
+    stores,
+    addWithId
+  };
 }
 
 export function defineServiceExportFunction<T>(fn: T) {
