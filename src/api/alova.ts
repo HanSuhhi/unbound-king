@@ -3,7 +3,7 @@ import VueHook from "alova/vue";
 import GlobalFetch from "alova/GlobalFetch";
 import type { HttpException } from "@nestjs/common";
 import { HttpStatus } from "@nestjs/common";
-import { isArray, throttle } from "lodash";
+import { isArray } from "lodash";
 import { storeToRefs } from "pinia";
 import { SERVER_RUNNING_PORT } from "@/composables/constant/env";
 import type { ResponseOriginData } from "#/composables/types/api";
@@ -21,13 +21,14 @@ export const alovaInst = createAlova({
     config.headers["Content-Type"] = "application/json";
     config.headers.Authorization = `Bearer ${token.value}`;
   },
-  responded: throttle(async (response: Response) => {
+  responded: async (response: Response) => {
     const contentType = response.headers.get("Content-Type");
     if (!contentType) return;
     if (contentType.includes("text/html")) return response.text();
     if (!contentType.includes("application/json")) return;
     return defineResponse(response);
-  }, 100),
+  },
+  localCache: null,
   errorLogger: null
 });
 

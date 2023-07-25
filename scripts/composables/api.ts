@@ -89,7 +89,7 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
   const parseType = (type: string): string => {
     switch (type) {
       case "buffer":
-        return "import(\"buffer\").Buffer";
+        return "{type: 'Buffer', data: import(\"buffer\").Buffer}";
       default:
         return type;
     }

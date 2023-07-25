@@ -16,7 +16,7 @@ export interface ResponseType_GetSupplement {
   /**
     * resourse list
     */
-  resourse: Array<[string, import("buffer").Buffer, "image"]>
+  resourse: Array<[string, { type: "Buffer"; data: import("buffer").Buffer }, "image"]>
   /**
     * The edition number of the resource, the client decides whether to update the local cache resource according to the edition number
     */

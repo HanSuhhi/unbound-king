@@ -5,7 +5,7 @@ import { computed, provide, ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import type { Router } from "vue-router";
 import { useRouter } from "vue-router";
-import { delay, forEach } from "lodash";
+import { forEach } from "lodash";
 import { RememberEmailSymbol } from "../login.symbol";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 import { postLoginWithEmail } from "@/api/services/auth";
@@ -21,13 +21,12 @@ import { useEditionService } from "@/services/databases/edition/edition.service"
 import type { ResponseType_GetSupplement } from "@/api/services/editions";
 import { getEditions, getSupplement } from "@/api/services/editions";
 import { useResourseService } from "@/services/databases/resourse/resourse.service";
+import { Prefix } from "#/composables/constant/url";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
   const { STATE } = storeToRefs(useStateStore());
   const { checkIfEditionIsRight: checkIfVersionIsRight, addEdition } = useEditionService();
-
-  console.log(1);
 
   token.value = userToken!;
   roles.value = userRoles!;
@@ -35,7 +34,6 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   nickname.value = userNickname!;
   STATE.value = State.Game;
 
-  const { data: versions } = await getEditions().send();
   const parseResourses = (resourses: ResponseType_GetSupplement["resourse"]) => {
     const { storeResourse } = useResourseService();
     resourses.forEach((resourse) => {
@@ -43,20 +41,19 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
     });
   };
 
+  const { data: versions } = await getEditions().send();
   forEach(versions, async ([editionSubType, edition], editionType) => {
     const [_, ifEditionNotCurrent] = useIf(await checkIfVersionIsRight(editionSubType, edition));
     ifEditionNotCurrent(async () => {
-      // i dont know why I can not get current response if I dont set timeout
-      // maybe one day i will fix it.
-      delay(async () => {
-        const { data: { edition, editionName, resourse } } = await getSupplement({
-          "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
-        }).send();
-        addEdition(editionName, edition);
-        parseResourses(resourse);
-      }, 100);
+      const { data: { edition, editionName, resourse } } = await getSupplement({
+        "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
+      }).send();
+      addEdition(editionName, edition);
+      parseResourses(resourse);
     });
   });
+
+  replace({ name: Prefix.Client_Game });
 }
 
 export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>) {
@@ -75,7 +72,6 @@ export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>
   provide(RememberEmailSymbol, rememberEmail);
 
   async function loginSuccessCallback(loginSuccessResponse: ResponseType_PostLoginWithEmail) {
-    console.log("🚀 ~ file: loginAuth.ts:76 ~ loginSuccessCallback ~ loginSuccessResponse:", loginSuccessResponse);
     if (rememberEmail.value) await registUserEmail(email.value);
     else await deleteUserMessage(email.value);
 

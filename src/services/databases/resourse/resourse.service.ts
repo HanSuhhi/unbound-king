@@ -4,13 +4,13 @@ import { transformArrayBufferToBase64 } from "@/composables/trpc/oss";
 import { useServiceModel } from "@/services/serviceModel";
 
 function useVersion1() {
-  const { addWithId, update, model } = useServiceModel<Resourse>("resourse");
+  const { add, update, model } = useServiceModel<Resourse>("resourse");
 
-  const storeResourse = ([name, buffer, type]: ResponseType_GetSupplement["resourse"][number]) => {
+  const storeResourse = ([name, { data }, type]: ResponseType_GetSupplement["resourse"][number]) => {
     switch (type) {
       case "image": {
-        const content = transformArrayBufferToBase64(buffer);
-        return addWithId({
+        const content = transformArrayBufferToBase64(data);
+        return add({
           name,
           content,
           type: "image"
