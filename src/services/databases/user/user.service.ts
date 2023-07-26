@@ -1,6 +1,5 @@
 import type { ResponseType_PatchUserNicknameByEmail } from "../../../api/services/users";
 import type { User } from "./user.table";
-import { defineUniqueId } from "@/composables/ci/uniqueId";
 import { Boolean, defineServiceExportFunction, useServiceModel } from "@/services/serviceModel";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 import type { Role } from "#/composables/enum/role.enum";
@@ -8,7 +7,7 @@ import { findError } from "@/composables/experience/error";
 import { i18nLangModel } from "#/composables/i18n";
 
 function useVersion1() {
-  const { add, update, model } = useServiceModel<User>("user");
+  const { addWithId, update, model } = useServiceModel<User>("user");
 
   async function isEmailRegist(email: string): Promise<User | undefined> {
     return (await model.where("email").equals(email).first());
@@ -35,10 +34,7 @@ function useVersion1() {
     const registUser = await isEmailRegist(email);
     if (registUser) return await update(registUser.id, { main: Boolean.True });
 
-    const id = Number(defineUniqueId());
-    const user: User = { id, email, main: Boolean.True };
-
-    return await add(user);
+    return await addWithId({ email, main: Boolean.True });
   });
 
   const storeUserToken = defineServiceExportFunction(async (email: string, loginSuccessResponse: ResponseType_PostLoginWithEmail) => {
