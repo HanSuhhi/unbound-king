@@ -1,14 +1,14 @@
 <script setup lang='ts'>
-import { onMounted } from "vue";
+import { storeToRefs } from "pinia";
+import RoleChoose from "./modules/roleChoose/RoleChoose.vue";
+import { useStateStore } from "@/stores/state.store";
+import { GameState } from "@/enums/state.enum";
 
-onMounted(async () => {
-});
+const { GAME_STATE } = storeToRefs(useStateStore());
 </script>
 
 <template>
-  <div class="asd">
-    hello
-  </div>
+  <role-choose v-if="GAME_STATE === GameState.RoleChoose" />
 </template>
 
 <style scoped>

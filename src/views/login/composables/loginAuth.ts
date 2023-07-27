@@ -16,7 +16,6 @@ import { useIf } from "#/composables/run/if";
 import { useUserService } from "@/services/databases/user/user.service";
 import { useAuthStore } from "@/stores/auth.store";
 import { useStateStore } from "@/stores/state.store";
-import { State } from "@/enums/state.enum";
 import { useEditionService } from "@/services/databases/edition/edition.service";
 import type { ResponseType_GetSupplement } from "@/api/services/editions";
 import { getEditions, getSupplement } from "@/api/services/editions";
@@ -25,14 +24,14 @@ import { Prefix } from "#/composables/constant/url";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
-  const { STATE } = storeToRefs(useStateStore());
+  const { startGame } = useStateStore();
   const { checkIfEditionIsRight: checkIfVersionIsRight, addEdition } = useEditionService();
 
   token.value = userToken!;
   roles.value = userRoles!;
   email.value = userEmail!;
   nickname.value = userNickname!;
-  STATE.value = State.Game;
+  startGame();
 
   const parseResourses = (resourses: ResponseType_GetSupplement["resourse"]) => {
     const { storeResourse } = useResourseService();
