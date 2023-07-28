@@ -144,6 +144,12 @@ const enUsModel = {
       title: "Skill Design",
       desc: "Parameter settings for skills"
     }
+  },
+  arcade: {
+    "character-selection": {
+      selectionTitle: "Character Selection",
+      characterTitle: "Character Detail"
+    }
   }
 };
 

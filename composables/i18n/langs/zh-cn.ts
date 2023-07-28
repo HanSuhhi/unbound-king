@@ -145,5 +145,11 @@ export default defineLang({
       title: "技能设计",
       desc: "技能参数设置"
     }
+  },
+  arcade: {
+    "character-selection": {
+      selectionTitle: "选择角色",
+      characterTitle: "角色详情"
+    }
   }
 }, "中文");
