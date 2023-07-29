@@ -14,10 +14,6 @@ export default defineMenuOptions([
         tip: "thinking"
       },
       {
-        key: "attribute",
-        tip: "thinking"
-      },
-      {
         key: "personality-design",
         tip: "thinking"
       },

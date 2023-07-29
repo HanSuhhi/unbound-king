@@ -19,6 +19,11 @@ import { TrpcModule } from "./trpc/trpc.module";
 import { AssetsModule } from "./modules/assets/assets.module";
 import { EditionsModule } from "./modules/editions/editions.module";
 import { resolveDistPath } from "@/composables/path/path";
+import { AttributeModule } from './modules/attributes/attribute.module';
+import { PrefessionsModule } from './modules/professions/prefessions.module';
+import { PersonailtiesModule } from './modules/personailties/personailties.module';
+import { TraitsModule } from './modules/traits/traits.module';
+import { CharactersModule } from './modules/characters/characters.module';
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
 const PEM = resolveDistPath("certs", KEY_NAME);
@@ -53,7 +58,12 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     CaslModule,
     TrpcModule,
     AssetsModule,
-    EditionsModule
+    EditionsModule,
+    AttributeModule,
+    PrefessionsModule,
+    PersonailtiesModule,
+    TraitsModule,
+    CharactersModule
   ],
   controllers: [AppController],
   providers: [

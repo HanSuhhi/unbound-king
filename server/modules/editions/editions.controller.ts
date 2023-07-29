@@ -1,6 +1,5 @@
 import { Controller, Get, Query } from "@nestjs/common";
 import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { Public } from "../auth/decorators/auth.decorator";
 import { AssetType } from "../assets/enums/asset-type.enum";
 import { EditionsService } from "./editions.service";
 import { EditionVo } from "./vos/edition.vo";
@@ -28,7 +27,6 @@ export class EditionsController {
   }
 
   @Get("supplement")
-  @Public()
   @ApiEditionTypeQuery()
   @ApiOperation({
     summary: "Get the resource content of the differential edition",

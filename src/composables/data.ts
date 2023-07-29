@@ -1,7 +1,6 @@
 import { isMap, isObject } from "lodash";
 import { DATA_Ages, DATA_Genders } from "../modules/character/enums/character.enum";
 import { DATA_Ambitions } from "../modules/ambitionDesign/data/index";
-import { DATA_Attributes } from "../modules/attribute/data/index";
 import { DATA_AttributeValues } from "../modules/attributeValue/data/index";
 import { DATA_Buffs } from "../modules/buff/data/index";
 import { DATA_Destiny } from "../modules/destinyDesign/data/";
@@ -17,7 +16,6 @@ export interface IDATA {
   Genders: typeof import("../modules/character/enums/character.enum").DATA_Genders
   Ages: typeof import("../modules/character/enums/character.enum").DATA_Ages
   Chases: typeof import("../modules/character/enums/character.enum").DATA_Chases
-  Attributes: typeof import("../modules/attribute/data/index").DATA_Attributes
   AttributeValues: typeof import("../modules/attributeValue/data/index").DATA_AttributeValues
   FamilyNames: typeof import("../modules/nameDesign/data/name.data").DATA_FamilyNames
   FirstNames: typeof import("../modules/nameDesign/data/name.data").DATA_FirstNames
@@ -41,7 +39,6 @@ export const DATA: IDATA = {
   Genders: DATA_Genders,
   Ages: DATA_Ages,
   Chases: DATA_Chases,
-  Attributes: DATA_Attributes,
   AttributeValues: DATA_AttributeValues,
   FamilyNames: DATA_FamilyNames,
   FirstNames: DATA_FirstNames,
