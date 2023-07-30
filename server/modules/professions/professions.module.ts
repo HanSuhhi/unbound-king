@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
 
 @Module({})
-export class TraitsModule { }
+export class ProfessionsModule {
+}

@@ -6,6 +6,7 @@ import { JwtService } from "@nestjs/jwt";
 import type { UserDocument } from "../users/schemas/user.schemas";
 import type { LoginDto } from "./dtos/login.dto";
 import type { LoginVo } from "./vos/login.vo";
+import type { UserTokenMessage } from "./auth-type";
 import { useMinute } from "#/composables/time/ms";
 import { TrpcRouter } from "@/trpc/trpc.router";
 import { i18nLangModel } from "#/composables/i18n";
@@ -77,7 +78,11 @@ export class AuthService {
    * @returns {LoginVo} An object containing the authentication token
    */
   private async coreLogin({ _id, email, roles, nickname }: UserDocument): Promise<LoginVo> {
-    const payload = { sub: _id, email, roles };
+    const payload: UserTokenMessage = {
+      id: _id,
+      email,
+      roles
+    };
     return {
       access_token: await this.jwtService.signAsync(payload),
       nickname,

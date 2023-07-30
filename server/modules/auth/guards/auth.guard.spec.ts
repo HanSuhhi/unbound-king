@@ -25,7 +25,7 @@ describe("AuthGuard", () => {
         {
           provide: JwtService,
           useValue: {
-            verifyAsync: vi.fn().mockResolvedValue({ sub: "user-id" })
+            verifyAsync: vi.fn().mockResolvedValue({ id: "user-id" })
           }
         },
         {
@@ -49,8 +49,8 @@ describe("AuthGuard", () => {
   it("should allow access to public routes", async () => {
     // Arrange
     const context = {
-      getHandler: () => {},
-      getClass: () => {},
+      getHandler: () => { },
+      getClass: () => { },
       switchToHttp: () => ({
         getRequest: () => ({})
       })
@@ -71,8 +71,8 @@ describe("AuthGuard", () => {
   it("should extract token from header and allow access if token is valid", async () => {
     // Arrange
     const context = {
-      getHandler: () => {},
-      getClass: () => {},
+      getHandler: () => { },
+      getClass: () => { },
       switchToHttp: () => ({
         getRequest: () => ({
           headers: {
@@ -95,8 +95,8 @@ describe("AuthGuard", () => {
   it("should throw an UnauthorizedException if token is not present", async () => {
     // Arrange
     const context = {
-      getHandler: () => {},
-      getClass: () => {},
+      getHandler: () => { },
+      getClass: () => { },
       switchToHttp: () => ({
         getRequest: () => ({
           headers: {}
@@ -111,8 +111,8 @@ describe("AuthGuard", () => {
   it("should throw an UnauthorizedException if token is invalid", async () => {
     // Arrange
     const context = {
-      getHandler: () => {},
-      getClass: () => {},
+      getHandler: () => { },
+      getClass: () => { },
       switchToHttp: () => ({
         getRequest: () => ({
           headers: {

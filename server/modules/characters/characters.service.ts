@@ -1,13 +1,10 @@
 import { Injectable } from "@nestjs/common";
+import type { Types } from "mongoose";
+import type { CreateCharacterDto } from "./dtos/create-character.dto";
 
 @Injectable()
 export class CharactersService {
-  /**
- * character name string
- * character gender
- * character professions enum
- * character personailty enum
- * character trait enum
- */
-
+  public createCharacter(userId: Types.ObjectId, { name }: CreateCharacterDto) {
+    console.log(1);
+  }
 }
