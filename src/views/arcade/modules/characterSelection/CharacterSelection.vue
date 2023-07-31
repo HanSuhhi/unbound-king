@@ -1,15 +1,26 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
 import { i18nLangModel } from "#/composables/i18n/index";
+import { key_confrim } from "@/components/dialog/global/composables/key/confirm";
+import KeyEventButton from "@/components/typeButton/KeyEventButton.vue";
 
 const { t } = useI18n();
+const [confirm] = key_confrim();
 </script>
 
 <template>
   <article class="character-selection">
-    <div class="character-selection_selection">
+    <section class="character-selection_selection">
       {{ t(i18nLangModel.arcade["character-selection"].selectionTitle) }}
-    </div>
+      <div class="character-selection_characters">
+        Some characters are here.
+      </div>
+      <div class="character-selection_operators">
+        <key-event-button :key-event="confirm!">
+          hello
+        </key-event-button>
+      </div>
+    </section>
     <div class="character-selection_character">
       {{ t(i18nLangModel.arcade["character-selection"].characterTitle) }}
     </div>
@@ -26,9 +37,20 @@ const { t } = useI18n();
     display: flex;
     justify-content: space-between;
 
+    width: 60%;
     height: calc(100vh - var(--global-header-height));
     margin: 0 var(--margin-size);
+
   }
 
+  .character-selection_selection {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+  }
+
+  .character-selection_characters {
+    flex: 1;
+  }
 }
 </style>

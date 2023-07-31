@@ -3,7 +3,8 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import type { Request } from "express";
 import type { UserTokenMessage } from "../auth/auth-type";
 import { CharactersService } from "./characters.service";
-import { CreateCharacterDto } from "./dtos/create-character.dto";
+import { RegistCharacterDto } from "./dtos/reigst-character.dto";
+import type { RegistCharacterVo } from "./vos/regist-character.vo";
 
 @ApiTags("Character")
 @Controller("character")
@@ -16,11 +17,11 @@ export class CharactersController {
     summary: "Create a Character",
     description: "create a character with default message"
   })
-  public regist(
+  public async regist(
     @Req() request: Request & { user: UserTokenMessage },
-    @Body() createCharacterDto: CreateCharacterDto
-  ) {
+    @Body() createCharacterDto: RegistCharacterDto
+  ): Promise<RegistCharacterVo> {
     const userid = request.user.id;
-    return this.charactersService.createCharacter(userid, createCharacterDto);
+    return await this.charactersService.createCharacter(userid, createCharacterDto);
   }
 }

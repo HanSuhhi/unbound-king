@@ -4,7 +4,7 @@ import { Model } from "mongoose";
 import { z } from "zod";
 import { TrpcService } from "../trpc.service";
 import { Character } from "@/modules/characters/schemas/character.schemas";
-import { Gender } from "@/enums/gender.enum";
+import { Gender } from "@/modules/gender/enums/gender.enum";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Personality } from "@/modules/personalities/enums/personality.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
@@ -19,15 +19,19 @@ export class CharacterRoute {
   public route = this.trpc.router({
     createUserCharacter: this.trpc.procedure
       .input(z.object({
-        name: z.string(),
-        gender: z.nativeEnum(Gender),
-        profession: z.nativeEnum(Profession),
-        personality: z.nativeEnum(Personality),
-        traits: z.nativeEnum(Trait).array()
+        belong: z.string(),
+        character: z.object({
+          name: z.string(),
+          gender: z.nativeEnum(Gender),
+          profession: z.nativeEnum(Profession),
+          personality: z.nativeEnum(Personality),
+          traits: z.array(z.nativeEnum(Trait))
+        })
       }))
-      .mutation(async ({ input: { name, gender, profession, personality, traits } }) => {
+      .mutation(async ({ input: { belong, character: { name, gender, profession, personality, traits } } }) => {
         return await this.characterModel.create({
           name,
+          belong,
           gender,
           profession,
           personality,

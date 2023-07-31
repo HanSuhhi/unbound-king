@@ -10,7 +10,6 @@ import { DATA_FamilyNames, DATA_FirstNames } from "../modules/nameDesign/data/na
 import { DATA_Personalities } from "../modules/personalityDesign/data";
 import { DATA_Traits } from "../modules/traitDesign/data/index";
 import { DATA_Chases } from "@/modules/character/enums/character.enum";
-import { getGlobalEnumNameOrNot } from "@/enums/global.enum";
 
 export interface IDATA {
   Genders: typeof import("../modules/character/enums/character.enum").DATA_Genders
@@ -53,15 +52,15 @@ export const DATA: IDATA = {
 
 export function getDataById<T>(id: string): T {
   let key = getKeyFromId(id);
-  key = getGlobalEnumNameOrNot(key);
+  // TODO remove and fix it
+  key = "AttributeValue";
   key = getDataKey(key) as unknown as keyof typeof DATA;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+
   return (DATA as any)[key][id];
 }
 
 export function getDataByKey<T>(key: keyof IDATA) {
   for (const _key in DATA) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     const dataRange = (DATA as any)[_key];
     if (!isObject(dataRange)) return;
     let value: T;

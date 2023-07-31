@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import type { HydratedDocument } from "mongoose";
-import { Gender } from "@/enums/gender.enum";
+import { type HydratedDocument, Types } from "mongoose";
+import { Gender } from "@/modules/gender/enums/gender.enum";
 import { Personality } from "@/modules/personalities/enums/personality.enum";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
@@ -15,6 +15,13 @@ export class Character {
     trim: true
   })
   name: string;
+
+  @Prop({
+    required: true,
+    type: Types.ObjectId,
+    trim: true
+  })
+  belong: Types.ObjectId;
 
   @Prop({
     required: true,
@@ -43,7 +50,7 @@ export class Character {
     type: Array,
     enum: Trait
   })
-  traits: Trait;
+  traits: Trait[];
 }
 
 export const CharacterSchema = SchemaFactory.createForClass(Character);

@@ -4,8 +4,6 @@ import { NSelect } from "naive-ui";
 import type { VNodeChild } from "vue";
 import { h } from "vue";
 import { userAutoVModel } from "../composable/formItemDiy";
-import { transformIconToElLabelOptions } from "../composable/GameiconOptions";
-import { DATA } from "@/composables/data";
 import Icon from "@/components/Icon.vue";
 
 const props = defineProps<{ modelValue: string }>();
@@ -14,8 +12,6 @@ const emits = defineEmits<{
 }>();
 
 const model = userAutoVModel(emits, props.modelValue);
-
-const options = transformIconToElLabelOptions(DATA.GameIcons);
 
 function renderLabel(option: SelectOption & { translator: Translator }): VNodeChild {
   if (option.type === "group") return `${option.label}`;
@@ -45,5 +41,5 @@ function renderLabel(option: SelectOption & { translator: Translator }): VNodeCh
 </script>
 
 <template>
-  <n-select v-model:value="model" placeholder="请选择一个图标" filterable :options="options" :render-label="renderLabel" />
+  <n-select v-model:value="model" placeholder="请选择一个图标" filterable :render-label="renderLabel" />
 </template>

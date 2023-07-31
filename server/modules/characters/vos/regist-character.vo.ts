@@ -1,15 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEnum } from "class-validator";
-import { StringValidator } from "@/decorators/validate/string.validator";
-import { Gender } from "@/enums/gender.enum";
-import { StringEnumValidator } from "@/decorators/validate/string-enum.validate";
+import { Gender } from "@/modules/gender/enums/gender.enum";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Personality } from "@/modules/personalities/enums/personality.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
-import { ApiStringEnumProperty } from "@/decorators/api/apiStringEnumProperty.decorator";
 
-export class CreateCharacterDto {
-  @StringValidator()
+export class RegistCharacterVo {
   @ApiProperty({
     required: true,
     default: "",
@@ -17,25 +12,33 @@ export class CreateCharacterDto {
   })
   readonly name: string;
 
-  @StringEnumValidator(Gender)
   @ApiProperty({
+    required: true,
     default: Gender.Male,
     enum: Gender,
     type: String
   })
   readonly gender: Gender;
 
-  @ApiStringEnumProperty(Profession)
+  @ApiProperty({
+    required: true,
+    enum: Profession,
+    type: String
+  })
   readonly profession: Profession;
 
-  @ApiStringEnumProperty(Personality)
+  @ApiProperty({
+    required: true,
+    enum: Personality,
+    type: String
+  })
   readonly personality: Personality;
 
-  @IsEnum(Trait, { each: true })
   @ApiProperty({
     required: true,
     enum: Trait,
-    type: Array
+    type: Array,
+    default: [Trait.Listener]
   })
   readonly traits: Trait[];
 }

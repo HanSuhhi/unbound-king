@@ -1,10 +1,11 @@
-import { invert } from "lodash";
+// import { Gender } from "#/server/modules/gender/enums/gender.enum";
+// import { Profession } from "#/server/modules/professions/enums/profession.enum";
+// import { Personality } from "#/server/modules/personalities/enums/personality.enum";
+// import { Trait } from "#/server/modules/traits/enums/trait.enum";
 
-const GlobalEnum: Record<string, string> = {
-  ATV: "AttributeValue"
-};
-export const invertGlobalEnum: Record<string, string> = invert(GlobalEnum);
-
-export function getGlobalEnumNameOrNot(key: string): string {
-  return GlobalEnum[key] || key;
-}
+// export const GlobalEnum = {
+//   Gender,
+//   Profession,
+//   Personality,
+//   Trait
+// };

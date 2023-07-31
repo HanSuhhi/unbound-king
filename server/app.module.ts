@@ -23,6 +23,7 @@ import { ProfessionsModule } from "./modules/professions/professions.module";
 import { PersonailtiesModule } from "./modules/personalities/personalities.module";
 import { TraitsModule } from "./modules/traits/traits.module";
 import { CharactersModule } from "./modules/characters/characters.module";
+import { GenderModule } from "./modules/gender/gender.module";
 import { resolveDistPath } from "@/composables/path/path";
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
@@ -63,7 +64,8 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     ProfessionsModule,
     PersonailtiesModule,
     TraitsModule,
-    CharactersModule
+    CharactersModule,
+    GenderModule
   ],
   controllers: [AppController],
   providers: [

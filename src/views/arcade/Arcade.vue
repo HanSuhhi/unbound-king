@@ -8,8 +8,17 @@ const { GAME_STATE } = storeToRefs(useStateStore());
 </script>
 
 <template>
-  <character-selection v-if="GAME_STATE === GameState.RoleChoose" />
+  <div class="arcade">
+    <character-selection v-if="GAME_STATE === GameState.RoleChoose" />
+  </div>
 </template>
 
 <style scoped>
+@layer page {
+  .arcade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 </style>
