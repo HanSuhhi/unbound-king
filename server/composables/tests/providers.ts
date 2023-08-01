@@ -18,3 +18,16 @@ export function useUserModelTestProviders(): Provider[] {
       }
     }];
 }
+
+export function useCharacterModelTestProviders(): Provider[] {
+  return [
+    {
+      provide: TrpcRouter,
+      useValue: {
+        caller: {
+          character: {
+          }
+        }
+      }
+    }];
+}

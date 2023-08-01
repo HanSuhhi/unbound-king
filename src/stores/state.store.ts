@@ -8,7 +8,7 @@ const useStateStore = defineStore("state", () => {
 
   const startGame = () => {
     STATE.value = State.Game;
-    GAME_STATE.value = GameState.RoleChoose;
+    GAME_STATE.value = GameState.CharacterSelection;
   };
 
   return {

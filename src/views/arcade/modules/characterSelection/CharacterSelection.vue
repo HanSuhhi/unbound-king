@@ -16,9 +16,7 @@ const [confirm] = key_confrim();
         Some characters are here.
       </div>
       <div class="character-selection_operators">
-        <key-event-button :key-event="confirm!">
-          hello
-        </key-event-button>
+        <key-event-button :key-event="confirm!" />
       </div>
     </section>
     <div class="character-selection_character">

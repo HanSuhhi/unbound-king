@@ -5,5 +5,5 @@ export enum State {
 }
 
 export enum GameState {
-  RoleChoose = "NsKb7xRImwlX"
+  CharacterSelection = "NsKb7xRImwlX"
 }

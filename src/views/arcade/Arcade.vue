@@ -1,15 +1,19 @@
 <script setup lang='ts'>
 import { storeToRefs } from "pinia";
-import CharacterSelection from "./modules/characterSelection/CharacterSelection.vue";
+import { parseImportModule } from "../../composables/ci/importModule";
 import { useStateStore } from "@/stores/state.store";
 import { GameState } from "@/enums/state.enum";
+
+const modules = (parseImportModule(import.meta.glob("./**/*.vue", { eager: true }), true));
 
 const { GAME_STATE } = storeToRefs(useStateStore());
 </script>
 
 <template>
   <div class="arcade">
-    <character-selection v-if="GAME_STATE === GameState.RoleChoose" />
+    <template v-for=" component, name of modules" :key="name">
+      <component :is="component" v-if="GAME_STATE === GameState[name as keyof typeof GameState]" />
+    </template>
   </div>
 </template>
 
