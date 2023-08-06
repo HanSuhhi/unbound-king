@@ -1,6 +1,6 @@
 import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
-import { UserController } from "./user.controller";
+import { UserController } from "./users.controller";
 import { UsersService } from "./users.service";
 import { useUserModelTestProviders } from "@/composables/tests/providers";
 

@@ -90,6 +90,8 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
     switch (type) {
       case "buffer":
         return "{type: 'Buffer', data: import(\"buffer\").Buffer}";
+      case "enum":
+        return "{type: 'enum', data: string}";
       default:
         return type;
     }

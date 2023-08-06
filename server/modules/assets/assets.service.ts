@@ -8,7 +8,7 @@ import { resolveDistPath } from "@/composables/path/path";
 
 @Injectable()
 export class AssetsService {
-  static readonly STANDARD_ICON_VERSION: Edition<AssetType> = [AssetType.StandardIcon, 1];
+  static readonly STANDARD_ICON_EDITION: Edition<AssetType> = [AssetType.StandardIcon, 1];
 
   private getStandardIcons(): ResourseVo {
     const icons: Array<ResourseResponse> = [];
@@ -17,8 +17,8 @@ export class AssetsService {
     iconNames.forEach(iconName => icons.push([getNameFromFile(iconName), readFileSync(resolveDistPath(`${dirPath}/${iconName}`)), "image"]));
 
     return {
-      edition: AssetsService.STANDARD_ICON_VERSION[1],
-      editionName: AssetsService.STANDARD_ICON_VERSION[0],
+      edition: AssetsService.STANDARD_ICON_EDITION[1],
+      editionName: AssetsService.STANDARD_ICON_EDITION[0],
       resourse: icons
     };
   }

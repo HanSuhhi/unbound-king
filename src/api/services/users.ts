@@ -17,6 +17,6 @@ export function patchUserNicknameByEmail(request: RequestBody_PatchUserNicknameB
   "to": string
 }, config: Config<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>> = { params }) {
   config.params = params;
-  const methodInstance = alovaInst.Patch<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>>("/v1/user/update-nickname-by-email", request, config);
+  const methodInstance = alovaInst.Patch<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>>("/v1/users/update-nickname-by-email", request, config);
   return methodInstance;
 }

@@ -6,8 +6,8 @@ import { UsersService } from "./users.service";
 import { EmailQueryPipe } from "@/pipes/to.pipe";
 import { ApiEmailQuery } from "@/decorators/query/email.query";
 
-@ApiTags("User")
-@Controller("user")
+@ApiTags("Users")
+@Controller("users")
 @ApiBearerAuth()
 export class UserController {
   constructor(

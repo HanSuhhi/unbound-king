@@ -2,7 +2,7 @@ import type { Buffer } from "node:buffer";
 import { ApiProperty } from "@nestjs/swagger";
 import { arrToTypeString } from "#/composables/js/array";
 
-const resourseType = ["image"] as const;
+const resourseType = ["image", "enum"] as const;
 export type ResourseResponse = [name: string, buffer: Buffer, type: typeof resourseType[number]];
 
 export class ResourseVo {

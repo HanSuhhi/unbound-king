@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { UsersService } from "./users.service";
-import { UserController } from "./user.controller";
+import { UserController } from "./users.controller";
 import { TrpcModule } from "@/trpc/trpc.module";
 
 @Module({
@@ -8,4 +8,4 @@ import { TrpcModule } from "@/trpc/trpc.module";
   providers: [UsersService],
   controllers: [UserController]
 })
-export class UsersModule {}
+export class UsersModule { }

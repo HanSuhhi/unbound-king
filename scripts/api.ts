@@ -20,7 +20,10 @@ export async function createClientApiTemplate() {
     for (const method in pathItem) {
       const { operationId, responses, parameters, requestBody, tags } = pathItem[method];
       const methodTitle = `${method}${capitalize(operationId.split("Controller_")[1])}`;
-      const returnType = parseSchemaRef(responses[HttpStatus.OK]?.content["application/json"].schema.type || responses[HttpStatus.OK]?.content["application/json"].schema.$ref || responses[HttpStatus.CREATED]?.content["application/json"].schema.$ref, components, methodTitle);
+      const returnType = parseSchemaRef(
+        responses[HttpStatus.OK]?.content["application/json"].schema.type
+        || responses[HttpStatus.OK]?.content["application/json"].schema.$ref
+        || responses[HttpStatus.CREATED]?.content["application/json"].schema.$ref, components, methodTitle);
       const requestType = defineBody(requestBody, components, methodTitle);
       const params = defineParams(parameters);
       const requestBodyType = defineTypeName("RequestBody", methodTitle);

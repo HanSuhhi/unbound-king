@@ -35,9 +35,7 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
 
   const parseResourses = (resourses: ResponseType_GetSupplement["resourse"]) => {
     const { storeResourse } = useResourseService();
-    resourses.forEach((resourse) => {
-      storeResourse(resourse);
-    });
+    resourses.forEach(resourse => storeResourse(resourse));
   };
 
   const { data: versions } = await getEditions().send();

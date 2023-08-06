@@ -1,10 +1,10 @@
 import { Body, Controller, Post, Req } from "@nestjs/common";
-import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiCreatedResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 import type { Request } from "express";
 import type { UserTokenMessage } from "../auth/auth-type";
 import { CharactersService } from "./characters.service";
 import { RegistCharacterDto } from "./dtos/reigst-character.dto";
-import type { RegistCharacterVo } from "./vos/regist-character.vo";
+import { RegistCharacterVo } from "./vos/regist-character.vo";
 
 @ApiTags("Character")
 @Controller("character")
@@ -16,6 +16,10 @@ export class CharactersController {
   @ApiOperation({
     summary: "Create a Character",
     description: "create a character with default message"
+  })
+  @ApiCreatedResponse({
+    description: "user regist character created",
+    type: RegistCharacterVo
   })
   public async regist(
     @Req() request: Request & { user: UserTokenMessage },
