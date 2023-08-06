@@ -1,16 +1,17 @@
 import type { Buffer } from "node:buffer";
 import { ApiProperty } from "@nestjs/swagger";
+import { ResourseType } from "../enums/resourse-type.enum";
+import type { ResourseTag } from "../enums/resourse-tag.enum";
 import { arrToTypeString } from "#/composables/js/array";
 
-const resourseType = ["image", "enum"] as const;
-export type ResourseResponse = [name: string, buffer: Buffer, type: typeof resourseType[number]];
+export type ResourseResponse = [name: string, buffer: Buffer, type: ResourseType];
 
 export class ResourseVo {
   @ApiProperty({
     oneOf: [
       { type: "string" },
       { type: "buffer" },
-      { type: arrToTypeString(resourseType) }
+      { type: arrToTypeString(Array.from(Object.values(ResourseType))) }
     ],
     type: Array,
     isArray: true,
@@ -39,4 +40,11 @@ export class ResourseVo {
     description: "The nickname of the edition, used in some places that may need to be displayed"
   })
   editionNickname?: string;
+
+  @ApiProperty({
+    type: [Number],
+    required: false,
+    description: "Possible resource tags"
+  })
+  tags?: ResourseTag[];
 }

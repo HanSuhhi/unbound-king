@@ -24,14 +24,14 @@ import { Prefix } from "#/composables/constant/url";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
-  const { startGame } = useStateStore();
+  const { stateToStartGame } = useStateStore();
   const { checkIfEditionIsRight: checkIfVersionIsRight, addEdition } = useEditionService();
 
   token.value = userToken!;
   roles.value = userRoles!;
   email.value = userEmail!;
   nickname.value = userNickname!;
-  startGame();
+  stateToStartGame();
 
   const parseResourses = (resourses: ResponseType_GetSupplement["resourse"]) => {
     const { storeResourse } = useResourseService();

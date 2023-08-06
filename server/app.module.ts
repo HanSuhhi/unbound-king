@@ -20,7 +20,7 @@ import { AssetsModule } from "./modules/assets/assets.module";
 import { EditionsModule } from "./modules/editions/editions.module";
 import { AttributeModule } from "./modules/attributes/attribute.module";
 import { ProfessionsModule } from "./modules/professions/professions.module";
-import { PersonailtiesModule } from "./modules/personalities/personalities.module";
+import { PersonalitiesModule } from "./modules/personalities/personalities.module";
 import { TraitsModule } from "./modules/traits/traits.module";
 import { CharactersModule } from "./modules/characters/characters.module";
 import { GenderModule } from "./modules/gender/gender.module";
@@ -62,7 +62,7 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     EditionsModule,
     AttributeModule,
     ProfessionsModule,
-    PersonailtiesModule,
+    PersonalitiesModule,
     TraitsModule,
     CharactersModule,
     GenderModule

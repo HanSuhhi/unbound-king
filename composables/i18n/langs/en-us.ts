@@ -148,7 +148,11 @@ const enUsModel = {
   arcade: {
     "character-selection": {
       selectionTitle: "Character Selection",
-      characterTitle: "Character Detail"
+      characterTitle: "Character Detail",
+      registCharacterButton: "New character"
+    },
+    "regist-character": {
+
     }
   }
 };

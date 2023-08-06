@@ -149,7 +149,11 @@ export default defineLang({
   arcade: {
     "character-selection": {
       selectionTitle: "选择角色",
-      characterTitle: "角色详情"
+      characterTitle: "角色详情",
+      registCharacterButton: "新建角色"
+    },
+    "regist-character": {
+
     }
   }
 }, "中文");

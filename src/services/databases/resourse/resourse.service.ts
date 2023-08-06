@@ -24,7 +24,7 @@ function useVersion1() {
     }
     if (!content) throw new Error(`Invalid type: ${type}`);
     return add({
-      name: `${name}-${type}`,
+      name: `${type}-${name}`,
       content,
       type
     });

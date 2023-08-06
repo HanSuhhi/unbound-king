@@ -7,6 +7,8 @@ type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
 export interface ResponseType_GetEditions {
   BEyA1XPyO4vf: [string, number, string]
   MNRSlkFNoBVK: [string, number, string]
+  PECKrYERhY2x: [string, number, string]
+  h4i4jyYAcoSM: [string, number, string]
 }
 
 export function getEditions(config: Config<ResponseOriginData<ResponseType_GetEditions>> = {}) {
@@ -17,7 +19,7 @@ export interface ResponseType_GetSupplement {
   /**
     * resourse list
     */
-  resourse: Array<[string, { type: "Buffer"; data: import("buffer").Buffer }, "image" | "enum"]>
+  resourse: Array<[string, { type: "Buffer"; data: import("buffer").Buffer }, "image" | "prefession" | "personality" | "trait"]>
   /**
     * The edition number of the resource, the client decides whether to update the local cache resource according to the edition number
     */
@@ -30,6 +32,10 @@ export interface ResponseType_GetSupplement {
     * The nickname of the edition, used in some places that may need to be displayed
     */
   editionNickname?: string
+  /**
+    * Possible resource tags
+    */
+  tags?: number[]
 }
 
 export function getSupplement(params: {

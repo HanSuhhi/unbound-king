@@ -1,20 +1,16 @@
-import { storeToRefs } from "pinia";
-import { dialogMessage } from "@/composables/components/globalDialog";
 import { i18nLangModel } from "#/composables/i18n/index";
 import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
-import { useKeyStore } from "@/stores/key.store";
+import { Keyboard } from "@/enums/keyboard.enum";
+import { useStateStore } from "@/stores/state.store";
 
 export function key_regist_character() {
-  const { freeze } = storeToRefs(useKeyStore());
+  const { stateToRegistCharacter } = useStateStore();
 
   const close: KeyEvent = {
-    key: "enter",
-    translator: i18nLangModel.dialog.global.confirm,
+    key: Keyboard.r,
+    translator: i18nLangModel.arcade["character-selection"].registCharacterButton,
     fn(isPressed) {
-      if (!isPressed) {
-        dialogMessage.value?._confirm();
-        if (freeze) freeze.value = false;
-      }
+      if (!isPressed) stateToRegistCharacter();
     }
   };
   return [mountKeyCommand(close)];

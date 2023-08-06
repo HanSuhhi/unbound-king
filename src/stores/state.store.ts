@@ -6,15 +6,21 @@ const useStateStore = defineStore("state", () => {
   const STATE = ref<State>(State.Auth);
   const GAME_STATE = ref<GameState>();
 
-  const startGame = () => {
+  const stateToStartGame = () => {
     STATE.value = State.Game;
     GAME_STATE.value = GameState.CharacterSelection;
+  };
+
+  const stateToRegistCharacter = () => {
+    STATE.value = State.Game;
+    GAME_STATE.value = GameState.RegistCharacter;
   };
 
   return {
     STATE,
     GAME_STATE,
-    startGame
+    stateToStartGame,
+    stateToRegistCharacter
   };
 });
 export { useStateStore };

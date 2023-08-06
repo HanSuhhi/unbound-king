@@ -1,11 +1,11 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
+import { key_regist_character } from "./composables/character";
 import { i18nLangModel } from "#/composables/i18n/index";
-import { key_confrim } from "@/components/dialog/global/composables/key/confirm";
 import KeyEventButton from "@/components/typeButton/KeyEventButton.vue";
 
 const { t } = useI18n();
-const [confirm] = key_confrim();
+const [confirm] = key_regist_character();
 </script>
 
 <template>
@@ -33,6 +33,7 @@ const [confirm] = key_confrim();
     position: relative;
 
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     width: 60%;

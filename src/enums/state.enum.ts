@@ -5,5 +5,6 @@ export enum State {
 }
 
 export enum GameState {
-  CharacterSelection = "NsKb7xRImwlX"
+  CharacterSelection = "NsKb7xRImwlX",
+  RegistCharacter = "eZ4e9CUjMc84"
 }

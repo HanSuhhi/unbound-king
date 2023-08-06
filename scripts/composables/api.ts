@@ -118,7 +118,10 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
               return `Array<${enumTypeString}>`;
             }
             if (oneOf) return parseTuple(oneOf);
-            return "";
+            return "string[]";
+          }
+          case "number": {
+            return "number[]";
           }
           case "array":
           default: {
