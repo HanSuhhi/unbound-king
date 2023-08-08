@@ -4,6 +4,7 @@ export interface Resourse {
   name: string
   type: ResponseType_GetSupplement["resourse"][number][2]
   content: string
+  tags?: number[]
 }
 
-export default "name, type, content";
+export default "name, type, content, tags";

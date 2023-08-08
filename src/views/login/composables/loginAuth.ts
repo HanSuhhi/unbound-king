@@ -33,20 +33,20 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   nickname.value = userNickname!;
   stateToStartGame();
 
-  const parseResourses = (resourses: ResponseType_GetSupplement["resourse"]) => {
+  const parseResourses = (resourses: ResponseType_GetSupplement["resourse"], tags?: ResponseType_GetSupplement["tags"]) => {
     const { storeResourse } = useResourseService();
-    resourses.forEach(resourse => storeResourse(resourse));
+    resourses.forEach(resourse => storeResourse(resourse, tags));
   };
 
   const { data: versions } = await getEditions().send();
   forEach(versions, async ([editionSubType, edition], editionType) => {
     const [_, ifEditionNotCurrent] = useIf(await checkIfVersionIsRight(editionSubType, edition));
     ifEditionNotCurrent(async () => {
-      const { data: { edition, editionName, resourse } } = await getSupplement({
+      const { data: { edition, editionName, resourse, tags } } = await getSupplement({
         "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
       }).send();
       addEdition(editionName, edition);
-      parseResourses(resourse);
+      parseResourses(resourse, tags);
     });
   });
 

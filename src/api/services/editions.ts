@@ -15,13 +15,14 @@ export function getEditions(config: Config<ResponseOriginData<ResponseType_GetEd
   const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetEditions>>("/v1/editions/editions", config);
   return methodInstance;
 }
+
 export interface ResponseType_GetSupplement {
   /**
     * resourse list
     */
   resourse: Array<[string, { type: "Buffer"; data: import("buffer").Buffer }, "image" | "prefession" | "personality" | "trait"]>
   /**
-    * The edition number of the resource, the client decides whether to update the local cache resource according to the edition number
+    * The edition number of the resource, the client decides whether to update the local cache resource according to the edition numbergn
     */
   edition: number
   /**

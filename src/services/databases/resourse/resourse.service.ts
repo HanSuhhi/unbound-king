@@ -3,19 +3,27 @@ import type { ResponseType_GetSupplement } from "@/api/services/editions";
 import { transformArrayBufferToBase64, transformArrayBufferToString } from "@/composables/trpc/oss";
 import { useServiceModel } from "@/services/serviceModel";
 
+function defineResourseKey(type: string) {
+  return (name: string) => `${type}-${name}`;
+}
+
 function useVersion1() {
   const { add, update, model } = useServiceModel<Resourse>("resourse");
 
-  const storeResourse = async ([name, { data }, type]: ResponseType_GetSupplement["resourse"][number]) => {
-    // if (type !== "image" && type !== "enum") throw new Error(`Invalid type: ${type}`);
+  async function isResourseRegist(resourseKey: string): Promise<Resourse | undefined> {
+    return (await model.where("name").equals(resourseKey).first());
+  }
 
+  const storeResourse = async ([name, { data }, type]: ResponseType_GetSupplement["resourse"][number], tags?: ResponseType_GetSupplement["tags"]) => {
     let content = "";
     switch (type) {
       case "image": {
         content = transformArrayBufferToBase64(data);
         break;
       }
-      case "enum": {
+      case "prefession":
+      case "trait":
+      case "personality": {
         content = transformArrayBufferToString(data);
         break;
       }
@@ -23,11 +31,18 @@ function useVersion1() {
         break;
     }
     if (!content) throw new Error(`Invalid type: ${type}`);
-    return add({
-      name: `${type}-${name}`,
+    const resourseKey = defineResourseKey(type)(name);
+    const oldResourse = await isResourseRegist(resourseKey);
+    const newResourse = {
+      name: resourseKey,
       content,
-      type
-    });
+      type,
+      tags
+    };
+    if (!oldResourse) return await add(newResourse);
+
+    newResourse.tags = [...(newResourse.tags || []), ...oldResourse.tags || []];
+    update(oldResourse.name, newResourse);
   };
 
   return {

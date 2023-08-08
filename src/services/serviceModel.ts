@@ -60,7 +60,7 @@ export function useServiceModel<T>(table: string) {
    * @param {Partial<T>} data - An object with updated properties of the record
    * @returns {Promise<boolean>} A Promise that resolves with a boolean value indicating whether the update was successful or not
    */
-  const update = async (index: number, data: Partial<T>): Promise<Boolean> => {
+  const update = async (index: number | string, data: Partial<T>): Promise<Boolean> => {
     return await model.update(index, data);
   };
 
