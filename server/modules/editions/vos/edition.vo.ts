@@ -4,6 +4,7 @@ import { ProfessionType } from "@/modules/professions/enums/profession-type.enum
 import { AssetType } from "@/modules/assets/enums/asset-type.enum";
 import { PersonalityType } from "@/modules/personalities/enums/personality-type.enum";
 import { TraitType } from "@/modules/traits/enums/trait-type.enum";
+import { RaceType } from "@/modules/races/enums/race-type.enum";
 
 export class EditionVo {
   @ApiEditionProperty()
@@ -17,4 +18,7 @@ export class EditionVo {
 
   @ApiEditionProperty()
   [TraitType.RegistCharacter]: Edition;
+
+  @ApiEditionProperty()
+  [RaceType.RaceList]: Edition;
 }

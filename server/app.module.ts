@@ -24,6 +24,7 @@ import { PersonalitiesModule } from "./modules/personalities/personalities.modul
 import { TraitsModule } from "./modules/traits/traits.module";
 import { CharactersModule } from "./modules/characters/characters.module";
 import { GenderModule } from "./modules/gender/gender.module";
+import { RacesModule } from "./modules/races/races.module";
 import { resolveDistPath } from "@/composables/path/path";
 
 const KEY_NAME = "X509-cert-4832011663019173027.pem";
@@ -65,7 +66,8 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     PersonalitiesModule,
     TraitsModule,
     CharactersModule,
-    GenderModule
+    GenderModule,
+    RacesModule
   ],
   controllers: [AppController],
   providers: [
@@ -82,7 +84,6 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
       provide: APP_GUARD,
       useClass: RolesGuard
     }
-
   ]
 })
 export class AppModule { }

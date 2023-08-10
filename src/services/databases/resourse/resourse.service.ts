@@ -22,6 +22,7 @@ function useVersion1() {
         break;
       }
       case "prefession":
+      case "race":
       case "trait":
       case "personality": {
         content = transformArrayBufferToString(data);

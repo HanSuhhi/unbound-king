@@ -9,20 +9,20 @@ export interface ResponseType_GetEditions {
   MNRSlkFNoBVK: [string, number, string]
   PECKrYERhY2x: [string, number, string]
   h4i4jyYAcoSM: [string, number, string]
+  O0YCUAISyIXH: [string, number, string]
 }
 
 export function getEditions(config: Config<ResponseOriginData<ResponseType_GetEditions>> = {}) {
   const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetEditions>>("/v1/editions/editions", config);
   return methodInstance;
 }
-
 export interface ResponseType_GetSupplement {
   /**
     * resourse list
     */
-  resourse: Array<[string, { type: "Buffer"; data: import("buffer").Buffer }, "image" | "prefession" | "personality" | "trait"]>
+  resourse: Array<[string, { type: "Buffer"; data: import("buffer").Buffer }, "image" | "prefession" | "personality" | "trait" | "race"]>
   /**
-    * The edition number of the resource, the client decides whether to update the local cache resource according to the edition numbergn
+    * The edition number of the resource, the client decides whether to update the local cache resource according to the edition number
     */
   edition: number
   /**

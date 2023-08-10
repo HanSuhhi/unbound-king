@@ -3,6 +3,7 @@ import { AssetsModule } from "../assets/assets.module";
 import { ProfessionsModule } from "../professions/professions.module";
 import { PersonalitiesModule } from "../personalities/personalities.module";
 import { TraitsModule } from "../traits/traits.module";
+import { RacesModule } from "../races/races.module";
 import { EditionsService } from "./editions.service";
 import { EditionsController } from "./editions.controller";
 
@@ -11,7 +12,8 @@ import { EditionsController } from "./editions.controller";
     AssetsModule,
     ProfessionsModule,
     PersonalitiesModule,
-    TraitsModule
+    TraitsModule,
+    RacesModule
   ],
   controllers: [EditionsController],
   providers: [EditionsService]

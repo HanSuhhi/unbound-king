@@ -42,7 +42,6 @@ inNotTest(async () => {
   const app = await bootstrap();
   const logger = new Logger("main.ts");
   const port = process.env.SERVER_RUNNING_PORT;
-
   app.listen(port)
     .then(() => logger.log(`server is running in: http://localhost:${port}/${Prefix.Api}`));
 });
