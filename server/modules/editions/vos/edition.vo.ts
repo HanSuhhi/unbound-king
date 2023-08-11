@@ -21,4 +21,7 @@ export class EditionVo {
 
   @ApiEditionProperty()
   [RaceType.RaceList]: Edition;
+
+  @ApiEditionProperty()
+  [RaceType.RegistCharacter]: Edition;
 }

@@ -19,8 +19,8 @@ export class RacesService {
     ]);
 
     return {
-      edition: RacesService.REGIST_CHARACTER_RACE_VERSION[1],
-      editionName: RacesService.REGIST_CHARACTER_RACE_VERSION[0],
+      edition: RacesService.RACE_LIST_VERSION[1],
+      editionName: RacesService.RACE_LIST_VERSION[0],
       resourse
     };
   }

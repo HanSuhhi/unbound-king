@@ -3,15 +3,11 @@ import type { ResponseType_GetSupplement } from "@/api/services/editions";
 import { transformArrayBufferToBase64, transformArrayBufferToString } from "@/composables/trpc/oss";
 import { useServiceModel } from "@/services/serviceModel";
 
-function defineResourseKey(type: string) {
-  return (name: string) => `${type}-${name}`;
-}
-
 function useVersion1() {
-  const { add, update, model } = useServiceModel<Resourse>("resourse");
+  const { addWithId, update, model } = useServiceModel<Resourse>("resourse");
 
-  async function isResourseRegist(resourseKey: string): Promise<Resourse | undefined> {
-    return (await model.where("name").equals(resourseKey).first());
+  async function isResourseRegist(name: ResponseType_GetSupplement["resourse"][number][0], type: ResponseType_GetSupplement["resourse"][number][2]): Promise<Resourse | undefined> {
+    return model.where("name").equals(name).first();
   }
 
   const storeResourse = async ([name, { data }, type]: ResponseType_GetSupplement["resourse"][number], tags?: ResponseType_GetSupplement["tags"]) => {
@@ -32,18 +28,17 @@ function useVersion1() {
         break;
     }
     if (!content) throw new Error(`Invalid type: ${type}`);
-    const resourseKey = defineResourseKey(type)(name);
-    const oldResourse = await isResourseRegist(resourseKey);
+    const oldResourse = await isResourseRegist(name, type);
     const newResourse = {
-      name: resourseKey,
+      name,
       content,
       type,
       tags
     };
-    if (!oldResourse) return await add(newResourse);
+    if (!oldResourse) return await addWithId(newResourse);
 
     newResourse.tags = [...(newResourse.tags || []), ...oldResourse.tags || []];
-    update(oldResourse.name, newResourse);
+    await update(oldResourse.id, newResourse);
   };
 
   return {

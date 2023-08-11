@@ -5,7 +5,6 @@ import { computed, provide, ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import type { Router } from "vue-router";
 import { useRouter } from "vue-router";
-import { forEach } from "lodash";
 import { RememberEmailSymbol } from "../login.symbol";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 import { postLoginWithEmail } from "@/api/services/auth";
@@ -17,13 +16,14 @@ import { useUserService } from "@/services/databases/user/user.service";
 import { useAuthStore } from "@/stores/auth.store";
 import { useStateStore } from "@/stores/state.store";
 import { useEditionService } from "@/services/databases/edition/edition.service";
-import type { ResponseType_GetSupplement } from "@/api/services/editions";
+import type { ResponseType_GetEditions, ResponseType_GetSupplement } from "@/api/services/editions";
 import { getEditions, getSupplement } from "@/api/services/editions";
 import { useResourseService } from "@/services/databases/resourse/resourse.service";
 import { Prefix } from "#/composables/constant/url";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
+  const { storeResourse } = useResourseService();
   const { stateToStartGame } = useStateStore();
   const { checkIfEditionIsRight: checkIfVersionIsRight, addEdition } = useEditionService();
 
@@ -33,22 +33,23 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   nickname.value = userNickname!;
   stateToStartGame();
 
-  const parseResourses = (resourses: ResponseType_GetSupplement["resourse"], tags?: ResponseType_GetSupplement["tags"]) => {
-    const { storeResourse } = useResourseService();
-    resourses.forEach(resourse => storeResourse(resourse, tags));
+  const parseResourses = async (resourses: ResponseType_GetSupplement["resourse"], tags?: ResponseType_GetSupplement["tags"]) => {
+    resourses.forEach(async resourse => await storeResourse(resourse, tags));
   };
 
   const { data: versions } = await getEditions().send();
-  forEach(versions, async ([editionSubType, edition], editionType) => {
-    const [_, ifEditionNotCurrent] = useIf(await checkIfVersionIsRight(editionSubType, edition));
-    ifEditionNotCurrent(async () => {
+  for (const editionType in versions) {
+    const [editionSubType, edition] = (versions as ResponseType_GetEditions)[editionType as keyof ResponseType_GetEditions];
+    const ifEditionCurrent = await checkIfVersionIsRight(editionSubType, edition);
+
+    if (!ifEditionCurrent) {
       const { data: { edition, editionName, resourse, tags } } = await getSupplement({
         "edition-type": editionType as Parameters<typeof getSupplement>[0]["edition-type"]
       }).send();
-      addEdition(editionName, edition);
-      parseResourses(resourse, tags);
-    });
-  });
+      await addEdition(editionName, edition);
+      await parseResourses(resourse, tags);
+    }
+  }
 
   replace({ name: Prefix.Client_Game });
 }

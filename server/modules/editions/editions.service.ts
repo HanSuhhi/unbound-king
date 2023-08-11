@@ -31,14 +31,14 @@ export class EditionsService {
       [ProfessionType.RegistCharacter]: ProfessionsService.REGIST_CHARACTER_PROFESSION_VERSION,
       [PersonalityType.RegistCharacter]: PersonalitiesService.REGIST_CHARACTER_PERSONALITY_VERSION,
       [TraitType.RegistCharacter]: TraitsService.REGIST_CHARACTER_PERSONALITY_VERSION,
-      [RaceType.RaceList]: RacesService.RACE_LIST_VERSION
+      [RaceType.RaceList]: RacesService.RACE_LIST_VERSION,
+      [RaceType.RegistCharacter]: RacesService.REGIST_CHARACTER_RACE_VERSION
     };
   }
 
   public supplement(editionType: EditionType): ResourseVo {
     switch (editionType) {
-      case AssetType.StandardIcon:
-        return this.assetsService.supplement(AssetType.StandardIcon);
+      case AssetType.StandardIcon: return this.assetsService.supplement(AssetType.StandardIcon);
       case ProfessionType.RegistCharacter: {
         const resourse = this.professionService.supplement(ProfessionType.RegistCharacter);
         resourse.tags = [ResourseTag.RegistCharacter];
@@ -54,8 +54,9 @@ export class EditionsService {
         resourse.tags = [ResourseTag.RegistCharacter];
         return resourse;
       }
-      case RaceType.RaceList: {
-        const resourse = this.racesService.supplement(RaceType.RaceList);
+      case RaceType.RaceList: return this.racesService.supplement(RaceType.RaceList);
+      case RaceType.RegistCharacter: {
+        const resourse = this.racesService.supplement(RaceType.RegistCharacter);
         resourse.tags = [ResourseTag.RegistCharacter];
         return resourse;
       }
