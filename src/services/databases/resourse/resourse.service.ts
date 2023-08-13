@@ -20,6 +20,7 @@ function useVersion1() {
       case "prefession":
       case "race":
       case "trait":
+      case "lineage":
       case "personality": {
         content = transformArrayBufferToString(data);
         break;

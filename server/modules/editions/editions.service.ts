@@ -9,6 +9,8 @@ import { TraitType } from "../traits/enums/trait-type.enum";
 import { TraitsService } from "../traits/traits.service";
 import { RacesService } from "../races/races.service";
 import { RaceType } from "../races/enums/race-type.enum";
+import { LineagesService } from "../lineages/lineages.service";
+import { LineageType } from "../lineages/enums/lineage-type.enum";
 import type { EditionVo } from "./vos/edition.vo";
 import type { EditionType } from "./edition-type";
 import type { ResourseVo } from "./vos/resourse.vo";
@@ -22,7 +24,8 @@ export class EditionsService {
     private readonly professionService: ProfessionsService,
     private readonly personalityService: PersonalitiesService,
     private readonly traitsService: TraitsService,
-    private readonly racesService: RacesService
+    private readonly racesService: RacesService,
+    private readonly lineagesService: LineagesService
   ) { }
 
   public getEditions(): EditionVo {
@@ -32,7 +35,8 @@ export class EditionsService {
       [PersonalityType.RegistCharacter]: PersonalitiesService.REGIST_CHARACTER_PERSONALITY_VERSION,
       [TraitType.RegistCharacter]: TraitsService.REGIST_CHARACTER_PERSONALITY_VERSION,
       [RaceType.RaceList]: RacesService.RACE_LIST_VERSION,
-      [RaceType.RegistCharacter]: RacesService.REGIST_CHARACTER_RACE_VERSION
+      [RaceType.RegistCharacter]: RacesService.REGIST_CHARACTER_RACE_VERSION,
+      [LineageType.RegistCharacter]: LineagesService.REGIST_CHARACTER_LINEAGE_VERSION
     };
   }
 
@@ -58,6 +62,11 @@ export class EditionsService {
       case RaceType.RegistCharacter: {
         const resourse = this.racesService.supplement(RaceType.RegistCharacter);
         resourse.tags = [ResourseTag.RegistCharacter];
+        return resourse;
+      }
+      case LineageType.RegistCharacter: {
+        const resourse = this.lineagesService.supplement(LineageType.RegistCharacter);
+        resourse.tags = [ResourseTag.RegistCharacter, ResourseTag.LineageParentRace];
         return resourse;
       }
       default:

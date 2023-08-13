@@ -4,6 +4,8 @@ import { AssetsModule } from "../assets/assets.module";
 import { PersonalitiesModule } from "../personalities/personalities.module";
 import { ProfessionsModule } from "../professions/professions.module";
 import { TraitsModule } from "../traits/traits.module";
+import { RacesModule } from "../races/races.module";
+import { LineagesModule } from "../lineages/lineages.module";
 import { EditionsService } from "./editions.service";
 
 describe("VersionsService", () => {
@@ -15,7 +17,9 @@ describe("VersionsService", () => {
         AssetsModule,
         ProfessionsModule,
         PersonalitiesModule,
-        TraitsModule
+        TraitsModule,
+        RacesModule,
+        LineagesModule
       ],
       providers: [EditionsService]
     }).compile();

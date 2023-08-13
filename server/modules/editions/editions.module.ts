@@ -4,6 +4,7 @@ import { ProfessionsModule } from "../professions/professions.module";
 import { PersonalitiesModule } from "../personalities/personalities.module";
 import { TraitsModule } from "../traits/traits.module";
 import { RacesModule } from "../races/races.module";
+import { LineagesModule } from "../lineages/lineages.module";
 import { EditionsService } from "./editions.service";
 import { EditionsController } from "./editions.controller";
 
@@ -13,7 +14,8 @@ import { EditionsController } from "./editions.controller";
     ProfessionsModule,
     PersonalitiesModule,
     TraitsModule,
-    RacesModule
+    RacesModule,
+    LineagesModule
   ],
   controllers: [EditionsController],
   providers: [EditionsService]

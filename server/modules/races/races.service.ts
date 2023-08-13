@@ -8,8 +8,8 @@ import { RaceType } from "./enums/race-type.enum";
 
 @Injectable()
 export class RacesService {
-  static readonly REGIST_CHARACTER_RACE_VERSION: Edition<RaceType> = [RaceType.RegistCharacter, 1];
   static readonly RACE_LIST_VERSION: Edition<RaceType> = [RaceType.RaceList, 1];
+  static readonly REGIST_CHARACTER_RACE_VERSION: Edition<RaceType> = [RaceType.RegistCharacter, 1];
 
   private getRaceList() {
     const resourse: ResourseVo["resourse"] = Object.keys(Race).map<ResourseResponse>(raceName => [
@@ -25,7 +25,7 @@ export class RacesService {
     };
   }
 
-  private getRegistCharacterProfessions(): ResourseVo {
+  private getRegistCharacterRaces(): ResourseVo {
     const raceNames: Set<keyof typeof Race> = new Set(["Humans"]);
     const resourse: ResourseVo["resourse"] = Array.from(raceNames).map<ResourseResponse>(raceName => [
       raceName.toLowerCase(),
@@ -47,7 +47,7 @@ export class RacesService {
       }
       case RaceType.RegistCharacter:
       default:
-        return this.getRegistCharacterProfessions();
+        return this.getRegistCharacterRaces();
     }
   }
 }

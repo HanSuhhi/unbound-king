@@ -8,10 +8,10 @@ export interface ResponseType_PatchUserNicknameByEmail {
   /**
     * The user's modified nickname
     */
-  nickname: string
+  "nickname": string
 }
 export interface RequestBody_PatchUserNicknameByEmail {
-  nickname: string
+  "nickname": string
 }
 export function patchUserNicknameByEmail(request: RequestBody_PatchUserNicknameByEmail, params: {
   "to": string

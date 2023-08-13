@@ -141,7 +141,7 @@ function generatePropertyDescription(dto: any, typename: string, methodTitle: st
     * ${value.description}
     */\n`
       : "";
-    return `${_description}${key}${dto?.required?.includes(key) ? "" : "?"}: ${parseSchemasTypeDetail(value)};`;
+    return `${_description}"${key}"${dto?.required?.includes(key) ? "" : "?"}: ${parseSchemasTypeDetail(value)};`;
   });
   const typefile = `export interface ${defineTypeName(typename, methodTitle)} {
     ${descriptions.join("\n")}

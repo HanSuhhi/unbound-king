@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
+import RegistCharacterForm from "./components/RegistCharacterForm.vue";
 
 const { t } = useI18n();
 </script>
@@ -14,6 +15,7 @@ const { t } = useI18n();
       <div class="regist-character_operators" />
     </section>
     <div class="regist-character_character">
+      <regist-character-form />
       regist form
     </div>
   </article>

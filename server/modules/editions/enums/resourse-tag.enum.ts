@@ -1,3 +1,4 @@
 export enum ResourseTag {
-  RegistCharacter
+  RegistCharacter,
+  LineageParentRace = 99
 }

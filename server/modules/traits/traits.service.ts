@@ -10,7 +10,7 @@ import { Trait } from "./enums/trait.enum";
 export class TraitsService {
   static readonly REGIST_CHARACTER_PERSONALITY_VERSION: Edition<TraitType> = [TraitType.RegistCharacter, 1];
 
-  private getRegistCharacterProfessions(): ResourseVo {
+  private getRegistCharacterTraits(): ResourseVo {
     const traitNames: Set<keyof typeof Trait> = new Set(["Listener"]);
     const resourse: ResourseVo["resourse"] = Array.from(traitNames).map<ResourseResponse>(traitName => [
       traitName.toLowerCase(),
@@ -28,7 +28,7 @@ export class TraitsService {
     switch (subType) {
       case TraitType.RegistCharacter:
       default:
-        return this.getRegistCharacterProfessions();
+        return this.getRegistCharacterTraits();
     }
   }
 }
