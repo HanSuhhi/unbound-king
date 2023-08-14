@@ -6,6 +6,8 @@ import { StringEnumValidator } from "@/decorators/validate/string-enum.validate"
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Personality } from "@/modules/personalities/enums/personality.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineage.enum";
+import { Race } from "@/modules/races/enums/race.enum";
 
 export class RegistCharacterDto {
   @StringValidator()
@@ -46,7 +48,24 @@ export class RegistCharacterDto {
     required: true,
     enum: Trait,
     type: Array,
+    isArray: true,
     default: [Trait.Listener]
   })
   readonly traits: Trait[];
+
+  @StringEnumValidator(Race)
+  @ApiProperty({
+    required: true,
+    type: String,
+    enum: Race
+  })
+  race: Race;
+
+  @StringEnumValidator({ ...HumanLineage, ...YokaiLineage, ...ElvesLineage })
+  @ApiProperty({
+    required: true,
+    type: String,
+    enum: { ...HumanLineage, ...YokaiLineage, ...ElvesLineage }
+  })
+  lineage: HumanLineage | YokaiLineage | ElvesLineage;
 }

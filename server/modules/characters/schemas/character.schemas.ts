@@ -4,6 +4,8 @@ import { Gender } from "@/modules/gender/enums/gender.enum";
 import { Personality } from "@/modules/personalities/enums/personality.enum";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
+import { Race } from "@/modules/races/enums/race.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineage.enum";
 
 export type CharacterDocument = HydratedDocument<Character>;
 
@@ -51,6 +53,22 @@ export class Character {
     enum: Trait
   })
   traits: Trait[];
+
+  @Prop({
+    required: true,
+    type: String,
+    trim: true,
+    enum: Race
+  })
+  race: Race;
+
+  @Prop({
+    required: true,
+    type: String,
+    trim: true,
+    enum: { ...HumanLineage, ...YokaiLineage, ...ElvesLineage }
+  })
+  lineage: HumanLineage | YokaiLineage | ElvesLineage;
 }
 
 export const CharacterSchema = SchemaFactory.createForClass(Character);

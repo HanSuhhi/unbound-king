@@ -16,7 +16,6 @@ const { t } = useI18n();
     </section>
     <div class="regist-character_character">
       <regist-character-form />
-      regist form
     </div>
   </article>
 </template>

@@ -11,6 +11,8 @@ import { RacesService } from "../races/races.service";
 import { RaceType } from "../races/enums/race-type.enum";
 import { LineagesService } from "../lineages/lineages.service";
 import { LineageType } from "../lineages/enums/lineage-type.enum";
+import { GenderType } from "../gender/enums/gender-type.enum";
+import { GenderService } from "../gender/gender.service";
 import type { EditionVo } from "./vos/edition.vo";
 import type { EditionType } from "./edition-type";
 import type { ResourseVo } from "./vos/resourse.vo";
@@ -25,7 +27,8 @@ export class EditionsService {
     private readonly personalityService: PersonalitiesService,
     private readonly traitsService: TraitsService,
     private readonly racesService: RacesService,
-    private readonly lineagesService: LineagesService
+    private readonly lineagesService: LineagesService,
+    private readonly genderService: GenderService
   ) { }
 
   public getEditions(): EditionVo {
@@ -36,7 +39,8 @@ export class EditionsService {
       [TraitType.RegistCharacter]: TraitsService.REGIST_CHARACTER_PERSONALITY_VERSION,
       [RaceType.RaceList]: RacesService.RACE_LIST_VERSION,
       [RaceType.RegistCharacter]: RacesService.REGIST_CHARACTER_RACE_VERSION,
-      [LineageType.RegistCharacter]: LineagesService.REGIST_CHARACTER_LINEAGE_VERSION
+      [LineageType.RegistCharacter]: LineagesService.REGIST_CHARACTER_LINEAGE_VERSION,
+      [GenderType.RegistCharacter]: GenderService.REGIST_CHARACTER_GENDER_VERSION
     };
   }
 
@@ -66,7 +70,12 @@ export class EditionsService {
       }
       case LineageType.RegistCharacter: {
         const resourse = this.lineagesService.supplement(LineageType.RegistCharacter);
-        resourse.tags = [ResourseTag.RegistCharacter, ResourseTag.LineageParentRace];
+        resourse.tags = [ResourseTag.RegistCharacter];
+        return resourse;
+      }
+      case GenderType.RegistCharacter: {
+        const resourse = this.genderService.supplement(GenderType.RegistCharacter);
+        resourse.tags = [ResourseTag.RegistCharacter];
         return resourse;
       }
       default:

@@ -6,6 +6,7 @@ import { ProfessionsModule } from "../professions/professions.module";
 import { TraitsModule } from "../traits/traits.module";
 import { RacesModule } from "../races/races.module";
 import { LineagesModule } from "../lineages/lineages.module";
+import { GenderModule } from "../gender/gender.module";
 import { EditionsService } from "./editions.service";
 
 describe("VersionsService", () => {
@@ -19,7 +20,8 @@ describe("VersionsService", () => {
         PersonalitiesModule,
         TraitsModule,
         RacesModule,
-        LineagesModule
+        LineagesModule,
+        GenderModule
       ],
       providers: [EditionsService]
     }).compile();

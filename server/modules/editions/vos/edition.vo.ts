@@ -6,6 +6,7 @@ import { PersonalityType } from "@/modules/personalities/enums/personality-type.
 import { TraitType } from "@/modules/traits/enums/trait-type.enum";
 import { RaceType } from "@/modules/races/enums/race-type.enum";
 import { LineageType } from "@/modules/lineages/enums/lineage-type.enum";
+import { GenderType } from "@/modules/gender/enums/gender-type.enum";
 
 export class EditionVo {
   @ApiEditionProperty()
@@ -28,4 +29,7 @@ export class EditionVo {
 
   @ApiEditionProperty()
   [LineageType.RegistCharacter]: Edition;
+
+  @ApiEditionProperty()
+  [GenderType.RegistCharacter]: Edition;
 }

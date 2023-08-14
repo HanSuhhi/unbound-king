@@ -1,5 +1,6 @@
 import { invalidCn } from "../composable";
 import { defineLang } from "../lang.model";
+import { CN_RegistCharacter } from "../packages/registCharacter";
 
 export default defineLang({
   hotkey: "c",
@@ -152,8 +153,6 @@ export default defineLang({
       characterTitle: "角色详情",
       registCharacterButton: "新建角色"
     },
-    "regist-character": {
-
-    }
+    "regist-character": CN_RegistCharacter
   }
 }, "中文");

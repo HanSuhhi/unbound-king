@@ -4,5 +4,6 @@ export enum ResourseType {
   Personality = "personality",
   Trait = "trait",
   Race = "race",
-  Lineage = "lineage"
+  Lineage = "lineage",
+  Gender = "gender"
 }

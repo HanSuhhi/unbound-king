@@ -8,6 +8,8 @@ import { Gender } from "@/modules/gender/enums/gender.enum";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Personality } from "@/modules/personalities/enums/personality.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
+import { Race } from "@/modules/races/enums/race.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineage.enum";
 
 @Injectable()
 export class CharacterRoute {
@@ -25,17 +27,21 @@ export class CharacterRoute {
           gender: z.nativeEnum(Gender),
           profession: z.nativeEnum(Profession),
           personality: z.nativeEnum(Personality),
-          traits: z.array(z.nativeEnum(Trait))
+          traits: z.array(z.nativeEnum(Trait)),
+          race: z.nativeEnum(Race),
+          lineage: z.nativeEnum({ ...HumanLineage, ...YokaiLineage, ...ElvesLineage })
         })
       }))
-      .mutation(async ({ input: { belong, character: { name, gender, profession, personality, traits } } }) => {
+      .mutation(async ({ input: { belong, character: { name, gender, profession, personality, traits, race, lineage } } }) => {
         return await this.characterModel.create({
           name,
           belong,
           gender,
           profession,
           personality,
-          traits
+          traits,
+          race,
+          lineage
         });
       })
   });

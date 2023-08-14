@@ -1,5 +1,6 @@
 import { invalid } from "../composable";
 import { defineLang } from "../lang.model";
+import { EN_RegistCharacter } from "../packages/registCharacter";
 
 const enUsModel = {
   hotkey: "e",
@@ -151,9 +152,7 @@ const enUsModel = {
       characterTitle: "Character Detail",
       registCharacterButton: "New character"
     },
-    "regist-character": {
-
-    }
+    "regist_character": EN_RegistCharacter
   }
 };
 

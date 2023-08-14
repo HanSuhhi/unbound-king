@@ -1,4 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module } from "@nestjs/common";
+import { GenderService } from "./gender.service";
 
-@Module({})
-export class GenderModule {}
+@Module({
+  providers: [GenderService],
+  exports: [GenderService]
+})
+export class GenderModule {
+}

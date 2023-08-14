@@ -9,14 +9,18 @@ export interface ResponseType_PostRegist {
   "gender": number
   "profession": "eC7dQ9p6Oyxh" | "2juchfbwawai"
   "personality": "KFy9eYWYnfbX"
-  "traits": "cLPWw0lnpQjS"
+  "traits": Array<"cLPWw0lnpQjS">
+  "race": "KFy9eYWYnfbX" | "sxjrztcjtxld" | "BE1xF4wqYmjF" | "dh7enup4k4yq"
+  "lineage": "eovp79ed7hjd" | "qm8v6qy0866p" | "nn99qxmf8ki6"
 }
 export interface RequestBody_PostRegist {
   "name": string
   "gender": number
   "profession": "eC7dQ9p6Oyxh" | "2juchfbwawai"
   "personality": "KFy9eYWYnfbX"
-  "traits": "cLPWw0lnpQjS"
+  "traits": Array<"cLPWw0lnpQjS">
+  "race": "KFy9eYWYnfbX" | "sxjrztcjtxld" | "BE1xF4wqYmjF" | "dh7enup4k4yq"
+  "lineage": "eovp79ed7hjd" | "qm8v6qy0866p" | "nn99qxmf8ki6"
 }
 export function postRegist(request: RequestBody_PostRegist, config: Config<ResponseOriginData<ResponseType_PostRegist>> = {}) {
   const methodInstance = alovaInst.Post<ResponseOriginData<ResponseType_PostRegist>>("/v1/character/registion", request, config);
