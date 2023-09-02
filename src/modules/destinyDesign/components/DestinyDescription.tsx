@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import Alert from "@/components/alert/alert";
+import Alert from "@/components/Alert.vue";
 
 export default defineComponent({
   name: "DestinyDescription",

@@ -1,6 +1,6 @@
 export enum ResourseType {
   Image = "image",
-  Prefession = "prefession",
+  Profession = "profession",
   Personality = "personality",
   Trait = "trait",
   Race = "race",

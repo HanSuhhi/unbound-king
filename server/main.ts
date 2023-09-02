@@ -43,5 +43,6 @@ inNotTest(async () => {
   const logger = new Logger("main.ts");
   const port = process.env.SERVER_RUNNING_PORT;
   app.listen(port)
-    .then(() => logger.log(`server is running in: http://localhost:${port}/${Prefix.Api}`));
+    .then(() => logger.log(`server is running in: http://localhost:${port}/${Prefix.Api}`))
+    .then(() => logger.log(`game is running in: http://localhost:${port}/${Prefix.Client}`));
 });

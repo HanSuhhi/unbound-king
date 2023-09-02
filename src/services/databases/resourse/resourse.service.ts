@@ -1,4 +1,6 @@
 import type { Resourse } from "./resourse.table";
+import { useGenderResourse } from "./composables/gender";
+import { useProfessionResourse } from "./composables/profession";
 import type { ResponseType_GetSupplement } from "@/api/services/editions";
 import { transformArrayBufferToBase64, transformArrayBufferToString } from "@/composables/trpc/oss";
 import { useServiceModel } from "@/services/serviceModel";
@@ -17,10 +19,11 @@ function useVersion1() {
         content = transformArrayBufferToBase64(data);
         break;
       }
-      case "prefession":
+      case "profession":
       case "race":
       case "trait":
       case "lineage":
+      case "gender":
       case "personality": {
         content = transformArrayBufferToString(data);
         break;
@@ -43,6 +46,8 @@ function useVersion1() {
   };
 
   return {
+    ...useGenderResourse(model),
+    ...useProfessionResourse(model),
     storeResourse
   };
 }

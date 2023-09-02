@@ -1,9 +1,15 @@
 import { invalid } from "../composable";
 import { defineLang } from "../lang.model";
+import { EN_Gender } from "../packages/gender";
+import { EN_Profession } from "../packages/profession";
 import { EN_RegistCharacter } from "../packages/registCharacter";
 
 const enUsModel = {
   hotkey: "e",
+  enum: {
+    gender: EN_Gender,
+    profession: EN_Profession
+  },
   aside: {
     modules: {
       assets: "Assets",

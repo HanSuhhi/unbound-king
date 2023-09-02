@@ -82,7 +82,21 @@ export function writeServices(files: Dictionary<string[]>) {
   console.log("Saved!");
 }
 
-function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
+function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf, $ref }: any, components: any) {
+  if ($ref) {
+    const schemasPath = "#/components/schemas/";
+    $ref = $ref.replace(schemasPath, "").replace(/\//g, ".");
+    const dto = components.schemas[$ref];
+    const descriptions = Object.entries(dto.properties).map(([key, value]: any) => {
+      const _description = value.description
+        ? `/**
+      * ${value.description}
+      */\n`
+        : "";
+      return `${_description}"${key}"${dto?.required?.includes(key) ? "" : "?"}: ${parseSchemasTypeDetail(value, components)}`;
+    }) as any;
+    return `{ ${descriptions.join("\n")} }`;
+  }
   const parseEnum = <T>(_enum: Array<T>) => {
     return _enum.map((enumItem: T) => `"${enumItem}"`).join(" | ");
   };
@@ -134,15 +148,16 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf }: any) {
   }
 }
 
-function generatePropertyDescription(dto: any, typename: string, methodTitle: string) {
+function generatePropertyDescription(dto: any, typename: string, methodTitle: string, components: any) {
   const descriptions = Object.entries(dto.properties).map(([key, value]: any) => {
     const _description = value.description
       ? `/**
     * ${value.description}
     */\n`
       : "";
-    return `${_description}"${key}"${dto?.required?.includes(key) ? "" : "?"}: ${parseSchemasTypeDetail(value)};`;
+    return `${_description}"${key}"${dto?.required?.includes(key) ? "" : "?"}: ${parseSchemasTypeDetail(value, components)};`;
   });
+
   const typefile = `export interface ${defineTypeName(typename, methodTitle)} {
     ${descriptions.join("\n")}
   };`;
@@ -158,6 +173,7 @@ export function parseSchemaRef($ref: string, components: any, methodTitle: strin
   if (!$ref.startsWith(schemasPath)) return `type ${defineTypeName(typename, methodTitle)} = ${$ref};`;
   $ref = $ref.replace(schemasPath, "").replace(/\//g, ".");
   const dto = components.schemas[$ref];
-  const type = generatePropertyDescription(dto, typename, methodTitle);
+
+  const type = generatePropertyDescription(dto, typename, methodTitle, components);
   return type;
 }

@@ -1,5 +1,7 @@
 import { invalidCn } from "../composable";
 import { defineLang } from "../lang.model";
+import { CN_Gender } from "../packages/gender";
+import { CN_Profession } from "../packages/profession";
 import { CN_RegistCharacter } from "../packages/registCharacter";
 
 export default defineLang({
@@ -9,6 +11,10 @@ export default defineLang({
       assets: "资源管理",
       dev: "开发者模块"
     }
+  },
+  enum: {
+    gender: CN_Gender,
+    profession: CN_Profession
   },
   validate: {
     props: invalidCn("参数"),
@@ -153,6 +159,6 @@ export default defineLang({
       characterTitle: "角色详情",
       registCharacterButton: "新建角色"
     },
-    "regist-character": CN_RegistCharacter
+    "regist_character": CN_RegistCharacter
   }
 }, "中文");

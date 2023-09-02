@@ -11,11 +11,11 @@ export class ProfessionsService {
   static readonly REGIST_CHARACTER_PROFESSION_VERSION: Edition<ProfessionType> = [ProfessionType.RegistCharacter, 1];
 
   private getRegistCharacterProfessions(): ResourseVo {
-    const professionNames: Set<keyof typeof Profession> = new Set(["Swordman"]);
+    const professionNames: Set<keyof typeof Profession> = new Set(["Sworder"]);
     const resourse: ResourseVo["resourse"] = Array.from(professionNames).map<ResourseResponse>(professionName => [
       professionName.toLowerCase(),
       Buffer.from(Profession[professionName]),
-      ResourseType.Prefession
+      ResourseType.Profession
     ]);
     return {
       edition: ProfessionsService.REGIST_CHARACTER_PROFESSION_VERSION[1],

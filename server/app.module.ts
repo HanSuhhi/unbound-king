@@ -25,12 +25,12 @@ import { TraitsModule } from "./modules/traits/traits.module";
 import { CharactersModule } from "./modules/characters/characters.module";
 import { GenderModule } from "./modules/gender/gender.module";
 import { RacesModule } from "./modules/races/races.module";
-import { resolveDistPath } from "@/composables/path/path";
-import { LineagesModule } from './modules/lineages/lineages.module';
+import { LineagesModule } from "./modules/lineages/lineages.module";
 
-const KEY_NAME = "X509-cert-4832011663019173027.pem";
-const PEM = resolveDistPath("certs", KEY_NAME);
-const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority";
+// const KEY_NAME = "X509-cert-4832011663019173027.pem";
+// const PEM = resolveDistPath("certs", KEY_NAME);
+// const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority";
+// const MONGO_CLOUD_URL = "mongodb://localhost/test";
 
 @Module({
   imports: [
@@ -41,13 +41,7 @@ const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=
     CacheModule.register({
       isGlobal: true
     }),
-    MongooseModule.forRoot(MONGO_CLOUD_URL, {
-      ssl: true,
-      sslValidate: true,
-      sslKey: PEM,
-      sslCert: PEM,
-      authMechanism: "MONGODB-X509"
-    }),
+    MongooseModule.forRoot("mongodb://localhost/unbound-king"),
     ThrottlerModule.forRoot({
       ttl: 60,
       limit: 20

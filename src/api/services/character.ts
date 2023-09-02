@@ -6,7 +6,7 @@ import type { ResponseOriginData } from "#/composables/types/api";
 type Config<T> = AlovaMethodCreateConfig<T, unknown, FetchRequestInit, Headers>;
 export interface ResponseType_PostRegist {
   "name": string
-  "gender": number
+  "gender": "M8MA" | "3crm"
   "profession": "eC7dQ9p6Oyxh" | "2juchfbwawai"
   "personality": "KFy9eYWYnfbX"
   "traits": Array<"cLPWw0lnpQjS">
@@ -15,7 +15,7 @@ export interface ResponseType_PostRegist {
 }
 export interface RequestBody_PostRegist {
   "name": string
-  "gender": number
+  "gender": "M8MA" | "3crm"
   "profession": "eC7dQ9p6Oyxh" | "2juchfbwawai"
   "personality": "KFy9eYWYnfbX"
   "traits": Array<"cLPWw0lnpQjS">

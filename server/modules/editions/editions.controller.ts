@@ -1,10 +1,11 @@
-import { Controller, Get, Query } from "@nestjs/common";
-import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { Body, Controller, Get, Post, Query } from "@nestjs/common";
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { AssetType } from "../assets/enums/asset-type.enum";
 import { EditionsService } from "./editions.service";
 import { EditionVo } from "./vos/edition.vo";
-import { ApiEditionTypeQuery } from "./queries/edition-type.query";
 import { ResourseVo } from "./vos/resourse.vo";
+import { VerifyVo } from "./vos/verify.vo";
+import { VerifyDto } from "./dtos/verify.dto";
 import { useApiOperationDescriptionEnum } from "@/composables/api/description";
 
 @ApiTags("Editions")
@@ -27,7 +28,6 @@ export class EditionsController {
   }
 
   @Get("supplement")
-  @ApiEditionTypeQuery()
   @ApiOperation({
     summary: "Get the resource content of the differential edition",
     description: `${useApiOperationDescriptionEnum("asset-sub-type", AssetType)}`
@@ -39,5 +39,17 @@ export class EditionsController {
     @Query("edition-type") editionType: keyof EditionVo
   ) {
     return this.edtionsService.supplement(editionType);
+  }
+
+  @Post("verify")
+  @ApiOperation({
+    summary: "Get the resource content of the differential edition"
+  })
+  @ApiCreatedResponse({
+    description: "Obtain client version information and update it",
+    type: VerifyVo
+  })
+  public verify(@Body() verifyDto: VerifyDto) {
+    return this.edtionsService.verify(verifyDto);
   }
 }

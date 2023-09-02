@@ -11,7 +11,7 @@ export class GenderService {
   static readonly REGIST_CHARACTER_GENDER_VERSION: Edition<GenderType> = [GenderType.RegistCharacter, 1];
 
   private getRegistCharacterGenders(): ResourseVo {
-    const genderNames: Set<keyof typeof Gender> = new Set(["Male"]);
+    const genderNames: Set<keyof typeof Gender> = new Set(["Male", "Female"]);
     const resourse: ResourseVo["resourse"] = Array.from(genderNames).map<ResourseResponse>(gender => [
       gender.toLowerCase(),
       Buffer.from(Gender[gender]),

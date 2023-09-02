@@ -42,7 +42,9 @@ function useRouterBefore() {
       isRoleRight(useRoute());
     }
     catch (error) {
-      router.replace({ name: ROUTER_DEFAULT_PAGE });
+      setTimeout(() => {
+        router.replace({ name: ROUTER_DEFAULT_PAGE });
+      }, 250);
     }
   });
 

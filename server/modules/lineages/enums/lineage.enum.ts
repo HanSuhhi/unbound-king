@@ -1,4 +1,4 @@
-import { Race } from "@/modules/races/enums/race.enum";
+import { Race } from "#/server/modules/races/enums/race.enum";
 
 export enum HumanLineage {
   Caveman = "eovp79ed7hjd"
