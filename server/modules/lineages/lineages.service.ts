@@ -1,49 +1,35 @@
 import { Buffer } from "node:buffer";
 import { Injectable } from "@nestjs/common";
-import type { Edition } from "../editions/edition-type";
 import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
-import type { Race } from "../races/enums/race.enum";
+import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
 import { LineageType } from "./enums/lineage-type.enum";
-import { ElvesLineage, HumanLineage, type LineageKeys, YokaiLineage } from "./enums/lineage.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "./enums/lineage.enum";
 
 @Injectable()
 export class LineagesService {
-  static readonly REGIST_CHARACTER_LINEAGE_VERSION: Edition<LineageType> = [LineageType.RegistCharacter, 1];
+  /** Resourse Message */
+  private readonly REGIST_CHARACTER_RESOURSE: Array<HumanLineage | YokaiLineage | ElvesLineage> = [HumanLineage.Caveman, ElvesLineage.Tree, YokaiLineage.Fish];
+  private ALL_RESOURSES: ResourseVo["resourse"];
 
-  private getRegistCharacterLineages(): ResourseVo {
-    const lineageNames: Set<LineageKeys> = new Set(["Caveman", "Fish", "Tree"]);
-    const resourse: ResourseVo["resourse"] = Array.from(lineageNames).map<ResourseResponse>((lineageName) => {
-      const raceLineages = [HumanLineage, YokaiLineage, ElvesLineage];
-      let race: Race;
-      let lineage: HumanLineage | YokaiLineage | ElvesLineage;
-      for (const raceLineage of raceLineages) {
-        if (raceLineage[lineageName]) {
-          lineage = raceLineage[lineageName];
-          race = (Reflect.getPrototypeOf(raceLineage) as { race: Race }).race;
-          break;
-        }
-      }
-
-      return [
-        lineageName.toLowerCase(),
-        Buffer.from([lineage, race].join("$")),
-        ResourseType.Lineage
+  constructor() {
+    this.ALL_RESOURSES = Object.values({ ...HumanLineage, ...YokaiLineage, ...ElvesLineage }).map<ResourseResponse>((race) => {
+      const returnResourse: ResourseVo["resourse"][number] = [
+        Buffer.from(race),
+        ResourseType.Lineage,
+        undefined,
+        []
       ];
-    });
+      addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, race, returnResourse[3]);
 
-    return {
-      edition: LineagesService.REGIST_CHARACTER_LINEAGE_VERSION[1],
-      editionName: LineagesService.REGIST_CHARACTER_LINEAGE_VERSION[0],
-      resourse
-    };
+      return returnResourse;
+    });
   }
 
-  public supplement(subType: LineageType): ResourseVo {
+  public supplement(subType: LineageType): ResourseVo["resourse"] {
     switch (subType) {
       case LineageType.RegistCharacter:
-      default:
-        return this.getRegistCharacterLineages();
+      default: return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
     }
   }
 }

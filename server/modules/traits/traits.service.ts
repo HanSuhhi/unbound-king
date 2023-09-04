@@ -1,34 +1,36 @@
 import { Buffer } from "node:buffer";
 import { Injectable } from "@nestjs/common";
-import type { Edition } from "../editions/edition-type";
 import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
+import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
 import { TraitType } from "./enums/trait-type.enum";
 import { Trait } from "./enums/trait.enum";
 
 @Injectable()
 export class TraitsService {
-  static readonly REGIST_CHARACTER_PERSONALITY_VERSION: Edition<TraitType> = [TraitType.RegistCharacter, 1];
+  /** Resourse Message */
+  private readonly REGIST_CHARACTER_RESOURSE: Trait[] = [Trait.Listener];
+  private ALL_RESOURSES: ResourseVo["resourse"];
 
-  private getRegistCharacterTraits(): ResourseVo {
-    const traitNames: Set<keyof typeof Trait> = new Set(["Listener"]);
-    const resourse: ResourseVo["resourse"] = Array.from(traitNames).map<ResourseResponse>(traitName => [
-      traitName.toLowerCase(),
-      Buffer.from(Trait[traitName]),
-      ResourseType.Trait
-    ]);
-    return {
-      edition: TraitsService.REGIST_CHARACTER_PERSONALITY_VERSION[1],
-      editionName: TraitsService.REGIST_CHARACTER_PERSONALITY_VERSION[0],
-      resourse
-    };
+  constructor() {
+    this.ALL_RESOURSES = Object.values(Trait).map<ResourseResponse>((trait) => {
+      const returnResourse: ResourseVo["resourse"][number] = [
+        Buffer.from(trait),
+        ResourseType.Trait,
+        undefined,
+        []
+      ];
+      addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, trait, returnResourse[3]);
+
+      return returnResourse;
+    });
   }
 
-  public supplement(subType: TraitType): ResourseVo {
+  public supplement(subType: TraitType): ResourseVo["resourse"] {
     switch (subType) {
       case TraitType.RegistCharacter:
       default:
-        return this.getRegistCharacterTraits();
+        return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
     }
   }
 }

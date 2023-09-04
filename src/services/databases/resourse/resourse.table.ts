@@ -1,11 +1,11 @@
-import type { ResponseType_GetSupplement } from "@/api/services/editions";
+import type { ResponseType_GetEditionByTag } from "@/api/services/editions";
 
 export interface Resourse {
   id: number
-  name: string
-  type: ResponseType_GetSupplement["resourse"][number][2]
+  name: ResponseType_GetEditionByTag["resourse"][number][2]
+  type: ResponseType_GetEditionByTag["resourse"][number][1]
   content: string
-  tags?: number[]
+  tags?: ResponseType_GetEditionByTag["resourse"][number][3]
 }
 
 export default "id, name, type, content, tags";

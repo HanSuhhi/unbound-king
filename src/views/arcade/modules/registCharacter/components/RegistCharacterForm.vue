@@ -6,6 +6,9 @@ import { useI18n } from "vue-i18n";
 import GenderSelecter from "./GenderSelecter.vue";
 import NameInput from "./NameInput.vue";
 import ProfessionSelecter from "./ProfessionSelecter.vue";
+import PersonalitySelecter from "./PersonalitySelecter.vue";
+import TraitSelecter from "./TraitSelecter.vue";
+import RaceSelecter from "./RaceSelecter.vue";
 import { Gender } from "#/server/modules/gender/enums/gender.enum";
 import type { ResponseType_PostRegist } from "@/api/services/character";
 import { i18nLangModel } from "#/composables/i18n/index";
@@ -39,15 +42,10 @@ const registCharacterForm = ref<ResponseType_PostRegist>({
     <name-input v-model="registCharacterForm.name" />
     <gender-selecter v-model="registCharacterForm.gender" />
     <profession-selecter v-model="registCharacterForm.profession" />
-    <n-form-item :label="t(i18nLangModel.arcade.regist_character.personality)" path="personality">
-      <h1>gender</h1>
-    </n-form-item>
-    <n-form-item :label="t(i18nLangModel.arcade.regist_character.traits)" path="traits">
-      <h1>gender</h1>
-    </n-form-item>
-    <n-form-item :label="t(i18nLangModel.arcade.regist_character.race)" path="race">
-      <h1>gender</h1>
-    </n-form-item>
+    <personality-selecter v-model="registCharacterForm.personality" />
+    <trait-selecter v-model="registCharacterForm.traits" />
+    <race-selecter v-model="registCharacterForm.race" />
+
     <n-form-item :label="t(i18nLangModel.arcade.regist_character.lineage)" path="lineage">
       <h1>gender</h1>
     </n-form-item>

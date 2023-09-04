@@ -1,34 +1,36 @@
 import { Buffer } from "node:buffer";
 import { Injectable } from "@nestjs/common";
-import type { Edition } from "../editions/edition-type";
 import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
+import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
 import { ProfessionType } from "./enums/profession-type.enum";
 import { Profession } from "./enums/profession.enum";
 
 @Injectable()
 export class ProfessionsService {
-  static readonly REGIST_CHARACTER_PROFESSION_VERSION: Edition<ProfessionType> = [ProfessionType.RegistCharacter, 1];
+  /** Resourse Message */
+  private readonly REGIST_CHARACTER_RESOURSE: Profession[] = [Profession.Sworder, Profession.Farmer];
+  private ALL_RESOURSES: ResourseVo["resourse"];
 
-  private getRegistCharacterProfessions(): ResourseVo {
-    const professionNames: Set<keyof typeof Profession> = new Set(["Sworder"]);
-    const resourse: ResourseVo["resourse"] = Array.from(professionNames).map<ResourseResponse>(professionName => [
-      professionName.toLowerCase(),
-      Buffer.from(Profession[professionName]),
-      ResourseType.Profession
-    ]);
-    return {
-      edition: ProfessionsService.REGIST_CHARACTER_PROFESSION_VERSION[1],
-      editionName: ProfessionsService.REGIST_CHARACTER_PROFESSION_VERSION[0],
-      resourse
-    };
+  constructor() {
+    this.ALL_RESOURSES = Object.values(Profession).map<ResourseResponse>((profession) => {
+      const returnResourse: ResourseResponse = [
+        Buffer.from(profession),
+        ResourseType.Profession,
+        undefined,
+        []
+      ];
+      addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, profession, returnResourse[3]);
+
+      return returnResourse;
+    });
   }
 
-  public supplement(subType: ProfessionType): ResourseVo {
+  public supplement(subType: ProfessionType): ResourseVo["resourse"] {
     switch (subType) {
       case ProfessionType.RegistCharacter:
       default:
-        return this.getRegistCharacterProfessions();
+        return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
     }
   }
 }

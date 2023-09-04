@@ -1,3 +1,4 @@
 export enum ResourseTag {
-  RegistCharacter
+  Init = "TmzOWFqWinol",
+  RegistCharacter = "b0EgtbIh6DLb"
 }

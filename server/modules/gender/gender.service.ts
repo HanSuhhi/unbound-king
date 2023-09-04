@@ -1,34 +1,36 @@
 import { Buffer } from "node:buffer";
 import { Injectable } from "@nestjs/common";
-import type { Edition } from "../editions/edition-type";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
 import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
+import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
 import { GenderType } from "./enums/gender-type.enum";
 import { Gender } from "./enums/gender.enum";
 
 @Injectable()
 export class GenderService {
-  static readonly REGIST_CHARACTER_GENDER_VERSION: Edition<GenderType> = [GenderType.RegistCharacter, 1];
+  /** Resourse Message */
+  private readonly REGIST_CHARACTER_RESOURSE: Gender[] = [Gender.Male, Gender.Female];
+  private ALL_RESOURSES: ResourseVo["resourse"];
 
-  private getRegistCharacterGenders(): ResourseVo {
-    const genderNames: Set<keyof typeof Gender> = new Set(["Male", "Female"]);
-    const resourse: ResourseVo["resourse"] = Array.from(genderNames).map<ResourseResponse>(gender => [
-      gender.toLowerCase(),
-      Buffer.from(Gender[gender]),
-      ResourseType.Gender
-    ]);
-    return {
-      edition: GenderService.REGIST_CHARACTER_GENDER_VERSION[1],
-      editionName: GenderService.REGIST_CHARACTER_GENDER_VERSION[0],
-      resourse
-    };
+  constructor() {
+    this.ALL_RESOURSES = Object.values(Gender).map<ResourseResponse>((gender) => {
+      const returnResourse: ResourseVo["resourse"][number] = [
+        Buffer.from(gender),
+        ResourseType.Gender,
+        undefined,
+        []
+      ];
+      addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, gender, returnResourse[3]);
+
+      return returnResourse;
+    });
   }
 
-  public supplement(subType: GenderType): ResourseVo {
+  public supplement(subType: GenderType): ResourseVo["resourse"] {
     switch (subType) {
       case GenderType.RegistCharacter:
       default:
-        return this.getRegistCharacterGenders();
+        return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
     }
   }
 }

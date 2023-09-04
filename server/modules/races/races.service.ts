@@ -3,51 +3,39 @@ import { Injectable } from "@nestjs/common";
 import type { Edition } from "../editions/edition-type";
 import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
+import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
 import { Race } from "./enums/race.enum";
 import { RaceType } from "./enums/race-type.enum";
 
 @Injectable()
 export class RacesService {
-  static readonly RACE_LIST_VERSION: Edition<RaceType> = [RaceType.RaceList, 1];
-  static readonly REGIST_CHARACTER_RACE_VERSION: Edition<RaceType> = [RaceType.RegistCharacter, 1];
+  /** Version Message */
+  static readonly LIST_VERSION: Edition<RaceType> = [RaceType.RaceList, 1];
+  static readonly REGIST_CHARACTER_VERSION: Edition<RaceType> = [RaceType.RegistCharacter, 1];
 
-  private getRaceList() {
-    const resourse: ResourseVo["resourse"] = Object.keys(Race).map<ResourseResponse>(raceName => [
-      raceName.toLowerCase(),
-      Buffer.from(Race[raceName]),
-      ResourseType.Race
-    ]);
+  /** Resourse Message */
+  private readonly REGIST_CHARACTER_RESOURSE: Race[] = [Race.Humans, Race.Yokai, Race.Elves];
+  private ALL_RESOURSES: ResourseVo["resourse"];
 
-    return {
-      edition: RacesService.RACE_LIST_VERSION[1],
-      editionName: RacesService.RACE_LIST_VERSION[0],
-      resourse
-    };
+  constructor() {
+    this.ALL_RESOURSES = Object.values(Race).map<ResourseResponse>((race) => {
+      const returnResourse: ResourseVo["resourse"][number] = [
+        Buffer.from(race),
+        ResourseType.Race,
+        undefined,
+        []
+      ];
+      addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, race, returnResourse[3]);
+
+      return returnResourse;
+    });
   }
 
-  private getRegistCharacterRaces(): ResourseVo {
-    const raceNames: Set<keyof typeof Race> = new Set(["Humans"]);
-    const resourse: ResourseVo["resourse"] = Array.from(raceNames).map<ResourseResponse>(raceName => [
-      raceName.toLowerCase(),
-      Buffer.from(Race[raceName]),
-      ResourseType.Race
-    ]);
-
-    return {
-      edition: RacesService.REGIST_CHARACTER_RACE_VERSION[1],
-      editionName: RacesService.REGIST_CHARACTER_RACE_VERSION[0],
-      resourse
-    };
-  }
-
-  public supplement(subType: RaceType): ResourseVo {
+  public supplement(subType: RaceType): ResourseVo["resourse"] {
     switch (subType) {
-      case RaceType.RaceList: {
-        return this.getRaceList();
-      }
+      case RaceType.RaceList: return this.ALL_RESOURSES;
       case RaceType.RegistCharacter:
-      default:
-        return this.getRegistCharacterRaces();
+      default: return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
     }
   }
 }

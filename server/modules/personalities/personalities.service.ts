@@ -1,34 +1,36 @@
 import { Buffer } from "node:buffer";
 import { Injectable } from "@nestjs/common";
-import type { Edition } from "../editions/edition-type";
 import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
+import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
 import { PersonalityType } from "./enums/personality-type.enum";
 import { Personality } from "./enums/personality.enum";
 
 @Injectable()
 export class PersonalitiesService {
-  static readonly REGIST_CHARACTER_PERSONALITY_VERSION: Edition<PersonalityType> = [PersonalityType.RegistCharacter, 1];
+  /** Resourse Message */
+  private readonly REGIST_CHARACTER_RESOURSE: Personality[] = [Personality.Brave];
+  private ALL_RESOURSES: ResourseVo["resourse"];
 
-  private getRegistCharacterPersonalities(): ResourseVo {
-    const personalityNames: Set<keyof typeof Personality> = new Set(["Brave"]);
-    const resourse: ResourseVo["resourse"] = Array.from(personalityNames).map<ResourseResponse>(personalityName => [
-      personalityName.toLowerCase(),
-      Buffer.from(Personality[personalityName]),
-      ResourseType.Personality
-    ]);
-    return {
-      edition: PersonalitiesService.REGIST_CHARACTER_PERSONALITY_VERSION[1],
-      editionName: PersonalitiesService.REGIST_CHARACTER_PERSONALITY_VERSION[0],
-      resourse
-    };
+  constructor() {
+    this.ALL_RESOURSES = Object.values(Personality).map<ResourseResponse>((personality) => {
+      const returnResourse: ResourseVo["resourse"][number] = [
+        Buffer.from(personality),
+        ResourseType.Personality,
+        undefined,
+        []
+      ];
+      addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, personality, returnResourse[3]);
+
+      return returnResourse;
+    });
   }
 
-  public supplement(subType: PersonalityType): ResourseVo {
+  public supplement(subType: PersonalityType): ResourseVo["resourse"] {
     switch (subType) {
       case PersonalityType.RegistCharacter:
       default:
-        return this.getRegistCharacterPersonalities();
+        return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
     }
   }
 }

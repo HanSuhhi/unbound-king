@@ -15,5 +15,3 @@ export enum ElvesLineage {
 Reflect.setPrototypeOf(HumanLineage, { race: Race.Humans });
 Reflect.setPrototypeOf(YokaiLineage, { race: Race.Yokai });
 Reflect.setPrototypeOf(ElvesLineage, { race: Race.Elves });
-
-export type LineageKeys = keyof typeof HumanLineage | keyof typeof YokaiLineage | keyof typeof ElvesLineage;

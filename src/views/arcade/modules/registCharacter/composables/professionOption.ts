@@ -8,7 +8,6 @@ export async function useProfessionOptions() {
   const { t, locale } = useI18n();
   const { getAllProfessions } = useResourseService();
   const professions = await getAllProfessions();
-  console.log("🚀 ~ file: professionOption.ts:11 ~ useProfessionOptions ~ professions:", professions);
 
   const professionOptions = ref();
 

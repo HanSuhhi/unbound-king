@@ -19,38 +19,35 @@ import { useStateStore } from "@/stores/state.store";
 import { useEditionService } from "@/services/databases/edition/edition.service";
 import { useResourseService } from "@/services/databases/resourse/resourse.service";
 import { Prefix } from "#/composables/constant/url";
-import type { ResponseType_PostVerify } from "@/api/services/editions";
-import { postVerify } from "@/api/services/editions";
-
-async function getCurrentEditions() {
-  const { getVerifyEditions } = await useEditionService();
-  return await getVerifyEditions()!;
-}
+import { getEditionByTag } from "@/api/services/editions";
+import { ResourseTag } from "#/server/modules/editions/enums/resourse-tag.enum";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
   const { storeResourse } = useResourseService();
   const { stateToStartGame } = useStateStore();
-  const { addEdition } = useEditionService();
+  const { addEdition, getInitEditionVersion } = useEditionService();
 
   token.value = userToken!;
   roles.value = userRoles!;
   email.value = userEmail!;
   nickname.value = userNickname!;
+
+  // 1. change the state
   stateToStartGame();
 
-  const parseResourses = async (resourses: ResponseType_PostVerify["9vj2o9oxrmhy"]["resourse"], tags?: ResponseType_PostVerify["9vj2o9oxrmhy"]["tags"]) => {
-    resourses.forEach(async resourse => await storeResourse(resourse, tags));
-  };
+  // 2. check the edition
+  const initEditionVersion = await getInitEditionVersion();
+  const { data: { edition, editionName, editionNickname, resourse } } = await getEditionByTag({
+    "resourse-tag": ResourseTag.Init,
+    "edition": initEditionVersion?.edition
+  }).send();
+  await addEdition(editionName, edition, editionNickname);
 
-  const editions = await getCurrentEditions();
-  const { data } = await postVerify(editions).send();
+  // 3. store the resourse
+  forEach(resourse, storeResourse);
 
-  forEach(data, async ({ edition, editionName, resourse, tags }) => {
-    await addEdition(editionName, edition);
-    await parseResourses(resourse, tags);
-  });
-
+  // 4. toggle the route
   replace({ name: Prefix.Client_Game });
 }
 

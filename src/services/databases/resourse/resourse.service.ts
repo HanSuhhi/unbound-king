@@ -1,30 +1,34 @@
 import type { Resourse } from "./resourse.table";
 import { useGenderResourse } from "./composables/gender";
 import { useProfessionResourse } from "./composables/profession";
-import type { ResponseType_GetSupplement } from "@/api/services/editions";
+import { usePersonalityResourse } from "./composables/personality";
+import { useTraitResourse } from "./composables/trait";
+import { useRaceResourse } from "./composables/race";
+import type { ResponseType_GetEditionByTag } from "@/api/services/editions";
 import { transformArrayBufferToBase64, transformArrayBufferToString } from "@/composables/trpc/oss";
 import { useServiceModel } from "@/services/serviceModel";
+import { ResourseType } from "#/server/modules/editions/enums/resourse-type.enum";
 
 function useVersion1() {
   const { addWithId, update, model } = useServiceModel<Resourse>("resourse");
 
-  async function isResourseRegist(name: ResponseType_GetSupplement["resourse"][number][0], type: ResponseType_GetSupplement["resourse"][number][2]): Promise<Resourse | undefined> {
+  async function checkResourseRegistByName(name: ResponseType_GetEditionByTag["resourse"][number][2]): Promise<Resourse | undefined> {
     return model.where("name").equals(name).first();
   }
 
-  const storeResourse = async ([name, { data }, type]: ResponseType_GetSupplement["resourse"][number], tags?: ResponseType_GetSupplement["tags"]) => {
+  const storeResourse = async ([{ data }, type, name, tags]: ResponseType_GetEditionByTag["resourse"][number]) => {
     let content = "";
     switch (type) {
-      case "image": {
+      case ResourseType.Image: {
         content = transformArrayBufferToBase64(data);
         break;
       }
-      case "profession":
-      case "race":
-      case "trait":
-      case "lineage":
-      case "gender":
-      case "personality": {
+      case ResourseType.Profession:
+      case ResourseType.Race:
+      case ResourseType.Trait:
+      case ResourseType.Lineage:
+      case ResourseType.Gender:
+      case ResourseType.Personality: {
         content = transformArrayBufferToString(data);
         break;
       }
@@ -32,22 +36,26 @@ function useVersion1() {
         break;
     }
     if (!content) throw new Error(`Invalid type: ${type}`);
-    const oldResourse = await isResourseRegist(name, type);
+    const oldResourse = await model.get({
+      content,
+      type
+    });
     const newResourse = {
-      name,
       content,
       type,
+      name,
       tags
     };
     if (!oldResourse) return await addWithId(newResourse);
-
-    newResourse.tags = [...(newResourse.tags || []), ...oldResourse.tags || []];
     await update(oldResourse.id, newResourse);
   };
 
   return {
     ...useGenderResourse(model),
     ...useProfessionResourse(model),
+    ...usePersonalityResourse(model),
+    ...useTraitResourse(model),
+    ...useRaceResourse(model),
     storeResourse
   };
 }

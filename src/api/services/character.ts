@@ -10,7 +10,7 @@ export interface ResponseType_PostRegist {
   "profession": "eC7dQ9p6Oyxh" | "2juchfbwawai"
   "personality": "KFy9eYWYnfbX"
   "traits": Array<"cLPWw0lnpQjS">
-  "race": "KFy9eYWYnfbX" | "sxjrztcjtxld" | "BE1xF4wqYmjF" | "dh7enup4k4yq"
+  "race": "KFy9eYWYnfbX" | "sxjrztcjtxld" | "BE1xF4wqYmjF"
   "lineage": "eovp79ed7hjd" | "qm8v6qy0866p" | "nn99qxmf8ki6"
 }
 export interface RequestBody_PostRegist {
@@ -19,7 +19,7 @@ export interface RequestBody_PostRegist {
   "profession": "eC7dQ9p6Oyxh" | "2juchfbwawai"
   "personality": "KFy9eYWYnfbX"
   "traits": Array<"cLPWw0lnpQjS">
-  "race": "KFy9eYWYnfbX" | "sxjrztcjtxld" | "BE1xF4wqYmjF" | "dh7enup4k4yq"
+  "race": "KFy9eYWYnfbX" | "sxjrztcjtxld" | "BE1xF4wqYmjF"
   "lineage": "eovp79ed7hjd" | "qm8v6qy0866p" | "nn99qxmf8ki6"
 }
 export function postRegist(request: RequestBody_PostRegist, config: Config<ResponseOriginData<ResponseType_PostRegist>> = {}) {

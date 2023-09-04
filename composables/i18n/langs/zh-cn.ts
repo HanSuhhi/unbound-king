@@ -1,8 +1,11 @@
 import { invalidCn } from "../composable";
 import { defineLang } from "../lang.model";
 import { CN_Gender } from "../packages/gender";
+import { CN_Personality } from "../packages/personality";
 import { CN_Profession } from "../packages/profession";
+import { CN_Race } from "../packages/race";
 import { CN_RegistCharacter } from "../packages/registCharacter";
+import { CN_Trait } from "../packages/trait";
 
 export default defineLang({
   hotkey: "c",
@@ -14,7 +17,10 @@ export default defineLang({
   },
   enum: {
     gender: CN_Gender,
-    profession: CN_Profession
+    profession: CN_Profession,
+    personality: CN_Personality,
+    trait: CN_Trait,
+    race: CN_Race
   },
   validate: {
     props: invalidCn("参数"),
