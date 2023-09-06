@@ -6,8 +6,8 @@ import type { Race } from "#/server/modules/races/enums/race.enum";
 
 export async function useRaceOptions() {
   const { t, locale } = useI18n();
-  const { getAllRaces } = useResourseService();
-  const races = await getAllRaces();
+  const { getRegistCharacterRaces } = useResourseService();
+  const races = await getRegistCharacterRaces();
 
   const raceOptions = ref();
 
@@ -20,5 +20,5 @@ export async function useRaceOptions() {
     });
   }, { immediate: true });
 
-  return [raceOptions];
+  return { raceOptions };
 }

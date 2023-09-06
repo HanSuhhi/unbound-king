@@ -7,7 +7,7 @@ import type { ResponseType_PostRegist } from "@/api/services/character";
 
 const { t } = useI18n();
 const professionRef = defineModel<ResponseType_PostRegist["profession"]>();
-const [professionOptions] = await useProfessionOptions();
+const { professionOptions } = await useProfessionOptions();
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 export enum Race {
-  Humans = "KFy9eYWYnfbX",
+  Humans = "AVKwZyHbuA2o",
   Elves = "sxjrztcjtxld",
   Yokai = "BE1xF4wqYmjF"
 }

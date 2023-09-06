@@ -6,7 +6,8 @@ export const EN_RegistCharacter = {
   traits: "traits",
   race: "race",
   lineage: "lineage",
-  name_placeholder: "Please enter your name"
+  name_placeholder: "Please enter your name",
+  reset_form: "Reset Form"
 };
 
 export const CN_RegistCharacter = {
@@ -17,5 +18,6 @@ export const CN_RegistCharacter = {
   traits: "特征",
   race: "种族",
   lineage: "血统",
-  name_placeholder: "请输入姓名"
+  name_placeholder: "请输入姓名",
+  reset_form: "重置"
 };

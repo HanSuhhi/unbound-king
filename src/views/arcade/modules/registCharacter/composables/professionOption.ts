@@ -6,8 +6,8 @@ import type { Profession } from "#/server/modules/professions/enums/profession.e
 
 export async function useProfessionOptions() {
   const { t, locale } = useI18n();
-  const { getAllProfessions } = useResourseService();
-  const professions = await getAllProfessions();
+  const { getRegistCharacterProfessions } = useResourseService();
+  const professions = await getRegistCharacterProfessions();
 
   const professionOptions = ref();
 
@@ -20,5 +20,5 @@ export async function useProfessionOptions() {
     });
   }, { immediate: true });
 
-  return [professionOptions];
+  return { professionOptions };
 }

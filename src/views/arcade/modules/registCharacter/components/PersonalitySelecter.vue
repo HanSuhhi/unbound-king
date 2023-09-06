@@ -7,7 +7,7 @@ import type { ResponseType_PostRegist } from "@/api/services/character";
 
 const { t } = useI18n();
 const personalityRef = defineModel<ResponseType_PostRegist["personality"]>();
-const [personalityOptions] = await usePersonalityOptions();
+const { personalityOptions } = await usePersonalityOptions();
 </script>
 
 <template>

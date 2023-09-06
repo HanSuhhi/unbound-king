@@ -8,7 +8,7 @@ import type { ResponseType_PostRegist } from "@/api/services/character";
 const { t } = useI18n();
 const genderRef = defineModel<ResponseType_PostRegist["gender"]>();
 
-const [genderOptions] = await useGenderOptions();
+const { genderOptions } = await useGenderOptions();
 </script>
 
 <template>

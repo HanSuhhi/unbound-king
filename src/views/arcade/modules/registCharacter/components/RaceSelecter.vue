@@ -7,7 +7,7 @@ import type { ResponseType_PostRegist } from "@/api/services/character";
 
 const { t } = useI18n();
 const raceRef = defineModel<ResponseType_PostRegist["race"]>();
-const [raceOptions] = await useRaceOptions();
+const { raceOptions } = await useRaceOptions();
 </script>
 
 <template>

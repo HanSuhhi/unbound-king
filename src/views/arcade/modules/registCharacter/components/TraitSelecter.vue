@@ -7,7 +7,7 @@ import type { ResponseType_PostRegist } from "@/api/services/character";
 
 const { t } = useI18n();
 const traitRef = defineModel<ResponseType_PostRegist["traits"]>();
-const [traitOptions] = await useTraitOptions();
+const { traitOptions } = await useTraitOptions();
 </script>
 
 <template>

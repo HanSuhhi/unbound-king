@@ -24,7 +24,7 @@ export interface ResponseType_GetEditionByTag {
 }
 
 export function getEditionByTag(params: {
-  "resourse-tag": "TmzOWFqWinol" | "b0EgtbIh6DLb"
+  "resourse-tag": "TmzOWFqWinol" | "b0EgtbIh6DLb" | "AVKwZyHbuA2o" | "BE1xF4wqYmjF" | "sxjrztcjtxld"
   "edition"?: number
 }, config: Config<ResponseOriginData<ResponseType_GetEditionByTag>> = { params }) {
   config.params = params;

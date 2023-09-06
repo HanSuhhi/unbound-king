@@ -6,8 +6,8 @@ import type { Trait } from "#/server/modules/traits/enums/trait.enum";
 
 export async function useTraitOptions() {
   const { t, locale } = useI18n();
-  const { getAllTraits } = useResourseService();
-  const traits = await getAllTraits();
+  const { getRegistCharacterTraits } = useResourseService();
+  const traits = await getRegistCharacterTraits();
 
   const traitOptions = ref();
 
@@ -20,5 +20,5 @@ export async function useTraitOptions() {
     });
   }, { immediate: true });
 
-  return [traitOptions];
+  return { traitOptions };
 }

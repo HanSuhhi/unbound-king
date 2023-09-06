@@ -1,11 +1,12 @@
 import { invalid } from "../composable";
 import { defineLang } from "../lang.model";
-import { EN_Gender } from "../packages/gender";
-import { EN_Personality } from "../packages/personality";
-import { EN_Profession } from "../packages/profession";
-import { EN_Race } from "../packages/race";
-import { EN_RegistCharacter } from "../packages/registCharacter";
-import { EN_Trait } from "../packages/trait";
+import { EN_Gender } from "../packages/arcade/registcharacter/gender";
+import { EN_Lineage } from "../packages/arcade/registcharacter/lineage";
+import { EN_Personality } from "../packages/arcade/registcharacter/personality";
+import { EN_Profession } from "../packages/arcade/registcharacter/profession";
+import { EN_Race } from "../packages/arcade/registcharacter/race";
+import { EN_RegistCharacter } from "../packages/arcade/registcharacter/registCharacter";
+import { EN_Trait } from "../packages/arcade/registcharacter/trait";
 
 const enUsModel = {
   hotkey: "e",
@@ -14,7 +15,8 @@ const enUsModel = {
     profession: EN_Profession,
     personality: EN_Personality,
     trait: EN_Trait,
-    race: EN_Race
+    race: EN_Race,
+    lineage: EN_Lineage
   },
   aside: {
     modules: {

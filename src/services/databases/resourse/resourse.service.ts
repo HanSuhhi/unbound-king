@@ -4,6 +4,7 @@ import { useProfessionResourse } from "./composables/profession";
 import { usePersonalityResourse } from "./composables/personality";
 import { useTraitResourse } from "./composables/trait";
 import { useRaceResourse } from "./composables/race";
+import { useLineageResourse } from "./composables/lineage";
 import type { ResponseType_GetEditionByTag } from "@/api/services/editions";
 import { transformArrayBufferToBase64, transformArrayBufferToString } from "@/composables/trpc/oss";
 import { useServiceModel } from "@/services/serviceModel";
@@ -11,10 +12,6 @@ import { ResourseType } from "#/server/modules/editions/enums/resourse-type.enum
 
 function useVersion1() {
   const { addWithId, update, model } = useServiceModel<Resourse>("resourse");
-
-  async function checkResourseRegistByName(name: ResponseType_GetEditionByTag["resourse"][number][2]): Promise<Resourse | undefined> {
-    return model.where("name").equals(name).first();
-  }
 
   const storeResourse = async ([{ data }, type, name, tags]: ResponseType_GetEditionByTag["resourse"][number]) => {
     let content = "";
@@ -56,6 +53,7 @@ function useVersion1() {
     ...usePersonalityResourse(model),
     ...useTraitResourse(model),
     ...useRaceResourse(model),
+    ...useLineageResourse(model),
     storeResourse
   };
 }

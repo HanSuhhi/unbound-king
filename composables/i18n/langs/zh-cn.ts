@@ -1,11 +1,12 @@
 import { invalidCn } from "../composable";
 import { defineLang } from "../lang.model";
-import { CN_Gender } from "../packages/gender";
-import { CN_Personality } from "../packages/personality";
-import { CN_Profession } from "../packages/profession";
-import { CN_Race } from "../packages/race";
-import { CN_RegistCharacter } from "../packages/registCharacter";
-import { CN_Trait } from "../packages/trait";
+import { CN_Gender } from "../packages/arcade/registcharacter/gender";
+import { CN_Lineage } from "../packages/arcade/registcharacter/lineage";
+import { CN_Personality } from "../packages/arcade/registcharacter/personality";
+import { CN_Profession } from "../packages/arcade/registcharacter/profession";
+import { CN_Race } from "../packages/arcade/registcharacter/race";
+import { CN_RegistCharacter } from "../packages/arcade/registcharacter/registCharacter";
+import { CN_Trait } from "../packages/arcade/registcharacter/trait";
 
 export default defineLang({
   hotkey: "c",
@@ -20,7 +21,8 @@ export default defineLang({
     profession: CN_Profession,
     personality: CN_Personality,
     trait: CN_Trait,
-    race: CN_Race
+    race: CN_Race,
+    lineage: CN_Lineage
   },
   validate: {
     props: invalidCn("参数"),

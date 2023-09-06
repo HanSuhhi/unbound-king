@@ -5,7 +5,6 @@ import { computed, provide, ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import type { Router } from "vue-router";
 import { useRouter } from "vue-router";
-import { forEach } from "lodash";
 import { RememberEmailSymbol } from "../login.symbol";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 import { postLoginWithEmail } from "@/api/services/auth";
@@ -17,16 +16,14 @@ import { useUserService } from "@/services/databases/user/user.service";
 import { useAuthStore } from "@/stores/auth.store";
 import { useStateStore } from "@/stores/state.store";
 import { useEditionService } from "@/services/databases/edition/edition.service";
-import { useResourseService } from "@/services/databases/resourse/resourse.service";
 import { Prefix } from "#/composables/constant/url";
-import { getEditionByTag } from "@/api/services/editions";
 import { ResourseTag } from "#/server/modules/editions/enums/resourse-tag.enum";
+import { useResourseEdition } from "@/composables/store/resourse";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
-  const { storeResourse } = useResourseService();
   const { stateToStartGame } = useStateStore();
-  const { addEdition, getInitEditionVersion } = useEditionService();
+  const { getInitEditionVersion } = useEditionService();
 
   token.value = userToken!;
   roles.value = userRoles!;
@@ -38,16 +35,9 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
 
   // 2. check the edition
   const initEditionVersion = await getInitEditionVersion();
-  const { data: { edition, editionName, editionNickname, resourse } } = await getEditionByTag({
-    "resourse-tag": ResourseTag.Init,
-    "edition": initEditionVersion?.edition
-  }).send();
-  await addEdition(editionName, edition, editionNickname);
-
-  // 3. store the resourse
-  forEach(resourse, storeResourse);
-
-  // 4. toggle the route
+  const { storeEditionAndResources } = useResourseEdition(ResourseTag.Init, initEditionVersion?.edition);
+  await storeEditionAndResources();
+  // 3. toggle the route
   replace({ name: Prefix.Client_Game });
 }
 

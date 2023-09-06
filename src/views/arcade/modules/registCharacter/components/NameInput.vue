@@ -12,6 +12,6 @@ const name = defineModel<ResponseType_PostRegist["name"]>();
   <n-form-item
     :label="t(i18nLangModel.arcade.regist_character.name)" path="name"
   >
-    <n-input v-model:value="name" autofocus :placeholder="t(i18nLangModel.arcade.regist_character.name_placeholder)" />
+    <n-input v-model:value="name" autofocus :placeholder="t(i18nLangModel.arcade.regist_character.name_placeholder)" :maxlength="5" />
   </n-form-item>
 </template>

@@ -8,6 +8,6 @@ export const EN_Race = {
 
 export const CN_Race = {
   [Race.Elves]: "灵木族",
-  [Race.Humans]: "妖族",
-  [Race.Yokai]: "人族"
+  [Race.Humans]: "人族",
+  [Race.Yokai]: "妖族"
 };

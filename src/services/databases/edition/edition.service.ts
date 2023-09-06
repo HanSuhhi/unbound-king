@@ -13,6 +13,10 @@ function useVersion1() {
     return await isEditionRegist(ResourseTag.Init);
   });
 
+  const getRegistCharacterVersion = defineServiceExportFunction(async () => {
+    return await isEditionRegist(ResourseTag.RegistCharacter);
+  });
+
   const addEdition = defineServiceExportFunction(async (name: string, edition: number, nickname = "") => {
     const isRegist = (await isEditionRegist(name));
     if (isRegist) return await update(isRegist.id, { edition, nickname });
@@ -24,6 +28,7 @@ function useVersion1() {
 
   return {
     getInitEditionVersion,
+    getRegistCharacterVersion,
     addEdition
   };
 }

@@ -1,17 +1,19 @@
 <script setup lang='ts'>
 import type { FormInst } from "naive-ui";
-import { NForm, NFormItem } from "naive-ui";
-import { ref } from "vue";
+import { NForm } from "naive-ui";
+import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
+import { ElvesLineage, YokaiLineage } from "../../../../../../server/modules/lineages/enums/lineage.enum";
 import GenderSelecter from "./GenderSelecter.vue";
 import NameInput from "./NameInput.vue";
 import ProfessionSelecter from "./ProfessionSelecter.vue";
 import PersonalitySelecter from "./PersonalitySelecter.vue";
 import TraitSelecter from "./TraitSelecter.vue";
 import RaceSelecter from "./RaceSelecter.vue";
+import LineageSelecter from "./LineageSelecter.vue";
+import FormButtons from "./FormButtons.vue";
 import { Gender } from "#/server/modules/gender/enums/gender.enum";
 import type { ResponseType_PostRegist } from "@/api/services/character";
-import { i18nLangModel } from "#/composables/i18n/index";
 import { Profession } from "#/server/modules/professions/enums/profession.enum";
 import { Personality } from "#/server/modules/personalities/enums/personality.enum";
 import { Trait } from "#/server/modules/traits/enums/trait.enum";
@@ -31,6 +33,21 @@ const registCharacterForm = ref<ResponseType_PostRegist>({
   race: Race.Humans,
   lineage: HumanLineage.Caveman
 });
+
+watch(() => registCharacterForm.value.race, (newRace) => {
+  switch (newRace) {
+    case Race.Yokai:
+      registCharacterForm.value.lineage = YokaiLineage.Fish;
+      break;
+    case Race.Elves:
+      registCharacterForm.value.lineage = ElvesLineage.Tree;
+      break;
+    case Race.Humans:
+    default:
+      registCharacterForm.value.lineage = HumanLineage.Caveman;
+      break;
+  }
+}, { immediate: true });
 </script>
 
 <template>
@@ -45,9 +62,7 @@ const registCharacterForm = ref<ResponseType_PostRegist>({
     <personality-selecter v-model="registCharacterForm.personality" />
     <trait-selecter v-model="registCharacterForm.traits" />
     <race-selecter v-model="registCharacterForm.race" />
-
-    <n-form-item :label="t(i18nLangModel.arcade.regist_character.lineage)" path="lineage">
-      <h1>gender</h1>
-    </n-form-item>
+    <lineage-selecter v-model="registCharacterForm.lineage" :race="registCharacterForm.race" />
+    <form-buttons v-model="registCharacterForm" />
   </n-form>
 </template>
