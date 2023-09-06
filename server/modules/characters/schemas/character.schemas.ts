@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { type HydratedDocument, Types } from "mongoose";
 import { Gender } from "@/modules/gender/enums/gender.enum";
-import { Personality } from "@/modules/personalities/enums/personality.enum";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
 import { Race } from "@/modules/races/enums/race.enum";
@@ -39,13 +38,6 @@ export class Character {
     enum: Profession
   })
   profession: Profession;
-
-  @Prop({
-    required: true,
-    type: String,
-    enum: Personality
-  })
-  personality: Personality;
 
   @Prop({
     required: true,

@@ -11,11 +11,11 @@ export class CharactersService {
   ) { }
 
   public async createCharacter(userId: Types.ObjectId, characterDto: RegistCharacterDto): Promise<RegistCharacterVo> {
-    const { name, gender, personality, profession, traits, race, lineage } = await this.trpcRouter.caller.character.createUserCharacter({
+    const { name, gender, profession, traits, race, lineage } = await this.trpcRouter.caller.character.createUserCharacter({
       belong: userId as unknown as string,
       character: characterDto
     });
 
-    return { name, gender, personality, profession, traits, race, lineage };
+    return { name, gender, profession, traits, race, lineage };
   }
 }

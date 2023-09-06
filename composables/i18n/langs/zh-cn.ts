@@ -2,7 +2,6 @@ import { invalidCn } from "../composable";
 import { defineLang } from "../lang.model";
 import { CN_Gender } from "../packages/arcade/registcharacter/gender";
 import { CN_Lineage } from "../packages/arcade/registcharacter/lineage";
-import { CN_Personality } from "../packages/arcade/registcharacter/personality";
 import { CN_Profession } from "../packages/arcade/registcharacter/profession";
 import { CN_Race } from "../packages/arcade/registcharacter/race";
 import { CN_RegistCharacter } from "../packages/arcade/registcharacter/registCharacter";
@@ -19,7 +18,6 @@ export default defineLang({
   enum: {
     gender: CN_Gender,
     profession: CN_Profession,
-    personality: CN_Personality,
     trait: CN_Trait,
     race: CN_Race,
     lineage: CN_Lineage

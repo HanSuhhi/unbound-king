@@ -20,7 +20,6 @@ import { AssetsModule } from "./modules/assets/assets.module";
 import { EditionsModule } from "./modules/editions/editions.module";
 import { AttributeModule } from "./modules/attributes/attribute.module";
 import { ProfessionsModule } from "./modules/professions/professions.module";
-import { PersonalitiesModule } from "./modules/personalities/personalities.module";
 import { TraitsModule } from "./modules/traits/traits.module";
 import { CharactersModule } from "./modules/characters/characters.module";
 import { GenderModule } from "./modules/gender/gender.module";
@@ -58,7 +57,6 @@ import { LineagesModule } from "./modules/lineages/lineages.module";
     EditionsModule,
     AttributeModule,
     ProfessionsModule,
-    PersonalitiesModule,
     TraitsModule,
     CharactersModule,
     GenderModule,

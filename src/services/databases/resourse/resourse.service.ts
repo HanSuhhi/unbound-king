@@ -1,7 +1,6 @@
 import type { Resourse } from "./resourse.table";
 import { useGenderResourse } from "./composables/gender";
 import { useProfessionResourse } from "./composables/profession";
-import { usePersonalityResourse } from "./composables/personality";
 import { useTraitResourse } from "./composables/trait";
 import { useRaceResourse } from "./composables/race";
 import { useLineageResourse } from "./composables/lineage";
@@ -24,8 +23,7 @@ function useVersion1() {
       case ResourseType.Race:
       case ResourseType.Trait:
       case ResourseType.Lineage:
-      case ResourseType.Gender:
-      case ResourseType.Personality: {
+      case ResourseType.Gender: {
         content = transformArrayBufferToString(data);
         break;
       }
@@ -50,7 +48,6 @@ function useVersion1() {
   return {
     ...useGenderResourse(model),
     ...useProfessionResourse(model),
-    ...usePersonalityResourse(model),
     ...useTraitResourse(model),
     ...useRaceResourse(model),
     ...useLineageResourse(model),

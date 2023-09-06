@@ -1,7 +1,6 @@
 import type { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
 import { AssetsModule } from "../assets/assets.module";
-import { PersonalitiesModule } from "../personalities/personalities.module";
 import { ProfessionsModule } from "../professions/professions.module";
 import { TraitsModule } from "../traits/traits.module";
 import { LineagesModule } from "../lineages/lineages.module";
@@ -18,7 +17,6 @@ describe("EditionsController", () => {
       imports: [
         AssetsModule,
         ProfessionsModule,
-        PersonalitiesModule,
         TraitsModule,
         RacesModule,
         LineagesModule,

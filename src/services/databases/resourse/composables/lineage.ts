@@ -14,5 +14,5 @@ export function useLineageResourse(model: Table<Resourse, IndexableType>) {
     return filterRegistCharacterResourseByType(model, ResourseType.Lineage);
   };
 
-  return { getAllPersonalities: getAllLineages, getRegistCharacterLineages };
+  return { getAllLineages, getRegistCharacterLineages };
 }

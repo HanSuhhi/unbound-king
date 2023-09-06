@@ -2,8 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { AssetsService } from "../assets/assets.service";
 import { ProfessionType } from "../professions/enums/profession-type.enum";
 import { ProfessionsService } from "../professions/professions.service";
-import { PersonalityType } from "../personalities/enums/personality-type.enum";
-import { PersonalitiesService } from "../personalities/personalities.service";
 import { TraitType } from "../traits/enums/trait-type.enum";
 import { TraitsService } from "../traits/traits.service";
 import { RacesService } from "../races/races.service";
@@ -27,7 +25,6 @@ export class EditionsService {
   constructor(
     private readonly assetsService: AssetsService,
     private readonly professionService: ProfessionsService,
-    private readonly personalityService: PersonalitiesService,
     private readonly traitsService: TraitsService,
     private readonly racesService: RacesService,
     private readonly lineagesService: LineagesService,
@@ -55,7 +52,6 @@ export class EditionsService {
         if (currentVersion !== EditionsService.RegistCharacterVersion[1]) {
           currentResourse.resourse = [
             ...this.professionService.supplement(ProfessionType.RegistCharacter),
-            ...this.personalityService.supplement(PersonalityType.RegistCharacter),
             ...this.traitsService.supplement(TraitType.RegistCharacter),
             ...this.racesService.supplement(RaceType.RegistCharacter),
             ...this.lineagesService.supplement(LineageType.RegistCharacter),
