@@ -1,5 +1,6 @@
 import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
+import { sample } from "lodash";
 import { i18nLangModel } from "#/composables/i18n";
 import { useResourseService } from "@/services/databases/resourse/resourse.service";
 import type { Profession } from "#/server/modules/professions/enums/profession.enum";
@@ -20,5 +21,7 @@ export async function useProfessionOptions() {
     });
   }, { immediate: true });
 
-  return { professionOptions };
+  const sampleProfession = () => sample<Profession>(professionOptions.value);
+
+  return { professionOptions, sampleProfession };
 }

@@ -25,7 +25,7 @@ const registCharacterForm = ref<ResponseType_PostRegist>({
   name: "",
   gender: Gender.Male,
   profession: Profession.Sworder,
-  traits: [Trait.Listener],
+  traits: [Trait.Listener, Trait.Claim],
   race: Race.Humans,
   lineage: HumanLineage.Caveman
 });

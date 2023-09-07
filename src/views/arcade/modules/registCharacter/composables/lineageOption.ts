@@ -22,7 +22,7 @@ export async function useLineageOptions() {
     });
   }, { immediate: true });
 
-  const sampleGender = sample.bind(null, lineageOptions.value);
+  const sampleLineage = () => sample<HumanLineage | YokaiLineage | ElvesLineage>(lineageOptions.value);
 
-  return { lineageOptions, sampleGender };
+  return { lineageOptions, sampleLineage };
 }

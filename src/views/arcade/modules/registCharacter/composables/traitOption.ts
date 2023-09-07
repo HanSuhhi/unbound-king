@@ -1,5 +1,6 @@
 import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
+import { sampleSize } from "lodash";
 import { i18nLangModel } from "#/composables/i18n";
 import { useResourseService } from "@/services/databases/resourse/resourse.service";
 import type { Trait } from "#/server/modules/traits/enums/trait.enum";
@@ -18,7 +19,10 @@ export async function useTraitOptions() {
         value: content
       };
     });
+    console.log("🚀 ~ file: traitOption.ts:22 ~ traitOptions.value=traits.map ~ traitOptions.value:", traitOptions.value);
   }, { immediate: true });
 
-  return { traitOptions };
+  const sampleTrait = () => sampleSize<[Trait, Trait]>(traitOptions.value, 2);
+
+  return { traitOptions, sampleTrait };
 }

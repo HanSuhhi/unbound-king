@@ -8,7 +8,7 @@ export interface ResponseType_PostRegist {
   "name": string
   "gender": "M8MA" | "3crm"
   "profession": "eC7dQ9p6Oyxh" | "2juchfbwawai"
-  "traits": Array<"cLPWw0lnpQjS">
+  "traits": Array<"cLPWw0lnpQjS" | "C8pPh8oXCMKx" | "P86oW5tjRTIJ">
   "race": "AVKwZyHbuA2o" | "sxjrztcjtxld" | "BE1xF4wqYmjF"
   "lineage": "eovp79ed7hjd" | "qm8v6qy0866p" | "nn99qxmf8ki6"
 }
@@ -16,7 +16,7 @@ export interface RequestBody_PostRegist {
   "name": string
   "gender": "M8MA" | "3crm"
   "profession": "eC7dQ9p6Oyxh" | "2juchfbwawai"
-  "traits": Array<"cLPWw0lnpQjS">
+  "traits": Array<"cLPWw0lnpQjS" | "C8pPh8oXCMKx" | "P86oW5tjRTIJ">
   "race": "AVKwZyHbuA2o" | "sxjrztcjtxld" | "BE1xF4wqYmjF"
   "lineage": "eovp79ed7hjd" | "qm8v6qy0866p" | "nn99qxmf8ki6"
 }

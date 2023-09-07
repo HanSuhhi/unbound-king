@@ -9,7 +9,7 @@ import { Trait } from "./enums/trait.enum";
 @Injectable()
 export class TraitsService {
   /** Resourse Message */
-  private readonly REGIST_CHARACTER_RESOURSE: Trait[] = [Trait.Listener];
+  private readonly REGIST_CHARACTER_RESOURSE: Trait[] = [Trait.Listener, Trait.Claim, Trait.CoinCollector];
   private ALL_RESOURSES: ResourseVo["resourse"];
 
   constructor() {

@@ -8,7 +8,7 @@ export interface ResponseType_GetEditionByTag {
   /**
     * resourse list
     */
-  "resourse": Array<[{ type: "Buffer"; data: import("buffer").Buffer }, "RjygryMz" | "UzeXcSyr" | "lTsY7AtL" | "Cx9zGuQE" | "3jXO40DE" | "Sdady1MU" | "PUjd0ipE", string, string[]]>
+  "resourse": Array<[{ type: "Buffer"; data: import("buffer").Buffer }, "RjygryMz" | "UzeXcSyr" | "Cx9zGuQE" | "3jXO40DE" | "Sdady1MU" | "PUjd0ipE", string, string[]]>
   /**
     * The edition number of the resource, the client decides whether to update the local cache resource according to the edition number
     */

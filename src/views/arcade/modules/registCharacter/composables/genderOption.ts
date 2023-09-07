@@ -21,7 +21,7 @@ export async function useGenderOptions() {
     });
   }, { immediate: true });
 
-  const sampleGender = sample.bind(null, genderOptions.value);
+  const sampleGender = () => sample<Gender>(genderOptions.value);
 
   return { genderOptions, sampleGender };
 }
