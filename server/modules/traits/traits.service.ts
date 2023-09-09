@@ -1,9 +1,9 @@
 import { Buffer } from "node:buffer";
 import { Injectable } from "@nestjs/common";
-import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
+import { sampleSize } from "lodash";
+import type { OnlyResourseVo, ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
 import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
-import { TraitType } from "./enums/trait-type.enum";
 import { Trait } from "./enums/trait.enum";
 
 @Injectable()
@@ -26,11 +26,13 @@ export class TraitsService {
     });
   }
 
-  public supplement(subType: TraitType): ResourseVo["resourse"] {
-    switch (subType) {
-      case TraitType.RegistCharacter:
-      default:
-        return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
-    }
+  public sampleRegistCharacterTraits(): OnlyResourseVo {
+    const SAMPLE_TRAIT_LENGTH = 2;
+    const traitPool = filterRegistCharacterResourseTag(this.ALL_RESOURSES);
+    const decidedResourse = sampleSize(traitPool, SAMPLE_TRAIT_LENGTH);
+
+    return {
+      resourse: decidedResourse
+    };
   }
 }

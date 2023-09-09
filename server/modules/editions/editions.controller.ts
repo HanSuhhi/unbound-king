@@ -34,7 +34,7 @@ export class EditionsController {
   public editionByTag(
     @Query("resourse-tag") resourseTag: ResourseTag,
     @Query("edition") edition?: Edition[1]
-  ) {
+  ): ResourseVo {
     return this.edtionsService.getCurrentResourseByTag(resourseTag, edition);
   }
 }

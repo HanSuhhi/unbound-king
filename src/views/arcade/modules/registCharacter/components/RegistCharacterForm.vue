@@ -6,7 +6,7 @@ import { useI18n } from "vue-i18n";
 import GenderSelecter from "./GenderSelecter.vue";
 import NameInput from "./NameInput.vue";
 import ProfessionSelecter from "./ProfessionSelecter.vue";
-import TraitSelecter from "./TraitSelecter.vue";
+import TraitGetter from "./TraitGetter.vue";
 import RaceSelecter from "./RaceSelecter.vue";
 import LineageSelecter from "./LineageSelecter.vue";
 import FormButtons from "./FormButtons.vue";
@@ -49,15 +49,27 @@ watch(() => registCharacterForm.value.race, (newRace) => {
 <template>
   <n-form
     ref="FormRef"
+    class="regist-character-form"
     label-placement="left"
     :model="registCharacterForm"
   >
     <name-input v-model="registCharacterForm.name" />
     <gender-selecter v-model="registCharacterForm.gender" />
     <profession-selecter v-model="registCharacterForm.profession" />
-    <trait-selecter v-model="registCharacterForm.traits" />
+    <trait-getter v-model="registCharacterForm.traits" class="regist-character-form_traits" />
     <race-selecter v-model="registCharacterForm.race" />
     <lineage-selecter v-model="registCharacterForm.lineage" :race="registCharacterForm.race" />
     <form-buttons v-model="registCharacterForm" />
   </n-form>
 </template>
+
+<style scoped>
+.regist-character-form {
+  width: inherit;
+}
+
+.regist-character-form_traits:deep(.n-form-item-blank) {
+  display: flex;
+  justify-content: space-between;
+}
+</style>

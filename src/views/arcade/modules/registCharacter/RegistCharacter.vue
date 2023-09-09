@@ -24,9 +24,7 @@ onMounted(storeEditionAndResources);
       </div>
       <div class="regist-character_operators" />
     </section>
-    <div class="regist-character_character">
-      <regist-character-form />
-    </div>
+    <regist-character-form class="regist-character_character" />
   </article>
 </template>
 

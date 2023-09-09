@@ -6,7 +6,7 @@ import { arrToTypeString } from "#/composables/js/array";
 
 export type ResourseResponse = [buffer: Buffer, type: ResourseType, name?: string, tags?: ResourseTag[]];
 
-export class ResourseVo {
+export class OnlyResourseVo {
   @ApiProperty({
     oneOf: [
       { type: "buffer" },
@@ -20,7 +20,9 @@ export class ResourseVo {
     description: "resourse list"
   })
   resourse: ResourseResponse[];
+}
 
+export class ResourseVo extends OnlyResourseVo {
   @ApiProperty({
     type: Number,
     required: true,

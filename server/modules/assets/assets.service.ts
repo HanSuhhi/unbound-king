@@ -21,7 +21,7 @@ export class AssetsService {
     return icons;
   }
 
-  public supplement(subType: AssetType): ResourseResponse[] {
+  public supplement(subType: AssetType, key?: string): ResourseResponse[] {
     switch (subType) {
       case AssetType.StandardIcon:
       default:

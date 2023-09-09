@@ -42,7 +42,7 @@ function useVersion1() {
       tags
     };
     if (!oldResourse) return await addWithId(newResourse);
-    await update(oldResourse.id, newResourse);
+    return await update(oldResourse.id, newResourse);
   };
 
   return {
