@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
+import { NPopover } from "naive-ui";
 import { i18nLangModel } from "../../../composables/i18n/index";
 import { Trait } from "#/server/modules/traits/enums/trait.enum";
 
@@ -10,9 +11,14 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <article class="trait-tag">
-    {{ t(i18nLangModel.enum.trait[tagName as Trait]) }}
-  </article>
+  <n-popover trigger="hover">
+    <template #trigger>
+      <span class="trait-tag" cursor-help>
+        {{ t(i18nLangModel.enum.trait[tagName as Trait]) }}
+      </span>
+    </template>
+    <span>{{ t(i18nLangModel.enum["trait-description"][tagName as Trait]) }}</span>
+  </n-popover>
 </template>
 
 <style scoped>

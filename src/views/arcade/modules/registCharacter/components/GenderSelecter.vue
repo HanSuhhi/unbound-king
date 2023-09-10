@@ -5,10 +5,10 @@ import { useGenderOptions } from "../composables/genderOption";
 import { i18nLangModel } from "#/composables/i18n";
 import type { ResponseType_PostRegist } from "@/api/services/character";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const genderRef = defineModel<ResponseType_PostRegist["gender"]>();
 
-const { genderOptions } = await useGenderOptions();
+const { genderOptions } = await useGenderOptions(locale, t);
 </script>
 
 <template>

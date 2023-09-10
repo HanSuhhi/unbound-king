@@ -25,7 +25,7 @@ async function getTraits() {
 <template>
   <n-form-item :label="t(i18nLangModel.arcade.regist_character.traits)" path="race">
     <div class="trait-tags">
-      <trait-tag v-for="tag of traitRef" :key="tag" class="trait-tags_tag" :tag-name="tag as Trait" />
+      <trait-tag v-for="tag of traitRef" :key="tag" :tag-name="tag as Trait" />
     </div>
     <type-button plain @click="getTraits">
       获取
@@ -39,7 +39,7 @@ async function getTraits() {
     display: flex;
   }
 
-  .trait-tags_tag {
+  .trait-tags:deep(.trait-tag)  {
     margin-right: var(--base-margin);
   }
 }

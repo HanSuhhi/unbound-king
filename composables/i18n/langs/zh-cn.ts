@@ -16,11 +16,12 @@ export default defineLang({
     }
   },
   enum: {
-    gender: CN_Gender,
-    profession: CN_Profession,
-    trait: CN_Trait,
-    race: CN_Race,
-    lineage: CN_Lineage
+    "gender": CN_Gender,
+    "profession": CN_Profession,
+    "trait": CN_Trait.title,
+    "trait-description": CN_Trait.description,
+    "race": CN_Race,
+    "lineage": CN_Lineage
   },
   validate: {
     props: invalidCn("参数"),

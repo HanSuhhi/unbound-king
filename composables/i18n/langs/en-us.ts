@@ -10,11 +10,12 @@ import { EN_Trait } from "../packages/arcade/registcharacter/trait";
 const enUsModel = {
   hotkey: "e",
   enum: {
-    gender: EN_Gender,
-    profession: EN_Profession,
-    trait: EN_Trait,
-    race: EN_Race,
-    lineage: EN_Lineage
+    "gender": EN_Gender,
+    "profession": EN_Profession,
+    "trait": EN_Trait.title,
+    "trait-description": EN_Trait.description,
+    "race": EN_Race,
+    "lineage": EN_Lineage
   },
   aside: {
     modules: {

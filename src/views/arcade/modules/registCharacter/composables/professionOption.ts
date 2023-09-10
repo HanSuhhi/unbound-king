@@ -1,12 +1,13 @@
+import type { WritableComputedRef } from "vue";
 import { ref, watch } from "vue";
-import { useI18n } from "vue-i18n";
+import type { useI18n } from "vue-i18n";
 import { sample } from "lodash";
+import type { SelectOption } from "naive-ui";
 import { i18nLangModel } from "#/composables/i18n";
 import { useResourseService } from "@/services/databases/resourse/resourse.service";
 import type { Profession } from "#/server/modules/professions/enums/profession.enum";
 
-export async function useProfessionOptions() {
-  const { t, locale } = useI18n();
+export async function useProfessionOptions(locale: WritableComputedRef<string>, t: ReturnType<typeof useI18n>["t"]) {
   const { getRegistCharacterProfessions } = useResourseService();
   const professions = await getRegistCharacterProfessions();
 
@@ -21,7 +22,7 @@ export async function useProfessionOptions() {
     });
   }, { immediate: true });
 
-  const sampleProfession = () => sample<Profession>(professionOptions.value);
+  const sampleProfession = <T>(): T => sample<SelectOption>(professionOptions.value)!.value as T;
 
   return { professionOptions, sampleProfession };
 }

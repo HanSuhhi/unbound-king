@@ -1,28 +1,43 @@
+import type { WritableComputedRef } from "vue";
 import { ref, watch } from "vue";
-import { useI18n } from "vue-i18n";
+import type { useI18n } from "vue-i18n";
 import { sample } from "lodash";
+import type { SelectOption } from "naive-ui";
 import { i18nLangModel } from "#/composables/i18n";
 import { useResourseService } from "@/services/databases/resourse/resourse.service";
 import type { ElvesLineage, HumanLineage, YokaiLineage } from "#/server/modules/lineages/enums/lineage.enum";
+import type { ResponseType_PostRegist } from "@/api/services/character";
+import type { Resourse } from "@/services/databases/resourse/resourse.table";
 
-export async function useLineageOptions() {
-  const { t, locale } = useI18n();
+export async function useLineageOptions(locale: WritableComputedRef<string>, t: ReturnType<typeof useI18n>["t"]) {
   const { getRegistCharacterLineages } = useResourseService();
   const lineages = await getRegistCharacterLineages();
 
-  const lineageOptions = ref();
+  const lineageOptions = ref<Array<SelectOption & { tags: Resourse["tags"] }>>([]);
 
   watch(locale, () => {
-    lineageOptions.value = lineages.map(({ content, tags }) => {
-      return {
-        label: t(i18nLangModel.enum.lineage[content as HumanLineage | YokaiLineage | ElvesLineage]),
-        value: content,
-        tags
-      };
-    });
+    lineageOptions.value = lineages
+      .map(({ content, tags }) => {
+        return {
+          label: t(i18nLangModel.enum.lineage[content as HumanLineage | YokaiLineage | ElvesLineage]),
+          value: content,
+          tags
+        };
+      });
   }, { immediate: true });
 
-  const sampleLineage = () => sample<HumanLineage | YokaiLineage | ElvesLineage>(lineageOptions.value);
+  const sampleLineage = <T>(race: ResponseType_PostRegist["race"]): T => {
+    lineageOptions.value = lineages
+      .filter(({ tags }) => tags!.includes(race))
+      .map(({ content, tags }) => {
+        return {
+          label: t(i18nLangModel.enum.lineage[content as HumanLineage | YokaiLineage | ElvesLineage]),
+          value: content,
+          tags
+        };
+      });
+    return sample<SelectOption>(lineageOptions.value)!.value as T;
+  };
 
   return { lineageOptions, sampleLineage };
 }

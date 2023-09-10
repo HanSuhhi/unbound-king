@@ -3,14 +3,14 @@ import { useI18n } from "vue-i18n";
 import { NFormItem, NSelect } from "naive-ui";
 import { computed } from "vue";
 import { useLineageOptions } from "../composables/lineageOption";
-import type { ResourseTag } from "../../../../../../server/modules/editions/enums/resourse-tag.enum";
+import type { ResourseTag } from "#/server/modules/editions/enums/resourse-tag.enum";
 import { i18nLangModel } from "#/composables/i18n/index";
 import type { ResponseType_PostRegist } from "@/api/services/character";
 
 const { race } = defineProps<{ race: ResponseType_PostRegist["race"] }>();
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const lineageRef = defineModel<ResponseType_PostRegist["lineage"]>();
-const { lineageOptions } = await useLineageOptions();
+const { lineageOptions } = await useLineageOptions(locale, t);
 
 const showingLineageOptions = computed(() => {
   return lineageOptions.value.filter(({ tags }: any) => {

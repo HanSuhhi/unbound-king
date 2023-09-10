@@ -5,9 +5,9 @@ import { useRaceOptions } from "../composables/raceOption";
 import { i18nLangModel } from "#/composables/i18n/index";
 import type { ResponseType_PostRegist } from "@/api/services/character";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const raceRef = defineModel<ResponseType_PostRegist["race"]>();
-const { raceOptions } = await useRaceOptions();
+const { raceOptions } = await useRaceOptions(locale, t);
 </script>
 
 <template>

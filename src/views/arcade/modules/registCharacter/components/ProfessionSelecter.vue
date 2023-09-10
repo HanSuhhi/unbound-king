@@ -5,9 +5,9 @@ import { i18nLangModel } from "#/composables/i18n/index";
 import { useProfessionOptions } from "@/views/arcade/modules/registCharacter/composables/professionOption";
 import type { ResponseType_PostRegist } from "@/api/services/character";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const professionRef = defineModel<ResponseType_PostRegist["profession"]>();
-const { professionOptions } = await useProfessionOptions();
+const { professionOptions } = await useProfessionOptions(locale, t);
 </script>
 
 <template>

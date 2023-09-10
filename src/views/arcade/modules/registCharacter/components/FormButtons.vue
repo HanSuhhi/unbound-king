@@ -8,13 +8,13 @@ import TypeButton from "@/components/typeButton/TypeButton.vue";
 
 const { t } = useI18n();
 const formRef = defineModel<ResponseType_PostRegist>();
-const { resetForm } = useRegistCharacterForms(formRef);
+const { randomCharacter } = useRegistCharacterForms(formRef);
 </script>
 
 <template>
   <n-form-item>
-    <type-button attr-type="button" @click="resetForm">
-      {{ t(i18nLangModel.arcade.regist_character.reset_form) }}
+    <type-button attr-type="button" @click="randomCharacter">
+      {{ t(i18nLangModel.arcade.regist_character.sample_form) }}
     </type-button>
   </n-form-item>
 </template>
