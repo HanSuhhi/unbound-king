@@ -1,8 +1,7 @@
 <script setup lang='ts'>
-import type { FormInst } from "naive-ui";
 import { NForm } from "naive-ui";
-import { ref, watch } from "vue";
-import { useI18n } from "vue-i18n";
+import { watch } from "vue";
+import { useRegistCharacterForm } from "../composables/regist-character-form";
 import GenderSelecter from "./GenderSelecter.vue";
 import NameInput from "./NameInput.vue";
 import ProfessionSelecter from "./ProfessionSelecter.vue";
@@ -11,24 +10,9 @@ import RaceSelecter from "./RaceSelecter.vue";
 import LineageSelecter from "./LineageSelecter.vue";
 import FormButtons from "./FormButtons.vue";
 import { ElvesLineage, HumanLineage, YokaiLineage } from "#/server/modules/lineages/enums/lineage.enum";
-import { Gender } from "#/server/modules/gender/enums/gender.enum";
-import type { ResponseType_PostRegist } from "@/api/services/character";
-import { Profession } from "#/server/modules/professions/enums/profession.enum";
-import { Trait } from "#/server/modules/traits/enums/trait.enum";
 import { Race } from "#/server/modules/races/enums/race.enum";
 
-const { t } = useI18n();
-
-const FormRef = ref<FormInst | null>(null);
-
-const registCharacterForm = ref<ResponseType_PostRegist>({
-  name: "",
-  gender: Gender.Male,
-  profession: Profession.Sworder,
-  traits: [Trait.Listener, Trait.Claim],
-  race: Race.Humans,
-  lineage: HumanLineage.Caveman
-});
+const { FormRef, registCharacterForm, rules } = useRegistCharacterForm();
 
 watch(() => registCharacterForm.value.race, (newRace) => {
   switch (newRace) {
@@ -51,6 +35,7 @@ watch(() => registCharacterForm.value.race, (newRace) => {
     ref="FormRef"
     class="regist-character-form"
     label-placement="left"
+    :rules="rules"
     :model="registCharacterForm"
   >
     <name-input v-model="registCharacterForm.name" />

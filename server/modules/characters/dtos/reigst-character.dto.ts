@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEnum } from "class-validator";
+import { IsEnum, MaxLength, MinLength } from "class-validator";
 import { StringValidator } from "@/decorators/validate/string.validator";
 import { Gender } from "@/modules/gender/enums/gender.enum";
 import { StringEnumValidator } from "@/decorators/validate/string-enum.validate";
@@ -7,12 +7,20 @@ import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
 import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineage.enum";
 import { Race } from "@/modules/races/enums/race.enum";
+import { i18nLangModel } from "#/composables/i18n";
 
 export class RegistCharacterDto {
   @StringValidator()
+  @MaxLength(6)
+  @MinLength(2, {
+    message() {
+      return i18nLangModel.validate.characterName;
+    }
+  })
   @ApiProperty({
     required: true,
-    default: "",
+    maxLength: 6,
+    minLength: 2,
     type: String
   })
   readonly name: string;

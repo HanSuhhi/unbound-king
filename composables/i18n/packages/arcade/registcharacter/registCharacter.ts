@@ -6,7 +6,9 @@ export const EN_RegistCharacter = {
   race: "race",
   lineage: "lineage",
   name_placeholder: "Please enter your name",
-  sample_form: "Reset Form"
+  sample_form: "Randomly Generated",
+  confirm: "Confirm",
+  regist_success: "Regist Successfully"
 };
 
 export const CN_RegistCharacter = {
@@ -17,5 +19,7 @@ export const CN_RegistCharacter = {
   race: "种族",
   lineage: "血统",
   name_placeholder: "请输入姓名",
-  sample_form: "随机"
+  sample_form: "随机生成",
+  confirm: "确认",
+  regist_success: "注册人物成功"
 };

@@ -1,4 +1,3 @@
-import { invalidCn } from "../composable";
 import { defineLang } from "../lang.model";
 import { CN_Gender } from "../packages/arcade/registcharacter/gender";
 import { CN_Lineage } from "../packages/arcade/registcharacter/lineage";
@@ -6,6 +5,7 @@ import { CN_Profession } from "../packages/arcade/registcharacter/profession";
 import { CN_Race } from "../packages/arcade/registcharacter/race";
 import { CN_RegistCharacter } from "../packages/arcade/registcharacter/registCharacter";
 import { CN_Trait } from "../packages/arcade/registcharacter/trait";
+import { CN_Validator } from "../packages/validator";
 
 export default defineLang({
   hotkey: "c",
@@ -23,11 +23,7 @@ export default defineLang({
     "race": CN_Race,
     "lineage": CN_Lineage
   },
-  validate: {
-    props: invalidCn("参数"),
-    email: invalidCn("邮箱"),
-    authenticationCode: invalidCn("验证码")
-  },
+  validate: CN_Validator,
   registration: {
     title: "注册用户",
     text: "该账号尚未注册，是否确认注册？"

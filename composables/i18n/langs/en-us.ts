@@ -1,4 +1,3 @@
-import { invalid } from "../composable";
 import { defineLang } from "../lang.model";
 import { EN_Gender } from "../packages/arcade/registcharacter/gender";
 import { EN_Lineage } from "../packages/arcade/registcharacter/lineage";
@@ -6,6 +5,7 @@ import { EN_Profession } from "../packages/arcade/registcharacter/profession";
 import { EN_Race } from "../packages/arcade/registcharacter/race";
 import { EN_RegistCharacter } from "../packages/arcade/registcharacter/registCharacter";
 import { EN_Trait } from "../packages/arcade/registcharacter/trait";
+import { EN_Validator } from "../packages/validator";
 
 const enUsModel = {
   hotkey: "e",
@@ -23,11 +23,7 @@ const enUsModel = {
       dev: "Developer Module"
     }
   },
-  validate: {
-    props: invalid("props"),
-    email: invalid("email"),
-    authenticationCode: invalid("authentication code")
-  },
+  validate: EN_Validator,
   header: {
     perference: {
       backLogin: "Back to Login",
