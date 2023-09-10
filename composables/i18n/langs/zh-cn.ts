@@ -1,10 +1,10 @@
 import { defineLang } from "../lang.model";
-import { CN_Gender } from "../packages/arcade/registcharacter/gender";
-import { CN_Lineage } from "../packages/arcade/registcharacter/lineage";
-import { CN_Profession } from "../packages/arcade/registcharacter/profession";
-import { CN_Race } from "../packages/arcade/registcharacter/race";
-import { CN_RegistCharacter } from "../packages/arcade/registcharacter/registCharacter";
-import { CN_Trait } from "../packages/arcade/registcharacter/trait";
+import { CN_Gender } from "../packages/arcade/regist-character/gender";
+import { CN_Lineage } from "../packages/arcade/regist-character/lineage";
+import { CN_Profession } from "../packages/arcade/regist-character/profession";
+import { CN_Race } from "../packages/arcade/regist-character/race";
+import { CN_RegistCharacter } from "../packages/arcade/regist-character/registCharacter";
+import { CN_Trait } from "../packages/arcade/regist-character/trait";
 import { CN_Validator } from "../packages/validator";
 
 export default defineLang({
