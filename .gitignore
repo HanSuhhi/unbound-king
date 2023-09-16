@@ -20,7 +20,9 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
+*.psd
 *.sw?
+*.xlsx
 coverage
 **/certs/*
 

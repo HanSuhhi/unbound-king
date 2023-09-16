@@ -9,6 +9,7 @@
     "esno": "esno",
     "esno:api": "pnpm esno -- scripts/api.ts",
     "esno:assets": "pnpm esno -- scripts/static-assets.ts",
+    "esno:config": "pnpm esno -- scripts/server-config.ts",
     "test": "pnpm test:server-run & pnpm test:client-run",
     "test:client": "vitest -c vite.config.ts",
     "test:client-run": "vitest run -c vite.config.ts",
@@ -52,6 +53,7 @@
     "mo": "^1.7.3",
     "module": "^1.2.5",
     "node-fetch": "^3.3.1",
+    "node-xlsx": "^0.23.0",
     "nodemailer": "^6.9.3",
     "pinia": "^2.0.28",
     "prismjs": "^1.29.0",
@@ -64,6 +66,7 @@
     "vue": "^3.3.2",
     "vue-i18n": "^9.2.2",
     "vue-router": "4",
+    "xlsx": "^0.18.5",
     "zod": "^3.21.4"
   },
   "devDependencies": {

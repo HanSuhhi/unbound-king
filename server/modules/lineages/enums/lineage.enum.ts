@@ -1,6 +1,7 @@
 import { Race } from "#/server/modules/races/enums/race.enum";
 
 export enum HumanLineage {
+  PlainSettler = "o4VvHZRebQHV",
   Caveman = "eovp79ed7hjd"
 }
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req } from "@nestjs/common";
 import { ApiBearerAuth, ApiCreatedResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 import type { Request } from "express";
 import type { UserTokenMessage } from "../auth/auth-type";
@@ -27,5 +27,17 @@ export class CharactersController {
   ): Promise<RegistCharacterVo> {
     const userid = request.user.id;
     return await this.charactersService.createCharacter(userid, createCharacterDto);
+  }
+
+  @Get("list")
+  @ApiCreatedResponse({
+    description: "Obtain client version information and update it",
+    isArray: true,
+    type: RegistCharacterVo
+  })
+  public async list(
+    @Req() request: Request & { user: UserTokenMessage }
+  ): Promise<RegistCharacterVo[]> {
+    return this.charactersService.queryUserCharacters(request.user.id);
   }
 }

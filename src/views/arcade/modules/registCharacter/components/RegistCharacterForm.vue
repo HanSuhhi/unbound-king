@@ -40,10 +40,10 @@ watch(() => registCharacterForm.value.race, (newRace) => {
   >
     <name-input v-model="registCharacterForm.name" />
     <gender-selecter v-model="registCharacterForm.gender" />
-    <profession-selecter v-model="registCharacterForm.profession" />
-    <trait-getter v-model="registCharacterForm.traits" class="regist-character-form_traits" />
     <race-selecter v-model="registCharacterForm.race" />
     <lineage-selecter v-model="registCharacterForm.lineage" :race="registCharacterForm.race" />
+    <profession-selecter v-model="registCharacterForm.profession" />
+    <trait-getter v-model="registCharacterForm.traits" class="regist-character-form_traits" />
     <form-buttons v-model="registCharacterForm" />
   </n-form>
 </template>

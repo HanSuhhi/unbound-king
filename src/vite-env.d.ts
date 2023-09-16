@@ -25,12 +25,16 @@ interface ImportMetaEnv {
   readonly SERVER_RUNNING_PORT: string;
 }
 
-
+interface ErrorResponse {
+  message: string;
+  error: string;
+  statusCode: number;
+}
 
 /**
  * @todo transform to string only and support i18n
  */
-type Translator = [key: string, title: string ] | string;
+type Translator = [key: string, title: string] | string;
 type Color = [color1: string, color2: string];
 type MinMax = [min: number, max: number];
 type From = string;

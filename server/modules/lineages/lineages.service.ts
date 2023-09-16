@@ -4,6 +4,7 @@ import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
 import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
 import { ResourseTag } from "../editions/enums/resourse-tag.enum";
+import { Race } from "../races/enums/race.enum";
 import { LineageType } from "./enums/lineage-type.enum";
 import { ElvesLineage, HumanLineage, YokaiLineage } from "./enums/lineage.enum";
 
@@ -37,6 +38,24 @@ export class LineagesService {
     switch (subType) {
       case LineageType.RegistCharacter:
       default: return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
+    }
+  }
+
+  /**
+   * Determines whether the given lineage belongs to the given race.
+   * @param {Race} race The race to check.
+   * @param {HumanLineage | YokaiLineage | ElvesLineage} lineage The lineage to check.
+   * @returns {boolean} True if the lineage belongs to the race, False otherwise.
+   */
+  public isLineageBelongToRace(race: Race, lineage: HumanLineage | YokaiLineage | ElvesLineage): boolean {
+    switch (race) {
+      case Race.Humans:
+        return Object.values(HumanLineage).includes(lineage as HumanLineage);
+      case Race.Yokai:
+        return Object.values(YokaiLineage).includes(lineage as YokaiLineage);
+      case Race.Elves:
+      default:
+        return Object.values(ElvesLineage).includes(lineage as ElvesLineage);
     }
   }
 }

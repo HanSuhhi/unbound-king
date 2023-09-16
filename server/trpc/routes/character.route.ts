@@ -40,6 +40,13 @@ export class CharacterRoute {
           race,
           lineage
         });
+      }),
+    queryUserCharacters: this.trpc.procedure
+      .input(z.string())
+      .query(async ({ input: userid }) => {
+        return this.characterModel.find({
+          belong: userid
+        }).exec();
       })
   });
 }

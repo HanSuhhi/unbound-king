@@ -11,7 +11,11 @@ import { i18nLangModel } from "#/composables/i18n";
 
 export class RegistCharacterDto {
   @StringValidator()
-  @MaxLength(6)
+  @MaxLength(6, {
+    message() {
+      return i18nLangModel.validate.characterName;
+    }
+  })
   @MinLength(2, {
     message() {
       return i18nLangModel.validate.characterName;
