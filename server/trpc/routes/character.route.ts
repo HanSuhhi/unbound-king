@@ -4,11 +4,11 @@ import { Model } from "mongoose";
 import { z } from "zod";
 import { TrpcService } from "../trpc.service";
 import { Character } from "@/modules/characters/schemas/character.schemas";
-import { Gender } from "@/modules/gender/enums/gender.enum";
-import { Profession } from "@/modules/professions/enums/profession.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineages.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
+import { Profession } from "@/modules/professions/enums/profession.enum";
+import { Gender } from "@/modules/gender/enums/gender.enum";
 import { Race } from "@/modules/races/enums/race.enum";
-import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineage.enum";
 
 @Injectable()
 export class CharacterRoute {

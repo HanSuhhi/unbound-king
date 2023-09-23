@@ -1,4 +1,0 @@
-- gender
-- profession
-- race
-- lineage

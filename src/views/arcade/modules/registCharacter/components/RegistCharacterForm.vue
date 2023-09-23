@@ -9,8 +9,10 @@ import TraitGetter from "./TraitGetter.vue";
 import RaceSelecter from "./RaceSelecter.vue";
 import LineageSelecter from "./LineageSelecter.vue";
 import FormButtons from "./FormButtons.vue";
-import { ElvesLineage, HumanLineage, YokaiLineage } from "#/server/modules/lineages/enums/lineage.enum";
 import { Race } from "#/server/modules/races/enums/race.enum";
+import { YokaiLineage } from "#/server/modules/lineages/enums/yokai-lineage.enum";
+import { ElvesLineage } from "#/server/modules/lineages/enums/elves-lineage.enum";
+import { HumanLineage } from "#/server/modules/lineages/enums/human-lineage.enum";
 
 const { FormRef, registCharacterForm, rules } = useRegistCharacterForm();
 
@@ -22,9 +24,9 @@ watch(() => registCharacterForm.value.race, (newRace) => {
     case Race.Elves:
       registCharacterForm.value.lineage = ElvesLineage.Tree;
       break;
-    case Race.Humans:
+    case Race.Human:
     default:
-      registCharacterForm.value.lineage = HumanLineage.Caveman;
+      registCharacterForm.value.lineage = HumanLineage.PlainSettler;
       break;
   }
 }, { immediate: true });

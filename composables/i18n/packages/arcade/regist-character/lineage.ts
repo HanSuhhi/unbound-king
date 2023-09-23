@@ -1,14 +1,14 @@
-import { ElvesLineage, HumanLineage, YokaiLineage } from "#/server/modules/lineages/enums/lineage.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "#/server/modules/lineages/enums/lineages.enum";
 
 export const EN_Lineage = {
-  [HumanLineage.Caveman]: "caveman",
+  [HumanLineage.ForestNative]: "forest native",
   [HumanLineage.PlainSettler]: "plain settler",
   [YokaiLineage.Fish]: "fish",
   [ElvesLineage.Tree]: "tree"
 };
 
 export const CN_Lineage = {
-  [HumanLineage.Caveman]: "穴居人",
+  [HumanLineage.ForestNative]: "森林原住民",
   [HumanLineage.PlainSettler]: "平原聚居者",
   [YokaiLineage.Fish]: "鱼妖",
   [ElvesLineage.Tree]: "树精"

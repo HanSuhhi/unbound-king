@@ -5,9 +5,9 @@ import { Gender } from "@/modules/gender/enums/gender.enum";
 import { StringEnumValidator } from "@/decorators/validate/string-enum.validate";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
-import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineage.enum";
 import { Race } from "@/modules/races/enums/race.enum";
 import { i18nLangModel } from "#/composables/i18n";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineages.enum";
 
 export class RegistCharacterDto {
   @StringValidator()

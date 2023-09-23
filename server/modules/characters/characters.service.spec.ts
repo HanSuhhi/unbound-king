@@ -4,7 +4,7 @@ import { Gender } from "../gender/enums/gender.enum";
 import { Profession } from "../professions/enums/profession.enum";
 import { Trait } from "../traits/enums/trait.enum";
 import { Race } from "../races/enums/race.enum";
-import { ElvesLineage } from "../lineages/enums/lineage.enum";
+import { ElvesLineage } from "../lineages/enums/lineages.enum";
 import { CharactersService } from "./characters.service";
 import { TrpcRouter } from "@/trpc/trpc.router";
 import { useCharacterModelTestProviders, useUserModelTestProviders } from "@/composables/tests/providers";

@@ -6,12 +6,12 @@ import { addRegistCharacterResourseTag, filterRegistCharacterResourseTag } from 
 import { ResourseTag } from "../editions/enums/resourse-tag.enum";
 import { Race } from "../races/enums/race.enum";
 import { LineageType } from "./enums/lineage-type.enum";
-import { ElvesLineage, HumanLineage, YokaiLineage } from "./enums/lineage.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "./enums/lineages.enum";
 
 @Injectable()
 export class LineagesService {
   /** Resourse Message */
-  private readonly REGIST_CHARACTER_RESOURSE: Array<HumanLineage | YokaiLineage | ElvesLineage> = [HumanLineage.Caveman, ElvesLineage.Tree, YokaiLineage.Fish];
+  private readonly REGIST_CHARACTER_RESOURSE: Array<HumanLineage | YokaiLineage | ElvesLineage> = [HumanLineage.ForestNative, ElvesLineage.Tree, YokaiLineage.Fish];
   private ALL_RESOURSES: ResourseVo["resourse"] = [];
 
   private initResourse(lineage: object, tag: ResourseTag) {
@@ -49,7 +49,7 @@ export class LineagesService {
    */
   public isLineageBelongToRace(race: Race, lineage: HumanLineage | YokaiLineage | ElvesLineage): boolean {
     switch (race) {
-      case Race.Humans:
+      case Race.Human:
         return Object.values(HumanLineage).includes(lineage as HumanLineage);
       case Race.Yokai:
         return Object.values(YokaiLineage).includes(lineage as YokaiLineage);

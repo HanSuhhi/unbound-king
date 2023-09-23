@@ -4,7 +4,7 @@ import { Gender } from "@/modules/gender/enums/gender.enum";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
 import { Race } from "@/modules/races/enums/race.enum";
-import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineage.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineages.enum";
 
 export type CharacterDocument = HydratedDocument<Character>;
 

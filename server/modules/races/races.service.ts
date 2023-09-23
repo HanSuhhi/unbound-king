@@ -14,7 +14,7 @@ export class RacesService {
   static readonly REGIST_CHARACTER_VERSION: Edition<RaceType> = [RaceType.RegistCharacter, 1];
 
   /** Resourse Message */
-  private readonly REGIST_CHARACTER_RESOURSE: Race[] = [Race.Humans, Race.Yokai, Race.Elves];
+  private readonly REGIST_CHARACTER_RESOURSE: Race[] = [Race.Human, Race.Yokai, Race.Elves];
   private ALL_RESOURSES: ResourseVo["resourse"];
 
   constructor() {

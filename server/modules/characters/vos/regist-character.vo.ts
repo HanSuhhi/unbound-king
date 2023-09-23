@@ -3,7 +3,7 @@ import { Gender } from "@/modules/gender/enums/gender.enum";
 import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
 import { Race } from "@/modules/races/enums/race.enum";
-import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineage.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineages.enum";
 
 export class RegistCharacterVo {
   @ApiProperty({
@@ -41,7 +41,7 @@ export class RegistCharacterVo {
     required: true,
     type: String,
     enum: Race,
-    default: Race.Humans
+    default: Race.Human
   })
   readonly race: Race;
 
@@ -49,7 +49,7 @@ export class RegistCharacterVo {
     required: true,
     type: String,
     enum: { ...HumanLineage, ...YokaiLineage, ...ElvesLineage },
-    default: HumanLineage.Caveman
+    default: HumanLineage.ForestNative
   })
   readonly lineage: HumanLineage | YokaiLineage | ElvesLineage;
 }
