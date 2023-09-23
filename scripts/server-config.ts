@@ -1,6 +1,6 @@
 import { resolve } from "node:path";
 import xlsx from "node-xlsx";
-import { kebabCase } from "lodash";
+import { camelCase, kebabCase } from "lodash";
 import { capitalize } from "../composables/js/string";
 import { writeFileToProject } from "./composables/fs";
 
@@ -62,7 +62,7 @@ function generateEnumConfig() {
         return writeFileToProject(filePath)(enumString);
       }
       default: {
-        const enumString = JSON.stringify(workbook.data.map(subData => subData.filter(subDataItem => subDataItem && subDataItem.trim())).slice(3));
+        const enumString = `export const ${camelCase(prefixName)} = ${JSON.stringify(workbook.data.map(subData => subData.filter(subDataItem => subDataItem && subDataItem.trim())).slice(3))}`;
 
         return writeFileToProject(filePath)(enumString);
       }

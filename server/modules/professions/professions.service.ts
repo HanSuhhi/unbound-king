@@ -3,17 +3,14 @@ import { Injectable } from "@nestjs/common";
 import type { ResourseResponse, ResourseVo } from "../editions/vos/resourse.vo";
 import { ResourseType } from "../editions/enums/resourse-type.enum";
 import { filterRegistCharacterResourseTag } from "../editions/composables/resourseTag";
-import { ProfessionType } from "./enums/profession-type.enum";
 import { Profession } from "./enums/profession.enum";
+import { ProfessionType } from "./enums/profession-type.enum";
+import { professionFromLineage } from "./enums/profession-from-lineage";
+import type { RegistCharacterQueryDto } from "./dtos/regist-character.dto";
+import type { RegistCharacterProfessionVo } from "./vos/regist-character.vo";
 
 @Injectable()
 export class ProfessionsService {
-  /** Resourse Message */
-  // private readonly REGIST_CHARACTER_RESOURSE: Profession[] = [Profession.Sworder, Profession.Farmer];
-  // private readonly PROFESSION_TAGS: Record<Profession, ResourseTag[]> = {
-  //   [Profession.Farmer]: [ResourseTag.CavemanLineage, Re]
-  // };
-
   private ALL_RESOURSES: ResourseVo["resourse"];
 
   constructor() {
@@ -24,7 +21,6 @@ export class ProfessionsService {
         undefined,
         []
       ];
-      // addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, profession, returnResourse[3]);
 
       return returnResourse;
     });
@@ -36,5 +32,14 @@ export class ProfessionsService {
       default:
         return filterRegistCharacterResourseTag(this.ALL_RESOURSES);
     }
+  }
+
+  public getProfessionWhenRegistCharacter({ gender: userGender, lineage: userLineage }: RegistCharacterQueryDto): RegistCharacterProfessionVo {
+    const professions: Profession[] = [];
+    professionFromLineage.forEach(([profession, lineage, gender]) => {
+      if (lineage !== userLineage) return;
+      if (!gender || gender === userGender) professions.push(Profession[profession]);
+    });
+    return { professions };
   }
 }

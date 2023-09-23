@@ -7,11 +7,12 @@ import { ResourseTag } from "../editions/enums/resourse-tag.enum";
 import { Race } from "../races/enums/race.enum";
 import { LineageType } from "./enums/lineage-type.enum";
 import { ElvesLineage, HumanLineage, YokaiLineage } from "./enums/lineages.enum";
+import { REGIST_CHARACTER_RESOURSE } from "./contents/regist-character.content";
 
 @Injectable()
 export class LineagesService {
   /** Resourse Message */
-  private readonly REGIST_CHARACTER_RESOURSE: Array<HumanLineage | YokaiLineage | ElvesLineage> = [HumanLineage.ForestNative, ElvesLineage.Tree, YokaiLineage.Fish];
+  static readonly REGIST_CHARACTER_RESOURSE = REGIST_CHARACTER_RESOURSE;
   private ALL_RESOURSES: ResourseVo["resourse"] = [];
 
   private initResourse(lineage: object, tag: ResourseTag) {
@@ -22,7 +23,7 @@ export class LineagesService {
         undefined,
         [tag]
       ];
-      addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, race, returnResourse[3]);
+      addRegistCharacterResourseTag(LineagesService.REGIST_CHARACTER_RESOURSE, race, returnResourse[3]);
 
       return returnResourse;
     }));

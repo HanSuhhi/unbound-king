@@ -9,7 +9,7 @@ import { Gender } from "./enums/gender.enum";
 @Injectable()
 export class GenderService {
   /** Resourse Message */
-  private readonly REGIST_CHARACTER_RESOURSE: Gender[] = [Gender.Male, Gender.Female];
+  static readonly REGIST_CHARACTER_RESOURSE: Gender[] = [Gender.Male, Gender.Female];
   private ALL_RESOURSES: ResourseVo["resourse"];
 
   constructor() {
@@ -20,7 +20,7 @@ export class GenderService {
         undefined,
         []
       ];
-      addRegistCharacterResourseTag(this.REGIST_CHARACTER_RESOURSE, gender, returnResourse[3]);
+      addRegistCharacterResourseTag(GenderService.REGIST_CHARACTER_RESOURSE, gender, returnResourse[3]);
 
       return returnResourse;
     });
