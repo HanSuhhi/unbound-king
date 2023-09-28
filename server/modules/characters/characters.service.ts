@@ -4,8 +4,11 @@ import { LineagesService } from "../lineages/lineages.service";
 import type { RegistCharacterDto } from "./dtos/reigst-character.dto";
 import type { RegistCharacterVo } from "./vos/regist-character.vo";
 import type { RegistCharacterListVo } from "./vos/regist-character-list.vo";
+import type { RemoveCharacterDto } from "./dtos/remove-character.dto";
+import type { RemoveCharacterVo } from "./vos/remove-character.vo";
 import { TrpcRouter } from "@/trpc/trpc.router";
 import { i18nLangModel } from "#/composables/i18n";
+import { RemoveResponse } from "@/enums/remove-response.enum";
 
 @Injectable()
 export class CharactersService {
@@ -35,5 +38,22 @@ export class CharactersService {
     return {
       list: await this.trpcRouter.caller.character.queryUserCharacters(userId as unknown as string)
     };
+  }
+
+  public async deleteUserCharacter(userid: Types.ObjectId, characterDto: RemoveCharacterDto): Promise<RemoveCharacterVo> {
+    try {
+      const character = await this.trpcRouter.caller.character.deleteUserCharacter({
+        characterId: characterDto.id,
+        userId: userid as unknown as string
+      });
+      return {
+        state: character ? RemoveResponse.Success : RemoveResponse.NotFound
+      };
+    }
+    catch (error) {
+      return {
+        state: RemoveResponse.Error
+      };
+    }
   }
 }

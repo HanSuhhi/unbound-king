@@ -23,11 +23,16 @@ export interface ResponseType_GetEditionByTag {
   "editionNickname"?: string
 }
 
-export function getEditionByTag(params: {
-  "resourse-tag": "TmzOWFqWinol" | "b0EgtbIh6DLb" | "AVKwZyHbuA2o" | "BE1xF4wqYmjF" | "sxjrztcjtxld" | "o4VvHZRebQHV" | "eovp79ed7hjd"
-  "edition"?: number
-}, config: Config<ResponseOriginData<ResponseType_GetEditionByTag>> = { params }) {
+export function getEditionByTag({ request, params, config = { params } }: {
+  request?: undefined
+  params: {
+    "resourse-tag": "TmzOWFqWinol" | "b0EgtbIh6DLb" | "AVKwZyHbuA2o" | "BE1xF4wqYmjF" | "sxjrztcjtxld" | "o4VvHZRebQHV" | "eovp79ed7hjd"
+    "edition"?: number
+  }
+  config?: Config<ResponseOriginData<ResponseType_GetEditionByTag>>
+}) {
   config.params = params;
+
   const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetEditionByTag>>("/v1/editions/resourse", config);
   return methodInstance;
 }

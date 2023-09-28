@@ -11,7 +11,12 @@ export interface ResponseType_GetRegistCharacterTraits {
   "resourse": Array<[{ type: "Buffer"; data: import("buffer").Buffer }, "RjygryMz" | "UzeXcSyr" | "Cx9zGuQE" | "3jXO40DE" | "Sdady1MU" | "PUjd0ipE", string, string[]]>
 }
 
-export function getRegistCharacterTraits(config: Config<ResponseOriginData<ResponseType_GetRegistCharacterTraits>> = {}) {
+export function getRegistCharacterTraits(_?: {
+  request?: undefined
+  params?: undefined
+  config?: Config<ResponseOriginData<ResponseType_GetRegistCharacterTraits>>
+}) {
+  const config = _ ? _.config : {};
   const methodInstance = alovaInst.Get<ResponseOriginData<ResponseType_GetRegistCharacterTraits>>("/v1/traits/regist-character", config);
   return methodInstance;
 }

@@ -1,9 +1,10 @@
 import { defineLang } from "../lang.model";
+import { CN_CharacterSelection } from "../packages/arcade/character-selection/character-selection";
 import { CN_Gender } from "../packages/arcade/regist-character/gender";
 import { CN_Lineage } from "../packages/arcade/regist-character/lineage";
 import { CN_Profession } from "../packages/arcade/regist-character/profession";
 import { CN_Race } from "../packages/arcade/regist-character/race";
-import { CN_RegistCharacter } from "../packages/arcade/regist-character/registCharacter";
+import { CN_RegistCharacter } from "../packages/arcade/regist-character/regist-character";
 import { CN_Trait } from "../packages/arcade/regist-character/trait";
 import { CN_Validator } from "../packages/validator";
 
@@ -157,11 +158,7 @@ export default defineLang({
     }
   },
   arcade: {
-    "character-selection": {
-      selectionTitle: "选择角色",
-      characterTitle: "角色详情",
-      registCharacterButton: "新建角色"
-    },
-    "regist_character": CN_RegistCharacter
+    character_selection: CN_CharacterSelection,
+    regist_character: CN_RegistCharacter
   }
 }, "中文");

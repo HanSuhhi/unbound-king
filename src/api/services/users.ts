@@ -13,10 +13,16 @@ export interface ResponseType_PatchUserNicknameByEmail {
 export interface RequestBody_PatchUserNicknameByEmail {
   "nickname": string
 }
-export function patchUserNicknameByEmail(request: RequestBody_PatchUserNicknameByEmail, params: {
-  "to": string
-}, config: Config<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>> = { params }) {
+
+export function patchUserNicknameByEmail({ request, params, config = { params } }: {
+  request: RequestBody_PatchUserNicknameByEmail
+  params: {
+    "to": string
+  }
+  config?: Config<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>>
+}) {
   config.params = params;
+
   const methodInstance = alovaInst.Patch<ResponseOriginData<ResponseType_PatchUserNicknameByEmail>>("/v1/users/update-nickname-by-email", request, config);
   return methodInstance;
 }

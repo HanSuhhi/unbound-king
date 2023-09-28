@@ -47,6 +47,16 @@ export class CharacterRoute {
         return this.characterModel.find({
           belong: userid
         }).exec();
+      }),
+    deleteUserCharacter: this.trpc.procedure
+      .input(z.object({
+        characterId: z.string(),
+        userId: z.string()
+      }))
+      .query(async ({ input: { characterId, userId } }) => {
+        return this.characterModel.findByIdAndRemove(characterId, {
+          belong: userId
+        }).exec();
       })
   });
 }

@@ -41,7 +41,7 @@ export function defineParams(parameters: any): string {
     params += "\n}";
   }
 
-  return params ? `params: ${params}, ` : "";
+  return params || "";
 }
 
 export function defineBody(requestBody: any, components: any, methodTitle: string) {

@@ -1,12 +1,9 @@
 <script setup lang='ts'>
-import { useI18n } from "vue-i18n";
 import { onMounted } from "vue";
 import RegistCharacterForm from "./components/RegistCharacterForm.vue";
 import { useEditionService } from "@/services/databases/edition/edition.service";
 import { ResourseTag } from "#/server/modules/editions/enums/resourse-tag.enum";
 import { useResourseEdition } from "@/composables/store/resourse";
-
-const { t } = useI18n();
 
 const { getRegistCharacterVersion } = useEditionService();
 const registCharacterVersion = await getRegistCharacterVersion();

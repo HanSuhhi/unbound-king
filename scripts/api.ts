@@ -28,14 +28,21 @@ export async function createClientApiTemplate() {
       const params = defineParams(parameters);
       const requestBodyType = defineTypeName("RequestBody", methodTitle);
       const responseBodyType = defineTypeName("ResponseType", methodTitle);
+      const isNeedParameters = requestType || params;
 
       result += `${returnType}\n`;
       result += `${requestType}\n`;
-      result += `export function ${methodTitle}(${requestType && `request: ${requestBodyType},`}${params}config: Config<ResponseOriginData<${responseBodyType}>> = {${params && " params "}}) {
-        ${params ? "config.params = params;" : ""}
-        const methodInstance = alovaInst.${capitalize(method.toLowerCase())}<ResponseOriginData<${responseBodyType}>>("${path}",${["post", "patch"].includes(method) ? "request," : ""} config);
-        return methodInstance;
-      }`;
+      result += `
+export function ${methodTitle}( ${isNeedParameters ? "{ request, params, config = { params } } :" : "_ ?:"} {
+  request${requestType ? "" : "?"}: ${requestType ? requestBodyType : "undefined"},
+  params${params ? "" : "?"}: ${params || "undefined"},
+  config?: Config<ResponseOriginData<${responseBodyType}>>
+}) {
+  ${params ? "config.params = params;" : ""}
+  ${isNeedParameters ? "" : "const config = _ ? _.config : {};"}
+  const methodInstance = alovaInst.${capitalize(method.toLowerCase())}<ResponseOriginData<${responseBodyType}>>("${path}",${["post", "patch", "delete"].includes(method) ? "request," : ""} config);
+  return methodInstance;
+}`;
 
       defineServiceFiles(files, tags, result);
     }

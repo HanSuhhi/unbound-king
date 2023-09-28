@@ -16,7 +16,9 @@ export function handleVertificationCode() {
     if (isFreeze.value) return;
     await loginFormInst.value?.validate(undefined, rule => rule.key === "email");
 
-    const { statusCode } = await getVerificationCode({ to: loginForm.value.form.email }).send(true);
+    const { statusCode } = await getVerificationCode({
+      params: { to: loginForm.value.form.email }
+    }).send(true);
     if (statusCode) return message.error("request error");
     message.success(t(i18nLangModel.auth.sendMail));
     toggleFreeze(true);

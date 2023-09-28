@@ -1,11 +1,14 @@
-import { Body, Controller, Get, Post, Req } from "@nestjs/common";
-import { ApiBearerAuth, ApiCreatedResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { Body, Controller, Delete, Get, Post, Query, Req, ValidationPipe } from "@nestjs/common";
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from "@nestjs/swagger";
 import type { Request } from "express";
+import { UserDto } from "../auth/auth-type";
 import type { UserTokenMessage } from "../auth/auth-type";
 import { CharactersService } from "./characters.service";
 import { RegistCharacterDto } from "./dtos/reigst-character.dto";
 import { RegistCharacterVo } from "./vos/regist-character.vo";
 import { RegistCharacterListVo } from "./vos/regist-character-list.vo";
+import { RemoveCharacterDto } from "./dtos/remove-character.dto";
+import { RemoveCharacterVo } from "./vos/remove-character.vo";
 
 @ApiTags("Character")
 @Controller("character")
@@ -39,5 +42,24 @@ export class CharactersController {
     @Req() request: Request & { user: UserTokenMessage }
   ): Promise<RegistCharacterListVo> {
     return this.charactersService.queryUserCharacters(request.user.id);
+  }
+
+  @Delete("character")
+  @ApiQuery({
+    name: "id",
+    required: true,
+    type: String
+  })
+  @ApiOkResponse({
+    type: RemoveCharacterVo,
+    description: "delete user character"
+  })
+  public async character(
+    @Req() request: UserDto,
+    @Query(new ValidationPipe({
+      transform: true
+    })) query: RemoveCharacterDto
+  ): Promise<RemoveCharacterVo> {
+    return this.charactersService.deleteUserCharacter(request.user.id, query);
   }
 }

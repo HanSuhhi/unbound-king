@@ -6,3 +6,7 @@ export interface UserTokenMessage {
   email: string
   roles: Role[]
 }
+
+export interface UserDto {
+  user: UserTokenMessage
+}

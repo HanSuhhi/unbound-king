@@ -16,8 +16,10 @@ const professionRef = defineModel<ResponseType_PostRegist["profession"]>();
 const professionOptions = ref<SelectOption[]>();
 
 const { send } = useRequest(() => getRegistCharacterProfessions({
-  gender: registCharacterForm.value.gender,
-  lineage: registCharacterForm.value.lineage
+  params: {
+    gender: registCharacterForm.value.gender,
+    lineage: registCharacterForm.value.lineage
+  }
 }), { immediate: false });
 
 async function getCurrentProfession() {

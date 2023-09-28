@@ -17,7 +17,9 @@ import { useGlobalDialog } from "@/composables/components/globalDialog";
 export function useRegistCharacterForms(formValue: Ref<ResponseType_PostRegist | undefined>) {
   const { locale, t } = useI18n();
   const formRef = inject<Ref<FormInst>>(RegistCharacterFormRef)!;
-  const { send: sendRegistCharacter } = useRequest(() => postRegist(formValue.value!), { immediate: false });
+  const { send: sendRegistCharacter } = useRequest(() => postRegist({
+    request: formValue.value!
+  }), { immediate: false });
   const { stateToStartGame } = useStateStore();
   const { warning } = useGlobalDialog();
   const { getTraits } = useTraitOption();

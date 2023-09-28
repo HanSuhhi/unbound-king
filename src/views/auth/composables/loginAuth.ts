@@ -68,8 +68,10 @@ export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>
 
   async function registration() {
     const { statusCode, data } = await postLoginWithEmail({
-      ...loginForm.value.form,
-      loginType: "JHuWYPd9be4E"
+      request: {
+        ...loginForm.value.form,
+        loginType: "JHuWYPd9be4E"
+      }
     }).send();
     const [ifSuccess, ifFail] = useIf(!statusCode);
     // ifFail(() => {});
@@ -79,7 +81,9 @@ export function useLoginAuth(loginForm: Ref, loginFormInst: Ref<FormInst | null>
   async function handleLogin() {
     await loginFormInst.value?.validate(undefined);
 
-    const { statusCode, data } = await postLoginWithEmail(loginForm.value.form).send();
+    const { statusCode, data } = await postLoginWithEmail({
+      request: loginForm.value.form
+    }).send();
     const [ifSuccess, ifFail] = useIf(!statusCode);
 
     ifSuccess(loginSuccessCallback.bind(null, data));

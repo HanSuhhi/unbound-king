@@ -11,8 +11,10 @@ export function useResourseEdition(resourseTag: ResourseTag, version?: Edition["
     const { storeResourse } = useResourseService();
 
     const { data: { edition, editionName, editionNickname, resourse } } = await getEditionByTag({
-      "resourse-tag": resourseTag,
-      "edition": version
+      params: {
+        "resourse-tag": resourseTag,
+        "edition": version
+      }
     }).send();
     await addEdition(editionName, edition, editionNickname);
     forEach(resourse, storeResourse);

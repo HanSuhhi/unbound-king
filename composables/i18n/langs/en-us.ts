@@ -1,9 +1,10 @@
 import { defineLang } from "../lang.model";
+import { EN_CharacterSelection } from "../packages/arcade/character-selection/character-selection";
 import { EN_Gender } from "../packages/arcade/regist-character/gender";
 import { EN_Lineage } from "../packages/arcade/regist-character/lineage";
 import { EN_Profession } from "../packages/arcade/regist-character/profession";
 import { EN_Race } from "../packages/arcade/regist-character/race";
-import { EN_RegistCharacter } from "../packages/arcade/regist-character/registCharacter";
+import { EN_RegistCharacter } from "../packages/arcade/regist-character/regist-character";
 import { EN_Trait } from "../packages/arcade/regist-character/trait";
 import { EN_Validator } from "../packages/validator";
 
@@ -156,12 +157,8 @@ const enUsModel = {
     }
   },
   arcade: {
-    "character-selection": {
-      selectionTitle: "Character Selection",
-      characterTitle: "Character Detail",
-      registCharacterButton: "New character"
-    },
-    "regist_character": EN_RegistCharacter
+    character_selection: EN_CharacterSelection,
+    regist_character: EN_RegistCharacter
   }
 };
 

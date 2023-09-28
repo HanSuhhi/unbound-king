@@ -8,7 +8,7 @@ export function useTraitOption() {
   const { storeResourse } = useResourseService();
 
   const getTraits = async () => {
-    const { data: { resourse: newTraits } } = await getRegistCharacterTraits().send();
+    const { data: { resourse: newTraits } } = await getRegistCharacterTraits({}).send();
 
     defer(() => forEach(newTraits, storeResourse));
     return newTraits.map(([content]) => transformArrayBufferToString(content.data)) as ResponseType_PostRegist["traits"];

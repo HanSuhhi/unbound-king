@@ -23,7 +23,12 @@ export interface RequestBody_PostLoginWithEmail {
   "code": number
   "loginType": "JHuWYPd9be4E" | "9anqHyzvl83l"
 }
-export function postLoginWithEmail(request: RequestBody_PostLoginWithEmail, config: Config<ResponseOriginData<ResponseType_PostLoginWithEmail>> = {}) {
+
+export function postLoginWithEmail({ request, params, config = { params } }: {
+  request: RequestBody_PostLoginWithEmail
+  params?: undefined
+  config?: Config<ResponseOriginData<ResponseType_PostLoginWithEmail>>
+}) {
   const methodInstance = alovaInst.Post<ResponseOriginData<ResponseType_PostLoginWithEmail>>("/v1/auth/login-email", request, config);
   return methodInstance;
 }
