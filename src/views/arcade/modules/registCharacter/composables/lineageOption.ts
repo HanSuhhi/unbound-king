@@ -5,9 +5,9 @@ import { sample } from "lodash";
 import type { SelectOption } from "naive-ui";
 import { i18nLangModel } from "#/composables/i18n";
 import { useResourseService } from "@/services/databases/resourse/resourse.service";
-import type { ElvesLineage, HumanLineage, YokaiLineage } from "#/server/modules/lineages/enums/lineage.enum";
 import type { ResponseType_PostRegist } from "@/api/services/character";
 import type { Resourse } from "@/services/databases/resourse/resourse.table";
+import type { ElvesLineage, HumanLineage, YokaiLineage } from "#/server/modules/lineages/enums/lineages.enum";
 
 export async function useLineageOptions(locale: WritableComputedRef<string>, t: ReturnType<typeof useI18n>["t"]) {
   const { getRegistCharacterLineages } = useResourseService();

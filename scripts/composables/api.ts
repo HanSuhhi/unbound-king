@@ -84,6 +84,7 @@ export function writeServices(files: Dictionary<string[]>) {
 
 function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf, $ref }: any, components: any) {
   if ($ref) {
+    console.log("🚀 ~ file: api.ts:87 ~ parseSchemasTypeDetail ~ $ref:", $ref);
     const schemasPath = "#/components/schemas/";
     $ref = $ref.replace(schemasPath, "").replace(/\//g, ".");
     const dto = components.schemas[$ref];
@@ -125,6 +126,8 @@ function parseSchemasTypeDetail({ type, enum: typeEnum, items, oneOf, $ref }: an
     case "array":
     default:
       if (items) {
+        if (items.$ref) return `${parseSchemasTypeDetail(items, components)}[]`;
+
         switch (items.type) {
           case "string": {
             if (items.enum) {

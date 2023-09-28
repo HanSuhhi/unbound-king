@@ -1,24 +1,19 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
 import { NFormItem } from "naive-ui";
-import { defer, forEach } from "lodash";
+import { useTraitOption } from "../composables/trait-option";
 import { Trait } from "#/server/modules/traits/enums/trait.enum";
-import { getRegistCharacterTraits } from "@/api/services/traits";
 import type { ResponseType_PostRegist } from "@/api/services/character";
 import TypeButton from "@/components/typeButton/TypeButton.vue";
 import { i18nLangModel } from "#/composables/i18n/index";
-import { useResourseService } from "@/services/databases/resourse/resourse.service";
-import { transformArrayBufferToString } from "@/composables/trpc/oss";
 import TraitTag from "@/components/trait/TraitTag.vue";
 
 const { t } = useI18n();
 const traitRef = defineModel<ResponseType_PostRegist["traits"]>();
-const { storeResourse } = useResourseService();
+const { getTraits } = useTraitOption();
 
-async function getTraits() {
-  const { data: { resourse: newTraits } } = await getRegistCharacterTraits().send();
-  traitRef.value = newTraits.map(([content]) => transformArrayBufferToString(content.data)) as ResponseType_PostRegist["traits"];
-  defer(() => forEach(newTraits, storeResourse));
+async function randomTraits() {
+  traitRef.value = await getTraits();
 }
 </script>
 
@@ -27,9 +22,7 @@ async function getTraits() {
     <div class="trait-tags">
       <trait-tag v-for="tag of traitRef" :key="tag" :tag-name="tag as Trait" />
     </div>
-    <type-button plain @click="getTraits">
-      获取
-    </type-button>
+    <type-button v-t="i18nLangModel.arcade.regist_character.get_trait" plain @click="randomTraits" />
   </n-form-item>
 </template>
 

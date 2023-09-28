@@ -10,9 +10,7 @@ import RaceSelecter from "./RaceSelecter.vue";
 import LineageSelecter from "./LineageSelecter.vue";
 import FormButtons from "./FormButtons.vue";
 import { Race } from "#/server/modules/races/enums/race.enum";
-import { YokaiLineage } from "#/server/modules/lineages/enums/yokai-lineage.enum";
-import { ElvesLineage } from "#/server/modules/lineages/enums/elves-lineage.enum";
-import { HumanLineage } from "#/server/modules/lineages/enums/human-lineage.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "#/server/modules/lineages/enums/lineages.enum";
 
 const { FormRef, registCharacterForm, rules } = useRegistCharacterForm();
 

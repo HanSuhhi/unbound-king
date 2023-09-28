@@ -1,10 +1,10 @@
-.login_subtitle::before {
+.auth_subtitle::before {
   right: calc(-1 * var(--login-right));
   bottom: 0;
   width: 100%;
 }
 
-.login_subtitle::after {
+.auth_subtitle::after {
   right: 0;
   bottom: 0;
 

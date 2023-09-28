@@ -8,6 +8,7 @@ import { Race } from "../races/enums/race.enum";
 import { LineageType } from "./enums/lineage-type.enum";
 import { ElvesLineage, HumanLineage, YokaiLineage } from "./enums/lineages.enum";
 import { REGIST_CHARACTER_RESOURSE } from "./contents/regist-character.content";
+import type { Lineages } from "./lineage-type";
 
 @Injectable()
 export class LineagesService {
@@ -18,7 +19,7 @@ export class LineagesService {
   private initResourse(lineage: object, tag: ResourseTag) {
     this.ALL_RESOURSES.push(...Object.values({ ...lineage }).map<ResourseResponse>((race) => {
       const returnResourse: ResourseVo["resourse"][number] = [
-        Buffer.from(race as HumanLineage | YokaiLineage | ElvesLineage),
+        Buffer.from(race as Lineages),
         ResourseType.Lineage,
         undefined,
         [tag]
@@ -45,10 +46,10 @@ export class LineagesService {
   /**
    * Determines whether the given lineage belongs to the given race.
    * @param {Race} race The race to check.
-   * @param {HumanLineage | YokaiLineage | ElvesLineage} lineage The lineage to check.
+   * @param {Lineages} lineage The lineage to check.
    * @returns {boolean} True if the lineage belongs to the race, False otherwise.
    */
-  public isLineageBelongToRace(race: Race, lineage: HumanLineage | YokaiLineage | ElvesLineage): boolean {
+  public isLineageBelongToRace(race: Race, lineage: Lineages): boolean {
     switch (race) {
       case Race.Human:
         return Object.values(HumanLineage).includes(lineage as HumanLineage);

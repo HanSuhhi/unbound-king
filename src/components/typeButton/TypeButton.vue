@@ -48,8 +48,8 @@ const buttonDynamicClassList = computed(() => [`type-button_${color}`]);
 
   .type-button[plain] {
     background-image: none;
-    border: none;
 
+    /* border: none; */
   }
 
 }

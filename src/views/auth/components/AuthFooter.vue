@@ -5,8 +5,8 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div class="login-footer pseudo line_x_before_right">
-    <p class="p-reset login-footer_word">
+  <div class="auth-footer pseudo line_x_before_right">
+    <p class="p-reset auth-footer_word">
       "Of all the things that torture men, beyond question hope is the worst."
       <br><br>"Rights are never granted; they are fought for."
       <br><br>"Rights are never granted; they are fought for."
@@ -19,7 +19,7 @@ const { t } = useI18n();
 
 <style scoped>
 @layer component {
-  .login-footer {
+  .auth-footer {
     position: relative;
 
     display: flex;
@@ -32,7 +32,7 @@ const { t } = useI18n();
     padding-top: calc(var(--normal) * 1.4);
   }
 
-  .login-footer_word {
+  .auth-footer_word {
     overflow: hidden;
     /* stylelint-disable-next-line value-no-vendor-prefix */
     display: -webkit-box;
@@ -47,5 +47,5 @@ const { t } = useI18n();
 </style>
 
 <style scoped>
-@import url("../styles/login-footer.css") layer(component);
+@import url("../styles/auth-footer.css") layer(component);
 </style>

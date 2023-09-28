@@ -1,7 +1,7 @@
 import type { Ref } from "vue";
 import { inject } from "vue";
 import type { FormInst } from "naive-ui";
-import { LoginFormInstSymbol, LoginFormSymbol, RememberEmailSymbol } from "../login.symbol";
+import { LoginFormInstSymbol, LoginFormSymbol, RememberEmailSymbol } from "../auth.symbol";
 
 export function getLoginForm(): Ref {
   return inject(LoginFormSymbol)!;

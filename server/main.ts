@@ -30,9 +30,7 @@ async function bootstrap() {
   });
 
   return bindSwageerModule(app)
-    .useGlobalPipes(new ValidationPipe({
-      transform: true
-    }))
+    .useGlobalPipes(new ValidationPipe({ transform: true }))
     .useGlobalGuards()
     .useGlobalInterceptors(new ResponseDataInterceptor())
     .useGlobalFilters(new NotFoundExceptionFilter());

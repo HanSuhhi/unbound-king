@@ -4,6 +4,7 @@ import { Profession } from "@/modules/professions/enums/profession.enum";
 import { Trait } from "@/modules/traits/enums/trait.enum";
 import { Race } from "@/modules/races/enums/race.enum";
 import { ElvesLineage, HumanLineage, YokaiLineage } from "@/modules/lineages/enums/lineages.enum";
+import { Lineages } from "@/modules/lineages/lineage-type";
 
 export class RegistCharacterVo {
   @ApiProperty({
@@ -51,5 +52,5 @@ export class RegistCharacterVo {
     enum: { ...HumanLineage, ...YokaiLineage, ...ElvesLineage },
     default: HumanLineage.ForestNative
   })
-  readonly lineage: HumanLineage | YokaiLineage | ElvesLineage;
+  readonly lineage: Lineages;
 }

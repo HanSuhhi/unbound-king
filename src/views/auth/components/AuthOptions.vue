@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="login-footer_options">
+  <div class="auth-footer_options">
     <a href="">blog</a>
     <a href="">contributor</a>
     <a href="">help</a>
@@ -12,7 +12,7 @@
 
 <style scoped>
 @layer component {
-  .login-footer_options {
+  .auth-footer_options {
     position: relative;
     display: flex;
     justify-content: space-around;

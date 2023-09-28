@@ -26,11 +26,6 @@ import { GenderModule } from "./modules/gender/gender.module";
 import { RacesModule } from "./modules/races/races.module";
 import { LineagesModule } from "./modules/lineages/lineages.module";
 
-// const KEY_NAME = "X509-cert-4832011663019173027.pem";
-// const PEM = resolveDistPath("certs", KEY_NAME);
-// const MONGO_CLOUD_URL = "mongodb+srv://framland.6xyspdc.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority";
-// const MONGO_CLOUD_URL = "mongodb://localhost/test";
-
 @Module({
   imports: [
     ConfigModule.forRoot({

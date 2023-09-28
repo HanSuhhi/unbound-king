@@ -1,12 +1,15 @@
 <script setup lang='ts'>
 import { NFormItem } from "naive-ui";
-import { i18nLangModel } from "../../../../../../composables/i18n/index";
+import type { Ref } from "vue";
+import { inject } from "vue";
 import { useRegistCharacterForms } from "../composables/form-events";
+import { RegistCharacterFormValue } from "../regist-character.symbol";
+import { i18nLangModel } from "#/composables/i18n/index";
 import type { ResponseType_PostRegist } from "@/api/services/character";
 import TypeButton from "@/components/typeButton/TypeButton.vue";
 import { useStateStore } from "@/stores/state.store";
 
-const formValue = defineModel<ResponseType_PostRegist>();
+const formValue = inject<Ref<ResponseType_PostRegist>>(RegistCharacterFormValue)!;
 const { randomCharacter, confirmCharacter } = useRegistCharacterForms(formValue);
 const { stateToStartGame } = useStateStore();
 </script>

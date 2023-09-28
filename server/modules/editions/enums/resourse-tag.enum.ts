@@ -1,5 +1,5 @@
-import { HumanLineage } from "@/modules/lineages/enums/lineages.enum";
-import { Race } from "@/modules/races/enums/race.enum";
+import { Race } from "#/server/modules/races/enums/race.enum";
+import { HumanLineage } from "#/server/modules/lineages/enums/lineages.enum";
 
 export enum ResourseTag {
   Init = "TmzOWFqWinol",

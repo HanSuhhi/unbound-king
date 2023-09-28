@@ -1,10 +1,10 @@
-.login-footer::before {
+.auth-footer::before {
   top: 0;
   right: calc(-1 * var(--login-right));
   width: 160%;
 }
 
-.login-footer::after {
+.auth-footer::after {
   top: 0;
   left: calc(-1 * var(--padding-left) * .5 + 50% - 43% / 2);
 

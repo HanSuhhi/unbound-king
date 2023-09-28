@@ -6,17 +6,17 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <h2 class="h-reset login_title" :data-suffix="t(i18nLangModel.auth.loginTitleSuffix)">
+  <h2 class="h-reset auth_title" :data-suffix="t(i18nLangModel.auth.loginTitleSuffix)">
     {{ t(i18nLangModel.auth.title) }}
   </h2>
-  <p class="p-reset pseudo login_subtitle line_x_before_all">
+  <p class="p-reset pseudo auth_subtitle line_x_before_all">
     {{ t(i18nLangModel.auth.subtitle) }}
   </p>
 </template>
 
 <style scoped>
 @layer component {
-  .login_title {
+  .auth_title {
     --right-space: 4rem;
 
     position: relative;
@@ -25,7 +25,7 @@ const { t } = useI18n();
     text-align: right;
   }
 
-  .login_subtitle {
+  .auth_subtitle {
     position: relative;
 
     width: 100%;
@@ -40,6 +40,6 @@ const { t } = useI18n();
 </style>
 
 <style scoped>
-@import url("../styles/login-title.css") layer(component);
-@import url("../styles/login-subtitle.css") layer(component);
+@import url("../styles/auth-title.css") layer(component);
+@import url("../styles/auth-subtitle.css") layer(component);
 </style>

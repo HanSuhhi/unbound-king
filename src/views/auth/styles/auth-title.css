@@ -1,5 +1,4 @@
-
-.login_title::after {
+.auth_title::after {
   content: attr(data-suffix);
 
   position: absolute;

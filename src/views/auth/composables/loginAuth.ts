@@ -5,7 +5,7 @@ import { computed, provide, ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import type { Router } from "vue-router";
 import { useRouter } from "vue-router";
-import { RememberEmailSymbol } from "../login.symbol";
+import { RememberEmailSymbol } from "../auth.symbol";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
 import { postLoginWithEmail } from "@/api/services/auth";
 import { useGlobalDialog } from "@/composables/components/globalDialog";

@@ -4,7 +4,7 @@ import type { RouteRecordRaw } from "vue-router";
 import { createMemoryHistory, createRouter, createWebHistory } from "vue-router";
 import { ROUTER_DEFAULT_PAGE } from "../constant/env";
 import { Prefix } from "#/composables/constant/url";
-import Auth from "@/views/login/Login.vue";
+import Auth from "@/views/auth/Auth.vue";
 import Garden from "@/views/garden/Garden.vue";
 import Arcade from "@/views/arcade/Arcade.vue";
 import { Role } from "#/composables/enum/role.enum";

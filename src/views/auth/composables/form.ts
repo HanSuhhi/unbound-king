@@ -1,6 +1,6 @@
 import type { FormInst, FormItemRule } from "naive-ui";
 import { provide, ref } from "vue";
-import { LoginFormInstSymbol, LoginFormSymbol } from "../login.symbol";
+import { LoginFormInstSymbol, LoginFormSymbol } from "../auth.symbol";
 import { verifyEmail } from "#/composables/tools/vertivication";
 import { i18n } from "@/locals";
 import { i18nLangModel } from "#/composables/i18n";

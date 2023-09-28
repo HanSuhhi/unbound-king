@@ -5,6 +5,7 @@ import type { UserTokenMessage } from "../auth/auth-type";
 import { CharactersService } from "./characters.service";
 import { RegistCharacterDto } from "./dtos/reigst-character.dto";
 import { RegistCharacterVo } from "./vos/regist-character.vo";
+import { RegistCharacterListVo } from "./vos/regist-character-list.vo";
 
 @ApiTags("Character")
 @Controller("character")
@@ -32,12 +33,11 @@ export class CharactersController {
   @Get("list")
   @ApiCreatedResponse({
     description: "Obtain client version information and update it",
-    isArray: true,
-    type: RegistCharacterVo
+    type: RegistCharacterListVo
   })
   public async list(
     @Req() request: Request & { user: UserTokenMessage }
-  ): Promise<RegistCharacterVo[]> {
+  ): Promise<RegistCharacterListVo> {
     return this.charactersService.queryUserCharacters(request.user.id);
   }
 }

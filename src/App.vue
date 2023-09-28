@@ -81,5 +81,15 @@ bindNaiveUILayer();
     transition: all var(--transition-prop);
     transition-property: transform, opacity;
   }
+
+  .n-config-provider {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .n-config-provider > *:last-child {
+    flex: 1;
+  }
 }
 </style>

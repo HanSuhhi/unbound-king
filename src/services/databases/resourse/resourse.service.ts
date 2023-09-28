@@ -1,6 +1,5 @@
 import type { Resourse } from "./resourse.table";
 import { useGenderResourse } from "./composables/gender";
-import { useProfessionResourse } from "./composables/profession";
 import { useTraitResourse } from "./composables/trait";
 import { useRaceResourse } from "./composables/race";
 import { useLineageResourse } from "./composables/lineage";
@@ -47,7 +46,6 @@ function useVersion1() {
 
   return {
     ...useGenderResourse(model),
-    ...useProfessionResourse(model),
     ...useTraitResourse(model),
     ...useRaceResourse(model),
     ...useLineageResourse(model),

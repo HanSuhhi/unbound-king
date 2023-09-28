@@ -14,7 +14,8 @@ export const EN_RegistCharacter = {
   confirm_text: "Are you sure you want to create this role?",
   duplicate_name: "Duplicate name with another character",
   character_limit: "Reached character limit",
-  lineage_race_conflict: "Lineage and Race conflict"
+  lineage_race_conflict: "Lineage and Race conflict",
+  get_trait: "Get"
 };
 
 export const CN_RegistCharacter: Record<keyof typeof EN_RegistCharacter, string> = {
@@ -33,5 +34,6 @@ export const CN_RegistCharacter: Record<keyof typeof EN_RegistCharacter, string>
   confirm_text: "是否确认创建该角色？",
   duplicate_name: "重复的角色姓名",
   character_limit: "达到注册角色上限",
-  lineage_race_conflict: "不属于种族的血统"
+  lineage_race_conflict: "不属于种族的血统",
+  get_trait: "获取"
 };

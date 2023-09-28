@@ -8,8 +8,8 @@ import UserHistoryItem from "./UserHistoryItem.vue";
 import { useUserService } from "@/services/databases/user/user.service";
 import { useIf } from "#/composables/run/if";
 import type { User } from "@/services/databases/user/user.table";
-import { getLoginForm, getRememberEmail } from "@/views/login/composables/getters";
-import { loginSuccess } from "@/views/login/composables/loginAuth";
+import { getLoginForm, getRememberEmail } from "@/views/auth/composables/getters";
+import { loginSuccess } from "@/views/auth/composables/loginAuth";
 import { i18nLangModel } from "#/composables/i18n";
 import { useAuthStore } from "@/stores/auth.store";
 
