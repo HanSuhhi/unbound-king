@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationProvider, dateZhCN, zhCN } from "naive-ui";
+import { onMounted } from "vue";
+import { Prefix } from "../composables/constant/url";
 import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
 import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
@@ -9,6 +11,13 @@ import { dialogMessage } from "@/composables/components/globalDialog";
 import Noise from "@/components/effects/BackgroundNoise.vue";
 
 const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
+
+onMounted(() => {
+  const currentURL = window.location.href;
+
+  if (!currentURL.endsWith(Prefix.Client_Auth))
+    window.location.href = `${window.location.origin}/${Prefix.Client}/${Prefix.Client_Auth}`;
+});
 
 provideStaticStyleVariables();
 useCorsor();

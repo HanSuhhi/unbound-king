@@ -28,11 +28,17 @@ const useStateStore = defineStore("state", () => {
     GAME_STATE.value = GameState.RegistCharacter;
   });
 
+  const stateToMainGame = defineLoadingbarFn(async () => {
+    STATE.value = State.Game;
+    GAME_STATE.value = GameState.MainGame;
+  });
+
   return {
     STATE,
     GAME_STATE,
     stateToStartGame,
-    stateToRegistCharacter
+    stateToRegistCharacter,
+    stateToMainGame
   };
 });
 export { useStateStore };

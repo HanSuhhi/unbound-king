@@ -1,4 +1,5 @@
 export enum Keyboard {
   d = "d",
-  r = "r"
+  r = "r",
+  enter = "enter"
 }

@@ -1,5 +1,6 @@
 export enum Prefix {
   Client = "unbound-king",
+  Client_Auth = "auth",
   Client_Dev = "garden",
   Client_Dev_Default = "base-icon",
   Client_Game = "arcade",

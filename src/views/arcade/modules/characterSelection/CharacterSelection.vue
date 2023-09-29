@@ -1,14 +1,15 @@
 <script setup lang='ts'>
-import { key_delete_character, key_regist_character } from "./composables/character";
+import { key_decide_character, key_delete_character, key_regist_character } from "./composables/character";
 import CharacterList from "./components/CharacterList.vue";
 import { useCharacterList } from "./composables/form";
 import KeyEventButton from "@/components/typeButton/KeyEventButton.vue";
 
-const { list, index, choosedCharacterId } = useCharacterList();
+const { list, index, choosedCharacterId, getList } = useCharacterList();
 
 const events = [
   key_regist_character(),
-  key_delete_character(choosedCharacterId)
+  key_delete_character(choosedCharacterId, getList, index),
+  key_decide_character()
 ];
 </script>
 
