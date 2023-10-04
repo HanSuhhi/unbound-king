@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
-import { Role } from "#/composables/enum/role.enum";
+import { Role } from "#/server/modules/roles/enum/role.enum";
 import { Prefix } from "#/composables/constant/url";
 
 const useAuthStore = defineStore("auth", () => {

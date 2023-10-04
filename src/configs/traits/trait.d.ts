@@ -1,0 +1,1 @@
+type Trait = import("@/configs/traits/trait.enum").Trait

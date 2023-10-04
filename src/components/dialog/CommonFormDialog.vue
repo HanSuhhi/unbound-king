@@ -77,3 +77,4 @@ function getUpdateData(_model: any, _Form: FormInst) {
   margin-right: var(--base-margin);
 }
 </style>
+@/composables/components/form/validateForm

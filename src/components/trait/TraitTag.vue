@@ -2,9 +2,8 @@
 import { useI18n } from "vue-i18n";
 import { NPopover } from "naive-ui";
 import { i18nLangModel } from "../../../composables/i18n/index";
-import { Trait } from "#/server/modules/traits/enums/trait.enum";
 
-const { tagName = "" } = defineProps<{
+const { tagName } = defineProps<{
   tagName: Trait
 }>();
 const { t } = useI18n();

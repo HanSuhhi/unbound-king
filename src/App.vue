@@ -3,7 +3,7 @@ import { NConfigProvider, NLoadingBarProvider, NMessageProvider, NNotificationPr
 import { onMounted } from "vue";
 import { Prefix } from "../composables/constant/url";
 import GlobalDialog from "./components/dialog/global/GlobalDialog.vue";
-import { bindNaiveUILayer, defineNaiveTheme } from "./composables/theme/naiveTheme";
+import { bindNaiveUILayer, defineNaiveTheme } from "./composables/experience/theme/naiveTheme";
 import { useCorsor } from "./composables/experience/cursor";
 import { provideStaticStyleVariables } from "./composables/constant/transitionDuration";
 import GlobalHeader from "./components/app/global-header/GlobalHeader";
@@ -15,8 +15,8 @@ const { darkTheme, darkThemeOverrides } = defineNaiveTheme();
 onMounted(() => {
   const currentURL = window.location.href;
 
-  if (!currentURL.endsWith(Prefix.Client_Auth))
-    window.location.href = `${window.location.origin}/${Prefix.Client}/${Prefix.Client_Auth}`;
+  if (!currentURL.endsWith(Prefix.Client_Game))
+    window.location.href = `${window.location.origin}/${Prefix.Client}/${Prefix.Client_Game}`;
 });
 
 provideStaticStyleVariables();
@@ -102,3 +102,4 @@ bindNaiveUILayer();
   }
 }
 </style>
+./composables/experience/theme/naiveTheme

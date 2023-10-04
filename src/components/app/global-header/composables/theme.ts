@@ -1,6 +1,6 @@
 import { useDark, useToggle } from "@vueuse/core";
-import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
-import { defineKeyEvent } from "@/composables/key/keyEvent";
+import { mountKeyCommand } from "@/composables/experience/key/mountKeyCommand";
+import { defineKeyEvent } from "@/composables/experience/key/keyEvent";
 
 export function useTheme(enterKeyEvent: KeyEventWithoutFn) {
   const isDark = useDark();

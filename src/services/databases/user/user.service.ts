@@ -2,7 +2,7 @@ import type { ResponseType_PatchUserNicknameByEmail } from "../../../api/service
 import type { User } from "./user.table";
 import { Boolean, defineServiceExportFunction, useServiceModel } from "@/services/serviceModel";
 import type { ResponseType_PostLoginWithEmail } from "@/api/services/auth";
-import type { Role } from "#/composables/enum/role.enum";
+import type { Role } from "#/server/modules/roles/enum/role.enum";
 import { findError } from "@/composables/experience/error";
 import { i18nLangModel } from "#/composables/i18n";
 

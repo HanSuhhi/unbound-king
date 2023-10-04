@@ -3,7 +3,7 @@ import { storeToRefs } from "pinia";
 import type { Ref } from "vue";
 import { nextTick } from "vue";
 import { useKeyStore } from "@/stores/key.store";
-import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
+import { mountKeyCommand } from "@/composables/experience/key/mountKeyCommand";
 import { i18nLangModel } from "#/composables/i18n/index";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import { TRANSITION_DURATION } from "@/composables/constant/env";

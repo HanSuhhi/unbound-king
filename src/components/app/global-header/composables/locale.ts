@@ -4,8 +4,8 @@ import { delay, map } from "lodash";
 import { useI18n } from "vue-i18n";
 import type { SelectOption } from "naive-ui";
 import { TRANSITION_DURATION } from "../../../../composables/constant/env";
-import { definePressed } from "@/composables/key/keyEvent";
-import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
+import { definePressed } from "@/composables/experience/key/keyEvent";
+import { createAutoMountEvent } from "@/composables/experience/key/mountKeyCommand";
 
 export type I18nOption = SelectOption & { hotkey: string };
 

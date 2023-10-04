@@ -15,15 +15,11 @@ import { useIf } from "#/composables/run/if";
 import { useUserService } from "@/services/databases/user/user.service";
 import { useAuthStore } from "@/stores/auth.store";
 import { useStateStore } from "@/stores/state.store";
-import { useEditionService } from "@/services/databases/edition/edition.service";
 import { Prefix } from "#/composables/constant/url";
-import { ResourseTag } from "#/server/modules/editions/enums/resourse-tag.enum";
-import { useResourseEdition } from "@/composables/store/resourse";
 
 export async function loginSuccess(userEmail: string, { access_token: userToken, roles: userRoles, nickname: userNickname }: ResponseType_PostLoginWithEmail, { replace }: Router) {
   const { token, roles, email, nickname } = storeToRefs(useAuthStore());
   const { stateToStartGame } = useStateStore();
-  const { getInitEditionVersion } = useEditionService();
 
   token.value = userToken!;
   roles.value = userRoles!;
@@ -33,10 +29,6 @@ export async function loginSuccess(userEmail: string, { access_token: userToken,
   // 1. change the state
   stateToStartGame();
 
-  // 2. check the edition
-  const initEditionVersion = await getInitEditionVersion();
-  const { storeEditionAndResources } = useResourseEdition(ResourseTag.Init, initEditionVersion?.edition);
-  await storeEditionAndResources();
   // 3. toggle the route
   replace({ name: Prefix.Client_Game });
 }

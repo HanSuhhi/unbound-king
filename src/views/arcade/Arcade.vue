@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 import { parseImportModule } from "../../composables/ci/importModule";
 import { useStateStore } from "@/stores/state.store";
 import { GameState } from "@/enums/state.enum";
@@ -7,6 +8,9 @@ import { GameState } from "@/enums/state.enum";
 const modules = (parseImportModule(import.meta.glob("./**/*.vue", { eager: true }), true));
 
 const { GAME_STATE } = storeToRefs(useStateStore());
+const { stateToStartGame } = useStateStore();
+
+onMounted(stateToStartGame);
 </script>
 
 <template>

@@ -8,7 +8,7 @@ import ScreenController from "./mainModules/ScreenController.vue";
 import BasePreference from "./mainModules/BasePreference.vue";
 import Explanation from "@/components/experience/Explanation.vue";
 import KbdEvent from "@/components/KeyEvent.vue";
-import { defineKeyEventWithoutFn } from "@/composables/key/keyEvent";
+import { defineKeyEventWithoutFn } from "@/composables/experience/key/keyEvent";
 import { i18nLangModel } from "#/composables/i18n/index";
 import UserHistory from "@/components/userHistory/UserHistory.vue";
 import { useUserHistory } from "@/components/userHistory/history";

@@ -5,7 +5,7 @@ import { useRouter } from "vue-router";
 import { useMessage } from "naive-ui";
 import { useI18n } from "vue-i18n";
 import { useGlobalDialog } from "@/composables/components/globalDialog";
-import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
+import { createAutoMountEvent } from "@/composables/experience/key/mountKeyCommand";
 import { useKeyStore } from "@/stores/key.store";
 import { i18nLangModel } from "#/composables/i18n";
 import { useAuthStore } from "@/stores/auth.store";

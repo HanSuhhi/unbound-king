@@ -11,7 +11,7 @@ function readFilePathFromSheet({ name, data }: ReturnType<typeof xlsx["parse"]>[
 
   const filename = suffixName ? `${kebabCase(suffixName)}.${prefixName}` : `${prefixName}`;
 
-  const filePath = resolve(__dirname, "..", "server", "modules", fileModuleName, `${suffixName ? prefixName : "config"}s`, `${(filename)}.ts`);
+  const filePath = resolve(__dirname, "..", "src", "configs", fileModuleName, `${(filename)}.ts`);
   return [filePath, fileModuleName, prefixName, suffixName];
 }
 

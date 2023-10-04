@@ -34,6 +34,11 @@ const { t } = useI18n();
     font-size: var(--font-title);
     color: var(--gray-bright-1);
     text-align: right;
+
+  }
+
+  .auth_subtitle::before {
+    width: 100%;
   }
 
 }

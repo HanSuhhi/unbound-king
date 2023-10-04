@@ -26,6 +26,7 @@
   "include": [
     "server/*.ts",
     "server/**/*.ts",
+    "src/**/*.enum.ts",
     "composables/constant/interceptor.ts"
   ]
 }

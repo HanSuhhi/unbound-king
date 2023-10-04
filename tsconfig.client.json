@@ -21,13 +21,15 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.service.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "server/**/*.enum.ts",
+    "src/**/*.json",
+    // "server/**/*.enum.ts",
     "*/entry-server.ts",
     "entry-server.ts",
     "composables",
     "scripts"
-  ]
+    ]
 }

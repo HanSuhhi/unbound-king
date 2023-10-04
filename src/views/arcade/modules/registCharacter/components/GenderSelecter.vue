@@ -1,14 +1,13 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
 import { NFormItem, NSelect } from "naive-ui";
-import { useGenderOptions } from "../composables/genderOption";
+import { useRegistCharacterGenderOptions } from "../composables/gender-option";
 import { i18nLangModel } from "#/composables/i18n";
-import type { ResponseType_PostRegist } from "@/api/services/character";
 
 const { t, locale } = useI18n();
-const genderRef = defineModel<ResponseType_PostRegist["gender"]>();
+const genderRef = defineModel<Gender>();
 
-const { genderOptions } = await useGenderOptions(locale, t);
+const { genderOptions } = await useRegistCharacterGenderOptions(locale, t);
 </script>
 
 <template>
@@ -16,3 +15,4 @@ const { genderOptions } = await useGenderOptions(locale, t);
     <n-select v-model:value="genderRef" :options="genderOptions" />
   </n-form-item>
 </template>
+../composables/gender-option

@@ -5,14 +5,15 @@ import type { RouteLocationNormalized } from "vue-router";
 import { useRoute, useRouter } from "vue-router";
 import { onMounted } from "vue";
 import { delay } from "lodash";
-import { ROUTER_DEFAULT_PAGE, TRANSITION_DURATION } from "../constant/env";
+import { TRANSITION_DURATION } from "../constant/env";
 import { findError } from "./error";
-import type { Role } from "#/composables/enum/role.enum";
+import type { Role } from "#/server/modules/roles/enum/role.enum";
 import { useAuthStore } from "@/stores/auth.store";
 import { i18nLangModel } from "#/composables/i18n";
 import { useDevStore } from "@/stores/dev.store";
 import { useStateStore } from "@/stores/state.store";
 import { State } from "@/enums/state.enum";
+import { Prefix } from "#/composables/constant/url";
 
 function useRouterBefore() {
   const loadingBar = useLoadingBar();
@@ -43,7 +44,7 @@ function useRouterBefore() {
     }
     catch (error) {
       setTimeout(() => {
-        router.replace({ name: ROUTER_DEFAULT_PAGE });
+        router.replace({ name: Prefix.Client_Game });
       }, 250);
     }
   });

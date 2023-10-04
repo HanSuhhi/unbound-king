@@ -16,15 +16,6 @@ import { AuthGuard } from "./modules/auth/guards/auth.guard";
 import { RolesGuard } from "./modules/roles/roles.guard";
 import { CaslModule } from "./modules/casl/casl.module";
 import { TrpcModule } from "./trpc/trpc.module";
-import { AssetsModule } from "./modules/assets/assets.module";
-import { EditionsModule } from "./modules/editions/editions.module";
-import { AttributeModule } from "./modules/attributes/attribute.module";
-import { ProfessionsModule } from "./modules/professions/professions.module";
-import { TraitsModule } from "./modules/traits/traits.module";
-import { CharactersModule } from "./modules/characters/characters.module";
-import { GenderModule } from "./modules/gender/gender.module";
-import { RacesModule } from "./modules/races/races.module";
-import { LineagesModule } from "./modules/lineages/lineages.module";
 
 @Module({
   imports: [
@@ -47,16 +38,7 @@ import { LineagesModule } from "./modules/lineages/lineages.module";
     MailsModule,
     RouterModule.register(defineRouterModulePaths()),
     CaslModule,
-    TrpcModule,
-    AssetsModule,
-    EditionsModule,
-    AttributeModule,
-    ProfessionsModule,
-    TraitsModule,
-    CharactersModule,
-    GenderModule,
-    RacesModule,
-    LineagesModule
+    TrpcModule
   ],
   controllers: [AppController],
   providers: [

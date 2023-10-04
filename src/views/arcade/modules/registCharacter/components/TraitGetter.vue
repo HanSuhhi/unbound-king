@@ -2,14 +2,12 @@
 import { useI18n } from "vue-i18n";
 import { NFormItem } from "naive-ui";
 import { useTraitOption } from "../composables/trait-option";
-import { Trait } from "#/server/modules/traits/enums/trait.enum";
-import type { ResponseType_PostRegist } from "@/api/services/character";
 import TypeButton from "@/components/typeButton/TypeButton.vue";
 import { i18nLangModel } from "#/composables/i18n/index";
 import TraitTag from "@/components/trait/TraitTag.vue";
 
 const { t } = useI18n();
-const traitRef = defineModel<ResponseType_PostRegist["traits"]>();
+const traitRef = defineModel<Character["traits"]>();
 const { getTraits } = useTraitOption();
 
 async function randomTraits() {
@@ -20,7 +18,7 @@ async function randomTraits() {
 <template>
   <n-form-item :label="t(i18nLangModel.arcade.regist_character.traits)" path="race">
     <div class="trait-tags">
-      <trait-tag v-for="tag of traitRef" :key="tag" :tag-name="tag as Trait" />
+      <trait-tag v-for="tag of traitRef" :key="tag" :tag-name="tag" />
     </div>
     <type-button v-t="i18nLangModel.arcade.regist_character.get_trait" plain @click="randomTraits" />
   </n-form-item>

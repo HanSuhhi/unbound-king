@@ -1,4 +1,4 @@
-import { defineKeyEvent } from "../../../../composables/key/keyEvent";
+import { defineKeyEvent } from "../../../../composables/experience/key/keyEvent";
 import { useKeyStore } from "@/stores/key.store";
 import { debouncedRef } from "@/composables/plus/ref";
 

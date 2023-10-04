@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { useTheme } from "../../composables/theme";
 import type { ModuleProp } from "./module-type";
-import { loadBothCss } from "@/composables/theme/globalTheme";
+import { loadBothCss } from "@/composables/experience/theme/globalTheme";
 
 const { enterKeyEvent } = defineProps<ModuleProp>();
 

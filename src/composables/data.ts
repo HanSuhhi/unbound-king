@@ -1,5 +1,5 @@
 import { isMap, isObject } from "lodash";
-import { DATA_Ages, DATA_Genders } from "../modules/character/enums/character.enum";
+import { DATA_Ages, DATA_Genders } from "../modules/character/enums/character.enuma";
 import { DATA_Ambitions } from "../modules/ambitionDesign/data/index";
 import { DATA_AttributeValues } from "../modules/attributeValue/data/index";
 import { DATA_Buffs } from "../modules/buff/data/index";
@@ -9,12 +9,12 @@ import { DATA_Lineageo } from "../modules/lineageoDesign/data/index";
 import { DATA_FamilyNames, DATA_FirstNames } from "../modules/nameDesign/data/name.data";
 import { DATA_Personalities } from "../modules/personalityDesign/data";
 import { DATA_Traits } from "../modules/traitDesign/data/index";
-import { DATA_Chases } from "@/modules/character/enums/character.enum";
+import { DATA_Chases } from "@/modules/character/enums/character.enuma";
 
 export interface IDATA {
-  Genders: typeof import("../modules/character/enums/character.enum").DATA_Genders
-  Ages: typeof import("../modules/character/enums/character.enum").DATA_Ages
-  Chases: typeof import("../modules/character/enums/character.enum").DATA_Chases
+  Genders: typeof import("../modules/character/enums/character.enuma").DATA_Genders
+  Ages: typeof import("../modules/character/enums/character.enuma").DATA_Ages
+  Chases: typeof import("../modules/character/enums/character.enuma").DATA_Chases
   AttributeValues: typeof import("../modules/attributeValue/data/index").DATA_AttributeValues
   FamilyNames: typeof import("../modules/nameDesign/data/name.data").DATA_FamilyNames
   FirstNames: typeof import("../modules/nameDesign/data/name.data").DATA_FirstNames

@@ -36,7 +36,6 @@ export default defineConfig(({ mode }) => {
     },
     envPrefix: [
       "PROJECT_NAME",
-      "ROUTER_DEFAULT_PAGE",
       "I18N_DEFAULT_LANG",
       "STYLE_ASIDE_WIDTH",
       "STYLE_ASIDE_MODULES_WIDTH",

@@ -1,4 +1,4 @@
-import { Gender } from "#/server/modules/gender/enums/gender.enum";
+import { Gender } from "#/src/configs/gender/gender.enum";
 
 export const EN_Gender = {
   [Gender.Male]: "male",

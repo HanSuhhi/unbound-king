@@ -4,18 +4,19 @@ import CharacterList from "./components/CharacterList.vue";
 import { useCharacterList } from "./composables/form";
 import KeyEventButton from "@/components/typeButton/KeyEventButton.vue";
 
-const { list, index, choosedCharacterId, getList } = useCharacterList();
+const characterListInst = await useCharacterList();
+const { index, list } = characterListInst;
 
 const events = [
   key_regist_character(),
-  key_delete_character(choosedCharacterId, getList, index),
+  key_delete_character(characterListInst),
   key_decide_character()
 ];
 </script>
 
 <template>
   <article class="character-selection">
-    <character-list v-model="index" :list="list?.data.list" class="character-selection_main" />
+    <character-list v-model="index" :list="list" class="character-selection_main" />
     <section class="character-selection_operator">
       <template v-for="key_event, eventIndex of events!" :key="eventIndex">
         <key-event-button :key-event="key_event!" />

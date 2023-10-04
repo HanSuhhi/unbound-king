@@ -1,13 +1,12 @@
 <script setup lang='ts'>
 import { useI18n } from "vue-i18n";
 import { NFormItem, NSelect } from "naive-ui";
-import { useRaceOptions } from "../composables/raceOption";
+import { useRegistCharacterRaceOptions } from "../composables/race-option";
 import { i18nLangModel } from "#/composables/i18n/index";
-import type { ResponseType_PostRegist } from "@/api/services/character";
 
 const { t, locale } = useI18n();
-const raceRef = defineModel<ResponseType_PostRegist["race"]>();
-const { raceOptions } = await useRaceOptions(locale, t);
+const raceRef = defineModel<Race>();
+const { raceOptions } = await useRegistCharacterRaceOptions(locale, t);
 </script>
 
 <template>

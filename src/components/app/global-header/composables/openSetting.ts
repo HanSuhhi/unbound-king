@@ -1,7 +1,7 @@
 import { useRouter } from "vue-router";
 import type { Ref } from "vue";
-import { isFocusBody } from "@/composables/element/textFocus";
-import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
+import { isFocusBody } from "@/composables/components/textFocus";
+import { createAutoMountEvent } from "@/composables/experience/key/mountKeyCommand";
 import { i18nLangModel } from "#/composables/i18n";
 
 export function defineOpenSetting(popoverControl: Ref<boolean>) {

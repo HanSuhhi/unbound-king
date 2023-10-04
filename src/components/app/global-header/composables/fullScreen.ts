@@ -1,6 +1,6 @@
-import { mountKeyCommand } from "../../../../composables/key/mountKeyCommand";
+import { mountKeyCommand } from "../../../../composables/experience/key/mountKeyCommand";
 import type { ModuleProp } from "../components/mainModules/module-type";
-import { definePressed } from "@/composables/key/keyEvent";
+import { definePressed } from "@/composables/experience/key/keyEvent";
 import { toggleFullScreen } from "@/composables/experience/system";
 
 export function useFullScreen(enterKeyEvent: ModuleProp["enterKeyEvent"]) {

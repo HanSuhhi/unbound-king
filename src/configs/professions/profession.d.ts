@@ -1,0 +1,1 @@
+type Profession = import("./profession.enum").Profession

@@ -1,6 +1,6 @@
 import type { App as VueApp } from "vue";
 import { createPinia } from "pinia";
-import { useRouteConfig } from "./composables/router/router";
+import { useRouteConfig } from "./composables/ci/router";
 import Icon from "./components/Icon.vue";
 import TypeButton from "./components/typeButton/TypeButton.vue";
 import CTabs from "./components/ui/tabs";

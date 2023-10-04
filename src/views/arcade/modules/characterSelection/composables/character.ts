@@ -1,14 +1,11 @@
-import type { SendHandler } from "alova";
-import { useRequest } from "alova";
-import type { Ref } from "vue";
+import type { useCharacterList } from "./form";
 import { i18nLangModel } from "#/composables/i18n/index";
 import { useGlobalDialog } from "@/composables/components/globalDialog";
-import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
+import { mountKeyCommand } from "@/composables/experience/key/mountKeyCommand";
 import { Keyboard } from "@/enums/keyboard.enum";
 import { useStateStore } from "@/stores/state.store";
-import type { ResponseType_GetList } from "@/api/services/character";
-import { deleteCharacter } from "@/api/services/character";
-import type { ResponseOriginData } from "#/composables/types/api";
+import { useCharacterDb } from "@/services/databases/character/character.service";
+import { useFunctionListener } from "@/composables/plus/listener";
 
 export function key_regist_character() {
   const { stateToRegistCharacter } = useStateStore();
@@ -23,26 +20,24 @@ export function key_regist_character() {
   return mountKeyCommand(registCharacter);
 }
 
-export function key_delete_character(id: Ref<string>, getList: SendHandler<ResponseOriginData<ResponseType_GetList>>, index: Ref<number>) {
+export function key_delete_character({ list, index, choosedCharacterId }: Awaited<ReturnType<typeof useCharacterList>>) {
   const { warning } = useGlobalDialog();
+  const { queryUserCharacters, removeById } = useCharacterDb();
+  const { run: deleteCharacter, final } = useFunctionListener(() => removeById(choosedCharacterId.value));
 
-  const { send: deleteCharacterApi, onSuccess } = useRequest(() => deleteCharacter({
-    params: { id: id.value }
-  }), { immediate: false });
-  onSuccess(getList);
-  onSuccess(() => index.value = 0);
+  final(async () => list.value = await queryUserCharacters());
+  final(() => index.value = 0);
 
   const deleteCharacterEvent: KeyEvent = {
     key: Keyboard.d,
     translator: i18nLangModel.arcade.character_selection.remove_character,
     fn(isPressed) {
-      if (!isPressed) {
-        warning({
-          title: i18nLangModel.arcade.character_selection.remove_character,
-          text: i18nLangModel.arcade.character_selection.remove_confirm_text,
-          confirm: deleteCharacterApi
-        });
-      }
+      if (isPressed) return;
+      warning({
+        title: i18nLangModel.arcade.character_selection.remove_character,
+        text: i18nLangModel.arcade.character_selection.remove_confirm_text,
+        confirm: deleteCharacter
+      });
     }
   };
 

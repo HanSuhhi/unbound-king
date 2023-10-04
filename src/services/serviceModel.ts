@@ -9,25 +9,13 @@ const stores = db.version(dbVersion).stores(dbData);
 export function useServiceModel<T>(table: string) {
   const model = (db as any)[table] as Table<T>;
 
-  /**
-   * Add a new record async.
-   * Returns the added data.
-   *
-   * @param data The data to add
-   * @returns The added data
-   */
-  const add = async (data: T): Promise<T> => {
-    await model.add(data);
-    return data;
-  };
-
-  const addWithId = async (data: Omit<T, "id">): Promise<T> => {
+  const add = async (data: Omit<T, "id">): Promise<T> => {
     const id = Number(defineUniqueId());
     const modelData = {
       id,
       ...data
     } as T;
-    await model.add(modelData);
+    await model.bulkAdd([modelData]);
     return modelData;
   };
 
@@ -64,6 +52,10 @@ export function useServiceModel<T>(table: string) {
     return await model.update(index, data);
   };
 
+  const all = async () => await model.toArray();
+
+  const removeById = async (id: ITable["id"]) => await model.delete(id);
+
   return {
     isEmpty,
     add,
@@ -71,12 +63,13 @@ export function useServiceModel<T>(table: string) {
     update,
     model,
     stores,
-    addWithId
+    removeById,
+    all
   };
 }
 
 export function defineServiceExportFunction<T>(fn: T) {
-  if (import.meta.env.SSR) return () => { };
+  if (import.meta.env.SSR) return (() => { }) as T;
   return fn;
 }
 

@@ -9,7 +9,6 @@ declare module '*.vue' {
 
 
 interface ImportMetaEnv {
-  readonly ROUTER_DEFAULT_PAGE: string;
   readonly I18N_DEFAULT_LANG: string;
   readonly PROJECT_NAME: string;
   readonly STYLE_HEADER_HEIGHT: string;
@@ -57,9 +56,6 @@ type NotBeGenerated = { notBeGenerated: boolean };
 type NeedDescription = { description: string };
 type NeedIcon = { icon: Icon }
 
-type Gender = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Genders'];
-type Chase = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Chases'];
-type Age = keyof typeof import("@/modules/character/enums/character.enum")['DATA_Ages'];
 type Data = keyof typeof import("@/composables/data")["DATA"];
 
 interface ModuleArray<T> { default: Array<T> }

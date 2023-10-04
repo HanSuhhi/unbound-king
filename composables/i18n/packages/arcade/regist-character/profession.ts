@@ -1,4 +1,4 @@
-import { Profession } from "#/server/modules/professions/enums/profession.enum";
+import { Profession } from "#/src/configs/professions/profession.enum";
 
 export const EN_Profession = {
   [Profession.Farmer]: "farmer",

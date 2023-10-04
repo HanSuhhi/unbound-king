@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import SpecialInlineBlock from "./SpecialInlineBlock";
-import { parseMustacheString, parseMustacheString2 } from "@/composables/text/mustache";
+import { parseMustacheString, parseMustacheString2 } from "@/composables/util/string";
 
 const props = defineProps<{ text: string }>();
 const showText = computed(() => parseMustacheString(props.text));
@@ -29,3 +29,4 @@ const showText = computed(() => parseMustacheString(props.text));
   }
 }
 </style>
+@/composables/util/mustache

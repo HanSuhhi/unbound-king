@@ -1,7 +1,7 @@
 import { storeToRefs } from "pinia";
 import { dialogMessage } from "@/composables/components/globalDialog";
 import { i18nLangModel } from "#/composables/i18n/index";
-import { mountKeyCommand } from "@/composables/key/mountKeyCommand";
+import { mountKeyCommand } from "@/composables/experience/key/mountKeyCommand";
 import { useKeyStore } from "@/stores/key.store";
 
 export function key_confrim() {

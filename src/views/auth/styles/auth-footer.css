@@ -1,6 +1,6 @@
 .auth-footer::before {
   top: 0;
-  right: calc(-1 * var(--login-right));
+  right: calc(-1 * var(--auth-right));
   width: 160%;
 }
 

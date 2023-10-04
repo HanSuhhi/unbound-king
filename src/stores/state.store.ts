@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useLoadingBar } from "naive-ui";
 import { delay } from "lodash";
 import { GameState, State } from "@/enums/state.enum";
@@ -33,9 +33,12 @@ const useStateStore = defineStore("state", () => {
     GAME_STATE.value = GameState.MainGame;
   });
 
+  const isInMainGameState = computed(() => GameState.MainGame === GAME_STATE.value);
+
   return {
     STATE,
     GAME_STATE,
+    isInMainGameState,
     stateToStartGame,
     stateToRegistCharacter,
     stateToMainGame

@@ -1,7 +1,7 @@
 import { random } from "lodash";
 import type from "../types/number.generator.d.ts?raw";
-import { withFormDetail } from "../../../composables/form/formDetail";
-import { transformTypeToForm } from "@/composables/form/typeToForm";
+import { withFormDetail } from "../../../composables/components/form/formDetail";
+import { transformTypeToForm } from "@/composables/components/form/typeToForm";
 
 const numberGenerator: GeneratorFunc<number, NumberGeneratorProps> = (_, { min, max } = { min: 0, max: 0 }) => {
   return random(min!, max!);

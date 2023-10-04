@@ -1,9 +1,9 @@
 import { computed } from "vue";
 import typeString from "../destiny-data.d.ts?raw";
-import { colorFormConfig, iconFormConfig } from "../../../composables/form/formConfigs";
-import { hideFormConfig, translatorFormConfig } from "@/composables/form/formConfigs";
-import { withFormDetail } from "@/composables/form/formDetail";
-import { transformTypeToForm } from "@/composables/form/typeToForm";
+import { colorFormConfig, iconFormConfig } from "../../../composables/components/form/formConfigs";
+import { hideFormConfig, translatorFormConfig } from "@/composables/components/form/formConfigs";
+import { withFormDetail } from "@/composables/components/form/formDetail";
+import { transformTypeToForm } from "@/composables/components/form/typeToForm";
 
 export function useForm(destiny: Destiny) {
   const formConfig = computed(() => {

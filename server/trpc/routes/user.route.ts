@@ -4,7 +4,7 @@ import { Model } from "mongoose";
 import { z } from "zod";
 import { TrpcService } from "../trpc.service";
 import { User } from "@/modules/users/schemas/user.schemas";
-import { Role } from "#/composables/enum/role.enum";
+import { Role } from "#/server/modules/roles/enum/role.enum";
 
 @Injectable()
 export class UserRoute {

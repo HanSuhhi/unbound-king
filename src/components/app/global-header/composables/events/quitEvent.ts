@@ -3,8 +3,8 @@ import type { Ref } from "vue";
 import { defer } from "lodash";
 import { useGlobalDialog } from "../../../../../composables/components/globalDialog";
 import { useKeyStore } from "@/stores/key.store";
-import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
-import { isFocusBody } from "@/composables/element/textFocus";
+import { createAutoMountEvent } from "@/composables/experience/key/mountKeyCommand";
+import { isFocusBody } from "@/composables/components/textFocus";
 import { i18nLangModel } from "#/composables/i18n";
 
 export function defineQuitEvent(popoverControl: Ref<boolean>) {

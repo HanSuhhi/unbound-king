@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { NTooltip } from "naive-ui";
-import { explanationTooltipTheme } from "@/composables/theme/explanationTheme";
+import { explanationTooltipTheme } from "@/composables/experience/theme/explanationTheme";
 
 withDefaults(defineProps<{ placement?: "right" | "bottom" }>(), {
   placement: "bottom"

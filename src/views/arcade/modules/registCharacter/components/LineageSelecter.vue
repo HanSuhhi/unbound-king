@@ -2,19 +2,19 @@
 import { useI18n } from "vue-i18n";
 import { NFormItem, NSelect } from "naive-ui";
 import { computed } from "vue";
-import { useLineageOptions } from "../composables/lineageOption";
-import type { ResourseTag } from "#/server/modules/editions/enums/resourse-tag.enum";
+import { useRegistCharacterLineageOptions } from "../composables/lineage-option";
 import { i18nLangModel } from "#/composables/i18n/index";
-import type { ResponseType_PostRegist } from "@/api/services/character";
+import { useLineageService } from "@/composables/configs/lineage/lineage";
 
-const { race } = defineProps<{ race: ResponseType_PostRegist["race"] }>();
+const { race } = defineProps<{ race: Race }>();
 const { t, locale } = useI18n();
-const lineageRef = defineModel<ResponseType_PostRegist["lineage"]>();
-const { lineageOptions } = await useLineageOptions(locale, t);
+const lineageRef = defineModel<Lineages>();
+const { lineageOptions } = await useRegistCharacterLineageOptions(locale, t);
+const { getRaceFromLineage } = useLineageService();
 
 const showingLineageOptions = computed(() => {
-  return lineageOptions.value.filter(({ tags }: any) => {
-    return tags.includes(race as ResourseTag);
+  return lineageOptions.value.filter(({ value }) => {
+    return getRaceFromLineage(value as Lineages) === race;
   });
 });
 </script>
@@ -24,3 +24,4 @@ const showingLineageOptions = computed(() => {
     <n-select v-model:value="lineageRef" :options="showingLineageOptions" />
   </n-form-item>
 </template>
+../composables/lineage-option

@@ -1,4 +1,4 @@
-import { Trait } from "#/server/modules/traits/enums/trait.enum";
+import { Trait } from "#/src/configs/traits/trait.enum";
 
 export const EN_Trait = {
   title: {

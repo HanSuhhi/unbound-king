@@ -1,0 +1,8 @@
+.table-reset {
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  width: 100%;
+  margin: 0 auto;
+}

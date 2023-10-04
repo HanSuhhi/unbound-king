@@ -4,7 +4,7 @@ import { Reflector } from "@nestjs/core";
 import type { ExecutionContext } from "@nestjs/common";
 import { CaslAbilityFactory } from "../casl-ability.factory";
 import { PoliciesGuard } from "./policies.guard";
-import { Role } from "#/composables/enum/role.enum";
+import { Role } from "@/modules/roles/enum/role.enum";
 
 describe("PoliciesGuard", () => {
   let policiesGuard: PoliciesGuard;

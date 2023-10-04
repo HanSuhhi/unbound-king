@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Role } from "#/composables/enum/role.enum";
+import { Role } from "@/modules/roles/enum/role.enum";
 
 export class LoginVo {
   @ApiProperty({

@@ -1,4 +1,4 @@
-import { Race } from "#/server/modules/races/enums/race.enum";
+import { Race } from "#/src/configs/races/race.enum";
 
 export const EN_Race = {
   [Race.Elves]: "Elves",

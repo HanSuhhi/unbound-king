@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { renderTextKeyEvent } from "@/composables/key/keyEvent";
+import { renderTextKeyEvent } from "@/composables/experience/key/keyEvent";
 import { useHtmlPropLint } from "@/composables/util/htmlPropLint";
 
 defineProps<{ text: string | string[]; reversed?: boolean }>();

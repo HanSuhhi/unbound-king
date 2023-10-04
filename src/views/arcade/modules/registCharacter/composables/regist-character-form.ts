@@ -1,18 +1,17 @@
 import type { FormInst, FormRules } from "naive-ui";
 import { provide, ref } from "vue";
 import { RegistCharacterFormRef, RegistCharacterFormValue } from "../regist-character.symbol";
-import { Gender } from "#/server/modules/gender/enums/gender.enum";
-import { Profession } from "#/server/modules/professions/enums/profession.enum";
-import { Race } from "#/server/modules/races/enums/race.enum";
-import { Trait } from "#/server/modules/traits/enums/trait.enum";
-import type { ResponseType_PostRegist } from "@/api/services/character";
-import { HumanLineage } from "#/server/modules/lineages/enums/lineages.enum";
+import { Gender } from "@/configs/gender/gender.enum";
+import { Profession } from "@/configs/professions/profession.enum";
+import { HumanLineage } from "@/configs/lineages/lineages.enum";
+import { Race } from "@/configs/races/race.enum";
+import { Trait } from "@/configs/traits/trait.enum";
 
 export function useRegistCharacterForm() {
   const FormRef = ref<FormInst | null>(null);
   provide(RegistCharacterFormRef, FormRef);
 
-  const registCharacterForm = ref<ResponseType_PostRegist>({
+  const registCharacterForm = ref<Character>({
     name: "",
     gender: Gender.Male,
     profession: Profession.Farmer,

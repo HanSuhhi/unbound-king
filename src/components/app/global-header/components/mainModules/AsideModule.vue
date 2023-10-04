@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { runKeyEvent } from "@/composables/key/keyEvent";
+import { runKeyEvent } from "@/composables/experience/key/keyEvent";
 import Explanation from "@/components/experience/Explanation.vue";
 import KbdEvent from "@/components/KeyEvent.vue";
 

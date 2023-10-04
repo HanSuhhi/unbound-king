@@ -1,4 +1,4 @@
-import { ElvesLineage, HumanLineage, YokaiLineage } from "../../../../../server/modules/lineages/enums/lineages.enum";
+import { ElvesLineage, HumanLineage, YokaiLineage } from "#/src/configs/lineages/lineages.enum";
 
 export const EN_Lineage = {
   [HumanLineage.ForestNative]: "forest native",

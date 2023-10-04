@@ -1,0 +1,1 @@
+type Race = import("@/configs/races/race.enum").Race

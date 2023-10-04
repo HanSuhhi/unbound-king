@@ -1,17 +1,17 @@
 import { computed, ref } from "vue";
-import { useRequest } from "alova";
-import { getList } from "@/api/services/character";
+import { useCharacterDb } from "@/services/databases/character/character.service";
 
-export function useCharacterList() {
-  const { data, send } = useRequest(getList);
+export async function useCharacterList() {
+  const { queryUserCharacters } = useCharacterDb();
+
+  const list = ref(await queryUserCharacters());
   const choosedCharacterIndex = ref<number>(0);
 
-  const choosedCharacter = computed(() => (data.value.data.list[choosedCharacterIndex.value] as any)._id);
+  const choosedCharacter = computed(() => (list.value[choosedCharacterIndex.value]).id);
 
   return {
-    list: data,
+    list,
     index: choosedCharacterIndex,
-    choosedCharacterId: choosedCharacter,
-    getList: send
+    choosedCharacterId: choosedCharacter
   };
 }

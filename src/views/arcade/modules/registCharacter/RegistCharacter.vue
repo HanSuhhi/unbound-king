@@ -1,15 +1,5 @@
 <script setup lang='ts'>
-import { onMounted } from "vue";
 import RegistCharacterForm from "./components/RegistCharacterForm.vue";
-import { useEditionService } from "@/services/databases/edition/edition.service";
-import { ResourseTag } from "#/server/modules/editions/enums/resourse-tag.enum";
-import { useResourseEdition } from "@/composables/store/resourse";
-
-const { getRegistCharacterVersion } = useEditionService();
-const registCharacterVersion = await getRegistCharacterVersion();
-const { storeEditionAndResources } = useResourseEdition(ResourseTag.RegistCharacter, registCharacterVersion?.edition);
-
-onMounted(storeEditionAndResources);
 </script>
 
 <template>

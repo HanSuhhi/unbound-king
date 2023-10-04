@@ -1,4 +1,4 @@
 interface ITable {
-  id: number
+  id?: number
 }
 type ServiceBoolean = import("./serviceModel").Boolean

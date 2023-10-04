@@ -1,5 +1,5 @@
 import type { Types } from "mongoose";
-import type { Role } from "#/composables/enum/role.enum";
+import type { Role } from "@/modules/roles/enum/role.enum";
 
 export interface UserTokenMessage {
   id: Types.ObjectId

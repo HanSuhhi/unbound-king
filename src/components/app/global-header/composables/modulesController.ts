@@ -2,8 +2,8 @@ import type { ComputedRef, Ref } from "vue";
 import { inject } from "vue";
 import { range } from "lodash";
 import { TopModulesLengthSymbol } from "../global-header.symbol";
-import { createAutoMountEvent } from "@/composables/key/mountKeyCommand";
-import { definePressed, runKeyEvent } from "@/composables/key/keyEvent";
+import { createAutoMountEvent } from "@/composables/experience/key/mountKeyCommand";
+import { definePressed, runKeyEvent } from "@/composables/experience/key/keyEvent";
 import { i18nLangModel } from "#/composables/i18n/index";
 import { useKeyStore } from "@/stores/key.store";
 

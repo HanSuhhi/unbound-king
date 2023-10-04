@@ -29,3 +29,4 @@ const [confirm] = useConfirm();
     </template>
   </common-form-dialog>
 </template>
+../../../composables/components/form/formConfigs@/composables/components/form/formConfigs@/composables/components/form/formDetail@/composables/components/form/typeToForm
